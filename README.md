@@ -1,6 +1,6 @@
 
 <h1 align="center">Hi 👋, I'm Syarief</h1>
-<h3 align="center">A passionate Mern Stack developer from Malaysia</h3>
+<h3 align="center">A passionate C developer from Malaysia</h3>
 
 <p align='center'>
     <img src="https://www.lambdatest.com/resources/images/news24.gif">
@@ -12,11 +12,11 @@
 
 <p align="left"> <a href="https://twitter.com/syariefazman" target="blank"><img src="https://img.shields.io/twitter/follow/syariefazman?logo=twitter&style=for-the-badge" alt="syariefazman" /></a> </p>
 
-- 🌱 I’m currently learning Mern Stack 
+- 🌱 I’m currently learning C 
 
 - 📝 I make a forex Expert Advisor on [tinyurl.com/eabubuy](https://tinyurl.com/eabubuy)
 
-- 💬 Ask me about  Mern stack
+- 💬 Ask me about  C
 
 - 📫 How to reach me **syarief.azman@gmail.com**
 
