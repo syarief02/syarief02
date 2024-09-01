@@ -5,8 +5,8 @@
 <p align='center'>
     <img src="https://www.lambdatest.com/resources/images/news24.gif">
 </p>
-
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=athifbinu&label=Profile%20views&color=0e75b6&style=flat" alt="athifbinu" /> </p>
+![hi](https://komarev.com/ghpvc/?username=your-github-username&label=PROFILE+VIEWS)
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=syarief02&label=Profile%20views&color=0e75b6&style=flat" alt="syarief02" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=athifbinu" alt="athifbinu" /></a> </p>
 
