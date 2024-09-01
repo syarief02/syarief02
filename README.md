@@ -18,7 +18,7 @@
 
 - 💬 Ask me about  Mern stack
 
-- 📫 How to reach me **binuathif@gmail.com**
+- 📫 How to reach me **syarief.azman@gmail.com**
 
 - ⚡ Open Source Lover 
 - ⚡ Startups
