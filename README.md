@@ -6,7 +6,7 @@
     <img src="https://www.lambdatest.com/resources/images/news24.gif">
 </p> -->
 <p align='center'>
-    <img src="https://private-user-images.githubusercontent.com/74038190/240815068-993370af-11f4-48e7-9e0d-e5b79c2e7890.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjU1Mzk1NTYsIm5iZiI6MTcyNTUzOTI1NiwicGF0aCI6Ii83NDAzODE5MC8yNDA4MTUwNjgtOTkzMzcwYWYtMTFmNC00OGU3LTllMGQtZTViNzljMmU3ODkwLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA5MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwOTA1VDEyMjczNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTFhZjdlODI0NmI3ZWFhZGVjMTg5NTQ2NGFjZDliZGRjM2IzMDI4NDUyZjE3MTJkZDU3ZjBhMjhhN2E4YjVmMDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.3xTM9cSqPfHv84kb2Pe2wZroWl0KZoyNMHfInRNz0ws](https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif">
+    <img src="https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif">
 </p>
 <p> <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="syarief02" /> </p>
 
