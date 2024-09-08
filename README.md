@@ -6,8 +6,12 @@
     <img src="https://www.lambdatest.com/resources/images/news24.gif">
 </p> -->
 <p align='center'> <a href="https://github.com/syarief02">
-<img src="https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif">
+<img src="./zQinMHnDYiNnq.webp">
   </a></p>
+
+<!-- <p align='center'> <a href="https://github.com/syarief02">
+<img src="https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif">
+  </a></p> -->
 
 <p> <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="syarief02" /> </p>
 
