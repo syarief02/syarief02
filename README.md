@@ -8,6 +8,14 @@
 <p align='center'>
     <img src="https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif">
 </p>
+
+
+<div style="text-align: center;">
+
+![GitHub-Mark-Light](https://raw.githubusercontent.com/syarief02/syarief02/d7393e77687e3527f7adac00da4b847b964693f6/profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)![GitHub-Mark-Dark](https://raw.githubusercontent.com/syarief02/syarief02/bee9148135d9e9eadb137d522abdf82076eac398/profile-3d-contrib/profile-night-green.svg#gh-dark-mode-only)
+
+</div>
+
 <p> <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="syarief02" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=syarief02" alt="syarief02" /></a> </p>
@@ -49,11 +57,6 @@
 
 </div>
 
-<div style="text-align: center;">
-
-![GitHub-Mark-Light](https://raw.githubusercontent.com/syarief02/syarief02/d7393e77687e3527f7adac00da4b847b964693f6/profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)![GitHub-Mark-Dark](https://raw.githubusercontent.com/syarief02/syarief02/bee9148135d9e9eadb137d522abdf82076eac398/profile-3d-contrib/profile-night-green.svg#gh-dark-mode-only)
-
-</div>
 
 <!--
 **syarief02/syarief02** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
