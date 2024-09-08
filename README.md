@@ -15,7 +15,7 @@
 
 [![Trophy-dark](https://github-profile-trophy.vercel.app/?username=syarief02&theme=onedark#gh-dark-mode-only)](https://github.com/syarief02#gh-dark-mode-only)
 
-[![Trophy-light](https://github-profile-trophy.vercel.app/?username=syarief02&theme=onedark#gh-light-mode-only)](https://github.com/syarief02#gh-light-mode-only)
+[![Trophy-light](https://github-profile-trophy.vercel.app/?username=syarief02&theme=onelight#gh-light-mode-only)](https://github.com/syarief02#gh-light-mode-only)
 
 </div>
 <div style="text-align: center;">
