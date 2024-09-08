@@ -106,14 +106,14 @@
   </a>
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <a href="https://github.com/syarief02">
     <img src="https://github-readme-stats.vercel.app/api?username=syarief02&show_icons=true&locale=en" alt="GitHub Stats" />
     
   </a>
-  
-  ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&theme=transparent&show_icons=true)
-</p>
+   -->
+  ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)
+
 
 
 
