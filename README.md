@@ -12,7 +12,7 @@
 
 <div style="text-align: center;">
 
-![GitHub-Mark-Light](https://raw.githubusercontent.com/syarief02/syarief02/d7393e77687e3527f7adac00da4b847b964693f6/profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)![GitHub-Mark-Dark](https://raw.githubusercontent.com/syarief02/syarief02/bee9148135d9e9eadb137d522abdf82076eac398/profile-3d-contrib/profile-night-green.svg#gh-dark-mode-only)
+![GitHub-Mark-Light](https://raw.githubusercontent.com/syarief02/syarief02/d7393e77687e3527f7adac00da4b847b964693f6/profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)![GitHub-Mark-Dark](./profile-3d-contrib/profile-night-rainbow.svg#gh-dark-mode-only)
 
 </div>
 
