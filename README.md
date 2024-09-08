@@ -18,7 +18,9 @@
 </div>
 <div style="text-align: center;">
 
-![GitHub-Mark-Light](./profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)![GitHub-Mark-Dark](./profile-3d-contrib/profile-night-rainbow.svg#gh-dark-mode-only)
+[![GitHub-Mark-Light](./profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)](https://github.com/syarief02#gh-light-mode-only)
+
+[![GitHub-Mark-Dark](./profile-3d-contrib/profile-night-rainbow.svg#gh-dark-mode-only)](https://github.com/syarief02#gh-dark-mode-only)
 
 </div>
 
