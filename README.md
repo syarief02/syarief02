@@ -13,7 +13,7 @@
 
 <div style="text-align: center;">
 
-![Trophy-dark](https://github-profile-trophy.vercel.app/?username=syarief02&theme=onedark#gh-dark-mode-oly)
+[![Trophy-dark](https://github-profile-trophy.vercel.app/?username=syarief02&theme=onedark#gh-dark-mode-oly)](https://github.com/syarief02)
 
 </div>
 <div style="text-align: center;">
