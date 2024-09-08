@@ -49,9 +49,9 @@
 
 </div>
 
-<p align='center'>
+<div style="text-align: center;">
     <img src="https://raw.githubusercontent.com/syarief02/syarief02/acf11a0e71e741935c9388363877acc5df5a534d/profile-3d-contrib/profile-gitblock.svg">
-</p>
+</div>
 
 <!--
 **syarief02/syarief02** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
