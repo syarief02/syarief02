@@ -94,7 +94,7 @@
   </a>
 </p>
 
-<p align="center">
+<p align="left">
   <a href="https://github.com/syarief02">
     <img src="https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact" alt="Top Languages" />
   </a>
