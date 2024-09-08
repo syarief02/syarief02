@@ -100,11 +100,14 @@
   </a>
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <a href="https://github.com/syarief02">
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=syarief02" alt="GitHub Streak" />
   </a>
-</p>
+</p> -->
+
+[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02)](https://github.com/syarief02#gh-light-mode-only)
+[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=dark)](https://github.com/syarief02#gh-dark-mode-only)
 
 <!-- <p align="center">
   <a href="https://github.com/syarief02">
