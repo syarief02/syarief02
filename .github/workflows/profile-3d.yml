@@ -20,5 +20,5 @@ jobs:
           git config user.name Syarief Azman
           git config user.email syarief.azman@gmail.com
           git add -A .
-          git commit -m "generated gh stats image"
+          git commit -m "generate gh stats image"
           git push
