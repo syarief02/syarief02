@@ -9,16 +9,18 @@
     <img src="https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif">
 </p>
 
+<p> <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="syarief02" /> </p>
 
 <div style="text-align: center;">
+    
+![Trophy](https://github-profile-trophy.vercel.app/?username=syarief02)
 
+</div>
+<div style="text-align: center;">
+    
 ![GitHub-Mark-Light](./profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)![GitHub-Mark-Dark](./profile-3d-contrib/profile-night-rainbow.svg#gh-dark-mode-only)
 
 </div>
-
-<p> <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="syarief02" /> </p>
-
-<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=syarief02" alt="syarief02" /></a> </p>
 
 <p align="left"> <a href="https://twitter.com/syariefazman" target="blank"><img src="https://img.shields.io/twitter/follow/syariefazman?logo=twitter&style=for-the-badge" alt="syariefazman" /></a> </p>
 
