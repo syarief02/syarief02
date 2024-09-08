@@ -109,8 +109,13 @@
 <p align="center">
   <a href="https://github.com/syarief02">
     <img src="https://github-readme-stats.vercel.app/api?username=syarief02&show_icons=true&locale=en" alt="GitHub Stats" />
+    
   </a>
+  
+  ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&theme=transparent&show_icons=true)
 </p>
+
+
 
 <!-- 
 **syarief02/syarief02** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
