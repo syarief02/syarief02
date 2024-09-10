@@ -27,17 +27,11 @@ jobs:
             # If the file doesn't exist, start with 1
             new_var=1
           fi
-          # Prepend the current date as a comment
-          current_date=$(date +'%Y-%m-%d')
-          echo "// Updated on $current_date" > /tmp/newfile
-          # Append the existing content up to the main function
-          awk '/^int main\(\)/ {print; flag=1; next} flag {print; exit} 1' LAST_UPDATED.c >> /tmp/newfile
-          # Append the new variable inside main(void)
-          awk '/^int main\(\)/ {flag=1; next} flag && /return 0;/ {print "    int a'$new_var' = 1;"; print; next} 1' LAST_UPDATED.c >> /tmp/newfile
-          # Append the remaining content after the last variable declaration
-          awk '/^int main\(\)/ {flag=1; next} flag && /return 0;/ {next} flag {print}' LAST_UPDATED.c >> /tmp/newfile
-          # Replace the original file
-          mv /tmp/newfile LAST_UPDATED.c
+          # Prepend the current date and time as a comment
+          current_datetime=$(date +'%Y-%m-%d %H:%M:%S')
+          echo "// Updated on $current_datetime" >> LAST_UPDATED.c
+          # Append the new variable at the end of the file
+          echo "int a$new_var = 1;" >> LAST_UPDATED.c
       - name: Commit & Push
         run: |
           git config user.name "Syarief Azman"
@@ -45,6 +39,7 @@ jobs:
           git add -A .
           git commit -m "Update LAST_UPDATED.c with new variable and date"
           git push
+
 
 # name: GitHub-Profile-3D-Contrib
 
