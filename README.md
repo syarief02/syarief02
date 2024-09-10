@@ -64,7 +64,7 @@
     <img src=" https://img.icons8.com/?size=256&id=uLWV5A9vXIPu&format=png" alt="Stack Overflow" height="35" width="35" />
   </a>
     <a href="https://t.me/syariefazman" target="_blank">
-    <img src="https://img.icons8.com/?size=256&id=oWiuH0jFiU0R&format=png" alt="Stack Overflow" height="35" width="35" />
+    <img src="https://img.icons8.com/?size=256&id=oWiuH0jFiU0R&format=png" alt="Stack Overflow" height="35" width="35git" />
   </a>
 
 </p>
