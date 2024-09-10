@@ -15,10 +15,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
+      - name: Update Variable
+        run: |
+          # Check if the file exists
+          if [ -f LAST_UPDATED.c ]; then
+            # Read the last variable number
+            last_var=$(tail -n 1 LAST_UPDATED.c | grep -oP 'int a\K[0-9]+')
+            # Increment the variable number
+            new_var=$((last_var + 1))
+          else
+            # If the file doesn't exist, start with 1
+            new_var=1
+          fi
+          # Append the new variable to the file
+          echo "int a$new_var = 1;" >> LAST_UPDATED.c
       - name: Commit & Push
         run: |
-          git config user.name Syarief Azman
-          git config user.email syarief.azman@gmail.com
+          git config user.name "Syarief Azman"
+          git config user.email "syarief.azman@gmail.com"
           git add -A .
-          git commit -m "generate gh stats image"
+          git commit -m "Update LAST_UPDATED.c with new variable"
           git push
