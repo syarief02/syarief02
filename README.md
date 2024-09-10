@@ -46,7 +46,7 @@
 - 🌱 I’m currently learning **C**.
 - 📝 I make a forex Expert Advisor on [MQL5.com](https://tinyurl.com/eabubuy).
 - 💬 Ask me about **C**.
-- 📫 How to reach me: **syarief.azman@gmail.com**.
+- 📫 How to reach me: **<syarief.azman@gmail.com>**.
 - ⚡ I love **Open Source** and **Startups**.
 
 <h3 align="left">Connect with me:</h3>
@@ -61,7 +61,7 @@
     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/stack-overflow.svg" alt="Stack Overflow" height="35" width="35" />
   </a>
   <a href="https://fb.com/syariefazman" target="_blank">
-    <img src=" https://img.icons8.com/?size=256&id=uLWV5A9vXIPu&format=png" alt="Stack Overflow" height="35" width="35" />
+    <img src="https://img.icons8.com/?size=256&id=uLWV5A9vXIPu&format=png" alt="Stack Overflow" height="35" width="35" />
   </a>
     <a href="https://t.me/syariefazman" target="_blank">
     <img src="https://img.icons8.com/?size=256&id=oWiuH0jFiU0R&format=png" alt="Stack Overflow" height="35" width="35" />
@@ -132,7 +132,6 @@
   ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)
 
 </details>
-
 
 <!-- 
 **syarief02/syarief02** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
