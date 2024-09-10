@@ -3,10 +3,7 @@
 
 int main(void)
 {
-return 0;
-}
-
-int a1 = 1;
+    int a1 = 1;
 int a2 = 1;
 int a3 = 1;
 int a4 = 1;
@@ -30,3 +27,7 @@ int a21 = 1;
 int a22 = 1;
 int a23 = 1;
 int a24 = 1;
+
+return 0;
+}
+
