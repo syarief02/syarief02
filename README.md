@@ -7,14 +7,14 @@
 </p> -->
 
 <p align='center'>
-  <a href="https://github.com/syarief02">
+  <a href="https://fb.com/syariefazman">
     <img src="./zQinMHnDYiNnq.webp" alt="GitHub">
   </a>
 </p>
 
 <!-- Optional gif -->
 <!-- <p align='center'> 
-  <a href="https://github.com/syarief02">
+  <a href="https://fb.com/syariefazman">
     <img src="https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif" alt="Animation">
   </a>
 </p> -->
@@ -25,15 +25,15 @@
 
 <div align="center">
 
-[![Trophy (Dark Mode)](https://github-profile-trophy.vercel.app/?username=syarief02&theme=algolia#gh-dark-mode-only)](https://github.com/syarief02#gh-dark-mode-only)
-[![Trophy (Light Mode)](https://github-profile-trophy.vercel.app/?username=syarief02&theme=flat#gh-light-mode-only)](https://github.com/syarief02#gh-light-mode-only)
+[![Trophy (Dark Mode)](https://github-profile-trophy.vercel.app/?username=syarief02&theme=algolia#gh-dark-mode-only)](https://fb.com/syariefazman#gh-dark-mode-only)
+[![Trophy (Light Mode)](https://github-profile-trophy.vercel.app/?username=syarief02&theme=flat#gh-light-mode-only)](https://fb.com/syariefazman#gh-light-mode-only)
 
 </div>
 
 <div align="center">
 
-[![Contribution Graph (Light)](./profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)](https://github.com/syarief02#gh-light-mode-only)
-[![Contribution Graph (Dark)](./profile-3d-contrib/profile-night-rainbow.svg#gh-dark-mode-only)](https://github.com/syarief02#gh-dark-mode-only)
+[![Contribution Graph (Light)](./profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)](https://fb.com/syariefazman#gh-light-mode-only)
+[![Contribution Graph (Dark)](./profile-3d-contrib/profile-night-rainbow.svg#gh-dark-mode-only)](https://fb.com/syariefazman#gh-dark-mode-only)
 
 </div>
 
@@ -107,24 +107,24 @@
 <!-- ![IndoGitHubers-badge](https://indogithubers-badge.vercel.app/badge?username=syarief02) -->
 
 <!-- <p align="left">
-  <a href="https://github.com/syarief02">
+  <a href="https://fb.com/syariefazman">
     <img src="https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact" alt="Top Languages" />
   </a>
 </p> -->
 
-[![github language](https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact&theme=transparent)](https://github.com/syarief02)
+[![github language](https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact&theme=transparent)](https://fb.com/syariefazman)
 
 <!-- <p align="center">
-  <a href="https://github.com/syarief02">
+  <a href="https://fb.com/syariefazman">
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=syarief02" alt="GitHub Streak" />
   </a>
 </p> -->
 
-[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&)](https://github.com/syarief02#gh-light-mode-only)
-[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=transparent)](https://github.com/syarief02#gh-dark-mode-only)
+[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&)](https://fb.com/syariefazman#gh-light-mode-only)
+[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=transparent)](https://fb.com/syariefazman#gh-dark-mode-only)
 
 <!-- <p align="center">
-  <a href="https://github.com/syarief02">
+  <a href="https://fb.com/syariefazman">
     <img src="https://github-readme-stats.vercel.app/api?username=syarief02&show_icons=true&locale=en" alt="GitHub Stats" />
     
   </a>
