@@ -113,8 +113,8 @@
   </a>
 </p> -->
 
-[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme)](https://github.com/syarief02#github-light-mode)
-[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=transparent)](https://github.com/syarief02#github-dark-mode)
+[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&)](https://github.com/syarief02#gh-light-mode-only)
+[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=transparent)](https://github.com/syarief02#gh-dark-mode-only)
 
 <!-- <p align="center">
   <a href="https://github.com/syarief02">
