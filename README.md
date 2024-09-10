@@ -93,7 +93,7 @@
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="140" alt="Support" />
   </a>
 </p>
-<div class="markdown-heading" dir="auto"><h2 class="heading-element" dir="auto">📊 Stats</h2></div>
+<h2>📊 Stats</h2>
 <details open="">
  <summary>Full Stats (click me to toggle 👀)</summary>
  <br>
