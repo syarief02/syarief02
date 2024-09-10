@@ -94,11 +94,16 @@
   </a>
 </p>
 
-<p align="left">
+<!-- ![IndoGitHubers-badge](https://indogithubers-badge.vercel.app/badge?username=syarief02) -->
+
+<!-- <p align="left">
   <a href="https://github.com/syarief02">
     <img src="https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact" alt="Top Languages" />
   </a>
-</p>
+</p> -->
+
+[![github language](https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact)](https://github.com/syarief02#gh-light-mode-only)
+[![github lang dark](https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact&theme=dark)](https://github.com/syarief02#gh-dark-mode-only)
 
 <!-- <p align="center">
   <a href="https://github.com/syarief02">
