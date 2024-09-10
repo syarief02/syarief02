@@ -1,4 +1,4 @@
-name: GitHub-Profile-3D-Contrib
+%name: GitHub-Profile-3D-Contrib
 
 on:
   schedule: # 03:00 JST == 18:00 UTC
@@ -34,5 +34,5 @@ jobs:
           git config user.name "Syarief Azman"
           git config user.email "syarief.azman@gmail.com"
           git add -A .
-          git commit -m "Update LAST_UPDATED.c with new variable"
+          git commit -m "Update Graph"
           git push
