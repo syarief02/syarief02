@@ -34,6 +34,8 @@ jobs:
           awk '/^int main\(\)/ {print; flag=1; next} flag {print; exit} 1' LAST_UPDATED.c >> /tmp/newfile
           # Append the new variable inside main(void)
           awk '/^int main\(\)/ {flag=1; next} flag && /return 0;/ {print "    int a'$new_var' = 1;"; print; next} 1' LAST_UPDATED.c >> /tmp/newfile
+          # Append the remaining content after the last variable declaration
+          awk '/^int main\(\)/ {flag=1; next} flag && /return 0;/ {next} flag {print}' LAST_UPDATED.c >> /tmp/newfile
           # Replace the original file
           mv /tmp/newfile LAST_UPDATED.c
       - name: Commit & Push
