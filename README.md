@@ -52,14 +52,21 @@
 <h3 align="left">Connect with me:</h3>
 <p align="left">
   <a href="https://twitter.com/syariefazman" target="_blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Twitter" height="30" width="40" />
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Twitter" height="35" width="35" />
   </a>
   <a href="https://linkedin.com/in/syariefazman" target="_blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" height="30" width="40" />
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" height="35" width="35" />
   </a>
   <a href="https://stackoverflow.com/users/22780408/syarief-azman" target="_blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/stack-overflow.svg" alt="Stack Overflow" height="30" width="40" />
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/stack-overflow.svg" alt="Stack Overflow" height="35" width="35" />
   </a>
+  <a href="https://fb.com/syariefazman" target="_blank">
+    <img src=" https://img.icons8.com/?size=256&id=uLWV5A9vXIPu&format=png" alt="Stack Overflow" height="35" width="35" />
+  </a>
+    <a href="https://t.me/syariefazman" target="_blank">
+    <img src="https://img.icons8.com/?size=256&id=oWiuH0jFiU0R&format=png" alt="Stack Overflow" height="35" width="35" />
+  </a>
+
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
