@@ -32,4 +32,3 @@ int a24 = 1;
 return 0;
 }
 
-    int a25 = 1;
