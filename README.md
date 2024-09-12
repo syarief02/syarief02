@@ -95,9 +95,16 @@ In addition to my career in pharmaceuticals, I'm passionate about solving comple
   <a href="https://fb.com/syariefazman" target="_blank">
     <img src="https://img.icons8.com/?size=256&id=uLWV5A9vXIPu&format=png" alt="Stack Overflow" height="35" width="35" />
   </a>
-    <a href="https://t.me/syariefazman" target="_blank">
+  <a href="https://t.me/syariefazman" target="_blank">
     <img src="https://img.icons8.com/?size=256&id=oWiuH0jFiU0R&format=png" alt="Stack Overflow" height="35" width="35" />
   </a>
+  <a href="https://youtube.com/syariefazman" target="_blank">
+    <img src="https://www.svgrepo.com/show/13671/youtube.svg" alt="Stack Overflow" height="35" width="35" />
+  </a>
+  <a href="https://discord.gg/DhUstUpSuu" target="_blank">
+    <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Stack Overflow" height="35" width="35" />
+  </a>
+
 </p>
 
 <h3 align="left">Support:</h3>
