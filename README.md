@@ -119,7 +119,7 @@ In addition to my career in pharmaceuticals, I'm passionate about solving comple
 
 - <h6><details open=""><summary>Ministry of Health Malaysia</summary>
   
-  - <details open=""><summary>Diploma in Pharmacy</summary>
+  - <details><summary>Diploma in Pharmacy</summary>
   
     <img src="./certificate/20240205_164117.jpg" alt="Diploma in Pharmacy" />
 
