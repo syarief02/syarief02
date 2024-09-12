@@ -113,11 +113,11 @@ In addition to my career in pharmaceuticals, I'm passionate about solving comple
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="140" alt="Support" />
   </a>
 </p>
-
+<hr>
 <h2>
 <details open=""><summary>📜 Certification (click me to toggle 👀)</summary>
 
-- <h6><details open=""><summary>Ministry of Health Malaysia</summary>
+- <h6><details><summary>Ministry of Health Malaysia</summary>
   
   - <details><summary>Diploma in Pharmacy</summary>
   
