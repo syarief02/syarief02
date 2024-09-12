@@ -115,7 +115,7 @@ In addition to my career in pharmaceuticals, I'm passionate about solving comple
 </p>
 <hr>
 <h2>
-<details open><summary>📜 Certification (click me to toggle 👀)</summary>
+<details open><summary>📜 Certification</summary>
 
 - <h6><details><summary>Ministry of Health Malaysia</summary>
   
