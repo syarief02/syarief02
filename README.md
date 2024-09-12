@@ -121,7 +121,7 @@ In addition to my career in pharmaceuticals, I'm passionate about solving comple
   
   - <details><summary>Diploma in Pharmacy</summary>
   
-    <img src="./certificate/20240205_164117.jpg" alt="Diploma in Pharmacy" />
+    <img src="https://raw.githubusercontent.com/syarief02/syarief02/main/certificate/20240205_164117.jpg" alt="Diploma in Pharmacy" />
 
 </details>
 
