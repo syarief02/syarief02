@@ -1,5 +1,6 @@
 <h1 align="center">Hi 👋, I'm Syarief</h1>
-<h3 align="center">A passionate C developer from Malaysia</h3>
+
+I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Agency, where I specialize in testing pharmaceutical products using advanced techniques like **HPLC**, **GC-MS**, and **ICP-MS**. My work focuses on ensuring product safety and compliance with regulatory standards through detailed data analysis and reporting.
 
 <!-- Optional banner -->
 <!-- <p align='center'>
@@ -43,14 +44,45 @@
   </a>
 </p>
 
-- 🌱 I’m currently learning **C**.
-- 📝 I make a forex Expert Advisor on [MQL5.com](https://tinyurl.com/eabubuy).
-- 💬 Ask me about **C**.
-- 📫 How to reach me: **<syarief.azman@gmail.com>**.
-- ⚡ I love **Open Source** and **Startups**.
+🌱 **Currently learning**:  
+I am pursuing **CS50x – Introduction to Computer Science** and **CS50 Cybersecurity**, where I’m gaining hands-on experience with:
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
+- **Python**
+- **C**
+- **JavaScript**
+- **Cybersecurity fundamentals**
+
+💡 **Goals**:  
+I am transitioning into the world of **technology**, aiming to combine my analytical background in pharmaceuticals with software development and cybersecurity. I’m particularly interested in exploring:
+
+- Data automation and analysis
+- Cybersecurity in healthcare and pharmaceuticals
+- Software development to enhance lab efficiency
+
+📚 **Current Projects**:
+
+- 📝 I made a forex Expert Advisor on [MQL5.com](https://tinyurl.com/eabubuy).
+- **CS50x Final Project (In Progress)**: Developing a tool to automate lab data analysis for pharmaceutical testing using Python and JavaScript.
+- **Cybersecurity Practice**: Learning how to secure sensitive pharmaceutical data through encryption and best practices in cybersecurity.
+
+⚡ **Fun Fact**:  
+In addition to my career in pharmaceuticals, I'm passionate about solving complex problems through coding and exploring how technology can drive innovation in healthcare.
+
+## 🔧 Languages and Tools
+
+![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
+![C](https://img.shields.io/badge/-C-A8B9CC?style=flat&logo=c&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![HTML](https://img.shields.io/badge/-HTML-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/-CSS-1572B6?style=flat&logo=css3&logoColor=white)
+![SQL](https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=postgresql&logoColor=white)
+![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
+
+## 📫 Let's Connect
+
+- 📫 How to reach me: **<syarief.azman@gmail.com>**.
+
+- <p align="left">
   <a href="https://twitter.com/syariefazman" target="_blank">
     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Twitter" height="35" width="35" />
   </a>
@@ -65,32 +97,6 @@
   </a>
     <a href="https://t.me/syariefazman" target="_blank">
     <img src="https://img.icons8.com/?size=256&id=oWiuH0jFiU0R&format=png" alt="Stack Overflow" height="35" width="35" />
-  </a>
-
-</p>
-
-<h3 align="left">Languages and Tools:</h3>
-<p align="left">
-  <a href="https://getbootstrap.com" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="Bootstrap" width="40" height="40" />
-  </a>
-  <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C" width="40" height="40" />
-  </a>
-  <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++" width="40" height="40" />
-  </a>
-  <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="CSS3" width="40" height="40" />
-  </a>
-  <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
-    <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git" width="40" height="40" />
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript" width="40" height="40" />
-  </a>
-  <a href="https://www.python.org" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="40" height="40" />
   </a>
 </p>
 
@@ -130,7 +136,7 @@
   </a>
    -->
   ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)
-
+s
 </details>
 
 <!-- 
