@@ -113,6 +113,21 @@ In addition to my career in pharmaceuticals, I'm passionate about solving comple
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="140" alt="Support" />
   </a>
 </p>
+
+<h2>
+<details open=""><summary>📜 Certification (click me to toggle 👀)</summary>
+
+- <h6><details open=""><summary>Ministry of Health Malaysia</summary>
+  
+  - <details open=""><summary>Diploma in Pharmacy</summary>
+  
+    <img src="./certificate/20240205_164117.jpg" alt="Diploma in Pharmacy" />
+
+</details>
+
+</details></h6>
+</details></h2>
+ <br>
 <h2>📊 Stats</h2>
 <details open="">
  <summary>Full Stats (click me to toggle 👀)</summary>
