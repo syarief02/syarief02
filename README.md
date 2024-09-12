@@ -127,7 +127,7 @@ In addition to my career in pharmaceuticals, I'm passionate about solving comple
 
 </details></h6>
 </details></h2>
- <br>
+
 <h2>📊 Stats</h2>
 <details open="">
  <summary>Full Stats (click me to toggle 👀)</summary>
