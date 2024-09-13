@@ -173,7 +173,7 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
     
   </a>
    -->
-  ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)
+  [![GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)](https://fb.com/syariefazman)
 s
 </details>
 
