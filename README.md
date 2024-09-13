@@ -1,6 +1,7 @@
 <h1 align="center">Hi 👋, I'm Syarief</h1>
 
-I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Agency, where I specialize in testing pharmaceutical products using advanced techniques like **HPLC**, **GC-MS**, and **ICP-MS**. My work focuses on ensuring product safety and compliance with regulatory standards through detailed data analysis and reporting.
+I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Agency, specializing in testing pharmaceutical products with advanced techniques like **HPLC**, **GC-MS**, and **ICP-MS**. Beyond my pharmaceutical expertise, I’m passionate about **web development** and **coding solutions** to optimize processes and enhance efficiency.
+
 
 <!-- Optional banner -->
 <!-- <p align='center'>
@@ -44,45 +45,59 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
   </a>
 </p>
 
-🌱 **Currently learning**:  
-I am pursuing **CS50x – Introduction to Computer Science** and **CS50 Cybersecurity**, where I’m gaining hands-on experience with:
+---
 
-- **Python**
-- **C**
-- **JavaScript**
-- **Cybersecurity fundamentals**
+I’m a passionate **web developer** in the making, with a knack for creating visually appealing and functional websites. My expertise lies in **HTML**, **CSS**, and **JavaScript**, and I’m currently diving deep into the world of **Python** and **Cybersecurity**.
 
-💡 **Goals**:  
-I am transitioning into the world of **technology**, aiming to combine my analytical background in pharmaceuticals with software development and cybersecurity. I’m particularly interested in exploring:
+💡 **What I Bring**:
+- **Proficiency in Web Development**: Strong foundation in HTML, CSS, and JavaScript for crafting responsive, user-friendly interfaces.
+- **Automation Enthusiast**: Using **Microsoft Excel** for automating workflows, data analysis, and visualization.
+- **Problem Solver**: I thrive on solving real-world problems with code and exploring new technologies to enhance efficiency and security.
 
-- Data automation and analysis
-- Cybersecurity in healthcare and pharmaceuticals
-- Software development to enhance lab efficiency
+🌱 **Currently Learning**:
+- **CS50x – Introduction to Computer Science** to strengthen my understanding of computer science fundamentals.
+- **CS50 Cybersecurity** to gain insights into safeguarding systems and data.
 
-📚 **Current Projects**:
+⚡ **Goals**:
+I'm aiming to transition fully into the tech industry, focusing on:
+- Building **dynamic, interactive web applications**.
+- Mastering **front-end development** using modern JavaScript frameworks.
+- Exploring **automation** and **data analytics**.
 
-- 📝 I made a forex Expert Advisor on [MQL5.com](https://tinyurl.com/eabubuy).
-- **CS50x Final Project (In Progress)**: Developing a tool to automate lab data analysis for pharmaceutical testing using Python and JavaScript.
-- **Cybersecurity Practice**: Learning how to secure sensitive pharmaceutical data through encryption and best practices in cybersecurity.
+---
+## 🔧 Skills & Tools
 
-⚡ **Fun Fact**:  
-In addition to my career in pharmaceuticals, I'm passionate about solving complex problems through coding and exploring how technology can drive innovation in healthcare.
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Microsoft%20Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+</p>
 
-## 🔧 Languages and Tools
+---
 
-![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
-![C](https://img.shields.io/badge/-C-A8B9CC?style=flat&logo=c&logoColor=white)
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![HTML](https://img.shields.io/badge/-HTML-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/-CSS-1572B6?style=flat&logo=css3&logoColor=white)
-![SQL](https://img.shields.io/badge/-SQL-4479A1?style=flat&logo=postgresql&logoColor=white)
-![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
+## 🚀 Featured & Current Projects
+
+- 📝 **Forex Expert Advisor**: Developed an algorithmic trading bot on [MQL5.com](https://tinyurl.com/eabubuy) that automates trading strategies in the forex market.
+- 🔬 **CS50x Final Project (In Progress)**: Building a tool to automate laboratory data analysis for pharmaceutical testing using Python and JavaScript, optimizing lab efficiency and data accuracy.
+- 🔐 **Cybersecurity Practice**: Exploring how to secure sensitive pharmaceutical data through encryption and applying best practices in cybersecurity.
+- 🌐 **Personal Portfolio Website**: Designed and built a responsive portfolio site using HTML, CSS, and JavaScript to showcase my work and projects.
+- 📊 **Excel Automation Scripts**: Created automation tools in Excel to streamline data analysis and reporting processes, improving productivity and precision.
+
+---
+
+## ⚡ Fun Fact
+Although my career began in pharmaceuticals, I’ve discovered a passion for problem-solving through coding. I’m always on the lookout for ways technology can innovate and transform industries like healthcare, using tools like automation, web development, and cybersecurity to drive meaningful change.
+
+---
 
 ## 📫 Let's Connect
 
 - 📫 How to reach me: **<syarief.azman@gmail.com>**.
 
-- <p align="left">
+ <p align="left">
   <a href="https://twitter.com/syariefazman" target="_blank">
     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Twitter" height="35" width="35" />
   </a>
@@ -107,6 +122,7 @@ In addition to my career in pharmaceuticals, I'm passionate about solving comple
 
 </p>
 
+---
 <h3 align="left">Support:</h3>
 <p>
   <a href="https://paypal.me/syariefazman">
