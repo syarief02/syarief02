@@ -21,10 +21,9 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
 </p> -->
 
   <div style="flex: 1; text-align: center; display: flex; align-items: center; justify-content: center;">
-    <p >
+    <p>
       <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="Profile Views" />
-    </p>
-    <a href="https://user-badge.committers.top/malaysia/syarief02" style="padding: 0 15px; margin-top: -16px;">
+    </p><a href="https://user-badge.committers.top/malaysia/syarief02" style="padding: 0 15px; margin-top: -16px;">
       <img src="https://user-badge.committers.top/malaysia/syarief02.svg" alt="committers.top badge" />
     </a>
   </div>
