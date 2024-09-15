@@ -2,7 +2,6 @@
 
 I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Agency, specializing in testing pharmaceutical products with advanced techniques like **HPLC**, **GC-MS**, and **ICP-MS**. Beyond my pharmaceutical expertise, I’m passionate about **web development** and **coding solutions** to optimize processes and enhance efficiency.
 
-
 <!-- Optional banner -->
 <!-- <p align='center'>
     <img src="https://www.lambdatest.com/resources/images/news24.gif" alt="News Banner">
@@ -21,9 +20,15 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
   </a>
 </p> -->
 
-<p align="center">
+<div align="center" style="display: flex; justify-content: space-between;">
+  <div style="flex: 1; text-align: center;"><p align="center">
   <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="Profile Views" />
-</p>
+</p></div>
+  <div style="flex: 1; text-align: center;">
+  
+  [![committers.top badge](https://user-badge.committers.top/malaysia/syarief02.svg)](https://user-badge.committers.top/malaysia/syarief02)
+</div>
+</div>
 
 <div align="center">
 
@@ -50,21 +55,25 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
 I’m a passionate **web developer** in the making, with a knack for creating visually appealing and functional websites. My expertise lies in **HTML**, **CSS**, and **JavaScript**, and I’m currently diving deep into the world of **Python** and **Cybersecurity**.
 
 💡 **What I Bring**:
+
 - **Proficiency in Web Development**: Strong foundation in HTML, CSS, and JavaScript for crafting responsive, user-friendly interfaces.
 - **Automation Enthusiast**: Using **Microsoft Excel** for automating workflows, data analysis, and visualization.
 - **Problem Solver**: I thrive on solving real-world problems with code and exploring new technologies to enhance efficiency and security.
 
 🌱 **Currently Learning**:
+
 - **CS50x – Introduction to Computer Science** to strengthen my understanding of computer science fundamentals.
 - **CS50 Cybersecurity** to gain insights into safeguarding systems and data.
 
 ⚡ **Goals**:
 I'm aiming to transition fully into the tech industry, focusing on:
+
 - Building **dynamic, interactive web applications**.
 - Mastering **front-end development** using modern JavaScript frameworks.
 - Exploring **automation** and **data analytics**.
 
 ---
+
 ## 🔧 Skills & Tools
 
 <p align="center">
@@ -89,6 +98,7 @@ I'm aiming to transition fully into the tech industry, focusing on:
 ---
 
 ## ⚡ Fun Fact
+
 Although my career began in pharmaceuticals, I’ve discovered a passion for problem-solving through coding. I’m always on the lookout for ways technology can innovate and transform industries like healthcare, using tools like automation, web development, and cybersecurity to drive meaningful change.
 
 ---
