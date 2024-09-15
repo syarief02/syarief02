@@ -88,7 +88,7 @@ I'm aiming to transition fully into the tech industry, focusing on:
 
 ## 🚀 Featured & Current Projects
 
-- 📝 **Forex Expert Advisor**: Developed an algorithmic trading bot on [MQL5.com](https://tinyurl.com/eabubuy) that automates trading strategies in the forex market.
+- 📝 **Forex Expert Advisor**: Developed an algorithmic trading bot on [MQL5.com](https://tinyurl.com/eabubuy) that automates trading strategies in the forex market. [![version](https://img.shields.io/badge/EA%20Budak%20Ubat-v1.62-blue)](https://tinyurl.com/eabubuy)
 - 🔬 **CS50x Final Project (In Progress)**: Building a tool to automate laboratory data analysis for pharmaceutical testing using Python and JavaScript, optimizing lab efficiency and data accuracy.
 - 🔐 **Cybersecurity Practice**: Exploring how to secure sensitive pharmaceutical data through encryption and applying best practices in cybersecurity.
 - 🌐 **Personal Portfolio Website**: Designed and built a responsive portfolio site using HTML, CSS, and JavaScript to showcase my work and projects.
