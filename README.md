@@ -24,7 +24,7 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
   <a href="https://fb.com/syariefazman" style="text-decoration: none;">
     <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="Profile Views" />
   </a>
-  <a href="https://user-badge.committers.top/malaysia/syarief02" >
+  <a href="https://user-badge.committers.top/malaysia/syarief02" style="text-decoration: none;">
     <img src="https://user-badge.committers.top/malaysia/syarief02.svg" alt="committers.top badge" />
   </a>
 </p>
