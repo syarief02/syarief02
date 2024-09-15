@@ -20,7 +20,7 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
   </a>
 </p> -->
 
-<p align="center">
+<p align="center" style="text-decoration:none;">
   <a href="https://fb.com/syariefazman">
     <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="Profile Views" />
   </a>
