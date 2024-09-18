@@ -22,3 +22,5 @@ jobs:
           COMMIT_BY_ME: "True"
           COMMIT_MESSAGE: "Update Stats"
           SYMBOL_VERSION: "2"
+          COMMIT_USERNAME: ${{ github.repository_owner }}
+          COMMIT_EMAIL: "syarief.azman@gmail.com"
