@@ -154,9 +154,7 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 </details></h2>
 
 <h2>📊 Stats</h2>
-<details open="">
- <summary>Full Stats (click me to toggle 👀)</summary>
- <br>
+
 <!-- ![IndoGitHubers-badge](https://indogithubers-badge.vercel.app/badge?username=syarief02) -->
 
 <!-- <p align="left">
@@ -183,7 +181,11 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
   </a>
    -->
   [![GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)](https://fb.com/syariefazman)
-
+  
+<details open="">
+ <summary>Full Stats (click me to toggle 👀)</summary>
+ <br>
+    
 <!--START_SECTION:waka-->
 ![Code Time](http://img.shields.io/badge/Code%20Time-5%20hrs%2057%20mins-blue)
 
