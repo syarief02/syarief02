@@ -184,6 +184,8 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
    -->
   [![GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)](https://fb.com/syariefazman)
 
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
 </details>
 
 <!-- 
