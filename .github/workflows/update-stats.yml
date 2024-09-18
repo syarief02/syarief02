@@ -21,3 +21,4 @@ jobs:
           LOCALE: "en"
           COMMIT_BY_ME: "True"
           COMMIT_MESSAGE: "Update Stats"
+          SYMBOL_VERSION: "2"
