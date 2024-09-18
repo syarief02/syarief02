@@ -19,7 +19,7 @@ jobs:
           SHOW_LINES_OF_CODE: "True"
           SHOW_LOC_CHART: "False"
           LOCALE: "en"
-          COMMIT_BY_ME: "True"
+         # COMMIT_BY_ME: "True"
           COMMIT_MESSAGE: "Update Stats"
           SYMBOL_VERSION: "2"
           COMMIT_USERNAME: ${{ github.repository_owner }}
