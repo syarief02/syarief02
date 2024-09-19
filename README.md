@@ -163,8 +163,6 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
   </a>
 </p> -->
 
-[![github language](https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact&theme=transparent)](https://fb.com/syariefazman)
-
 <!-- <p align="center">
   <a href="https://fb.com/syariefazman">
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=syarief02" alt="GitHub Streak" />
@@ -180,12 +178,7 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
     
   </a>
    -->
-  [![GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)](https://fb.com/syariefazman)
-  
-<details>
- <summary>Full Stats (click me to toggle 👀)</summary>
- <br>
-    
+
 <!--START_SECTION:waka-->
 ![Code Time](http://img.shields.io/badge/Code%20Time-6%20hrs%2019%20mins-blue)
 
@@ -193,19 +186,24 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 
 ![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-331.1%20thousand%20lines%20of%20code-blue)
 
-**🐱 My GitHub Data** 
+**🐱 My GitHub Data**
 
-> 📦 276.4 kB Used in GitHub's Storage 
- > 
+> 📦 276.4 kB Used in GitHub's Storage
+ >
 > 🏆 1,824 Contributions in the Year 2024
- > 
+ >
 > 💼 Opted to Hire
- > 
-> 📜 26 Public Repositories 
- > 
-> 🔑 7 Private Repositories 
- > 
-**I'm a Night 🦉** 
+ >
+> 📜 26 Public Repositories
+ >
+> 🔑 7 Private Repositories
+ >
+
+<details>
+ <summary>Full Stats (click me to toggle 👀)</summary>
+ <br>
+
+**I'm a Night 🦉**
 
 ```text
 🌞 Morning                1065 commits        ⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   22.00 % 
@@ -213,7 +211,8 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 🌃 Evening                1477 commits        ⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   30.51 % 
 🌙 Night                  1107 commits        ⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   22.87 % 
 ```
-📅 **I'm Most Productive on Sunday** 
+
+📅 **I'm Most Productive on Sunday**
 
 ```text
 Monday                   857 commits         ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   17.70 % 
@@ -225,8 +224,7 @@ Saturday                 464 commits         ⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 Sunday                   935 commits         ⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   19.31 % 
 ```
 
-
-📊 **This Week I Spent My Time On** 
+📊 **This Week I Spent My Time On**
 
 ```text
 🕑︎ Time Zone: Asia/Singapore
@@ -245,7 +243,7 @@ VS Code                  6 hrs 18 mins       ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿�
 Linux                    6 hrs 18 mins       ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿   100.00 % 
 ```
 
-**I Mostly Code in HTML** 
+**I Mostly Code in HTML**
 
 ```text
 HTML                     9 repos             ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   39.13 % 
@@ -255,11 +253,13 @@ CSS                      2 repos             ⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 Rich Text Format         1 repo              ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   04.35 % 
 ```
 
-
-
-
  Last Updated on 19/09/2024 04:04:18 UTC
 <!--END_SECTION:waka-->
+
+[![GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)](https://fb.com/syariefazman)
+
+[![github language](https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact&theme=transparent)](https://fb.com/syariefazman)
+
 </details>
 
 <!-- 
