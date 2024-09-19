@@ -181,7 +181,9 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 <details>
  <summary>Full Stats (click me to toggle 👀)</summary>
  <br>
+ 
 <!--START_SECTION:waka-->
+
 ![Code Time](http://img.shields.io/badge/Code%20Time-6%20hrs%2029%20mins-blue)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-818-blue)
