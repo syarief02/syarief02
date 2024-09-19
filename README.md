@@ -178,7 +178,9 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
     
   </a>
    -->
-   
+
+<details open=""><summary>Full Stats (click me to toggle 👀)</summary><br>
+
 <!--START_SECTION:waka-->
 ![Code Time](http://img.shields.io/badge/Code%20Time-8%20hrs%2012%20mins-blue)
 
