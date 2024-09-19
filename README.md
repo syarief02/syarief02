@@ -178,7 +178,9 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
     
   </a>
    -->
-
+<details>
+ <summary>Full Stats (click me to toggle 👀)</summary>
+ <br>
 <!--START_SECTION:waka-->
 ![Code Time](http://img.shields.io/badge/Code%20Time-6%20hrs%2022%20mins-blue)
 
@@ -186,19 +188,19 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 
 ![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-331.1%20thousand%20lines%20of%20code-blue)
 
-**🐱 My GitHub Data** 
+**🐱 My GitHub Data**
 
-> 📦 276.4 kB Used in GitHub's Storage 
- > 
+> 📦 276.4 kB Used in GitHub's Storage
+ >
 > 🏆 1,828 Contributions in the Year 2024
- > 
+ >
 > 💼 Opted to Hire
- > 
-> 📜 26 Public Repositories 
- > 
-> 🔑 7 Private Repositories 
- > 
-**I'm a Night 🦉** 
+ >
+> 📜 26 Public Repositories
+ >
+> 🔑 7 Private Repositories
+ >
+**I'm a Night 🦉**
 
 ```text
 🌞 Morning                1065 commits        ⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   21.97 % 
@@ -206,7 +208,8 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 🌃 Evening                1477 commits        ⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   30.47 % 
 🌙 Night                  1107 commits        ⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   22.84 % 
 ```
-📅 **I'm Most Productive on Sunday** 
+
+📅 **I'm Most Productive on Sunday**
 
 ```text
 Monday                   857 commits         ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   17.68 % 
@@ -218,8 +221,7 @@ Saturday                 464 commits         ⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 Sunday                   935 commits         ⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   19.29 % 
 ```
 
-
-📊 **This Week I Spent My Time On** 
+📊 **This Week I Spent My Time On**
 
 ```text
 🕑︎ Time Zone: Asia/Singapore
@@ -238,7 +240,7 @@ VS Code                  6 hrs 18 mins       ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿�
 Linux                    6 hrs 18 mins       ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿   100.00 % 
 ```
 
-**I Mostly Code in HTML** 
+**I Mostly Code in HTML**
 
 ```text
 HTML                     9 repos             ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   39.13 % 
@@ -247,9 +249,6 @@ C                        3 repos             ⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀�
 CSS                      2 repos             ⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   08.70 % 
 Rich Text Format         1 repo              ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   04.35 % 
 ```
-
-
-
 
  Last Updated on 19/09/2024 04:18:38 UTC
 <!--END_SECTION:waka-->
