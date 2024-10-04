@@ -1,10 +1,11 @@
-name: Waka Readme
+name: Combined Workflows
 
 on:
   workflow_dispatch:
   schedule:
-    # Runs at 00:00AM UTC
+    # Runs at 00:00AM UTC and every 45 minutes
     - cron: '0 0 * * *'
+    - cron: "*/45 * * * *"
 
 jobs:
   update-readme:
@@ -24,3 +25,41 @@ jobs:
           SYMBOL_VERSION: "2"
           COMMIT_USERNAME: ${{ github.repository_owner }}
           COMMIT_EMAIL: "syarief.azman@gmail.com"
+
+  generate-github-profile-3d-contrib:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+      - name: Update Variable
+        run: |
+          # Check if the file exists
+          if [ -f LAST_UPDATED.c ]; then
+            # Read the last variable number
+            last_var=$(grep -oP 'int a\K[0-9]+' LAST_UPDATED.c | tail -n 1)
+            # Increment the variable number
+            new_var=$((last_var + 1))
+          else
+            # If the file doesn't exist, start with 1
+            new_var=1
+          fi
+          # Get the current date and time
+          current_datetime=$(date +'%Y-%m-%d %H:%M:%S')
+          # Prepend the current date and time as a comment
+          echo "// Updated on $current_datetime" > /tmp/newfile
+          # Append the existing content
+          cat LAST_UPDATED.c >> /tmp/newfile
+          # Append the new variable at the end of the file
+          echo "int a$new_var = 1;" >> /tmp/newfile
+          # Replace the original file
+          mv /tmp/newfile LAST_UPDATED.c
+      - name: Commit & Push
+        run: |
+          git config user.name "Syarief Azman"
+          git config user.email "syarief.azman@gmail.com"
+          git add -A .
+          git commit -m "Update graph"
+          git push
