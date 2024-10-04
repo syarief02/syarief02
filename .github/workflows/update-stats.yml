@@ -1,26 +1,47 @@
+# Name of the workflow
 name: Waka Readme
 
+# Define the events that trigger the workflow
 on:
+  # Allows the workflow to be manually triggered
   workflow_dispatch:
+  # Schedule the workflow to run at specific times
   schedule:
-    # Runs at 00:00AM UTC
+    # Runs at 00:00AM UTC every 2 hours
     - cron: '0 */2 * * *'
 
+# Define the jobs that will run in this workflow
 jobs:
+  # Job to update the README file
   update-readme:
+    # Name of the job
     name: Update this repo's README
+    # Specify the environment the job will run on
     runs-on: ubuntu-latest
+    # Define the steps to be executed in this job
     steps:
+      # Use the WakaTime GitHub Action to update the README
       - uses: syarief02/waka-readme-stats@master #PLEASE USE MASTER BRANCH
         with:
+          # WakaTime API key for authentication
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          # GitHub token for pushing changes
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # Option to show project statistics in the README
           SHOW_PROJECTS: "False"
+          # Option to show lines of code statistics in the README
           SHOW_LINES_OF_CODE: "True"
+          # Option to show lines of code chart in the README
           SHOW_LOC_CHART: "False"
+          # Set the locale for the statistics display
           LOCALE: "en"
-         # COMMIT_BY_ME: "True"
+          # Option to commit changes made by the action (commented out)
+          # COMMIT_BY_ME: "True"
+          # Commit message for the changes made to the README
           COMMIT_MESSAGE: "Update Stats"
+          # Version of the symbols used in the README
           SYMBOL_VERSION: "2"
+          # Username for the commit author
           COMMIT_USERNAME: ${{ github.repository_owner }}
+          # Email for the commit author
           COMMIT_EMAIL: "syarief.azman@gmail.com"
