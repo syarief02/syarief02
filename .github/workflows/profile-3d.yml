@@ -1,25 +1,39 @@
+# Name of the workflow
 name: GitHub-Profile-3D-Contrib
 
+# Define the events that trigger the workflow
 on:
+  # Schedule the workflow to run every 45 minutes
   schedule: # 03:00 JST == 18:00 UTC
-    - cron: "*/45 * * * *"
+    - cron: "*/45 * * * *" # Cron expression for scheduling
+  # Allows the workflow to be manually triggered
   workflow_dispatch:
 
+# Define the jobs that will run in this workflow
 jobs:
+  # Job to generate the GitHub Profile 3D contribution
   build:
+    # Specify the environment the job will run on
     runs-on: ubuntu-latest
+    # Name of the job
     name: generate-github-profile-3d-contrib
+    # Define the steps to be executed in this job
     steps:
+      # Step to check out the repository code
       - uses: actions/checkout@v3
+      # Step to generate the GitHub Profile 3D contribution
       - uses: yoshi389111/github-profile-3d-contrib@0.7.1
         env:
+          # GitHub token for authentication
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Username of the repository owner
           USERNAME: ${{ github.repository_owner }}
+      # Step to update the variable in LAST_UPDATED.c
       - name: Update Variable
         run: |
-          # Check if the file exists
+          # Check if the file LAST_UPDATED.c exists
           if [ -f LAST_UPDATED.c ]; then
-            # Read the last variable number
+            # Read the last variable number from the file
             last_var=$(grep -oP 'int a\K[0-9]+' LAST_UPDATED.c | tail -n 1)
             # Increment the variable number
             new_var=$((last_var + 1))
@@ -27,25 +41,31 @@ jobs:
             # If the file doesn't exist, start with 1
             new_var=1
           fi
-          # Get the current date and time
+          # Get the current date and time in a specific format
           current_datetime=$(date +'%Y-%m-%d %H:%M:%S')
-          # Prepend the current date and time as a comment
+          # Prepend the current date and time as a comment in a new file
           echo "// Updated on $current_datetime" > /tmp/newfile
-          # Append the existing content
+          # Append the existing content of LAST_UPDATED.c to the new file
           cat LAST_UPDATED.c >> /tmp/newfile
-          # Append the new variable at the end of the file
+          # Append the new variable declaration at the end of the new file
           echo "int a$new_var = 1;" >> /tmp/newfile
-          # Replace the original file
+          # Replace the original LAST_UPDATED.c file with the new file
           mv /tmp/newfile LAST_UPDATED.c
+      # Step to commit and push changes to the repository
       - name: Commit & Push
         run: |
+          # Configure Git user name for the commit
           git config user.name "Syarief Azman"
+          # Configure Git user email for the commit
           git config user.email "syarief.azman@gmail.com"
+          # Stage all changes for commit
           git add -A .
+          # Commit the changes with a message
           git commit -m "Update graph"
+          # Push the changes to the repository
           git push
 
-
+# The following lines are commented out and represent an older version of the workflow
 # name: GitHub-Profile-3D-Contrib
 
 # on:
