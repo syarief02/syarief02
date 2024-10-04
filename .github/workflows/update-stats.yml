@@ -46,10 +46,10 @@ jobs:
       #     git add -A .
       #     git commit -m "Update graph"
       #     git push
-  update-readme:
-    name: Update this repo's README
-    runs-on: ubuntu-latest
-    steps:
+  # update-readme:
+  #   name: Update this repo's README
+  #   runs-on: ubuntu-latest
+  #   steps:
       - uses: syarief02/waka-readme-stats@master #PLEASE USE MASTER BRANCH
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
