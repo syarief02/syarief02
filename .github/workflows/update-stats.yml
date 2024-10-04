@@ -8,23 +8,6 @@ on:
     - cron: "*/45 * * * *"
 
 jobs:
-  update-readme:
-    name: Update this repo's README
-    runs-on: ubuntu-latest
-    steps:
-      - uses: syarief02/waka-readme-stats@master #PLEASE USE MASTER BRANCH
-        with:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          SHOW_PROJECTS: "False"
-          SHOW_LINES_OF_CODE: "True"
-          SHOW_LOC_CHART: "False"
-          LOCALE: "en"
-         # COMMIT_BY_ME: "True"
-          COMMIT_MESSAGE: "Update Stats"
-          SYMBOL_VERSION: "2"
-          COMMIT_USERNAME: ${{ github.repository_owner }}
-          COMMIT_EMAIL: "syarief.azman@gmail.com"
 
   generate-github-profile-3d-contrib:
     runs-on: ubuntu-latest
@@ -56,10 +39,27 @@ jobs:
           echo "int a$new_var = 1;" >> /tmp/newfile
           # Replace the original file
           mv /tmp/newfile LAST_UPDATED.c
-      - name: Commit & Push
-        run: |
-          git config user.name "Syarief Azman"
-          git config user.email "syarief.azman@gmail.com"
-          git add -A .
-          git commit -m "Update graph"
-          git push
+      # - name: Commit & Push
+      #   run: |
+      #     git config user.name "Syarief Azman"
+      #     git config user.email "syarief.azman@gmail.com"
+      #     git add -A .
+      #     git commit -m "Update graph"
+      #     git push
+  update-readme:
+    name: Update this repo's README
+    runs-on: ubuntu-latest
+    steps:
+      - uses: syarief02/waka-readme-stats@master #PLEASE USE MASTER BRANCH
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          SHOW_PROJECTS: "False"
+          SHOW_LINES_OF_CODE: "True"
+          SHOW_LOC_CHART: "False"
+          LOCALE: "en"
+         # COMMIT_BY_ME: "True"
+          COMMIT_MESSAGE: "Update Stats"
+          SYMBOL_VERSION: "2"
+          COMMIT_USERNAME: ${{ github.repository_owner }}
+          COMMIT_EMAIL: "syarief.azman@gmail.com"
