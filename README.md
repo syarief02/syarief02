@@ -185,17 +185,15 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 <details open=""><summary>Full Stats (click me to toggle 👀)</summary><br>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-21%20hrs%2025%20mins-blue)
+![Code Time](http://img.shields.io/badge/Code%20Time-21%20hrs%2052%20mins-blue)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-162-blue)
 
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-348.8%20thousand%20lines%20of%20code-blue)
+![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-348.9%20thousand%20lines%20of%20code-blue)
 
 **🐱 My GitHub Data** 
 
-> 📦 409.8 kB Used in GitHub's Storage 
- > 
-> 🏆 2,945 Contributions in the Year 2024
+> 📦 409.9 kB Used in GitHub's Storage 
  > 
 > 💼 Opted to Hire
  > 
@@ -206,21 +204,21 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 **I'm a Night 🦉** 
 
 ```text
-🌞 Morning                1615 commits        ⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   22.15 % 
-🌆 Daytime                1896 commits        ⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   26.01 % 
-🌃 Evening                2116 commits        ⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   29.03 % 
-🌙 Night                  1663 commits        ⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   22.81 % 
+🌞 Morning                1623 commits        ⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   22.24 % 
+🌆 Daytime                1896 commits        ⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   25.98 % 
+🌃 Evening                2116 commits        ⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   28.99 % 
+🌙 Night                  1663 commits        ⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   22.79 % 
 ```
 📅 **I'm Most Productive on Sunday** 
 
 ```text
-Monday                   1124 commits        ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   15.42 % 
-Tuesday                  1003 commits        ⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   13.76 % 
-Wednesday                1027 commits        ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   14.09 % 
-Thursday                 1031 commits        ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   14.14 % 
-Friday                   988 commits         ⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   13.55 % 
-Saturday                 797 commits         ⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   10.93 % 
-Sunday                   1320 commits        ⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   18.11 % 
+Monday                   1124 commits        ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   15.40 % 
+Tuesday                  1003 commits        ⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   13.74 % 
+Wednesday                1027 commits        ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   14.07 % 
+Thursday                 1031 commits        ⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   14.13 % 
+Friday                   988 commits         ⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   13.54 % 
+Saturday                 805 commits         ⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   11.03 % 
+Sunday                   1320 commits        ⣿⣿⣿⣿⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀   18.09 % 
 ```
 
 
@@ -257,7 +255,7 @@ Rich Text Format         1 repo              ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 
 
 
- Last Updated on 05/10/2024 01:10:15 UTC
+ Last Updated on 05/10/2024 02:45:39 UTC
 <!--END_SECTION:waka-->
 
 [![GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)](https://fb.com/syariefazman)
