@@ -21,7 +21,7 @@ jobs:
     # Define the steps to be executed in this job
     steps:
       # Use the WakaTime GitHub Action to update the README
-      - uses: syarief02/waka-readme-stats@master #PLEASE USE MASTER BRANCH
+      - uses: anmol098/waka-readme-stats@master #PLEASE USE MASTER BRANCH
         with:
           # WakaTime API key for authentication
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
