@@ -173,6 +173,7 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
 </p> -->
 
 [![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&)](https://fb.com/syariefazman#gh-light-mode-only)
+
 [![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=transparent)](https://fb.com/syariefazman#gh-dark-mode-only)
 
 <!-- <p align="center">
@@ -181,6 +182,13 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
     
   </a>
    -->
+
+## 📈 My LeetCode Stats  
+
+![LeetCode Stats](https://leetcard.jacoblin.cool/syariefazman?theme=dark&ext=heatmap#gh-dark-mode-only)  
+
+![LeetCode Stats](https://leetcard.jacoblin.cool/syariefazman?theme=light&ext=heatmap#gh-light-mode-only) 
+
 
 <details open=""><summary>Full Stats (click me to toggle 👀)</summary><br>
 
