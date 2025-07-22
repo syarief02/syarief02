@@ -1,6 +1,6 @@
 <h1 align="center">Hi 👋, I'm Syarief</h1>
 
-I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Agency, specializing in testing pharmaceutical products with advanced techniques like **HPLC**, **GC-MS**, and **ICP-MS**. Beyond my pharmaceutical expertise, I’m passionate about **web development** and **coding solutions** to optimize processes and enhance efficiency.
+I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Agency, specializing in testing pharmaceutical products with advanced techniques like **HPLC**, **GC-MS**, and **ICP-MS**. I'm a self-taught scientist.
 
 <!-- Optional banner -->
 <!-- <p align='center'>
