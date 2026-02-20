@@ -36,6 +36,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: generate wakatime card
+        uses: readme-tools/github-readme-stats-action@v1
         with:
           card: wakatime
           options: username=octocat&layout=compact
