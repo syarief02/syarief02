@@ -268,7 +268,7 @@ GLSL                     1 repo              ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 
 [![GitHub stats](./profile/stats.svg)](https://fb.com/syariefazman)
 
-[![github language](https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact&theme=transparent)](https://fb.com/syariefazman)
+[![github language](./profile/top-langs.svg)](https://fb.com/syariefazman)
 
 </details>
 
