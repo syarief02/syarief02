@@ -41,7 +41,15 @@ jobs:
           card: wakatime
           options: username=SyariefAzman&theme=transparent&show_icons=true&layout=compact
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
+      - name: Generate trophy
+        uses: Erik-Donath/github-profile-trophy@feature/generate-svg
+        with:
+          username: ${{ github.repository_owner }}
+          theme: algolia
+          output_path: trophy.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+    
       - name: Commit cards
         run: |
           git config user.name "github-actions"
