@@ -266,7 +266,7 @@ GLSL                     1 repo              ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
  Last Updated on 20/02/2026 16:11:20 UTC
 <!--END_SECTION:waka-->
 
-[![GitHub stats](https://github-readme-stats.vercel.app/api?username=syarief02&theme=transparent&show_icons=true)](https://fb.com/syariefazman)
+[![GitHub stats](./profile/stats.svg)](https://fb.com/syariefazman)
 
 [![github language](https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact&theme=transparent)](https://fb.com/syariefazman)
 
