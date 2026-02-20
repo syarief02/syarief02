@@ -39,7 +39,7 @@ jobs:
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: wakatime
-          options: username=SyariefAzman&theme=transparent&show_icons=true
+          options: username=SyariefAzman&theme=transparent&show_icons=true&layout=compact
           token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Commit cards
