@@ -268,7 +268,7 @@ GLSL                     1 repo              ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 
 [![GitHub stats](./profile/stats.svg)](https://fb.com/syariefazman)
 
-[![github language](./profile/top-langs.svg)](https://fb.com/syariefazman)
+[![github language](./profile/wakatime.svg)](https://fb.com/syariefazman)
 
 </details>
 
