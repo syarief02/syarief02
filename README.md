@@ -183,12 +183,8 @@ Although my career began in pharmaceuticals, I’ve discovered a passion for pro
   </a>
    -->
 
-## 📈 My LeetCode Stats  
 
-[![LeetCode Stats](https://leetcard.jacoblin.cool/syariefazman?theme=dark&ext=heatmap)](https://leetcode.com/u/SyariefAzman#gh-dark-mode-only)  
-
-[![LeetCode Stats](https://leetcard.jacoblin.cool/syariefazman?theme=light&ext=heatmap)](https://leetcode.com/u/SyariefAzman#gh-light-mode-only)
-
+[![github language](./profile/wakatime.svg)](https://fb.com/syariefazman)
 
 <details open=""><summary>Full Stats (click me to toggle 👀)</summary><br>
 
@@ -268,7 +264,12 @@ GLSL                     1 repo              ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 
 [![GitHub stats](./profile/stats.svg)](https://fb.com/syariefazman)
 
-[![github language](./profile/wakatime.svg)](https://fb.com/syariefazman)
+
+## 📈 My LeetCode Stats  
+
+[![LeetCode Stats](https://leetcard.jacoblin.cool/syariefazman?theme=dark&ext=heatmap)](https://leetcode.com/u/SyariefAzman#gh-dark-mode-only)  
+
+[![LeetCode Stats](https://leetcard.jacoblin.cool/syariefazman?theme=light&ext=heatmap)](https://leetcode.com/u/SyariefAzman#gh-light-mode-only)
 
 </details>
 
