@@ -42,12 +42,20 @@ jobs:
           options: username=SyariefAzman&theme=transparent&show_icons=true&layout=compact
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate trophy
+      - name: Generate trophy dark
         uses: Erik-Donath/github-profile-trophy@feature/generate-svg
         with:
           username: ${{ github.repository_owner }}
           theme: algolia
-          file: profile/trophy.svg
+          file: profile/trophydark.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate trophy white
+        uses: Erik-Donath/github-profile-trophy@feature/generate-svg
+        with:
+          username: ${{ github.repository_owner }}
+          theme: flat
+          file: profile/trophydark.svg
           token: ${{ secrets.GITHUB_TOKEN }}
     
       - name: Commit cards
