@@ -31,8 +31,8 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
 
 <div align="center">
 
-[![Trophy (Dark Mode)](https://github-profile-trophy.vercel.app/?username=syarief02&theme=algolia#gh-dark-mode-only)](https://fb.com/syariefazman#gh-dark-mode-only)
-[![Trophy (Light Mode)](https://github-profile-trophy.vercel.app/?username=syarief02&theme=flat#gh-light-mode-only)](https://fb.com/syariefazman#gh-light-mode-only)
+[![Trophy (Dark Mode)](./profile/trophydark.svg#gh-dark-mode-only)](https://fb.com/syariefazman#gh-dark-mode-only)
+[![Trophy (Light Mode)](./profile/trophywhite.svg#gh-light-mode-only)](https://fb.com/syariefazman#gh-light-mode-only)
 
 </div>
 
