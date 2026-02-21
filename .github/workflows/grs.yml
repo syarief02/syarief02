@@ -55,7 +55,7 @@ jobs:
         with:
           username: ${{ github.repository_owner }}
           theme: flat
-          file: profile/trophydark.svg
+          file: profile/trophywhite.svg
           token: ${{ secrets.GITHUB_TOKEN }}
     
       - name: Commit cards
