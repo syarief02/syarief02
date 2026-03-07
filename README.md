@@ -1,24 +1,16 @@
-<h1 align="center">Hi 👋, I'm Syarief</h1>
+<h1 align="center">
+  Hey there 👋 I'm <a href="https://eabudakubat.com">Syarief Azman</a>
+</h1>
 
-I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Agency, specializing in testing pharmaceutical products with advanced techniques like **HPLC**, **GC-MS**, and **ICP-MS**. I'm a self-taught scientist.
-
-<!-- Optional banner -->
-<!-- <p align='center'>
-    <img src="https://www.lambdatest.com/resources/images/news24.gif" alt="News Banner">
-</p> -->
+<h3 align="center">
+  🇲🇾 Pharmaceutical Analyst · Algorithmic Trader · Self-Taught Developer
+</h3>
 
 <p align='center'>
-  <a href="https://fb.com/syariefazman">
-    <img src="./zQinMHnDYiNnq.webp" alt="GitHub">
+  <a href="https://eabudakubat.com">
+    <img src="./zQinMHnDYiNnq.webp" alt="Banner">
   </a>
 </p>
-
-<!-- Optional gif -->
-<!-- <p align='center'> 
-  <a href="https://fb.com/syariefazman">
-    <img src="https://user-images.githubusercontent.com/74038190/235224431-e8c8c12e-6826-47f1-89fb-2ddad83b3abf.gif" alt="Animation">
-  </a>
-</p> -->
 
 <p align="center">
   <a>
@@ -27,23 +19,6 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
   <a href="https://user-badge.committers.top/malaysia/syarief02">
     <img src="https://user-badge.committers.top/malaysia/syarief02.svg" alt="committers.top badge" />
   </a>
-</p>
-
-<div align="center">
-
-[![Trophy (Dark Mode)](./profile/trophydark.svg#gh-dark-mode-only)](https://fb.com/syariefazman#gh-dark-mode-only)
-[![Trophy (Light Mode)](./profile/trophywhite.svg#gh-light-mode-only)](https://fb.com/syariefazman#gh-light-mode-only)
-
-</div>
-
-<div align="center">
-
-[![Contribution Graph (Light)](./profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)](https://fb.com/syariefazman#gh-light-mode-only)
-[![Contribution Graph (Dark)](./profile-3d-contrib/profile-night-rainbow.svg#gh-dark-mode-only)](https://fb.com/syariefazman#gh-dark-mode-only)
-
-</div>
-
-<p align="center">
   <a href="https://twitter.com/syariefazman" target="blank">
     <img src="https://img.shields.io/twitter/follow/syariefazman?logo=twitter&style=for-the-badge" alt="Twitter Follow" />
   </a>
@@ -51,140 +26,153 @@ I’m a **Pharmaceutical Analyst** at the National Pharmaceutical Regulatory Age
 
 ---
 
-I’m a passionate **web developer** in the making, with a knack for creating visually appealing and functional websites. My expertise lies in **HTML**, **CSS**, and **JavaScript**, and I’m currently diving deep into the world of **Python** and **Cybersecurity**.
+## 🧬 About Me
 
-💡 **What I Bring**:
+By day, I'm a **Pharmaceutical Analyst** at the **National Pharmaceutical Regulatory Agency (NPRA)** in Malaysia — running tests on pharmaceutical products using advanced analytical instruments like **HPLC**, **GC-MS**, and **ICP-MS**.
 
-- **Proficiency in Web Development**: Strong foundation in HTML, CSS, and JavaScript for crafting responsive, user-friendly interfaces.
-- **Automation Enthusiast**: Using **Microsoft Excel** for automating workflows, data analysis, and visualization.
-- **Problem Solver**: I thrive on solving real-world problems with code and exploring new technologies to enhance efficiency and security.
+By night, I'm a **self-taught developer** and **algorithmic forex trader** who builds automated trading bots, web apps, and open-source tools. I believe in learning by building, and I ship code every single day.
 
-🌱 **Currently Learning**:
+```
+🔬 Pharma by profession     💹 Trader by passion     💻 Developer by obsession
+```
 
-- **CS50x – Introduction to Computer Science** to strengthen my understanding of computer science fundamentals.
-- **CS50 Cybersecurity** to gain insights into safeguarding systems and data.
+---
 
-⚡ **Goals**:
-I'm aiming to transition fully into the tech industry, focusing on:
+## 🤖 My Trading Tools — [eabudakubat.com](https://eabudakubat.com)
 
-- Building **dynamic, interactive web applications**.
-- Mastering **front-end development** using modern JavaScript frameworks.
-- Exploring **automation** and **data analytics**.
+I build **Expert Advisors (EAs)** for MetaTrader 4 & 5 — automated trading systems that range from grid strategies to AI-powered signal analysis. All designed with real-world trading experience and a strong focus on risk management.
+
+| EA | Strategy | Platform | Description |
+|---|---|---|---|
+| **[EA Budak Ubat](https://eabudakubat.com)** | Grid Martingale | MT4 / MT5 | 4 analysis methods (Candle, SMA20, Alligator, Ichimoku), AutoConfig AI, hedging & time filters. [Available on MQL5](https://tinyurl.com/eabubuy) |
+| **[GoldMind AI](https://eabudakubat.com/goldmind-ai)** | AI-Powered Signals | MT5 | Open-source AI system using ChatGPT to analyze XAUUSD charts & auto-trade. FastAPI + OpenAI + MQL5 |
+| **[BracketBlitz EA](https://eabudakubat.com/bracketblitz)** | OCO Breakout | MT4 / MT5 | Rapid-fire Buy Stop + Sell Stop orders, auto-refreshed every 30s. Catches breakouts on any instrument |
+| **[MathEdge Pro](https://eabudakubat.com/mathedge-pro)** | Math-Based Index | MT4 / MT5 | Automated US30 & NAS100 trading with daily level calculations & 3-trade pending order sequences |
+| **[Aligator Gozaimasu](https://eabudakubat.com/aligator-gozaimasu)** | Trend Following | MT4 / MT5 | Multi-timeframe Alligator + AO + RSI + Stochastic confirmation across up to 4 timeframes |
+| **[Encik Moku](https://eabudakubat.com/encik-moku)** | Trend Following | MT4 / MT5 | Multi-timeframe Ichimoku cloud trading with RSI & Stochastic filters, auto-compounding |
 
 ---
 
 ## 🔧 Skills & Tools
 
 <p align="center">
+  <img src="https://img.shields.io/badge/MQL4-02303A?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/MQL5-02303A?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />
   <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
   <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Microsoft%20Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
-  <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white" />
   <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" />
-  <img src="https://img.shields.io/badge/MQL4-02303A?style=for-the-badge&logoColor=white" />
-
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/Microsoft%20Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+  <img src="https://img.shields.io/badge/MetaTrader-blue?style=for-the-badge" />
 </p>
 
 ---
 
-## 🚀 Featured & Current Projects
+## 🚀 What I'm Up To
 
-- 📝 **Forex Expert Advisor**: Developed an algorithmic trading bot on [![MQL5](https://img.shields.io/badge/MQL5.com-EA%20Budak%20Ubat%20v1.62-8A2BE2)](https://tinyurl.com/eabubuy) that automates trading strategies in the forex market.
-- 🔬 **CS50x Final Project (In Progress)**: Building a tool to automate laboratory data analysis for pharmaceutical testing using Python and JavaScript, optimizing lab efficiency and data accuracy.
-- 🔐 **Cybersecurity Practice**: Exploring how to secure sensitive pharmaceutical data through encryption and applying best practices in cybersecurity.
-- 🌐 **Personal Portfolio Website**: Designed and built a responsive portfolio site using HTML, CSS, and JavaScript to showcase my work and projects.
-- 📊 **Excel Automation Scripts**: Created automation tools in Excel to streamline data analysis and reporting processes, improving productivity and precision.
+- 🤖 **Building & shipping** Expert Advisors — helping traders automate their edge
+- 🧠 **GoldMind AI** — an open-source system that connects ChatGPT to MetaTrader 5 for AI-driven gold trading
+- 🌐 **[eabudakubat.com](https://eabudakubat.com)** — my product website built with Next.js & Supabase
+- 📚 **Learning**: CS50x (Computer Science) & CS50 Cybersecurity from Harvard
+- 🔐 **Exploring** secure practices for pharmaceutical data through encryption
+- ⚡ **Automating** laboratory workflows & data analysis with Python and Excel
+
+---
+
+## 🏆 Achievements
+
+<div align="center">
+
+[![Trophy (Dark Mode)](./profile/trophydark.svg#gh-dark-mode-only)](https://github.com/syarief02#gh-dark-mode-only)
+[![Trophy (Light Mode)](./profile/trophywhite.svg#gh-light-mode-only)](https://github.com/syarief02#gh-light-mode-only)
+
+</div>
+
+<div align="center">
+
+[![Contribution Graph (Light)](./profile-3d-contrib/profile-gitblock.svg#gh-light-mode-only)](https://github.com/syarief02#gh-light-mode-only)
+[![Contribution Graph (Dark)](./profile-3d-contrib/profile-night-rainbow.svg#gh-dark-mode-only)](https://github.com/syarief02#gh-dark-mode-only)
+
+</div>
+
+---
+
+## 📜 Certification
+
+<details>
+<summary>Ministry of Health Malaysia — Diploma in Pharmacy</summary>
+<br>
+<img src="https://raw.githubusercontent.com/syarief02/syarief02/main/certificate/20240205_164117.jpg" alt="Diploma in Pharmacy" />
+</details>
 
 ---
 
 ## ⚡ Fun Fact
 
-Although my career began in pharmaceuticals, I’ve discovered a passion for problem-solving through coding. I’m always on the lookout for ways technology can innovate and transform industries like healthcare, using tools like automation, web development, and cybersecurity to drive meaningful change.
+My career started in a pharmaceutical lab, but every night I trade forex and write code. I've gone from manually testing pills to building AI-powered trading bots and full-stack websites — all self-taught. I prove every day that you don't need a CS degree to ship real software.
 
 ---
 
-## 📫 Let's Connect
+## 📫 Connect With Me
 
-- 📫 How to reach me: **<syarief.azman@gmail.com>**.
-
-<p align="left">
+<p align="center">
+  <a href="https://t.me/SyariefAzman" target="_blank">
+    <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" />
+  </a>
   <a href="https://twitter.com/syariefazman" target="_blank">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
+    <img src="https://img.shields.io/badge/Twitter/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Twitter/X" />
   </a>
   <a href="https://linkedin.com/in/syariefazman" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
-  <a href="https://stackoverflow.com/users/22780408/syarief-azman" target="_blank">
-    <img src="https://img.shields.io/badge/Stack%20Overflow-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow" />
-  </a>
   <a href="https://fb.com/syariefazman" target="_blank">
     <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook" />
   </a>
-  <a href="https://t.me/syariefazman" target="_blank">
-    <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" />
+  <a href="https://stackoverflow.com/users/22780408/syarief-azman" target="_blank">
+    <img src="https://img.shields.io/badge/Stack%20Overflow-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow" />
   </a>
   <a href="https://youtube.com/syariefazman" target="_blank">
     <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube" />
   </a>
   <a href="https://discord.gg/DhUstUpSuu" target="_blank">
-    <img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" />
+    <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" />
+  </a>
+  <a href="https://t.me/EABudakUbat" target="_blank">
+    <img src="https://img.shields.io/badge/EA%20Channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="EA Telegram Channel" />
+  </a>
+  <a href="https://www.mql5.com/en/channels/eabudakubat" target="_blank">
+    <img src="https://img.shields.io/badge/MQL5%20Signal-blue?style=for-the-badge" alt="MQL5 Signal" />
   </a>
 </p>
 
+<p align="center">
+  📧 <strong><a href="mailto:syarief.azman@gmail.com">syarief.azman@gmail.com</a></strong>
+</p>
+
 ---
-<h3 align="left">Support:</h3>
+
+<h3 align="left">☕ Support My Work</h3>
 <p>
   <a href="https://paypal.me/syariefazman">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="140" alt="Support" />
   </a>
 </p>
-<hr>
-<h2>
-<details open><summary>📜 Certification</summary>
 
-- <h6><details><summary>Ministry of Health Malaysia</summary>
-  
-  - <details><summary>Diploma in Pharmacy</summary>
-  
-    <img src="https://raw.githubusercontent.com/syarief02/syarief02/main/certificate/20240205_164117.jpg" alt="Diploma in Pharmacy" />
+---
 
-</details>
+## 📊 Stats
 
-</details></h6>
-</details></h2>
+[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&)](https://github.com/syarief02#gh-light-mode-only)
 
-<h2>📊 Stats</h2>
+[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=transparent)](https://github.com/syarief02#gh-dark-mode-only)
 
-<!-- ![IndoGitHubers-badge](https://indogithubers-badge.vercel.app/badge?username=syarief02) -->
-
-<!-- <p align="left">
-  <a href="https://fb.com/syariefazman">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=syarief02&show_icons=true&locale=en&layout=compact" alt="Top Languages" />
-  </a>
-</p> -->
-
-<!-- <p align="center">
-  <a href="https://fb.com/syariefazman">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=syarief02" alt="GitHub Streak" />
-  </a>
-</p> -->
-
-[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&)](https://fb.com/syariefazman#gh-light-mode-only)
-
-[![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=transparent)](https://fb.com/syariefazman#gh-dark-mode-only)
-
-<!-- <p align="center">
-  <a href="https://fb.com/syariefazman">
-    <img src="https://github-readme-stats.vercel.app/api?username=syarief02&show_icons=true&locale=en" alt="GitHub Stats" />
-    
-  </a>
-   -->
-
-
-[![github language](./profile/wakatime.svg)](https://fb.com/syariefazman)
+[![github language](./profile/wakatime.svg)](https://github.com/syarief02)
 
 <details open=""><summary>Full Stats (click me to toggle 👀)</summary><br>
 
@@ -267,7 +255,7 @@ MQL5                     3 repos             ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
  Last Updated on 01/03/2026 07:14:30 UTC
 <!--END_SECTION:waka-->
 
-[![GitHub stats](./profile/stats.svg)](https://fb.com/syariefazman)
+[![GitHub stats](./profile/stats.svg)](https://github.com/syarief02)
 
 
 ## 📈 My LeetCode Stats  
