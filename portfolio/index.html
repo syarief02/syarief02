@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+      content="Syarief Azman — Self-taught software developer, algorithmic trader, and pharmaceutical analyst from Malaysia. Explore my projects, skills, and journey into tech.">
+    <meta name="keywords"
+      content="Syarief Azman, software developer, portfolio, Malaysia, algorithmic trading, MQL, Python, JavaScript, Next.js">
+    <meta name="author" content="Syarief Azman">
+    <title>Syarief Azman | Software Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+  </head>
+
+  <body>
+
+    <!-- Background Effects -->
+    <div class="bg-grain"></div>
+    <div class="bg-orbs">
+      <div class="bg-orb bg-orb--1"></div>
+      <div class="bg-orb bg-orb--2"></div>
+      <div class="bg-orb bg-orb--3"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <a href="#" class="nav-logo">SA.</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#stats">Stats</a></li>
+          <li><a href="#experience">Journey</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <div class="hero-badge">
+              <span class="pulse-dot"></span>
+              Open to opportunities
+            </div>
+            <h1 class="hero-name">
+              Hi, I'm<br>
+              <span class="gradient-text">Syarief Azman</span>
+            </h1>
+            <p class="hero-tagline">
+              Pharmaceutical Analyst turned <strong>Software Developer</strong>. I build trading bots, web apps, and
+              open-source tools.
+            </p>
+            <div class="hero-typing" id="heroTyping">
+              <span id="typingText"></span><span class="cursor"></span>
+            </div>
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">
+                <span>🚀</span> View Projects
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <span>💬</span> Get in Touch
+              </a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-avatar-wrapper">
+              <div class="hero-avatar-ring"></div>
+              <div class="hero-avatar">
+                <img src="https://avatars.githubusercontent.com/u/100006514" alt="Syarief Azman" id="heroAvatar">
+              </div>
+              <div class="hero-floating-badge">🔬 Pharma Analyst</div>
+              <div class="hero-floating-badge">💻 Developer</div>
+              <div class="hero-floating-badge">📈 Trader</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title">Pharma Lab by Day.<br>Code Editor by Night.</h2>
+          <p class="section-subtitle">A unique blend of scientific precision and creative problem-solving</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-story reveal">
+            <p>
+              I'm a <strong>Pharmaceutical Analyst</strong> at the <strong>National Pharmaceutical Regulatory Agency
+                (NPRA)</strong> in Malaysia, where I ensure the safety of pharmaceutical products using instruments like
+              <strong>HPLC, GC-MS, and ICP-MS</strong>.
+            </p>
+            <p>
+              But when the lab closes, I open my code editor. I'm a <strong>self-taught developer</strong> who's written
+              over <strong>2.55 million lines of code</strong>, built a suite of algorithmic trading bots, and created
+              production web applications — all without a CS degree.
+            </p>
+            <p>
+              Currently studying <strong>Harvard's CS50x</strong> and <strong>CS50 Cybersecurity</strong> to formalize
+              my knowledge while continuing to ship code every single day. I prove that passion and persistence beat
+              pedigree.
+            </p>
+          </div>
+          <div class="about-highlights">
+            <div class="highlight-card reveal reveal-delay-1">
+              <div class="highlight-icon">🧪</div>
+              <div>
+                <h4>Scientific Foundation</h4>
+                <p>Pharmaceutical analysis demands precision, documentation, and quality protocols — skills that
+                  translate directly to software engineering.</p>
+              </div>
+            </div>
+            <div class="highlight-card reveal reveal-delay-2">
+              <div class="highlight-icon">🤖</div>
+              <div>
+                <h4>Builder Mentality</h4>
+                <p>From trading bots to full-stack websites, I learn by building real products that solve real problems
+                  and serve real users.</p>
+              </div>
+            </div>
+            <div class="highlight-card reveal reveal-delay-3">
+              <div class="highlight-icon">📊</div>
+              <div>
+                <h4>Data-Driven Approach</h4>
+                <p>Analytical skills from the lab and financial markets shape how I approach software — with metrics,
+                  testing, and evidence-based decisions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Tech Stack</span>
+          <h2 class="section-title">Skills & Technologies</h2>
+          <p class="section-subtitle">Tools I use to bring ideas to life</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-category reveal reveal-delay-1">
+            <div class="skill-category-header">
+              <span class="skill-category-icon">💻</span>
+              <span class="skill-category-title">Languages</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">MQL4</span>
+              <span class="skill-tag">MQL5</span>
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">SQL</span>
+            </div>
+          </div>
+          <div class="skill-category reveal reveal-delay-2">
+            <div class="skill-category-header">
+              <span class="skill-category-icon">⚡</span>
+              <span class="skill-category-title">Frameworks & Platforms</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Next.js</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">FastAPI</span>
+              <span class="skill-tag">Supabase</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">MetaTrader 4/5</span>
+            </div>
+          </div>
+          <div class="skill-category reveal reveal-delay-3">
+            <div class="skill-category-header">
+              <span class="skill-category-icon">🛠️</span>
+              <span class="skill-category-title">Tools & DevOps</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Git & GitHub</span>
+              <span class="skill-tag">Linux</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">Vim</span>
+              <span class="skill-tag">OpenAI API</span>
+              <span class="skill-tag">Vercel</span>
+            </div>
+          </div>
+          <div class="skill-category reveal reveal-delay-4">
+            <div class="skill-category-header">
+              <span class="skill-category-icon">🧬</span>
+              <span class="skill-category-title">Domain Expertise</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Algorithmic Trading</span>
+              <span class="skill-tag">Forex Analysis</span>
+              <span class="skill-tag">Data Analysis</span>
+              <span class="skill-tag">Lab Automation</span>
+              <span class="skill-tag">HPLC / GC-MS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Portfolio</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Real products solving real problems</p>
+        </div>
+        <div class="projects-grid">
+
+          <!-- Project 1: eabudakubat.com -->
+          <div class="project-card reveal reveal-delay-1">
+            <div class="project-header">
+              <span class="project-icon">🌐</span>
+              <div class="project-links">
+                <a href="https://eabudakubat.com" target="_blank" class="project-link" title="Live Site">🔗</a>
+                <a href="https://github.com/syarief02" target="_blank" class="project-link" title="GitHub">💻</a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">eabudakubat.com</h3>
+              <p class="project-description">Full-stack product website for my trading tools. Features user
+                authentication, download management, community section, and automated EA distribution.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Supabase</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Vercel</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: GoldMind AI -->
+          <div class="project-card reveal reveal-delay-2">
+            <div class="project-header">
+              <span class="project-icon">🧠</span>
+              <div class="project-links">
+                <a href="https://eabudakubat.com/goldmind-ai" target="_blank" class="project-link"
+                  title="Details">🔗</a>
+                <a href="https://github.com/syarief02" target="_blank" class="project-link" title="GitHub">💻</a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">GoldMind AI</h3>
+              <p class="project-description">Open-source AI trading system that connects ChatGPT to MetaTrader 5.
+                Captures chart screenshots, sends to OpenAI for analysis, and auto-executes trades on XAUUSD.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">OpenAI API</span>
+                <span class="tech-tag">MQL5</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: EA Budak Ubat -->
+          <div class="project-card reveal reveal-delay-3">
+            <div class="project-header">
+              <span class="project-icon">💹</span>
+              <div class="project-links">
+                <a href="https://eabudakubat.com" target="_blank" class="project-link" title="Details">🔗</a>
+                <a href="https://tinyurl.com/eabubuy" target="_blank" class="project-link" title="MQL5 Market">🏪</a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">EA Budak Ubat</h3>
+              <p class="project-description">Flagship grid martingale EA with 4 analysis methods (Candle, SMA20,
+                Alligator, Ichimoku), AutoConfig AI, hedging, and advanced time filters. Published on MQL5 Market.</p>
+              <div class="project-tech">
+                <span class="tech-tag">MQL4</span>
+                <span class="tech-tag">MQL5</span>
+                <span class="tech-tag">MetaTrader</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: BracketBlitz EA -->
+          <div class="project-card reveal reveal-delay-1">
+            <div class="project-header">
+              <span class="project-icon">⚡</span>
+              <div class="project-links">
+                <a href="https://eabudakubat.com/bracketblitz" target="_blank" class="project-link"
+                  title="Details">🔗</a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">BracketBlitz EA</h3>
+              <p class="project-description">OCO breakout trading bot that rapidly deploys Buy Stop + Sell Stop orders,
+                auto-refreshed every 30 seconds. Catches breakout moves on any instrument.</p>
+              <div class="project-tech">
+                <span class="tech-tag">MQL4</span>
+                <span class="tech-tag">MQL5</span>
+                <span class="tech-tag">OCO Strategy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: MathEdge Pro -->
+          <div class="project-card reveal reveal-delay-2">
+            <div class="project-header">
+              <span class="project-icon">📐</span>
+              <div class="project-links">
+                <a href="https://eabudakubat.com/mathedge-pro" target="_blank" class="project-link"
+                  title="Details">🔗</a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">MathEdge Pro</h3>
+              <p class="project-description">Math-based index trading EA that automates US30 and NAS100 trading with
+                daily level calculations and 3-trade pending order sequences.</p>
+              <div class="project-tech">
+                <span class="tech-tag">MQL4</span>
+                <span class="tech-tag">MQL5</span>
+                <span class="tech-tag">Mathematical Models</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Automation Scripts -->
+          <div class="project-card reveal reveal-delay-3">
+            <div class="project-header">
+              <span class="project-icon">🔧</span>
+              <div class="project-links">
+                <a href="https://github.com/syarief02" target="_blank" class="project-link" title="GitHub">💻</a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Lab & Workflow Automation</h3>
+              <p class="project-description">Python scripts automating pharmaceutical data analysis, EA build pipelines,
+                file processing, and monthly deployment workflows. Cutting hours of manual work to seconds.</p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Excel Automation</span>
+                <span class="tech-tag">Scripting</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats-section" id="stats">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">By the Numbers</span>
+          <h2 class="section-title">GitHub Stats</h2>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item reveal reveal-delay-1">
+            <div class="stat-number" data-target="2550000" data-suffix="" data-format="compact">0</div>
+            <div class="stat-label">Lines of Code</div>
+          </div>
+          <div class="stat-item reveal reveal-delay-2">
+            <div class="stat-number" data-target="2270" data-suffix="+" data-format="number">0</div>
+            <div class="stat-label">Contributions (2026)</div>
+          </div>
+          <div class="stat-item reveal reveal-delay-3">
+            <div class="stat-number" data-target="57" data-suffix="+" data-format="number">0</div>
+            <div class="stat-label">Public Repos</div>
+          </div>
+          <div class="stat-item reveal reveal-delay-4">
+            <div class="stat-number" data-target="134" data-suffix="h" data-format="number">0</div>
+            <div class="stat-label">Code Time Tracked</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Journey</span>
+          <h2 class="section-title">Experience & Education</h2>
+          <p class="section-subtitle">From pharmaceutical lab bench to software development</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">2024 — Present</span>
+              <h3 class="timeline-title">Self-Taught Software Developer</h3>
+              <span class="timeline-org">Independent / Open Source</span>
+              <p class="timeline-desc">Building full-stack web applications, algorithmic trading systems, and automation
+                tools. Actively contributing to open-source and publishing trading bots on MQL5 Market. Studying CS50x
+                at Harvard.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">Current Role</span>
+              <h3 class="timeline-title">Pharmaceutical Analyst</h3>
+              <span class="timeline-org">National Pharmaceutical Regulatory Agency (NPRA), Malaysia</span>
+              <p class="timeline-desc">Conducting analytical testing of pharmaceutical products using HPLC, GC-MS, and
+                ICP-MS instruments. Ensuring drug quality, safety, and regulatory compliance. Developing Python
+                automation for lab data analysis.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">Ongoing</span>
+              <h3 class="timeline-title">CS50x & CS50 Cybersecurity</h3>
+              <span class="timeline-org">Harvard University (Online)</span>
+              <p class="timeline-desc">Studying computer science fundamentals including algorithms, data structures, web
+                development, and cybersecurity principles.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">Completed</span>
+              <h3 class="timeline-title">Diploma in Pharmacy</h3>
+              <span class="timeline-org">Ministry of Health Malaysia</span>
+              <p class="timeline-desc">Formal education in pharmaceutical sciences, providing the analytical and
+                scientific foundation that informs my systematic approach to software development.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">Let's Work Together</h2>
+          <p class="section-subtitle">Looking for my next opportunity in software development</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <h3>Ready to contribute to your team 🚀</h3>
+            <p>I bring a unique combination of scientific rigor, self-taught development skills, and a builder
+              mentality. Whether it's full-stack development, automation, or fintech — I'm eager to learn, build, and
+              ship.</p>
+            <div class="contact-links">
+              <a href="mailto:syarief.azman@gmail.com" class="contact-link-item">
+                <span class="contact-link-icon">📧</span>
+                <div>
+                  <div class="contact-link-label">Email</div>
+                  <div class="contact-link-value">syarief.azman@gmail.com</div>
+                </div>
+              </a>
+              <a href="https://linkedin.com/in/syariefazman" target="_blank" class="contact-link-item">
+                <span class="contact-link-icon">💼</span>
+                <div>
+                  <div class="contact-link-label">LinkedIn</div>
+                  <div class="contact-link-value">linkedin.com/in/syariefazman</div>
+                </div>
+              </a>
+              <a href="https://github.com/syarief02" target="_blank" class="contact-link-item">
+                <span class="contact-link-icon">🐙</span>
+                <div>
+                  <div class="contact-link-label">GitHub</div>
+                  <div class="contact-link-value">github.com/syarief02</div>
+                </div>
+              </a>
+              <a href="https://t.me/SyariefAzman" target="_blank" class="contact-link-item">
+                <span class="contact-link-icon">💬</span>
+                <div>
+                  <div class="contact-link-label">Telegram</div>
+                  <div class="contact-link-value">@SyariefAzman</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <form class="contact-form reveal" id="contactForm">
+            <!-- Web3Forms: Replace YOUR_ACCESS_KEY_HERE with your key from https://web3forms.com/#start -->
+            <input type="hidden" name="access_key" value="b55233e9-afef-45d8-a6c5-3b862dc8cec1">
+            <input type="hidden" name="subject" id="hiddenSubject" value="New Portfolio Contact">
+            <input type="hidden" name="from_name" value="Portfolio Contact Form">
+            <input type="checkbox" name="botcheck" style="display: none;">
+            <div class="form-group">
+              <label for="contactName">Your Name</label>
+              <input type="text" id="contactName" name="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Your Email</label>
+              <input type="email" id="contactEmail" name="email" placeholder="john@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" name="subject" placeholder="Job Opportunity / Collaboration">
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" placeholder="Tell me about the opportunity..."
+                required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+              <span>🚀</span> Send Message
+            </button>
+            <div id="formResult" class="form-result"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p class="footer-text">© 2026 Syarief Azman. Built with ❤️ and lots of ☕</p>
+          <div class="footer-socials">
+            <a href="https://github.com/syarief02" target="_blank" class="footer-social" title="GitHub">🐙</a>
+            <a href="https://linkedin.com/in/syariefazman" target="_blank" class="footer-social" title="LinkedIn">💼</a>
+            <a href="https://twitter.com/syariefazman" target="_blank" class="footer-social" title="Twitter/X">𝕏</a>
+            <a href="https://t.me/SyariefAzman" target="_blank" class="footer-social" title="Telegram">💬</a>
+            <a href="https://youtube.com/syariefazman" target="_blank" class="footer-social" title="YouTube">▶</a>
+            <a href="https://discord.gg/DhUstUpSuu" target="_blank" class="footer-social" title="Discord">🎮</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+
+</html>
