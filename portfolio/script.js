@@ -1,3 +1,22 @@
+// ===== THEME TOGGLE =====
+(function() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    if (!btn) return;
+    icon.textContent = saved === 'light' ? '☀️' : '🌙';
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      icon.textContent = next === 'light' ? '☀️' : '🌙';
+    });
+  });
+})();
+
 // ===== TYPING EFFECT =====
 class TypingEffect {
   constructor(element, phrases, typeSpeed = 80, deleteSpeed = 40, pauseTime = 2000) {
