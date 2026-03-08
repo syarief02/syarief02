@@ -95,6 +95,7 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 ## 🚀 What I'm Up To
 
 - 💼 **[Portfolio](https://syariefazman.vercel.app)** — my developer portfolio showcasing projects, skills & journey
+- 📄 **[Resume](https://syariefazman.vercel.app/resume.html)** — my up-to-date resume with print-to-PDF
 - 🤖 **Building & shipping** Expert Advisors — helping traders automate their edge
 - 🧠 **GoldMind AI** — an open-source system that connects ChatGPT to MetaTrader 5 for AI-driven gold trading
 - 🌐 **[eabudakubat.com](https://eabudakubat.com)** — my product website built with Next.js & Supabase
