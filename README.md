@@ -1,5 +1,5 @@
 <h1 align="center">
-  Hey there 👋 I'm <a href="https://eabudakubat.com">Syarief Azman</a>
+  Hey there 👋 I'm <a href="https://syariefazman.vercel.app">Syarief Azman</a>
 </h1>
 
 <h3 align="center">
@@ -21,6 +21,9 @@
   </a>
   <a href="https://twitter.com/syariefazman" target="blank">
     <img src="https://img.shields.io/twitter/follow/syariefazman?logo=twitter&style=for-the-badge" alt="Twitter Follow" />
+  </a>
+  <a href="https://syariefazman.vercel.app" target="blank">
+    <img src="https://img.shields.io/badge/Portfolio-syariefazman.vercel.app-7b2fff?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
   </a>
 </p>
 
@@ -76,6 +79,7 @@ I build **Expert Advisors (EAs)** for MetaTrader 4 & 5 — automated trading sys
 
 ## 🚀 What I'm Up To
 
+- 💼 **[Portfolio](https://syariefazman.vercel.app)** — my developer portfolio showcasing projects, skills & journey
 - 🤖 **Building & shipping** Expert Advisors — helping traders automate their edge
 - 🧠 **GoldMind AI** — an open-source system that connects ChatGPT to MetaTrader 5 for AI-driven gold trading
 - 🌐 **[eabudakubat.com](https://eabudakubat.com)** — my product website built with Next.js & Supabase
