@@ -56,6 +56,21 @@ I build **Expert Advisors (EAs)** for MetaTrader 4 & 5 — automated trading sys
 
 ---
 
+## 🎨 Frontend Mentor Challenges
+
+I practice frontend skills by completing [Frontend Mentor](https://www.frontendmentor.io/) challenges — all deployed live on GitHub Pages.
+
+| Challenge | Live Demo | Source |
+|---|---|---|
+| QR Code Component | [Live](https://syarief02.github.io/qr-code-component/) | [Repo](https://github.com/syarief02/qr-code-component) |
+| Blog Preview Card | [Live](https://syarief02.github.io/blog-preview-card/) | [Repo](https://github.com/syarief02/blog-preview-card) |
+| Social Links Profile | [Live](https://syarief02.github.io/social-links-profile/) | [Repo](https://github.com/syarief02/social-links-profile) |
+| Recipe Page | [Live](https://syarief02.github.io/recipe-page-main/) | [Repo](https://github.com/syarief02/recipe-page-main) |
+| Four Card Feature Section | [Live](https://syarief02.github.io/four-card-feature-section/) | [Repo](https://github.com/syarief02/four-card-feature-section) |
+| Testimonials Grid Section | [Live](https://syarief02.github.io/testimonials-grid-section/) | [Repo](https://github.com/syarief02/testimonials-grid-section) |
+
+---
+
 ## 🔧 Skills & Tools
 
 <p align="center">
