@@ -1,516 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Syarief Azman — Resume</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #1a1a2e;
-      background: #f0f0f5;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .resume-page {
-      max-width: 850px;
-      margin: 2rem auto;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-      overflow: hidden;
-    }
-
-    /* Header */
-    .resume-header {
-      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 100%);
-      color: #fff;
-      padding: 3rem 3rem 2.5rem;
-    }
-
-    .resume-header h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.3rem;
-    }
-
-    .resume-header h1 span {
-      background: linear-gradient(135deg, #00d4ff, #7b2fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .resume-header .tagline {
-      font-size: 1.1rem;
-      color: #b0b0cc;
-      font-weight: 500;
-      margin-bottom: 1.25rem;
-    }
-
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.5rem;
-      font-size: 0.85rem;
-      color: #9898bb;
-    }
-
-    .contact-row a {
-      color: #00d4ff;
-      text-decoration: none;
-    }
-
-    .contact-row a:hover { text-decoration: underline; }
-
-    /* Body */
-    .resume-body { padding: 2.5rem 3rem 3rem; }
-
-    .section { margin-bottom: 2rem; }
-    .section:last-child { margin-bottom: 0; }
-
-    .section-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #7b2fff;
-      border-bottom: 2px solid #7b2fff;
-      padding-bottom: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
-
-    /* Experience / Education items */
-    .item { margin-bottom: 1.25rem; }
-    .item:last-child { margin-bottom: 0; }
-
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .item-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #1a1a2e;
-    }
-
-    .item-subtitle {
-      font-size: 0.9rem;
-      color: #555;
-      font-weight: 500;
-    }
-
-    .item-date {
-      font-size: 0.82rem;
-      color: #888;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    .item ul {
-      padding-left: 1.25rem;
-      margin-top: 0.4rem;
-    }
-
-    .item li {
-      font-size: 0.88rem;
-      color: #444;
-      margin-bottom: 0.2rem;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem 2rem;
-    }
-
-    .skill-row {
-      display: flex;
-      gap: 0.5rem;
-      font-size: 0.88rem;
-    }
-
-    .skill-label {
-      font-weight: 600;
-      color: #1a1a2e;
-      min-width: 110px;
-    }
-
-    .skill-value {
-      color: #555;
-    }
-
-    /* Projects */
-    .project-item {
-      margin-bottom: 0.8rem;
-    }
-
-    .project-item:last-child { margin-bottom: 0; }
-
-    .project-name {
-      font-weight: 700;
-      font-size: 0.92rem;
-      color: #1a1a2e;
-    }
-
-    .project-name a {
-      color: #7b2fff;
-      text-decoration: none;
-    }
-
-    .project-name a:hover { text-decoration: underline; }
-
-    .project-desc {
-      font-size: 0.85rem;
-      color: #555;
-      margin-top: 0.1rem;
-    }
-
-    .project-tech-inline {
-      font-size: 0.78rem;
-      color: #888;
-      margin-top: 0.15rem;
-    }
-
-    /* Summary */
-    .summary-text {
-      font-size: 0.92rem;
-      color: #444;
-      line-height: 1.7;
-    }
-
-    /* Toolbar */
-    .resume-toolbar {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      display: flex;
-      gap: 0.75rem;
-      z-index: 100;
-    }
-
-    .toolbar-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .btn-print {
-      background: linear-gradient(135deg, #00d4ff, #7b2fff);
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(123, 47, 255, 0.3);
-    }
-
-    .btn-print:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(123, 47, 255, 0.4);
-    }
-
-    .btn-back {
-      background: #1a1a2e;
-      color: #fff;
-    }
-
-    .btn-back:hover {
-      transform: translateY(-2px);
-      background: #2a2a4e;
-    }
-
-    /* ===== PRINT STYLES ===== */
-    @media print {
-      body {
-        background: #fff;
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syarief Azman — Resume</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      *,
+      *::before,
+      *::after {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #1a1a2e;
+        background: #f0f0f5;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
       }
 
       .resume-page {
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
-        max-width: 100%;
+        max-width: 850px;
+        margin: 2rem auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
       }
 
+      /* Header */
       .resume-header {
-        padding: 2rem 2.5rem 1.5rem;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 100%);
+        color: #fff;
+        padding: 3rem 3rem 2.5rem;
       }
 
+      .resume-header h1 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.3rem;
+      }
+
+      .resume-header h1 span {
+        background: linear-gradient(135deg, #00d4ff, #7b2fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .resume-header .tagline {
+        font-size: 1.1rem;
+        color: #b0b0cc;
+        font-weight: 500;
+        margin-bottom: 1.25rem;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem 1.5rem;
+        font-size: 0.85rem;
+        color: #9898bb;
+      }
+
+      .contact-row a {
+        color: #00d4ff;
+        text-decoration: none;
+      }
+
+      .contact-row a:hover {
+        text-decoration: underline;
+      }
+
+      /* Body */
       .resume-body {
-        padding: 1.5rem 2.5rem 2rem;
+        padding: 2.5rem 3rem 3rem;
       }
 
-      .resume-toolbar { display: none; }
-
-      .section { margin-bottom: 1.25rem; }
-
-      .item { margin-bottom: 0.8rem; }
-
-      .resume-header h1 { font-size: 1.8rem; }
-      .resume-header .tagline { font-size: 0.95rem; }
-
-      a { color: inherit !important; text-decoration: none !important; }
-
-      @page {
-        size: A4;
-        margin: 0;
+      .section {
+        margin-bottom: 2rem;
       }
-    }
 
-    /* Mobile */
-    @media (max-width: 700px) {
-      .resume-page { margin: 0; border-radius: 0; }
-      .resume-header { padding: 2rem 1.5rem; }
-      .resume-body { padding: 1.5rem; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .resume-toolbar { bottom: 1rem; right: 1rem; }
-    }
-  </style>
-</head>
-<body>
+      .section:last-child {
+        margin-bottom: 0;
+      }
 
-<div class="resume-page">
-  <!-- Header -->
-  <div class="resume-header">
-    <h1><span>Syarief Azman bin Rosli</span></h1>
-    <div class="tagline">Software Developer · Algorithmic Trader · Pharmaceutical Analyst</div>
-    <div class="contact-row">
-      <span>📍 Petaling Jaya, Selangor, Malaysia</span>
-      <span>📧 <a href="mailto:syarief.azman@gmail.com">syarief.azman@gmail.com</a></span>
-      <span>💼 <a href="https://linkedin.com/in/syariefazman" target="_blank">linkedin.com/in/syariefazman</a></span>
-      <span>🐙 <a href="https://github.com/syarief02" target="_blank">github.com/syarief02</a></span>
-      <span>🌐 <a href="https://syariefazman.vercel.app" target="_blank">syariefazman.vercel.app</a></span>
+      .section-title {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #7b2fff;
+        border-bottom: 2px solid #7b2fff;
+        padding-bottom: 0.4rem;
+        margin-bottom: 1.25rem;
+      }
+
+      /* Experience / Education items */
+      .item {
+        margin-bottom: 1.25rem;
+      }
+
+      .item:last-child {
+        margin-bottom: 0;
+      }
+
+      .item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .item-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1a1a2e;
+      }
+
+      .item-subtitle {
+        font-size: 0.9rem;
+        color: #555;
+        font-weight: 500;
+      }
+
+      .item-date {
+        font-size: 0.82rem;
+        color: #888;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .item ul {
+        padding-left: 1.25rem;
+        margin-top: 0.4rem;
+      }
+
+      .item li {
+        font-size: 0.88rem;
+        color: #444;
+        margin-bottom: 0.2rem;
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem 2rem;
+      }
+
+      .skill-row {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 0.88rem;
+      }
+
+      .skill-label {
+        font-weight: 600;
+        color: #1a1a2e;
+        min-width: 110px;
+      }
+
+      .skill-value {
+        color: #555;
+      }
+
+      /* Projects */
+      .project-item {
+        margin-bottom: 0.8rem;
+      }
+
+      .project-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .project-name {
+        font-weight: 700;
+        font-size: 0.92rem;
+        color: #1a1a2e;
+      }
+
+      .project-name a {
+        color: #7b2fff;
+        text-decoration: none;
+      }
+
+      .project-name a:hover {
+        text-decoration: underline;
+      }
+
+      .project-desc {
+        font-size: 0.85rem;
+        color: #555;
+        margin-top: 0.1rem;
+      }
+
+      .project-tech-inline {
+        font-size: 0.78rem;
+        color: #888;
+        margin-top: 0.15rem;
+      }
+
+      /* Summary */
+      .summary-text {
+        font-size: 0.92rem;
+        color: #444;
+        line-height: 1.7;
+      }
+
+      /* Toolbar */
+      .resume-toolbar {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        display: flex;
+        gap: 0.75rem;
+        z-index: 100;
+      }
+
+      .toolbar-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .btn-print {
+        background: linear-gradient(135deg, #00d4ff, #7b2fff);
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(123, 47, 255, 0.3);
+      }
+
+      .btn-print:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(123, 47, 255, 0.4);
+      }
+
+      .btn-back {
+        background: #1a1a2e;
+        color: #fff;
+      }
+
+      .btn-back:hover {
+        transform: translateY(-2px);
+        background: #2a2a4e;
+      }
+
+      /* ===== PRINT STYLES ===== */
+      @media print {
+        body {
+          background: #fff;
+          margin: 0;
+          padding: 0;
+        }
+
+        .resume-page {
+          margin: 0;
+          border-radius: 0;
+          box-shadow: none;
+          max-width: 100%;
+        }
+
+        .resume-header {
+          padding: 2rem 2.5rem 1.5rem;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .resume-body {
+          padding: 1.5rem 2.5rem 2rem;
+        }
+
+        .resume-toolbar {
+          display: none;
+        }
+
+        .section {
+          margin-bottom: 1.25rem;
+        }
+
+        .item {
+          margin-bottom: 0.8rem;
+        }
+
+        .resume-header h1 {
+          font-size: 1.8rem;
+        }
+
+        .resume-header .tagline {
+          font-size: 0.95rem;
+        }
+
+        a {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+
+        @page {
+          size: A4;
+          margin: 0;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 700px) {
+        .resume-page {
+          margin: 0;
+          border-radius: 0;
+        }
+
+        .resume-header {
+          padding: 2rem 1.5rem;
+        }
+
+        .resume-body {
+          padding: 1.5rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .resume-toolbar {
+          bottom: 1rem;
+          right: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="resume-page">
+      <!-- Header -->
+      <div class="resume-header">
+        <h1><span>Syarief Azman bin Rosli</span></h1>
+        <div class="tagline">Software Developer · Algorithmic Trader · Pharmaceutical Analyst</div>
+        <div class="contact-row">
+          <span>📍 Petaling Jaya, Selangor, Malaysia</span>
+          <span>📧 <a href="mailto:syarief.azman@gmail.com">syarief.azman@gmail.com</a></span>
+          <span>💼 <a href="https://linkedin.com/in/syariefazman"
+              target="_blank">linkedin.com/in/syariefazman</a></span>
+          <span>🐙 <a href="https://github.com/syarief02" target="_blank">github.com/syarief02</a></span>
+          <span>🌐 <a href="https://SyariefAzman.com" target="_blank">SyariefAzman.com</a></span>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="resume-body">
+
+        <!-- Summary -->
+        <div class="section">
+          <div class="section-title">Professional Summary</div>
+          <p class="summary-text">
+            Pharmaceutical Analyst with 8+ years of laboratory and regulatory experience at NPRA, transitioning into
+            software development. Self-taught developer proficient in Python, JavaScript, MQL4/5, and web technologies.
+            Built and shipped real-world products including automated trading systems serving active forex traders,
+            full-stack web applications, and open-source AI tools. Strong analytical mindset from scientific work,
+            proven ability to learn complex systems independently, and a daily coding habit with 800+ GitHub
+            contributions.
+          </p>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section">
+          <div class="section-title">Technical Skills</div>
+          <div class="skills-grid">
+            <div class="skill-row">
+              <span class="skill-label">Languages:</span>
+              <span class="skill-value">Python, JavaScript, C/C++, MQL4, MQL5, HTML, CSS, SQL</span>
+            </div>
+            <div class="skill-row">
+              <span class="skill-label">Frameworks:</span>
+              <span class="skill-value">Next.js, FastAPI, Bootstrap</span>
+            </div>
+            <div class="skill-row">
+              <span class="skill-label">Databases:</span>
+              <span class="skill-value">Supabase, PostgreSQL</span>
+            </div>
+            <div class="skill-row">
+              <span class="skill-label">Tools:</span>
+              <span class="skill-value">Git, GitHub, Linux, MetaTrader, Excel, Vercel</span>
+            </div>
+            <div class="skill-row">
+              <span class="skill-label">Specialties:</span>
+              <span class="skill-value">Algorithmic Trading, API Integration, Automation</span>
+            </div>
+            <div class="skill-row">
+              <span class="skill-label">Analytical:</span>
+              <span class="skill-value">HPLC, GC-MS, ICP-MS, LC-MS, Data Analysis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+          <div class="section-title">Professional Experience</div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">Pharmaceutical Analyst</div>
+                <div class="item-subtitle">National Pharmaceutical Regulatory Agency (NPRA), Malaysia</div>
+              </div>
+              <div class="item-date">Sep 2017 – Present</div>
+            </div>
+            <ul>
+              <li>Conduct laboratory testing and technical analysis on pharmaceutical products using HPLC, GC-MS,
+                ICP-MS, and LC-MS instruments</li>
+              <li>Ensure compliance with Good Laboratory Practice (GLP) standards and generate structured technical
+                reports</li>
+              <li>Automate data analysis workflows and reporting with Python and Excel, saving hours of manual work</li>
+              <li>Apply statistical methods to evaluate product quality and regulatory compliance</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">Software Developer & Algorithmic Trader</div>
+                <div class="item-subtitle">BuBat Resources (Self-Employed)</div>
+              </div>
+              <div class="item-date">Dec 2016 – Oct 2024</div>
+            </div>
+            <ul>
+              <li>Developed and published 6+ Expert Advisors (trading robots) for MetaTrader 4 & 5 platforms using
+                MQL4/MQL5</li>
+              <li>Built <a href="https://eabudakubat.com" style="color:#7b2fff">eabudakubat.com</a> — full-stack product
+                website with Next.js, Supabase, and Vercel</li>
+              <li>Created open-source AI trading system (GoldMind AI) integrating OpenAI API with MetaTrader 5 via
+                FastAPI</li>
+              <li>Managed social media presence with ~15,000 followers for product marketing</li>
+              <li>Maintained active GitHub with 800+ contributions and daily coding consistency</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">Affiliate Marketing Specialist</div>
+                <div class="item-subtitle">GB Network Solutions Sdn Bhd (Part-time)</div>
+              </div>
+              <div class="item-date">Dec 2018 – Oct 2024</div>
+            </div>
+            <ul>
+              <li>Managed affiliate marketing strategies for Forex VPS and hosting services</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+          <div class="section-title">Key Projects</div>
+
+          <div class="project-item">
+            <div class="project-name"><a href="https://eabudakubat.com" target="_blank">EA Budak Ubat</a> — Automated
+              Trading System</div>
+            <div class="project-desc">Published Expert Advisor on the MQL5 Marketplace with 10+ stars on GitHub.
+              Features 4 analysis methods, AutoConfig AI, hedging strategies, and comprehensive risk management.
+              Supports MT4 & MT5.</div>
+            <div class="project-tech-inline">MQL4 · MQL5 · Algorithmic Trading · Risk Management</div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-name"><a href="https://github.com/syarief02/goldmind-ai" target="_blank">GoldMind AI</a>
+              — AI-Powered Trading Signals</div>
+            <div class="project-desc">Open-source system connecting ChatGPT to MetaTrader 5 for AI-driven gold (XAUUSD)
+              trading. Built the FastAPI backend, OpenAI integration, and MQL5 Expert Advisor.</div>
+            <div class="project-tech-inline">Python · FastAPI · OpenAI API · MQL5</div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-name"><a href="https://eabudakubat.com" target="_blank">eabudakubat.com</a> — Product
+              Website</div>
+            <div class="project-desc">Full-stack product website with user authentication, downloads, community
+              features, and automated deployments.</div>
+            <div class="project-tech-inline">Next.js · Supabase · JavaScript · Vercel</div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-name"><a href="https://SyariefAzman.com" target="_blank">Portfolio Website</a> —
+              Developer Portfolio</div>
+            <div class="project-desc">Responsive portfolio with dark/light mode, glassmorphism design, Web3Forms contact
+              integration, and OG social previews.</div>
+            <div class="project-tech-inline">HTML · CSS · JavaScript · Vercel</div>
+          </div>
+
+          <div class="project-item">
+            <div class="project-name">Frontend Mentor Challenges — 6+ Completed</div>
+            <div class="project-desc">Completed and deployed responsive web challenges including Testimonials Grid, Four
+              Card Feature Section, and more. All live on GitHub Pages.</div>
+            <div class="project-tech-inline">HTML · CSS · CSS Grid · Responsive Design</div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+          <div class="section-title">Education</div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">Diploma in Pharmacy</div>
+                <div class="item-subtitle">Institut Latihan Kementerian Kesihatan Malaysia (ILKKM)</div>
+              </div>
+              <div class="item-date">Jul 2014 – Jun 2017</div>
+            </div>
+            <ul>
+              <li>Pharmacy Technician/Assistant · Pharmacy Operations · Quality Control</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">Diploma in Accounting Information System</div>
+                <div class="item-subtitle">Universiti Teknologi MARA (UiTM)</div>
+              </div>
+              <div class="item-date">2012 – 2014</div>
+            </div>
+            <ul>
+              <li>Accounting Fundamentals · Data Analysis · SQL/Databases · Excel</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Certifications & Continuous Learning -->
+        <div class="section">
+          <div class="section-title">Certifications & Continuous Learning</div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">CS50x — Introduction to Computer Science</div>
+                <div class="item-subtitle">Harvard University (via edX)</div>
+              </div>
+              <div class="item-date">In Progress</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">CS50 Cybersecurity</div>
+                <div class="item-subtitle">Harvard University (via edX)</div>
+              </div>
+              <div class="item-date">In Progress</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">Kursus Pengurusan Perolehan Kerajaan KKM</div>
+                <div class="item-subtitle">Kementerian Kesihatan Malaysia</div>
+              </div>
+              <div class="item-date">Mar 2026</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
 
-  <!-- Body -->
-  <div class="resume-body">
-
-    <!-- Summary -->
-    <div class="section">
-      <div class="section-title">Professional Summary</div>
-      <p class="summary-text">
-        Pharmaceutical Analyst with 8+ years of laboratory and regulatory experience at NPRA, transitioning into
-        software development. Self-taught developer proficient in Python, JavaScript, MQL4/5, and web technologies.
-        Built and shipped real-world products including automated trading systems serving active forex traders,
-        full-stack web applications, and open-source AI tools. Strong analytical mindset from scientific work,
-        proven ability to learn complex systems independently, and a daily coding habit with 800+ GitHub contributions.
-      </p>
+    <!-- Floating Actions -->
+    <div class="resume-toolbar">
+      <a href="index.html" class="toolbar-btn btn-back">← Portfolio</a>
+      <button class="toolbar-btn btn-print" onclick="window.print()">📄 Save as PDF</button>
     </div>
 
-    <!-- Technical Skills -->
-    <div class="section">
-      <div class="section-title">Technical Skills</div>
-      <div class="skills-grid">
-        <div class="skill-row">
-          <span class="skill-label">Languages:</span>
-          <span class="skill-value">Python, JavaScript, C/C++, MQL4, MQL5, HTML, CSS, SQL</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Frameworks:</span>
-          <span class="skill-value">Next.js, FastAPI, Bootstrap</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Databases:</span>
-          <span class="skill-value">Supabase, PostgreSQL</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Tools:</span>
-          <span class="skill-value">Git, GitHub, Linux, MetaTrader, Excel, Vercel</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Specialties:</span>
-          <span class="skill-value">Algorithmic Trading, API Integration, Automation</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Analytical:</span>
-          <span class="skill-value">HPLC, GC-MS, ICP-MS, LC-MS, Data Analysis</span>
-        </div>
-      </div>
-    </div>
+  </body>
 
-    <!-- Experience -->
-    <div class="section">
-      <div class="section-title">Professional Experience</div>
-
-      <div class="item">
-        <div class="item-header">
-          <div>
-            <div class="item-title">Pharmaceutical Analyst</div>
-            <div class="item-subtitle">National Pharmaceutical Regulatory Agency (NPRA), Malaysia</div>
-          </div>
-          <div class="item-date">Sep 2017 – Present</div>
-        </div>
-        <ul>
-          <li>Conduct laboratory testing and technical analysis on pharmaceutical products using HPLC, GC-MS, ICP-MS, and LC-MS instruments</li>
-          <li>Ensure compliance with Good Laboratory Practice (GLP) standards and generate structured technical reports</li>
-          <li>Automate data analysis workflows and reporting with Python and Excel, saving hours of manual work</li>
-          <li>Apply statistical methods to evaluate product quality and regulatory compliance</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <div>
-            <div class="item-title">Software Developer & Algorithmic Trader</div>
-            <div class="item-subtitle">BuBat Resources (Self-Employed)</div>
-          </div>
-          <div class="item-date">Dec 2016 – Oct 2024</div>
-        </div>
-        <ul>
-          <li>Developed and published 6+ Expert Advisors (trading robots) for MetaTrader 4 & 5 platforms using MQL4/MQL5</li>
-          <li>Built <a href="https://eabudakubat.com" style="color:#7b2fff">eabudakubat.com</a> — full-stack product website with Next.js, Supabase, and Vercel</li>
-          <li>Created open-source AI trading system (GoldMind AI) integrating OpenAI API with MetaTrader 5 via FastAPI</li>
-          <li>Managed social media presence with ~15,000 followers for product marketing</li>
-          <li>Maintained active GitHub with 800+ contributions and daily coding consistency</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <div>
-            <div class="item-title">Affiliate Marketing Specialist</div>
-            <div class="item-subtitle">GB Network Solutions Sdn Bhd (Part-time)</div>
-          </div>
-          <div class="item-date">Dec 2018 – Oct 2024</div>
-        </div>
-        <ul>
-          <li>Managed affiliate marketing strategies for Forex VPS and hosting services</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Projects -->
-    <div class="section">
-      <div class="section-title">Key Projects</div>
-
-      <div class="project-item">
-        <div class="project-name"><a href="https://eabudakubat.com" target="_blank">EA Budak Ubat</a> — Automated Trading System</div>
-        <div class="project-desc">Published Expert Advisor on the MQL5 Marketplace with 10+ stars on GitHub. Features 4 analysis methods, AutoConfig AI, hedging strategies, and comprehensive risk management. Supports MT4 & MT5.</div>
-        <div class="project-tech-inline">MQL4 · MQL5 · Algorithmic Trading · Risk Management</div>
-      </div>
-
-      <div class="project-item">
-        <div class="project-name"><a href="https://github.com/syarief02/goldmind-ai" target="_blank">GoldMind AI</a> — AI-Powered Trading Signals</div>
-        <div class="project-desc">Open-source system connecting ChatGPT to MetaTrader 5 for AI-driven gold (XAUUSD) trading. Built the FastAPI backend, OpenAI integration, and MQL5 Expert Advisor.</div>
-        <div class="project-tech-inline">Python · FastAPI · OpenAI API · MQL5</div>
-      </div>
-
-      <div class="project-item">
-        <div class="project-name"><a href="https://eabudakubat.com" target="_blank">eabudakubat.com</a> — Product Website</div>
-        <div class="project-desc">Full-stack product website with user authentication, downloads, community features, and automated deployments.</div>
-        <div class="project-tech-inline">Next.js · Supabase · JavaScript · Vercel</div>
-      </div>
-
-      <div class="project-item">
-        <div class="project-name"><a href="https://syariefazman.vercel.app" target="_blank">Portfolio Website</a> — Developer Portfolio</div>
-        <div class="project-desc">Responsive portfolio with dark/light mode, glassmorphism design, Web3Forms contact integration, and OG social previews.</div>
-        <div class="project-tech-inline">HTML · CSS · JavaScript · Vercel</div>
-      </div>
-
-      <div class="project-item">
-        <div class="project-name">Frontend Mentor Challenges — 6+ Completed</div>
-        <div class="project-desc">Completed and deployed responsive web challenges including Testimonials Grid, Four Card Feature Section, and more. All live on GitHub Pages.</div>
-        <div class="project-tech-inline">HTML · CSS · CSS Grid · Responsive Design</div>
-      </div>
-    </div>
-
-    <!-- Education -->
-    <div class="section">
-      <div class="section-title">Education</div>
-
-      <div class="item">
-        <div class="item-header">
-          <div>
-            <div class="item-title">Diploma in Pharmacy</div>
-            <div class="item-subtitle">Institut Latihan Kementerian Kesihatan Malaysia (ILKKM)</div>
-          </div>
-          <div class="item-date">Jul 2014 – Jun 2017</div>
-        </div>
-        <ul>
-          <li>Pharmacy Technician/Assistant · Pharmacy Operations · Quality Control</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <div>
-            <div class="item-title">Diploma in Accounting Information System</div>
-            <div class="item-subtitle">Universiti Teknologi MARA (UiTM)</div>
-          </div>
-          <div class="item-date">2012 – 2014</div>
-        </div>
-        <ul>
-          <li>Accounting Fundamentals · Data Analysis · SQL/Databases · Excel</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Certifications & Continuous Learning -->
-    <div class="section">
-      <div class="section-title">Certifications & Continuous Learning</div>
-
-      <div class="item">
-        <div class="item-header">
-          <div>
-            <div class="item-title">CS50x — Introduction to Computer Science</div>
-            <div class="item-subtitle">Harvard University (via edX)</div>
-          </div>
-          <div class="item-date">In Progress</div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <div>
-            <div class="item-title">CS50 Cybersecurity</div>
-            <div class="item-subtitle">Harvard University (via edX)</div>
-          </div>
-          <div class="item-date">In Progress</div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="item-header">
-          <div>
-            <div class="item-title">Kursus Pengurusan Perolehan Kerajaan KKM</div>
-            <div class="item-subtitle">Kementerian Kesihatan Malaysia</div>
-          </div>
-          <div class="item-date">Mar 2026</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- Floating Actions -->
-<div class="resume-toolbar">
-  <a href="index.html" class="toolbar-btn btn-back">← Portfolio</a>
-  <button class="toolbar-btn btn-print" onclick="window.print()">📄 Save as PDF</button>
-</div>
-
-</body>
 </html>
