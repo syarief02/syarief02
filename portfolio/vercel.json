@@ -1,15 +1,12 @@
 {
-  "redirects": [
-    {
-      "source": "/uptslide1",
-      "destination": "/uptslide1/",
-      "permanent": false
-    }
-  ],
   "rewrites": [
     {
-      "source": "/uptslide1/(.*)",
-      "destination": "https://uptslide1-6ywq.vercel.app/$1"
+      "source": "/uptslide1",
+      "destination": "https://uptslide1.vercel.app/"
+    },
+    {
+      "source": "/uptslide1/:path*",
+      "destination": "https://uptslide1.vercel.app/:path*"
     }
   ]
 }
