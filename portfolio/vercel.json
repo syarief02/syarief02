@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/uptslide1",
+      "destination": "https://uptslide1.vercel.app/"
+    },
+    {
+      "source": "/uptslide1/:path*",
+      "destination": "https://uptslide1.vercel.app/:path*"
+    }
+  ]
+}
