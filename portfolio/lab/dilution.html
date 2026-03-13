@@ -114,7 +114,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 @media(max-width:500px){.calc-grid{grid-template-columns:1fr}}
 .calc-group{display:flex;flex-direction:column;gap:0.3rem}
 .calc-label{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--text-dim);text-transform:uppercase}
-.calc-input{font-family:'DM Mono',monospace;font-size:1rem;padding:0.7rem 1rem;border-radius:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text-bright);outline:none;transition:all 0.2s;-moz-appearance:textfield}
+.calc-input{font-family:'DM Mono',monospace;font-size:1rem;padding:0.7rem 1rem;border-radius:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text-bright);outline:none;transition:all 0.2s;-moz-appearance:textfield;appearance:textfield}
 .calc-input::-webkit-outer-spin-button,.calc-input::-webkit-inner-spin-button{-webkit-appearance:none;appearance:none;margin:0}
 .calc-input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 .calc-select{font-family:'DM Mono',monospace;font-size:0.85rem;padding:0.7rem 1rem;border-radius:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text-bright);outline:none;transition:all 0.2s;cursor:pointer}
@@ -138,6 +138,23 @@ td code{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--cyan);back
 .derivation{font-family:'DM Mono',monospace;font-size:0.9rem;line-height:2;color:var(--text-bright);text-align:center;margin:1rem 0}
 .derivation .step{margin-bottom:0.5rem}
 .derivation .arrow{color:var(--cyan);font-size:1.2rem}
+/* Quiz */
+.quiz-box{background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;padding:1.5rem;margin:1.2rem 0}
+.qz-num{font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.12em;color:var(--mint);text-transform:uppercase;margin-bottom:0.8rem;font-weight:700}
+.qz-q{font-size:0.92rem;color:var(--text-bright);margin-bottom:1.2rem;line-height:1.6}
+.qz-opts{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.2rem}
+.qz-opt{text-align:left;font-family:'Inter',sans-serif;font-size:0.88rem;padding:0.8rem 1rem;border:1px solid var(--card-border);background:var(--card-bg);color:var(--text);border-radius:8px;cursor:pointer;transition:all 0.2s}
+.qz-opt:hover{border-color:var(--cyan);background:var(--cyan-dim)}
+.qz-opt.selected{border-color:var(--cyan);background:var(--cyan-dim);color:var(--text-bright);font-weight:600}
+.qz-opt.correct{border-color:var(--mint);background:var(--mint-dim);color:var(--mint);font-weight:700}
+.qz-opt.wrong{border-color:var(--red);background:var(--red-dim);color:var(--red);opacity:0.6}
+.qz-feedback{display:none;padding:1rem;border-radius:8px;font-size:0.85rem;line-height:1.5;margin-top:1rem;animation:fadeIn 0.3s ease}
+.qz-feedback.show{display:block}
+.qz-feedback.success{background:linear-gradient(135deg,rgba(0,255,179,0.1),var(--mint-dim));border:1px solid rgba(0,255,179,0.2)}
+.qz-feedback.error{background:linear-gradient(135deg,rgba(255,77,109,0.1),var(--red-dim));border:1px solid rgba(255,77,109,0.2)}
+.qz-action{font-family:'DM Mono',monospace;font-size:0.75rem;padding:0.6rem 1.2rem;border-radius:100px;border:none;background:var(--cyan);color:var(--bg);font-weight:700;cursor:pointer;transition:all 0.2s;letter-spacing:0.05em}
+.qz-action:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.qz-action:disabled{opacity:0.5;cursor:not-allowed;transform:none}
 /* Nav Card */
 .nav-card{display:flex;align-items:center;justify-content:space-between;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.2rem 1.5rem;text-decoration:none;color:inherit;transition:all 0.3s;margin-top:1.5rem}
 .nav-card:hover{background:var(--card-hover);border-color:var(--mint);transform:translateX(5px)}
@@ -662,7 +679,65 @@ V₁ = 1000 / 10000
     </div>
   </div>
 
-  <!-- ══════════ 12. UNITS CONVERSION ══════════ -->
+  <!-- ══════════ 12. KNOWLEDGE CHECK ══════════ -->
+  <div class="section-label reveal">◈ Knowledge Check</div>
+
+  <div class="card reveal" id="quiz-section">
+    <div class="card-title">📝 Practice Quiz</div>
+    <p style="margin-bottom:1.5rem">Test your understanding of the dilution formula and dilution factors with these common lab scenarios.</p>
+
+    <!-- Q1 -->
+    <div class="quiz-box" id="q1-box">
+      <div class="qz-num">Question 1 of 3</div>
+      <div class="qz-q">You need to prepare <strong>20 mL</strong> of a <strong>50 ppm</strong> caffeine standard from a <strong>1000 ppm</strong> stock solution. How much stock solution should you pipette?</div>
+      <div class="qz-opts" id="q1-opts">
+        <button class="qz-opt" onclick="selectOpt('q1', 0, this)">A) 0.5 mL</button>
+        <button class="qz-opt" onclick="selectOpt('q1', 1, this)">B) 1.0 mL</button>
+        <button class="qz-opt" onclick="selectOpt('q1', 2, this)">C) 2.5 mL</button>
+        <button class="qz-opt" onclick="selectOpt('q1', 3, this)">D) 10.0 mL</button>
+      </div>
+      <button class="qz-action" id="q1-btn" onclick="checkAnswer('q1', 1)" disabled>Check Answer</button>
+      <div class="qz-feedback" id="q1-feedback"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-box" id="q2-box" style="display:none">
+      <div class="qz-num">Question 2 of 3</div>
+      <div class="qz-q">You pipette <strong>0.5 mL</strong> of sample into a <strong>50 mL</strong> volumetric flask and top it up. What is the dilution factor (DF)?</div>
+      <div class="qz-opts" id="q2-opts">
+        <button class="qz-opt" onclick="selectOpt('q2', 0, this)">A) 25×</button>
+        <button class="qz-opt" onclick="selectOpt('q2', 1, this)">B) 50×</button>
+        <button class="qz-opt" onclick="selectOpt('q2', 2, this)">C) 100×</button>
+        <button class="qz-opt" onclick="selectOpt('q2', 3, this)">D) 250×</button>
+      </div>
+      <button class="qz-action" id="q2-btn" onclick="checkAnswer('q2', 2)" disabled>Check Answer</button>
+      <div class="qz-feedback" id="q2-feedback"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-box" id="q3-box" style="display:none">
+      <div class="qz-num">Question 3 of 3</div>
+      <div class="qz-q">A sample has a dilution factor of <strong>50×</strong>. The HPLC analysis shows the diluted concentration is <strong>12 ppm</strong>. What was the <strong>original</strong> concentration of the sample?</div>
+      <div class="qz-opts" id="q3-opts">
+        <button class="qz-opt" onclick="selectOpt('q3', 0, this)">A) 0.24 ppm</button>
+        <button class="qz-opt" onclick="selectOpt('q3', 1, this)">B) 60 ppm</button>
+        <button class="qz-opt" onclick="selectOpt('q3', 2, this)">C) 300 ppm</button>
+        <button class="qz-opt" onclick="selectOpt('q3', 3, this)">D) 600 ppm</button>
+      </div>
+      <button class="qz-action" id="q3-btn" onclick="checkAnswer('q3', 3)" disabled>Check Answer</button>
+      <div class="qz-feedback" id="q3-feedback"></div>
+    </div>
+    
+    <!-- Quiz Complete -->
+    <div class="quiz-box" id="qz-complete" style="display:none;text-align:center;padding:3rem 1.5rem">
+      <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+      <div class="card-title" style="justify-content:center;margin-bottom:0.5rem">Quiz Completed!</div>
+      <p style="color:var(--text-dim);margin-bottom:1.5rem">Great job testing your dilution formula knowledge.</p>
+      <button class="qz-action" onclick="resetQuiz()">Retake Quiz</button>
+    </div>
+  </div>
+
+  <!-- ══════════ 13. UNITS CONVERSION ══════════ -->
   <div class="section-label reveal">◈ Concentration Unit Conversions</div>
 
   <div class="card reveal">
@@ -816,6 +891,90 @@ function hide() {
 
 // Initialize
 setSolveFor('V1', document.querySelector('.calc-btn.active'));
+
+/* Quiz Logic */
+let qzState = { q1:null, q2:null, q3:null };
+
+function selectOpt(q, idx, btn) {
+  if(document.getElementById(q+'-btn').textContent === 'Next' || document.getElementById(q+'-btn').style.display === 'none') return; // already answered
+  qzState[q] = idx;
+  const opts = document.getElementById(q+'-opts').children;
+  for(let i=0; i<opts.length; i++) opts[i].classList.remove('selected');
+  btn.classList.add('selected');
+  document.getElementById(q+'-btn').disabled = false;
+}
+
+function checkAnswer(q, correctIdx) {
+  const selectedIdx = qzState[q];
+  const opts = document.getElementById(q+'-opts').children;
+  const fb = document.getElementById(q+'-feedback');
+  const btn = document.getElementById(q+'-btn');
+  
+  if(selectedIdx === correctIdx) {
+    opts[selectedIdx].classList.add('correct');
+    opts[selectedIdx].classList.remove('selected');
+    fb.innerHTML = '<strong>✅ Correct!</strong> ' + getFeedback(q, true);
+    fb.className = 'qz-feedback show success';
+  } else {
+    opts[selectedIdx].classList.add('wrong');
+    opts[correctIdx].classList.add('correct');
+    opts[selectedIdx].classList.remove('selected');
+    fb.innerHTML = '<strong>❌ Incorrect.</strong> ' + getFeedback(q, false);
+    fb.className = 'qz-feedback show error';
+  }
+  
+  // Disable all options
+  for(let i=0; i<opts.length; i++) opts[i].style.pointerEvents = 'none';
+  
+  if(q === 'q3') {
+    btn.textContent = 'Finish';
+    btn.onclick = () => { document.getElementById('q3-box').style.display = 'none'; document.getElementById('qz-complete').style.display = 'block'; };
+  } else {
+    btn.textContent = 'Next';
+    btn.onclick = () => {
+      document.getElementById(q+'-box').style.display = 'none';
+      const nextQ = q === 'q1' ? 'q2' : 'q3';
+      document.getElementById(nextQ+'-box').style.display = 'block';
+    };
+  }
+}
+
+function getFeedback(q, isCorrect) {
+  if(q === 'q1') return isCorrect 
+    ? 'V₁ = (C₂ × V₂) / C₁ = (50 × 20) / 1000 = 1000 / 1000 = 1.0 mL.'
+    : 'The formula is V₁ = (C₂ × V₂) / C₁. So, (50 × 20) / 1000 = 1.0 mL.';
+  if(q === 'q2') return isCorrect
+    ? 'DF = V₂ / V₁ = 50 / 0.5 = 100×.'
+    : 'Dilution Factor = Final Volume / Pipetted Volume. So, 50 / 0.5 = 100×.';
+  if(q === 'q3') return isCorrect
+    ? 'C_original = C_measured × DF = 12 × 50 = 600 ppm.'
+    : 'To back-calculate, multiply the measured result by the dilution factor: 12 × 50 = 600 ppm.';
+  return '';
+}
+
+function resetQuiz() {
+  qzState = { q1:null, q2:null, q3:null };
+  ['q1','q2','q3'].forEach(q => {
+    const opts = document.getElementById(q+'-opts').children;
+    for(let i=0; i<opts.length; i++) {
+      opts[i].className = 'qz-opt';
+      opts[i].style.pointerEvents = 'auto';
+    }
+    document.getElementById(q+'-feedback').className = 'qz-feedback';
+    const btn = document.getElementById(q+'-btn');
+    btn.disabled = true;
+    btn.textContent = 'Check Answer';
+    // restore original onclicks
+    if(q==='q1') btn.onclick = () => checkAnswer('q1', 1);
+    if(q==='q2') btn.onclick = () => checkAnswer('q2', 2);
+    if(q==='q3') btn.onclick = () => checkAnswer('q3', 3);
+  });
+  
+  document.getElementById('qz-complete').style.display = 'none';
+  document.getElementById('q2-box').style.display = 'none';
+  document.getElementById('q3-box').style.display = 'none';
+  document.getElementById('q1-box').style.display = 'block';
+}
 </script>
 </body>
 </html>
