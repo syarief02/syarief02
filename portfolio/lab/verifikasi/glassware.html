@@ -71,63 +71,101 @@
     </table>
   </div>
 
-  <div class="section-label">◈ Volumetric Flask Procedure</div>
-  <div class="card reveal">
-    <ol class="step-list">
-      <li><strong>Visual inspection:</strong> Check cleanliness, inner surface condition (no frosting), and inscription on the surface.</li>
-      <li>Ensure the flask is clean and completely dry. Wear gloves before handling.</li>
-      <li>Record <strong>1 empty flask weight</strong> on the calibrated balance.</li>
-      <li>Fill the flask with deionized water (room temperature) up to the meniscus mark.</li>
-      <li>Record the water temperature before testing.</li>
-      <li>Weigh the filled flask — record as reading 1.</li>
-      <li>Empty, dry, and repeat for <strong>readings 2 and 3</strong>.</li>
-      <li>Record the water temperature after testing — difference must be <strong>≤ 0.5°C</strong>.</li>
-      <li>Apply temperature correction using the UPM Temperature Correction Worksheet.</li>
-      <li>Compare corrected volume against the flask's nominal volume and tolerance.</li>
-    </ol>
-  </div>
-
-  <div class="section-label">◈ Bulb Pipette Procedure</div>
-  <div class="card reveal">
-    <ol class="step-list">
-      <li>Fill the bulb pipette with deionized water up to the meniscus mark.</li>
-      <li>Allow gravity to drain the water from the pipette into a pre-weighed container.</li>
-      <li>Touch and drag the tip of the bulb pipette against the container wall (do NOT blow out).</li>
-      <li>Record the weight. Repeat for a total of <strong>5 measurements</strong>.</li>
-      <li>Apply temperature correction and compare against nominal volume tolerance.</li>
-    </ol>
-  </div>
-
-  <div class="section-label">◈ Burette Procedure</div>
-  <div class="card reveal">
-    <ol class="step-list">
-      <li>Fill the burette with deionized water. Adjust the meniscus to the zero mark.</li>
-      <li>Drain the desired test volume into a pre-weighed container.</li>
-      <li>Record the weight. TARE and repeat for a total of <strong>5 measurements</strong>.</li>
-      <li>Apply temperature correction and compare against nominal volume tolerance.</li>
-      <li>Test at multiple volume points as required (e.g., 10 mL, 25 mL, 50 mL).</li>
-    </ol>
-  </div>
-
-  <div class="section-label">◈ Balance Requirements (ISO 4787)</div>
-  <div class="card reveal" style="overflow-x:auto">
+  <!-- Balance Requirements (Moved up) -->
+  <div class="section-label">◈ 1. Balance Resolution Requirements (ISO 4787)</div>
+  <div class="card reveal" style="overflow-x:auto;margin-bottom:2rem">
+    <p style="font-size:0.85rem;margin-bottom:0.8rem;color:var(--text-dim)">The analytical balance used must meet minimum resolution requirements strictly based on the nominal volume of the glassware (flask, pipette, or burette) under test.</p>
     <table class="eq-table">
-      <thead><tr><th>Volume Under Test</th><th>Min. Resolution</th><th>Notes</th></tr></thead>
+      <thead><tr><th>Nominal Volume ($V$)</th><th>Min. Resolution (mg)</th><th>Balance Type</th></tr></thead>
       <tbody>
-        <tr><td>&lt; 100 mL</td><td class="highlight">0.1 mg</td><td>Semi-micro / Analytical balance</td></tr>
-        <tr><td>100 – 1000 mL</td><td class="highlight">1 mg</td><td>Analytical balance</td></tr>
-        <tr><td>&gt; 1000 mL</td><td class="highlight">10 mg</td><td>Precision balance</td></tr>
+        <tr><td>$V \le 10 \, \text{mL}$</td><td class="highlight">0.01</td><td>Semi-micro analytical balance</td></tr>
+        <tr><td>$10 \, \text{mL} < V \le 1000 \, \text{mL}$</td><td class="highlight">0.1</td><td>Analytical balance</td></tr>
+        <tr><td>$V > 1000 \, \text{mL}$</td><td class="highlight">10.0</td><td>Precision top-loading balance</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="section-label">◈ Corrective Action</div>
+  <div class="section-label" style="text-align:center;font-size:0.9rem;letter-spacing:0.1em;border-bottom:1px solid var(--glass-border);padding-bottom:0.8rem;margin:3rem 0">PROCEDURES BY GLASSWARE TYPE</div>
+
+  <!-- Volumetric Flask Procedure -->
+  <div class="section-label">◈ 2A. Volumetric Flask (In Method - 'TC')</div>
+  <div class="card reveal">
+    <ol class="step-list">
+      <li><strong>Visual inspection:</strong> Verify cleanliness, inner surface condition (no frosting, scratches or chemical etching), and inscription legibility.</li>
+      <li>Ensure the flask is completely dry internally. <em>Wear lint-free gloves to prevent transferring oils and heat from hands.</em></li>
+      <li>Place the empty, dry flask on the calibrated balance. Record the empty weight ($M_{E}$).</li>
+      <li>Fill the flask carefully with deionized water (equilibrated to room temperature) until about $1 \text{cm}$ below the graduation mark.</li>
+      <li>Use a dropper to add water drop-by-drop until the lowest point of the meniscus exactly touches the top edge of the graduation line (read at eye level).</li>
+      <li>Ensure no water droplets adhere to the inside of the neck above the meniscus line. Wipe with lint-free paper if necessary.</li>
+      <li>Record the water temperature ($T_{W1}$) in the dispensing container before testing.</li>
+      <li>Place the filled flask on the balance and record the filled weight ($M_{F1}$).</li>
+      <li>Empty the flask, wash, and dry it completely. Repeat steps 3–8 for <strong>readings 2 and 3</strong> ($M_{F2}, M_{F3}$).</li>
+      <li>Record the final water temperature ($T_{W2}$) after testing is complete. The temperature drift must be <strong>$\le 0.5^{\circ}\text{C}$</strong>.</li>
+    </ol>
+  </div>
+
+  <!-- Bulb Pipette Procedure -->
+  <div class="section-label">◈ 2B. Bulb Pipette (Ex Method - 'TD')</div>
+  <div class="card reveal">
+    <ol class="step-list">
+      <li>Place a receiving vessel (e.g., Erlenmeyer flask with a small amount of water to humidify it and covered with a watch glass) on the balance. Tare the balance.</li>
+      <li>Fill the bulb pipette with deionized water slightly above the graduation mark. Dry the outside of the tip with lint-free tissue.</li>
+      <li>Adjust the meniscus so the lowest point touches the upper edge of the graduation line.</li>
+      <li>Hold the pipette vertically and allow the water to drain freely by gravity into the receiving vessel.</li>
+      <li>When the continuous flow stops, rest the tip of the pipette against the inner wall of the vessel for approximately <strong>5 seconds</strong>.</li>
+      <li>Draw the tip upwards along the wall to detach any hanging drop. Do <strong>NOT</strong> blow out the remaining liquid in the tip.</li>
+      <li>Record the mass of the dispensed water. Tare the balance.</li>
+      <li>Repeat for a total of <strong>5 consecutive measurements</strong>.</li>
+    </ol>
+  </div>
+
+  <!-- Burette Procedure -->
+  <div class="section-label">◈ 2C. Burette (Ex Method - 'TD')</div>
+  <div class="card reveal">
+    <ol class="step-list">
+      <li>Mount the burette perfectly vertically. Fill it with deionized water to slightly above the zero mark.</li>
+      <li>Open the stopcock to fill the tip completely (ensure no air bubbles are trapped).</li>
+      <li>Adjust the meniscus exactly to the zero mark. Remove any hanging drop at the tip.</li>
+      <li>Place the tared receiving vessel under the burette.</li>
+      <li>Fully open the stopcock and dispense water into the vessel until the meniscus is approximately $5 \text{mm}$ above the target test volume graduation.</li>
+      <li>Wait for exactly <strong>30 seconds</strong> for drainage from the burette walls.</li>
+      <li>Carefully adjust the meniscus to exactly touch the target graduation mark. Touch the tip to the vessel wall to remove any hanging drop.</li>
+      <li>Record the dispensed mass.</li>
+      <li>Repeat steps 1-8 for a total of <strong>5 measurements</strong> at the required points (e.g., $10 \text{mL}$, $25 \text{mL}$, $50 \text{mL}$).</li>
+    </ol>
+  </div>
+
+  <!-- Calculations -->
+  <div class="section-label">◈ 3. Calculations & Temperature Correction</div>
+  <div class="card reveal">
+    <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">The apparent mass of the water must be converted into volume at the reference temperature (usually $20^{\circ}\text{C}$) using the $Z$-factor.</p>
+    
+    <div style="background:var(--bg2);padding:1.5rem;border-radius:12px;font-family:'DM Mono',monospace;font-size:0.9rem;margin-bottom:1rem;color:var(--mint);text-align:center;border:1px solid var(--glass-border)">
+      $M_{Water} = M_{Filled} - M_{Empty}$<br><br>
+      $V_{20} = M_{Water} \times Z$<br><br>
+      Absolute Error ($E$) = $|V_{20} - V_{Nominal}|$
+    </div>
+
+    <ul style="list-style:none;font-size:0.85rem;line-height:1.7;color:var(--text-dim)">
+      <li>• $M_{Water}$: True mass of water (for Ex methods, this is simply the dispensed mass)</li>
+      <li>• $Z$-factor: Correction factor accounting for the density of water at the measured temperature and air buoyancy (sourced from ISO 4787 standard tables).</li>
+      <li>• $V_{20}$: Calculated true volume at reference temperature ($20^{\circ}\text{C}$).</li>
+    </ul>
+    
+    <div style="margin-top:1.5rem;padding-left:1rem;border-left:2px solid var(--amber)">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--amber);text-transform:uppercase;margin-bottom:0.5rem">✅ Acceptance Criteria</div>
+      <p style="font-size:0.85rem;color:var(--text)">The Absolute Error ($E$) for all recorded measurements must be <strong>$\le$ Maximum Permissible Error (MPE)</strong> stated by the manufacturer for the specific Class A/B glassware.</p>
+    </div>
+  </div>
+
+  <!-- Corrective Action -->
+  <div class="section-label">◈ 4. Corrective Action & Reporting</div>
   <div class="card reveal">
     <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
-      <li>⚠️ If first verification <strong>fails</strong> → repeat verification by a <strong>different analyst</strong></li>
-      <li>❌ If second verification also fails → <strong>dispose of the glassware</strong></li>
-      <li>🏷️ Mark failed glassware as "OUT OF SERVICE" pending disposal</li>
-      <li>📋 Document all failures in the verification record</li>
+      <li>⚠️ If the absolute error exceeds the MPE limit → repeat the verification process (must be done by a <strong>different analyst</strong>).</li>
+      <li>❌ If the second verification also fails → the volumetric glassware is deemed inaccurate and must be permanently removed from quantitative use.</li>
+      <li>🏷️ Label the failed glassware as <span style="font-weight:bold;color:var(--red)">"OUT OF SERVICE / FOR QUALITATIVE USE ONLY"</span>.</li>
+      <li>📋 Record results in <strong>PKK/048</strong> and apply the <strong>UPM Temperature Correction Worksheet</strong>.</li>
     </ul>
   </div>
 

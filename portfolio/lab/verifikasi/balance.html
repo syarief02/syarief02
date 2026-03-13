@@ -67,48 +67,111 @@
     </table>
   </div>
 
-  <div class="section-label">◈ Procedure</div>
+  <!-- Pre-Requisites & Environment -->
+  <div class="section-label">◈ Pre-Requisites & Environmental Control</div>
   <div class="card reveal">
-    <ol class="step-list">
-      <li>Check the balance is level and on a stable, vibration-free surface. Ensure the balance room temperature is within the acceptable range.</li>
-      <li>Turn on the balance and allow at least 30 minutes warm-up time before use.</li>
-      <li>Perform internal calibration (if available) or external calibration using the appropriate standard weight.</li>
-      <li><strong>Eccentricity Test:</strong> Place the standard weight at the centre, then at each of the four corners of the pan. Record all 5 readings.</li>
-      <li><strong>Repeatability Test:</strong> Place and remove the same standard weight 10 times consecutively. Record each reading. Calculate mean, standard deviation, and verify against specifications.</li>
-      <li><strong>Linearity Test:</strong> Weigh standard weights at 0%, 25%, 50%, 75%, and 100% of balance capacity. Record and compare against calibration certificate values.</li>
-      <li>Record all results in the balance log book and repeatability test form.</li>
-      <li>Submit completed forms to the Pharmacist for review and approval.</li>
-    </ol>
-  </div>
-
-  <div class="section-label">◈ Standard Weights & Calibration</div>
-  <div class="card reveal" style="overflow-x:auto">
-    <table class="eq-table">
-      <thead><tr><th>Weight Set</th><th>Class</th><th>Asset No.</th><th>Usage</th></tr></thead>
-      <tbody>
-        <tr><td>Standard Weight Set 1</td><td class="highlight">E2</td><td>006-004828</td><td>Analytical Balance (Makmal Besar)</td></tr>
-        <tr><td>Standard Weight Set 2</td><td class="highlight">F2</td><td>006-004828</td><td>Analytical Balance (Makmal Besar)</td></tr>
-        <tr><td>Standard Weight Set 3</td><td class="highlight">F1</td><td>006-003632</td><td>UPR Balance</td></tr>
-        <tr><td>Standard Weight Set 4</td><td class="highlight">—</td><td>006-004872</td><td>UPM Balance</td></tr>
-      </tbody>
-    </table>
-    <div class="tag-row">
-      <span class="tag t-amber">Annual Calibration Required</span>
-      <span class="tag t-cyan">SIRIM Traceable</span>
+    <div class="info-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--amber);margin-bottom:0.3rem">Environmental Conditions</div>
+        <ul style="list-style:none;font-size:0.85rem;line-height:1.6">
+          <li>• <strong>Temperature:</strong> 20 ± 3°C</li>
+          <li>• <strong>Relative Humidity:</strong> 45% – 80%</li>
+          <li>• <strong>Airflow:</strong> Keep away from A/C vents and direct drafts</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--cyan);margin-bottom:0.3rem">Balance Preparation</div>
+        <ul style="list-style:none;font-size:0.85rem;line-height:1.6">
+          <li>• <strong>Warm-up:</strong> Minimum 30–60 minutes prior to verification</li>
+          <li>• <strong>Leveling:</strong> Ensure the leveling bubble is perfectly centered</li>
+          <li>• <strong>Cleanliness:</strong> Clean weighing pan and draft shield with antistatic brush</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="section-label">◈ Acceptance Criteria</div>
+  <div class="section-label">◈ 1. Eccentricity Test (Shift Test)</div>
   <div class="card reveal">
-    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
-      <li>✅ <strong>Eccentricity:</strong> All 5 readings must be within ±0.5d of the reference value</li>
-      <li>✅ <strong>Repeatability:</strong> Standard deviation ≤ stated repeatability specification</li>
-      <li>✅ <strong>Linearity:</strong> Deviation from reference ≤ Maximum Permissible Error (MPE)</li>
-      <li>⚠️ <strong>If FAIL:</strong> Remove from service, label "OUT OF SERVICE", arrange for calibration/repair</li>
-    </ul>
+    <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">To ensure the balance provides consistent readings regardless of where the load is placed on the measuring pan. Conducted using a standard weight equivalent to approx. 30% to 50% of the balance capacity.</p>
+    <ol class="step-list">
+      <li>Place the selected standard weight exactly in the <strong>center</strong> of the pan. Record the reading ($C$). Tare the balance.</li>
+      <li>Move the same weight to the <strong>front-left</strong> quadrant. Record the reading ($FL$).</li>
+      <li>Move the weight to the <strong>back-left</strong> quadrant. Record the reading ($BL$).</li>
+      <li>Move the weight to the <strong>back-right</strong> quadrant. Record the reading ($BR$).</li>
+      <li>Move the weight to the <strong>front-right</strong> quadrant. Record the reading ($FR$).</li>
+      <li>Calculate the maximum eccentric error: $\Delta E_{max} = \max(|C - FL|, |C - BL|, |C - BR|, |C - FR|)$</li>
+    </ol>
   </div>
 
-  <div class="footer">Balance Performance Check ◈ Verifikasi Alat Radas ◈ NPRA Malaysia</div>
+  <div class="section-label">◈ 2. Repeatability Test</div>
+  <div class="card reveal">
+    <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">To determine the ability of the balance to provide the same result for repeated weighings of the same load under identical conditions. Conducted using a standard weight close to the typical working load.</p>
+    <ol class="step-list">
+      <li>Zero the balance. Ensure display reads exactly $0.0000 \text{ g}$.</li>
+      <li>Place the selected standard weight on the center of the pan. Close the draft shield.</li>
+      <li>Wait for the reading to stabilize (stability indicator appears). Record reading $x_1$.</li>
+      <li>Remove the weight. Zero/Tare the balance if it does not return to exactly $0.0000 \text{ g}$.</li>
+      <li>Repeat Steps 2–4 for a total of <strong>10 consecutive times</strong> ($x_1, x_2, ..., x_{10}$).</li>
+      <li>Calculate the Standard Deviation ($S_r$) using the formula:</li>
+    </ol>
+    <div style="background:var(--bg2);padding:1rem;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.85rem;text-align:center;margin-top:1rem;color:var(--cyan)">
+      S<sub>r</sub> = &radic;&Sigma;(x<sub>i</sub> - x&#772;)&sup2; / (n - 1)
+    </div>
+  </div>
+
+  <div class="section-label">◈ 3. Linearity Test / Accuracy check</div>
+  <div class="card reveal">
+    <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">To verify that the balance displays the correct value across its entire operating range. Measurements are taken at approx. 0%, 25%, 50%, 75%, and 100% of the maximum capacity.</p>
+    <ol class="step-list">
+      <li>Select standard weights corresponding to the 5 test points.</li>
+      <li>Zero the balance.</li>
+      <li>Place the first weight on the pan, let it stabilize, and record the displayed value.</li>
+      <li>Repeat for all test points up to Maximum Capacity.</li>
+      <li>Calculate the Error of Indication ($E$) for each point:</li>
+    </ol>
+    <div style="background:var(--bg2);padding:1rem;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.85rem;text-align:center;margin-top:1rem;color:var(--mint)">
+      Error (E) = Displayed Value(x) - True Mass of Standard Weight(m<sub>ref</sub>)
+    </div>
+  </div>
+
+  <div class="section-label">◈ Standard Weights & Traceability</div>
+  <div class="card reveal" style="overflow-x:auto">
+    <table class="eq-table">
+      <thead><tr><th>Weight Set</th><th>OIML Class</th><th>Asset No.</th><th>Usage / Assignment</th><th>Recalibration</th></tr></thead>
+      <tbody>
+        <tr><td>Standard Set 1</td><td class="highlight">E2</td><td>006-004828</td><td>Analytical Balances (Makmal Besar)</td><td>Annually</td></tr>
+        <tr><td>Standard Set 2</td><td class="highlight">F2</td><td>006-004828</td><td>Top-loading Balances (Makmal Besar)</td><td>Annually</td></tr>
+        <tr><td>Standard Set 3</td><td class="highlight">F1</td><td>006-003632</td><td>UPR Balance</td><td>Annually</td></tr>
+        <tr><td>Standard Set 4</td><td class="highlight">—</td><td>006-004872</td><td>UPM Balance</td><td>Annually</td></tr>
+      </tbody>
+    </table>
+    <div class="tag-row" style="margin-top:1rem">
+      <span class="tag t-amber">ISO/IEC 17025 Accreditated Lab</span>
+      <span class="tag t-cyan">SIRIM Traceable</span>
+      <span class="tag t-purple">Handle strictly with non-magnetic forceps</span>
+    </div>
+  </div>
+
+  <div class="section-label">◈ Acceptance Criteria & Corrective Actions</div>
+  <div class="card reveal">
+    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2;margin-bottom:1.5rem">
+      <li>✅ <strong>Eccentricity:</strong> $\Delta E_{max}$ must be $\le$ Maximum Permissible Error (MPE) for the specific load.</li>
+      <li>✅ <strong>Repeatability:</strong> Standard deviation ($S_r$) must be $\le$ Manufacturer's specification for repeatability limitation.</li>
+      <li>✅ <strong>Linearity:</strong> Error ($E$) at each point must be $\le$ Maximum Permissible Error (MPE) specified by OIML R76 guidelines.</li>
+    </ul>
+    
+    <div style="border-left:3px solid var(--red);padding-left:1rem">
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--red);text-transform:uppercase;margin-bottom:0.5rem">⚠️ Corrective Actions if FAILED</div>
+      <p style="font-size:0.8rem;line-height:1.6">
+        1. Clean the weighing pan, check the leveling bubble, and re-run internal calibration.<br>
+        2. Repeat the verification test by changing the analyst (Second Analyst).<br>
+        3. If Second Analyst also fails, tag the balance immediately with an <span style="color:var(--red);font-weight:bold;background:rgba(255,0,0,0.1);padding:0 4px">OUT OF SERVICE</span> label.<br>
+        4. Notify the Supervising Pharmacist immediately to arrange for external maintenance/calibration.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">Balance Performance Check ◈ Verifikasi Alat Radas ◈ Makmal NPRA Malaysia</div>
 </div>
 <script>
 let dark=false;function toggleTheme(){dark=!dark;document.documentElement.setAttribute('data-theme',dark?'dark':'light');document.getElementById('themeTxt').textContent=dark?'Light Mode':'Dark Mode'}

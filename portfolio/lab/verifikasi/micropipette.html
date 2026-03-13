@@ -72,35 +72,86 @@
     </ul>
   </div>
 
-  <div class="section-label">◈ Procedure</div>
+  <!-- Balance Requirements -->
+  <div class="section-label">◈ 1. Balance Resolution Requirements (ISO 8655-6)</div>
+  <div class="card reveal" style="overflow-x:auto">
+    <p style="font-size:0.85rem;margin-bottom:0.8rem;color:var(--text-dim)">The analytical balance used must meet the minimum resolution requirements strictly based on the nominal volume of the micropipette under test.</p>
+    <table class="eq-table">
+      <thead><tr><th>Selected Volume ($V$)</th><th>Resolution (mg)</th><th>Repeatability & Linearity (mg)</th><th>Standard Uncertainty (mg)</th></tr></thead>
+      <tbody>
+        <tr><td>$10 \, \mu\text{L} \le V \le 100 \, \mu\text{L}$</td><td class="highlight">0.01</td><td>0.025</td><td>0.05</td></tr>
+        <tr><td>$100 \, \mu\text{L} < V \le 1000 \, \mu\text{L}$</td><td class="highlight">0.1</td><td>0.2</td><td>0.4</td></tr>
+        <tr><td>$1 \, \text{mL} < V \le 10 \, \text{mL}$</td><td class="highlight">1.0</td><td>2.0</td><td>4.0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Immersion & Wait Times -->
+  <div class="section-label">◈ 2. Immersion Depth & Wait Times</div>
+  <div class="card reveal" style="overflow-x:auto">
+    <table class="eq-table">
+      <thead><tr><th>Volume Range ($\mu\text{L}$)</th><th>Immersion Depth (mm)</th><th>Wait Time (seconds)</th></tr></thead>
+      <tbody>
+        <tr><td>$1$ to $2$</td><td class="highlight">1</td><td>1</td></tr>
+        <tr><td>$> 1$ to $100$</td><td class="highlight">2 to 3</td><td>1</td></tr>
+        <tr><td>$> 100$ to $1000$</td><td class="highlight">2 to 4</td><td>1</td></tr>
+        <tr><td>$> 1000$ to $20000$</td><td class="highlight">3 to 6</td><td>3</td></tr>
+      </tbody>
+    </table>
+    <div class="tag-row" style="margin-top:0.5rem">
+      <span class="tag t-amber">Pre-wet tip 3-5 times before measurement</span>
+      <span class="tag t-cyan">Aspirate vertically</span>
+      <span class="tag t-purple">Dispense at 30°–45° against wall</span>
+    </div>
+  </div>
+
+  <!-- Procedure -->
+  <div class="section-label">◈ 3. Gravimetric Procedure</div>
   <div class="card reveal">
     <ol class="step-list">
-      <li>Record room temperature and RH from calibrated thermohygrometer. Ensure T = 20±3°C, max variation ±0.5°C, RH = 45–80%.</li>
-      <li>Record deionized water temperature (must be within ±0.5°C of room temperature).</li>
-      <li>Determine Z-factor from the water temperature using the Z-factor table.</li>
-      <li>Select appropriate balance based on test volume and minimum weight requirements.</li>
-      <li>Place a suitable flask/beaker on the balance and TARE.</li>
-      <li>Hold the micropipette vertically. Immerse the tip to the correct depth. Aspirate water and dispense at 30-45° angle into the vessel.</li>
-      <li>Print the result. TARE the balance.</li>
-      <li>Repeat steps 6-7 for a total of <strong>10 measurements</strong>.</li>
-      <li>For volumes <strong>&lt;50 µL</strong>: perform evaporation correction (mass loss measurement).</li>
-      <li>Calculate mean volume (V̄), standard deviation (Sr), Accuracy (A), and CV. Compare against max permissible errors.</li>
-      <li>Paste the balance printout slips on the verification form and submit for review.</li>
+      <li>Record room conditions from calibrated thermohygrometer. Must be $T = 20 \pm 3^{\circ}\text{C}$ (max variation $\pm 0.5^{\circ}\text{C}$), $RH = 45–80\%$.</li>
+      <li>Record deionized water temperature ($T_w$). It must be within $\pm 0.5^{\circ}\text{C}$ of room temperature.</li>
+      <li>Determine Z-factor corresponding to the water temperature (assumes air pressure approx. $1013 \, \text{hPa}$).</li>
+      <li>Select appropriate balance (Tare a suitable receiving vessel with a small amount of water to humidify the vessel).</li>
+      <li>Attach a new tip and <strong>pre-wet the tip</strong> by aspirating and dispensing the nominal volume multiple times to saturate the dead air volume.</li>
+      <li>Hold micropipette vertically. Immerse tip to correct depth. Aspirate steadily. Wait the required time (1–3s).</li>
+      <li>Withdraw tip and dispense into vessel at a 30°–45° angle against the inner wall. Drag the tip upwards slightly along the wall to remove any remaining droplet.</li>
+      <li>Record the mass ($M$). Tare the balance.</li>
+      <li>Repeat for a total of <strong>10 consecutive measurements</strong> ($M_1$ to $M_{10}$).</li>
     </ol>
   </div>
 
-  <div class="section-label">◈ Calculations</div>
+  <!-- Mass Loss / Evaporation -->
+  <div class="section-label">◈ 4. Mass Loss (Evaporation Correction)</div>
+  <div class="card reveal" style="border-left:4px solid var(--red)">
+    <p style="font-size:0.85rem;margin-bottom:1rem;line-height:1.6;color:var(--text)">
+      For test volumes <strong>$&lt; 50 \, \mu\text{L}$</strong>, evaporation during the weighing cycle significantly affects accuracy. A Mass Loss ($ML$) correction must be applied.
+    </p>
+    <ol class="step-list">
+      <li>Start a timer at the beginning of the 10 weighings. Record the total time $T_{cycle}$ (in seconds) taken to complete all 10 weighings.</li>
+      <li>After the 10th reading ($M_{10}$) is recorded, leave the vessel on the balance and wait for exactly $T_{cycle}$ seconds.</li>
+      <li>Record the new balance reading ($M_{11}$).</li>
+      <li>Calculate Total Mass Loss during the cycle: $\Delta M = M_{10} - M_{11}$.</li>
+      <li>Calculate average Mass Loss per measurement: <span style="font-family:'DM Mono',monospace;color:var(--red);font-weight:bold">$ML = (M_{10} - M_{11}) / 10$</span>.</li>
+      <li>Add $ML$ to each recorded mass ($M_i$) before applying the Z-factor.</li>
+    </ol>
+  </div>
+
+  <!-- Calculations -->
+  <div class="section-label">◈ 5. Final Calculations</div>
   <div class="card reveal">
     <div class="formula">
-      <span class="var">Vi</span> = mass × <span class="var">Z</span><br>
-      <span class="var">V̄</span> = mean of <span class="var">V1...V10</span><br>
-      <span class="var">A</span> = 100 × (V̄ − Vs) / Vs<br>
-      <span class="var">CV</span> = 100 × Sr / V̄<br>
-      <span class="var">ML</span> = (X₁₀ − X₁₁) / 10
+      Corrected Mass ($M_i^*$) = $M_i + ML$<br>
+      Volume ($V_i$) = $M_i^* \times Z$<br>
+      Mean Volume ($\overline{V}$) = $\frac{1}{10} \sum_{i=1}^{10} V_i$<br>
+      Accuracy ($A$) = $100 \times \frac{\overline{V} - V_s}{V_s}$ %<br>
+      CV = $100 \times \frac{S_r}{\overline{V}}$ %
     </div>
-    <p style="font-size:0.78rem;color:var(--text-dim);margin-top:0.5rem;text-align:center">
-      A<sub>found</sub> ≤ A<sub>max</sub> and CV<sub>found</sub> ≤ CV<sub>max</sub> → <strong>PASS</strong>
-    </p>
+    <ul style="list-style:none;font-size:0.8rem;color:var(--text-dim);margin-top:1rem;line-height:2">
+      <li>$V_s$: Selected Test Volume</li>
+      <li>$S_r$: Standard Deviation of the 10 calculated volumes ($V_i$)</li>
+      <li><strong>PASS Criterion:</strong> $A_{found} \le A_{max}$ AND $CV_{found} \le CV_{max}$</li>
+    </ul>
   </div>
 
   <div class="section-label">◈ Max Permissible Errors — Single Channel</div>

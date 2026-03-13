@@ -48,60 +48,94 @@
     <p class="hero-desc">Procedure for verifying test thermometers against calibrated master thermometers. Ensures temperature measurement accuracy across the laboratory.</p>
   </div>
 
-  <div class="section-label">◈ Key Parameters</div>
+  <!-- Preparation & Conditions -->
+  <div class="section-label">◈ 1. Preparation & Environmental Equilibrium</div>
+  <div class="card reveal" style="border-left:4px solid var(--amber)">
+    <p style="font-size:0.85rem;margin-bottom:0.8rem;color:var(--text-dim)">Essential requirements before initiating thermometer verification to ensure valid comparative readings between Master and Test instruments.</p>
+    <ul style="list-style:none;font-size:0.85rem;line-height:1.7">
+      <li>• <strong>Master Thermometer Requirement:</strong> Must possess a valid calibration certificate and have equal or better resolution than the test thermometer.</li>
+      <li>• <strong>Immersion Condition:</strong> Both Master and Test thermometers must be immersed to the same specified depth in an appropriately controlled water bath or stable environment.</li>
+      <li>• <strong>Equilibrium Time:</strong> Both thermometers must be placed and left to stabilize for <strong>at least 1 hour</strong> to reach thermal equilibrium with the surrounding test environment prior to recording the first reading.</li>
+    </ul>
+  </div>
+
+  <!-- Verification Procedure -->
+  <div class="section-label">◈ 2. Verification Procedure (PKKK/200/009)</div>
   <div class="card reveal">
-    <div class="spec-grid">
+    <div class="spec-grid" style="margin-bottom:1.5rem">
       <div class="spec-item"><div class="spec-value">3 Mo</div><div class="spec-label">Frequency</div></div>
       <div class="spec-item"><div class="spec-value">5</div><div class="spec-label">Readings Required</div></div>
       <div class="spec-item"><div class="spec-value">≤1.0°C</div><div class="spec-label">Tolerance</div></div>
     </div>
-  </div>
-
-  <div class="section-label">◈ Master Thermometer Requirements</div>
-  <div class="card reveal">
-    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
-      <li>✅ Valid calibration certificate (SIRIM / accredited lab)</li>
-      <li>✅ Used ONLY for verification purposes — not routine measurements</li>
-      <li>✅ Equal or better resolution than the test thermometer</li>
-      <li>📋 Record: serial number, calibration date, range, certificate number</li>
-    </ul>
-  </div>
-
-  <div class="section-label">◈ Procedure</div>
-  <div class="card reveal">
+    <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">Systematic recording of comparative temperatures ensuring proper intervals and stabilization.</p>
     <ol class="step-list">
-      <li>Place both master and test thermometers in the same environment for <strong>at least 2 hours</strong> to reach equilibrium.</li>
-      <li>After equilibrium, record the first pair of readings (master + test) simultaneously.</li>
-      <li>Wait <strong>at least 5 minutes</strong> between each reading.</li>
-      <li>Record a total of <strong>5 readings</strong> for both the master and test thermometers.</li>
-      <li>Calculate the difference between each pair of readings.</li>
-      <li>If all differences are <strong>≤ 1.0°C</strong>, the test thermometer <strong>PASSES</strong>.</li>
-      <li>Record all results in the Thermometer Verification Record Sheet (<strong>PKK/047A</strong>).</li>
-      <li>Generate the linearity equation for actual temperature reading using form <strong>PKK/047B</strong>.</li>
-      <li>Submit the report to the Pharmacist for review and approval.</li>
+      <li>Verify the physical condition of the test thermometer (no separated liquid columns, no cracks, clear scale).</li>
+      <li>Check the calibration certificate status of the <strong>Master Thermometer</strong> and ensure the required range is covered.</li>
+      <li>Immerse both thermometers closely together in the medium. Ensure bulbs/sensors do not touch the walls or bottom of the container.</li>
+      <li>Allow at least 1 hour for stabilization.</li>
+      <li>Record the <strong>first paired reading</strong> (Master $T_{M1}$ and Test $T_{T1}$).</li>
+      <li>Wait for an interval of <strong>at least 5 minutes</strong>.</li>
+      <li>Record the <strong>second paired reading</strong> ($T_{M2}$, $T_{T2}$).</li>
+      <li>Repeat the 5-minute intervals until a total of <strong>5 consecutive paired readings</strong> have been recorded.</li>
+      <li>Record details of the Master Thermometer in the report including: Resolution, Calibration Date, Calibration Range, and Calibration Certificate Number.</li>
     </ol>
   </div>
 
-  <div class="section-label">◈ Corrective Action</div>
+  <!-- Calculations -->
+  <div class="section-label">◈ 3. Calculations & Linearity Equation</div>
   <div class="card reveal">
-    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
-      <li>⚠️ If first verification <strong>fails</strong> → repeat verification by a <strong>different analyst</strong></li>
-      <li>❌ If second verification also fails → remove thermometer from service</li>
-      <li>🏷️ Label failed thermometer as <strong>"OUT OF SERVICE"</strong></li>
-      <li>📤 Send for recalibration or replace</li>
+    <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">The true value of the Test Thermometer ($y$) must be calculated using the Master Thermometer's calibration linearity equation.</p>
+    
+    <div style="background:var(--bg2);padding:1rem;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.85rem;margin-bottom:1rem;color:var(--amber)">
+      Linearity Equation from Master Certificate:<br>
+      <span style="font-size:1rem;font-weight:700">y = mx + c</span><br><br>
+      <span style="font-size:0.75rem">Where:<br>
+      $y$ = True Temperature (°C) derived from Master<br>
+      $m$ = Gradient (Slope) from calibration cert<br>
+      $x$ = Actual reading shown on Master Thermometer<br>
+      $c$ = y-intercept from calibration cert</span>
+    </div>
+
+    <ul class="step-list">
+      <li>Calculate the true temperature ($y_i$) for each of the 5 Master readings ($x_1 \dots x_5$).</li>
+      <li>Calculate the absolute difference $\Delta T = |T_{Test} - y|$ for each paired reading.</li>
+      <li>Verify that the maximum $\Delta T$ does not exceed the accepted tolerance level.</li>
     </ul>
   </div>
 
-  <div class="section-label">◈ Forms & References</div>
-  <div class="card reveal">
-    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
-      <li>📋 <strong>PKK/047A</strong> — Thermometer Verification Record Sheet</li>
-      <li>📋 <strong>PKK/047B</strong> — Generation of Linearity Equation for Actual Temperature Reading</li>
-      <li>📋 <strong>PKKK/200/009</strong> — Quality Procedure: Verifikasi Termometer</li>
-    </ul>
+  <!-- Acceptance & Troubleshooting -->
+  <div class="section-label">◈ 4. Acceptance Criteria & Troubleshooting</div>
+  <div class="card reveal" style="display:flex;flex-direction:column;gap:1.5rem">
+    
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--mint);text-transform:uppercase;margin-bottom:0.5rem">✅ Acceptance Criteria</div>
+      <p style="font-size:0.85rem;line-height:1.6;padding-left:1rem;border-left:2px solid var(--mint)">
+        The maximum temperature difference between the derived Master true value ($y$) and the Test thermometer reading ($T_{Test}$) shall not exceed <strong>$1.0^{\circ}\text{C}$</strong> for all 5 readings.<br>
+        Tolerance limit: $\le 1.0^{\circ}\text{C}$.
+      </p>
+    </div>
+
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--red);text-transform:uppercase;margin-bottom:0.5rem">⚠️ Actions on Failure</div>
+      <p style="font-size:0.85rem;line-height:1.6;padding-left:1rem;border-left:2px solid var(--red)">
+        If the Test thermometer fails to meet the $\le 1.0^{\circ}\text{C}$ specification:<br>
+        1. <strong>Do not</strong> immediately discard the thermometer.<br>
+        2. Repeat the entire verification process by a <strong>different analyst</strong> (Second checking).<br>
+        3. If the second verification also fails, the test thermometer is deemed 'Out of Tolerance' and must be removed from use or sent for official recalibration/repair.
+      </p>
+    </div>
+
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--cyan);text-transform:uppercase;margin-bottom:0.5rem">📋 Reference Forms</div>
+      <p style="font-size:0.85rem;line-height:1.6;padding-left:1rem;border-left:2px solid var(--cyan)">
+        • <strong>PKK/047A</strong> — Thermometer Verification Record Sheet<br>
+        • <strong>PKK/047B</strong> — Generation of Linearity Equation for Actual Temperature Reading
+      </p>
+    </div>
+
   </div>
 
-  <div class="footer">Thermometer Verification ◈ PKKK/200/009 ◈ NPRA Malaysia</div>
+  <div class="footer">Thermometer Verification PKKK/200/009 ◈ Makmal NPRA Malaysia</div>
 </div>
 <script>
 let dark=false;function toggleTheme(){dark=!dark;document.documentElement.setAttribute('data-theme',dark?'dark':'light');document.getElementById('themeTxt').textContent=dark?'Light Mode':'Dark Mode'}
