@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dilution Formula — Complete Guide | Lab Notes</title>
+<meta name="description" content="Comprehensive guide to the dilution formula C1V1 = C2V2. Theory, derivation, worked examples, interactive calculator, and real-world pharmaceutical applications.">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+[data-theme="dark"]{
+  --bg:#040d1a;--bg2:#071528;
+  --glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.09);
+  --cyan:#00e5ff;--cyan-dim:rgba(0,229,255,0.12);
+  --mint:#00ffb3;--mint-dim:rgba(0,255,179,0.12);
+  --amber:#ffb700;--amber-dim:rgba(255,183,0,0.13);
+  --purple:#b47aff;--purple-dim:rgba(180,122,255,0.12);
+  --red:#ff4d6d;--red-dim:rgba(255,77,109,0.13);
+  --text:#c8d8f0;--text-dim:#6888aa;--text-bright:#eaf4ff;
+  --card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.09);
+  --card-hover:rgba(255,255,255,0.07);--orb-opacity:0.16;
+  --input-bg:rgba(255,255,255,0.06);--input-border:rgba(255,255,255,0.12);
+}
+[data-theme="light"]{
+  --bg:#f0f4fa;--bg2:#e4edf8;
+  --glass:rgba(255,255,255,0.7);--glass-border:rgba(80,120,200,0.15);
+  --cyan:#0080aa;--cyan-dim:rgba(0,128,170,0.1);
+  --mint:#007a55;--mint-dim:rgba(0,122,85,0.1);
+  --amber:#b07800;--amber-dim:rgba(176,120,0,0.1);
+  --purple:#7040b0;--purple-dim:rgba(112,64,176,0.1);
+  --red:#c0203a;--red-dim:rgba(192,32,58,0.1);
+  --text:#1a2a44;--text-dim:#5a7090;--text-bright:#0a1830;
+  --card-bg:rgba(255,255,255,0.82);--card-border:rgba(80,130,200,0.18);
+  --card-hover:rgba(255,255,255,0.95);--orb-opacity:0.10;
+  --input-bg:rgba(255,255,255,0.9);--input-border:rgba(80,130,200,0.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;transition:background 0.4s,color 0.4s}
+/* BG Effects */
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:var(--orb-opacity);animation:drift 22s ease-in-out infinite alternate}
+.orb1{width:700px;height:700px;background:var(--cyan);top:-250px;left:-200px}
+.orb2{width:550px;height:550px;background:var(--mint);bottom:-150px;right:-150px;animation-delay:-8s}
+.orb3{width:400px;height:400px;background:var(--purple);top:35%;left:50%;animation-delay:-15s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,80px) scale(1.1)}}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,229,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.025) 1px,transparent 1px);background-size:42px 42px}
+[data-theme="light"] .grid-overlay{background-image:linear-gradient(rgba(0,80,150,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,80,150,0.04) 1px,transparent 1px)}
+/* Layout */
+.main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+@media(min-width:768px){.main{padding:3.5rem 2rem 6rem}}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:0.8rem}
+.topbar-left{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap}
+.ctrl-btn{display:flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;padding:0.42rem 0.9rem;border-radius:100px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;transition:all 0.2s;backdrop-filter:blur(8px);white-space:nowrap;text-decoration:none}
+.ctrl-btn:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim)}
+.ctrl-btn svg{width:13px;height:13px;flex-shrink:0}
+/* Hero */
+.hero{text-align:center;margin-bottom:3.5rem;animation:heroIn 0.9s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-size:clamp(2.1rem,5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}
+.hero h1 .g{background:linear-gradient(120deg,var(--cyan) 0%,var(--mint) 60%,#88ffee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1rem;color:var(--text-dim);margin-bottom:0.8rem}
+.hero-desc{font-size:0.92rem;color:var(--text-dim);max-width:620px;margin:0 auto;line-height:1.7}
+/* Section Labels */
+.section-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.2rem;padding-left:0.2rem}
+/* Cards */
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem 2.2rem;backdrop-filter:blur(18px);margin-bottom:2.5rem;transition:all 0.3s;box-shadow:0 8px 32px rgba(0,0,0,0.04)}
+.card-title{font-size:1.15rem;font-weight:700;color:var(--text-bright);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem}
+.card-subtitle{font-size:0.85rem;font-weight:600;color:var(--cyan);margin-bottom:0.6rem;text-transform:uppercase;letter-spacing:0.05em;font-family:'DM Mono',monospace}
+.card p, .card li{font-size:0.92rem;line-height:1.7;color:var(--text)}
+.card ul, .card ol{padding-left:1.4rem;margin-bottom:1rem}
+.card li{margin-bottom:0.3rem}
+/* Formula Display */
+.formula-box{background:linear-gradient(135deg,var(--cyan-dim),var(--mint-dim));border:1px solid rgba(0,229,255,0.25);border-radius:14px;padding:2rem;text-align:center;margin:1.5rem 0}
+.formula-main{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:800;color:var(--text-bright);font-family:'DM Mono',monospace;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.formula-alt{font-size:clamp(1rem,2.5vw,1.4rem);font-weight:600;color:var(--cyan);font-family:'DM Mono',monospace;margin-top:0.5rem}
+.formula-label{font-size:0.75rem;color:var(--text-dim);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;margin-top:0.8rem}
+/* Variable Cards */
+.var-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:1.2rem 0}
+.var-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;padding:1rem 1.2rem;text-align:center;transition:all 0.2s}
+.var-card:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.var-symbol{font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:700;margin-bottom:0.3rem}
+.var-name{font-size:0.82rem;font-weight:600;color:var(--text-bright);margin-bottom:0.2rem}
+.var-desc{font-size:0.72rem;color:var(--text-dim);line-height:1.5}
+.vc1 .var-symbol{color:var(--cyan)}
+.vc2 .var-symbol{color:var(--mint)}
+.vc3 .var-symbol{color:var(--amber)}
+.vc4 .var-symbol{color:var(--purple)}
+/* Step List */
+.step-list{list-style:none;counter-reset:step-counter}
+.step-item{position:relative;padding-left:3rem;margin-bottom:1.2rem;font-size:0.92rem;color:var(--text);line-height:1.6}
+.step-item::before{content:counter(step-counter);counter-increment:step-counter;position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;background:var(--cyan-dim);color:var(--cyan);font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,229,255,0.2)}
+.step-item:last-child{margin-bottom:0}
+.highlight{color:var(--cyan);font-family:'DM Mono',monospace;font-size:0.85rem;padding:0.15rem 0.4rem;background:var(--cyan-dim);border-radius:4px;border:1px solid rgba(0,229,255,0.15)}
+/* Alerts */
+.alert{padding:1rem 1.2rem;border-radius:10px;margin:1rem 0;font-size:0.85rem;line-height:1.65}
+.alert-info{background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.16);color:var(--text)}
+.alert-warn{background:var(--amber-dim);border:1px solid rgba(255,183,0,0.2);color:var(--text)}
+.alert-danger{background:var(--red-dim);border:1px solid rgba(255,77,109,0.2);color:var(--text)}
+.alert-title{font-weight:700;margin-bottom:0.3rem;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:0.4rem}
+.alert-info .alert-title{color:var(--cyan)}
+.alert-warn .alert-title{color:var(--amber)}
+.alert-danger .alert-title{color:var(--red)}
+/* Examples */
+.example-box{background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;padding:1.5rem;margin:1.2rem 0}
+.example-title{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--mint);margin-bottom:0.8rem;font-family:'DM Mono',monospace}
+.example-given{font-size:0.88rem;color:var(--text);margin-bottom:0.8rem;line-height:1.6}
+.example-calc{font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--text-bright);background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:1rem;line-height:1.8;overflow-x:auto}
+.example-answer{margin-top:0.8rem;font-weight:700;color:var(--cyan);font-size:0.92rem}
+/* Calculator */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:500px){.calc-grid{grid-template-columns:1fr}}
+.calc-group{display:flex;flex-direction:column;gap:0.3rem}
+.calc-label{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--text-dim);text-transform:uppercase}
+.calc-input{font-family:'DM Mono',monospace;font-size:1rem;padding:0.7rem 1rem;border-radius:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text-bright);outline:none;transition:all 0.2s;-moz-appearance:textfield}
+.calc-input::-webkit-outer-spin-button,.calc-input::-webkit-inner-spin-button{-webkit-appearance:none;appearance:none;margin:0}
+.calc-input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
+.calc-select{font-family:'DM Mono',monospace;font-size:0.85rem;padding:0.7rem 1rem;border-radius:10px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text-bright);outline:none;transition:all 0.2s;cursor:pointer}
+.calc-select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
+.calc-result{background:linear-gradient(135deg,var(--mint-dim),var(--cyan-dim));border:1px solid rgba(0,255,179,0.25);border-radius:14px;padding:1.5rem;text-align:center;margin-top:1rem;animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0;transform:scale(0.98)}to{opacity:1;transform:scale(1)}}
+.calc-result-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.3rem}
+.calc-result-value{font-family:'DM Mono',monospace;font-size:2rem;font-weight:800;color:var(--text-bright)}
+.calc-result-unit{font-size:0.9rem;color:var(--mint);margin-left:0.3rem}
+.calc-btn-row{display:flex;gap:0.8rem;margin-top:1rem;flex-wrap:wrap}
+.calc-btn{flex:1;min-width:120px;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.06em;padding:0.65rem 1rem;border-radius:100px;border:1px solid var(--cyan);background:var(--cyan-dim);color:var(--cyan);cursor:pointer;transition:all 0.2s;font-weight:600}
+.calc-btn:hover{background:var(--cyan);color:var(--bg)}
+.calc-btn.active{background:var(--cyan);color:var(--bg)}
+/* Table */
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.85rem}
+th,td{padding:0.75rem 1rem;text-align:left;border-bottom:1px solid var(--glass-border)}
+th{font-weight:600;color:var(--text-bright);background:var(--glass);font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase}
+td{color:var(--text)}
+td code{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--cyan);background:var(--cyan-dim);padding:0.1rem 0.35rem;border-radius:4px}
+/* Derivation */
+.derivation{font-family:'DM Mono',monospace;font-size:0.9rem;line-height:2;color:var(--text-bright);text-align:center;margin:1rem 0}
+.derivation .step{margin-bottom:0.5rem}
+.derivation .arrow{color:var(--cyan);font-size:1.2rem}
+/* Nav Card */
+.nav-card{display:flex;align-items:center;justify-content:space-between;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.2rem 1.5rem;text-decoration:none;color:inherit;transition:all 0.3s;margin-top:1.5rem}
+.nav-card:hover{background:var(--card-hover);border-color:var(--mint);transform:translateX(5px)}
+.nav-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim)}
+.nav-title{font-size:0.95rem;font-weight:700;color:var(--text-bright)}
+/* Footer */
+.footer{text-align:center;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:var(--text-dim);text-transform:uppercase;margin-top:3rem}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity 0.6s ease, transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* Print */
+@media print{
+  .bg-canvas,.grid-overlay,.topbar,.calc-btn-row{display:none!important}
+  .main{padding:0}
+  .card{border:1px solid #ccc;box-shadow:none;backdrop-filter:none;break-inside:avoid}
+  body{background:white;color:#111}
+  .hero h1 .g{-webkit-text-fill-color:#0080aa}
+  .formula-main,.formula-alt{color:#0080aa!important;-webkit-text-fill-color:#0080aa}
+  h1,h2,.card-title{color:#0a2040!important}
+  @page{margin:1.5cm;size:A4}
+}
+@media(max-width:600px){
+  .hero h1{font-size:1.8rem}
+  .card{padding:1.4rem}
+  .step-item{padding-left:2.5rem}
+  .formula-box{padding:1.2rem}
+  .var-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Lab Notes
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+      <button class="ctrl-btn" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Dilution <span class="g">Formula</span></h1>
+    <div class="hero-sub">C₁V₁ = C₂V₂ — The Complete Guide</div>
+    <p class="hero-desc">
+      A comprehensive reference for the dilution equation used daily in pharmaceutical analysis. 
+      From fundamental theory and mathematical derivation to hands-on worked examples and an interactive calculator.
+    </p>
+  </div>
+
+  <!-- ══════════ 1. THE FORMULA ══════════ -->
+  <div class="section-label reveal">◈ The Core Formula</div>
+
+  <div class="card reveal">
+    <div class="card-title">📐 The Dilution Equation</div>
+    <p>The dilution formula describes the relationship between the concentration and volume of a solution before and after dilution. It is based on the principle that <strong>the amount of solute (substance) remains constant</strong> — only the volume of solvent changes.</p>
+
+    <div class="formula-box">
+      <div class="formula-main">C₁ × V₁ = C₂ × V₂</div>
+      <div class="formula-label">Standard Form</div>
+    </div>
+
+    <p style="margin-bottom:1rem">This can be rearranged to the ratio form provided in your notes:</p>
+
+    <div class="formula-box">
+      <div class="formula-main" style="font-size:clamp(1.2rem,3vw,1.8rem)">C₂ / C₁ = V₁ / V₂</div>
+      <div class="formula-alt" style="font-size:clamp(0.85rem,2vw,1.1rem)">Target Conc. / Current Conc. = Measured Vol. / Final Vol.</div>
+      <div class="formula-label">Ratio Form</div>
+    </div>
+
+    <div class="alert alert-info">
+      <div class="alert-title">💡 Key Principle</div>
+      The number of moles of solute before dilution equals the number of moles after dilution. When you add more solvent, the concentration decreases proportionally — but the total amount of substance stays the same.
+    </div>
+  </div>
+
+  <!-- ══════════ 2. VARIABLES ══════════ -->
+  <div class="section-label reveal">◈ Understanding the Variables</div>
+
+  <div class="card reveal">
+    <div class="card-title">🔤 Variable Definitions</div>
+    <div class="var-grid">
+      <div class="var-card vc1">
+        <div class="var-symbol">C₁</div>
+        <div class="var-name">Current Concentration</div>
+        <div class="var-desc">The concentration of the <strong>stock solution</strong> (before dilution). Also called the initial or starting concentration.</div>
+      </div>
+      <div class="var-card vc2">
+        <div class="var-symbol">V₁</div>
+        <div class="var-name">Measured Volume</div>
+        <div class="var-desc">The volume of stock solution you <strong>need to measure out</strong>. This is usually what you're solving for.</div>
+      </div>
+      <div class="var-card vc3">
+        <div class="var-symbol">C₂</div>
+        <div class="var-name">Target Concentration</div>
+        <div class="var-desc">The concentration you <strong>want to achieve</strong> after dilution. Always lower than C₁.</div>
+      </div>
+      <div class="var-card vc4">
+        <div class="var-symbol">V₂</div>
+        <div class="var-name">Final Volume</div>
+        <div class="var-desc">The total volume of the <strong>final diluted solution</strong>. V₂ is always greater than V₁.</div>
+      </div>
+    </div>
+
+    <div class="alert alert-warn">
+      <div class="alert-title">⚠️ Units Must Match</div>
+      Both concentrations must be in the <strong>same unit</strong> (e.g., both in ppm, mg/mL, mol/L), and both volumes must be in the <strong>same unit</strong> (both in mL, or both in L). Mixing units will give incorrect results.
+    </div>
+  </div>
+
+  <!-- ══════════ 3. DERIVATION ══════════ -->
+  <div class="section-label reveal">◈ Mathematical Derivation</div>
+
+  <div class="card reveal">
+    <div class="card-title">📝 Step-by-Step Derivation</div>
+    <p style="margin-bottom:1rem">The derivation starts from the conservation of solute mass:</p>
+
+    <ol class="step-list">
+      <li class="step-item"><strong>Conservation of solute:</strong> The mass (or moles) of solute before dilution must equal the mass after dilution.</li>
+      <li class="step-item"><strong>Mass = Concentration × Volume:</strong> Since concentration = mass / volume, we can write mass = C × V.</li>
+      <li class="step-item"><strong>Set them equal:</strong> Since the mass of solute is conserved: <span class="highlight">C₁ × V₁ = C₂ × V₂</span></li>
+      <li class="step-item"><strong>Solve for V₁ (most common):</strong> Rearrange to find how much stock to measure: <span class="highlight">V₁ = (C₂ × V₂) / C₁</span></li>
+      <li class="step-item"><strong>Ratio form:</strong> Dividing both sides by C₁ × V₂: <span class="highlight">C₂/C₁ = V₁/V₂</span></li>
+    </ol>
+
+    <div class="derivation" style="margin-top:1.5rem">
+      <div class="step">Mass<sub>before</sub> = Mass<sub>after</sub></div>
+      <div class="arrow">↓</div>
+      <div class="step">C₁ × V₁ = C₂ × V₂</div>
+      <div class="arrow">↓ ÷ (C₁ × V₂)</div>
+      <div class="step">V₁/V₂ = C₂/C₁</div>
+      <div class="arrow">↓ rearrange</div>
+      <div class="step" style="color:var(--cyan);font-weight:700">C₂/C₁ = V₁/V₂</div>
+    </div>
+  </div>
+
+  <!-- ══════════ 4. REARRANGEMENTS ══════════ -->
+  <div class="section-label reveal">◈ All Rearrangements</div>
+
+  <div class="card reveal">
+    <div class="card-title">🔄 Solving for Any Variable</div>
+    <p style="margin-bottom:1rem">From the base equation C₁V₁ = C₂V₂, you can solve for any of the four variables:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Solve For</th>
+          <th>Formula</th>
+          <th>When To Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>V₁</strong></td>
+          <td><code>V₁ = (C₂ × V₂) / C₁</code></td>
+          <td>Most common — find how much stock to pipette</td>
+        </tr>
+        <tr>
+          <td><strong>C₂</strong></td>
+          <td><code>C₂ = (C₁ × V₁) / V₂</code></td>
+          <td>Find the concentration after dilution</td>
+        </tr>
+        <tr>
+          <td><strong>V₂</strong></td>
+          <td><code>V₂ = (C₁ × V₁) / C₂</code></td>
+          <td>Find total volume needed</td>
+        </tr>
+        <tr>
+          <td><strong>C₁</strong></td>
+          <td><code>C₁ = (C₂ × V₂) / V₁</code></td>
+          <td>Back-calculate the original concentration</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info" style="margin-top:1rem">
+      <div class="alert-title">💡 Volume of Solvent to Add</div>
+      The volume of solvent (diluent) to add is: <strong>V<sub>solvent</sub> = V₂ − V₁</strong>. Don't confuse V₂ (final volume) with how much solvent to add!
+    </div>
+  </div>
+
+  <!-- ══════════ 5. WORKED EXAMPLES ══════════ -->
+  <div class="section-label reveal">◈ Worked Examples</div>
+
+  <div class="card reveal">
+    <div class="card-title">🧪 Example 1 — Standard Preparation (HPLC)</div>
+    <div class="example-box">
+      <div class="example-title">📋 Given</div>
+      <div class="example-given">
+        You have a <strong>1000 ppm</strong> stock standard of paracetamol. You need to prepare <strong>50 mL</strong> of a <strong>100 ppm</strong> working standard for HPLC analysis.
+      </div>
+      <div class="example-title" style="color:var(--cyan)">🧮 Solution</div>
+      <div class="example-calc">
+C₁ = 1000 ppm (stock)
+C₂ = 100 ppm  (target)
+V₂ = 50 mL    (final volume)
+V₁ = ?
+
+V₁ = (C₂ × V₂) / C₁
+V₁ = (100 × 50) / 1000
+V₁ = 5000 / 1000
+<strong>V₁ = 5.0 mL</strong>
+      </div>
+      <div class="example-answer">✅ Pipette 5.0 mL of stock solution and dilute to 50 mL with solvent in a volumetric flask.</div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title">⚗️ Example 2 — Serial Dilution for Calibration Curve</div>
+    <div class="example-box">
+      <div class="example-title">📋 Given</div>
+      <div class="example-given">
+        From a <strong>1000 ppm</strong> stock, prepare a 5-point calibration series: <strong>10, 25, 50, 100, 200 ppm</strong>, each in <strong>10 mL</strong> volumetric flasks.
+      </div>
+      <div class="example-title" style="color:var(--cyan)">🧮 Solution (V₁ for each)</div>
+      <div class="example-calc">
+V₁ = (C₂ × V₂) / C₁
+
+<strong>10 ppm:</strong>  V₁ = (10 × 10) / 1000  = <strong>0.10 mL</strong> (100 µL)
+<strong>25 ppm:</strong>  V₁ = (25 × 10) / 1000  = <strong>0.25 mL</strong> (250 µL)
+<strong>50 ppm:</strong>  V₁ = (50 × 10) / 1000  = <strong>0.50 mL</strong> (500 µL)
+<strong>100 ppm:</strong> V₁ = (100 × 10) / 1000 = <strong>1.00 mL</strong>
+<strong>200 ppm:</strong> V₁ = (200 × 10) / 1000 = <strong>2.00 mL</strong>
+      </div>
+      <div class="example-answer">✅ Pipette each calculated volume of stock into a 10 mL volumetric flask and top up to the mark with solvent.</div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title">🔬 Example 3 — Back-Calculation (Unknown Stock)</div>
+    <div class="example-box">
+      <div class="example-title">📋 Given</div>
+      <div class="example-given">
+        You pipetted <strong>2.0 mL</strong> of an unknown stock solution and diluted to <strong>25 mL</strong>. The HPLC result showed the diluted solution is <strong>40 ppm</strong>. What is the stock concentration?
+      </div>
+      <div class="example-title" style="color:var(--cyan)">🧮 Solution</div>
+      <div class="example-calc">
+C₂ = 40 ppm    (measured after dilution)
+V₁ = 2.0 mL    (volume pipetted)
+V₂ = 25 mL     (final volume)
+C₁ = ?
+
+C₁ = (C₂ × V₂) / V₁
+C₁ = (40 × 25) / 2.0
+C₁ = 1000 / 2.0
+<strong>C₁ = 500 ppm</strong>
+      </div>
+      <div class="example-answer">✅ The stock solution concentration is 500 ppm.</div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-title">💊 Example 4 — Sample Preparation with Dilution Factor</div>
+    <div class="example-box">
+      <div class="example-title">📋 Given</div>
+      <div class="example-given">
+        A pharmaceutical sample is weighed at <strong>1.0 g</strong>, dissolved in <strong>100 mL</strong> methanol to give <strong>10,000 µg/mL</strong> concentration (10 mg/mL). Your HPLC method requires a concentration of <strong>100 µg/mL</strong>. What is the dilution factor and how much should you pipette into a <strong>10 mL</strong> flask?
+      </div>
+      <div class="example-title" style="color:var(--cyan)">🧮 Solution</div>
+      <div class="example-calc">
+<strong>Dilution Factor (DF):</strong>
+DF = C₁ / C₂ = 10000 / 100 = <strong>100×</strong>
+
+<strong>Volume to pipette:</strong>
+V₁ = (C₂ × V₂) / C₁
+V₁ = (100 × 10) / 10000
+V₁ = 1000 / 10000
+<strong>V₁ = 0.10 mL = 100 µL</strong>
+      </div>
+      <div class="example-answer">✅ Pipette 100 µL of the stock using a micropipette and dilute to 10 mL. The dilution factor is 100×.</div>
+    </div>
+  </div>
+
+  <!-- ══════════ 6. INTERACTIVE CALCULATOR ══════════ -->
+  <div class="section-label reveal">◈ Interactive Calculator</div>
+
+  <div class="card reveal" id="calculator">
+    <div class="card-title">🖩 Dilution Calculator</div>
+    <p style="margin-bottom:1rem">Select which variable to solve for, enter the known values, and get instant results.</p>
+
+    <div class="calc-btn-row">
+      <button class="calc-btn active" onclick="setSolveFor('V1',this)">Solve V₁</button>
+      <button class="calc-btn" onclick="setSolveFor('C2',this)">Solve C₂</button>
+      <button class="calc-btn" onclick="setSolveFor('V2',this)">Solve V₂</button>
+      <button class="calc-btn" onclick="setSolveFor('C1',this)">Solve C₁</button>
+    </div>
+
+    <div class="calc-grid" id="calcFields">
+      <div class="calc-group" id="grp-C1">
+        <label class="calc-label" for="inp-C1">C₁ — Stock Concentration</label>
+        <input type="number" class="calc-input" id="inp-C1" placeholder="e.g. 1000" step="any" oninput="calculate()">
+      </div>
+      <div class="calc-group" id="grp-V1">
+        <label class="calc-label" for="inp-V1">V₁ — Volume to Pipette</label>
+        <input type="number" class="calc-input" id="inp-V1" placeholder="e.g. 5" step="any" oninput="calculate()">
+      </div>
+      <div class="calc-group" id="grp-C2">
+        <label class="calc-label" for="inp-C2">C₂ — Target Concentration</label>
+        <input type="number" class="calc-input" id="inp-C2" placeholder="e.g. 100" step="any" oninput="calculate()">
+      </div>
+      <div class="calc-group" id="grp-V2">
+        <label class="calc-label" for="inp-V2">V₂ — Final Volume</label>
+        <input type="number" class="calc-input" id="inp-V2" placeholder="e.g. 50" step="any" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="calc-grid" style="grid-template-columns:1fr 1fr;margin-top:0.5rem">
+      <div class="calc-group">
+        <label class="calc-label">Concentration Unit</label>
+        <select class="calc-select" id="concUnit">
+          <option value="ppm">ppm</option>
+          <option value="mg/mL">mg/mL</option>
+          <option value="µg/mL">µg/mL</option>
+          <option value="mol/L">mol/L (M)</option>
+          <option value="mmol/L">mmol/L (mM)</option>
+          <option value="%">% (w/v or v/v)</option>
+        </select>
+      </div>
+      <div class="calc-group">
+        <label class="calc-label">Volume Unit</label>
+        <select class="calc-select" id="volUnit">
+          <option value="mL">mL</option>
+          <option value="µL">µL</option>
+          <option value="L">L</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="calcResult" style="display:none">
+      <div class="calc-result">
+        <div class="calc-result-label" id="resultLabel">V₁ — Volume to pipette</div>
+        <div class="calc-result-value"><span id="resultVal">—</span> <span class="calc-result-unit" id="resultUnit">mL</span></div>
+        <div id="resultExtra" style="font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--text-dim);margin-top:0.6rem"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 7. COMMON APPLICATIONS ══════════ -->
+  <div class="section-label reveal">◈ Applications in Pharmaceutical Analysis</div>
+
+  <div class="card reveal">
+    <div class="card-title">🏭 Common Lab Applications</div>
+
+    <div class="card-subtitle">1. Standard Preparation</div>
+    <p style="margin-bottom:1rem">Preparing working standards from a concentrated stock solution for HPLC, GC-MS, or ICP-MS calibration. The stock is typically 1000 ppm, and working standards range from 1–200 ppm depending on the analyte and method.</p>
+
+    <div class="card-subtitle">2. Calibration Curve Series</div>
+    <p style="margin-bottom:1rem">Creating a series of standards at different concentrations (e.g., 5, 10, 25, 50, 100 ppm) to build a calibration curve. Each point requires a separate dilution calculation from the same stock.</p>
+
+    <div class="card-subtitle">3. Sample Dilution</div>
+    <p style="margin-bottom:1rem">When a sample concentration is too high for the instrument's linear range, you dilute it. The HPLC result is then multiplied by the dilution factor to get the true sample concentration.</p>
+
+    <div class="card-subtitle">4. Spike / Recovery Tests</div>
+    <p style="margin-bottom:1rem">Adding a known amount of analyte to a sample to verify method accuracy. The concentration of the spike must be precisely calculated using C₁V₁ = C₂V₂.</p>
+
+    <div class="card-subtitle">5. Mobile Phase Preparation</div>
+    <p style="margin-bottom:1rem">Diluting concentrated acids or buffers to prepare mobile phases for chromatography. For example, preparing 0.1% formic acid from a concentrated stock.</p>
+
+    <div class="card-subtitle">6. Internal Standard Addition</div>
+    <p style="margin-bottom:1rem">Calculating the exact volume of internal standard to add to achieve a target concentration in each sample or standard vial.</p>
+  </div>
+
+  <!-- ══════════ 8. DILUTION FACTOR ══════════ -->
+  <div class="section-label reveal">◈ Dilution Factor</div>
+
+  <div class="card reveal">
+    <div class="card-title">📊 Understanding the Dilution Factor (DF)</div>
+
+    <div class="formula-box" style="margin-top:0.5rem">
+      <div class="formula-main" style="font-size:clamp(1.2rem,3vw,1.6rem)">DF = V₂ / V₁ = C₁ / C₂</div>
+      <div class="formula-label">Dilution Factor</div>
+    </div>
+
+    <p style="margin-bottom:1rem">The dilution factor tells you how many times the solution was diluted. It is essential for <strong>back-calculating</strong> the original sample concentration from the measured (diluted) concentration.</p>
+
+    <div class="formula-box" style="background:linear-gradient(135deg,var(--amber-dim),var(--red-dim));border-color:rgba(255,183,0,0.25)">
+      <div class="formula-main" style="font-size:clamp(1rem,2.5vw,1.4rem)">C<sub>original</sub> = C<sub>measured</sub> × DF</div>
+      <div class="formula-label">Back-Calculation to Original Concentration</div>
+    </div>
+
+    <div class="example-box" style="margin-top:1rem">
+      <div class="example-title">📋 Example</div>
+      <div class="example-given">
+        You dissolved <strong>1.0 g</strong> of sample in <strong>100 mL</strong>. Then you pipetted <strong>1.0 mL</strong> and diluted to <strong>10 mL</strong>.<br>
+        HPLC reads: <strong>50 ppm</strong> in the final diluted solution.
+      </div>
+      <div class="example-calc">
+<strong>Step 1:</strong> DF = V₂ / V₁ = 10 / 1 = <strong>10×</strong>
+
+<strong>Step 2:</strong> C in the dissolved sample = 50 × 10 = <strong>500 ppm</strong> (= 500 µg/mL)
+
+<strong>Step 3:</strong> Amount in original sample:
+  = 500 µg/mL × 100 mL = 50,000 µg = <strong>50 mg</strong>
+  = 50 mg per 1.0 g sample = <strong>5.0% w/w</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 9. SERIAL DILUTION ══════════ -->
+  <div class="section-label reveal">◈ Serial Dilution</div>
+
+  <div class="card reveal">
+    <div class="card-title">🔗 Multi-Step Serial Dilution</div>
+    <p style="margin-bottom:1rem">When you need very low concentrations that would require impractically small pipetted volumes, use a <strong>serial dilution</strong> — diluting in multiple steps.</p>
+
+    <div class="example-box">
+      <div class="example-title">📋 Example — Achieving 1 ppm from 1000 ppm</div>
+      <div class="example-given">
+        Direct dilution: V₁ = (1 × 100) / 1000 = <strong>0.1 mL</strong> — very small volume, high error!<br><br>
+        <strong>Better approach — two-step serial dilution:</strong>
+      </div>
+      <div class="example-calc">
+<strong>Step 1:</strong> 1000 ppm → 100 ppm
+  V₁ = (100 × 10) / 1000 = <strong>1.0 mL → 10 mL</strong>
+
+<strong>Step 2:</strong> 100 ppm → 1 ppm
+  V₁ = (1 × 100) / 100 = <strong>1.0 mL → 100 mL</strong>
+
+<strong>Total DF:</strong> 10 × 100 = <strong>1000×</strong>
+      </div>
+      <div class="example-answer">✅ Each pipetting step uses ≥1.0 mL, minimizing measurement error.</div>
+    </div>
+
+    <div class="alert alert-warn" style="margin-top:1rem">
+      <div class="alert-title">⚠️ Rule of Thumb</div>
+      Avoid pipetting volumes <strong>less than 0.5 mL</strong> (500 µL) with a bulb pipette, or less than the minimum range of your micropipette. Small volumes amplify measurement uncertainty. Use serial dilution for high dilution factors.
+    </div>
+  </div>
+
+  <!-- ══════════ 10. COMMON MISTAKES ══════════ -->
+  <div class="section-label reveal">◈ Common Mistakes & Tips</div>
+
+  <div class="card reveal">
+    <div class="card-title">❌ Common Mistakes to Avoid</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mistake</th>
+          <th>Why It's Wrong</th>
+          <th>Correct Approach</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mixing concentration units</td>
+          <td>C₁ in ppm, C₂ in mg/mL</td>
+          <td>Convert both to the same unit first</td>
+        </tr>
+        <tr>
+          <td>Adding V₂ of solvent</td>
+          <td>V₂ is the <em>total</em> volume, not solvent to add</td>
+          <td>Solvent = V₂ − V₁</td>
+        </tr>
+        <tr>
+          <td>Using beaker instead of volumetric flask</td>
+          <td>Beakers are not calibrated for accurate volume</td>
+          <td>Always use volumetric flasks for accuracy</td>
+        </tr>
+        <tr>
+          <td>Pipetting very small volumes</td>
+          <td>High relative error at small volumes</td>
+          <td>Use serial dilution or larger V₂</td>
+        </tr>
+        <tr>
+          <td>Forgetting the dilution factor</td>
+          <td>Reporting diluted conc. as the actual conc.</td>
+          <td>Always multiply result by DF</td>
+        </tr>
+        <tr>
+          <td>Not mixing after dilution</td>
+          <td>Uneven concentration throughout</td>
+          <td>Invert flask 10× or vortex thoroughly</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════ 11. QUICK REFERENCE TABLE ══════════ -->
+  <div class="section-label reveal">◈ Quick Reference — Common Dilutions</div>
+
+  <div class="card reveal">
+    <div class="card-title">📋 Quick Dilution Table (from 1000 ppm stock)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Target (ppm)</th>
+          <th>Flask (mL)</th>
+          <th>Pipette (mL)</th>
+          <th>Dilution Factor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>200</td><td>10</td><td>2.00</td><td>5×</td></tr>
+        <tr><td>100</td><td>10</td><td>1.00</td><td>10×</td></tr>
+        <tr><td>50</td><td>10</td><td>0.50</td><td>20×</td></tr>
+        <tr><td>25</td><td>10</td><td>0.25</td><td>40×</td></tr>
+        <tr><td>10</td><td>10</td><td>0.10</td><td>100×</td></tr>
+        <tr><td>5</td><td>50</td><td>0.25</td><td>200×</td></tr>
+        <tr><td>1</td><td>100</td><td>0.10</td><td>1000× *</td></tr>
+      </tbody>
+    </table>
+    <div class="alert alert-info" style="margin-top:0.5rem">
+      <div class="alert-title">* Note</div>
+      For 1 ppm, serial dilution (e.g., 1000→100→1 ppm) is recommended for better accuracy. Direct pipetting of 0.10 mL has high error.
+    </div>
+  </div>
+
+  <!-- ══════════ 12. UNITS CONVERSION ══════════ -->
+  <div class="section-label reveal">◈ Concentration Unit Conversions</div>
+
+  <div class="card reveal">
+    <div class="card-title">🔃 Common Concentration Unit Equivalences</div>
+    <table>
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Conversion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1 ppm</td><td>µg/mL</td><td>1 ppm = 1 µg/mL (in water)</td></tr>
+        <tr><td>1 ppm</td><td>mg/L</td><td>1 ppm = 1 mg/L</td></tr>
+        <tr><td>1 mg/mL</td><td>ppm</td><td>1 mg/mL = 1000 ppm</td></tr>
+        <tr><td>1% (w/v)</td><td>mg/mL</td><td>1% = 10 mg/mL</td></tr>
+        <tr><td>1% (w/v)</td><td>ppm</td><td>1% = 10,000 ppm</td></tr>
+        <tr><td>1 mol/L (M)</td><td>mmol/L (mM)</td><td>1 M = 1000 mM</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer & Nav -->
+  <a href="index.html" class="nav-card reveal">
+    <div>
+      <div class="nav-label">← Back to</div>
+      <div class="nav-title">Lab Notes Hub</div>
+    </div>
+    <span style="font-size:1.5rem">🔬</span>
+  </a>
+
+  <div class="footer">Dilution Formula Guide ◈ Lab Notes ◈ NPRA ◈ Syarief Azman</div>
+</div>
+
+<script>
+/* Theme */
+let dark = false;
+function toggleTheme(){
+  dark = !dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('themeTxt').textContent = dark ? 'Light Mode' : 'Dark Mode';
+}
+
+/* Scroll reveal */
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* Calculator */
+let solveFor = 'V1';
+
+function setSolveFor(v, btn) {
+  solveFor = v;
+  document.querySelectorAll('.calc-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  // Show/hide fields
+  ['C1','V1','C2','V2'].forEach(id => {
+    const grp = document.getElementById('grp-' + id);
+    const inp = document.getElementById('inp-' + id);
+    if (id === v) {
+      grp.style.opacity = '0.4';
+      inp.disabled = true;
+      inp.value = '';
+      inp.placeholder = '(calculated)';
+    } else {
+      grp.style.opacity = '1';
+      inp.disabled = false;
+      inp.placeholder = id === 'C1' ? 'e.g. 1000' : id === 'V1' ? 'e.g. 5' : id === 'C2' ? 'e.g. 100' : 'e.g. 50';
+    }
+  });
+  
+  document.getElementById('calcResult').style.display = 'none';
+  calculate();
+}
+
+function calculate() {
+  const c1 = parseFloat(document.getElementById('inp-C1').value);
+  const v1 = parseFloat(document.getElementById('inp-V1').value);
+  const c2 = parseFloat(document.getElementById('inp-C2').value);
+  const v2 = parseFloat(document.getElementById('inp-V2').value);
+  const concUnit = document.getElementById('concUnit').value;
+  const volUnit = document.getElementById('volUnit').value;
+  
+  let result, label, unit, extra = '';
+  
+  switch(solveFor) {
+    case 'V1':
+      if (!isNaN(c1) && !isNaN(c2) && !isNaN(v2) && c1 !== 0) {
+        result = (c2 * v2) / c1;
+        label = 'V₁ — Volume to pipette';
+        unit = volUnit;
+        const df = v2 / result;
+        extra = 'Dilution Factor: ' + df.toFixed(1) + '× &nbsp;|&nbsp; Solvent to add: ' + (v2 - result).toFixed(4) + ' ' + volUnit;
+      } else return hide();
+      break;
+    case 'C2':
+      if (!isNaN(c1) && !isNaN(v1) && !isNaN(v2) && v2 !== 0) {
+        result = (c1 * v1) / v2;
+        label = 'C₂ — Final concentration';
+        unit = concUnit;
+        const df2 = v2 / v1;
+        extra = 'Dilution Factor: ' + df2.toFixed(1) + '×';
+      } else return hide();
+      break;
+    case 'V2':
+      if (!isNaN(c1) && !isNaN(v1) && !isNaN(c2) && c2 !== 0) {
+        result = (c1 * v1) / c2;
+        label = 'V₂ — Final volume';
+        unit = volUnit;
+        extra = 'Solvent to add: ' + (result - v1).toFixed(4) + ' ' + volUnit;
+      } else return hide();
+      break;
+    case 'C1':
+      if (!isNaN(c2) && !isNaN(v1) && !isNaN(v2) && v1 !== 0) {
+        result = (c2 * v2) / v1;
+        label = 'C₁ — Stock concentration';
+        unit = concUnit;
+      } else return hide();
+      break;
+  }
+  
+  if (result < 0) {
+    document.getElementById('resultVal').textContent = 'Invalid (negative)';
+    document.getElementById('resultLabel').textContent = '⚠️ Check your values';
+    document.getElementById('resultUnit').textContent = '';
+    document.getElementById('resultExtra').innerHTML = '';
+    document.getElementById('calcResult').style.display = 'block';
+    return;
+  }
+  
+  // Smart formatting
+  let formatted;
+  if (result >= 1000) formatted = result.toFixed(1);
+  else if (result >= 1) formatted = result.toFixed(4);
+  else if (result >= 0.001) formatted = result.toFixed(4);
+  else formatted = result.toExponential(3);
+  
+  document.getElementById('resultVal').textContent = formatted;
+  document.getElementById('resultLabel').textContent = label;
+  document.getElementById('resultUnit').textContent = unit;
+  document.getElementById('resultExtra').innerHTML = extra;
+  document.getElementById('calcResult').style.display = 'block';
+}
+
+function hide() {
+  document.getElementById('calcResult').style.display = 'none';
+}
+
+// Initialize
+setSolveFor('V1', document.querySelector('.calc-btn.active'));
+</script>
+</body>
+</html>
