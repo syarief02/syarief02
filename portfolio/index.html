@@ -263,10 +263,17 @@
           <h2 class="section-title">Featured Projects</h2>
           <p class="section-subtitle">Real products solving real problems</p>
         </div>
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all" onclick="filterProjects('all',this)">🚀 All</button>
+          <button class="filter-btn" data-filter="trading" onclick="filterProjects('trading',this)">💹 Trading Bots</button>
+          <button class="filter-btn" data-filter="webapp" onclick="filterProjects('webapp',this)">🌐 Web Apps</button>
+          <button class="filter-btn" data-filter="npra" onclick="filterProjects('npra',this)">🔬 NPRA Tools</button>
+          <button class="filter-btn" data-filter="practice" onclick="filterProjects('practice',this)">📚 Practice</button>
+        </div>
         <div class="projects-grid">
 
           <!-- Project 1: eabudakubat.com -->
-          <div class="project-card reveal reveal-delay-1">
+          <div class="project-card reveal reveal-delay-1" data-category="webapp">
             <div class="project-header">
               <span class="project-icon">🌐</span>
               <div class="project-links">
@@ -289,7 +296,7 @@
           </div>
 
           <!-- Project 2: GoldMind AI -->
-          <div class="project-card reveal reveal-delay-2">
+          <div class="project-card reveal reveal-delay-2" data-category="trading">
             <div class="project-header">
               <span class="project-icon">🧠</span>
               <div class="project-links">
@@ -313,7 +320,7 @@
           </div>
 
           <!-- Project 3: EA Budak Ubat -->
-          <div class="project-card reveal reveal-delay-3">
+          <div class="project-card reveal reveal-delay-3" data-category="trading">
             <div class="project-header">
               <span class="project-icon">💹</span>
               <div class="project-links">
@@ -334,7 +341,7 @@
           </div>
 
           <!-- Project 4: BracketBlitz EA -->
-          <div class="project-card reveal reveal-delay-1">
+          <div class="project-card reveal reveal-delay-1" data-category="trading">
             <div class="project-header">
               <span class="project-icon">⚡</span>
               <div class="project-links">
@@ -355,7 +362,7 @@
           </div>
 
           <!-- Project 5: MathEdge Pro -->
-          <div class="project-card reveal reveal-delay-2">
+          <div class="project-card reveal reveal-delay-2" data-category="trading">
             <div class="project-header">
               <span class="project-icon">📐</span>
               <div class="project-links">
@@ -376,7 +383,7 @@
           </div>
 
           <!-- Frontend Mentor: QR Code Component -->
-          <div class="project-card reveal reveal-delay-3">
+          <div class="project-card reveal reveal-delay-3" data-category="practice">
             <div class="project-header">
               <span class="project-icon">📱</span>
               <div class="project-links">
@@ -399,7 +406,7 @@
           </div>
 
           <!-- Frontend Mentor: Blog Preview Card -->
-          <div class="project-card reveal reveal-delay-1">
+          <div class="project-card reveal reveal-delay-1" data-category="practice">
             <div class="project-header">
               <span class="project-icon">📝</span>
               <div class="project-links">
@@ -422,7 +429,7 @@
           </div>
 
           <!-- Frontend Mentor: Social Links Profile -->
-          <div class="project-card reveal reveal-delay-2">
+          <div class="project-card reveal reveal-delay-2" data-category="practice">
             <div class="project-header">
               <span class="project-icon">🔗</span>
               <div class="project-links">
@@ -445,7 +452,7 @@
           </div>
 
           <!-- Frontend Mentor: Recipe Page -->
-          <div class="project-card reveal reveal-delay-3">
+          <div class="project-card reveal reveal-delay-3" data-category="practice">
             <div class="project-header">
               <span class="project-icon">🍳</span>
               <div class="project-links">
@@ -468,7 +475,7 @@
           </div>
 
           <!-- Frontend Mentor: Four Card Feature Section -->
-          <div class="project-card reveal reveal-delay-1">
+          <div class="project-card reveal reveal-delay-1" data-category="practice">
             <div class="project-header">
               <span class="project-icon">🃏</span>
               <div class="project-links">
@@ -491,7 +498,7 @@
           </div>
 
           <!-- Frontend Mentor: Testimonials Grid Section -->
-          <div class="project-card reveal reveal-delay-2">
+          <div class="project-card reveal reveal-delay-2" data-category="practice">
             <div class="project-header">
               <span class="project-icon">💬</span>
               <div class="project-links">
@@ -514,7 +521,7 @@
           </div>
 
           <!-- Project 7: Unit Penyaringan Presentation -->
-          <div class="project-card reveal reveal-delay-3">
+          <div class="project-card reveal reveal-delay-3" data-category="npra">
             <div class="project-header">
               <span class="project-icon">📊</span>
               <div class="project-links">
@@ -534,7 +541,7 @@
           </div>
 
           <!-- Project: Unit Penyaringan Lab Notes -->
-          <div class="project-card reveal reveal-delay-1">
+          <div class="project-card reveal reveal-delay-1" data-category="npra">
             <div class="project-header">
               <span class="project-icon">🔬</span>
               <div class="project-links">
@@ -554,7 +561,7 @@
           </div>
 
           <!-- Project 8: Automation Scripts -->
-          <div class="project-card reveal reveal-delay-1">
+          <div class="project-card reveal reveal-delay-1" data-category="npra">
             <div class="project-header">
               <span class="project-icon">🔧</span>
               <div class="project-links">
