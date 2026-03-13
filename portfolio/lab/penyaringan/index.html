@@ -57,9 +57,12 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 .hero{text-align:center;margin-bottom:3.5rem;animation:heroIn 0.9s cubic-bezier(0.22,1,0.36,1) both}
 @keyframes heroIn{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
 .hero-org{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mint);background:var(--mint-dim);border:1px solid rgba(0,255,179,0.22);padding:0.33rem 1.1rem;border-radius:100px;margin-bottom:0.8rem}
+.hero-org::before{content:'◈';font-size:0.75rem}
+.hero-unit{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--purple);background:var(--purple-dim);border:1px solid rgba(180,122,255,0.22);padding:0.33rem 1.1rem;border-radius:100px;margin-bottom:1.2rem}
+.hero-unit::before{content:'◈';font-size:0.75rem}
 .hero-dept{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.22);padding:0.33rem 1.1rem;border-radius:100px;margin-bottom:1.2rem}
 .hero-dept::before{content:'◈';font-size:0.75rem}
-.hero h1{font-size:clamp(2.2rem,5.5vw,3.5rem);font-weight:900;line-height:1.05;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}
 .hero h1 .g{background:linear-gradient(120deg,var(--cyan) 0%,var(--mint) 60%,#88ffee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1rem;color:var(--text-dim);margin-bottom:0.8rem}
 .hero-desc{font-size:0.92rem;color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.7}
@@ -138,8 +141,8 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
   <!-- Hero -->
   <div class="hero">
     <div class="hero-org">🇲🇾 NPRA — Seksyen Pengujian Produk & Kosmetik</div><br>
-    <div class="hero-dept">Unit Penyaringan</div>
-    <h1>Lab <span class="g">Notes</span></h1>
+    <div class="hero-unit">◈ Unit Penyaringan</div>
+    <h1>Unit <span class="g">Penyaringan</span></h1>
     <div class="hero-sub">Screening Unit — Interactive References</div>
     <p class="hero-desc">
       Interactive lab procedure references for the Screening Unit. Includes SPE extraction procedures, 
