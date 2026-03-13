@@ -35,7 +35,18 @@
 @media(max-width:500px){.hero h1{font-size:1.6rem}}
 @media print{.bg-canvas,.grid-overlay,.topbar{display:none!important}body{background:white;color:#111}.card{border:1px solid #ccc;backdrop-filter:none}}
 </style>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
 </head>
+
 <body>
 <div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div></div>
 <div class="grid-overlay"></div>
