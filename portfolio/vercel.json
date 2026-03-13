@@ -9,6 +9,11 @@
       "source": "/spe",
       "destination": "/spe/",
       "permanent": false
+    },
+    {
+      "source": "/sampleprep",
+      "destination": "/sampleprep/",
+      "permanent": false
     }
   ],
   "rewrites": [
