@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myPortfolio — Unit Analisis Tradisional (Logam Berat) | NPRA</title>
+<meta name="description" content="Comprehensive myPortfolio for PPF 11 — Unit Analisis Tradisional (Logam Berat). Covers sample digestion, heavy metal testing, dissolution, weight uniformity, equipment verification, waste disposal, and lab monitoring.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+[data-theme="dark"]{
+  --bg:#040d1a;--bg2:#071528;
+  --glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.09);
+  --cyan:#00e5ff;--cyan-dim:rgba(0,229,255,0.12);
+  --mint:#00ffb3;--mint-dim:rgba(0,255,179,0.12);
+  --amber:#ffb700;--amber-dim:rgba(255,183,0,0.13);
+  --purple:#b47aff;--purple-dim:rgba(180,122,255,0.12);
+  --red:#ff4d6d;--red-dim:rgba(255,77,109,0.13);
+  --text:#c8d8f0;--text-dim:#6888aa;--text-bright:#eaf4ff;
+  --card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.09);
+  --card-hover:rgba(255,255,255,0.07);--orb-opacity:0.16;
+}
+[data-theme="light"]{
+  --bg:#f0f4fa;--bg2:#e4edf8;
+  --glass:rgba(255,255,255,0.7);--glass-border:rgba(80,120,200,0.15);
+  --cyan:#0080aa;--cyan-dim:rgba(0,128,170,0.1);
+  --mint:#007a55;--mint-dim:rgba(0,122,85,0.1);
+  --amber:#b07800;--amber-dim:rgba(176,120,0,0.1);
+  --purple:#7040b0;--purple-dim:rgba(112,64,176,0.1);
+  --red:#c0203a;--red-dim:rgba(192,32,58,0.1);
+  --text:#1a2a44;--text-dim:#5a7090;--text-bright:#0a1830;
+  --card-bg:rgba(255,255,255,0.82);--card-border:rgba(80,130,200,0.18);
+  --card-hover:rgba(255,255,255,0.95);--orb-opacity:0.10;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;transition:background 0.4s,color 0.4s}
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:var(--orb-opacity);animation:drift 22s ease-in-out infinite alternate}
+.orb1{width:700px;height:700px;background:var(--amber);top:-250px;left:-200px}
+.orb2{width:550px;height:550px;background:var(--red);bottom:-150px;right:-150px;animation-delay:-8s}
+.orb3{width:400px;height:400px;background:var(--purple);top:35%;left:50%;animation-delay:-15s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,80px) scale(1.1)}}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,183,0,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,183,0,0.02) 1px,transparent 1px);background-size:42px 42px}
+[data-theme="light"] .grid-overlay{background-image:linear-gradient(rgba(0,80,150,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,80,150,0.04) 1px,transparent 1px)}
+.main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+@media(min-width:768px){.main{padding:3.5rem 2rem 6rem}}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:0.8rem}
+.topbar-left{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap}
+.ctrl-btn{display:flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;padding:0.42rem 0.9rem;border-radius:100px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;transition:all 0.2s;backdrop-filter:blur(8px);white-space:nowrap;text-decoration:none}
+.ctrl-btn:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-dim)}
+.ctrl-btn svg{width:13px;height:13px;flex-shrink:0}
+.hero{text-align:center;margin-bottom:3rem;animation:heroIn 0.9s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+.hero-org{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mint);background:var(--mint-dim);border:1px solid rgba(0,255,179,0.22);padding:0.33rem 1.1rem;border-radius:100px;margin-bottom:0.8rem}
+.hero h1{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}
+.hero h1 .g{background:linear-gradient(120deg,var(--amber) 0%,var(--red) 60%,#ff8888 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:0.95rem;color:var(--text-dim);margin-bottom:0.6rem}
+.hero-desc{font-size:0.88rem;color:var(--text-dim);max-width:600px;margin:0 auto;line-height:1.7}
+.section-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;padding-left:0.2rem}
+
+/* Info Card */
+.info-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:1.8rem;backdrop-filter:blur(18px);margin-bottom:2rem}
+.info-grid{display:grid;gap:0.6rem}
+@media(min-width:640px){.info-grid{grid-template-columns:1fr 1fr}}
+.info-row{display:flex;gap:0.6rem;align-items:baseline}
+.info-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);min-width:100px;flex-shrink:0}
+.info-value{font-size:0.85rem;color:var(--text-bright);font-weight:600}
+
+/* Activity Cards */
+.activity-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:1.8rem;backdrop-filter:blur(18px);margin-bottom:1.2rem;position:relative;overflow:hidden}
+.activity-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--red));opacity:0.5}
+.activity-num{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:0.3rem;display:flex;align-items:center;gap:0.5rem}
+.activity-num .dur{color:var(--text-dim);margin-left:auto}
+.activity-title{font-size:1.05rem;font-weight:800;color:var(--text-bright);letter-spacing:-0.02em;margin-bottom:0.5rem}
+.activity-malay{font-size:0.78rem;color:var(--text-dim);font-style:italic;margin-bottom:0.6rem}
+.step-list{list-style:none;counter-reset:steps}
+.step-list li{counter-increment:steps;font-size:0.82rem;color:var(--text);line-height:1.6;padding:0.3rem 0 0.3rem 2rem;position:relative;border-bottom:1px solid var(--glass-border)}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:counter(steps);position:absolute;left:0;top:0.35rem;font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;width:1.4rem;height:1.4rem;background:var(--amber-dim);border:1px solid rgba(255,183,0,0.2);color:var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* Tags */
+.tag-row{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.8rem}
+.tag{font-family:'DM Mono',monospace;font-size:0.5rem;font-weight:500;letter-spacing:0.08em;padding:0.18rem 0.55rem;border-radius:100px;text-transform:uppercase}
+.t-amber{background:var(--amber-dim);border:1px solid rgba(255,183,0,0.2);color:var(--amber)}
+.t-cyan{background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.2);color:var(--cyan)}
+.t-mint{background:var(--mint-dim);border:1px solid rgba(0,255,179,0.2);color:var(--mint)}
+.t-purple{background:var(--purple-dim);border:1px solid rgba(180,122,255,0.2);color:var(--purple)}
+.t-red{background:var(--red-dim);border:1px solid rgba(255,77,109,0.2);color:var(--red)}
+
+/* Regulation */
+.reg-list{list-style:none}
+.reg-list li{font-size:0.8rem;color:var(--text);padding:0.35rem 0;border-bottom:1px solid var(--glass-border);display:flex;align-items:baseline;gap:0.5rem}
+.reg-list li::before{content:'§';font-family:'DM Mono',monospace;font-weight:700;color:var(--amber);font-size:0.7rem}
+
+/* Forms Table */
+.forms-table{width:100%;border-collapse:collapse;font-size:0.78rem;margin-top:0.5rem}
+.forms-table th{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);text-align:left;padding:0.5rem 0.8rem;border-bottom:2px solid var(--amber-dim)}
+.forms-table td{padding:0.4rem 0.8rem;border-bottom:1px solid var(--glass-border);color:var(--text);vertical-align:top}
+.forms-table tr:hover td{background:var(--card-hover)}
+.form-code{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--cyan)}
+
+.footer{text-align:center;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:var(--text-dim);text-transform:uppercase;margin-top:2rem}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:500px){.hero h1{font-size:1.6rem}.activity-card{padding:1.4rem 1.2rem}}
+@media print{.bg-canvas,.grid-overlay,.topbar{display:none!important}body{background:white;color:#111}.activity-card,.info-card{border:1px solid #ccc;box-shadow:none;backdrop-filter:none}}
+</style>
+</head>
+<body>
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="https://syariefazman.com/lab" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Lab Notes
+      </a>
+      <a href="https://syariefazman.com/lab/logam-berat" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+        Logam Berat
+      </a>
+    </div>
+    <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span id="themeTxt">Dark Mode</span>
+    </button>
+  </div>
+
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti</div><br>
+    <h1>my<span class="g">Portfolio</span></h1>
+    <div class="hero-sub">PPF 11 — Unit Analisis Tradisional (Logam Berat)</div>
+    <p class="hero-desc">
+      Comprehensive job portfolio documenting responsibilities, activities, workflows, regulatory references, and forms 
+      for heavy metal analysis of traditional pharmaceutical products at NPRA.
+    </p>
+  </div>
+
+  <!-- Officer Info -->
+  <div class="section-label">◈ Maklumat Pegawai</div>
+  <div class="info-card reveal">
+    <div class="info-grid">
+      <div class="info-row"><span class="info-label">Nama</span><span class="info-value">Syarief Azman bin Rosli</span></div>
+      <div class="info-row"><span class="info-label">Jawatan</span><span class="info-value">Penolong Pegawai Farmasi</span></div>
+      <div class="info-row"><span class="info-label">Gred</span><span class="info-value">U5/U6</span></div>
+      <div class="info-row"><span class="info-label">Penempatan</span><span class="info-value">5 September 2017</span></div>
+      <div class="info-row"><span class="info-label">Unit</span><span class="info-value">Unit Analisis Tradisional</span></div>
+      <div class="info-row"><span class="info-label">Seksyen</span><span class="info-value">Seksyen Pengujian Produk & Kosmetik</span></div>
+      <div class="info-row"><span class="info-label">Pusat</span><span class="info-value">Pusat Kawalan Kualiti, NPRA</span></div>
+      <div class="info-row"><span class="info-label">Penyelia</span><span class="info-value">Ida Syazrina binti Ibrahim (PF)</span></div>
+    </div>
+  </div>
+
+  <!-- Purpose -->
+  <div class="section-label">◈ Tujuan Pewujudan Jawatan</div>
+  <div class="info-card reveal">
+    <p style="font-size:0.88rem;line-height:1.7;color:var(--text)">
+      Menjalankan analisis sampel produk tradisional bagi memastikan produk berdaftar di pasaran memenuhi spesifikasi yang ditetapkan agar berkualiti dan selamat diguna selaras dengan objektif Pusat Komplians & Kawalan Kualiti serta misi penubuhan jabatan.
+    </p>
+    <div class="tag-row" style="margin-top:1rem">
+      <span class="tag t-amber">4 Agensi</span>
+      <span class="tag t-amber">5 Kementerian</span>
+      <span class="tag t-amber">3 Jenis Sampel</span>
+      <span class="tag t-amber">4 Jenis Ujian</span>
+    </div>
+  </div>
+
+  <!-- Activities -->
+  <div class="section-label">◈ Aktiviti Utama (7 Aktiviti)</div>
+
+  <div class="activity-card reveal">
+    <div class="activity-num">Aktiviti 1 <span class="dur">⏱ 9 Jam</span></div>
+    <div class="activity-title">Sample Digestion</div>
+    <div class="activity-malay">Menjalankan Perluluhan Bagi Semua Sampel Yang Diterima</div>
+    <ol class="step-list">
+      <li>Menerima sampel dan borang persampelan daripada Pegawai Farmasi</li>
+      <li>Menterjemah rupa bentuk fizikal sampel</li>
+      <li>Menimbang sampel dalam bekas perluluhan dan mencetak bacaan berat</li>
+      <li>Menjalankan perluluhan menggunakan alat perluluhan (Microwave Digestor / Trace Metal Digestor)</li>
+      <li>Menuras sampel yang siap diluluh dan melakukan pencairan pada isipadu yang diperlukan</li>
+      <li>Menghantar sampel yang diluluh untuk dianalisis</li>
+    </ol>
+    <div class="tag-row">
+      <span class="tag t-red">Microwave Digestor</span>
+      <span class="tag t-red">Trace Metal Digestor</span>
+    </div>
+  </div>
+
+  <div class="activity-card reveal">
+    <div class="activity-num">Aktiviti 2 <span class="dur">⏱ 74 Jam</span></div>
+    <div class="activity-title">Heavy Metal Limit Tests (As, Cd, Hg, Pb)</div>
+    <div class="activity-malay">Menjalankan Ujian Kandungan Arsenik, Kadmium, Merkuri Dan Plumbum</div>
+    <ol class="step-list">
+      <li>Menyediakan larutan piawai kerja bagi ujian yang hendak dijalankan</li>
+      <li>Menjalankan analisis logam berat menggunakan AAS atau ICPMS</li>
+      <li>Menyediakan laporan ujian</li>
+      <li>Menghantar laporan kepada Pegawai Farmasi yang bertanggungjawab</li>
+    </ol>
+    <div class="tag-row">
+      <span class="tag t-red">AAS</span>
+      <span class="tag t-red">GFAAS</span>
+      <span class="tag t-red">CVAAS</span>
+      <span class="tag t-red">ICPMS</span>
+    </div>
+  </div>
+
+  <div class="activity-card reveal">
+    <div class="activity-num">Aktiviti 3 <span class="dur">⏱ 3 Hari</span></div>
+    <div class="activity-title">Weight Uniformity Test</div>
+    <div class="activity-malay">Menjalankan Ujian Keseragaman Berat Ke Atas Sampel Tablet Dan Kapsul</div>
+    <ol class="step-list">
+      <li>Menerima sampel dan borang persampelan daripada Pegawai Farmasi</li>
+      <li>Mengenalpasti alat timbang yang sesuai dan menimbang sampel mengikut prosedur</li>
+      <li>Menyediakan laporan ujian — memastikan berat tidak melebihi had yang ditetapkan</li>
+    </ol>
+    <div class="tag-row"><span class="tag t-amber">Analytical Balance</span></div>
+  </div>
+
+  <div class="activity-card reveal">
+    <div class="activity-num">Aktiviti 4 <span class="dur">⏱ 3 Hari</span></div>
+    <div class="activity-title">Dissolution Test</div>
+    <div class="activity-malay">Menjalankan Ujian Pengecaian Ke Atas Sampel Tablet, Kapsul, Pil Dan Suppositori</div>
+    <ol class="step-list">
+      <li>Menerima sampel dan borang persampelan daripada Pegawai Farmasi</li>
+      <li>Menyediakan alat pengecai dan medium yang sesuai. Menjalankan ujian pengecaian mengikut prosedur</li>
+      <li>Merekod maklumat ujian dan bacaan masa. Menyediakan laporan ujian pengecaian</li>
+    </ol>
+    <div class="tag-row"><span class="tag t-amber">Disintegration Apparatus</span></div>
+  </div>
+
+  <div class="activity-card reveal">
+    <div class="activity-num">Aktiviti 5 <span class="dur">⏱ 4 Jam</span></div>
+    <div class="activity-title">Equipment Verification</div>
+    <div class="activity-malay">Menjalankan Proses Verifikasi Ke Atas Alat Atau Radas</div>
+    <ol class="step-list">
+      <li>Menjalankan Performance Check ke atas semua alat timbang dan verifikasi alat (termometer, mikropipet, radas kaca) secara berkala mengikut jadual</li>
+      <li>Merekod keputusan Performance Check dan verifikasi alat radas dalam borang/buku log untuk disemak oleh Pegawai Farmasi</li>
+    </ol>
+    <div class="tag-row">
+      <span class="tag t-cyan">Balance</span>
+      <span class="tag t-cyan">Thermometer</span>
+      <span class="tag t-cyan">Micropipette</span>
+      <span class="tag t-cyan">Glassware</span>
+    </div>
+  </div>
+
+  <div class="activity-card reveal">
+    <div class="activity-num">Aktiviti 6 <span class="dur">⏱ 5 Minggu</span></div>
+    <div class="activity-title">Sample & Chemical Disposal</div>
+    <div class="activity-malay">Membantu Dalam Menjalankan Pelupusan Sampel Dan Sisa Bahan Kimia</div>
+    <ol class="step-list">
+      <li>Menerima senarai sampel untuk pelupusan dan mengeluarkan sampel dari bilik simpanan</li>
+      <li>Menyusun sampel mengikut kategori di rak pelupusan untuk diambil oleh PPK</li>
+      <li>Mengasingkan baki larutan sampel yang telah siap diuji untuk dikumpulkan</li>
+      <li>Menyerahkan tong sisa bahan kimia kepada pihak Radicare</li>
+    </ol>
+    <div class="tag-row"><span class="tag t-purple">Radicare</span><span class="tag t-purple">Scheduled Waste</span></div>
+  </div>
+
+  <div class="activity-card reveal">
+    <div class="activity-num">Aktiviti 7 <span class="dur">⏱ 28 Hari</span></div>
+    <div class="activity-title">Lab Environment Monitoring</div>
+    <div class="activity-malay">Menjalankan Pemantauan Persekitaran Makmal Secara Berkala</div>
+    <ol class="step-list">
+      <li>Merekod bacaan suhu bilik alat dan bilik sampel dalam buku rekod</li>
+      <li>Melaporkan kepada Pegawai Farmasi sekiranya bacaan suhu di luar julat</li>
+      <li>Menjalankan pemeriksaan ke atas emergency shower dan mencatat hasil</li>
+      <li>Membuat aduan kepada Radicare sekiranya emergency shower tidak berfungsi</li>
+    </ol>
+    <div class="tag-row"><span class="tag t-mint">Temperature Log</span><span class="tag t-mint">Emergency Shower</span></div>
+  </div>
+
+  <!-- Regulatory -->
+  <div class="section-label">◈ Senarai Undang-undang & Peraturan</div>
+  <div class="info-card reveal">
+    <ul class="reg-list">
+      <li>Akta Racun 1952 (Disemak 1989) dan Peraturan-peraturan</li>
+      <li>Akta Jualan Dadah 1952 (Disemak 1989) dan Peraturan-peraturan</li>
+      <li>Akta Ubat (Iklan dan Penjualan) 1956 (Disemak 1983) dan Peraturan-peraturan</li>
+      <li>Akta Pendaftaran Ahli-ahli Farmasi 1951 (Disemak 1989) dan Peraturan-peraturan</li>
+      <li>Akta Dadah Berbahaya 1952 (Disemak 1980) dan Peraturan-peraturan</li>
+      <li>Peraturan Kawalan Dadah dan Kosmetik 1984</li>
+      <li>MS ISO 9001:2015</li>
+      <li>MS ISO 17025:2005</li>
+    </ul>
+  </div>
+
+  <!-- Key Forms -->
+  <div class="section-label">◈ Senarai Borang Utama</div>
+  <div class="info-card reveal" style="overflow-x:auto">
+    <table class="forms-table">
+      <thead><tr><th>Aktiviti</th><th>Borang</th><th>Kod</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">1 — Perluluhan</td><td>Borang Persampelan</td><td class="form-code">PKK/035A</td></tr>
+        <tr><td>Borang Perluluhan Sampel RB&IQC</td><td class="form-code">—</td></tr>
+        <tr><td>Borang Perluluhan Sampel Produk Tradisional</td><td class="form-code">PT/100-102</td></tr>
+        <tr><td rowspan="4">2 — Logam Berat</td><td>Laporan Ujian Pengesanan As/Hg/Pb/Cd</td><td class="form-code">PT/101A-C, PT/102</td></tr>
+        <tr><td>Laporan Ujian Had Logam As/Hg/Pb/Cd</td><td class="form-code">PT/100A-D</td></tr>
+        <tr><td>—</td><td class="form-code">—</td></tr>
+        <tr><td>—</td><td class="form-code">—</td></tr>
+        <tr><td>3 — Keseragaman</td><td>Borang Ujian Keseragaman Berat</td><td class="form-code">PT/002A-C</td></tr>
+        <tr><td>4 — Pengecaian</td><td>Borang Ujian Pengecaian</td><td class="form-code">PT/001A-C</td></tr>
+        <tr><td rowspan="3">5 — Verifikasi</td><td>Buku Log & Repeatability Test (Alat Timbang)</td><td class="form-code">PT/004-006, PT/018</td></tr>
+        <tr><td>Verifikasi Mikropipet</td><td class="form-code">PKK/018D</td></tr>
+        <tr><td>Thermometer Verification & Linearity</td><td class="form-code">PKK/047A-B</td></tr>
+        <tr><td>6 — Pelupusan</td><td>Borang Pelupusan Sampel</td><td class="form-code">Borang A/B</td></tr>
+        <tr><td>7 — Pemantauan</td><td>Eyewash/Shower Checklist & Buku Rekod Suhu</td><td class="form-code">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Competency -->
+  <div class="section-label">◈ Kompetensi</div>
+  <div class="info-card reveal">
+    <div style="display:grid;gap:1rem">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--amber);margin-bottom:0.3rem">Fungsional</div>
+        <ul style="list-style:none;font-size:0.82rem;color:var(--text)">
+          <li style="padding:0.2rem 0">• Kemahiran dalam menjalankan ujian analisis</li>
+          <li style="padding:0.2rem 0">• Memahami Amalan Makmal Baik dan Buku Panduan Keselamatan NPRA</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.3rem">Generik</div>
+        <ul style="list-style:none;font-size:0.82rem;color:var(--text)">
+          <li style="padding:0.2rem 0">• Komunikasi Berkesan</li>
+          <li style="padding:0.2rem 0">• Pemikiran Analitikal dan Kritikal</li>
+          <li style="padding:0.2rem 0">• Pemikiran Kreatif dan Inovatif</li>
+          <li style="padding:0.2rem 0">• Kebolehupayaan Microsoft Office</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">myPortfolio PPF 11 ◈ Unit Analisis Tradisional ◈ NPRA Malaysia ◈ Syarief Azman</div>
+</div>
+
+<script>
+let dark = false;
+function toggleTheme(){
+  dark = !dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('themeTxt').textContent = dark ? 'Light Mode' : 'Dark Mode';
+}
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

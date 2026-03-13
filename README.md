@@ -129,6 +129,31 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 
 ---
 
+## 🔬 Lab Notes & Portfolio
+
+Interactive laboratory references and professional portfolio for my work at NPRA's Pusat Kawalan Kualiti.
+
+| Section | Description | Link |
+|---|---|---|
+| **Lab Notes Hub** | Main hub for Seksyen Pengujian Produk & Kosmetik | [View](https://syariefazman.com/lab) |
+| **Unit Penyaringan** | Screening unit — SPE, HPLC, GCMS, LCMS references | [View](https://syariefazman.com/lab/penyaringan) |
+| **Unit Logam Berat** | Heavy metal analysis — GFAAS, CVAAS, ICP-MS | [View](https://syariefazman.com/lab/logam-berat) |
+| **myPortfolio (Penyaringan)** | PPF 7 — 4 activities, workflows, forms | [View](https://syariefazman.com/lab/penyaringan/portfolio.html) |
+| **myPortfolio (Logam Berat)** | PPF 11 — 7 activities, workflows, forms | [View](https://syariefazman.com/lab/logam-berat/portfolio.html) |
+| **Verifikasi Alat Radas** | Equipment verification SOPs | [View](https://syariefazman.com/lab/verifikasi) |
+
+<details>
+<summary>Verification SOPs</summary>
+<br>
+
+- ⚖️ [Balance Performance Check](https://syariefazman.com/lab/verifikasi/balance.html) — Repeatability test, standard weights
+- 🌡️ [Thermometer Verification](https://syariefazman.com/lab/verifikasi/thermometer.html) — PKKK/200/009
+- 💉 [Micropipette Verification](https://syariefazman.com/lab/verifikasi/micropipette.html) — PKKK/200/044, ISO 8655-2
+- 🧪 [Glassware Verification](https://syariefazman.com/lab/verifikasi/glassware.html) — PKKK/200/008, ISO 4787
+</details>
+
+---
+
 ## 📜 Certification
 
 <details>
