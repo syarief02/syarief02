@@ -14,6 +14,11 @@
       "source": "/sampleprep",
       "destination": "/sampleprep/",
       "permanent": false
+    },
+    {
+      "source": "/lab",
+      "destination": "/lab/",
+      "permanent": false
     }
   ],
   "rewrites": [
