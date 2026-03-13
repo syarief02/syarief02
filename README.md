@@ -96,6 +96,7 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 
 - 💼 **[Portfolio](https://syariefazman.vercel.app)** — my developer portfolio showcasing projects, skills & journey
 - 📊 **[Unit Penyaringan — Sasaran 2026](https://syariefazman.com/uptslide1)** — an interactive web-based presentation slide deck for NPRA
+- 🧪 **[SPE Lab Reference](https://syariefazman.com/spe)** — interactive Solid-Phase Extraction procedure guide with checklists, timers & quick reference
 - 📄 **[Resume](https://syariefazman.vercel.app/resume.html)** — my up-to-date resume with print-to-PDF
 - 🤖 **Building & shipping** Expert Advisors — helping traders automate their edge
 - 🧠 **GoldMind AI** — an open-source system that connects ChatGPT to MetaTrader 5 for AI-driven gold trading
