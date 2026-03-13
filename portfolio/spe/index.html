@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -462,7 +462,7 @@ body{
       <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
         <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <span id="themeTxt">Light Mode</span>
+          <span id="themeTxt">Dark Mode</span>
         </button>
         <button class="ctrl-btn" onclick="toggleSidebar()" id="sidebarBtn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
@@ -774,7 +774,7 @@ function go(id, el) {
 }
 
 /* ─── THEME ───────────────────────────────────── */
-let dark = true;
+let dark = false;
 function toggleTheme() {
   dark = !dark;
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
