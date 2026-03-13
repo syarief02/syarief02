@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GCMS 8890 Operation — Lab Notes | NPRA</title>
-<meta name="description" content="Standard operating procedure and quick reference for operating the Agilent GCMS 8890 in the Screening Unit.">
+<title>GCMS Data Analysis — Lab Notes | NPRA</title>
+<meta name="description" content="Step-by-step procedure for analyzing GCMS data, tuning chromatograms, conducting NIST library searches, and report generation.">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 .hero{text-align:center;margin-bottom:3.5rem;animation:heroIn 0.9s cubic-bezier(0.22,1,0.36,1) both}
 @keyframes heroIn{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
 .hero h1{font-size:clamp(2.1rem,5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}
-.hero h1 .g{background:linear-gradient(120deg,var(--cyan) 0%,var(--mint) 60%,#88ffee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .g{background:linear-gradient(120deg,var(--purple) 0%,var(--cyan) 60%,#cc88ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1rem;color:var(--text-dim);margin-bottom:0.8rem}
 .hero-desc{font-size:0.92rem;color:var(--text-dim);max-width:620px;margin:0 auto;line-height:1.7}
 /* Procedure Cards */
@@ -70,20 +70,15 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 .step-item::before{content:counter(step-counter);counter-increment:step-counter;position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;background:var(--cyan-dim);color:var(--cyan);font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,229,255,0.2)}
 .step-item:last-child{margin-bottom:0}
 .highlight{color:var(--cyan);font-family:'DM Mono',monospace;font-size:0.82rem;padding:0.15rem 0.4rem;background:var(--cyan-dim);border-radius:4px;border:1px solid rgba(0,229,255,0.15)}
-.alert{background:var(--red-dim);border-left:3px solid var(--red);padding:1rem;border-radius:0 8px 8px 0;margin-top:1rem;font-size:0.85rem;color:var(--text)}
-.alert-title{color:var(--red);font-weight:700;margin-bottom:0.3rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:0.4rem}
-/* Table */
-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.85rem}
-th,td{padding:0.8rem 1rem;text-align:left;border-bottom:1px solid var(--glass-border)}
-th{font-weight:600;color:var(--text-bright);background:var(--glass)}
-td{color:var(--text-dim)}
+.alert{background:var(--amber-dim);border-left:3px solid var(--amber);padding:1rem;border-radius:0 8px 8px 0;margin-top:1rem;font-size:0.85rem;color:var(--text)}
+.alert-title{color:var(--amber);font-weight:700;margin-bottom:0.3rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:0.4rem}
 /* Footer */
 .footer{text-align:center;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:var(--text-dim);text-transform:uppercase;margin-top:2rem}
 /* Utils */
 .reveal{opacity:0;transform:translateY(25px);transition:opacity 0.6s ease, transform 0.6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.nav-card{display:flex;align-items:center;justify-content:space-between;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.2rem 1.5rem;text-decoration:none;color:inherit;transition:all 0.3s;margin-top:2rem}
-.nav-card:hover{background:var(--card-hover);border-color:var(--mint);transform:translateX(5px)}
+.nav-card{display:flex;align-items:center;justify-content:space-between;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.2rem 1.5rem;text-decoration:none;color:inherit;transition:all 0.3s;margin-bottom:2rem}
+.nav-card:hover{background:var(--card-hover);border-color:var(--cyan);transform:translateX(-5px)}
 @media(max-width:600px){
   .hero h1{font-size:1.8rem}
   .card{padding:1.4rem}
@@ -104,6 +99,10 @@ td{color:var(--text-dim)}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         Unit Penyaringan
       </a>
+      <a href="gcms.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        GCMS Operation
+      </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
@@ -115,111 +114,75 @@ td{color:var(--text-dim)}
 
   <!-- Hero -->
   <div class="hero">
-    <h1>🧬 GCMS <span class="g">Operation</span></h1>
-    <div class="hero-sub">Agilent 8890 Gas Chromatography-Mass Spectrometry</div>
-    <p class="hero-desc">Standard operating procedure and quick reference for operating the Agilent GCMS 8890 in the Screening Unit. Covers solvent preparation, sequence setup, and tuning parameters.</p>
+    <h1>📊 GCMS <span class="g">Data Analysis</span></h1>
+    <div class="hero-sub">Post-Run Chromatogram & Spectral Processing</div>
+    <p class="hero-desc">Step-by-step procedure for analyzing GCMS data, scaling chromatograms, conducting NIST library searches, and extracting reports.</p>
   </div>
 
   <div style="text-align:center; margin:-1.5rem auto 3rem; max-width:800px; padding:0 1.5rem">
-    <img src="../../assets/images/sop/gcms_sop.png" alt="GCMS 8890 Operation Procedure" class="reveal" style="width:100%; height:auto; border-radius:18px; border:1px solid var(--glass-border); box-shadow:0 16px 40px rgba(0,0,0,0.12);">
+    <img src="../../assets/images/sop/gcms_analysis_sop.png" alt="GCMS Data Analysis Illustration" class="reveal" style="width:100%; height:auto; border-radius:18px; border:1px solid var(--glass-border); box-shadow:0 16px 40px rgba(0,0,0,0.12);">
   </div>
 
-  <div class="section-label">◈ 1. Preparation & Solvents</div>
+  <div class="section-label">◈ 1. Loading & Chromatogram Prep</div>
   <div class="card reveal">
-    <div class="card-title">Pre-Run Checklist</div>
+    <div class="card-title">Data Retrieval & Scaling</div>
     <ul class="step-list">
-      <li class="step-item">Sonicate all sample vials thoroughly before injection to remove trapped gases and ensure sample homogeneity.</li>
-      <li class="step-item">Prepare <strong style="color:var(--text-bright)">Ethanol Solvent</strong> in exactly 2 designated bottles (<span class="highlight">A</span> and <span class="highlight">B</span>).</li>
-      <li class="step-item">Manage waste lines: Ensure <span class="highlight">WA</span> and <span class="highlight">WB</span> (Waste Bottles) are emptied up to 5 bottles.</li>
+      <li class="step-item">Open the GCMS Data Analysis software.</li>
+      <li class="step-item">Navigate to <span class="highlight">Load Data File</span> → <span class="highlight">Change Path</span>. Select the folder corresponding to the current analysis month and load the specific raw data file.</li>
+      <li class="step-item">Go to <span class="highlight">Chromatogram</span> → <span class="highlight">Chromatogram Scaling...</span></li>
+      <li class="step-item">Click <strong>OK</strong> iteratively and choose <span class="highlight">Cont. to scale</span>. Adjust the view continuously until discrete, distinct peaks are visible (adjusting until "nampak peak").</li>
     </ul>
   </div>
 
-  <div class="section-label">◈ 2. GCMS Tuning Workflow</div>
+  <div class="section-label">◈ 2. Automated Integration</div>
   <div class="card reveal" style="border-left:4px solid var(--cyan)">
-    <div class="card-title">Autotune & Evaluation</div>
+    <div class="card-title">RTE Integrator & Library Search</div>
     <ul class="step-list">
-      <li class="step-item">Open the GCMS Software Application.</li>
-      <li class="step-item">To initiate tuning, navigate to <span class="highlight">VIEW</span> → <span class="highlight">TUNE & VACUUM CONTROL</span>.</li>
-      <li class="step-item">Select <span class="highlight">TUNE</span> → <span class="highlight">STD SPECTRA TUNE (STUNE.U)</span>.</li>
-      <div class="alert">
-        <div class="alert-title">⚠️ Important: Printer Check</div>
-        Before initiating the tune, verify that the connected printer has paper. The system is configured to <strong>print the tuning report automatically</strong> upon completion.
-      </div>
-      <li class="step-item" style="margin-top:1.2rem">Evaluate the tune profile: Go to <span class="highlight">TUNE</span> → <span class="highlight">TUNE EVALUATION</span>.</li>
-      <li class="step-item">If acceptable, save the parameters: Navigate to <span class="highlight">FILE</span> → <span class="highlight">SAVE TUNE PARAMETER</span>. Select <span class="highlight">STUNE.U</span> and click <strong>SAVE</strong>.</li>
+      <li class="step-item">Select <span class="highlight">Chromatogram</span> → <span class="highlight">Select Integrator...</span></li>
+      <li class="step-item">Choose the <span class="highlight">RTE Integrator</span> from the dropdown/list, then click <span class="highlight">Integrate</span>.</li>
+      <li class="step-item">To generate initial matches, navigate to <span class="highlight">Spectrum</span> → <span class="highlight">Library Search Report</span>.</li>
+      <li class="step-item">When prompted for output, select <span class="highlight">Screen</span> and click <strong>OK</strong> to view the preliminary results before printing.</li>
     </ul>
   </div>
 
-  <div class="section-label">◈ 3. Sequence & Method Setup</div>
-  <div class="card reveal">
-    <div class="card-title">Sequence Configuration</div>
-    <ul class="step-list">
-      <li class="step-item">Return to the main dashboard: Click <span class="highlight">VIEW</span> → <span class="highlight">INSTRUMENT CTRL</span> → <strong>OK</strong>.</li>
-      <li class="step-item">Load the sequence: Go to <span class="highlight">SEQUENCE</span> → <span class="highlight">LOAD SEQUENCE</span> and select the desired base sequence name.</li>
-      <li class="step-item">Modify the sequence: Click <span class="highlight">SEQUENCE</span> → <span class="highlight">EDIT SEQUENCE</span>.</li>
-      <li class="step-item">Verify that the Method File is strictly set to standard operating method: <span class="highlight">TESTINGMETHOD_LATEST.M</span>.</li>
-    </ul>
-  </div>
-
-  <div class="section-label">◈ 4. Data Naming & Injection Rules</div>
+  <div class="section-label">◈ 3. NIST MS Search (Manual Verification)</div>
   <div class="card reveal" style="border-left:4px solid var(--purple)">
-    <div class="card-title">Autosampler Parameters</div>
-    
-    <div style="margin-bottom:1.5rem">
-      <table style="width:100%">
-        <thead>
-          <tr><th>Parameter</th><th>Instruction Format</th><th>Example</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong style="color:var(--text-bright)">Data Path</strong></td>
-            <td>Group by current month</td>
-            <td><code>...\JULY\</code></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--text-bright)">Data File</strong></td>
-            <td><code>Initial_Date_SampleNo[W]</code></td>
-            <td><span class="highlight">SYED_20240722_2024010064W</span></td>
-          </tr>
-          <tr>
-            <td><strong style="color:var(--text-bright)">Sample Name</strong></td>
-            <td>Input the registered product name (isi nama keluaran)</td>
-            <td><code>PROD_X_EXTRACT</code></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <ul class="step-list" style="counter-reset:step-counter 0">
-      <li class="step-item"><strong>Wash Protocol:</strong> Every sample must have an extra wash injection <strong>before and after</strong> the actual sample analysis (e.g., wash blank, sample, wash blank).</li>
-      <li class="step-item"><strong>Injection Count:</strong> Each sample bottle strictly requires <strong>2 injections</strong>. For example: <code>PH3 (1st INJ)</code> followed by <code>PH3 (2nd INJ)</code>.</li>
-      <li class="step-item"><strong>Vial Positioning:</strong> Ensure the sample vial positions accurately reflect the start and end positions loaded in the autosampler tray to prevent mis-injections.</li>
-    </ul>
-  </div>
-
-  <div class="section-label">◈ 5. Execution</div>
-  <div class="card reveal" style="border-left:4px solid var(--mint)">
-    <div class="card-title">Running the Sequence</div>
+    <div class="card-title">Manual Peak Integration</div>
     <ul class="step-list">
-      <li class="step-item">Save the modified sequence: Select <span class="highlight">Save Sequence AS...</span>, name it appropriately, and click <strong>OK</strong>.</li>
-      <li class="step-item">Initiate execution: Go to <span class="highlight">SEQUENCE</span> → <span class="highlight">Run Sequence</span>.</li>
-      <li class="step-item">Ensure the <strong>Operator Name</strong> is updated to your identifier.</li>
-      <li class="step-item">Click <strong>Run Sequence</strong> to begin the analysis queue.</li>
+      <li class="step-item">If specific peaks require deeper manual investigation, initiate the <strong>NIST MS Search</strong> workflow.</li>
+      <li class="step-item">Zoom extensively into the specific target peak on the chromatogram canvas.</li>
+      <li class="step-item">Perform a <strong style="color:var(--text-bright)">Right Click</strong> explicitly <em>inside</em> the peak apex, and another <strong style="color:var(--text-bright)">Right Click</strong> <em>outside</em> the peak (on the baseline) to capture the background spectra.</li>
+      <li class="step-item">Navigate to <span class="highlight">Spectrum</span> → <span class="highlight">Subtract</span> to cleanly deduct the background noise.</li>
+      <li class="step-item"><strong>Double Right Click</strong> on the newly subtracted sub-graph element at the bottom of the window to instantly execute a direct cross-reference against the complete NIST Spectral Library.</li>
+    </ul>
+    <div class="alert">
+      <div class="alert-title">🔍 Threshold: Positive Confirmation</div>
+      Review the NIST Match Quality Score. A match quality of <strong>80% or greater</strong> is required to definitively consider the spectral matching as <strong>POSITIVE</strong>.
+    </div>
+  </div>
+
+  <div class="section-label">◈ 4. Printing & Documentation</div>
+  <div class="card reveal" style="border-left:4px solid var(--mint)">
+    <div class="card-title">Reporting Logistics</div>
+    <ul class="step-list">
+      <li class="step-item">To print specific analysis windows: Go to <span class="highlight">Print Spectrum</span> → <span class="highlight">Selected Windows</span>, and input the relevant <span class="highlight">Windows Number #</span>.</li>
+      <li class="step-item">Load the next sequential data file, integrate it, and then explicitly <span class="highlight">Print "Depan Belakang"</span> (Double-sided printing to save paper/file correctly in records) when dealing with consecutive sequence injections.</li>
+      <li class="step-item">Print the comprehensive <strong>Library Search Report</strong> explicitly for <strong>Injection No 1</strong>. (Refer back to GCMS Operation rule: 2 injections per bottle).</li>
+      <li class="step-item"><strong>Logbook Documentation:</strong> Photocopy the relevant pages from the GCMS Logbook. Manually highlight the corresponding Sample Number on the photocopy.</li>
+      <li class="step-item">Attach the highlighted logbook photocopy securely along with the printed chromatogram maps and spectral scan reports to form the complete analysis docket.</li>
     </ul>
   </div>
+
+  <!-- Previous Page Link -->
+  <a href="gcms.html" class="nav-card reveal">
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan)">Previous Step</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--text-bright);margin-top:0.2rem">GCMS 8890 Operation Guide</div>
+    </div>
+    <div style="font-size:1.5rem;color:var(--text-dim);transform:rotate(180deg)">→</div>
+  </a>
 
   <div class="footer">Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ NPRA Malaysia</div>
-</div>
-
-<!-- Next Page Link -->
-<div class="main" style="padding-top:0; padding-bottom:5rem">
-  <a href="gcms-analysis.html" class="nav-card reveal">
-    <div>
-      <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mint)">Next Step</div>
-      <div style="font-size:1rem;font-weight:700;color:var(--text-bright);margin-top:0.2rem">GCMS 8890 Data Analysis</div>
-    </div>
-    <div style="font-size:1.5rem;color:var(--text-dim)">→</div>
-  </a>
 </div>
 
 <script>
