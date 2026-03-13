@@ -305,3 +305,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // Parallax orbs
   new ParallaxOrbs();
 });
+
+// ===== PROJECT FILTERS =====
+function filterProjects(category, btn) {
+  // Update active button
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Show/hide cards
+  document.querySelectorAll('.project-card[data-category]').forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.classList.remove('filter-hidden');
+    } else {
+      card.classList.add('filter-hidden');
+    }
+  });
+}
