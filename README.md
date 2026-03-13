@@ -90,6 +90,16 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
   <img src="https://img.shields.io/badge/MetaTrader-blue?style=for-the-badge" />
 </p>
 
+### 💻 Programming & Tech
+**Languages:** Python, JavaScript, C/C++, MQL4, MQL5, HTML, CSS, SQL  
+**Frameworks & Platforms:** Next.js, React, FastAPI, Supabase, Bootstrap, MetaTrader 4/5  
+**Tools & DevOps:** Git, GitHub, Linux, OpenAI API, Vercel  
+
+### 🧪 Domain Expertise
+**Algorithmic Trading:** Expert Advisor (EA) development, Forex Analysis, Risk Management  
+**Pharmaceutical Analysis:** HPLC, GC-MS, LC-MS, ICP-MS, GFAAS, CVAAS  
+**Quality Control & Compliance:** Equipment Verification SOPs (ISO 8655-2, ISO 4787, MS ISO/IEC 17025), Good Laboratory Practice (GLP)  
+
 ---
 
 ## 🚀 What I'm Up To
