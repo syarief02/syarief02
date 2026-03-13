@@ -166,12 +166,14 @@ Interactive laboratory references and professional portfolio for my work at NPRA
 <summary>Shimadzu — UHPLC Theory & Practical with LabSolutions Workshop (Oct 2025)</summary>
 <br>
 Certificate of Attendance — "Shimadzu Ultra High-Performance Liquid Chromatography Theory and Practical with LabSolutions Workshop" conducted at NPRA, Petaling Jaya on 28th October 2025 by Shimadzu Malaysia Sdn Bhd.
+<img src="https://raw.githubusercontent.com/syarief02/syarief02/main/certificate/shimadzu%20uhplc.jpg" alt="Shimadzu UHPLC Certificate" />
 </details>
 
 <details>
 <summary>NIC — RA-4300A Mercury Analyzer Training (Sep 2022)</summary>
 <br>
 Certificate of Attendance — Hands-on training and basic maintenance on the NIC RA-4300A Mercury Analyzer at NPRA on 13th September 2022 by Orbiting Scientific & Technology Sdn Bhd.
+<img src="https://raw.githubusercontent.com/syarief02/syarief02/main/certificate/mercury%20analyzer.jpg" alt="NIC Mercury Analyzer Certificate" />
 </details>
 
 ---
