@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micropipette Verification — PKKK/200/044 | NPRA</title>
+<meta name="description" content="SOP for micropipette verification per PKKK/200/044. Gravimetric method based on ISO 8655-2 for single and multichannel micropipettes.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+[data-theme="dark"]{--bg:#040d1a;--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.09);--cyan:#00e5ff;--cyan-dim:rgba(0,229,255,0.12);--mint:#00ffb3;--mint-dim:rgba(0,255,179,0.12);--amber:#ffb700;--amber-dim:rgba(255,183,0,0.13);--purple:#b47aff;--purple-dim:rgba(180,122,255,0.12);--red:#ff4d6d;--red-dim:rgba(255,77,109,0.13);--text:#c8d8f0;--text-dim:#6888aa;--text-bright:#eaf4ff;--card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.09);--card-hover:rgba(255,255,255,0.07);--orb-opacity:0.16}
+[data-theme="light"]{--bg:#f0f4fa;--glass:rgba(255,255,255,0.7);--glass-border:rgba(80,120,200,0.15);--cyan:#0080aa;--cyan-dim:rgba(0,128,170,0.1);--mint:#007a55;--mint-dim:rgba(0,122,85,0.1);--amber:#b07800;--amber-dim:rgba(176,120,0,0.1);--purple:#7040b0;--purple-dim:rgba(112,64,176,0.1);--red:#c0203a;--red-dim:rgba(192,32,58,0.1);--text:#1a2a44;--text-dim:#5a7090;--text-bright:#0a1830;--card-bg:rgba(255,255,255,0.82);--card-border:rgba(80,130,200,0.18);--card-hover:rgba(255,255,255,0.95);--orb-opacity:0.10}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;transition:background 0.4s,color 0.4s}
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:var(--orb-opacity);animation:drift 22s ease-in-out infinite alternate}.orb1{width:700px;height:700px;background:var(--purple);top:-250px;left:-200px}.orb2{width:550px;height:550px;background:var(--cyan);bottom:-150px;right:-150px;animation-delay:-8s}@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,80px) scale(1.1)}}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(180,122,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(180,122,255,0.02) 1px,transparent 1px);background-size:42px 42px}[data-theme="light"] .grid-overlay{background-image:linear-gradient(rgba(0,80,150,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,80,150,0.04) 1px,transparent 1px)}
+.main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 5rem}@media(min-width:768px){.main{padding:3.5rem 2rem 6rem}}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:0.8rem}.topbar-left{display:flex;align-items:center;gap:0.8rem}
+.ctrl-btn{display:flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;padding:0.42rem 0.9rem;border-radius:100px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;transition:all 0.2s;backdrop-filter:blur(8px);white-space:nowrap;text-decoration:none}.ctrl-btn:hover{border-color:var(--purple);color:var(--purple);background:var(--purple-dim)}.ctrl-btn svg{width:13px;height:13px;flex-shrink:0}
+.hero{text-align:center;margin-bottom:3rem;animation:heroIn 0.9s cubic-bezier(0.22,1,0.36,1) both}@keyframes heroIn{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}.hero h1 .g{background:linear-gradient(120deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:0.95rem;color:var(--text-dim);margin-bottom:0.6rem}.hero-desc{font-size:0.88rem;color:var(--text-dim);max-width:600px;margin:0 auto;line-height:1.7}
+.section-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--purple);margin-bottom:1.2rem;padding-left:0.2rem}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:1.8rem;backdrop-filter:blur(18px);margin-bottom:1.5rem}
+.step-list{list-style:none;counter-reset:steps}.step-list li{counter-increment:steps;font-size:0.82rem;color:var(--text);line-height:1.7;padding:0.4rem 0 0.4rem 2rem;position:relative;border-bottom:1px solid var(--glass-border)}.step-list li:last-child{border-bottom:none}.step-list li::before{content:counter(steps);position:absolute;left:0;top:0.45rem;font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;width:1.4rem;height:1.4rem;background:var(--purple-dim);border:1px solid rgba(180,122,255,0.2);color:var(--purple);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.spec-grid{display:grid;gap:0.8rem;margin:0.8rem 0}@media(min-width:640px){.spec-grid{grid-template-columns:1fr 1fr 1fr 1fr}}
+.spec-item{background:var(--card-hover);border:1px solid var(--glass-border);border-radius:12px;padding:1rem;text-align:center}.spec-value{font-size:1.2rem;font-weight:900;color:var(--text-bright)}.spec-label{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem}
+.eq-table{width:100%;border-collapse:collapse;font-size:0.75rem;margin:0.8rem 0}.eq-table th{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--purple);text-align:center;padding:0.45rem 0.5rem;border-bottom:2px solid var(--purple-dim)}.eq-table td{padding:0.35rem 0.5rem;border-bottom:1px solid var(--glass-border);color:var(--text);text-align:center}.eq-table tr:hover td{background:var(--card-hover)}
+.highlight{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--purple)}
+.formula{background:var(--card-hover);border:1px solid var(--glass-border);border-radius:12px;padding:1rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--text-bright);text-align:center;margin:0.8rem 0;line-height:1.8}
+.formula .var{color:var(--purple);font-weight:700}
+.footer{text-align:center;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:var(--text-dim);text-transform:uppercase;margin-top:2rem}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:500px){.hero h1{font-size:1.6rem}.eq-table{font-size:0.65rem}}@media print{.bg-canvas,.grid-overlay,.topbar{display:none!important}body{background:white;color:#111}.card{border:1px solid #ccc;backdrop-filter:none}}
+</style>
+</head>
+<body>
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div></div>
+<div class="grid-overlay"></div>
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="https://syariefazman.com/lab/verifikasi" class="ctrl-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Verifikasi Hub</a>
+    </div>
+    <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span id="themeTxt">Dark Mode</span></button>
+  </div>
+
+  <div class="hero">
+    <h1>💉 Micropipette <span class="g">Verification</span></h1>
+    <div class="hero-sub">PKKK/200/044 — Verifikasi Mikropipet (ISO 8655-2:2022)</div>
+    <p class="hero-desc">Gravimetric verification procedure for single and multichannel micropipettes. Ensures volumetric accuracy and precision per ISO 8655.</p>
+  </div>
+
+  <div class="section-label">◈ Key Parameters</div>
+  <div class="card reveal">
+    <div class="spec-grid">
+      <div class="spec-item"><div class="spec-value">3 Mo</div><div class="spec-label">Frequency</div></div>
+      <div class="spec-item"><div class="spec-value">10</div><div class="spec-label">Measurements</div></div>
+      <div class="spec-item"><div class="spec-value">20±3°C</div><div class="spec-label">Room Temp</div></div>
+      <div class="spec-item"><div class="spec-value">45-80%</div><div class="spec-label">Rel. Humidity</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">◈ Test Volumes</div>
+  <div class="card reveal">
+    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
+      <li>📏 <strong>Nominal volume</strong> — maximum range of the micropipette</li>
+      <li>📏 <strong>50%</strong> of nominal volume</li>
+      <li>📏 <strong>10%</strong> of nominal volume or lower limit (whichever is larger)</li>
+      <li>📏 Any additional volumes specified by the laboratory</li>
+    </ul>
+  </div>
+
+  <div class="section-label">◈ Procedure</div>
+  <div class="card reveal">
+    <ol class="step-list">
+      <li>Record room temperature and RH from calibrated thermohygrometer. Ensure T = 20±3°C, max variation ±0.5°C, RH = 45–80%.</li>
+      <li>Record deionized water temperature (must be within ±0.5°C of room temperature).</li>
+      <li>Determine Z-factor from the water temperature using the Z-factor table.</li>
+      <li>Select appropriate balance based on test volume and minimum weight requirements.</li>
+      <li>Place a suitable flask/beaker on the balance and TARE.</li>
+      <li>Hold the micropipette vertically. Immerse the tip to the correct depth. Aspirate water and dispense at 30-45° angle into the vessel.</li>
+      <li>Print the result. TARE the balance.</li>
+      <li>Repeat steps 6-7 for a total of <strong>10 measurements</strong>.</li>
+      <li>For volumes <strong>&lt;50 µL</strong>: perform evaporation correction (mass loss measurement).</li>
+      <li>Calculate mean volume (V̄), standard deviation (Sr), Accuracy (A), and CV. Compare against max permissible errors.</li>
+      <li>Paste the balance printout slips on the verification form and submit for review.</li>
+    </ol>
+  </div>
+
+  <div class="section-label">◈ Calculations</div>
+  <div class="card reveal">
+    <div class="formula">
+      <span class="var">Vi</span> = mass × <span class="var">Z</span><br>
+      <span class="var">V̄</span> = mean of <span class="var">V1...V10</span><br>
+      <span class="var">A</span> = 100 × (V̄ − Vs) / Vs<br>
+      <span class="var">CV</span> = 100 × Sr / V̄<br>
+      <span class="var">ML</span> = (X₁₀ − X₁₁) / 10
+    </div>
+    <p style="font-size:0.78rem;color:var(--text-dim);margin-top:0.5rem;text-align:center">
+      A<sub>found</sub> ≤ A<sub>max</sub> and CV<sub>found</sub> ≤ CV<sub>max</sub> → <strong>PASS</strong>
+    </p>
+  </div>
+
+  <div class="section-label">◈ Max Permissible Errors — Single Channel</div>
+  <div class="card reveal" style="overflow-x:auto">
+    <table class="eq-table">
+      <thead><tr><th>Nominal (µL)</th><th>Volume %</th><th>Accuracy A (%)</th><th>CV (%)</th></tr></thead>
+      <tbody>
+        <tr><td>1–3</td><td>100</td><td class="highlight">2.5</td><td class="highlight">2.0</td></tr>
+        <tr><td>1–3</td><td>50</td><td class="highlight">5.0</td><td class="highlight">4.0</td></tr>
+        <tr><td>&gt;3–5</td><td>100</td><td class="highlight">2.5</td><td class="highlight">1.5</td></tr>
+        <tr><td>&gt;5–10</td><td>100</td><td class="highlight">1.2</td><td class="highlight">0.8</td></tr>
+        <tr><td>&gt;10–50</td><td>100</td><td class="highlight">1.0</td><td class="highlight">0.5</td></tr>
+        <tr><td>&gt;50–5000</td><td>100</td><td class="highlight">0.80</td><td class="highlight">0.30</td></tr>
+        <tr><td>&gt;50–5000</td><td>50</td><td class="highlight">1.6</td><td class="highlight">0.60</td></tr>
+        <tr><td>&gt;50–5000</td><td>10</td><td class="highlight">8.0</td><td class="highlight">3.0</td></tr>
+        <tr><td>&gt;5000–20000</td><td>100</td><td class="highlight">0.60</td><td class="highlight">0.30</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-label">◈ Max Permissible Errors — Multichannel</div>
+  <div class="card reveal" style="overflow-x:auto">
+    <table class="eq-table">
+      <thead><tr><th>Nominal (µL)</th><th>Volume %</th><th>Accuracy A (%)</th><th>CV (%)</th></tr></thead>
+      <tbody>
+        <tr><td>2</td><td>100</td><td class="highlight">8.0</td><td class="highlight">8.0</td></tr>
+        <tr><td>&gt;2–5</td><td>100</td><td class="highlight">5.0</td><td class="highlight">3.0</td></tr>
+        <tr><td>&gt;5–10</td><td>100</td><td class="highlight">2.4</td><td class="highlight">1.6</td></tr>
+        <tr><td>&gt;10–20</td><td>100</td><td class="highlight">2.0</td><td class="highlight">1.0</td></tr>
+        <tr><td>&gt;20–50</td><td>100</td><td class="highlight">2.0</td><td class="highlight">0.80</td></tr>
+        <tr><td>&gt;50–2000</td><td>100</td><td class="highlight">1.6</td><td class="highlight">0.60</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-label">◈ Z-Factor Table (Selected)</div>
+  <div class="card reveal" style="overflow-x:auto">
+    <table class="eq-table">
+      <thead><tr><th>Temp (°C)</th><th>Z (mL/g)</th><th>Temp (°C)</th><th>Z (mL/g)</th></tr></thead>
+      <tbody>
+        <tr><td>15</td><td>1.0020</td><td>23</td><td>1.0035</td></tr>
+        <tr><td>17</td><td>1.0023</td><td>24</td><td>1.0038</td></tr>
+        <tr><td>18</td><td>1.0025</td><td>25</td><td>1.0040</td></tr>
+        <tr><td>19</td><td>1.0027</td><td>26</td><td>1.0043</td></tr>
+        <tr><td>20</td><td>1.0029</td><td>27</td><td>1.0045</td></tr>
+        <tr><td>21</td><td>1.0031</td><td>28</td><td>1.0048</td></tr>
+        <tr><td>22</td><td>1.0033</td><td>30</td><td>1.0054</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-label">◈ Corrective Action</div>
+  <div class="card reveal">
+    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2.2">
+      <li>⚠️ <strong>If FAIL:</strong> Switch to Analyst 2 → repeat the verification</li>
+      <li>❌ If Analyst 2 also fails → micropipette is <strong>considered defective</strong>, remove from service</li>
+      <li>✅ If Analyst 2 passes → send to Analyst 3 for confirmation</li>
+      <li>✅ If Analyst 3 passes → verification is confirmed <strong>PASS</strong></li>
+      <li>❌ If Analyst 3 fails → micropipette is <strong>considered defective</strong></li>
+    </ul>
+  </div>
+
+  <div class="section-label">◈ Forms & References</div>
+  <div class="card reveal">
+    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
+      <li>📋 <strong>PKKK/044A</strong> — Single Channel Verification Form</li>
+      <li>📋 <strong>PKKK/044B</strong> — Single Channel (Alternate) Form</li>
+      <li>📋 <strong>PKKK/044C</strong> — Multichannel Verification Form</li>
+      <li>📋 <strong>PKKK/200/044</strong> — Quality Procedure: Verifikasi Mikropipet</li>
+      <li>📖 <strong>ISO 8655-2:2022</strong> — Piston-operated volumetric apparatus — Part 2: Pipettes</li>
+      <li>📖 <strong>ISO 8655-6:2022</strong> — Part 6: Gravimetric reference measurement</li>
+    </ul>
+  </div>
+
+  <div class="footer">Micropipette Verification ◈ PKKK/200/044 ◈ ISO 8655-2 ◈ NPRA Malaysia</div>
+</div>
+<script>
+let dark=false;function toggleTheme(){dark=!dark;document.documentElement.setAttribute('data-theme',dark?'dark':'light');document.getElementById('themeTxt').textContent=dark?'Light Mode':'Dark Mode'}
+const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

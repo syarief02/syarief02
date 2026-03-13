@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermometer Verification — PKKK/200/009 | NPRA</title>
+<meta name="description" content="SOP for thermometer verification per PKKK/200/009. Verifying test thermometers against calibrated master thermometers with 5 readings at 5-min intervals.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+[data-theme="dark"]{--bg:#040d1a;--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.09);--cyan:#00e5ff;--cyan-dim:rgba(0,229,255,0.12);--mint:#00ffb3;--mint-dim:rgba(0,255,179,0.12);--amber:#ffb700;--amber-dim:rgba(255,183,0,0.13);--purple:#b47aff;--purple-dim:rgba(180,122,255,0.12);--text:#c8d8f0;--text-dim:#6888aa;--text-bright:#eaf4ff;--card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.09);--card-hover:rgba(255,255,255,0.07);--orb-opacity:0.16}
+[data-theme="light"]{--bg:#f0f4fa;--glass:rgba(255,255,255,0.7);--glass-border:rgba(80,120,200,0.15);--cyan:#0080aa;--cyan-dim:rgba(0,128,170,0.1);--mint:#007a55;--mint-dim:rgba(0,122,85,0.1);--amber:#b07800;--amber-dim:rgba(176,120,0,0.1);--purple:#7040b0;--purple-dim:rgba(112,64,176,0.1);--text:#1a2a44;--text-dim:#5a7090;--text-bright:#0a1830;--card-bg:rgba(255,255,255,0.82);--card-border:rgba(80,130,200,0.18);--card-hover:rgba(255,255,255,0.95);--orb-opacity:0.10}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;transition:background 0.4s,color 0.4s}
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:var(--orb-opacity);animation:drift 22s ease-in-out infinite alternate}.orb1{width:700px;height:700px;background:var(--amber);top:-250px;left:-200px}.orb2{width:550px;height:550px;background:var(--cyan);bottom:-150px;right:-150px;animation-delay:-8s}@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,80px) scale(1.1)}}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,183,0,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,183,0,0.02) 1px,transparent 1px);background-size:42px 42px}[data-theme="light"] .grid-overlay{background-image:linear-gradient(rgba(0,80,150,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,80,150,0.04) 1px,transparent 1px)}
+.main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 5rem}@media(min-width:768px){.main{padding:3.5rem 2rem 6rem}}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:0.8rem}.topbar-left{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap}
+.ctrl-btn{display:flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;padding:0.42rem 0.9rem;border-radius:100px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;transition:all 0.2s;backdrop-filter:blur(8px);white-space:nowrap;text-decoration:none}.ctrl-btn:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-dim)}.ctrl-btn svg{width:13px;height:13px;flex-shrink:0}
+.hero{text-align:center;margin-bottom:3rem;animation:heroIn 0.9s cubic-bezier(0.22,1,0.36,1) both}@keyframes heroIn{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}.hero h1 .g{background:linear-gradient(120deg,var(--amber),#ff8800);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:0.95rem;color:var(--text-dim);margin-bottom:0.6rem}.hero-desc{font-size:0.88rem;color:var(--text-dim);max-width:600px;margin:0 auto;line-height:1.7}
+.section-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;padding-left:0.2rem}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:1.8rem;backdrop-filter:blur(18px);margin-bottom:1.5rem}
+.step-list{list-style:none;counter-reset:steps}.step-list li{counter-increment:steps;font-size:0.82rem;color:var(--text);line-height:1.7;padding:0.4rem 0 0.4rem 2rem;position:relative;border-bottom:1px solid var(--glass-border)}.step-list li:last-child{border-bottom:none}.step-list li::before{content:counter(steps);position:absolute;left:0;top:0.45rem;font-family:'DM Mono',monospace;font-size:0.6rem;font-weight:700;width:1.4rem;height:1.4rem;background:var(--amber-dim);border:1px solid rgba(255,183,0,0.2);color:var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.spec-grid{display:grid;gap:0.8rem;margin:0.8rem 0}@media(min-width:640px){.spec-grid{grid-template-columns:1fr 1fr 1fr}}
+.spec-item{background:var(--card-hover);border:1px solid var(--glass-border);border-radius:12px;padding:1rem;text-align:center}.spec-value{font-size:1.4rem;font-weight:900;color:var(--text-bright)}.spec-label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-top:0.2rem}
+.footer{text-align:center;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:var(--text-dim);text-transform:uppercase;margin-top:2rem}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:500px){.hero h1{font-size:1.6rem}}@media print{.bg-canvas,.grid-overlay,.topbar{display:none!important}body{background:white;color:#111}.card{border:1px solid #ccc;backdrop-filter:none}}
+</style>
+</head>
+<body>
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div></div>
+<div class="grid-overlay"></div>
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="https://syariefazman.com/lab/verifikasi" class="ctrl-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Verifikasi Hub</a>
+    </div>
+    <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span id="themeTxt">Dark Mode</span></button>
+  </div>
+
+  <div class="hero">
+    <h1>🌡️ Thermometer <span class="g">Verification</span></h1>
+    <div class="hero-sub">PKKK/200/009 — Verifikasi Termometer</div>
+    <p class="hero-desc">Procedure for verifying test thermometers against calibrated master thermometers. Ensures temperature measurement accuracy across the laboratory.</p>
+  </div>
+
+  <div class="section-label">◈ Key Parameters</div>
+  <div class="card reveal">
+    <div class="spec-grid">
+      <div class="spec-item"><div class="spec-value">3 Mo</div><div class="spec-label">Frequency</div></div>
+      <div class="spec-item"><div class="spec-value">5</div><div class="spec-label">Readings Required</div></div>
+      <div class="spec-item"><div class="spec-value">≤1.0°C</div><div class="spec-label">Tolerance</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">◈ Master Thermometer Requirements</div>
+  <div class="card reveal">
+    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
+      <li>✅ Valid calibration certificate (SIRIM / accredited lab)</li>
+      <li>✅ Used ONLY for verification purposes — not routine measurements</li>
+      <li>✅ Equal or better resolution than the test thermometer</li>
+      <li>📋 Record: serial number, calibration date, range, certificate number</li>
+    </ul>
+  </div>
+
+  <div class="section-label">◈ Procedure</div>
+  <div class="card reveal">
+    <ol class="step-list">
+      <li>Place both master and test thermometers in the same environment for <strong>at least 2 hours</strong> to reach equilibrium.</li>
+      <li>After equilibrium, record the first pair of readings (master + test) simultaneously.</li>
+      <li>Wait <strong>at least 5 minutes</strong> between each reading.</li>
+      <li>Record a total of <strong>5 readings</strong> for both the master and test thermometers.</li>
+      <li>Calculate the difference between each pair of readings.</li>
+      <li>If all differences are <strong>≤ 1.0°C</strong>, the test thermometer <strong>PASSES</strong>.</li>
+      <li>Record all results in the Thermometer Verification Record Sheet (<strong>PKK/047A</strong>).</li>
+      <li>Generate the linearity equation for actual temperature reading using form <strong>PKK/047B</strong>.</li>
+      <li>Submit the report to the Pharmacist for review and approval.</li>
+    </ol>
+  </div>
+
+  <div class="section-label">◈ Corrective Action</div>
+  <div class="card reveal">
+    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
+      <li>⚠️ If first verification <strong>fails</strong> → repeat verification by a <strong>different analyst</strong></li>
+      <li>❌ If second verification also fails → remove thermometer from service</li>
+      <li>🏷️ Label failed thermometer as <strong>"OUT OF SERVICE"</strong></li>
+      <li>📤 Send for recalibration or replace</li>
+    </ul>
+  </div>
+
+  <div class="section-label">◈ Forms & References</div>
+  <div class="card reveal">
+    <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2">
+      <li>📋 <strong>PKK/047A</strong> — Thermometer Verification Record Sheet</li>
+      <li>📋 <strong>PKK/047B</strong> — Generation of Linearity Equation for Actual Temperature Reading</li>
+      <li>📋 <strong>PKKK/200/009</strong> — Quality Procedure: Verifikasi Termometer</li>
+    </ul>
+  </div>
+
+  <div class="footer">Thermometer Verification ◈ PKKK/200/009 ◈ NPRA Malaysia</div>
+</div>
+<script>
+let dark=false;function toggleTheme(){dark=!dark;document.documentElement.setAttribute('data-theme',dark?'dark':'light');document.getElementById('themeTxt').textContent=dark?'Light Mode':'Dark Mode'}
+const obs=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
