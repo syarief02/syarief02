@@ -96,7 +96,9 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 
 - 💼 **[Portfolio](https://syariefazman.vercel.app)** — my developer portfolio showcasing projects, skills & journey
 - 📊 **[Unit Penyaringan — Sasaran 2026](https://syariefazman.com/uptslide1)** — an interactive web-based presentation slide deck for NPRA
-- 🔬 **[Unit Penyaringan Lab Notes](https://syariefazman.com/lab)** — interactive lab reference hub for pharmaceutical analysis at NPRA
+- 🔬 **[NPRA Lab Notes & Competency](https://syariefazman.com/lab)** — multi-unit lab reference hub covering Seksyen Pengujian Produk & Kosmetik (PKKK) with competency records
+- 🧪 **[Unit Penyaringan Lab Notes](https://syariefazman.com/lab/penyaringan)** — SPE procedures, sample prep guides, HPLC/GCMS/LCMS training records
+- ⚗️ **[Unit Logam Berat](https://syariefazman.com/lab/logam-berat)** — heavy metal analysis competency records (GFAAS, CVAAS, ICP-MS)
 - 🧪 **[SPE Lab Reference](https://syariefazman.com/spe)** — interactive Solid-Phase Extraction procedure guide with checklists, timers & quick reference
 - 💊 **[Sample Preparation Guide](https://syariefazman.com/sampleprep)** — 7-category drug sample prep reference (Anticholesterol, Antidiabetic, Diuretic, PPI, Antihypertensive, EDD, Domperidone)
 - 📄 **[Resume](https://syariefazman.vercel.app/resume.html)** — my up-to-date resume with print-to-PDF

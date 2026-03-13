@@ -19,6 +19,16 @@
       "source": "/lab",
       "destination": "/lab/",
       "permanent": false
+    },
+    {
+      "source": "/lab/penyaringan",
+      "destination": "/lab/penyaringan/",
+      "permanent": false
+    },
+    {
+      "source": "/lab/logam-berat",
+      "destination": "/lab/logam-berat/",
+      "permanent": false
     }
   ],
   "rewrites": [

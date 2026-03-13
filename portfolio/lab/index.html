@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit Penyaringan — Lab Notes | NPRA</title>
-<meta name="description" content="Interactive laboratory reference notes for Unit Penyaringan, National Pharmaceutical Regulatory Agency (NPRA) Malaysia. SPE procedures, sample preparation guides, and more.">
+<title>Lab Notes — Seksyen Pengujian Produk & Kosmetik | NPRA</title>
+<meta name="description" content="Interactive laboratory reference notes and competency records for Seksyen Pengujian Produk & Kosmetik, Pusat Komplians Dan Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,9 +95,15 @@ body{
   display:inline-flex;align-items:center;gap:0.5rem;
   font-family:'DM Mono',monospace;font-size:0.63rem;letter-spacing:0.28em;text-transform:uppercase;
   color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.22);
-  padding:0.33rem 1.1rem;border-radius:100px;margin-bottom:1.2rem;
+  padding:0.33rem 1.1rem;border-radius:100px;margin-bottom:0.6rem;
 }
 .hero-dept::before{content:'◈';font-size:0.75rem}
+.hero-section-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--purple);background:var(--purple-dim);border:1px solid rgba(180,122,255,0.22);
+  padding:0.33rem 1.1rem;border-radius:100px;margin-bottom:1.2rem;
+}
 .hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}
 .hero h1 .g{background:linear-gradient(120deg,var(--cyan) 0%,var(--mint) 60%,#88ffee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1rem;color:var(--text-dim);margin-bottom:0.8rem}
@@ -150,6 +156,7 @@ body{
 .t-mint{background:var(--mint-dim);border:1px solid rgba(0,255,179,0.2);color:var(--mint)}
 .t-amber{background:var(--amber-dim);border:1px solid rgba(255,183,0,0.2);color:var(--amber)}
 .t-purple{background:var(--purple-dim);border:1px solid rgba(180,122,255,0.2);color:var(--purple)}
+.t-red{background:var(--red-dim);border:1px solid rgba(255,77,109,0.2);color:var(--red)}
 
 .card-footer{display:flex;justify-content:space-between;align-items:center}
 .card-status{
@@ -172,6 +179,34 @@ body{
   text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;
   background:var(--amber-dim);border:1px solid rgba(255,183,0,0.2);color:var(--amber);
 }
+
+/* ─── COMPETENCY TIMELINE ─────────────────────────────── */
+.timeline{position:relative;padding-left:2.2rem;margin-bottom:3rem}
+.timeline::before{
+  content:'';position:absolute;left:0.55rem;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--cyan),var(--mint),var(--purple));
+  border-radius:2px;opacity:0.4;
+}
+.timeline-item{position:relative;margin-bottom:1.8rem}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-dot{
+  position:absolute;left:-1.85rem;top:0.25rem;width:14px;height:14px;
+  border-radius:50%;background:var(--card-bg);border:2px solid var(--cyan);
+  z-index:1;
+}
+.timeline-item:nth-child(2) .timeline-dot{border-color:var(--mint)}
+.timeline-item:nth-child(3) .timeline-dot{border-color:var(--amber)}
+.timeline-item:nth-child(4) .timeline-dot{border-color:var(--purple)}
+.timeline-year{
+  font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:0.3rem;
+}
+.timeline-item:nth-child(2) .timeline-year{color:var(--mint)}
+.timeline-item:nth-child(3) .timeline-year{color:var(--amber)}
+.timeline-item:nth-child(4) .timeline-year{color:var(--purple)}
+.timeline-unit{font-size:0.95rem;font-weight:700;color:var(--text-bright);margin-bottom:0.2rem}
+.timeline-detail{font-size:0.82rem;color:var(--text-dim);line-height:1.6}
+.timeline-badges{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.5rem}
 
 /* ─── AUTHOR SECTION ──────────────────────────────────── */
 .author{
@@ -212,6 +247,7 @@ body{
   .res-card{padding:1.4rem 1.2rem}
   .author{flex-direction:column;text-align:center}
   .author-links{justify-content:center}
+  .timeline{padding-left:1.8rem}
 }
 
 /* ─── PRINT ───────────────────────────────────────────── */
@@ -251,32 +287,33 @@ body{
   <!-- Hero -->
   <div class="hero">
     <div class="hero-org">🇲🇾 National Pharmaceutical Regulatory Agency</div><br>
-    <div class="hero-dept">Unit Penyaringan</div>
+    <div class="hero-dept">Pusat Komplians Dan Kawalan Kualiti</div><br>
+    <div class="hero-section-badge">Seksyen Pengujian Produk & Kosmetik</div>
     <h1>Lab <span class="g">Notes</span></h1>
     <div class="hero-sub">Interactive Laboratory Reference Collection</div>
     <p class="hero-desc">
-      A curated collection of interactive lab procedure references for pharmaceutical analysis. 
-      Built for quick access during labwork — with step checklists, timers, and chemical references.
+      A curated collection of interactive lab procedure references, competency records, and training documentation 
+      for pharmaceutical analysis under Seksyen Pengujian Produk & Kosmetik, PKKK.
     </p>
   </div>
 
-  <!-- Resource Cards -->
-  <div class="section-label">◈ Available References</div>
+  <!-- Unit Cards -->
+  <div class="section-label">◈ Laboratory Units</div>
 
   <div class="cards">
 
-    <!-- SPE Lab Reference -->
-    <a href="https://syariefazman.com/spe" class="res-card reveal reveal-d1">
+    <!-- Unit Penyaringan -->
+    <a href="https://syariefazman.com/lab/penyaringan" class="res-card reveal reveal-d1">
       <div class="card-icon">🧪</div>
       <div class="card-content">
-        <div class="card-eyebrow">3 Methods · 33 Steps</div>
-        <div class="card-title">SPE Lab Reference</div>
-        <div class="card-desc">Solid-Phase Extraction procedures for JT Baker C18 (Non-Polar), Florisil (Polar), and Softgel (MeOH) methods. Includes vacuum manifold steps, timers, and chemical sidebar.</div>
+        <div class="card-eyebrow">Current Unit · 2024–Present</div>
+        <div class="card-title">Unit Penyaringan</div>
+        <div class="card-desc">Screening unit for pharmaceutical product analysis. SPE procedures, sample preparation guides, HPLC/GCMS/LCMS instrument references, and lab procedure notes.</div>
         <div class="card-tags">
-          <span class="card-tag t-cyan">C18</span>
-          <span class="card-tag t-mint">Florisil</span>
-          <span class="card-tag t-amber">Softgel</span>
-          <span class="card-tag t-purple">Vacuum SPE</span>
+          <span class="card-tag t-cyan">SPE</span>
+          <span class="card-tag t-mint">Sample Prep</span>
+          <span class="card-tag t-amber">HPLC</span>
+          <span class="card-tag t-purple">GCMS</span>
         </div>
       </div>
       <div class="card-footer">
@@ -285,18 +322,18 @@ body{
       </div>
     </a>
 
-    <!-- Sample Preparation Guide -->
-    <a href="https://syariefazman.com/sampleprep" class="res-card reveal reveal-d2">
-      <div class="card-icon">💊</div>
+    <!-- Unit Analisis Tradisional Logam Berat -->
+    <a href="https://syariefazman.com/lab/logam-berat" class="res-card reveal reveal-d2">
+      <div class="card-icon">⚗️</div>
       <div class="card-content">
-        <div class="card-eyebrow">7 Categories · 34 Steps</div>
-        <div class="card-title">Sample Preparation Guide</div>
-        <div class="card-desc">Drug sample preparation procedures for Anticholesterol, Antidiabetic, Diuretic, PPI, Antihypertensive, EDD, and Domperidone. Covers weighing, dissolving, centrifuge, and filtration.</div>
+        <div class="card-eyebrow">Previous Unit · 2018–2024</div>
+        <div class="card-title">Unit Analisis Tradisional — Logam Berat</div>
+        <div class="card-desc">Heavy metal analysis unit. Competency records for dissolution, weight uniformity, and heavy metal limit tests using GFAAS, CVAAS, and ICP-MS instrumentation.</div>
         <div class="card-tags">
-          <span class="card-tag t-cyan">HPLC Prep</span>
-          <span class="card-tag t-mint">Centrifuge</span>
-          <span class="card-tag t-amber">Filtration</span>
-          <span class="card-tag t-purple">7 Drug Classes</span>
+          <span class="card-tag t-cyan">GFAAS</span>
+          <span class="card-tag t-mint">CVAAS</span>
+          <span class="card-tag t-amber">ICP-MS</span>
+          <span class="card-tag t-red">Heavy Metals</span>
         </div>
       </div>
       <div class="card-footer">
@@ -333,36 +370,57 @@ body{
 
   </div>
 
-  <!-- Future References -->
-  <div class="section-label">◈ Coming Soon</div>
+  <!-- Competency Timeline -->
+  <div class="section-label">◈ Competency Journey</div>
 
-  <div class="cards">
-
-    <!-- Placeholder: Future Notes -->
-    <div class="res-card coming-soon reveal reveal-d3">
-      <div class="card-icon">📋</div>
-      <div class="card-content">
-        <div class="card-eyebrow">Coming Soon</div>
-        <div class="card-title">HPLC Method Reference</div>
-        <div class="card-desc">Instrument parameters, column specifications, mobile phase recipes, and run conditions for various HPLC assays.</div>
-        <div class="card-tags">
-          <span class="coming-badge">Coming Soon</span>
-        </div>
+  <div class="timeline reveal">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2024–Present</div>
+      <div class="timeline-unit">Unit Analisis Tradisional (Penyaringan)</div>
+      <div class="timeline-detail">Training in SPE, LLE, HPLC, GCMS, LCMS, micropipette verification. Full instrument competency achieved.</div>
+      <div class="timeline-badges">
+        <span class="card-tag t-cyan">SPE</span>
+        <span class="card-tag t-cyan">LLE</span>
+        <span class="card-tag t-cyan">HPLC</span>
+        <span class="card-tag t-mint">GCMS</span>
+        <span class="card-tag t-mint">LCMS</span>
       </div>
     </div>
-
-    <div class="res-card coming-soon reveal reveal-d4">
-      <div class="card-icon">⚗️</div>
-      <div class="card-content">
-        <div class="card-eyebrow">Coming Soon</div>
-        <div class="card-title">Chemical & Reagent Guide</div>
-        <div class="card-desc">Safety data, preparation instructions, and storage requirements for laboratory chemicals and reagents.</div>
-        <div class="card-tags">
-          <span class="coming-badge">Coming Soon</span>
-        </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">March 2025 — Latest Certification</div>
+      <div class="timeline-unit">Unit Analisis Tradisional</div>
+      <div class="timeline-detail">Certified: Ujian Pengecaian, Ujian Keseragaman Berat, Ujian Had Logam As/Hg/Pb/Cd (ICP-MS).</div>
+      <div class="timeline-badges">
+        <span class="card-tag t-mint">Pengecaian ✓</span>
+        <span class="card-tag t-mint">Keseragaman Berat ✓</span>
+        <span class="card-tag t-mint">ICP-MS ✓</span>
       </div>
     </div>
-
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">March 2022</div>
+      <div class="timeline-unit">Unit Analisis Kimia (Tradisional & Kosmetik)</div>
+      <div class="timeline-detail">Full competency certification — all 4 tests passed including GFAAS and ICP-MS.</div>
+      <div class="timeline-badges">
+        <span class="card-tag t-amber">Pengecaian ✓</span>
+        <span class="card-tag t-amber">Keseragaman Berat ✓</span>
+        <span class="card-tag t-amber">GFAAS ✓</span>
+        <span class="card-tag t-amber">ICP-MS ✓</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">October 2018</div>
+      <div class="timeline-unit">Unit Pengujian Tradisional</div>
+      <div class="timeline-detail">First competency certification. Passed theory test with 96.7% (29/30). Certified for Pengecaian, Keseragaman Berat, and ICP-MS.</div>
+      <div class="timeline-badges">
+        <span class="card-tag t-purple">Theory 96.7%</span>
+        <span class="card-tag t-purple">Pengecaian ✓</span>
+        <span class="card-tag t-purple">ICP-MS ✓</span>
+      </div>
+    </div>
   </div>
 
   <!-- Author -->
@@ -371,7 +429,7 @@ body{
     <img src="https://github.com/syarief02.png" alt="Syarief Azman" class="author-img" loading="lazy">
     <div class="author-info">
       <div class="author-name">Syarief Azman</div>
-      <div class="author-role">Pharmaceutical Analyst — Unit Penyaringan, NPRA Malaysia</div>
+      <div class="author-role">Penolong Pegawai Farmasi — Seksyen Pengujian Produk & Kosmetik, PKKK, NPRA</div>
     </div>
     <div class="author-links">
       <a href="https://syariefazman.com" class="author-link">Portfolio</a>
@@ -379,7 +437,7 @@ body{
     </div>
   </div>
 
-  <div class="footer">Unit Penyaringan Lab Notes &nbsp;◈&nbsp; NPRA Malaysia &nbsp;◈&nbsp; Syarief Azman</div>
+  <div class="footer">Lab Notes ◈ Seksyen Pengujian Produk & Kosmetik ◈ NPRA Malaysia ◈ Syarief Azman</div>
 </div>
 
 <script>
