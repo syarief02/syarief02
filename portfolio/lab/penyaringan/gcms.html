@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCMS 8890 Operation — Lab Notes | NPRA</title>
+<meta name="description" content="Standard operating procedure and quick reference for operating the Agilent GCMS 8890 in the Screening Unit.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+[data-theme="dark"]{
+  --bg:#040d1a;--bg2:#071528;
+  --glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.09);
+  --cyan:#00e5ff;--cyan-dim:rgba(0,229,255,0.12);
+  --mint:#00ffb3;--mint-dim:rgba(0,255,179,0.12);
+  --amber:#ffb700;--amber-dim:rgba(255,183,0,0.13);
+  --purple:#b47aff;--purple-dim:rgba(180,122,255,0.12);
+  --red:#ff4d6d;--red-dim:rgba(255,77,109,0.13);
+  --text:#c8d8f0;--text-dim:#6888aa;--text-bright:#eaf4ff;
+  --card-bg:rgba(255,255,255,0.04);--card-border:rgba(255,255,255,0.09);
+  --card-hover:rgba(255,255,255,0.07);--orb-opacity:0.16;
+}
+[data-theme="light"]{
+  --bg:#f0f4fa;--bg2:#e4edf8;
+  --glass:rgba(255,255,255,0.7);--glass-border:rgba(80,120,200,0.15);
+  --cyan:#0080aa;--cyan-dim:rgba(0,128,170,0.1);
+  --mint:#007a55;--mint-dim:rgba(0,122,85,0.1);
+  --amber:#b07800;--amber-dim:rgba(176,120,0,0.1);
+  --purple:#7040b0;--purple-dim:rgba(112,64,176,0.1);
+  --red:#c0203a;--red-dim:rgba(192,32,58,0.1);
+  --text:#1a2a44;--text-dim:#5a7090;--text-bright:#0a1830;
+  --card-bg:rgba(255,255,255,0.82);--card-border:rgba(80,130,200,0.18);
+  --card-hover:rgba(255,255,255,0.95);--orb-opacity:0.10;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;transition:background 0.4s,color 0.4s}
+/* BG Effects */
+.bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:var(--orb-opacity);animation:drift 22s ease-in-out infinite alternate}
+.orb1{width:700px;height:700px;background:var(--cyan);top:-250px;left:-200px}
+.orb2{width:550px;height:550px;background:var(--mint);bottom:-150px;right:-150px;animation-delay:-8s}
+.orb3{width:400px;height:400px;background:var(--purple);top:35%;left:50%;animation-delay:-15s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,80px) scale(1.1)}}
+.grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,229,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.025) 1px,transparent 1px);background-size:42px 42px}
+[data-theme="light"] .grid-overlay{background-image:linear-gradient(rgba(0,80,150,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,80,150,0.04) 1px,transparent 1px)}
+/* Layout */
+.main{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 5rem}
+@media(min-width:768px){.main{padding:3.5rem 2rem 6rem}}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:0.8rem}
+.topbar-left{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap}
+.ctrl-btn{display:flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;padding:0.42rem 0.9rem;border-radius:100px;border:1px solid var(--glass-border);background:var(--glass);color:var(--text-dim);cursor:pointer;transition:all 0.2s;backdrop-filter:blur(8px);white-space:nowrap;text-decoration:none}
+.ctrl-btn:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim)}
+.ctrl-btn svg{width:13px;height:13px;flex-shrink:0}
+/* Hero */
+.hero{text-align:center;margin-bottom:3.5rem;animation:heroIn 0.9s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-size:clamp(2.1rem,5vw,3.2rem);font-weight:900;line-height:1.05;letter-spacing:-0.04em;color:var(--text-bright);margin-bottom:0.3rem}
+.hero h1 .g{background:linear-gradient(120deg,var(--cyan) 0%,var(--mint) 60%,#88ffee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:1rem;color:var(--text-dim);margin-bottom:0.8rem}
+.hero-desc{font-size:0.92rem;color:var(--text-dim);max-width:620px;margin:0 auto;line-height:1.7}
+/* Procedure Cards */
+.section-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.2rem;padding-left:0.2rem}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem 2.2rem;backdrop-filter:blur(18px);margin-bottom:2.5rem;transition:all 0.3s;box-shadow:0 8px 32px rgba(0,0,0,0.04)}
+.card-title{font-size:1.15rem;font-weight:700;color:var(--text-bright);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem}
+.step-list{list-style:none;counter-reset:step-counter}
+.step-item{position:relative;padding-left:3rem;margin-bottom:1.2rem;font-size:0.92rem;color:var(--text);line-height:1.6}
+.step-item::before{content:counter(step-counter);counter-increment:step-counter;position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:50%;background:var(--cyan-dim);color:var(--cyan);font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:600;display:flex;align-items:center;justify-content:center;border:1px solid rgba(0,229,255,0.2)}
+.step-item:last-child{margin-bottom:0}
+.highlight{color:var(--cyan);font-family:'DM Mono',monospace;font-size:0.82rem;padding:0.15rem 0.4rem;background:var(--cyan-dim);border-radius:4px;border:1px solid rgba(0,229,255,0.15)}
+.alert{background:var(--red-dim);border-left:3px solid var(--red);padding:1rem;border-radius:0 8px 8px 0;margin-top:1rem;font-size:0.85rem;color:var(--text)}
+.alert-title{color:var(--red);font-weight:700;margin-bottom:0.3rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:0.4rem}
+/* Table */
+table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.85rem}
+th,td{padding:0.8rem 1rem;text-align:left;border-bottom:1px solid var(--glass-border)}
+th{font-weight:600;color:var(--text-bright);background:var(--glass)}
+td{color:var(--text-dim)}
+/* Footer */
+.footer{text-align:center;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:var(--text-dim);text-transform:uppercase;margin-top:2rem}
+/* Utils */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity 0.6s ease, transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:600px){
+  .hero h1{font-size:1.8rem}
+  .card{padding:1.4rem}
+  .step-item{padding-left:2.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>🧬 GCMS <span class="g">Operation</span></h1>
+    <div class="hero-sub">Agilent 8890 Gas Chromatography-Mass Spectrometry</div>
+    <p class="hero-desc">Standard operating procedure and quick reference for operating the Agilent GCMS 8890 in the Screening Unit. Covers solvent preparation, sequence setup, and tuning parameters.</p>
+  </div>
+
+  <div style="text-align:center; margin:-1.5rem auto 3rem; max-width:800px; padding:0 1.5rem">
+    <img src="../../assets/images/sop/gcms_sop.png" alt="GCMS 8890 Operation Procedure" class="reveal" style="width:100%; height:auto; border-radius:18px; border:1px solid var(--glass-border); box-shadow:0 16px 40px rgba(0,0,0,0.12);">
+  </div>
+
+  <div class="section-label">◈ 1. Preparation & Solvents</div>
+  <div class="card reveal">
+    <div class="card-title">Pre-Run Checklist</div>
+    <ul class="step-list">
+      <li class="step-item">Sonicate all sample vials thoroughly before injection to remove trapped gases and ensure sample homogeneity.</li>
+      <li class="step-item">Prepare <strong style="color:var(--text-bright)">Ethanol Solvent</strong> in exactly 2 designated bottles (<span class="highlight">A</span> and <span class="highlight">B</span>).</li>
+      <li class="step-item">Manage waste lines: Ensure <span class="highlight">WA</span> and <span class="highlight">WB</span> (Waste Bottles) are emptied up to 5 bottles.</li>
+    </ul>
+  </div>
+
+  <div class="section-label">◈ 2. GCMS Tuning Workflow</div>
+  <div class="card reveal" style="border-left:4px solid var(--cyan)">
+    <div class="card-title">Autotune & Evaluation</div>
+    <ul class="step-list">
+      <li class="step-item">Open the GCMS Software Application.</li>
+      <li class="step-item">To initiate tuning, navigate to <span class="highlight">VIEW</span> → <span class="highlight">TUNE & VACUUM CONTROL</span>.</li>
+      <li class="step-item">Select <span class="highlight">TUNE</span> → <span class="highlight">STD SPECTRA TUNE (STUNE.U)</span>.</li>
+      <div class="alert">
+        <div class="alert-title">⚠️ Important: Printer Check</div>
+        Before initiating the tune, verify that the connected printer has paper. The system is configured to <strong>print the tuning report automatically</strong> upon completion.
+      </div>
+      <li class="step-item" style="margin-top:1.2rem">Evaluate the tune profile: Go to <span class="highlight">TUNE</span> → <span class="highlight">TUNE EVALUATION</span>.</li>
+      <li class="step-item">If acceptable, save the parameters: Navigate to <span class="highlight">FILE</span> → <span class="highlight">SAVE TUNE PARAMETER</span>. Select <span class="highlight">STUNE.U</span> and click <strong>SAVE</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="section-label">◈ 3. Sequence & Method Setup</div>
+  <div class="card reveal">
+    <div class="card-title">Sequence Configuration</div>
+    <ul class="step-list">
+      <li class="step-item">Return to the main dashboard: Click <span class="highlight">VIEW</span> → <span class="highlight">INSTRUMENT CTRL</span> → <strong>OK</strong>.</li>
+      <li class="step-item">Load the sequence: Go to <span class="highlight">SEQUENCE</span> → <span class="highlight">LOAD SEQUENCE</span> and select the desired base sequence name.</li>
+      <li class="step-item">Modify the sequence: Click <span class="highlight">SEQUENCE</span> → <span class="highlight">EDIT SEQUENCE</span>.</li>
+      <li class="step-item">Verify that the Method File is strictly set to standard operating method: <span class="highlight">TESTINGMETHOD_LATEST.M</span>.</li>
+    </ul>
+  </div>
+
+  <div class="section-label">◈ 4. Data Naming & Injection Rules</div>
+  <div class="card reveal" style="border-left:4px solid var(--purple)">
+    <div class="card-title">Autosampler Parameters</div>
+    
+    <div style="margin-bottom:1.5rem">
+      <table style="width:100%">
+        <thead>
+          <tr><th>Parameter</th><th>Instruction Format</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--text-bright)">Data Path</strong></td>
+            <td>Group by current month</td>
+            <td><code>...\JULY\</code></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text-bright)">Data File</strong></td>
+            <td><code>Initial_Date_SampleNo[W]</code></td>
+            <td><span class="highlight">SYED_20240722_2024010064W</span></td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--text-bright)">Sample Name</strong></td>
+            <td>Input the registered product name (isi nama keluaran)</td>
+            <td><code>PROD_X_EXTRACT</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="step-list" style="counter-reset:step-counter 0">
+      <li class="step-item"><strong>Wash Protocol:</strong> Every sample must have an extra wash injection <strong>before and after</strong> the actual sample analysis (e.g., wash blank, sample, wash blank).</li>
+      <li class="step-item"><strong>Injection Count:</strong> Each sample bottle strictly requires <strong>2 injections</strong>. For example: <code>PH3 (1st INJ)</code> followed by <code>PH3 (2nd INJ)</code>.</li>
+      <li class="step-item"><strong>Vial Positioning:</strong> Ensure the sample vial positions accurately reflect the start and end positions loaded in the autosampler tray to prevent mis-injections.</li>
+    </ul>
+  </div>
+
+  <div class="section-label">◈ 5. Execution</div>
+  <div class="card reveal" style="border-left:4px solid var(--mint)">
+    <div class="card-title">Running the Sequence</div>
+    <ul class="step-list">
+      <li class="step-item">Save the modified sequence: Select <span class="highlight">Save Sequence AS...</span>, name it appropriately, and click <strong>OK</strong>.</li>
+      <li class="step-item">Initiate execution: Go to <span class="highlight">SEQUENCE</span> → <span class="highlight">Run Sequence</span>.</li>
+      <li class="step-item">Ensure the <strong>Operator Name</strong> is updated to your identifier.</li>
+      <li class="step-item">Click <strong>Run Sequence</strong> to begin the analysis queue.</li>
+    </ul>
+  </div>
+
+  <div class="footer">Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ NPRA Malaysia</div>
+</div>
+
+<script>
+let dark = false;
+function toggleTheme(){
+  dark = !dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  document.getElementById('themeTxt').textContent = dark ? 'Light Mode' : 'Dark Mode';
+}
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
