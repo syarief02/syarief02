@@ -4,6 +4,11 @@
       "source": "/uptslide1",
       "destination": "/uptslide1/",
       "permanent": false
+    },
+    {
+      "source": "/spe",
+      "destination": "/spe/",
+      "permanent": false
     }
   ],
   "rewrites": [
