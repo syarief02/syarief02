@@ -112,6 +112,7 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 - 🧪 **[SPE Lab Reference](https://syariefazman.com/spe)** — interactive Solid-Phase Extraction procedure guide with checklists, timers & quick reference
 - 💊 **[Sample Preparation Guide](https://syariefazman.com/sampleprep)** — 7-category drug sample prep reference (Anticholesterol, Antidiabetic, Diuretic, PPI, Antihypertensive, EDD, Domperidone)
 - ⚗️ **[Agilent 8900 ICP-MS Guide](https://syariefazman.com/icpms)** — Comprehensive 7-chapter operation guide for the Agilent 8900 Triple Quadrupole ICP-MS
+- ⚖️ **[Uniformity of Weight Guide](https://syariefazman.com/uow)** — Comprehensive procedure guide for Ujian Keseragaman Berat per USP 43 <2091>
 - 📄 **[Resume](https://syariefazman.vercel.app/resume.html)** — my up-to-date resume with print-to-PDF
 - 🤖 **Building & shipping** Expert Advisors — helping traders automate their edge
 - 🧠 **GoldMind AI** — an open-source system that connects ChatGPT to MetaTrader 5 for AI-driven gold trading
@@ -150,6 +151,7 @@ Interactive laboratory references and professional portfolio for my work at NPRA
 | **Unit Penyaringan** | Screening unit — SPE, HPLC, GCMS, LCMS references | [View](https://syariefazman.com/lab/penyaringan) |
 | **Unit Logam Berat** | Heavy metal analysis — GFAAS, CVAAS, ICP-MS | [View](https://syariefazman.com/lab/logam-berat) |
 | **ICP-MS Reference** | Agilent 8900 Operation Guide | [View](https://syariefazman.com/icpms) |
+| **Uniformity of Weight** | Ujian Keseragaman Berat Guide (USP 43) | [View](https://syariefazman.com/uow) |
 | **myPortfolio (Penyaringan)** | PPF 7 — 4 activities, workflows, forms | [View](https://syariefazman.com/lab/penyaringan/portfolio.html) |
 | **myPortfolio (Logam Berat)** | PPF 11 — 7 activities, workflows, forms | [View](https://syariefazman.com/lab/logam-berat/portfolio.html) |
 | **Verifikasi Alat Radas** | Equipment verification SOPs | [View](https://syariefazman.com/lab/verifikasi) |

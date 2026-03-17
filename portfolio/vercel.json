@@ -34,6 +34,11 @@
       "source": "/icpms",
       "destination": "/icpms/",
       "permanent": false
+    },
+    {
+      "source": "/uow",
+      "destination": "/uow/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -44,6 +49,10 @@
     {
       "source": "/icpms/(.*)",
       "destination": "https://icpms-agilent-8900.vercel.app/$1"
+    },
+    {
+      "source": "/uow/(.*)",
+      "destination": "https://uniformity-of-weight.vercel.app/$1"
     }
   ]
 }
