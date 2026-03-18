@@ -39,6 +39,11 @@
       "source": "/uow",
       "destination": "/uow/",
       "permanent": false
+    },
+    {
+      "source": "/checklist",
+      "destination": "/checklist/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -53,6 +58,10 @@
     {
       "source": "/uow/(.*)",
       "destination": "https://uniformity-of-weight.vercel.app/$1"
+    },
+    {
+      "source": "/checklist/(.*)",
+      "destination": "https://balik-kampung-checklist.vercel.app/$1"
     }
   ]
 }
