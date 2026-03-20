@@ -1,5 +1,5 @@
 <h1 align="center">
-  Hey there 👋 I'm <a href="https://syariefazman.vercel.app">Syarief Azman</a>
+  Hey there 👋 I'm <a href="https://syariefazman.com">Syarief Azman</a>
 </h1>
 
 <h3 align="center">
@@ -22,8 +22,8 @@
   <a href="https://twitter.com/syariefazman" target="blank">
     <img src="https://img.shields.io/twitter/follow/syariefazman?logo=twitter&style=for-the-badge" alt="Twitter Follow" />
   </a>
-  <a href="https://syariefazman.vercel.app" target="blank">
-    <img src="https://img.shields.io/badge/Portfolio-syariefazman.vercel.app-7b2fff?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
+  <a href="https://syariefazman.com" target="blank">
+    <img src="https://img.shields.io/badge/Portfolio-syariefazman.com-7b2fff?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
   </a>
 </p>
 
@@ -104,7 +104,7 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 
 ## 🚀 What I'm Up To
 
-- 💼 **[Portfolio](https://syariefazman.vercel.app)** — my developer portfolio showcasing projects, skills & journey
+- 💼 **[Portfolio](https://syariefazman.com)** — my developer portfolio showcasing projects, skills & journey
 - 📊 **[Unit Penyaringan — Sasaran 2026](https://syariefazman.com/uptslide1)** — an interactive web-based presentation slide deck for NPRA
 - 🔬 **[NPRA Lab Notes & Competency](https://syariefazman.com/lab)** — multi-unit lab reference hub covering Seksyen Pengujian Produk & Kosmetik (PKKK) with competency records
 - 🧪 **[Unit Penyaringan Lab Notes](https://syariefazman.com/lab/penyaringan)** — SPE procedures, sample prep guides, HPLC/GCMS/LCMS training records
@@ -113,7 +113,7 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 - 💊 **[Sample Preparation Guide](https://syariefazman.com/sampleprep)** — 7-category drug sample prep reference (Anticholesterol, Antidiabetic, Diuretic, PPI, Antihypertensive, EDD, Domperidone)
 - ⚗️ **[Agilent 8900 ICP-MS Guide](https://syariefazman.com/icpms)** — Comprehensive 7-chapter operation guide for the Agilent 8900 Triple Quadrupole ICP-MS
 - ⚖️ **[Uniformity of Weight Guide](https://syariefazman.com/uow)** — Comprehensive procedure guide for Ujian Keseragaman Berat per USP 43 <2091>
-- 📄 **[Resume](https://syariefazman.vercel.app/resume.html)** — my up-to-date resume with print-to-PDF
+- 📄 **[Resume](https://syariefazman.com/resume.html)** — my up-to-date resume with print-to-PDF
 - 🤖 **Building & shipping** Expert Advisors — helping traders automate their edge
 - 🧠 **GoldMind AI** — an open-source system that connects ChatGPT to MetaTrader 5 for AI-driven gold trading
 - 🌐 **[eabudakubat.com](https://eabudakubat.com)** — my product website built with Next.js & Supabase
