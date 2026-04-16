@@ -40,6 +40,7 @@
         <div class="sb-row"><span class="sb-chem">CHCl₃</span><span class="sb-val">Chloroform</span></div>
         <div class="sb-row"><span class="sb-chem">H₂O</span><span class="sb-val">Distilled Water</span></div>
         <div class="sb-row"><span class="sb-chem">NH₃</span><span class="sb-val">Ammonia (basify)</span></div>
+        <div class="sb-row"><span class="sb-chem">EtOH</span><span class="sb-val">Ethanol</span></div>
         <div class="sb-row"><span class="sb-chem">HCl</span><span class="sb-val">Hydrochloric acid</span></div>
         <div class="sb-row"><span class="sb-chem">Hexane</span><span class="sb-val">n-Hexane</span></div>
       </div>
@@ -258,6 +259,33 @@
           </div>
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Step C</span><span class="card-title">Reconstitution & Filtration — Post-Drying</span></div>
+        <div class="alert ai"><span class="alert-icon">🧪</span><span>After sample is fully dried in the evaporating dish, reconstitute with ethanol before HPLC/instrument analysis.</span></div>
+        <div class="flow">
+          <div class="fi" onclick="toggle(this)" data-method="m1" data-step="c1">
+            <div class="fi-num"><span class="num-txt">01</span></div>
+            <div class="fi-body"><div class="fi-label lc">Add EtOH</div><div class="fi-desc">Add <span class="qty">3 mL ethanol (EtOH)</span> to the dried residue in evaporating dish</div></div>
+            <div class="fi-right"><span></span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m1" data-step="c2">
+            <div class="fi-num"><span class="num-txt">02</span></div>
+            <div class="fi-body"><div class="fi-label la">Scrape Residue</div><div class="fi-desc">Kikis (scrape) all dried residue to dissolve in EtOH — ensure complete recovery</div></div>
+            <div class="fi-right"><span class="tag t-w">⚠ Full Recovery</span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m1" data-step="c3">
+            <div class="fi-num"><span class="num-txt">03</span></div>
+            <div class="fi-body"><div class="fi-label la">Collect with Syringe</div><div class="fi-desc">Draw up <span class="qty">2 mL</span> of reconstituted sample using a syringe</div></div>
+            <div class="fi-right"><span class="tag t-c">★ Collect</span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m1" data-step="c4">
+            <div class="fi-num"><span class="num-txt">04</span></div>
+            <div class="fi-body"><div class="fi-label lc">Syringe Filter</div><div class="fi-desc">Filter through <span class="qty">0.45 µm syringe filter</span> into HPLC vial</div></div>
+            <div class="fi-right"><span class="tag t-d">0.45 µm</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ══════════ METHOD 2 ══════════ -->
@@ -328,6 +356,33 @@
           </div>
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Step C</span><span class="card-title">Reconstitution & Filtration — Post-Drying</span></div>
+        <div class="alert ai"><span class="alert-icon">🧪</span><span>After sample is fully dried in the evaporating dish, reconstitute with ethanol before instrument analysis.</span></div>
+        <div class="flow">
+          <div class="fi" onclick="toggle(this)" data-method="m2" data-step="c1">
+            <div class="fi-num"><span class="num-txt">01</span></div>
+            <div class="fi-body"><div class="fi-label lc">Add EtOH</div><div class="fi-desc">Add <span class="qty">3 mL ethanol (EtOH)</span> to the dried residue in evaporating dish</div></div>
+            <div class="fi-right"><span></span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m2" data-step="c2">
+            <div class="fi-num"><span class="num-txt">02</span></div>
+            <div class="fi-body"><div class="fi-label la">Scrape Residue</div><div class="fi-desc">Kikis (scrape) all dried residue to dissolve in EtOH — ensure complete recovery</div></div>
+            <div class="fi-right"><span class="tag t-w">⚠ Full Recovery</span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m2" data-step="c3">
+            <div class="fi-num"><span class="num-txt">03</span></div>
+            <div class="fi-body"><div class="fi-label la">Collect with Syringe</div><div class="fi-desc">Draw up <span class="qty">2 mL</span> of reconstituted sample using a syringe</div></div>
+            <div class="fi-right"><span class="tag t-c">★ Collect</span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m2" data-step="c4">
+            <div class="fi-num"><span class="num-txt">04</span></div>
+            <div class="fi-body"><div class="fi-label lc">Syringe Filter</div><div class="fi-desc">Filter through <span class="qty">0.45 µm syringe filter</span> into HPLC vial</div></div>
+            <div class="fi-right"><span class="tag t-d">0.45 µm</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ══════════ METHOD 3 ══════════ -->
@@ -392,6 +447,33 @@
             <div class="fi-right">
               <span class="timer-btn" onclick="event.stopPropagation();startTimer('Drying — M3',1800)">⏱ 30 min</span>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-badge">Step B</span><span class="card-title">Reconstitution & Filtration — Post-Drying</span></div>
+        <div class="alert ai"><span class="alert-icon">🧪</span><span>After sample is fully dried in the evaporating dish, reconstitute with ethanol before instrument analysis.</span></div>
+        <div class="flow">
+          <div class="fi" onclick="toggle(this)" data-method="m3" data-step="b1">
+            <div class="fi-num"><span class="num-txt">01</span></div>
+            <div class="fi-body"><div class="fi-label lc">Add EtOH</div><div class="fi-desc">Add <span class="qty">3 mL ethanol (EtOH)</span> to the dried residue in evaporating dish</div></div>
+            <div class="fi-right"><span></span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m3" data-step="b2">
+            <div class="fi-num"><span class="num-txt">02</span></div>
+            <div class="fi-body"><div class="fi-label la">Scrape Residue</div><div class="fi-desc">Kikis (scrape) all dried residue to dissolve in EtOH — ensure complete recovery</div></div>
+            <div class="fi-right"><span class="tag t-w">⚠ Full Recovery</span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m3" data-step="b3">
+            <div class="fi-num"><span class="num-txt">03</span></div>
+            <div class="fi-body"><div class="fi-label la">Collect with Syringe</div><div class="fi-desc">Draw up <span class="qty">2 mL</span> of reconstituted sample using a syringe</div></div>
+            <div class="fi-right"><span class="tag t-c">★ Collect</span></div>
+          </div>
+          <div class="fi" onclick="toggle(this)" data-method="m3" data-step="b4">
+            <div class="fi-num"><span class="num-txt">04</span></div>
+            <div class="fi-body"><div class="fi-label lc">Syringe Filter</div><div class="fi-desc">Filter through <span class="qty">0.45 µm syringe filter</span> into HPLC vial</div></div>
+            <div class="fi-right"><span class="tag t-d">0.45 µm</span></div>
           </div>
         </div>
       </div>
