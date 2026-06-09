@@ -180,7 +180,7 @@
           data-testid="lang-progress"
           x="245.47000000000003"
           y="0"
-          width="14.52"
+          width="14.530000000000001"
           height="8"
           fill="#555555"
         />
@@ -191,7 +191,7 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#858585" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Rich Text Format 71.95%
+        Rich Text Format 71.94%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
