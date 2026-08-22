@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adulteration Screening Method Guides — Unit Penyaringan | NPRA</title>
+<meta name="description" content="Step-by-step analysis SOP guides for PPI (Omeprazole/Lansoprazole), Domperidone HPLC, EG/DEG GCMS, and Steroids per PKKK/300/UP/021, 025, 027, 034.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="screening-methods.css">
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+      <a href="lovastatin.html" class="ctrl-btn highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        Lovastatin Suite
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti (PKKK)</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Adulteration Screening <span class="g">Analysis Guides</span></h1>
+    <div class="hero-sub">Complete Step-by-Step SOP Workflows: PPI · Domperidone · EG/DEG GCMS · Steroids</div>
+    <p class="hero-desc">
+      Execution-ready operating procedures covering sample preparation, extraction protocols, chromatographic & spectrometric methods, SST verification criteria, batch sequences, and official reporting.
+    </p>
+  </div>
+
+  <!-- Main Method Selector Tabs -->
+  <div class="method-pills">
+    <button class="m-pill-btn active" onclick="switchMethod('ppi')" id="mBtn-ppi">💊 Proton Pump Inhibitors (PKKK/300/UP/025)</button>
+    <button class="m-pill-btn" onclick="switchMethod('domp')" id="mBtn-domp">🧪 Domperidone (PKKK/300/UP/027)</button>
+    <button class="m-pill-btn" onclick="switchMethod('egdeg')" id="mBtn-egdeg">🧬 EG & DEG in Syrups (PKKK/300/UP/034)</button>
+    <button class="m-pill-btn" onclick="switchMethod('steroid')" id="mBtn-steroid">🔬 Steroids 8-Mix (PKKK/300/UP/021)</button>
+  </div>
+
+  <!-- METHOD 1: PROTON PUMP INHIBITORS (UP/025) -->
+  <div id="method-ppi" class="method-content active">
+    <div class="guide-card">
+      <div class="card-top-bar">
+        <div>
+          <span class="badge badge-purple">HPLC · Isocratic</span>
+          <h2>Proton Pump Inhibitors (Omeprazole & Lansoprazole) Identification</h2>
+          <div class="code-ref">PKKK/300/UP/025 · Fail Arahan Kerja F03 · Borang UP/005</div>
+        </div>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-box"><span class="lbl">Column</span><strong>Zorbax SB C18 (250 × 4.6 mm, 5 µm)</strong></div>
+        <div class="spec-box"><span class="lbl">Mobile Phase</span><strong>Isocratic: 65% Buffer pH 7.6 : 35% ACN</strong></div>
+        <div class="spec-box"><span class="lbl">Flow & Temp</span><strong>1.0 mL/min @ 30 °C (Sampler: 4 °C)</strong></div>
+        <div class="spec-box"><span class="lbl">Detector</span><strong>PDA @ 280 nm (Scan 190–400 nm)</strong></div>
+        <div class="spec-box"><span class="lbl">Inj Vol & Time</span><strong>15 µL · Run Time: 20.0 minutes</strong></div>
+        <div class="spec-box"><span class="lbl">Buffer Recipe</span><strong>25 mM di-Sodium Hydrogen Phosphate (Na₂HPO₄), pH 7.6</strong></div>
+      </div>
+
+      <div class="section-divider">STEP-BY-STEP PROCEDURE</div>
+
+      <div class="step-accordion">
+        <div class="acc-item">
+          <div class="acc-title">1. Reagent & Standard Preparation (Para 6.1 – 6.3)</div>
+          <div class="acc-body">
+            <p>• <strong>Buffer 25 mM Na₂HPO₄ pH 7.6</strong>: Dissolve 3.55 g of Anhydrous di-Sodium Hydrogen Phosphate in 1000 mL Ultrapure water. Adjust pH to 7.6 using dilute Orthophosphoric acid (H₃PO₄). Filter through 0.45 µm nylon membrane filter and degas for 20 min.</p>
+            <p>• <strong>Primary Stock Standard (1.0 mg/mL)</strong>: Accurately weigh 10.0 mg of Omeprazole and Lansoprazole RS into separate 10 mL volumetric flasks. Dissolve and make up to volume with Methanol.</p>
+            <p>• <strong>Mixed Working Standard (0.05 mg/mL each)</strong>: Pipette 0.5 mL of Omeprazole and 0.5 mL of Lansoprazole stock solutions into a single 10 mL volumetric flask. Make up to volume with Methanol.</p>
+            <p>• <strong>LOD Solution (0.003 mg/mL)</strong>: Pipette 0.6 mL of Mixed Working Standard into a 10 mL flask and make up with Methanol.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">2. Sample Extraction & Preparation (Para 6.4)</div>
+          <div class="acc-body">
+            <p>• <strong>Tablets / Capsules</strong>: Finely pulverize sample. Weigh <strong>1.0 g</strong> of sample into a 50 mL centrifuge tube.</p>
+            <p>• <strong>Extraction Solvent</strong>: Pipette <strong>20.0 mL of Methanol</strong> into the tube. (<em>*Note: For softgels, use 20.0 mL of Chloroform as soft capsule matrices do not dissolve in Methanol</em>).</p>
+            <p>• <strong>Extraction</strong>: Sonicate in ultrasonic bath for <strong>15 minutes</strong>. Centrifuge at <strong>3000 rpm for 10 minutes</strong>.</p>
+            <p>• <strong>Filtration</strong>: Filter supernatant through <strong>0.45 µm PTFE / Nylon syringe filter</strong> into HPLC vial.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">3. Batch Sequence of Injection (Table 3)</div>
+          <div class="acc-body">
+            <p><code>Vial 1: Blank (Methanol) [1x]</code> $\rightarrow$ <code>Vials 2–7: Working Standard 0.05 mg/mL [6x for SST]</code> $\rightarrow$ <code>Vial 8: LOD Solution [1x]</code> $\rightarrow$ <code>Vial 9: Blank [1x]</code> $\rightarrow$ <code>Vials 10–11: Sample 1 (Inj A & B) [2x]</code> $\rightarrow$ <code>Vials 12–19: Samples 2 to 5 with Blanks</code> $\rightarrow$ <code>Vial 20: LOD Solution [1x IQC Bracket]</code> $\rightarrow$ <code>End: LOD Solution [1x]</code>.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">4. System Suitability & Identification Criteria (Para 6.5.6 – 6.5.7)</div>
+          <div class="acc-body">
+            <p>• <strong>SST</strong>: Retention Time %RSD $\le 2.0\%$, Tailing Factor $T \le 2.0$, Theoretical Plates $N \ge 2000$.</p>
+            <p>• <strong>Identification</strong>: Positive if Sample RT matches Standard RT ($\pm 2\%$) AND PDA UV spectrum ($190–400\text{ nm}$) similarity index $> 0.999$.</p>
+            <p>• <strong>Confirmation</strong>: Fresh re-extraction by Second Analyst on separate date + GCMS confirmation (`PKKK/300/UP/004` or `017`).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHOD 2: DOMPERIDONE (UP/027) -->
+  <div id="method-domp" class="method-content">
+    <div class="guide-card">
+      <div class="card-top-bar">
+        <div>
+          <span class="badge badge-cyan">HPLC · Gradient</span>
+          <h2>Domperidone Adulterant Identification</h2>
+          <div class="code-ref">PKKK/300/UP/027 · Fail Arahan Kerja F03 · Borang UP/005</div>
+        </div>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-box"><span class="lbl">Column</span><strong>Zorbax Eclipse Plus C18 (150 × 4.6 mm, 5 µm)</strong></div>
+        <div class="spec-box"><span class="lbl">Mobile Phase</span><strong>Gradient: 20 mM KH₂PO₄ pH 3.0 : ACN</strong></div>
+        <div class="spec-box"><span class="lbl">Flow & Temp</span><strong>1.0 mL/min @ 40 °C (Sampler: 4 °C)</strong></div>
+        <div class="spec-box"><span class="lbl">Detector</span><strong>PDA @ 284 nm (Scan 190–400 nm)</strong></div>
+        <div class="spec-box"><span class="lbl">Inj Vol & Time</span><strong>10 µL · Run Time: 20.0 minutes</strong></div>
+        <div class="spec-box"><span class="lbl">Buffer Recipe</span><strong>20 mM Potassium Dihydrogen Phosphate (KH₂PO₄), pH 3.0 with H₃PO₄</strong></div>
+      </div>
+
+      <div class="section-divider">STEP-BY-STEP PROCEDURE</div>
+
+      <div class="step-accordion">
+        <div class="acc-item">
+          <div class="acc-title">1. Reagent & Standard Preparation (Para 6.1 – 6.3)</div>
+          <div class="acc-body">
+            <p>• <strong>Buffer 20 mM KH₂PO₄ pH 3.0</strong>: Dissolve 2.72 g of Potassium Dihydrogen Phosphate in 1000 mL Ultrapure water. Adjust pH to 3.0 with Orthophosphoric acid. Filter (0.45 µm) and degas for 20 min.</p>
+            <p>• <strong>Domperidone Stock (1.0 mg/mL)</strong>: Accurately weigh 10.0 mg Domperidone RS into 10 mL volumetric flask. Dissolve and dilute with Methanol.</p>
+            <p>• <strong>Working Standard (0.05 mg/mL)</strong>: Dilute 0.5 mL stock to 10 mL with Methanol.</p>
+            <p>• <strong>LOD Solution (0.003 mg/mL)</strong>: Dilute 0.6 mL working standard to 10 mL with Methanol.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">2. Sample Extraction (Para 6.4)</div>
+          <div class="acc-body">
+            <p>• Weigh <strong>1.0 g</strong> of tablet/capsule/liquid sample into 50 mL centrifuge tube.</p>
+            <p>• Add <strong>20.0 mL Methanol</strong> (or Chloroform for softgels). Sonicate for <strong>15 minutes</strong>, centrifuge at <strong>3000 rpm for 10 minutes</strong>. Filter through 0.45 µm Nylon filter.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">3. Gradient Program (Table 2)</div>
+          <div class="acc-body">
+            <div class="table-wrap">
+              <table class="method-table">
+                <thead><tr><th>Time (min)</th><th>Buffer pH 3.0 (%)</th><th>Acetonitrile (%)</th><th>Flow</th></tr></thead>
+                <tbody>
+                  <tr><td>0.01 – 1.99</td><td>90 %</td><td>10 %</td><td>1.0 mL/min</td></tr>
+                  <tr><td>2.00 – 3.99</td><td>70 %</td><td>30 %</td><td>1.0 mL/min</td></tr>
+                  <tr><td>4.00 – 7.99</td><td>50 %</td><td>50 %</td><td>1.0 mL/min</td></tr>
+                  <tr><td>8.00 – 11.99</td><td>40 %</td><td>60 %</td><td>1.0 mL/min</td></tr>
+                  <tr><td>12.00 – 14.09</td><td>30 %</td><td>70 %</td><td>1.0 mL/min</td></tr>
+                  <tr><td>14.10 – 20.00</td><td>90 %</td><td>10 % (Re-equilibration)</td><td>1.0 mL/min</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">4. SST & Identification Acceptance</div>
+          <div class="acc-body">
+            <p>• SST: Retention Time %RSD $\le 2.0\%$, Tailing $T \le 2.0$, $N \ge 2000$.</p>
+            <p>• Positive Match: Sample RT within $\pm 2\%$ of Domperidone RS & UV Spectrum similarity $> 0.999$.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHOD 3: EG & DEG IN MEDICINAL SYRUPS (UP/034) -->
+  <div id="method-egdeg" class="method-content">
+    <div class="guide-card">
+      <div class="card-top-bar">
+        <div>
+          <span class="badge badge-amber">GCMS · SIM Quantitation</span>
+          <h2>Diethylene Glycol (DEG) & Ethylene Glycol (EG) in Medicinal Syrups</h2>
+          <div class="code-ref">PKKK/300/UP/034 · Fail Arahan Kerja F03 · Borang UP/009</div>
+        </div>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-box"><span class="lbl">Column</span><strong>BP20 Wax (30 m × 0.25 mm × 0.25 µm)</strong></div>
+        <div class="spec-box"><span class="lbl">Carrier Gas</span><strong>Helium @ 0.65 mL/min (Linear Vel: 30 cm/s)</strong></div>
+        <div class="spec-box"><span class="lbl">Injector</span><strong>Split 20:1 @ 250 °C · Inj Vol: 1.0 µL</strong></div>
+        <div class="spec-box"><span class="lbl">MS Mode</span><strong>EI @ 70 eV · Source: 230 °C · Interface: 240 °C</strong></div>
+        <div class="spec-box"><span class="lbl">Solvent Delay</span><strong>4.0 minutes (Methanol off)</strong></div>
+        <div class="spec-box"><span class="lbl">USP / NPRA Limit</span><strong>Not More Than 0.10 % v/v for EG and DEG</strong></div>
+      </div>
+
+      <div class="section-divider">STEP-BY-STEP PROCEDURE</div>
+
+      <div class="step-accordion">
+        <div class="acc-item">
+          <div class="acc-title">1. Standards Preparation & SIM Ion Tables (Para 6.3 & Tables 1–3)</div>
+          <div class="acc-body">
+            <p>• <strong>Mixed Standard Stock (EG ~222.7 µg/mL & DEG ~223.7 µg/mL)</strong>: Prepared in Methanol.</p>
+            <p>• <strong>5-Level Calibration Curve</strong>:</p>
+            <ul style="margin-left:1.2rem;font-size:0.88rem;line-height:1.6">
+              <li>Level 1 (LOQ): 6.01 µg/mL EG / 6.04 µg/mL DEG (135 µL stock $\rightarrow$ 5 mL)</li>
+              <li>Level 2: 8.01 µg/mL EG / 8.05 µg/mL DEG (180 µL stock $\rightarrow$ 5 mL)</li>
+              <li>Level 3 (SST): 10.02 µg/mL EG / 10.06 µg/mL DEG (225 µL stock $\rightarrow$ 5 mL)</li>
+              <li>Level 4: 12.02 µg/mL EG / 12.07 µg/mL DEG (270 µL stock $\rightarrow$ 5 mL)</li>
+              <li>Level 5: 14.02 µg/mL EG / 14.09 µg/mL DEG (315 µL stock $\rightarrow$ 5 mL)</li>
+              <li>LOD Solution: 2.0 µg/mL (45 µL stock $\rightarrow$ 5 mL)</li>
+            </ul>
+            <p style="margin-top:0.5rem">• <strong>SIM Ions</strong>:</p>
+            <p><strong>Ethylene Glycol (EG)</strong> [RT 4.5–11.0 min]: Target Quant: <code>m/z 31</code>; Qualifiers: <code>m/z 33</code>, <code>m/z 62</code>.<br>
+            <strong>Diethylene Glycol (DEG)</strong> [RT 11.0–20.0 min]: Target Quant: <code>m/z 45</code>; Qualifiers: <code>m/z 75</code>, <code>m/z 31</code>.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">2. Sample Preparation for Medicinal Syrups (Para 6.4)</div>
+          <div class="acc-body">
+            <p>1. Accurately pipette <strong>100 µL of medicinal syrup sample</strong> into a 10 mL volumetric flask.</p>
+            <p>2. Add HPLC grade Methanol, dissolve, and make up to the 10.0 mL mark.</p>
+            <p>3. Vortex thoroughly for 30 seconds. Transfer into GC autosampler vial for injection.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">3. GC Oven Temperature Program (Table 2)</div>
+          <div class="acc-body">
+            <p>• Initial: <strong>100 °C (hold 1.0 min)</strong><br>
+            • Ramp 1: <strong>10.0 °C/min to 130 °C (hold 7.0 min)</strong><br>
+            • Ramp 2: <strong>20.0 °C/min to 240 °C (hold 3.0 min)</strong><br>
+            • Post-run: <strong>20.0 °C/min to 250 °C (hold 3.0 min)</strong>. Total Time: <strong>23.0 min</strong>.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">4. System Suitability & Assay Calculation Formula</div>
+          <div class="acc-body">
+            <p>• <strong>SST (6 Injections of Level 3 Standard)</strong>: Peak Area %RSD $\le 10.0\%$, Tailing Factor $T_f \le 2.5$, Theoretical Plates $N \ge 2000$. LOD $S/N \ge 3$, LOQ $S/N \ge 10$.</p>
+            <p>• <strong>Assay Formula (% v/v)</strong>:</p>
+            $$\text{Amount } (\%v/v) = \frac{\text{Concentration from GCMS } (\mu\text{g/mL}) \times 10\text{ mL}}{100\ \mu\text{L} \times 10^4 \times \text{Density of compound}}$$
+            <p>• <strong>Compliance Limit</strong>: EG $\le 0.10\% v/v$ and DEG $\le 0.10\% v/v$. If $> 0.10\% v/v \rightarrow$ <strong>FAIL / OOS</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHOD 4: STEROID SCREENING (UP/021) -->
+  <div id="method-steroid" class="method-content">
+    <div class="guide-card">
+      <div class="card-top-bar">
+        <div>
+          <span class="badge badge-mint">HPLC · Gradient LLE</span>
+          <h2>Steroids (8-Compound Matrix) Screening</h2>
+          <div class="code-ref">PKKK/300/UP/021 · PKKK/300/UP/014 · Borang UP/005</div>
+        </div>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-box"><span class="lbl">Column</span><strong>Kinetex Phenyl-Hexyl 100Å (150 × 4.6 mm, 2.6 µm)</strong></div>
+        <div class="spec-box"><span class="lbl">Mobile Phase</span><strong>Gradient: Ultrapure Water : Acetonitrile</strong></div>
+        <div class="spec-box"><span class="lbl">Flow & Temp</span><strong>0.7 mL/min @ 40 °C (Cell: 40 °C)</strong></div>
+        <div class="spec-box"><span class="lbl">Detector</span><strong>PDA @ 240 nm (Scan 190–400 nm)</strong></div>
+        <div class="spec-box"><span class="lbl">Inj Vol & Time</span><strong>10 µL · Run Time: 35.0 minutes</strong></div>
+        <div class="spec-box"><span class="lbl">Target 8 Steroids</span><strong>Prednisone, Prednisolone, Betamethasone, Dexamethasone, Triamcinolone acetonide, Hydrocortisone acetate, Cortisone acetate, Beta-17-valerate</strong></div>
+      </div>
+
+      <div class="section-divider">STEP-BY-STEP PROCEDURE</div>
+
+      <div class="step-accordion">
+        <div class="acc-item">
+          <div class="acc-title">1. Critical LLE Extraction (Adjust to pH 7.0)</div>
+          <div class="acc-body">
+            <p>• Weigh 1.5 g sample $\rightarrow$ dissolve in 10–50 mL water $\rightarrow$ sonicate 10–15 min $\rightarrow$ <strong>adjust pH to exactly 7.0 with Ammonia/HCl</strong> $\rightarrow$ extract $2\times$ with 50 mL Chloroform (gentle rocking) $\rightarrow$ evaporate bottom layer to dryness $\rightarrow$ reconstitute in 3.0 mL Ethanol $\rightarrow$ filter 0.45 µm.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">2. Gradient Time Program (0.7 mL/min)</div>
+          <div class="acc-body">
+            <p>0.01–1.99 min (80% A : 20% B) $\rightarrow$ 2.00–13.99 min (75% A : 25% B) $\rightarrow$ 14.00–17.99 min (70% A : 30% B) $\rightarrow$ 18.00–19.99 min (60% A : 40% B) $\rightarrow$ 20.00–21.99 min (50% A : 50% B) $\rightarrow$ 22.00–29.99 min (30% A : 70% B) $\rightarrow$ 30.00–35.00 min (80% A : 20% B re-equilibration).</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">3. Positive Result Confirmation Protocol</div>
+          <div class="acc-body">
+            <p>• Positive match: Sample RT within $\pm 2\%$ of RS AND UV spectrum overlay similarity $> 0.999$.</p>
+            <p>• <strong>Mandatory 2nd Analyst Protocol</strong>: Second analyst extracts new sample on different date at pH 7.0 $\rightarrow$ Confirmation on GCMS (`PKKK/300/UP/004` / `017`).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="screening-methods.js"></script>
+</body>
+</html>
