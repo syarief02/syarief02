@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -367,11 +452,6 @@
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -421,7 +501,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 1 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 24 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -446,17 +526,47 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">2.0 SCOPE</a><a href="#sec-3" class="toc-pill">5.0 RESPONSIBILITIES</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-5" class="toc-pill">7.0 QUALITY RECORD</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number from PKK/300/KOS/014 to PKK/300/HMS/012</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update on document number from PKK/300/HMS/012 to PKKK/300/HMS/012</p><p class="sop-p">Update on paragraph 5.0 Responsibilities</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update on document number from PKKK/300/HMS/012 to PKKK/300/KOS/008</p><p class="sop-p">Update on paragraph 5.0 Responsibilities</p><p class="sop-p">Issue 4 Revision1  :</p><p class="sop-p">Change document number from PKKK/300/KOS/008 to PKKK/300/UP/042 .</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026.</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for High Performance Liquid Chromatography (HPLC) in the laboratory.</p><p class="sop-p">SCOPE</p><p class="sop-p">This guide shall be used for the operation of HPLC Shimadzu Series Prominence-i</p><p class="sop-p">DEFINITION</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p><p class="sop-p">RESPONSIBILITIES</p><p class="sop-p">PROCEDURE</p><p class="sop-p">Section A: Real Time – Data Acquisition</p><p class="sop-p">Starting Up LC</p><p class="sop-p">Turning on the POWER ON.</p><p class="sop-p">At the PC, double click on “LabSolutions” icon.</p><p class="sop-p">The User I.D: Admin, while the Password is left blank. Click “OK”.</p><p class="sop-p">In the menu, click “Instrument”, then double click to open Real Time Analysis.</p><p class="sop-p">User will then hear a ‘Beep’ sound, it is indicating that the instrument is connected with the software.</p><p class="sop-p">If the system shows LC – Not Connected, user can check the System Configuration at Assistant Bar. Make sure the correct modules are registered in the right hand side box.</p><p class="sop-p">The “RealTime” access the online analysis application: method settings and actual data collection.</p><p class="sop-p">The “RealTime” window will then be open. Beeps can be heard.</p><p class="sop-p">Insert the column inside the column oven.</p><p class="sop-p">Please make sure the column flow direction is correct by following the column information provided by the suppliers.</p><p class="sop-p">Make sure that the correct detector tubing is connected to the column outlet. (Each detector has its own tubing)</p><p class="sop-p">Please make sure the solvent line in each pump (A, B, C, &amp; D) is inserted into the correct mobile phase for that method :</p><p class="sop-p">If analysis method only uses mobile phase that consist of water and organic solvents (MEOH or ACN):</p><p class="sop-p">The system can be straight flush with the mobile phase that is required by the analysis method.</p><p class="sop-p">If buffer or acidify solvent is to be used for mobile phase:</p><p class="sop-p">The system must 1st be flush with Water 95% with 5% organic solvent</p><p class="sop-p">( Acetonitrile or Methanol )</p>
+            <p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number from PKK/300/KOS/014 to PKK/300/HMS/012</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update on document number from PKK/300/HMS/012 to PKKK/300/HMS/012</p><p class="sop-p">Update on paragraph 5.0 Responsibilities</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update on document number from PKKK/300/HMS/012 to PKKK/300/KOS/008</p><p class="sop-p">Update on paragraph 5.0 Responsibilities</p><p class="sop-p">Issue 4 Revision1  :</p><p class="sop-p">Change document number from PKKK/300/KOS/008 to PKKK/300/UP/042 .</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026.</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for High Performance Liquid Chromatography (HPLC) in the laboratory.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SCOPE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">This guide shall be used for the operation of HPLC Shimadzu Series Prominence-i</p><p class="sop-p">DEFINITION</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 RESPONSIBILITIES</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Section A: Real Time – Data Acquisition</p><p class="sop-p">Starting Up LC</p><p class="sop-p">Turning on the POWER ON.</p><p class="sop-p">At the PC, double click on “LabSolutions” icon.</p><p class="sop-p">The User I.D: Admin, while the Password is left blank. Click “OK”.</p><p class="sop-p">In the menu, click “Instrument”, then double click to open Real Time Analysis.</p><p class="sop-p">User will then hear a ‘Beep’ sound, it is indicating that the instrument is connected with the software.</p><p class="sop-p">If the system shows LC – Not Connected, user can check the System Configuration at Assistant Bar. Make sure the correct modules are registered in the right hand side box.</p><p class="sop-p">The “RealTime” access the online analysis application: method settings and actual data collection.</p><p class="sop-p">The “RealTime” window will then be open. Beeps can be heard.</p><p class="sop-p">Insert the column inside the column oven.</p><p class="sop-p">Please make sure the column flow direction is correct by following the column information provided by the suppliers.</p><p class="sop-p">Make sure that the correct detector tubing is connected to the column outlet. (Each detector has its own tubing)</p><p class="sop-p">Please make sure the solvent line in each pump (A, B, C, &amp; D) is inserted into the correct mobile phase for that method :</p><p class="sop-p">If analysis method only uses mobile phase that consist of water and organic solvents (MEOH or ACN):</p><p class="sop-p">The system can be straight flush with the mobile phase that is required by the analysis method.</p><p class="sop-p">If buffer or acidify solvent is to be used for mobile phase:</p><p class="sop-p">The system must 1st be flush with Water 95% with 5% organic solvent</p><p class="sop-p">( Acetonitrile or Methanol )</p>
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">k) Before starting any analysis, method parameter must 1st be keyed-in.</span>
@@ -471,17 +581,281 @@
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">** Remember to use the same “Gain” and “Sensitivity” value for both std and sample**</span>
                 </div>
-                <p class="sop-p">If Using PDA</p><p class="sop-p">If Using CORONA – please do the settings on the CORONA hardware. (not applicable for BPFK)</p><p class="sop-p">Data Acquisition</p><p class="sop-p">LC Time Prog.:</p><p class="sop-p">User can set up gradient for the method (changing of solvent composition during data acquisition)</p><p class="sop-p">Auto Purge:</p><p class="sop-p">Auto purge allows system to purge out air in the solvent lines to prevent them from entering the column. It is highly recommended to perform purging.</p><p class="sop-p">Un-tick “Active” button</p><p class="sop-p">Solvent lines should also be purged to remove bubbles:</p><p class="sop-p">When solvents are added to the solvent bottles or when changing the solvents to different solvents. Whenever the solvent lines are changed from one solvent to another, there must always be an intermediate. This is important to make sure there are no cross contamination of the solvents and aqueous solutions.</p><p class="sop-p">How to change the solvent involving an intermediate:</p><p class="sop-p">Make sure the system is turned off, wait for the pressure to drop completely, then remove the desired pump line and insert into the intermediate solution, and then purge the line (purge settings refer to step vii ).</p><p class="sop-p">Next, remove the pump line and insert into the newly desired bottled solution and purge again (refer to step vii).</p><p class="sop-p">In this case, the “Activate system after auto-purge” command box is un-clicked. After setting up the auto purge method, save the method file.</p><p class="sop-p">3. Start up and flushing the system for analysis.</p><p class="sop-p">Open or create a method file.</p><p class="sop-p">Download the method file. By clicking on the  icon.</p><p class="sop-p">Click on this icon to start the auto purging.</p><p class="sop-p">Wait for the auto-purge to finish.</p><p class="sop-p">If analysis method only uses mobile phase that consist of water and organic solvents (MeOH or ACN). The system can be straight flushed with the mobile phase that is required by the analysis method.</p><p class="sop-p">If mobile phase uses buffer or acidified solvent, flush the system with 90% H2O : 10% MeOH. Then, with the mobile phase required by the analysis method.</p><p class="sop-p">To turn on the system (mobile phase pumping) please click on the “Instrument On/Off” button.</p><p class="sop-p">To check on the system pump, a detailed monitoring table at the far right-hand corner of the LC real time analysis window screen is available and pictured as below:</p><p class="sop-p">For RF, UV-VIS, PDA &amp; Corona detector:</p><p class="sop-p">The 1st injection can be carried out after the system stabilizes for about <span class="kw-time">20 minutes</span>.</p><p class="sop-p">For PDA detector:</p><p class="sop-p">The Baseline of the system can only be observed when the “Plot” button is pressed.</p><p class="sop-p">Before any injection is carried out, make sure the “Plot” is stopped by clicking on the below button.</p><p class="sop-p">Doing the injections, since PDA gives the option to the user to take data in a range of wavelength; to view a selected wavelength just for viewing in “RealTime”; please follow the below steps:</p><p class="sop-p">Right-hand click on the PDA chromatogram:</p><p class="sop-p">Select “Display Settings”</p><p class="sop-p">Key-in the wavelength that needs to be view:</p><p class="sop-p">Then click “OK”</p><p class="sop-p">The chromatogram of the wavelength selected can now be viewed.</p><p class="sop-p">For RID detector system:</p><p class="sop-p">After <span class="kw-time">20 minutes</span>, the RID detector needs to be in “balance” before use.</p><p class="sop-p">To “balance” the detector:</p><p class="sop-p">Click on the “:Ref Flow” icon to open the Reference Flow. Wait for ~<span class="kw-time">5 minutes</span>.</p><p class="sop-p">After that click again on the “Ref Flow” icon to close the Reference Flow.</p><p class="sop-p">Wait ~ <span class="kw-time">2 minutes</span>.</p><p class="sop-p">After that click on the “Balance RID” icon</p><p class="sop-p">Wait for the detector to Balance.</p><p class="sop-p">After that click on “Autozero”</p><p class="sop-p">Look at the RID detector hardware. There will be two values on the LED read-out. Make sure both values are about the same (Example 0  0 or 0 -1)</p><p class="sop-p">Wait and see if the values changes drastically, if yes – repeat the “Balance” step.</p><p class="sop-p">When the balancing of the RID is correct; proceed with injections.</p><p class="sop-p">4. Type of Run (Single/Real Time Batch Run/Post Run)</p><p class="sop-p">Single Run</p><p class="sop-p">Please click on Single Run at Assistant Bar.                      .</p><p class="sop-p">Fill up the date file name.</p><p class="sop-p">Real Time Batch Run</p><p class="sop-p">Batch run can be used in multiple analysis.</p><p class="sop-p">At Assistant Bar, click on Realtime Batch.</p><p class="sop-p">To create a batch table, user can add rows at the table. Right Hand Click on the table, select Add Row.</p><p class="sop-p">Fill up the table accordingly for Method File, Data File Name, Vial no. and Tray name.</p><p class="sop-p">Finally, save the batch table and then click on Start Realtime Batch.</p><p class="sop-p">5.    System Shutdown</p><p class="sop-p">Manual</p><p class="sop-p">If analysis method only uses mobile phase that consist of water and organic solvents (MEOH or ACN). The system can be straight flushed with 100% organic solvent (Acetonitrile or Methanol) to clean the column (for 30mintues). After that the column and the system should be flushed and kept in 70-60% organic solvent: 30-40% water (for <span class="kw-time">15minutes</span>)</p><p class="sop-p">If buffer or acidic solvent is used for mobile phase, the system must 1st be flushed with Water 90-95% and 10-5% organic solvent (Acetonitrile or Methanol) (for <span class="kw-time">30 minutes</span>); followed by 100% organic solvent (Acetonitrile or Methanol) to clean the column (for 30mintues). After that the column and the system should be flush and kept in 70-60% organic solvent: 30-40% water (for <span class="kw-time">15minutes</span>)</p><p class="sop-p">After the flush and shutdown is completed, please click on the “Instrument ON/OFF” button to turn off the system</p><p class="sop-p">Close the Realtime software.</p><p class="sop-p">Turn off the CBM module first, followed by the other modules.</p>
+                <p class="sop-p">If Using PDA</p><p class="sop-p">If Using CORONA – please do the settings on the CORONA hardware. (not applicable for BPFK)</p><p class="sop-p">Data Acquisition</p><p class="sop-p">LC Time Prog.:</p><p class="sop-p">User can set up gradient for the method (changing of solvent composition during data acquisition)</p><p class="sop-p">Auto Purge:</p><p class="sop-p">Auto purge allows system to purge out air in the solvent lines to prevent them from entering the column. It is highly recommended to perform purging.</p><p class="sop-p">Un-tick “Active” button</p><p class="sop-p">Solvent lines should also be purged to remove bubbles:</p><p class="sop-p">When solvents are added to the solvent bottles or when changing the solvents to different solvents. Whenever the solvent lines are changed from one solvent to another, there must always be an intermediate. This is important to make sure there are no cross contamination of the solvents and aqueous solutions.</p><p class="sop-p">How to change the solvent involving an intermediate:</p><p class="sop-p">Make sure the system is turned off, wait for the pressure to drop completely, then remove the desired pump line and insert into the intermediate solution, and then purge the line (purge settings refer to step vii ).</p><p class="sop-p">Next, remove the pump line and insert into the newly desired bottled solution and purge again (refer to step vii).</p><p class="sop-p">In this case, the “Activate system after auto-purge” command box is un-clicked. After setting up the auto purge method, save the method file.</p><p class="sop-p">3. Start up and flushing the system for analysis.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-1" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Open or create a method file.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Download the method file. By clicking on the  icon.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Click on this icon to start the auto purging.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Wait for the auto-purge to finish.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">If analysis method only uses mobile phase that consist of water and organic solvents (MeOH or ACN). The system can be straight flushed with the mobile phase that is required by the analysis method.</p><p class="sop-p">If mobile phase uses buffer or acidified solvent, flush the system with 90% H2O : 10% MeOH. Then, with the mobile phase required by the analysis method.</p><p class="sop-p">To turn on the system (mobile phase pumping) please click on the “Instrument On/Off” button.</p><p class="sop-p">To check on the system pump, a detailed monitoring table at the far right-hand corner of the LC real time analysis window screen is available and pictured as below:</p><p class="sop-p">For RF, UV-VIS, PDA &amp; Corona detector:</p><p class="sop-p">The 1st injection can be carried out after the system stabilizes for about <span class="kw-time">20 minutes</span>.</p><p class="sop-p">For PDA detector:</p><p class="sop-p">The Baseline of the system can only be observed when the “Plot” button is pressed.</p><p class="sop-p">Before any injection is carried out, make sure the “Plot” is stopped by clicking on the below button.</p><p class="sop-p">Doing the injections, since PDA gives the option to the user to take data in a range of wavelength; to view a selected wavelength just for viewing in “RealTime”; please follow the below steps:</p><p class="sop-p">Right-hand click on the PDA chromatogram:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-4" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Select “Display Settings”
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Key-in the wavelength that needs to be view:</p><p class="sop-p">Then click “OK”</p><p class="sop-p">The chromatogram of the wavelength selected can now be viewed.</p><p class="sop-p">For RID detector system:</p><p class="sop-p">After <span class="kw-time">20 minutes</span>, the RID detector needs to be in “balance” before use.</p><p class="sop-p">To “balance” the detector:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Click on the “:Ref Flow” icon to open the Reference Flow. Wait for ~<span class="kw-time">5 minutes</span>.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After that click again on the “Ref Flow” icon to close the Reference Flow.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-6" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Wait ~ <span class="kw-time">2 minutes</span>.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After that click on the “Balance RID” icon</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Wait for the detector to Balance.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After that click on “Autozero”</p><p class="sop-p">Look at the RID detector hardware. There will be two values on the LED read-out. Make sure both values are about the same (Example 0  0 or 0 -1)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-8" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Wait and see if the values changes drastically, if yes – repeat the “Balance” step.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">When the balancing of the RID is correct; proceed with injections.</p><p class="sop-p">4. Type of Run (Single/Real Time Batch Run/Post Run)</p><p class="sop-p">Single Run</p><p class="sop-p">Please click on Single Run at Assistant Bar.                      .</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Fill up the date file name.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Real Time Batch Run</p><p class="sop-p">Batch run can be used in multiple analysis.</p><p class="sop-p">At Assistant Bar, click on Realtime Batch.</p><p class="sop-p">To create a batch table, user can add rows at the table. Right Hand Click on the table, select Add Row.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-10" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Fill up the table accordingly for Method File, Data File Name, Vial no. and Tray name.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Finally, save the batch table and then click on Start Realtime Batch.</p><p class="sop-p">5.    System Shutdown</p><p class="sop-p">Manual</p><p class="sop-p">If analysis method only uses mobile phase that consist of water and organic solvents (MEOH or ACN). The system can be straight flushed with 100% organic solvent (Acetonitrile or Methanol) to clean the column (for 30mintues). After that the column and the system should be flushed and kept in 70-60% organic solvent: 30-40% water (for <span class="kw-time">15minutes</span>)</p><p class="sop-p">If buffer or acidic solvent is used for mobile phase, the system must 1st be flushed with Water 90-95% and 10-5% organic solvent (Acetonitrile or Methanol) (for <span class="kw-time">30 minutes</span>); followed by 100% organic solvent (Acetonitrile or Methanol) to clean the column (for 30mintues). After that the column and the system should be flush and kept in 70-60% organic solvent: 30-40% water (for <span class="kw-time">15minutes</span>)</p><p class="sop-p">After the flush and shutdown is completed, please click on the “Instrument ON/OFF” button to turn off the system</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 11</span>
+                        Close the Realtime software.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-12" class="sop-step-title">
+                        <span class="action-badge">Langkah 12</span>
+                        Turn off the CBM module first, followed by the other modules.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">***The shutdown method created for this system is a general guide lines for reverse phase columns like C18 &amp; C8. For other columns please check with the manufacturers before carrying out any analysis.</span>
                 </div>
-                <p class="sop-p">Auto</p><p class="sop-p">6.    Post run - Data Processing</p><p class="sop-p">User can perform data processing and reporting using post run.</p><p class="sop-p">Post Run is offline. It is not neccessary to turn on the instrument.</p><p class="sop-p">Double click on LabSolutions.</p><p class="sop-p">Click on Post Run.</p><p class="sop-p">Integration &amp; Compound Table</p><p class="sop-p">For UV-Vis Detector; RID Detector or RF Detector</p><p class="sop-p">The Postrun window will open, select “Data Analysis” icon on the “Assistant Bar” to open the Data</p><p class="sop-p">Analysis window:</p><p class="sop-p">2. Open the standard data collected in the “RealTime” window. Click “Edit” in the</p><p class="sop-p">“Method View” window.</p><p class="sop-p">Start with the 1st Sub-window: Integration. On that window click “Program”. A sub-window will appear.</p><p class="sop-p">In this integration window, please make sure that the required peaks are integrated correctly (Valley to valley) and remove the integration for the unwanted peaks.</p><p class="sop-p">After setting the Integration parameter, got to the next sub-window in the “Method view”:</p><p class="sop-p">After that go to “Quantitative” sub-window:</p><p class="sop-p">After that go to “Compound” sub window:</p><p class="sop-p">When finish, the compound table will look like below:</p><p class="sop-p">Then, please key-in the concentration of each compound’s concentration according to the standards prepared.</p><p class="sop-p">After Integration, Identification, Quantitation &amp; Compound sub-window have been filled; finally click “View” to register the changes.</p><p class="sop-p">After clicking “View” all the peaks on the chromatogram should be labelled and integrated properly.</p><p class="sop-p">Then, click on “Apply Method” to register all the settings to method and follow the steps:</p><p class="sop-p">Now the method’s integration and compound table settings have been saved and updated.</p><p class="sop-p">Finally, go to “File” and “Save data file”.</p><p class="sop-p">For PDA Detector</p>
+                <p class="sop-p">Auto</p><p class="sop-p">6.    Post run - Data Processing</p><p class="sop-p">User can perform data processing and reporting using post run.</p><p class="sop-p">Post Run is offline. It is not neccessary to turn on the instrument.</p><p class="sop-p">Double click on LabSolutions.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-13" class="sop-step-title">
+                        <span class="action-badge">Langkah 13</span>
+                        Click on Post Run.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Integration &amp; Compound Table</p><p class="sop-p">For UV-Vis Detector; RID Detector or RF Detector</p><p class="sop-p">The Postrun window will open, select “Data Analysis” icon on the “Assistant Bar” to open the Data</p><p class="sop-p">Analysis window:</p><p class="sop-p">2. Open the standard data collected in the “RealTime” window. Click “Edit” in the</p><p class="sop-p">“Method View” window.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-14" class="sop-step-title">
+                        <span class="action-badge">Langkah 14</span>
+                        Start with the 1st Sub-window: Integration. On that window click “Program”. A sub-window will appear.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">In this integration window, please make sure that the required peaks are integrated correctly (Valley to valley) and remove the integration for the unwanted peaks.</p><p class="sop-p">After setting the Integration parameter, got to the next sub-window in the “Method view”:</p><p class="sop-p">After that go to “Quantitative” sub-window:</p><p class="sop-p">After that go to “Compound” sub window:</p><p class="sop-p">When finish, the compound table will look like below:</p><p class="sop-p">Then, please key-in the concentration of each compound’s concentration according to the standards prepared.</p><p class="sop-p">After Integration, Identification, Quantitation &amp; Compound sub-window have been filled; finally click “View” to register the changes.</p><p class="sop-p">After clicking “View” all the peaks on the chromatogram should be labelled and integrated properly.</p><p class="sop-p">Then, click on “Apply Method” to register all the settings to method and follow the steps:</p><p class="sop-p">Now the method’s integration and compound table settings have been saved and updated.</p><p class="sop-p">Finally, go to “File” and “Save data file”.</p><p class="sop-p">For PDA Detector</p>
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">1) In the Lab Solution main menu, click on “Postrun” and then double click on the “Postrun” run icon</span>
                 </div>
-                <p class="sop-p">The Postrun window will open, select “PDA Data Analysis” icon on the “Assistant Bar” to open the PDA Data Analysis window:</p><p class="sop-p">Open the standard data file that was collected in “RealTime”.</p><p class="sop-p">After the best is found, user must register it to the “Chromatogram Table” before it can be used in the compound table.</p><p class="sop-p">After registering this is how it will look like (up to 16 chromatogram can be registered in one method):</p><p class="sop-p">After registering, in the method view – multi chromatogram table, click “Edit”</p><p class="sop-p">The 1st sub-window: Multi chrom:</p><p class="sop-p">To register and changes done on the Multi Chrom sub-window; click on “View”</p><p class="sop-p">Click on “Edit” again and got to the next sub-window:  Integration.</p><p class="sop-p">After doing the 1st channel, move on to the next channel. Repeat until all channels have been integrated properly.</p><p class="sop-p">After setting the Integration parameter, got to the next sub-window in the “Method view”.</p><p class="sop-p">After that go to “Quantitative” sub-window:</p><p class="sop-p">After that got to the “compound” sub-window:</p><p class="sop-p">Update the “Retention time” and the “Concentration”.</p><p class="sop-p">After completing the updating of the retention time. Then, please key-in the concentration of each compound’s concentration according to the standards prepared. After finishing, click on “View” to register the changes.</p><p class="sop-p">Then, click on “Apply Method” to register all the settings to method and follow the steps:</p><p class="sop-p">Now the method’s integration and compound table settings have been saved and updated.</p><p class="sop-p">Finally, go to “File” and “Save data file”.</p><p class="sop-p">8. Calibration curve.</p><p class="sop-p">After Section 7 a) or Section 7 b); the updated method can be use to form the calibration curve.</p><p class="sop-p">If the Calibration Standards are injected and the data collected AFTER Section 7 is carried out; then the calibration curve will automatically be created by the system during the injections.</p><p class="sop-p">Please follow step 2 (a) onwards on how to view this calibration curve.</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Calibration curve” icon.</p><p class="sop-p">The calibration curve can automatically be viewed.</p><p class="sop-p">Finally, go to “File” and select “Save method File”.</p><p class="sop-p">If the Calibration Standards are injected and the data collected BEFORE Section A is carried out; then the calibration curve is not automatically created yet. Please follow step 3 (a) onwards on how to create the calibration curve in postrun.</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Postrun Batch” icon.</p><p class="sop-p">Got to file, select “New Batch”. Highlight all the standards that was injected and should be used for the formation of the calibration curve:</p><p class="sop-p">Make sure the sample type, method file and level is correct.</p><p class="sop-p">After checking the settings, save the Batch and click “Start Postrun Batch” icon.</p><p class="sop-p">Wait for it to finish process. After that close the batch file.</p><p class="sop-p">To view the newly form calibration curve:</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Calibration curve” icon.</p><p class="sop-p">The calibration curve can automatically be viewed.</p><p class="sop-p">Finally, go to “File” and select “Save method File”.</p><p class="sop-p">After the calibration curve is formed and checked. Please use this complete analysis method to collect and inject the samples (unknown). The sample or unknown will be automatically identified and quantified.</p><p class="sop-p">To view the results of the sample or unknown (UV-Vis detector, RID detector or RF detector):</p><p class="sop-p">Open the data in “Data Analysis” window.</p><p class="sop-p">Look at the “Results View” – look under “Peak Table” tap or “Compound” tap</p><p class="sop-p">To view the results of the sample of unknown (PDA detector):</p><p class="sop-p">Open the data in “PDA Data Analysis” window:</p><p class="sop-p">Look at the “Results View” – look under “Peak Table” tap or “Compound” tap.</p><p class="sop-p">9. Report Printing.</p>
+                <p class="sop-p">The Postrun window will open, select “PDA Data Analysis” icon on the “Assistant Bar” to open the PDA Data Analysis window:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-15" class="sop-step-title">
+                        <span class="action-badge">Langkah 15</span>
+                        Open the standard data file that was collected in “RealTime”.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After the best is found, user must register it to the “Chromatogram Table” before it can be used in the compound table.</p><p class="sop-p">After registering this is how it will look like (up to 16 chromatogram can be registered in one method):</p><p class="sop-p">After registering, in the method view – multi chromatogram table, click “Edit”</p><p class="sop-p">The 1st sub-window: Multi chrom:</p><p class="sop-p">To register and changes done on the Multi Chrom sub-window; click on “View”</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-16" class="sop-step-title">
+                        <span class="action-badge">Langkah 16</span>
+                        Click on “Edit” again and got to the next sub-window:  Integration.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After doing the 1st channel, move on to the next channel. Repeat until all channels have been integrated properly.</p><p class="sop-p">After setting the Integration parameter, got to the next sub-window in the “Method view”.</p><p class="sop-p">After that go to “Quantitative” sub-window:</p><p class="sop-p">After that got to the “compound” sub-window:</p><p class="sop-p">Update the “Retention time” and the “Concentration”.</p><p class="sop-p">After completing the updating of the retention time. Then, please key-in the concentration of each compound’s concentration according to the standards prepared. After finishing, click on “View” to register the changes.</p><p class="sop-p">Then, click on “Apply Method” to register all the settings to method and follow the steps:</p><p class="sop-p">Now the method’s integration and compound table settings have been saved and updated.</p><p class="sop-p">Finally, go to “File” and “Save data file”.</p><p class="sop-p">8. Calibration curve.</p><p class="sop-p">After Section 7 a) or Section 7 b); the updated method can be use to form the calibration curve.</p><p class="sop-p">If the Calibration Standards are injected and the data collected AFTER Section 7 is carried out; then the calibration curve will automatically be created by the system during the injections.</p><p class="sop-p">Please follow step 2 (a) onwards on how to view this calibration curve.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-17" class="sop-step-title">
+                        <span class="action-badge">Langkah 17</span>
+                        On the Main Menu on the “Assistant Bar”, click on “Calibration curve” icon.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">The calibration curve can automatically be viewed.</p><p class="sop-p">Finally, go to “File” and select “Save method File”.</p><p class="sop-p">If the Calibration Standards are injected and the data collected BEFORE Section A is carried out; then the calibration curve is not automatically created yet. Please follow step 3 (a) onwards on how to create the calibration curve in postrun.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-18" class="sop-step-title">
+                        <span class="action-badge">Langkah 18</span>
+                        On the Main Menu on the “Assistant Bar”, click on “Postrun Batch” icon.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Got to file, select “New Batch”. Highlight all the standards that was injected and should be used for the formation of the calibration curve:</p><p class="sop-p">Make sure the sample type, method file and level is correct.</p><p class="sop-p">After checking the settings, save the Batch and click “Start Postrun Batch” icon.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-19" class="sop-step-title">
+                        <span class="action-badge">Langkah 19</span>
+                        Wait for it to finish process. After that close the batch file.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">To view the newly form calibration curve:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-20" class="sop-step-title">
+                        <span class="action-badge">Langkah 20</span>
+                        On the Main Menu on the “Assistant Bar”, click on “Calibration curve” icon.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">The calibration curve can automatically be viewed.</p><p class="sop-p">Finally, go to “File” and select “Save method File”.</p><p class="sop-p">After the calibration curve is formed and checked. Please use this complete analysis method to collect and inject the samples (unknown). The sample or unknown will be automatically identified and quantified.</p><p class="sop-p">To view the results of the sample or unknown (UV-Vis detector, RID detector or RF detector):</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-21" class="sop-step-title">
+                        <span class="action-badge">Langkah 21</span>
+                        Open the data in “Data Analysis” window.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Look at the “Results View” – look under “Peak Table” tap or “Compound” tap</p><p class="sop-p">To view the results of the sample of unknown (PDA detector):</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-22" class="sop-step-title">
+                        <span class="action-badge">Langkah 22</span>
+                        Open the data in “PDA Data Analysis” window:
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Look at the “Results View” – look under “Peak Table” tap or “Compound” tap.</p><p class="sop-p">9. Report Printing.</p>
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">1) In the Main Menu on the “Assistant Bar”; click on “Report Format”</span>
@@ -496,21 +870,40 @@
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">3) After dragging the data, the data will be presented at the report template. Finally click on “Print” button to start the printing.</span>
                 </div>
-                <p class="sop-p">How create own report template:</p><p class="sop-p">Click on “Report format”.</p><p class="sop-p">After the template is created, it can be save for future use by going to File, select “Save Template As”.</p><p class="sop-p">To Print, user must drag and drop the data to the template:</p><p class="sop-p">Finally click on the “Print” icon.</p><p class="sop-p">Performance Check</p><p class="sop-p">Performance Check will be carried out in every analysis to ensure the sensitivity for the instrument is always at its optimum level. It is carried out by performing the System Suitability Test using the Standard solution/ Mix Standard Solution and to ensure that the parameters below are fulfilled:</p><p class="sop-p">Tailing factor &lt; 2.0</p><p class="sop-p">Theoretical plates &gt; 1500</p><p class="sop-p">QUALITY RECORD</p><p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-042-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
-                          <label for="step-042-1" class="sop-step-title">
-                            8.0  FORMS
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">None</p>
-                      </div>
+                <p class="sop-p">How create own report template:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-23" class="sop-step-title">
+                        <span class="action-badge">Langkah 23</span>
+                        Click on “Report format”.
+                      </label>
                     </div>
-                    
+                  </div>
+                </div>
+                <p class="sop-p">After the template is created, it can be save for future use by going to File, select “Save Template As”.</p><p class="sop-p">To Print, user must drag and drop the data to the template:</p><p class="sop-p">Finally click on the “Print” icon.</p><p class="sop-p">Performance Check</p><p class="sop-p">Performance Check will be carried out in every analysis to ensure the sensitivity for the instrument is always at its optimum level. It is carried out by performing the System Suitability Test using the Standard solution/ Mix Standard Solution and to ensure that the parameters below are fulfilled:</p><p class="sop-p">Tailing factor &lt; 2.0</p><p class="sop-p">Theoretical plates &gt; 1500</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7.0 QUALITY RECORD</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-042-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/042')">
+                      <label for="step-042-24" class="sop-step-title">
+                        8.0  FORMS
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">None</p>
           </div>
         </div>
         

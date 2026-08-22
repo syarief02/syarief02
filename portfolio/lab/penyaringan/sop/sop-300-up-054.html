@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -369,7 +454,7 @@
   
         <div class="summary-analytes">
           <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
+          <div class="chips-container"><span class="analite-chip">Methyl, Ethyl, Propyl, Butyl 4-Hydroxybenzoate</span></div>
         </div>
         
 
@@ -415,7 +500,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 16 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 25 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -440,14 +525,14 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">1.0	Objective</a><a href="#sec-3" class="toc-pill">2.0	Scope</a><a href="#sec-4" class="toc-pill">4.0	Flow Chart</a><a href="#sec-5" class="toc-pill">6.0	Procedure</a><a href="#sec-6" class="toc-pill">7.0	Quality Records</a><a href="#sec-7" class="toc-pill">8.0	Attachments</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (6)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 OBJECTIVE</a><a href="#sec-3" class="toc-pill">2.0 SCOPE</a><a href="#sec-4" class="toc-pill">4.0 FLOW CHART</a><a href="#sec-5" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-6" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-7" class="toc-pill">7.0 QUALITY RECORDS</a><a href="#sec-8" class="toc-pill">8.0 ATTACHMENTS</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (6)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">HISTORY OF REVISION :</p><p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">Update on document number from PKK/200/KOS/025 to PKK/200/HMS/012</p><p class="sop-p">Update on effective date from 15 November 2016 to 10 February 2020</p><p class="sop-p">Update on responsibility.</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Document change from testing procedure PKK/200/HMS/012 to work instruction PKK/300/HMS/067</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/067 to PKKK/300/HMS/067</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">Issue 5 Revision 0 :</p><p class="sop-p">i.	Update document number from PKKK/300/HMS/067 to PKKK/300/KOS/024</p><p class="sop-p">ii.	Update paragraph 5.0 Responsibility</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 5 Revision 1:</p><p class="sop-p">Update document number from PKKK/300/KOS/024 to PKKK/300/UP/054</p><p class="sop-p">Update Document Effective date from 1 April 2024 to 10 April 2026.</p><p class="sop-p">Update para 7.0 Quality Records :</p><p class="sop-p">KOS/X004 to UP/X010</p><p class="sop-p">KOS/X006 to UP/X011</p><p class="sop-p">KOS/X003 to UP/X009</p><p class="sop-p">KOS/002A to UP/002B</p><p class="sop-p">KOS/X009 to UP/X013</p>
@@ -456,8 +541,8 @@
         
         <div class="sop-section-container sec-theme-cyan" id="sec-2">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0	Objective</h2>
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 OBJECTIVE</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">◼	To identify and quantitate the content of Methyl, Ethyl, Propyl and Butyl 4-Hydroxybenzoate in cosmetic products</p>
@@ -466,74 +551,62 @@
         
         <div class="sop-section-container sec-theme-cyan" id="sec-3">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>2.0	Scope</h2>
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SCOPE</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">◼	This method specifies a procedure for the identification and quantitation of Methyl, Ethyl, Propyl and Butyl 4-Hydroxybenzoate in cosmetic products.</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-1" class="sop-step-title">
-                            3.0	Definition
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-1" class="sop-step-title">
+                        3.0	Definition
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-2" class="sop-step-title">
-                            3.1 HPLC	: High Performance Liquid Chromatography
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-2" class="sop-step-title">
+                        3.1 HPLC	: High Performance Liquid Chromatography
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-3" class="sop-step-title">
-                            3.2 UV		: Ultraviolet
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-3" class="sop-step-title">
+                        3.2 UV		: Ultraviolet
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-4" class="sop-step-title">
-                            3.3 Analyst	: Pharmacist/Pharmacy assistant/Science Officer
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-4" class="sop-step-title">
+                        3.3 Analyst	: Pharmacist/Pharmacy assistant/Science Officer
+                      </label>
                     </div>
-                    
+                  </div>
+                </div>
+                
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-4">
+        <div class="sop-section-container sec-theme-purple" id="sec-4">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>4.0	Flow Chart</h2>
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 FLOW CHART</h2>
           </div>
           <div class="sop-section-body">
             
@@ -542,216 +615,298 @@
                   <span class="sop-list-text">- None -</span>
                 </div>
                 <p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-5" class="sop-step-title">
-                            5.1.1	Validate analysis report of failed sample and approve on QUEST System
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis report on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and update into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Analyst</p><p class="sop-p">Perform sample analysis and report</p>
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-5" class="sop-step-title">
+                        5.1.1	Validate analysis report of failed sample and approve on QUEST System
+                      </label>
                     </div>
-                    
+                  </div>
+                </div>
+                <p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis report on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and update into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Analyst</p><p class="sop-p">Perform sample analysis and report</p>
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-amber" id="sec-5">
           <div class="sop-section-header">
             <span class="sec-icon">🔬</span>
-            <h2>6.0	Procedure</h2>
+            <h2>6.0 PROCEDURE</h2>
           </div>
           <div class="sop-section-body">
             
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-6" class="sop-step-title">
-                            6.1	Reagents
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">All reagents must be of analytical quality or HPLC grade.</p><p class="sop-p">Water used must be Ultrapure water, 18 mega ohm</p><p class="sop-p">Methanol (HPLC) Grade</p><p class="sop-p">Tetrahydrofuran</p><p class="sop-p">Acetonitrile</p><p class="sop-p">Ethanol</p><p class="sop-p">Sulfuric acid 2M</p><p class="sop-p">Transfer about <span class="kw-vol">20 mL</span> of water into <span class="kw-vol">50 mL</span> volumetric flask. Add in about <span class="kw-vol">5.43 mL</span> concentrated Sulfuric acid and make up to volume with water</p><p class="sop-p">Mobile phase - mixture of Tetrahydrofuran : Water : Methanol : Acetonitrile 1:12:2:5 (v:v:v:v)</p><p class="sop-p">Diluent - Ethanol : Water (9:1) (v:v)</p><p class="sop-p">Reference material:</p><p class="sop-p">Methyl 4-hydroxybenzoate primary/secondary reference standard</p><p class="sop-p">Ethyl  4-hydroxybenzoate primary/secondary reference standard</p><p class="sop-p">Propyl  4-hydroxybenzoate primary/secondary reference standard</p><p class="sop-p">Butyl  4-hydroxybenzoate primary/secondary reference standard</p><p class="sop-p">Isopropyl  4-hydroxybenzoate primary/secondary reference standard</p>
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-6" class="sop-step-title">
+                        6.1	Reagents
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-7" class="sop-step-title">
-                            6.2	Apparatus
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">High Pressure Liquid Chromatography</p><p class="sop-p">Erlenmeyer flask</p><p class="sop-p">HPLC column: Cosmosil C18 250 mm x 4.6 mm (5 µm) or equivalent</p><p class="sop-p">UV Detector, with detection capability at <span class="kw-wave">280 nm</span></p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">All reagents must be of analytical quality or HPLC grade.</p><p class="sop-p">Water used must be Ultrapure water, 18 mega ohm</p><p class="sop-p">Methanol (HPLC) Grade</p><p class="sop-p">Tetrahydrofuran</p><p class="sop-p">Acetonitrile</p><p class="sop-p">Ethanol</p><p class="sop-p">Sulfuric acid 2M</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Transfer about <span class="kw-vol">20 mL</span> of water into <span class="kw-vol">50 mL</span> volumetric flask. Add in about <span class="kw-vol">5.43 mL</span> concentrated Sulfuric acid and make up to volume with water
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-8" class="sop-step-title">
-                            0.45 µm syringe membrane filter
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Mobile phase - mixture of Tetrahydrofuran : Water : Methanol : Acetonitrile 1:12:2:5 (v:v:v:v)</p><p class="sop-p">Diluent - Ethanol : Water (9:1) (v:v)</p><p class="sop-p">Reference material:</p><p class="sop-p">Methyl 4-hydroxybenzoate primary/secondary reference standard</p><p class="sop-p">Ethyl  4-hydroxybenzoate primary/secondary reference standard</p><p class="sop-p">Propyl  4-hydroxybenzoate primary/secondary reference standard</p><p class="sop-p">Butyl  4-hydroxybenzoate primary/secondary reference standard</p><p class="sop-p">Isopropyl  4-hydroxybenzoate primary/secondary reference standard</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-8" class="sop-step-title">
+                        6.2	Apparatus
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-9" class="sop-step-title">
-                            6.3	Test Method (Identification)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">High Pressure Liquid Chromatography</p><p class="sop-p">Erlenmeyer flask</p><p class="sop-p">HPLC column: Cosmosil C18 250 mm x 4.6 mm (5 µm) or equivalent</p><p class="sop-p">UV Detector, with detection capability at <span class="kw-wave">280 nm</span></p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-9" class="sop-step-title">
+                        0.45 µm syringe membrane filter
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-10" class="sop-step-title">
-                            6.3.1	Chromatographic Conditions
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Column Oven temperature	: 25oC</p><p class="sop-p">Flow rate			: <span class="kw-flow"><span class="kw-vol">1.5 mL</span>/min</span></p><p class="sop-p">UV detector wavelength	: <span class="kw-wave">280 nm</span></p><p class="sop-p">Injection volume		: <span class="kw-vol">20 µL</span></p><p class="sop-p">Instrument run time		: <span class="kw-time">30 min</span></p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-10" class="sop-step-title">
+                        6.3	Test Method (Identification)
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-11" class="sop-step-title">
-                            6.3.2	Standard solution preparation
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Internal standard solution: Isopropyl 4-hydroxybenzoate (<span class="kw-wt">500 µg</span>/mL)</p><p class="sop-p">Accurately weigh <span class="kw-wt">50 mg</span> Isopropyl 4-hydroxybenzoate into <span class="kw-vol">100 mL</span> volumetric flask. Dissolve it and make up to volume with diluent.</p><p class="sop-p">Standard solution for identification: Methyl 4-hydroxybenzoate, Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate, Butyl 4-hydroxybenzoate and Isopropyl 4-hydroxybenzoate (<span class="kw-wt">100 µg</span>/mL)</p><p class="sop-p">Accurately weigh <span class="kw-wt">2 mg</span> of Methyl 4-hydroxybenzoate into <span class="kw-vol">20 mL</span> volumetric flask. Dissolve in <span class="kw-vol">10 mL</span> of diluent by shaking it, and if necessary sonicate for 1-<span class="kw-time">2 minutes</span>. Make up to volume with diluent. Repeat the same process for Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate, Butyl 4-hydroxybenzoate and Isopropyl 4-hydroxybenzoate in separate volumetric flasks.</p><p class="sop-p">Mix standard stock solution: Methyl 4-hydroxybenzoate, Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate and Butyl 4-hydroxybenzoate (<span class="kw-wt">500 µg</span>/mL)</p><p class="sop-p">Accurately weigh <span class="kw-wt">12.5 mg</span> of Methyl 4-hydroxybenzoate, Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate and Butyl 4-hydroxybenzoate into <span class="kw-vol">25 mL</span> volumetric flask. Dissolve in <span class="kw-vol">10 mL</span> of diluent by shaking it, and if necessary sonicate for 1-<span class="kw-time">2 minutes</span>. Make up to volume with diluent.</p>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-11" class="sop-step-title">
+                        6.3.1	Chromatographic Conditions
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Column Oven temperature	: 25oC</p><p class="sop-p">Flow rate			: <span class="kw-flow"><span class="kw-vol">1.5 mL</span>/min</span></p><p class="sop-p">UV detector wavelength	: <span class="kw-wave">280 nm</span></p><p class="sop-p">Injection volume		: <span class="kw-vol">20 µL</span></p><p class="sop-p">Instrument run time		: <span class="kw-time">30 min</span></p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-12" class="sop-step-title">
+                        6.3.2	Standard solution preparation
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Internal standard solution: Isopropyl 4-hydroxybenzoate (<span class="kw-wt">500 µg</span>/mL)</p><p class="sop-p">Accurately weigh <span class="kw-wt">50 mg</span> Isopropyl 4-hydroxybenzoate into <span class="kw-vol">100 mL</span> volumetric flask. Dissolve it and make up to volume with diluent.</p><p class="sop-p">Standard solution for identification: Methyl 4-hydroxybenzoate, Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate, Butyl 4-hydroxybenzoate and Isopropyl 4-hydroxybenzoate (<span class="kw-wt">100 µg</span>/mL)</p><p class="sop-p">Accurately weigh <span class="kw-wt">2 mg</span> of Methyl 4-hydroxybenzoate into <span class="kw-vol">20 mL</span> volumetric flask. Dissolve in <span class="kw-vol">10 mL</span> of diluent by shaking it, and if necessary sonicate for 1-<span class="kw-time">2 minutes</span>. Make up to volume with diluent. Repeat the same process for Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate, Butyl 4-hydroxybenzoate and Isopropyl 4-hydroxybenzoate in separate volumetric flasks.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-13" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Mix standard stock solution: Methyl 4-hydroxybenzoate, Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate and Butyl 4-hydroxybenzoate (<span class="kw-wt">500 µg</span>/mL)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Accurately weigh <span class="kw-wt">12.5 mg</span> of Methyl 4-hydroxybenzoate, Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate and Butyl 4-hydroxybenzoate into <span class="kw-vol">25 mL</span> volumetric flask. Dissolve in <span class="kw-vol">10 mL</span> of diluent by shaking it, and if necessary sonicate for 1-<span class="kw-time">2 minutes</span>. Make up to volume with diluent.</p>
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">* Mix standard stock solution is stable for one week when kept in refrigerator.</span>
                 </div>
-                <p class="sop-p">Mix standard solution: <span class="kw-wt">200 µg</span>/mL Methyl 4-hydroxybenzoate, Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate, Butyl 4-hydroxybenzoate and 100 mcg/mL Isopropyl 4-hydroxybenzoate</p><p class="sop-p">Pipette <span class="kw-vol">4 mL</span> of standard stock solution into a <span class="kw-vol">10 mL</span> volumetric flask. Add <span class="kw-vol">2 mL</span> of internal standard solution into the volumetric flask. Add <span class="kw-vol">0.2 mL</span> of sulfuric acid 2M and shake to homogenize it. Add diluent to volume. Filter through a 0.45 µm filter into auto sampler vial.</p>
-                      </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-14" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Mix standard solution: <span class="kw-wt">200 µg</span>/mL Methyl 4-hydroxybenzoate, Ethyl 4-hydroxybenzoate, Propyl 4-hydroxybenzoate, Butyl 4-hydroxybenzoate and 100 mcg/mL Isopropyl 4-hydroxybenzoate
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-12" class="sop-step-title">
-                            6.3.3	Sample solution preparation
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh about <span class="kw-wt">0.5 g</span> sample into <span class="kw-vol">50mL</span> erlenmeyer flask. Add in <span class="kw-vol">0.5 mL</span> sulfuric acid 2M, <span class="kw-vol">5 mL</span> internal standard solution and <span class="kw-vol">20 mL</span> of diluent. Shake vigorously for 1 minute until homogenize. Place in waterbath (60˚C±1) for <span class="kw-time">5 minutes</span>. Cool erlenmeyer flask in a stream of cold water and store in refrigerator for 1 hour. Filter the solution</p>
+                  </div>
+                </div>
+                <p class="sop-p">Pipette <span class="kw-vol">4 mL</span> of standard stock solution into a <span class="kw-vol">10 mL</span> volumetric flask. Add <span class="kw-vol">2 mL</span> of internal standard solution into the volumetric flask. Add <span class="kw-vol">0.2 mL</span> of sulfuric acid 2M and shake to homogenize it. Add diluent to volume. Filter through a 0.45 µm filter into auto sampler vial.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-15" class="sop-step-title">
+                        6.3.3	Sample solution preparation
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-16" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Weigh about <span class="kw-wt">0.5 g</span> sample into <span class="kw-vol">50mL</span> erlenmeyer flask. Add in <span class="kw-vol">0.5 mL</span> sulfuric acid 2M, <span class="kw-vol">5 mL</span> internal standard solution and <span class="kw-vol">20 mL</span> of diluent. Shake vigorously for 1 minute until homogenize. Place in waterbath (60˚C±1) for <span class="kw-time">5 minutes</span>. Cool erlenmeyer flask in a stream of cold water and store in refrigerator for 1 hour. Filter the solution
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">*The sample solution should be used within less than <span class="kw-time">24 hours</span>.</span>
                 </div>
                 
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-17" class="sop-step-title">
+                        6.3.4	LOD Solution preparation
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-13" class="sop-step-title">
-                            6.3.4	LOD Solution preparation
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh about <span class="kw-wt">0.5 g</span> blank sample into <span class="kw-vol">50mL</span> volumetric flask. Add in <span class="kw-vol">0.5 mL</span> sulfuric acid 2M. Pipette <span class="kw-vol">1 mL</span> of mix standard stock solution and add in <span class="kw-vol">20 mL</span> of diluent. Shake vigorously for 1 minute until homogenize. Dilute to volume. Place in waterbath (60˚C±1) for <span class="kw-time">5 minutes</span>. Cool volumetric flask in a stream of cold water and store in refrigerator for 1 hour. Filter the solution</p><p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">LOD solution prepared in 6.3.4 will be injected for every 5 samples in a single run. The sequence for IQC is as follows:</p><p class="sop-p">Calculate the %RSD for retention time of LOD solutions injected</p><p class="sop-p">% RSD retention time for LOD solution injection should not be more than 2.0%</p><p class="sop-p">6.3.5.3  System Suitability Test (SST) criteria :</p><p class="sop-p">Asymmetric factor/Tailing factor in the range of 0.9 to 1.5</p><p class="sop-p">Resolution NLT 0.9</p><p class="sop-p">Requirements for standard and sample solutions</p><p class="sop-p">Resolution NLT 0.9</p><p class="sop-p">Asymmetric factor/Tailing factor in the range of 0.9 to 1.5</p><p class="sop-p">A steady baseline</p><p class="sop-p">Note: Mobile phase composition can be adjusted so that the requirements above can be met.</p><p class="sop-p">Results Interpretation</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-18" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Weigh about <span class="kw-wt">0.5 g</span> blank sample into <span class="kw-vol">50mL</span> volumetric flask. Add in <span class="kw-vol">0.5 mL</span> sulfuric acid 2M. Pipette <span class="kw-vol">1 mL</span> of mix standard stock solution and add in <span class="kw-vol">20 mL</span> of diluent. Shake vigorously for 1 minute until homogenize. Dilute to volume. Place in waterbath (60˚C±1) for <span class="kw-time">5 minutes</span>. Cool volumetric flask in a stream of cold water and store in refrigerator for 1 hour. Filter the solution
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-14" class="sop-step-title">
-                            6.4.1	Compare the retention time from the sample chromatogram with that of preservatives working standard chromatogram
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">The identification test for preservatives are positive if the retention time is similar to that obtained from the standard solution and the peak area of sample is more than the peak area of LOD solution.</p><p class="sop-p">If preservatives peak is detected in the sample, the actual percentage (%w/w) of the preservatives in the sample will be determined according to the procedure below.</p><p class="sop-p">Test Method (Quantitation)</p><p class="sop-p">The reagents and HPLC condition is the same as in the procedure for identification of methyl, ethyl, propyl and butyl 4-Hydroxybenzoate.</p><p class="sop-p">Mix standard stock solution and internal standard solution prepared for identification test can be used.</p><p class="sop-p">Standard solution for calibration curve:</p><p class="sop-p">Pipette separately <span class="kw-vol">0.2 mL</span>, <span class="kw-vol">0.4 mL</span>, <span class="kw-vol">1 mL</span>, <span class="kw-vol">2 mL</span> and <span class="kw-vol">4 mL</span> of mix standard stock solution into a <span class="kw-vol">10 mL</span> volumetric flask.  Add <span class="kw-vol">2 mL</span> of internal standard solution into each volumetric flask. Add <span class="kw-vol">0.2 mL</span> of Sulfuric acid 2M and shake to homogenize it. Add diluent to volume. Filter through a 0.45 µm filter into auto sampler vial.</p><p class="sop-p">These solutions must be freshly prepared.</p><p class="sop-p">Sample solution preparation</p><p class="sop-p">Weigh about <span class="kw-wt">0.5 g</span> sample into <span class="kw-vol">50mL</span> erlenmeyer flask. Add in <span class="kw-vol">0.5 mL</span> sulfuric acid 2M, <span class="kw-vol">5 mL</span> internal standard solution and <span class="kw-vol">20 mL</span> of diluent. Shake vigorously for 1 minute until homogenize. Place in waterbath (60˚C±1) for <span class="kw-time">5 minutes</span>. Cool erlenmeyer flask in a stream of cold water and store in refrigerator for 1 hour. Filter the solution</p><p class="sop-p">Note:	The amount of sample used can be adjusted depending on the availability and condition of sample received. Sample solution prepared for identification test can be used.</p><p class="sop-p">Procedure</p><p class="sop-p">System suitability test</p><p class="sop-p">Inject six replicates of standard solution with concentration of <span class="kw-wt">200 µg</span>/mL. Determine the asymmetric factor/tailing factor, resolution and the percentage of relative standard deviation (% RSD) of peak areas.</p><p class="sop-p">Acceptance criteria :</p><p class="sop-p">The asymmetric factor/tailing factor in the range of 0.9 to 1.5, resolution NLT 0.9 and the value of RSD should not be more than 2%.</p><p class="sop-p">Inject 20 µl of each standard solution from part 8.2 and sample preparation into the system. The ratios of peak areas of standard solutions to the peak area of internal standard were determined.</p><p class="sop-p">Calibration curve of each preservative were performed (concentration ratio vs. peak area ratio). Check the coefficient correlation of the graph. The R2 should be &gt;0.995. Preservatives concentration in the sample is determined from the calibration curve.</p><p class="sop-p">Sequence of injection is shown in the table below:</p><p class="sop-p">Requirements for standard and sample solutions</p><p class="sop-p">Resolution NLT 0.9</p><p class="sop-p">Tailing factor in the range of 0.9 to 1.5</p><p class="sop-p">A steady baseline</p><p class="sop-p">Note: Mobile phase composition can be adjusted so that the requirements above can be met.</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Five different peak area ratio from chromatogram of standard solutions representing five different concentration levels of standard solutions.  The peak area ratio of the sample solution obtained from the standard calibration curve is directly proportional to the concentration of preservatives in the sample.</p><p class="sop-p">Note: The concentration of sample solution obtained from calibration curve is the concentration ratio of sample to concentration of internal standard.</p><p class="sop-p">The peak area ratio of sample solutions must fall within the standard calibration range. Therefore, a dilution process shall be carried out if the peak area ratio of sample solutions is more than the peak area ratio of the highest standard solution concentration.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">LOD solution prepared in 6.3.4 will be injected for every 5 samples in a single run. The sequence for IQC is as follows:</p><p class="sop-p">Calculate the %RSD for retention time of LOD solutions injected</p><p class="sop-p">% RSD retention time for LOD solution injection should not be more than 2.0%</p><p class="sop-p">6.3.5.3  System Suitability Test (SST) criteria :</p><p class="sop-p">Asymmetric factor/Tailing factor in the range of 0.9 to 1.5</p><p class="sop-p">Resolution NLT 0.9</p><p class="sop-p">Requirements for standard and sample solutions</p><p class="sop-p">Resolution NLT 0.9</p><p class="sop-p">Asymmetric factor/Tailing factor in the range of 0.9 to 1.5</p><p class="sop-p">A steady baseline</p><p class="sop-p">Note: Mobile phase composition can be adjusted so that the requirements above can be met.</p><p class="sop-p">Results Interpretation</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-19" class="sop-step-title">
+                        6.4.1	Compare the retention time from the sample chromatogram with that of preservatives working standard chromatogram
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-15" class="sop-step-title">
-                            6.8	Calculation
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Determine the amount of preservatives in the portion of sample taken by using the following formula. The amount of preservatives present in the sample will be reported as percentage of weight per sample weight (%w/w)</p><p class="sop-p">Notes :</p>
+                  </div>
+                </div>
+                <p class="sop-p">The identification test for preservatives are positive if the retention time is similar to that obtained from the standard solution and the peak area of sample is more than the peak area of LOD solution.</p><p class="sop-p">If preservatives peak is detected in the sample, the actual percentage (%w/w) of the preservatives in the sample will be determined according to the procedure below.</p><p class="sop-p">Test Method (Quantitation)</p><p class="sop-p">The reagents and HPLC condition is the same as in the procedure for identification of methyl, ethyl, propyl and butyl 4-Hydroxybenzoate.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-20" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Mix standard stock solution and internal standard solution prepared for identification test can be used.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Standard solution for calibration curve:</p><p class="sop-p">Pipette separately <span class="kw-vol">0.2 mL</span>, <span class="kw-vol">0.4 mL</span>, <span class="kw-vol">1 mL</span>, <span class="kw-vol">2 mL</span> and <span class="kw-vol">4 mL</span> of mix standard stock solution into a <span class="kw-vol">10 mL</span> volumetric flask.  Add <span class="kw-vol">2 mL</span> of internal standard solution into each volumetric flask. Add <span class="kw-vol">0.2 mL</span> of Sulfuric acid 2M and shake to homogenize it. Add diluent to volume. Filter through a 0.45 µm filter into auto sampler vial.</p><p class="sop-p">These solutions must be freshly prepared.</p><p class="sop-p">Sample solution preparation</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-21" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Weigh about <span class="kw-wt">0.5 g</span> sample into <span class="kw-vol">50mL</span> erlenmeyer flask. Add in <span class="kw-vol">0.5 mL</span> sulfuric acid 2M, <span class="kw-vol">5 mL</span> internal standard solution and <span class="kw-vol">20 mL</span> of diluent. Shake vigorously for 1 minute until homogenize. Place in waterbath (60˚C±1) for <span class="kw-time">5 minutes</span>. Cool erlenmeyer flask in a stream of cold water and store in refrigerator for 1 hour. Filter the solution
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Note:	The amount of sample used can be adjusted depending on the availability and condition of sample received. Sample solution prepared for identification test can be used.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">System suitability test</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-22" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Inject six replicates of standard solution with concentration of <span class="kw-wt">200 µg</span>/mL. Determine the asymmetric factor/tailing factor, resolution and the percentage of relative standard deviation (% RSD) of peak areas.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Acceptance criteria :</p><p class="sop-p">The asymmetric factor/tailing factor in the range of 0.9 to 1.5, resolution NLT 0.9 and the value of RSD should not be more than 2%.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-23" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Inject 20 µl of each standard solution from part 8.2 and sample preparation into the system. The ratios of peak areas of standard solutions to the peak area of internal standard were determined.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Calibration curve of each preservative were performed (concentration ratio vs. peak area ratio). Check the coefficient correlation of the graph. The R2 should be &gt;0.995. Preservatives concentration in the sample is determined from the calibration curve.</p><p class="sop-p">Sequence of injection is shown in the table below:</p><p class="sop-p">Requirements for standard and sample solutions</p><p class="sop-p">Resolution NLT 0.9</p><p class="sop-p">Tailing factor in the range of 0.9 to 1.5</p><p class="sop-p">A steady baseline</p><p class="sop-p">Note: Mobile phase composition can be adjusted so that the requirements above can be met.</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Five different peak area ratio from chromatogram of standard solutions representing five different concentration levels of standard solutions.  The peak area ratio of the sample solution obtained from the standard calibration curve is directly proportional to the concentration of preservatives in the sample.</p><p class="sop-p">Note: The concentration of sample solution obtained from calibration curve is the concentration ratio of sample to concentration of internal standard.</p><p class="sop-p">The peak area ratio of sample solutions must fall within the standard calibration range. Therefore, a dilution process shall be carried out if the peak area ratio of sample solutions is more than the peak area ratio of the highest standard solution concentration.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-24" class="sop-step-title">
+                        6.8	Calculation
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Determine the amount of preservatives in the portion of sample taken by using the following formula. The amount of preservatives present in the sample will be reported as percentage of weight per sample weight (%w/w)</p><p class="sop-p">Notes :</p>
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">* The concentration value of preservative for sample in calibration curve is in concentration ratio. Therefore, to obtain the real concentration of preservative in sample :</span>
                 </div>
                 
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-054-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
+                      <label for="step-054-25" class="sop-step-title">
+                        25.5 = sample volume (<span class="kw-vol">20 mL</span> diluent + <span class="kw-vol">5 mL</span> internal standard + <span class="kw-vol">0.5 mL</span> sulfuric acid)
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-054-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/054')">
-                          <label for="step-054-16" class="sop-step-title">
-                            25.5 = sample volume (20 mL diluent + 5 mL internal standard + 0.5 mL sulfuric acid)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Specification for Preservatives content:</p>
-                      </div>
-                    </div>
-                    
+                  </div>
+                </div>
+                <p class="sop-p">Specification for Preservatives content:</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-6">
+        <div class="sop-section-container sec-theme-indigo" id="sec-7">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>7.0	Quality Records</h2>
+            <span class="sec-icon">📝</span>
+            <h2>7.0 QUALITY RECORDS</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah HPLC 	: UP/X010</p><p class="sop-p">Borang Pengiraan Ujian Kuantifikasi Teknik Kromatografi	: UP/X011</p><p class="sop-p">Rumusan Laporan Pengujian	Kromatografi			: UP/X009</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p><p class="sop-p">Borang Keputusan Ujian Kosmetik				: UP/X013</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-7">
+        <div class="sop-section-container sec-theme-indigo" id="sec-8">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>8.0	Attachments</h2>
+            <span class="sec-icon">📎</span>
+            <h2>8.0 ATTACHMENTS</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">None</p>

@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -359,11 +444,6 @@
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -393,7 +473,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 1 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 7 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -418,31 +498,150 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">2.0 SCOPE</a><a href="#sec-3" class="toc-pill">3.0 DEFINITIONS</a><a href="#sec-4" class="toc-pill">4.0 FLOW CHART</a><a href="#sec-5" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-6" class="toc-pill">7.0 QUALITY RECORDS</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">PURPOSE</p><p class="sop-p">This procedure provides guidance in carrying out control charting and trend analysis as an essential tool for quality control.</p><p class="sop-p">SCOPE</p><p class="sop-p">This document shall be used by Screening Unit, Product and Cosmetic Testing Section, Centre for Compliance and Quality Control, National Pharmaceutical Regulatory Agency to plot and analyze accuracy and precision control charts for Internal Quality Control (IQC) Samples.</p><p class="sop-p">DEFINITIONS</p><p class="sop-p">Internal Quality Control (IQC) Sample - a pre-selected routine sample with no or low intrinsic analyte concentration that is spiked at level of interest. It is used to evaluate bias (and precision, if prepared in duplicate) of the method as influenced by a specific sample matrix</p><p class="sop-p">FLOW CHART</p><p class="sop-p">Please refer to the flow chart below</p><p class="sop-p">RESPONSIBILITY</p><p class="sop-p">Pharmacist</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-064-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/064')">
-                          <label for="step-064-1" class="sop-step-title">
-                            5.1.1 To ensure IQC Sample data is collected and control charts are prepared following this procedure
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">PROCEDURE</p><p class="sop-p">Control Charting</p><p class="sop-p">Accuracy control chart for IQC Samples</p><p class="sop-p">Collect at least 10 accuracy data on 10 different days (with acceptable % Recovery and % RPD e.g. % Recovery = 80 - 115%, % RPD &lt; 20%)</p><p class="sop-p">Calculate the mean, m and standard deviation, sd of the accuracy data</p><p class="sop-p">Set the mean, m as the central line, warning limits as m ± 2sd, and control limits as m ± 3sd. Refer Appendix 1, Figure 1.</p><p class="sop-p">Enter data into the chart each time IQC Samples are analyzed</p><p class="sop-p">For IQC Sample that is prepared in duplicate, choose only one sample randomly, e.g. by taking only the lower or the higher reading always, or only IQC Sample A or B always etc.</p><p class="sop-p">Precision control chart for duplicate samples</p><p class="sop-p">Set zero as the baseline. Estimate a standard deviation, sd from the repeatability limit of the method using equation below:</p><p class="sop-p">Repeatability limit = 2 x √2 x sd</p><p class="sop-p">sd = Repeatability limit / 2.828</p><p class="sop-p">Calculate the central line and upper warning limit from the estimated sd using equations below.</p><p class="sop-p">Central line = 1.128 x sd</p><p class="sop-p">Upper warning limit = 2.833 x sd</p><p class="sop-p">Set the central line and upper warning limit in the chart. Refer to Appendix 1, Figure 2.</p><p class="sop-p">Enter precision data (% Relative Percent Difference of duplicate) into the chart each time the IQC Samples are analyzed</p><p class="sop-p">Trend Analysis</p><p class="sop-p">Refer to flow chart</p><p class="sop-p">QUALITY RECORDS</p><p class="sop-p">APPENDIX 1</p>
-                      </div>
+            <p class="sop-p">PURPOSE</p><p class="sop-p">This procedure provides guidance in carrying out control charting and trend analysis as an essential tool for quality control.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SCOPE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">This document shall be used by Screening Unit, Product and Cosmetic Testing Section, Centre for Compliance and Quality Control, National Pharmaceutical Regulatory Agency to plot and analyze accuracy and precision control charts for Internal Quality Control (IQC) Samples.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">📖</span>
+            <h2>3.0 DEFINITIONS</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Internal Quality Control (IQC) Sample - a pre-selected routine sample with no or low intrinsic analyte concentration that is spiked at level of interest. It is used to evaluate bias (and precision, if prepared in duplicate) of the method as influenced by a specific sample matrix</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 FLOW CHART</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Please refer to the flow chart below</p><p class="sop-p">RESPONSIBILITY</p><p class="sop-p">Pharmacist</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-064-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/064')">
+                      <label for="step-064-1" class="sop-step-title">
+                        5.1.1 To ensure IQC Sample data is collected and control charts are prepared following this procedure
+                      </label>
                     </div>
-                    
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Control Charting</p><p class="sop-p">Accuracy control chart for IQC Samples</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-064-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/064')">
+                      <label for="step-064-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Collect at least 10 accuracy data on 10 different days (with acceptable % Recovery and % RPD e.g. % Recovery = 80 - 115%, % RPD &lt; 20%)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Calculate the mean, m and standard deviation, sd of the accuracy data</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-064-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/064')">
+                      <label for="step-064-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Set the mean, m as the central line, warning limits as m ± 2sd, and control limits as m ± 3sd. Refer Appendix 1, Figure 1.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-064-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/064')">
+                      <label for="step-064-4" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Enter data into the chart each time IQC Samples are analyzed
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">For IQC Sample that is prepared in duplicate, choose only one sample randomly, e.g. by taking only the lower or the higher reading always, or only IQC Sample A or B always etc.</p><p class="sop-p">Precision control chart for duplicate samples</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-064-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/064')">
+                      <label for="step-064-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Set zero as the baseline. Estimate a standard deviation, sd from the repeatability limit of the method using equation below:
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Repeatability limit = 2 x √2 x sd</p><p class="sop-p">sd = Repeatability limit / 2.828</p><p class="sop-p">Calculate the central line and upper warning limit from the estimated sd using equations below.</p><p class="sop-p">Central line = 1.128 x sd</p><p class="sop-p">Upper warning limit = 2.833 x sd</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-064-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/064')">
+                      <label for="step-064-6" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Set the central line and upper warning limit in the chart. Refer to Appendix 1, Figure 2.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-064-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/064')">
+                      <label for="step-064-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Enter precision data (% Relative Percent Difference of duplicate) into the chart each time the IQC Samples are analyzed
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Trend Analysis</p><p class="sop-p">Refer to flow chart</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7.0 QUALITY RECORDS</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">APPENDIX 1</p>
           </div>
         </div>
         

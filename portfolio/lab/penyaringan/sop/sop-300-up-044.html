@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -369,7 +454,7 @@
   
         <div class="summary-analytes">
           <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
+          <div class="chips-container"><span class="analite-chip">Tretinoin (Retinoic Acid)</span></div>
         </div>
         
 
@@ -415,7 +500,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 2 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 30 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -440,55 +525,425 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.0 	QUALITY RECORD</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">2.0 SCOPE</a><a href="#sec-3" class="toc-pill">5.0 RESPONSIBILITIES</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-5" class="toc-pill">7.0 QUALITY RECORD</a><a href="#sec-6" class="toc-pill">8.0 ATTACHMENTS</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">AMENDMENT:</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to the ISO 9001: 2015 version and the renaming of the institution from National Pharmaceutical Control Bureau (NPCB) to Bahagian Regulatori Farmasi Negara (NPRA). Therefore, the original document is obsolete and this document is published as Issue 1.</p><p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number and effective date in revision history</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 2 Revision 1</p><p class="sop-p">Update on the title of work instruction from HPLC H to HPLC 1</p><p class="sop-p">Issue 2 Revision 2 :</p><p class="sop-p">i.	Update on name of agency from National Pharmaceutical Regulatory Agency (NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/034 to PKKK/300/HMS/034</p><p class="sop-p">Update paragraph 5.0 Responsibilities</p><p class="sop-p">Add on paragraph 8.0 Attachments</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/034 to PKKK/300/KOS/012</p><p class="sop-p">Update paragraph 5.0 Responsibilities</p><p class="sop-p">Issue 4 Revision 1 :</p><p class="sop-p">Update document number from PKKK/300/KOS/012 to  PKKK/300/UP/044</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026.</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for High Performance Liquid Chromatography (HPLC) in the laboratory.</p><p class="sop-p">SCOPE</p><p class="sop-p">This guide shall be used for the operation of HPLC Agilent</p><p class="sop-p">DEFINITION</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p><p class="sop-p">RESPONSIBILITIES</p><p class="sop-p">PROCEDURE</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-044-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
-                          <label for="step-044-1" class="sop-step-title">
-                            6.1
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">General Operation of HPLC System H</p><p class="sop-p">(For Identification and Quantitation Using SPD-M20A Diode Array Detector and Low Pressure Gradient HPLC)</p><p class="sop-p">Power on each Agilent HPLC (binary pump, vacuum degasser, auto sampler, column compartment, diode array detector).</p><p class="sop-p">Turn on the computer. Key in the default user name (Admin) and password (3000hanover).</p><p class="sop-p">From the Start Menu, select All Programs, Agilent Chemstation, and Instrument 1 Online. Or double click the Instrument 1 on the desktop.</p><p class="sop-p">Install required column. Prepare the mobile phases A and B and place the respective suction filter line into the reservoirs.</p><p class="sop-p">Purge the two line by :</p><p class="sop-p">Open the purge valve located on the pump module by turning the knob counter clockwise several turns.</p><p class="sop-p">Click on the pump in the system diagram, then click ‘Set Up Pump’. Set 50% for channel A and B at <span class="kw-flow">5 ml/min</span> for several minutes. Turn on the pump.</p><p class="sop-p">After purging, turn off the pump. Close the purge valve.</p><p class="sop-p">Creating the method.</p><p class="sop-p">From the ‘Method’ menu, select ‘Edit Entire Method’.</p><p class="sop-p">Set the required composition and flow rate as stated in protocol. (Try to increase the flow in stages). If gradient run required for your analysis, select the ‘Insert’ button from the ‘Time Table’ group. Click ‘OK’.</p><p class="sop-p">Set the column compartment temperature and click ‘OK’.</p><p class="sop-p">Fill in the Diod Array Detector signal.</p><p class="sop-p">Make sure the UV and Visible lamps are turn on and select the prerun autobalance option is active.</p><p class="sop-p">If running cosmetics samples for identification of tretinoin and hydroquinone, select acquisition of all spectra using the full spectral range of 190-<span class="kw-wave">950 nm</span> and peak width that corresponds to one spectra every <span class="kw-time">0.1 seconds</span>.</p><p class="sop-p">Click ‘OK’ the DAD signal window.</p><p class="sop-p">Tick the ‘Data Acquisition’ and ‘Standard Data Analysis’ to execute at the run time.</p><p class="sop-p">From the ‘Method’ menu, select ‘Save Method As’, key in a filename. OK</p><p class="sop-p">Turn on the instrument.</p><p class="sop-p">Run Method (Single Run)</p><p class="sop-p">To inject an individual sample, click ‘Run Control’, select ‘Sample Info’ and fill in the  “Operator Name”, ‘Subdirectory”, “Location of the Vial”, “Sample Name” and “Injection Volume”</p><p class="sop-p">Click “Run Method”.</p><p class="sop-p">Run Method (Sequence Run)</p><p class="sop-p">Under Sequence menu, select Sequence Parameters. Create Subdirectory. Select Auto for the data file naming system.</p><p class="sop-p">Under Sequence menu, select New Sequence. Fill in the Sequence Table and Save.</p><p class="sop-p">Click “Run Sequence”.</p><p class="sop-p">Data Analysis (Integration)</p><p class="sop-p">Open an Offline Session of the Agilent Chemstation. Go to Data Analysis View.</p><p class="sop-p">Click File Menu and Load signal.</p><p class="sop-p">To Auto Integrate, click “Integration Menu” and then click “Auto Integrate”. Auto Integration will display the defaults event.</p><p class="sop-p">Click on the “Integration Menu” and click “Edit Integration Events”. Set the “Slope”, “Area Reject” and etc. Click “Integrate” icon to view the result.</p><p class="sop-p">Click the icon “Exit and Save Event to the Method”.</p><p class="sop-p">To name the peaks, select the “Calibration Menu”, choose “New Calibration Table”, click “Ok”. Key in the compound name and then click “Ok”. Click “No” for “Delete lines with zero amounts?”.</p><p class="sop-p">Choose “Graphics Menu” and select “Signal Option”. Tick “Axes”, “Baseline”, “Tick Marks”, “Compounds Name” and “Retention Times”. Click “Ok”. Signal option is used to define a look of chromatogram when it is produced on the screen or the printer.</p><p class="sop-p">To print the result.</p><p class="sop-p">Select the “Report Menu” and click “Specify Report”. Choose “Report Style” and click “Ok”.</p><p class="sop-p">Select the “Report Menu”, click “Print Report” and click “Print”.</p><p class="sop-p">On completion of analysis.</p><p class="sop-p">Change Channel A from mobile phase to 5% Methanol and Channel B to 100% Methanol.</p><p class="sop-p">Purge the two line by :</p><p class="sop-p">Open the purge valve located on the pump module by turning the knob counter clockwise several turns.</p><p class="sop-p">Click on the pump in the system diagram, then click ‘Set Up Pump’. Set 50% for channel A and B at <span class="kw-flow">5 ml/min</span> for several minutes. Turn on the pump.</p><p class="sop-p">After purging, turn off the pump. Close the purge valve.</p><p class="sop-p">Flush the reverse phase column with 5% Methanol for about <span class="kw-time">30 minutes</span> followed by Methanol for another <span class="kw-time">30 minutes</span> at flow rate <span class="kw-flow">1 ml/min</span>.</p><p class="sop-p">Flush the normal phase column with iso- propanol for about <span class="kw-time">30 minutes</span> followed by Methanol for another <span class="kw-time">30 minutes</span> at flow rate <span class="kw-flow">1 ml/min</span>.</p><p class="sop-p">Flush other type columns by following the instructions supplied with the column from manufacturer.</p><p class="sop-p">Shutdown the system by selecting “Instrument Menu” and click “System Off”. Power on each Agilent HPLC (binary pump, vacuum degasser, auto sampler, column compartment, diode array detector).</p><p class="sop-p">Precautions</p><p class="sop-p">Flush the flow line and column with isopropanol before the new mobile phase which is immiscible with the old mobile phase or solvent is pumped through the system.</p><p class="sop-p">Flush the flow line and column with 5% Methanol before the buffer solution mobile phase is pumped through the system.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-044-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
-                          <label for="step-044-2" class="sop-step-title">
-                            6.2 	Performance Check
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Performance Check will be carried out in every analysis to ensure the sensitivity for the instrument is always at its optimum level. It is carried out by performing the System Suitability Test using the Standard solution/ Mix Standard Solution and to ensure that the parameters below are fulfilled:</p><p class="sop-p">Tailing factor &lt; 2.0</p><p class="sop-p">Theoretical plates &gt; 1500</p>
-                      </div>
-                    </div>
-                    
+            <p class="sop-p">AMENDMENT:</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to the ISO 9001: 2015 version and the renaming of the institution from National Pharmaceutical Control Bureau (NPCB) to Bahagian Regulatori Farmasi Negara (NPRA). Therefore, the original document is obsolete and this document is published as Issue 1.</p><p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number and effective date in revision history</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 2 Revision 1</p><p class="sop-p">Update on the title of work instruction from HPLC H to HPLC 1</p><p class="sop-p">Issue 2 Revision 2 :</p><p class="sop-p">i.	Update on name of agency from National Pharmaceutical Regulatory Agency (NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/034 to PKKK/300/HMS/034</p><p class="sop-p">Update paragraph 5.0 Responsibilities</p><p class="sop-p">Add on paragraph 8.0 Attachments</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/034 to PKKK/300/KOS/012</p><p class="sop-p">Update paragraph 5.0 Responsibilities</p><p class="sop-p">Issue 4 Revision 1 :</p><p class="sop-p">Update document number from PKKK/300/KOS/012 to  PKKK/300/UP/044</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026.</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for High Performance Liquid Chromatography (HPLC) in the laboratory.</p>
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-cyan" id="sec-2">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>7.0 	QUALITY RECORD</h2>
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SCOPE</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p><p class="sop-p">ATTACHMENTS</p><p class="sop-p">None</p>
+            <p class="sop-p">This guide shall be used for the operation of HPLC Agilent</p><p class="sop-p">DEFINITION</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 RESPONSIBILITIES</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-1" class="sop-step-title">
+                        6.1
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">General Operation of HPLC System H</p><p class="sop-p">(For Identification and Quantitation Using SPD-M20A Diode Array Detector and Low Pressure Gradient HPLC)</p><p class="sop-p">Power on each Agilent HPLC (binary pump, vacuum degasser, auto sampler, column compartment, diode array detector).</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Turn on the computer. Key in the default user name (Admin) and password (3000hanover).
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">From the Start Menu, select All Programs, Agilent Chemstation, and Instrument 1 Online. Or double click the Instrument 1 on the desktop.</p><p class="sop-p">Install required column. Prepare the mobile phases A and B and place the respective suction filter line into the reservoirs.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Purge the two line by :
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-4" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Open the purge valve located on the pump module by turning the knob counter clockwise several turns.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Click on the pump in the system diagram, then click ‘Set Up Pump’. Set 50% for channel A and B at <span class="kw-flow">5 ml/min</span> for several minutes. Turn on the pump.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After purging, turn off the pump. Close the purge valve.</p><p class="sop-p">Creating the method.</p><p class="sop-p">From the ‘Method’ menu, select ‘Edit Entire Method’.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-6" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Set the required composition and flow rate as stated in protocol. (Try to increase the flow in stages). If gradient run required for your analysis, select the ‘Insert’ button from the ‘Time Table’ group. Click ‘OK’.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Set the column compartment temperature and click ‘OK’.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-8" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Fill in the Diod Array Detector signal.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Make sure the UV and Visible lamps are turn on and select the prerun autobalance option is active.</p><p class="sop-p">If running cosmetics samples for identification of tretinoin and hydroquinone, select acquisition of all spectra using the full spectral range of 190-<span class="kw-wave">950 nm</span> and peak width that corresponds to one spectra every <span class="kw-time">0.1 seconds</span>.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Click ‘OK’ the DAD signal window.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Tick the ‘Data Acquisition’ and ‘Standard Data Analysis’ to execute at the run time.</p><p class="sop-p">From the ‘Method’ menu, select ‘Save Method As’, key in a filename. OK</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-10" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Turn on the instrument.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Run Method (Single Run)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">To inject an individual sample, click ‘Run Control’, select ‘Sample Info’ and fill in the  “Operator Name”, ‘Subdirectory”, “Location of the Vial”, “Sample Name” and “Injection Volume”</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-12" class="sop-step-title">
+                        <span class="action-badge">Langkah 11</span>
+                        Click “Run Method”.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-13" class="sop-step-title">
+                        <span class="action-badge">Langkah 12</span>
+                        Run Method (Sequence Run)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Under Sequence menu, select Sequence Parameters. Create Subdirectory. Select Auto for the data file naming system.</p><p class="sop-p">Under Sequence menu, select New Sequence. Fill in the Sequence Table and Save.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-14" class="sop-step-title">
+                        <span class="action-badge">Langkah 13</span>
+                        Click “Run Sequence”.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Data Analysis (Integration)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-15" class="sop-step-title">
+                        <span class="action-badge">Langkah 14</span>
+                        Open an Offline Session of the Agilent Chemstation. Go to Data Analysis View.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-16" class="sop-step-title">
+                        <span class="action-badge">Langkah 15</span>
+                        Click File Menu and Load signal.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">To Auto Integrate, click “Integration Menu” and then click “Auto Integrate”. Auto Integration will display the defaults event.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-17" class="sop-step-title">
+                        <span class="action-badge">Langkah 16</span>
+                        Click on the “Integration Menu” and click “Edit Integration Events”. Set the “Slope”, “Area Reject” and etc. Click “Integrate” icon to view the result.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-18" class="sop-step-title">
+                        <span class="action-badge">Langkah 17</span>
+                        Click the icon “Exit and Save Event to the Method”.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">To name the peaks, select the “Calibration Menu”, choose “New Calibration Table”, click “Ok”. Key in the compound name and then click “Ok”. Click “No” for “Delete lines with zero amounts?”.</p><p class="sop-p">Choose “Graphics Menu” and select “Signal Option”. Tick “Axes”, “Baseline”, “Tick Marks”, “Compounds Name” and “Retention Times”. Click “Ok”. Signal option is used to define a look of chromatogram when it is produced on the screen or the printer.</p><p class="sop-p">To print the result.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-19" class="sop-step-title">
+                        <span class="action-badge">Langkah 18</span>
+                        Select the “Report Menu” and click “Specify Report”. Choose “Report Style” and click “Ok”.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-20" class="sop-step-title">
+                        <span class="action-badge">Langkah 19</span>
+                        Select the “Report Menu”, click “Print Report” and click “Print”.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-21" class="sop-step-title">
+                        <span class="action-badge">Langkah 20</span>
+                        On completion of analysis.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Change Channel A from mobile phase to 5% Methanol and Channel B to 100% Methanol.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-22" class="sop-step-title">
+                        <span class="action-badge">Langkah 21</span>
+                        Purge the two line by :
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-23" class="sop-step-title">
+                        <span class="action-badge">Langkah 22</span>
+                        Open the purge valve located on the pump module by turning the knob counter clockwise several turns.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-24" class="sop-step-title">
+                        <span class="action-badge">Langkah 23</span>
+                        Click on the pump in the system diagram, then click ‘Set Up Pump’. Set 50% for channel A and B at <span class="kw-flow">5 ml/min</span> for several minutes. Turn on the pump.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After purging, turn off the pump. Close the purge valve.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-25" class="sop-step-title">
+                        <span class="action-badge">Langkah 24</span>
+                        Flush the reverse phase column with 5% Methanol for about <span class="kw-time">30 minutes</span> followed by Methanol for another <span class="kw-time">30 minutes</span> at flow rate <span class="kw-flow">1 ml/min</span>.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-26" class="sop-step-title">
+                        <span class="action-badge">Langkah 25</span>
+                        Flush the normal phase column with iso- propanol for about <span class="kw-time">30 minutes</span> followed by Methanol for another <span class="kw-time">30 minutes</span> at flow rate <span class="kw-flow">1 ml/min</span>.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-27" class="sop-step-title">
+                        <span class="action-badge">Langkah 26</span>
+                        Flush other type columns by following the instructions supplied with the column from manufacturer.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Shutdown the system by selecting “Instrument Menu” and click “System Off”. Power on each Agilent HPLC (binary pump, vacuum degasser, auto sampler, column compartment, diode array detector).</p><p class="sop-p">Precautions</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-28" class="sop-step-title">
+                        <span class="action-badge">Langkah 27</span>
+                        Flush the flow line and column with isopropanol before the new mobile phase which is immiscible with the old mobile phase or solvent is pumped through the system.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-29" class="sop-step-title">
+                        <span class="action-badge">Langkah 28</span>
+                        Flush the flow line and column with 5% Methanol before the buffer solution mobile phase is pumped through the system.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-044-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/044')">
+                      <label for="step-044-30" class="sop-step-title">
+                        6.2 	Performance Check
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Performance Check will be carried out in every analysis to ensure the sensitivity for the instrument is always at its optimum level. It is carried out by performing the System Suitability Test using the Standard solution/ Mix Standard Solution and to ensure that the parameters below are fulfilled:</p><p class="sop-p">Tailing factor &lt; 2.0</p><p class="sop-p">Theoretical plates &gt; 1500</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7.0 QUALITY RECORD</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">📎</span>
+            <h2>8.0 ATTACHMENTS</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">None</p>
           </div>
         </div>
         
