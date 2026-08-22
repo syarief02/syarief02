@@ -280,6 +280,71 @@
     box-shadow: var(--shadow-sm);
   }
 
+  /* Parameters Specs Ribbon Card */
+  .specs-ribbon-card {
+    background: var(--card-surface);
+    border: 1.5px solid var(--cyan);
+    border-radius: 16px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.5rem 0 1.8rem;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+  }
+  .specs-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 1rem;
+  }
+  .specs-icon { font-size: 1.2rem; }
+  .specs-ribbon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.85rem;
+  }
+  .spec-chip {
+    background: var(--glass);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    transition: all 0.2s ease;
+  }
+  .spec-chip:hover {
+    border-color: var(--cyan);
+    background: var(--card-surface);
+    transform: translateY(-2px);
+  }
+  .spec-chip.highlight-limit {
+    border-color: rgba(217, 119, 6, 0.4);
+    background: var(--amber-dim);
+  }
+  .spec-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--cyan);
+    letter-spacing: 0.05em;
+  }
+  .highlight-limit .spec-lbl {
+    color: #d97706;
+  }
+  .spec-val {
+    font-size: 0.85rem;
+    color: var(--text-heading);
+    line-height: 1.4;
+  }
+  .highlight-amber-text {
+    color: #d97706;
+    font-weight: 800;
+  }
+
   /* Executive Summary & Chips */
   .summary-analytes {
     margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
@@ -449,6 +514,17 @@
           </div>
         </div>
         </div>
+
+  <!-- Chromatographic / Analytical Parameters Specs Ribbon -->
+  
+        <div class="specs-ribbon-card">
+          <div class="specs-card-header">
+            <span class="specs-icon">⚡</span>
+            <strong>Spesifikasi &amp; Parameter Kromatografi / Analitikal (Official Parameters):</strong>
+          </div>
+          <div class="specs-ribbon-grid"><div class="spec-chip"><span class="spec-lbl">Instrumen Utama</span><strong class="spec-val">Shimadzu LCMS-8045 Triple Quadrupole (LC-30AD / ESI)</strong></div><div class="spec-chip"><span class="spec-lbl">Turus / Column</span><strong class="spec-val">Kinetex C18 XB / Shim-pack GIST C18 (100 × 2.1 mm, 2.6 µm)</strong></div><div class="spec-chip"><span class="spec-lbl">Fasa Bergerak / Pelarut</span><strong class="spec-val">A: 0.1% Formic Acid dH2O, B: 0.1% Formic Acid Acetonitrile</strong></div><div class="spec-chip"><span class="spec-lbl">Kadar Alir &amp; Suhu</span><strong class="spec-val">0.35 – 0.40 mL/min @ 40 – 45 °C · DL Temp: 250 °C · Heat Block: 400 °C</strong></div><div class="spec-chip"><span class="spec-lbl">Pengesan / Gelombang / SIM</span><strong class="spec-val">ESI (+/-) MRM Multiple Reaction Monitoring Transitions</strong></div><div class="spec-chip"><span class="spec-lbl">Kriteria Kesesuaian Sistem (SST)</span><strong class="spec-val">Nebulizing Gas: 3.0 L/min, Drying Gas: 10.0 L/min, Heating Gas: 10.0 L/min, S/N MRM &gt; 10.</strong></div></div>
+        </div>
+        
 
   <!-- Target Analytes / Quick Chips -->
   
