@@ -181,6 +181,72 @@ body {
 .method-table th { background: var(--glass); text-align: left; padding: 0.55rem 0.75rem; color: var(--text-dim); border-bottom: 1px solid var(--glass-border); }
 .method-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--glass-border); }
 
+/* Cross-Linked Instruments */
+.cross-link-container {
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  border-left: 4px solid var(--cyan);
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  margin: 1.4rem 0;
+  backdrop-filter: blur(12px);
+}
+.cross-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-bright);
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+.cross-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+.inst-link-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 0.8rem 0.95rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+.inst-link-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--cyan);
+  background: var(--card-hover);
+  box-shadow: var(--shadow-md);
+}
+.inst-code {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--cyan);
+}
+.inst-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin: 0.2rem 0 0.35rem;
+  line-height: 1.3;
+}
+.inst-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--mint);
+  margin-top: auto;
+  font-weight: 600;
+}
+.inst-link-card:hover .inst-badge {
+  color: var(--cyan);
+}
+
 .footer {
   margin-top: 4rem; text-align: center; font-family: var(--font-mono); font-size: 0.8rem;
   color: var(--text-dim); padding: 2rem; border-top: 1px solid var(--glass-border);
