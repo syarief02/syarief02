@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit Penyaringan — Lab Notes | NPRA</title>
-<meta name="description" content="Interactive lab procedure references for Unit Penyaringan (Screening Unit). SPE procedures, sample preparation guides, and instrument references for pharmaceutical analysis.">
+<title>Unit Penyaringan — Lab Notes & SOP Suite | NPRA</title>
+<meta name="description" content="Interactive laboratory references, SOP master matrix, HPLC Lovastatin assay calculator, analytical balance verification, and quality records for Unit Penyaringan, PKKK, NPRA.">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +25,14 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         Lab Notes
       </a>
+      <a href="sop-matrix.html" class="ctrl-btn highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        SOP Matrix
+      </a>
+      <a href="lovastatin.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        Lovastatin HPLC Tool
+      </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
@@ -37,24 +45,90 @@
   <!-- Hero -->
   <div class="hero">
     <div class="hero-org">🇲🇾 NPRA — Seksyen Pengujian Produk & Kosmetik</div><br>
-    <div class="hero-unit">◈ Unit Penyaringan</div>
+    <div class="hero-unit">◈ Unit Penyaringan (Adulteration Screening)</div>
     <h1>Unit <span class="g">Penyaringan</span></h1>
-    <div class="hero-sub">Screening Unit — Interactive References</div>
+    <div class="hero-sub">Standard Operating Procedures, Automated Analysis & Quality Assurance Suite</div>
     <p class="hero-desc">
-      Interactive lab procedure references for the Screening Unit. Includes SPE extraction procedures, 
-      sample preparation guides, and instrument methods for pharmaceutical product analysis.
+      Comprehensive digital hub for the Screening Unit. Features accredited Level 200 testing SOPs, 64 Level 300 Working Instructions, interactive Lovastatin HPLC quantitative reporting calculators, analytical balance verification, and quality records.
     </p>
   </div>
 
-  <!-- Lab References -->
-  <div class="section-label">◈ Available References</div>
+  <!-- Featured Core Tools -->
+  <div class="section-label">◈ Master SOPs & Calculation Engines (2026 Kuatkuasa)</div>
+
+  <div class="cards">
+
+    <!-- SOP Matrix -->
+    <a href="sop-matrix.html" class="res-card reveal reveal-d1" style="border-color:rgba(2,132,199,0.3)">
+      <div class="card-icon">📚</div>
+      <div class="card-content">
+        <div class="card-eyebrow">Master Catalogue · 64 Working Instructions</div>
+        <div class="card-title">Master SOP & Quality Matrix</div>
+        <div class="card-desc">Interactive explorer for all Level 200 Procedures, 64 Level 300 Working Instructions (HPLC, GCMS, LCMS, Balances), and 61 Rekod Kualiti with real-time search, filters, parameters, and citations.</div>
+        <div class="card-tags">
+          <span class="card-tag t-cyan">Level 200</span>
+          <span class="card-tag t-mint">Arahan Kerja 300</span>
+          <span class="card-tag t-amber">Rekod Kualiti</span>
+          <span class="card-tag t-purple">ISO 17025</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-status"><span class="dot"></span> Live Hub</div>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- Lovastatin Tool -->
+    <a href="lovastatin.html" class="res-card reveal reveal-d2" style="border-color:rgba(124,58,237,0.3)">
+      <div class="card-icon">💊</div>
+      <div class="card-content">
+        <div class="card-eyebrow">PKKK/200/UP/002 · Rekod UP/008A–G</div>
+        <div class="card-title">Lovastatin HPLC Assay Suite</div>
+        <div class="card-desc">Automated analysis and draft test report generator. Calculates System Suitability %RSD, calibration regression, %w/w content, daily dose (&le;10 mg/day limit check), and generates printable Borang UP/008A.</div>
+        <div class="card-tags">
+          <span class="card-tag t-purple">SST %RSD</span>
+          <span class="card-tag t-cyan">%w/w Assay</span>
+          <span class="card-tag t-amber">Daily Dose</span>
+          <span class="card-tag t-mint">Draft Report</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-status"><span class="dot"></span> Interactive Tool</div>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- Balance Verification & Control Charting -->
+    <a href="qc-balance.html" class="res-card reveal reveal-d3">
+      <div class="card-icon">⚖️</div>
+      <div class="card-content">
+        <div class="card-eyebrow">PKKK/300/UP/064 · Borang UP/014–016</div>
+        <div class="card-title">Balance Verification & QC Charting</div>
+        <div class="card-desc">Gravimetric verification for Sartorius, Precisa, and Mettler balances. Includes daily performance checks, sensitivity errors ($\Delta E$), 10-point repeatability ($s, 2s$), and Shewhart IQC trend charting.</div>
+        <div class="card-tags">
+          <span class="card-tag t-cyan">Daily UP/014</span>
+          <span class="card-tag t-mint">Sensitivity UP/015</span>
+          <span class="card-tag t-amber">Repeatability UP/016</span>
+          <span class="card-tag t-purple">Control Chart UP/064</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-status"><span class="dot"></span> Interactive Tool</div>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Extraction & Sample Prep -->
+  <div class="section-label">◈ Sample Preparation & Extraction Reference</div>
 
   <div class="cards">
 
     <a href="https://syariefazman.com/spe" class="res-card reveal reveal-d1">
       <div class="card-icon">🧪</div>
       <div class="card-content">
-        <div class="card-eyebrow">3 Methods · 33 Steps</div>
+        <div class="card-eyebrow">PKKK/300/UP/013 · 3 Methods</div>
         <div class="card-title">SPE Lab Reference</div>
         <div class="card-desc">Solid-Phase Extraction procedures for JT Baker C18 (Non-Polar), Florisil (Polar), and Softgel (MeOH) methods. Includes vacuum manifold steps, timers, and chemical sidebar.</div>
         <div class="card-tags">
@@ -71,9 +145,9 @@
     </a>
 
     <a href="https://syariefazman.com/sampleprep" class="res-card reveal reveal-d2">
-      <div class="card-icon">💊</div>
+      <div class="card-icon">🧬</div>
       <div class="card-content">
-        <div class="card-eyebrow">7 Categories · 34 Steps</div>
+        <div class="card-eyebrow">PKKK/300/UP/021–028 · 7 Categories</div>
         <div class="card-title">Sample Preparation Guide</div>
         <div class="card-desc">Drug sample preparation procedures for Anticholesterol, Antidiabetic, Diuretic, PPI, Antihypertensive, EDD, and Domperidone. Covers weighing, dissolving, centrifuge, and filtration.</div>
         <div class="card-tags">
@@ -90,9 +164,9 @@
     </a>
 
     <a href="gcms.html" class="res-card reveal reveal-d3">
-      <div class="card-icon">🧬</div>
+      <div class="card-icon">⚙️</div>
       <div class="card-content">
-        <div class="card-eyebrow">5 Sections · 8890 System</div>
+        <div class="card-eyebrow">PKKK/300/UP/017 · Agilent 8890</div>
         <div class="card-title">GCMS Operation Guide</div>
         <div class="card-desc">Standard operating procedures for the Agilent GCMS 8890. Covers solvent preparation, autotuning, sequence setup, and autosampler injection rules.</div>
         <div class="card-tags">
@@ -110,7 +184,7 @@
     <a href="gcms-analysis.html" class="res-card reveal reveal-d4">
       <div class="card-icon">📊</div>
       <div class="card-content">
-        <div class="card-eyebrow">4 Sections · Data Processing</div>
+        <div class="card-eyebrow">PKKK/300/UP/018 · Data Processing</div>
         <div class="card-title">GCMS Data Analysis</div>
         <div class="card-desc">Post-run screening analysis procedures. Covers chromatogram scaling, RTE integration, NIST spectral library search, and reporting configuration.</div>
         <div class="card-tags">
@@ -125,33 +199,12 @@
       </div>
     </a>
 
-    <div class="res-card coming-soon reveal reveal-d5">
-      <div class="card-icon">📋</div>
-      <div class="card-content">
-        <div class="card-eyebrow">Coming Soon</div>
-        <div class="card-title">HPLC Method Reference</div>
-        <div class="card-desc">Instrument parameters, column specifications, mobile phase recipes, and run conditions for various HPLC assays.</div>
-        <div class="card-tags"><span class="coming-badge">Coming Soon</span></div>
-      </div>
-    </div>
-
-    <div class="res-card coming-soon reveal reveal-d5">
-      <div class="card-icon">⚗️</div>
-      <div class="card-content">
-        <div class="card-eyebrow">Coming Soon</div>
-        <div class="card-title">Chemical & Reagent Guide</div>
-        <div class="card-desc">Safety data, preparation instructions, and storage requirements for laboratory chemicals and reagents.</div>
-        <div class="card-tags"><span class="coming-badge">Coming Soon</span></div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- Presentations -->
-  <div class="section-label">◈ Presentations</div>
+  <!-- Presentations & Strategy -->
+  <div class="section-label">◈ Presentations & Strategic Directions</div>
 
   <div class="cards">
-
     <a href="https://syariefazman.com/uptslide1" class="res-card reveal reveal-d1">
       <div class="card-icon">📊</div>
       <div class="card-content">
@@ -169,11 +222,10 @@
         <span class="card-arrow">→</span>
       </div>
     </a>
-
   </div>
 
   <!-- Training Competencies -->
-  <div class="section-label">◈ Training & Competency (2024–2025)</div>
+  <div class="section-label">◈ Training & Competency Timeline (2024–2026)</div>
 
   <div class="comp-grid reveal">
     <div class="comp-card">
@@ -222,7 +274,7 @@
 
   <!-- myPortfolio Link -->
   <div class="section-label">◈ myPortfolio</div>
-  <a href="https://syariefazman.com/lab/penyaringan/portfolio.html" class="res-card reveal" style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:1.5rem;backdrop-filter:blur(18px);margin-bottom:2rem;display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;transition:all 0.3s">
+  <a href="portfolio.html" class="res-card reveal" style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:1.5rem;backdrop-filter:blur(18px);margin-bottom:2rem;display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;transition:all 0.3s">
     <div style="font-size:2rem">📋</div>
     <div style="flex:1">
       <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan)">PPF 7 — Comprehensive Job Portfolio</div>

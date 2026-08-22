@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lovastatin HPLC Analysis & Reporting Suite — PKKK/200/UP/002 | NPRA</title>
+<meta name="description" content="Interactive HPLC determination tool for Lovastatin in traditional products per PKKK/200/UP/002 and PKKK/300/UP/031. System suitability, assay calculations, %w/w, daily dose, and test report generator.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lovastatin.css">
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan
+      </a>
+      <a href="sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        SOP Matrix
+      </a>
+      <a href="qc-balance.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18m-9-9h18"/></svg>
+        Balance & QC Suite
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — PKKK/200/UP/002 & PKKK/300/UP/031</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Lovastatin HPLC <span class="g">Assay & Reporting</span></h1>
+    <div class="hero-sub">Interactive Calculation, System Suitability & Official Report Generator (Rekod Kualiti UP/008A–G)</div>
+    <p class="hero-desc">
+      Standardized analysis engine for the determination of Lovastatin in traditional health supplements. Includes automated System Suitability (SST) %RSD verification, 5-point calibration regression, %w/w assay, daily dose evaluation against NPRA limits (&le;1.00% w/w, &le;10.00 mg/day), and printable test report drafting.
+    </p>
+
+    <!-- Method Quick Specs Ribbon -->
+    <div class="specs-ribbon">
+      <div class="spec-chip"><span class="spec-lbl">Column</span> Thermo ODS Hypersil 200×4.6mm 5µm</div>
+      <div class="spec-chip"><span class="spec-lbl">Mobile Phase</span> ACN : 0.05% H₃PO₄ (60:40 v/v)</div>
+      <div class="spec-chip"><span class="spec-lbl">Flow Rate</span> 1.8 mL/min @ 45°C</div>
+      <div class="spec-chip"><span class="spec-lbl">Wavelength</span> UV/PDA 238 nm</div>
+      <div class="spec-chip"><span class="spec-lbl">Run Time</span> 6.0 min (Lovastatin ~4.0 min)</div>
+      <div class="spec-chip"><span class="spec-lbl">LOD</span> 0.6 µg/mL (300 mg/kg)</div>
+    </div>
+  </div>
+
+  <!-- Main Suite Navigation Tabs -->
+  <div class="suite-tabs">
+    <button class="s-tab-btn active" onclick="switchSuiteTab('sst')" id="tabBtn-sst">1. System Suitability (SST)</button>
+    <button class="s-tab-btn" onclick="switchSuiteTab('cal')" id="tabBtn-cal">2. Calibration & LOD</button>
+    <button class="s-tab-btn" onclick="switchSuiteTab('assay')" id="tabBtn-assay">3. Sample Assay & Daily Dose</button>
+    <button class="s-tab-btn" onclick="switchSuiteTab('seq')" id="tabBtn-seq">4. Injection Sequence Guide</button>
+    <button class="s-tab-btn" onclick="switchSuiteTab('report')" id="tabBtn-report">5. Draft Test Report</button>
+  </div>
+
+  <!-- SECTION 1: SYSTEM SUITABILITY (SST) -->
+  <div id="section-sst" class="suite-section active">
+    <div class="section-card">
+      <div class="card-header-bar">
+        <div>
+          <h2>System Suitability Test (SST) Verification</h2>
+          <div class="card-subtext">6 replicate injections of 20 µg/mL working standard solution (SOP 200 Para 6.6)</div>
+        </div>
+        <button class="ctrl-btn highlight" onclick="loadSampleSSTData()">⚡ Load Example Data</button>
+      </div>
+
+      <div class="grid-2col">
+        <div>
+          <div class="form-title">Working Standard 20 µg/mL Peak Areas</div>
+          <div class="sst-inputs-grid">
+            <div class="input-group">
+              <label>Injection 1 Area</label>
+              <input type="number" id="sst-inj-1" value="1245800" oninput="calcSST()">
+            </div>
+            <div class="input-group">
+              <label>Injection 2 Area</label>
+              <input type="number" id="sst-inj-2" value="1249200" oninput="calcSST()">
+            </div>
+            <div class="input-group">
+              <label>Injection 3 Area</label>
+              <input type="number" id="sst-inj-3" value="1243100" oninput="calcSST()">
+            </div>
+            <div class="input-group">
+              <label>Injection 4 Area</label>
+              <input type="number" id="sst-inj-4" value="1251000" oninput="calcSST()">
+            </div>
+            <div class="input-group">
+              <label>Injection 5 Area</label>
+              <input type="number" id="sst-inj-5" value="1247400" oninput="calcSST()">
+            </div>
+            <div class="input-group">
+              <label>Injection 6 Area</label>
+              <input type="number" id="sst-inj-6" value="1248900" oninput="calcSST()">
+            </div>
+          </div>
+
+          <div class="grid-2col" style="margin-top:1rem">
+            <div class="input-group">
+              <label>Tailing Factor (T)</label>
+              <input type="number" step="0.01" id="sst-tailing" value="1.15" oninput="calcSST()">
+              <span class="field-hint">Criteria: T &lt; 2.0</span>
+            </div>
+            <div class="input-group">
+              <label>Retention Time (min)</label>
+              <input type="number" step="0.01" id="sst-rt" value="3.95" oninput="calcSST()">
+              <span class="field-hint">Target: ~4.0 min</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-summary-box">
+          <div class="summary-title">SST Evaluation Summary</div>
+          <div class="summary-item">
+            <span>Mean Peak Area:</span>
+            <strong id="sst-mean">1,247,567</strong>
+          </div>
+          <div class="summary-item">
+            <span>Std Deviation (SD):</span>
+            <strong id="sst-sd">2,883.51</strong>
+          </div>
+          <div class="summary-item">
+            <span>Peak Area %RSD:</span>
+            <strong id="sst-rsd" class="text-cyan">0.23%</strong>
+          </div>
+          <div class="summary-item">
+            <span>%RSD Acceptance (&le; 2.0%):</span>
+            <span class="status-pill status-pass" id="sst-rsd-status">PASSED ✓</span>
+          </div>
+          <div class="summary-item">
+            <span>Tailing Factor (&lt; 2.0):</span>
+            <span class="status-pill status-pass" id="sst-t-status">PASSED ✓</span>
+          </div>
+
+          <div class="verdict-banner" id="sst-overall-banner">
+            <div class="verdict-title">SYSTEM SUITABILITY STATUS</div>
+            <div class="verdict-text" id="sst-overall-text">VALID & ACCEPTED — PROCEED WITH SAMPLE RUN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: CALIBRATION & LOD -->
+  <div id="section-cal" class="suite-section">
+    <div class="section-card">
+      <div class="card-header-bar">
+        <div>
+          <h2>Calibration Curve & LOD Verification</h2>
+          <div class="card-subtext">5 standard concentrations + LOD check (0.6 µg/mL / 300 mg/kg) per Borang UP/008G</div>
+        </div>
+        <button class="ctrl-btn highlight" onclick="loadSampleCalData()">⚡ Load Example Standard Data</button>
+      </div>
+
+      <div class="grid-2col">
+        <div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Standard Level</th>
+                <th>Conc (µg/mL)</th>
+                <th>Peak Area</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Std 1</td><td><input type="number" class="tbl-input" id="cal-c-1" value="5.0" oninput="calcCalibration()"></td><td><input type="number" class="tbl-input" id="cal-a-1" value="312000" oninput="calcCalibration()"></td></tr>
+              <tr><td>Std 2</td><td><input type="number" class="tbl-input" id="cal-c-2" value="10.0" oninput="calcCalibration()"></td><td><input type="number" class="tbl-input" id="cal-a-2" value="625000" oninput="calcCalibration()"></td></tr>
+              <tr><td>Std 3</td><td><input type="number" class="tbl-input" id="cal-c-3" value="20.0" oninput="calcCalibration()"></td><td><input type="number" class="tbl-input" id="cal-a-3" value="1248000" oninput="calcCalibration()"></td></tr>
+              <tr><td>Std 4</td><td><input type="number" class="tbl-input" id="cal-c-4" value="40.0" oninput="calcCalibration()"></td><td><input type="number" class="tbl-input" id="cal-a-4" value="2498000" oninput="calcCalibration()"></td></tr>
+              <tr><td>Std 5</td><td><input type="number" class="tbl-input" id="cal-c-5" value="60.0" oninput="calcCalibration()"></td><td><input type="number" class="tbl-input" id="cal-a-5" value="3745000" oninput="calcCalibration()"></td></tr>
+              <tr style="background:var(--cyan-dim)">
+                <td><strong>LOD Check</strong></td>
+                <td><input type="number" class="tbl-input" id="cal-c-lod" value="0.6" readonly></td>
+                <td><input type="number" class="tbl-input" id="cal-a-lod" value="37500" oninput="calcCalibration()"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="result-summary-box">
+          <div class="summary-title">Regression & Linearity Results</div>
+          <div class="summary-item">
+            <span>Regression Equation:</span>
+            <strong id="cal-equation" style="font-family:var(--font-mono)">y = 62410x + 1200</strong>
+          </div>
+          <div class="summary-item">
+            <span>Slope (m):</span>
+            <strong id="cal-slope">62,410.00</strong>
+          </div>
+          <div class="summary-item">
+            <span>Intercept (c):</span>
+            <strong id="cal-intercept">1,200.00</strong>
+          </div>
+          <div class="summary-item">
+            <span>Correlation Coeff (r²):</span>
+            <strong id="cal-r2" class="text-cyan">0.9999</strong>
+          </div>
+          <div class="summary-item">
+            <span>Linearity Acceptance (r² &ge; 0.999):</span>
+            <span class="status-pill status-pass" id="cal-r2-status">PASSED ✓</span>
+          </div>
+          <div class="summary-item">
+            <span>LOD Area Threshold:</span>
+            <strong id="cal-lod-val">37,500 Area Counts</strong>
+          </div>
+
+          <div class="verdict-banner" id="cal-banner">
+            <div class="verdict-title">CALIBRATION STATUS</div>
+            <div class="verdict-text">LINEARITY MEETS ISO/IEC 17025 CRITERIA (r² &ge; 0.999)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: SAMPLE ASSAY & DAILY DOSE -->
+  <div id="section-assay" class="suite-section">
+    <div class="section-card">
+      <div class="card-header-bar">
+        <div>
+          <h2>Sample Assay & Total Daily Dose Calculator</h2>
+          <div class="card-subtext">Quantitation and compliance determination per SOP 200 Para 6.8 & Borang UP/008A</div>
+        </div>
+        <button class="ctrl-btn highlight" onclick="loadSampleAssayData()">⚡ Load Example Sample Data</button>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Input Form -->
+        <div class="assay-form">
+          <div class="form-title">Sample Information & Test Parameters</div>
+          <div class="input-grid-2">
+            <div class="input-group">
+              <label>Sample Registration No.</label>
+              <input type="text" id="s-reg-no" value="26/UAT/0145">
+            </div>
+            <div class="input-group">
+              <label>Sample Name</label>
+              <input type="text" id="s-name" value="Red Yeast Rice Complex Capsule">
+            </div>
+          </div>
+
+          <div class="input-grid-2" style="margin-top:0.8rem">
+            <div class="input-group">
+              <label>Dosage Form</label>
+              <select id="s-dosage-form" onchange="calcAssay()">
+                <option value="Capsule">Kapsul (Capsule)</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Liquid">Cecair (Syrup/Liquid)</option>
+                <option value="Powder">Serbuk (Powder)</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Reference Standard Purity (%)</label>
+              <input type="number" step="0.1" id="std-purity" value="99.4" oninput="calcAssay()">
+            </div>
+          </div>
+
+          <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.2rem 0">
+
+          <div class="form-title">Gravimetric & Chromatographic Inputs</div>
+          <div class="input-grid-2">
+            <div class="input-group">
+              <label>Sample Weight (g)</label>
+              <input type="number" step="0.0001" id="s-weight" value="0.5024" oninput="calcAssay()">
+              <span class="field-hint">Dissolved in 100 mL flask</span>
+            </div>
+            <div class="input-group">
+              <label>Average Content Weight (g)</label>
+              <input type="number" step="0.0001" id="s-avg-weight" value="0.4500" oninput="calcAssay()">
+              <span class="field-hint">From Borang UP/008B (Berat Purata)</span>
+            </div>
+          </div>
+
+          <div class="input-grid-2" style="margin-top:0.8rem">
+            <div class="input-group">
+              <label>Sample Peak Area Injection A</label>
+              <input type="number" id="s-area-a" value="1380000" oninput="calcAssay()">
+            </div>
+            <div class="input-group">
+              <label>Sample Peak Area Injection B</label>
+              <input type="number" id="s-area-b" value="1384000" oninput="calcAssay()">
+            </div>
+          </div>
+
+          <div class="input-grid-2" style="margin-top:0.8rem">
+            <div class="input-group">
+              <label>Daily Dosage on Label (units/day)</label>
+              <input type="number" id="s-daily-dose-count" value="2" oninput="calcAssay()">
+              <span class="field-hint">e.g., 2 capsules taken per day</span>
+            </div>
+            <div class="input-group">
+              <label>Analyst Name</label>
+              <input type="text" id="s-analyst" value="Syarief Azman Rosli (PPF)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-time Compliance Result Card -->
+        <div class="result-summary-box">
+          <div class="summary-title">Quantitation & Compliance Evaluation</div>
+          
+          <div class="summary-item">
+            <span>Mean Sample Peak Area:</span>
+            <strong id="res-mean-area">1,382,000</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Lovastatin Concentration in Flask:</span>
+            <strong id="res-conc" class="text-cyan">22.12 µg/mL</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Identification Status:</span>
+            <span class="status-pill status-pass" id="res-id-status">DIKESAN (DETECTED)</span>
+          </div>
+
+          <div class="summary-item">
+            <span>Lovastatin Content (% w/w):</span>
+            <strong id="res-percent-ww" class="text-purple">0.438 % w/w</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>NPRA % w/w Limit (&le; 1.00% w/w):</span>
+            <span class="status-pill status-pass" id="res-pct-status">LULUS (PASS)</span>
+          </div>
+
+          <div class="summary-item">
+            <span>Lovastatin per Capsule (mg/capsule):</span>
+            <strong id="res-mg-capsule">1.97 mg / cap</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Total Daily Dose (mg/day):</span>
+            <strong id="res-daily-dose" class="text-amber">3.94 mg / day</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>NPRA Dose Limit (&le; 10.00 mg/day):</span>
+            <span class="status-pill status-pass" id="res-dose-status">LULUS (PASS)</span>
+          </div>
+
+          <!-- Overall Final Banner -->
+          <div class="verdict-banner" id="assay-overall-banner">
+            <div class="verdict-title" id="assay-banner-title">KEPUTUSAN AKHIR / OVERALL VERDICT</div>
+            <div class="verdict-text" id="assay-banner-text">SAMPEL MEMATUHI SPESIFIKASI NPRA (PASS)</div>
+          </div>
+
+          <button class="ctrl-btn highlight" style="width:100%;margin-top:1rem;justify-content:center" onclick="generateReportAndSwitch()">
+            📄 Generate Official Test Report Form (UP/008A) →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: INJECTION SEQUENCE GUIDE -->
+  <div id="section-seq" class="suite-section">
+    <div class="section-card">
+      <div class="card-header-bar">
+        <div>
+          <h2>Standard Injection Sequence Protocol</h2>
+          <div class="card-subtext">Table 3 (Procedure A: Historical/ILC IQC) and Table 4 (Procedure B: Spiking IQC)</div>
+        </div>
+        <div class="seq-toggle-group">
+          <button class="ctrl-btn active" id="btn-seq-a" onclick="showSeqTable('A')">Procedure A (ILC/Historical IQC)</button>
+          <button class="ctrl-btn" id="btn-seq-b" onclick="showSeqTable('B')">Procedure B (Spiking IQC)</button>
+        </div>
+      </div>
+
+      <div id="seq-table-container">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: DRAFT TEST REPORT -->
+  <div id="section-report" class="suite-section">
+    <div class="section-card print-card">
+      <div class="card-header-bar no-print">
+        <div>
+          <h2>Draft Analysis Test Report (Borang UP/008A / PKKK/UP/006A)</h2>
+          <div class="card-subtext">Official format for submission and cross-checking by Pharmacist in Charge</div>
+        </div>
+        <div style="display:flex;gap:0.6rem">
+          <button class="ctrl-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+          <button class="ctrl-btn highlight" onclick="copyReportText()">📋 Copy Text Report</button>
+        </div>
+      </div>
+
+      <!-- Printable Document Container -->
+      <div class="report-paper" id="reportPaper">
+        <div class="rep-header">
+          <div class="rep-gov">KERAJAAN MALAYSIA · KEMENTERIAN KESIHATAN MALAYSIA</div>
+          <div class="rep-inst">PUSAT KOMPLIANS DAN KAWALAN KUALITI (PKKK)</div>
+          <div class="rep-dept">SEKSYEN PENGUJIAN PRODUK & KOSMETIK — UNIT PENYARINGAN</div>
+          <div class="rep-title">LAPORAN UJIAN IDENTIFIKASI & PENENTUAN KANDUNGAN LOVASTATIN</div>
+          <div class="rep-doc-no">No. Dokumen: PKKK/UP/008A (PKKK/200/UP/002)</div>
+        </div>
+
+        <div class="rep-section-title">1. MAKLUMAT SAMPEL</div>
+        <table class="rep-table">
+          <tr><td style="width:30%"><strong>No. Pendaftaran Sampel:</strong></td><td id="rep-s-reg">26/UAT/0145</td><td style="width:25%"><strong>Tarikh Ujian:</strong></td><td id="rep-date">22 Ogos 2026</td></tr>
+          <tr><td><strong>Nama Produk:</strong></td><td id="rep-s-name">Red Yeast Rice Complex Capsule</td><td><strong>Bentuk Dosej:</strong></td><td id="rep-s-form">Kapsul</td></tr>
+          <tr><td><strong>Kaedah / SOP Rujukan:</strong></td><td colspan="3">PKKK/200/UP/002 & PKKK/300/UP/031 (HPLC Technique)</td></tr>
+        </table>
+
+        <div class="rep-section-title">2. KEPUTUSAN KESESUAIAN SISTEM (SYSTEM SUITABILITY TEST)</div>
+        <table class="rep-table">
+          <tr><th>Parameter</th><th>Kriteria Had</th><th>Keputusan Diperolehi</th><th>Status</th></tr>
+          <tr><td>%RSD Puncak Piawai (n=6, 20 µg/mL)</td><td>&le; 2.0%</td><td id="rep-sst-rsd">0.23%</td><td>LULUS</td></tr>
+          <tr><td>Tailing Factor (T)</td><td>&lt; 2.0</td><td id="rep-sst-t">1.15</td><td>LULUS</td></tr>
+          <tr><td>Kelinearan Graf Kalibrasi (r²)</td><td>&ge; 0.999</td><td id="rep-cal-r2">0.9999</td><td>LULUS</td></tr>
+        </table>
+
+        <div class="rep-section-title">3. PENGIRAAN & KEPUTUSAN UJIAN SAMPEL</div>
+        <table class="rep-table">
+          <tr><td style="width:40%"><strong>Berat Sampel Ditimbang (g):</strong></td><td id="rep-s-wt">0.5024 g</td><td><strong>Berat Purata Kandungan (g):</strong></td><td id="rep-avg-wt">0.4500 g</td></tr>
+          <tr><td><strong>Purata Keluasan Puncak Sampel:</strong></td><td id="rep-mean-area">1,382,000</td><td><strong>Kepekatan Larutan Sampel:</strong></td><td id="rep-conc">22.12 µg/mL</td></tr>
+          <tr><td><strong>Ujian Identifikasi Lovastatin:</strong></td><td colspan="3"><strong id="rep-id-status">DIKESAN</strong> (Spektrum UV & Waktu Penahanan sepadan dengan Piawai Rujukan Lovastatin)</td></tr>
+          <tr><td><strong>Kandungan Lovastatin (% w/w):</strong></td><td><strong id="rep-pct-ww">0.438 % w/w</strong></td><td><strong>Had Spesifikasi NPRA:</strong></td><td>&le; 1.00 % w/w</td></tr>
+          <tr><td><strong>Kandungan Lovastatin per Kapsul:</strong></td><td><strong id="rep-mg-unit">1.97 mg / kapsul</strong></td><td><strong>Dos Pengambilan Harian:</strong></td><td id="rep-daily-count">2 kapsul / hari</td></tr>
+          <tr><td><strong>Jumlah Dos Harian Lovastatin:</strong></td><td><strong id="rep-daily-dose">3.94 mg / hari</strong></td><td><strong>Had Spesifikasi NPRA:</strong></td><td>&le; 10.00 mg / hari</td></tr>
+        </table>
+
+        <div class="rep-section-title">4. KESIMPULAN / PERAKUAN UJIAN</div>
+        <div class="rep-conclusion" id="rep-conclusion-box">
+          Sampel ini <strong>MEMATUHI SPESIFIKASI</strong> had kandungan Lovastatin yang ditetapkan oleh NPRA (Kandungan &le; 1.00% w/w dan Dos Harian &le; 10.00 mg/hari). Keputusan: <strong>LULUS (PASS)</strong>.
+        </div>
+
+        <div class="rep-signatures">
+          <div class="rep-sig-box">
+            <div class="sig-line"></div>
+            <div class="sig-name" id="rep-sig-analyst">Syarief Azman Rosli</div>
+            <div class="sig-role">Penolong Pegawai Farmasi (Penganalisis)</div>
+            <div class="sig-date">Tarikh: 22/08/2026</div>
+          </div>
+          <div class="rep-sig-box">
+            <div class="sig-line"></div>
+            <div class="sig-name">Ida Syazrina Ibrahim / Pegawai Farmasi</div>
+            <div class="sig-role">Pegawai Farmasi Pemeriksa Silang / Ketua Unit</div>
+            <div class="sig-date">Tarikh: ___/___/2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="lovastatin.js"></script>
+</body>
+</html>

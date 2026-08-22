@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balance Verification & Control Charting — Unit Penyaringan | NPRA</title>
+<meta name="description" content="Interactive analytical balance verification and control charting tool per PKKK/300/UP/005-020, PKKK/300/UP/064, and Quality Records UP/012 to UP/016.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="qc-balance.css">
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan
+      </a>
+      <a href="sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        SOP Matrix
+      </a>
+      <a href="lovastatin.html" class="ctrl-btn highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        Lovastatin HPLC Tool
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — PKKK/300/UP/064 & UP/014–016</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Balance Performance & <span class="g">Control Charting</span></h1>
+    <div class="hero-sub">Standard Gravimetric Performance Verification (UP/014, UP/015, UP/016) & Shewhart Trend Analysis</div>
+    <p class="hero-desc">
+      Interactive verification suite for analytical balances (Precisa, Sartorius MSE225S, Sartorius Cubis MSU6.6S microbalance, MT XP205DR). Evaluates daily drift, sensitivity errors ($\Delta E$), repeatability standard deviations, and IQC recovery control charts with warning/action limits ($2s / 3s$).
+    </p>
+  </div>
+
+  <!-- Suite Tabs -->
+  <div class="suite-tabs">
+    <button class="s-tab-btn active" onclick="switchQcTab('daily')" id="tabBtn-daily">1. Daily Performance (UP/014)</button>
+    <button class="s-tab-btn" onclick="switchQcTab('sens')" id="tabBtn-sens">2. Sensitivity Check (UP/015)</button>
+    <button class="s-tab-btn" onclick="switchQcTab('rep')" id="tabBtn-rep">3. Repeatability Check (UP/016)</button>
+    <button class="s-tab-btn" onclick="switchQcTab('chart')" id="tabBtn-chart">4. IQC Control Chart (UP/064 & UP/012)</button>
+  </div>
+
+  <!-- SECTION 1: DAILY PERFORMANCE CHECK (UP/014) -->
+  <div id="sec-daily" class="qc-section active">
+    <div class="qc-card">
+      <div class="card-header">
+        <div>
+          <h2>Daily Performance Check (Borang UP/014)</h2>
+          <div class="card-sub">Routine morning zero point, spirit level bubble, and single standard check</div>
+        </div>
+        <button class="ctrl-btn highlight" onclick="loadDailyExample()">⚡ Load Example Data</button>
+      </div>
+
+      <div class="grid-2col">
+        <div class="form-box">
+          <div class="input-grid-2">
+            <div class="input-group">
+              <label>Select Balance Model</label>
+              <select id="daily-balance-select" onchange="onBalanceSelect()">
+                <option value="SART_MSE225S">Sartorius MSE 225S-100-DU (0.01mg / 0.1mg)</option>
+                <option value="SART_MSU6">Sartorius Cubis MSU6.6S Microbalance (0.001mg)</option>
+                <option value="PRECISA_XT120A">Precisa XT 120A (0.1mg)</option>
+                <option value="MT_XP205DR">Mettler Toledo XP 205 DR (0.01mg / 0.1mg)</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Standard Mass Value (g)</label>
+              <input type="number" id="daily-std-mass" value="100.0000" oninput="calcDaily()">
+            </div>
+          </div>
+
+          <div class="input-grid-2" style="margin-top:0.8rem">
+            <div class="input-group">
+              <label>Spirit Level (Bubble) Centered?</label>
+              <select id="daily-level" onchange="calcDaily()">
+                <option value="YES">YES — Centered ✓</option>
+                <option value="NO">NO — Off-center (Needs adjustment)</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Zero Point Reading (g)</label>
+              <input type="number" step="0.0001" id="daily-zero" value="0.0000" oninput="calcDaily()">
+            </div>
+          </div>
+
+          <div class="input-grid-2" style="margin-top:0.8rem">
+            <div class="input-group">
+              <label>Observed Reading (g)</label>
+              <input type="number" step="0.0001" id="daily-obs" value="100.0002" oninput="calcDaily()">
+            </div>
+            <div class="input-group">
+              <label>Maximum Permissible Error (MPE) (mg)</label>
+              <input type="number" step="0.01" id="daily-mpe" value="0.50" oninput="calcDaily()">
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-title">Daily Verification Verdict</div>
+          <div class="summary-row">
+            <span>Deviation ($\Delta E = |M - m_0|$):</span>
+            <strong id="daily-diff" class="text-cyan">0.0002 g (0.20 mg)</strong>
+          </div>
+          <div class="summary-row">
+            <span>Allowed MPE Limit:</span>
+            <strong id="daily-mpe-text">&plusmn; 0.50 mg</strong>
+          </div>
+          <div class="summary-row">
+            <span>Daily Accuracy Status:</span>
+            <span class="status-pill status-pass" id="daily-status-pill">PASSED ✓</span>
+          </div>
+
+          <div class="verdict-banner" id="daily-banner">
+            <div class="verdict-title">DAILY BALANCE STATUS</div>
+            <div class="verdict-text" id="daily-banner-text">BALANCE OPERATIONAL & WITHIN ACCEPTANCE LIMITS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: SENSITIVITY CHECK (UP/015) -->
+  <div id="sec-sens" class="qc-section">
+    <div class="qc-card">
+      <div class="card-header">
+        <div>
+          <h2>Sensitivity Check (Borang UP/015)</h2>
+          <div class="card-sub">Multi-point standard mass test across operational range (Class E2/F1 standards)</div>
+        </div>
+        <button class="ctrl-btn highlight" onclick="loadSensExample()">⚡ Load Example Data</button>
+      </div>
+
+      <div class="grid-2col">
+        <div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Test Mass</th>
+                <th>Nominal Value (g)</th>
+                <th>Observed Reading (g)</th>
+                <th>Error (mg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Point 1 (Low)</td><td><input type="number" class="tbl-input" id="sens-nom-1" value="1.0000" oninput="calcSens()"></td><td><input type="number" step="0.0001" class="tbl-input" id="sens-obs-1" value="1.0001" oninput="calcSens()"></td><td id="sens-err-1">+0.10 mg</td></tr>
+              <tr><td>Point 2 (Mid)</td><td><input type="number" class="tbl-input" id="sens-nom-2" value="50.0000" oninput="calcSens()"></td><td><input type="number" step="0.0001" class="tbl-input" id="sens-obs-2" value="49.9998" oninput="calcSens()"></td><td id="sens-err-2">-0.20 mg</td></tr>
+              <tr><td>Point 3 (High)</td><td><input type="number" class="tbl-input" id="sens-nom-3" value="100.0000" oninput="calcSens()"></td><td><input type="number" step="0.0001" class="tbl-input" id="sens-obs-3" value="100.0003" oninput="calcSens()"></td><td id="sens-err-3">+0.30 mg</td></tr>
+              <tr><td>Point 4 (Max)</td><td><input type="number" class="tbl-input" id="sens-nom-4" value="200.0000" oninput="calcSens()"></td><td><input type="number" step="0.0001" class="tbl-input" id="sens-obs-4" value="200.0004" oninput="calcSens()"></td><td id="sens-err-4">+0.40 mg</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-title">Sensitivity Evaluation</div>
+          <div class="summary-row">
+            <span>Max Absolute Error ($\Delta E_{max}$):</span>
+            <strong id="sens-max-err" class="text-purple">0.40 mg</strong>
+          </div>
+          <div class="summary-row">
+            <span>Permissible Threshold:</span>
+            <strong>&le; 0.50 mg</strong>
+          </div>
+          <div class="summary-row">
+            <span>Sensitivity Status:</span>
+            <span class="status-pill status-pass" id="sens-status-pill">PASSED ✓</span>
+          </div>
+
+          <div class="verdict-banner" id="sens-banner">
+            <div class="verdict-title">SENSITIVITY VERIFICATION</div>
+            <div class="verdict-text">LINEAR RANGE MEETS NPRA ISO 17025 SPECS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: REPEATABILITY CHECK (UP/016) -->
+  <div id="sec-rep" class="qc-section">
+    <div class="qc-card">
+      <div class="card-header">
+        <div>
+          <h2>Repeatability Check (Borang UP/016)</h2>
+          <div class="card-sub">10 consecutive weighings of reference mass (evaluates standard deviation $s$ and $2s$)</div>
+        </div>
+        <button class="ctrl-btn highlight" onclick="loadRepExample()">⚡ Load Example Data</button>
+      </div>
+
+      <div class="grid-2col">
+        <div>
+          <div class="rep-inputs-grid">
+            <div class="input-group"><label>1. Reading (g)</label><input type="number" step="0.0001" id="rep-1" value="100.0001" oninput="calcRep()"></div>
+            <div class="input-group"><label>2. Reading (g)</label><input type="number" step="0.0001" id="rep-2" value="100.0002" oninput="calcRep()"></div>
+            <div class="input-group"><label>3. Reading (g)</label><input type="number" step="0.0001" id="rep-3" value="100.0000" oninput="calcRep()"></div>
+            <div class="input-group"><label>4. Reading (g)</label><input type="number" step="0.0001" id="rep-4" value="100.0003" oninput="calcRep()"></div>
+            <div class="input-group"><label>5. Reading (g)</label><input type="number" step="0.0001" id="rep-5" value="100.0001" oninput="calcRep()"></div>
+            <div class="input-group"><label>6. Reading (g)</label><input type="number" step="0.0001" id="rep-6" value="100.0002" oninput="calcRep()"></div>
+            <div class="input-group"><label>7. Reading (g)</label><input type="number" step="0.0001" id="rep-7" value="100.0001" oninput="calcRep()"></div>
+            <div class="input-group"><label>8. Reading (g)</label><input type="number" step="0.0001" id="rep-8" value="100.0000" oninput="calcRep()"></div>
+            <div class="input-group"><label>9. Reading (g)</label><input type="number" step="0.0001" id="rep-9" value="100.0002" oninput="calcRep()"></div>
+            <div class="input-group"><label>10. Reading (g)</label><input type="number" step="0.0001" id="rep-10" value="100.0001" oninput="calcRep()"></div>
+          </div>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-title">Repeatability Statistics (n = 10)</div>
+          <div class="summary-row">
+            <span>Mean Weight ($\bar{x}$):</span>
+            <strong id="rep-mean">100.00011 g</strong>
+          </div>
+          <div class="summary-row">
+            <span>Std Deviation ($s$):</span>
+            <strong id="rep-sd" class="text-cyan">0.088 mg</strong>
+          </div>
+          <div class="summary-row">
+            <span>Uncertainty Contribution ($2s$):</span>
+            <strong id="rep-2sd" class="text-purple">0.175 mg</strong>
+          </div>
+          <div class="summary-row">
+            <span>Max Allowable ($s \le 0.15\text{ mg}$):</span>
+            <span class="status-pill status-pass" id="rep-status-pill">PASSED ✓</span>
+          </div>
+
+          <div class="verdict-banner" id="rep-banner">
+            <div class="verdict-title">REPEATABILITY STATUS</div>
+            <div class="verdict-text">REPEATABILITY WITHIN ACCEPTABLE ANALYTICAL PRECISION</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: IQC CONTROL CHART (UP/064 & UP/012) -->
+  <div id="sec-chart" class="qc-section">
+    <div class="qc-card">
+      <div class="card-header">
+        <div>
+          <h2>IQC Control Chart & Trend Analysis (PKKK/300/UP/064)</h2>
+          <div class="card-sub">Shewhart accuracy control chart for Internal Quality Control samples with Warning (2s) & Action (3s) limits</div>
+        </div>
+        <button class="ctrl-btn highlight" onclick="generateSimulatedQCChart()">⚡ Simulate 15-Run Trend</button>
+      </div>
+
+      <div class="chart-container-box">
+        <div class="chart-canvas-wrap">
+          <svg id="qcChartSvg" viewBox="0 0 800 320" class="qc-svg"></svg>
+        </div>
+        <div class="chart-legend">
+          <div class="leg-item"><span class="leg-dot" style="background:#059669"></span> Target Mean (100.0%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:#d97706"></span> Warning Limits &plusmn;2s (90% / 110%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:#dc2626"></span> Action Limits &plusmn;3s (85% / 115%)</div>
+          <div class="leg-item"><span class="leg-dot" style="background:#0284c7"></span> IQC Sample Recovery (%)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="qc-balance.js"></script>
+</body>
+</html>
