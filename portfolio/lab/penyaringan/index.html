@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="ms" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit Penyaringan — Lab Notes & SOP Suite | NPRA</title>
-<meta name="description" content="Interactive laboratory references, SOP master matrix, HPLC Lovastatin assay calculator, analytical balance verification, and quality records for Unit Penyaringan, PKKK, NPRA.">
+<title>Unit Penyaringan — Digital Laboratory Hub | NPRA</title>
+<meta name="description" content="Pusat Rujukan Digital Unit Penyaringan, Pusat Kawalan Kualiti (PKKK), NPRA. Arahan Kerja 300, Panduan Pengendalian Alat, Kaedah Pengujian Adulterasi & Kalkulator Kualiti ISO/IEC 17025.">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -23,18 +23,29 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Lab Notes
+        Lab Portal
       </a>
       <a href="sop-matrix.html" class="ctrl-btn highlight">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        SOP Matrix
+        SOP Matrix (64)
       </a>
       <a href="lovastatin.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        Lovastatin HPLC Tool
+        Lovastatin HPLC
+      </a>
+      <a href="qc-balance.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        QC Balance Chart
+      </a>
+      <a href="portfolio.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        myPortfolio
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print
+      </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <span id="themeTxt">Dark Mode</span>
@@ -42,344 +53,706 @@
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- Hero Header -->
   <div class="hero">
-    <div class="hero-org">🇲🇾 NPRA — Seksyen Pengujian Produk & Kosmetik</div><br>
-    <div class="hero-unit">◈ Unit Penyaringan (Adulteration Screening)</div>
-    <h1>Unit <span class="g">Penyaringan</span></h1>
-    <div class="hero-sub">Standard Operating Procedures, Automated Analysis & Quality Assurance Suite</div>
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Unit <span class="g">Penyaringan</span> Hub</h1>
+    <div class="hero-sub">Pusat Rujukan Bersepadu: SOP 300, Panduan Alat, Pengujian Adulterasi & Kalkulator Kualiti</div>
     <p class="hero-desc">
-      Comprehensive digital hub for the Screening Unit. Features accredited Level 200 testing SOPs, 64 Level 300 Working Instructions, interactive Lovastatin HPLC quantitative reporting calculators, analytical balance verification, and quality records.
+      Platform digital rasmi bagi operasi makmal penyaringan bahan terlarang. Merangkumi 64 Arahan Kerja (Level 300), panduan diagnostik alat (HPLC, GC-MS, LC-MS/MS), enjin pengiraan kuantitatif berautomasi, serta verifikasi kawalan kualiti Shewhart.
     </p>
-  </div>
 
-  <!-- Featured Core Tools -->
-  <div class="section-label">◈ Master SOPs & Calculation Engines (2026 Kuatkuasa)</div>
-
-  <div class="cards">
-
-    <!-- SOP Matrix -->
-    <a href="sop-matrix.html" class="res-card reveal reveal-d1" style="border-color:rgba(2,132,199,0.3)">
-      <div class="card-icon">📚</div>
-      <div class="card-content">
-        <div class="card-eyebrow">Master Catalogue · 64 Working Instructions</div>
-        <div class="card-title">Master SOP & Quality Matrix</div>
-        <div class="card-desc">Interactive explorer for all Level 200 Procedures, 64 Level 300 Working Instructions (HPLC, GCMS, LCMS, Balances), and 61 Rekod Kualiti with real-time search, filters, parameters, and citations.</div>
-        <div class="card-tags">
-          <span class="card-tag t-cyan">Level 200</span>
-          <span class="card-tag t-mint">Arahan Kerja 300</span>
-          <span class="card-tag t-amber">Rekod Kualiti</span>
-          <span class="card-tag t-purple">ISO 17025</span>
-        </div>
+    <!-- Quick Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat-pill">
+        <div class="stat-val">64</div>
+        <div class="stat-lbl">Arahan Kerja 300</div>
       </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Live Hub</div>
-        <span class="card-arrow">→</span>
+      <div class="stat-pill">
+        <div class="stat-val">61</div>
+        <div class="stat-lbl">Rekod Kualiti</div>
       </div>
-    </a>
-
-    <!-- Lovastatin Tool -->
-    <a href="lovastatin.html" class="res-card reveal reveal-d2" style="border-color:rgba(124,58,237,0.3)">
-      <div class="card-icon">💊</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/200/UP/002 · Rekod UP/008A–G</div>
-        <div class="card-title">Lovastatin HPLC Assay Suite</div>
-        <div class="card-desc">Automated analysis and draft test report generator. Calculates System Suitability %RSD, calibration regression, %w/w content, daily dose (&le;10 mg/day limit check), and generates printable Borang UP/008A.</div>
-        <div class="card-tags">
-          <span class="card-tag t-purple">SST %RSD</span>
-          <span class="card-tag t-cyan">%w/w Assay</span>
-          <span class="card-tag t-amber">Daily Dose</span>
-          <span class="card-tag t-mint">Draft Report</span>
-        </div>
+      <div class="stat-pill">
+        <div class="stat-val">8</div>
+        <div class="stat-lbl">Kelas Adulterasi</div>
       </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Interactive Tool</div>
-        <span class="card-arrow">→</span>
+      <div class="stat-pill">
+        <div class="stat-val">100%</div>
+        <div class="stat-lbl">ISO 17025 Ready</div>
       </div>
-    </a>
-
-    <!-- Balance Verification & Control Charting -->
-    <a href="qc-balance.html" class="res-card reveal reveal-d3">
-      <div class="card-icon">⚖️</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/064 · Borang UP/014–016</div>
-        <div class="card-title">Balance Verification & QC Charting</div>
-        <div class="card-desc">Gravimetric verification for Sartorius, Precisa, and Mettler balances. Includes daily performance checks, sensitivity errors ($\Delta E$), 10-point repeatability ($s, 2s$), and Shewhart IQC trend charting.</div>
-        <div class="card-tags">
-          <span class="card-tag t-cyan">Daily UP/014</span>
-          <span class="card-tag t-mint">Sensitivity UP/015</span>
-          <span class="card-tag t-amber">Repeatability UP/016</span>
-          <span class="card-tag t-purple">Control Chart UP/064</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Interactive Tool</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- Extraction & Sample Prep -->
-  <div class="section-label">◈ Sample Preparation & Extraction Reference</div>
-
-  <div class="cards">
-
-    <a href="https://syariefazman.com/spe" class="res-card reveal reveal-d1">
-      <div class="card-icon">🧪</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/013 · 3 Methods</div>
-        <div class="card-title">SPE Lab Reference</div>
-        <div class="card-desc">Solid-Phase Extraction procedures for JT Baker C18 (Non-Polar), Florisil (Polar), and Softgel (MeOH) methods. Includes vacuum manifold steps, timers, and chemical sidebar.</div>
-        <div class="card-tags">
-          <span class="card-tag t-cyan">C18</span>
-          <span class="card-tag t-mint">Florisil</span>
-          <span class="card-tag t-amber">Softgel</span>
-          <span class="card-tag t-purple">Vacuum SPE</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Live</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="screening-methods.html" class="res-card reveal reveal-d2" style="border-color:rgba(124,58,237,0.3)">
-      <div class="card-icon">📖</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/021, 025, 027, 034 · Step Guides</div>
-        <div class="card-title">Adulteration Method Guides Hub</div>
-        <div class="card-desc">Interactive execution-ready SOP guides for PPI (Omeprazole & Lansoprazole HPLC), Domperidone HPLC, EG/DEG in Syrups GC-MS (USP <0.10% v/v), and Steroids.</div>
-        <div class="card-tags">
-          <span class="card-tag t-purple">PPI (UP/025)</span>
-          <span class="card-tag t-cyan">Domperidone (UP/027)</span>
-          <span class="card-tag t-amber">EG/DEG (UP/034)</span>
-          <span class="card-tag t-mint">Steroids (UP/021)</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> 4 Method Guides</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="steroid-hplc.html" class="res-card reveal reveal-d2" style="border-color:rgba(217,119,6,0.3)">
-      <div class="card-icon">🔬</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/021 · Shimadzu Prominence-i</div>
-        <div class="card-title">Steroid HPLC Screening Guide</div>
-        <div class="card-desc">Step-by-step practical guide for screening 8 steroid adulterants. Complete LLE extraction with pH 7 adjustment, LabSolutions gradient time program, SST & sequence rules, and 2nd analyst confirmation protocol.</div>
-        <div class="card-tags">
-          <span class="card-tag t-amber">Steroid SOP</span>
-          <span class="card-tag t-cyan">Shimadzu LC</span>
-          <span class="card-tag t-mint">LLE Extraction</span>
-          <span class="card-tag t-purple">Step-by-Step</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Step Guide</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="https://syariefazman.com/sampleprep" class="res-card reveal reveal-d3">
-      <div class="card-icon">🧬</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/021–028 · 7 Categories</div>
-        <div class="card-title">Sample Preparation Guide</div>
-        <div class="card-desc">Drug sample preparation procedures for Anticholesterol, Antidiabetic, Diuretic, PPI, Antihypertensive, EDD, and Domperidone. Covers weighing, dissolving, centrifuge, and filtration.</div>
-        <div class="card-tags">
-          <span class="card-tag t-cyan">HPLC Prep</span>
-          <span class="card-tag t-mint">Centrifuge</span>
-          <span class="card-tag t-amber">Filtration</span>
-          <span class="card-tag t-purple">7 Drug Classes</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Live</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="hplc-guide.html" class="res-card reveal reveal-d1" style="border-color:rgba(2,132,199,0.3)">
-      <div class="card-icon">💻</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/011, 041, 042 · LabSolutions</div>
-        <div class="card-title">Shimadzu HPLC Prominence-i Guide</div>
-        <div class="card-desc">Complete instrument operating manual for LC-2030C 3D. Startup & passcode (00000), Auto Purge, gradient timetable, PDA wavelength plot, batch sequences, and column flush protocols.</div>
-        <div class="card-tags">
-          <span class="card-tag t-cyan">LC-2030C 3D</span>
-          <span class="card-tag t-mint">Auto Purge</span>
-          <span class="card-tag t-purple">LabSolutions</span>
-          <span class="card-tag t-amber">Full Guide</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Instrument SOP</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="rrlc-guide.html" class="res-card reveal reveal-d2" style="border-color:rgba(124,58,237,0.3)">
-      <div class="card-icon">⚡</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/003 · Agilent ChemStation</div>
-        <div class="card-title">Agilent 1200 RRLC Operating Guide</div>
-        <div class="card-desc">Standard operating procedures for Agilent 1200 Series RRLC. ChemStation setup (3000hanover), manual purge valve deaeration (5 mL/min), DAD spectra (190–400 nm), and Ctrl+Alt spectral overlay.</div>
-        <div class="card-tags">
-          <span class="card-tag t-purple">Agilent 1200</span>
-          <span class="card-tag t-cyan">Purge Valve</span>
-          <span class="card-tag t-mint">DAD Spectral Overlay</span>
-          <span class="card-tag t-amber">Full Guide</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Instrument SOP</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="gcms-egdeg-guide.html" class="res-card reveal reveal-d3" style="border-color:rgba(217,119,6,0.3)">
-      <div class="card-icon">🧬</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/034, 017, 004 · GC-MS</div>
-        <div class="card-title">GC-MS DEG & EG Analysis Guide</div>
-        <div class="card-desc">Quantitation of toxic glycols (Ethylene Glycol & Diethylene Glycol) in medicinal syrups. MS Autotuning, BP20 Wax column, SIM ions (m/z 31 & 45), 5-level calibration, and USP &le;0.10% v/v compliance.</div>
-        <div class="card-tags">
-          <span class="card-tag t-amber">EG & DEG GCMS</span>
-          <span class="card-tag t-purple">SIM Quant</span>
-          <span class="card-tag t-cyan">Autotune</span>
-          <span class="card-tag t-mint">USP Monograph</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Instrument SOP</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="gcms.html" class="res-card reveal reveal-d3">
-      <div class="card-icon">⚙️</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/017 · Agilent 8890</div>
-        <div class="card-title">GCMS Operation Guide</div>
-        <div class="card-desc">Standard operating procedures for the Agilent GCMS 8890. Covers solvent preparation, autotuning, sequence setup, and autosampler injection rules.</div>
-        <div class="card-tags">
-          <span class="card-tag t-purple">GCMS 8890</span>
-          <span class="card-tag t-cyan">Autotune</span>
-          <span class="card-tag t-mint">Sequence Prep</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Live</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="gcms-analysis.html" class="res-card reveal reveal-d4">
-      <div class="card-icon">📊</div>
-      <div class="card-content">
-        <div class="card-eyebrow">PKKK/300/UP/018 · Data Processing</div>
-        <div class="card-title">GCMS Data Analysis</div>
-        <div class="card-desc">Post-run screening analysis procedures. Covers chromatogram scaling, RTE integration, NIST spectral library search, and reporting configuration.</div>
-        <div class="card-tags">
-          <span class="card-tag t-amber">Chromatogram</span>
-          <span class="card-tag t-purple">Integration</span>
-          <span class="card-tag t-cyan">NIST Library</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Live</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- Presentations & Strategy -->
-  <div class="section-label">◈ Presentations & Strategic Directions</div>
-
-  <div class="cards">
-    <a href="https://syariefazman.com/uptslide1" class="res-card reveal reveal-d1">
-      <div class="card-icon">📊</div>
-      <div class="card-content">
-        <div class="card-eyebrow">16 Slides · 12 Mac 2026</div>
-        <div class="card-title">Sasaran & Hala Tuju 2026</div>
-        <div class="card-desc">Interactive web-based presentation covering the Unit Penyaringan 2025 workload performance, strategic targets, and forward-looking initiatives for 2026.</div>
-        <div class="card-tags">
-          <span class="card-tag t-cyan">Interactive Slides</span>
-          <span class="card-tag t-mint">Keyboard Nav</span>
-          <span class="card-tag t-amber">Fullscreen</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div class="card-status"><span class="dot"></span> Live</div>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-  </div>
-
-  <!-- Training Competencies -->
-  <div class="section-label">◈ Training & Competency Timeline (2024–2026)</div>
-
-  <div class="comp-grid reveal">
-    <div class="comp-card">
-      <div class="comp-icon">🔬</div>
-      <div class="comp-name">SPE & LLE</div>
-      <div class="comp-detail">Theory & Practical</div>
-      <div class="comp-badge t-mint" style="background:var(--mint-dim);border:1px solid rgba(0,255,179,0.2);color:var(--mint)">Certified ✓</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-icon">📊</div>
-      <div class="comp-name">HPLC</div>
-      <div class="comp-detail">Aug–Oct 2024</div>
-      <div class="comp-badge" style="background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.2);color:var(--cyan)">Certified ✓</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-icon">🧬</div>
-      <div class="comp-name">GCMS</div>
-      <div class="comp-detail">Jul–Oct 2024</div>
-      <div class="comp-badge" style="background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.2);color:var(--cyan)">Certified ✓</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-icon">⚙️</div>
-      <div class="comp-name">LCMS</div>
-      <div class="comp-detail">Sep 2024</div>
-      <div class="comp-badge" style="background:var(--cyan-dim);border:1px solid rgba(0,229,255,0.2);color:var(--cyan)">Certified ✓</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-icon">🔧</div>
-      <div class="comp-name">Micropipette</div>
-      <div class="comp-detail">Verification — LULUS</div>
-      <div class="comp-badge" style="background:var(--mint-dim);border:1px solid rgba(0,255,179,0.2);color:var(--mint)">Verified ✓</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-icon">📝</div>
-      <div class="comp-name">Test Reports</div>
-      <div class="comp-detail">Oct 2024</div>
-      <div class="comp-badge" style="background:var(--amber-dim);border:1px solid rgba(255,183,0,0.2);color:var(--amber)">Certified ✓</div>
-    </div>
-    <div class="comp-card">
-      <div class="comp-icon">🏭</div>
-      <div class="comp-name">Shimadzu UHPLC</div>
-      <div class="comp-detail">Oct 2025 — Workshop</div>
-      <div class="comp-badge" style="background:var(--purple-dim);border:1px solid rgba(180,122,255,0.2);color:var(--purple)">Trained ✓</div>
     </div>
   </div>
 
-  <!-- myPortfolio Link -->
-  <div class="section-label">◈ myPortfolio</div>
-  <a href="portfolio.html" class="res-card reveal" style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:1.5rem;backdrop-filter:blur(18px);margin-bottom:2rem;display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;transition:all 0.3s">
-    <div style="font-size:2rem">📋</div>
-    <div style="flex:1">
-      <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan)">PPF 7 — Comprehensive Job Portfolio</div>
-      <div style="font-size:1rem;font-weight:800;color:var(--text-bright)">View Full myPortfolio</div>
-      <div style="font-size:0.78rem;color:var(--text-dim)">4 activities, workflows, regulatory references, forms index & competency details</div>
+  <!-- Interactive Controls: Search & Category Tabs -->
+  <div class="controls-container">
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="hubSearch" class="search-input" placeholder="Cari SOP, kaedah pengujian, nombor alat, sebatian (contoh: EG/DEG, Lovastatin, Steroid, QP2010)...">
+      <button id="clearSearchBtn" class="search-clear" onclick="clearSearch()" title="Padam Carian">✕</button>
     </div>
-    <div style="font-size:1.2rem;color:var(--text-dim)">→</div>
-  </a>
 
-  <div class="footer">Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ NPRA Malaysia</div>
+    <!-- Category Filter Tabs -->
+    <div class="cat-filter-tabs">
+      <button class="cat-tab-btn active" onclick="filterCategory('all', this)">✨ Semua Modul</button>
+      <button class="cat-tab-btn" onclick="filterCategory('calc', this)">⚙️ Kalkulator & QA</button>
+      <button class="cat-tab-btn" onclick="filterCategory('method', this)">🧪 Kaedah Pengujian</button>
+      <button class="cat-tab-btn" onclick="filterCategory('instrument', this)">🔬 Pengendalian Alat</button>
+      <button class="cat-tab-btn" onclick="filterCategory('prep', this)">🧬 Penyediaan & Pengekstrakan</button>
+      <button class="cat-tab-btn" onclick="filterCategory('mgmt', this)">📋 Pengurusan & Portfolio</button>
+    </div>
+  </div>
+
+  <!-- No Results Box -->
+  <div id="noResultsBox" class="no-results">
+    <div class="no-res-icon">🔎</div>
+    <div class="no-res-title">Tiada modul sepadan ditemui<span id="searchQueryDisplay"></span></div>
+    <div class="no-res-desc">Sila cuba kata kunci lain seperti "HPLC", "GCMS", "Steroid", "Lovastatin", atau nombor SOP.</div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- CATEGORY 1: KALKULATOR & ENJIN QA -->
+  <!-- ========================================== -->
+  <div class="category-group" id="group-calc">
+    <div class="category-header">
+      <div class="cat-icon-badge badge-cyan">⚙️</div>
+      <h2 class="category-title">Enjin Pengiraan Kuantitatif & Kawalan Kualiti (QA)</h2>
+      <span class="category-count badge-cyan">3 Modul</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- Lovastatin HPLC Tool -->
+      <a href="lovastatin.html" class="res-card theme-purple" data-category="calc">
+        <div class="card-top">
+          <div class="card-icon">💊</div>
+          <span class="card-code-badge">PKKK/200/UP/002</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Enjin Kuantitasi & Borang UP/008A–G</div>
+          <div class="card-title">Lovastatin HPLC Assay Suite</div>
+          <div class="card-desc">Pengiraan automatik Kesesuaian Sistem (%RSD SST &le; 2.0%), regresi kalibrasi linear (R² &ge; 0.9950), peratus kandungan %w/w, semakan had dos harian (&le; 10 mg/hari), serta penjanaan draf laporan pengujian siap cetak.</div>
+          <div class="card-tags">
+            <span class="card-tag t-purple">SST %RSD</span>
+            <span class="card-tag t-cyan">%w/w Assay</span>
+            <span class="card-tag t-amber">Dos Harian</span>
+            <span class="card-tag t-mint">Draf Laporan</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Enjin Interaktif</div>
+          <span class="card-arrow">Buka Alat →</span>
+        </div>
+      </a>
+
+      <!-- Balance Verification & Control Charting -->
+      <a href="qc-balance.html" class="res-card theme-cyan" data-category="calc">
+        <div class="card-top">
+          <div class="card-icon">⚖️</div>
+          <span class="card-code-badge">PKKK/300/UP/064</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Borang UP/014–016 · Shewhart IQC</div>
+          <div class="card-title">Verifikasi Alat Timbang & Carta Kawalan QC</div>
+          <div class="card-desc">Sistem verifikasi gravimetrik harian alat timbang Sartorius, Precisa, dan Mettler. Termasuk ujian kepekaan (&Delta;E), kebolehulangan 10-titik (s, 2s), serta plot dinamik carta kawalan mutu Shewhart (UP/064).</div>
+          <div class="card-tags">
+            <span class="card-tag t-cyan">Harian UP/014</span>
+            <span class="card-tag t-mint">Kepekaan UP/015</span>
+            <span class="card-tag t-amber">Kebolehulangan UP/016</span>
+            <span class="card-tag t-purple">Carta Shewhart</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Enjin Interaktif</div>
+          <span class="card-arrow">Buka Alat →</span>
+        </div>
+      </a>
+
+      <!-- Master SOP Matrix -->
+      <a href="sop-matrix.html" class="res-card theme-indigo" data-category="calc">
+        <div class="card-top">
+          <div class="card-icon">📚</div>
+          <span class="card-code-badge">64 Arahan Kerja 300</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Katalog Induk · Matriks Dokumen Rasmi</div>
+          <div class="card-title">Master SOP & Quality Record Matrix</div>
+          <div class="card-desc">Pengkalan data interaktif bagi kesemua Prosedur Level 200, 64 Arahan Kerja Level 300 (HPLC, GCMS, LCMS, Alat Timbang, Radas), dan 61 Rekod Kualiti dengan carian pantas, parameter instrumen, dan modal pembaca rasmi.</div>
+          <div class="card-tags">
+            <span class="card-tag t-indigo">Level 200</span>
+            <span class="card-tag t-cyan">Arahan Kerja 300</span>
+            <span class="card-tag t-amber">Rekod Kualiti</span>
+            <span class="card-tag t-mint">ISO 17025</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Pengkalan Induk</div>
+          <span class="card-arrow">Buka Matriks →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- CATEGORY 2: KAEDAH PENGUJIAN ADULTERASI -->
+  <!-- ========================================== -->
+  <div class="category-group" id="group-method">
+    <div class="category-header">
+      <div class="cat-icon-badge badge-amber">🧪</div>
+      <h2 class="category-title">Panduan Kaedah Pengujian Adulterasi (Testing Methods)</h2>
+      <span class="category-count badge-amber">6 Modul</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- EG / DEG GC-MS -->
+      <a href="gcms-egdeg-guide.html" class="res-card theme-amber" data-category="method">
+        <div class="card-top">
+          <div class="card-icon">🧬</div>
+          <span class="card-code-badge">PKKK/300/UP/034</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Toksikologi Sirap Ubat · GC-MS SIM</div>
+          <div class="card-title">Identifikasi & Kandungan EG & DEG GC-MS</div>
+          <div class="card-desc">Panduan komprehensif penentuan Diethylene Glycol dan Ethylene Glycol dalam produk ubat cecair mengikut monograf USP (&lt; 0.10% v/v). Meliputi penalaan autotune, kolum BP20-Wax, ion SIM m/z 31 & 45, dan kalibrasi 5-tahap.</div>
+          <div class="card-tags">
+            <span class="card-tag t-amber">EG & DEG GCMS</span>
+            <span class="card-tag t-purple">SIM Quant</span>
+            <span class="card-tag t-cyan">Monograf USP</span>
+            <span class="card-tag t-mint">Ubat Cecair</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Panduan Rasmi</div>
+          <span class="card-arrow">Buka SOP Kaedah →</span>
+        </div>
+      </a>
+
+      <!-- Steroids HPLC -->
+      <a href="steroid-hplc.html" class="res-card theme-cyan" data-category="method">
+        <div class="card-top">
+          <div class="card-icon">🔬</div>
+          <span class="card-code-badge">PKKK/300/UP/021</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">8 Campuran Steroid · Shimadzu LC-2030C</div>
+          <div class="card-title">Identifikasi Steroid dalam Produk Tradisional HPLC</div>
+          <div class="card-desc">Langkah demi langkah penyaringan 8 jenis kortikosteroid sintetik (Dexamethasone, Betamethasone, Prednisone, dll). Ekstraksi LLE pH 7.0, program kecerunan LabSolutions, verifikasi SST, dan protokol pengesahan penganalisis kedua.</div>
+          <div class="card-tags">
+            <span class="card-tag t-cyan">8 Steroid Mix</span>
+            <span class="card-tag t-mint">LLE Ekstraksi</span>
+            <span class="card-tag t-purple">PDA Spectra</span>
+            <span class="card-tag t-amber">Kaedah HPLC</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Panduan Rasmi</div>
+          <span class="card-arrow">Buka SOP Kaedah →</span>
+        </div>
+      </a>
+
+      <!-- PPI HPLC -->
+      <a href="ppi-hplc.html" class="res-card theme-purple" data-category="method">
+        <div class="card-top">
+          <div class="card-icon">🛡️</div>
+          <span class="card-code-badge">PKKK/300/UP/025</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Omeprazole & Lansoprazole · Isokratik</div>
+          <div class="card-title">Identifikasi Proton Pump Inhibitor (PPI) HPLC</div>
+          <div class="card-desc">Tatacara pengesanan adulteran PPI dalam produk tradisional menggunakan fasa bergerak isokratik Buffer Fosfat 25 mM pH 7.6 : Acetonitrile (65:35), turas 0.45 µm, dan pengesanan PDA pada 280 nm.</div>
+          <div class="card-tags">
+            <span class="card-tag t-purple">Omeprazole</span>
+            <span class="card-tag t-cyan">Lansoprazole</span>
+            <span class="card-tag t-mint">Buffer pH 7.6</span>
+            <span class="card-tag t-amber">Isokratik</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Panduan Rasmi</div>
+          <span class="card-arrow">Buka SOP Kaedah →</span>
+        </div>
+      </a>
+
+      <!-- Domperidone HPLC -->
+      <a href="domperidone-hplc.html" class="res-card theme-mint" data-category="method">
+        <div class="card-top">
+          <div class="card-icon">💊</div>
+          <span class="card-code-badge">PKKK/300/UP/027</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Gastroprokinetik · Buffer pH 3.0</div>
+          <div class="card-title">Identifikasi Domperidone dalam Produk Tradisional</div>
+          <div class="card-desc">Kaedah kromatografi cecair bagi penentuan Domperidone. Meliputi pelarasan fasa bergerak Buffer KH₂PO₄ 20 mM pH 3.0 : ACN (60:40), penyediaan piawai rujukan, dan kriteria penerimaan spektrum UV/PDA pada 284 nm.</div>
+          <div class="card-tags">
+            <span class="card-tag t-mint">Domperidone</span>
+            <span class="card-tag t-cyan">Buffer pH 3.0</span>
+            <span class="card-tag t-purple">PDA 284 nm</span>
+            <span class="card-tag t-amber">Kualitatif</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Panduan Rasmi</div>
+          <span class="card-arrow">Buka SOP Kaedah →</span>
+        </div>
+      </a>
+
+      <!-- Hydroquinone in Cosmetics HPLC -->
+      <a href="hydroquinone-hplc.html" class="res-card theme-rose" data-category="method">
+        <div class="card-top">
+          <div class="card-icon">🧴</div>
+          <span class="card-code-badge">PKKK/300/UP/050</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Kosmetik Berjadual · ACM 003</div>
+          <div class="card-title">Penyaringan & Penentuan Hydroquinone Kosmetik</div>
+          <div class="card-desc">SOP rasmi penentuan bahan terlarang Hydroquinone dalam sediaan krim dan losyen kosmetik menggunakan sistem HPLC Fasa Terbalik mengikut standard ASEAN Cosmetic Method (ACM).</div>
+          <div class="card-tags">
+            <span class="card-tag t-rose">Hydroquinone</span>
+            <span class="card-tag t-cyan">Kosmetik ACM</span>
+            <span class="card-tag t-mint">Krim & Losyen</span>
+            <span class="card-tag t-purple">PDA 290 nm</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Panduan Rasmi</div>
+          <span class="card-arrow">Buka SOP Kaedah →</span>
+        </div>
+      </a>
+
+      <!-- Integrated Screening Methods Hub -->
+      <a href="screening-methods.html" class="res-card theme-indigo" data-category="method">
+        <div class="card-top">
+          <div class="card-icon">📖</div>
+          <span class="card-code-badge">Direktori Kaedah Multi-Tab</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Kompilasi Kaedah Pengujian Makmal</div>
+          <div class="card-title">Adulteration Screening Method Guides Hub</div>
+          <div class="card-desc">Direktori berpusat berformat tab interaktif yang menghimpunkan semua kaedah pengujian adulteran aktif (PPI, Domperidone, EG/DEG GCMS, dan Steroid) dengan jadual spesifikasi dan langkah kerja.</div>
+          <div class="card-tags">
+            <span class="card-tag t-indigo">Multi-Tab</span>
+            <span class="card-tag t-cyan">4 Kaedah Utama</span>
+            <span class="card-tag t-amber">Spesifikasi Kolum</span>
+            <span class="card-tag t-mint">Jadual Reagen</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Direktori Kaedah</div>
+          <span class="card-arrow">Buka Direktori →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- CATEGORY 3: PENGENDALIAN ALAT (INSTRUMENTS) -->
+  <!-- ========================================== -->
+  <div class="category-group" id="group-instrument">
+    <div class="category-header">
+      <div class="cat-icon-badge badge-purple">🔬</div>
+      <h2 class="category-title">Panduan Pengendalian & Diagnostik Alat (Instruments)</h2>
+      <span class="category-count badge-purple">6 Modul</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- GC-MS Shimadzu QP2010 Ultra -->
+      <a href="sop/sop-300-up-040.html" class="res-card theme-amber" data-category="instrument">
+        <div class="card-top">
+          <div class="card-icon">🔬</div>
+          <span class="card-code-badge">PKKK/300/UP/040</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">5-Modul Operasi · COAST SIM & Autotune</div>
+          <div class="card-title">GCMS Shimadzu QP2010 Ultra Guide</div>
+          <div class="card-desc">Manual pengendalian ultra terperinci: Startup vakum, semakan kebocoran udara/air (m/z 18 vs 28), jadual kriteria autotuning harian, wizard COAST SIM automatik, carian pustaka NIST/Wiley, dan urutan penutupan selamat.</div>
+          <div class="card-tags">
+            <span class="card-tag t-amber">QP2010 Ultra</span>
+            <span class="card-tag t-cyan">Air/Water Check</span>
+            <span class="card-tag t-purple">COAST SIM Wizard</span>
+            <span class="card-tag t-mint">NIST Library</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Panduan Terperinci</div>
+          <span class="card-arrow">Buka Manual Alat →</span>
+        </div>
+      </a>
+
+      <!-- Shimadzu HPLC Prominence-i -->
+      <a href="hplc-guide.html" class="res-card theme-cyan" data-category="instrument">
+        <div class="card-top">
+          <div class="card-icon">💻</div>
+          <span class="card-code-badge">PKKK/300/UP/011, 041, 042</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">LabSolutions · LC-2030C 3D</div>
+          <div class="card-title">Shimadzu HPLC Prominence-i Operating Guide</div>
+          <div class="card-desc">Panduan penuh operasi instrumen LC-2030C. Log masuk sistem (Passcode: 00000), rutin Auto Purge (5.0 mL/min), pemantauan plot garisan dasar PDA, penjanaan jadual batch, dan protokol pencucian kolum berperingkat.</div>
+          <div class="card-tags">
+            <span class="card-tag t-cyan">LC-2030C 3D</span>
+            <span class="card-tag t-mint">Auto Purge</span>
+            <span class="card-tag t-purple">LabSolutions</span>
+            <span class="card-tag t-amber">Flushing Protocol</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Manual Operasi</div>
+          <span class="card-arrow">Buka Manual Alat →</span>
+        </div>
+      </a>
+
+      <!-- Agilent 1200 Series RRLC -->
+      <a href="rrlc-guide.html" class="res-card theme-purple" data-category="instrument">
+        <div class="card-top">
+          <div class="card-icon">⚡</div>
+          <span class="card-code-badge">PKKK/300/UP/003, 044</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Agilent ChemStation · DAD Spectra</div>
+          <div class="card-title">Agilent 1200 Series RRLC Operating Guide</div>
+          <div class="card-desc">Tatacara operasi sistem RRLC Agilent 1200. Persediaan ChemStation (3000hanover), teknik deaerasi injap purge manual, tetapan spektrum DAD (190–400 nm), dan fungsi tindihan spektrum (Ctrl+Alt) bagi pengesahan puncak.</div>
+          <div class="card-tags">
+            <span class="card-tag t-purple">Agilent 1200</span>
+            <span class="card-tag t-cyan">Purge Valve</span>
+            <span class="card-tag t-mint">DAD Overlay</span>
+            <span class="card-tag t-amber">ChemStation</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Manual Operasi</div>
+          <span class="card-arrow">Buka Manual Alat →</span>
+        </div>
+      </a>
+
+      <!-- Agilent 8890 GC-MS -->
+      <a href="gcms.html" class="res-card theme-indigo" data-category="instrument">
+        <div class="card-top">
+          <div class="card-icon">🌐</div>
+          <span class="card-code-badge">PKKK/300/UP/017, 018</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Agilent 8890 / 5977B MSD · MassHunter</div>
+          <div class="card-title">Agilent 8890 GC-MS & RTE Analysis Guide</div>
+          <div class="card-desc">Panduan operasi sistem GC-MS Agilent 8890. Meliputi pemeriksaan tekanan gas Helium, Autotuning (s.tune / a.tune), MassHunter Sequence Wizard, integrasi RTE kromatogram, dan carian spektrum NIST.</div>
+          <div class="card-tags">
+            <span class="card-tag t-indigo">Agilent 8890</span>
+            <span class="card-tag t-cyan">MassHunter</span>
+            <span class="card-tag t-amber">RTE Integrasi</span>
+            <span class="card-tag t-purple">NIST Search</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Manual Operasi</div>
+          <span class="card-arrow">Buka Manual Alat →</span>
+        </div>
+      </a>
+
+      <!-- Shimadzu LCMS-8045 -->
+      <a href="sop/sop-300-up-012.html" class="res-card theme-cyan" data-category="instrument">
+        <div class="card-top">
+          <div class="card-icon">⚡</div>
+          <span class="card-code-badge">PKKK/300/UP/012</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Triple Quadrupole · MRM Analysis</div>
+          <div class="card-title">LCMS-8045 Triple Quadrupole Operating Guide</div>
+          <div class="card-desc">Manual pengendalian spektrometri jisim cecair LC-MS/MS 8045. Tetapan sumber pengionan ESI (+4.0 kV / -3.0 kV), kawalan gas penyahpelarutan, optimisasi MRM Collision Energy bagi PDE-5 dan Antifungal.</div>
+          <div class="card-tags">
+            <span class="card-tag t-cyan">LCMS-8045</span>
+            <span class="card-tag t-purple">MRM Transitions</span>
+            <span class="card-tag t-mint">ESI Ion Source</span>
+            <span class="card-tag t-amber">Triple Quad</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Manual Operasi</div>
+          <span class="card-arrow">Buka Manual Alat →</span>
+        </div>
+      </a>
+
+      <!-- Analytical Balances Precisa & Sartorius -->
+      <a href="sop/sop-300-up-005.html" class="res-card theme-mint" data-category="instrument">
+        <div class="card-top">
+          <div class="card-icon">⚖️</div>
+          <span class="card-code-badge">PKKK/300/UP/005, 006, 020</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Ketepatan 4 & 5 Perpuluhan · Borang UP/014</div>
+          <div class="card-title">Pengendalian Alat Timbang Analitikal Precisa & Sartorius</div>
+          <div class="card-desc">SOP pengendalian neraca analitikal mikro dan analitikal. Semakan aras gelembung (spirit level), tatacara tara (tare/rezero), penjagaan batu timbang piawai berkelas E2/F1, dan prosedur cetakan berat.</div>
+          <div class="card-tags">
+            <span class="card-tag t-mint">Precisa XT120A</span>
+            <span class="card-tag t-cyan">Sartorius MSE</span>
+            <span class="card-tag t-purple">Batu Timbang E2</span>
+            <span class="card-tag t-amber">4/5 Perpuluhan</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Manual Operasi</div>
+          <span class="card-arrow">Buka Manual Alat →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- CATEGORY 4: PENYEDIAAN & PENGEKSTRAKAN -->
+  <!-- ========================================== -->
+  <div class="category-group" id="group-prep">
+    <div class="category-header">
+      <div class="cat-icon-badge badge-mint">🧬</div>
+      <h2 class="category-title">Penyediaan Sampel, Pengekstrakan & Radas Makmal</h2>
+      <span class="category-count badge-mint">4 Modul</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- Solid Phase Extraction SPE -->
+      <a href="sop/sop-300-up-013.html" class="res-card theme-mint" data-category="prep">
+        <div class="card-top">
+          <div class="card-icon">🧪</div>
+          <span class="card-code-badge">PKKK/300/UP/013</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Pembersihan Matriks Kompleks · Vakum Manifold</div>
+          <div class="card-title">Penyediaan Sampel Menggunakan SPE</div>
+          <div class="card-desc">Tatacara pengekstrakan fasa pepejal (Solid-Phase Extraction) menggunakan kartrij JT Baker C18 (fasa bukan polar), Florisil (fasa polar), dan matriks kapsul lembut (Softgel). Kawalan kadar aliran elusi dan vakum manifold.</div>
+          <div class="card-tags">
+            <span class="card-tag t-mint">C18 SPE</span>
+            <span class="card-tag t-cyan">Florisil</span>
+            <span class="card-tag t-amber">Softgel</span>
+            <span class="card-tag t-purple">Vakum Manifold</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> SOP Pengekstrakan</div>
+          <span class="card-arrow">Buka SOP SPE →</span>
+        </div>
+      </a>
+
+      <!-- Liquid-Liquid Extraction LLE -->
+      <a href="sop/sop-300-up-014.html" class="res-card theme-cyan" data-category="prep">
+        <div class="card-top">
+          <div class="card-icon">🧴</div>
+          <span class="card-code-badge">PKKK/300/UP/014</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Pemisahan Pelarut Tak Boleh Campur · Corong Pemisah</div>
+          <div class="card-title">Penyediaan Sampel Pengekstrakan Cecair-Cecair (LLE)</div>
+          <div class="card-desc">Prosedur pengekstrakan cecair-cecair fasa akueus-organik pada pH 7.0 menggunakan Chloroform dan Ethyl Acetate. Panduan memecahkan emulsi, pengasingan lapisan organik, dan pengeringan ekstrak menggunakan Na₂SO₄ kontang.</div>
+          <div class="card-tags">
+            <span class="card-tag t-cyan">LLE pH 7.0</span>
+            <span class="card-tag t-mint">Corong Pemisah</span>
+            <span class="card-tag t-amber">Chloroform</span>
+            <span class="card-tag t-purple">Pembersihan Ekstrak</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> SOP Pengekstrakan</div>
+          <span class="card-arrow">Buka SOP LLE →</span>
+        </div>
+      </a>
+
+      <!-- Sample Prep across 7 Classes -->
+      <a href="https://syariefazman.com/sampleprep" class="res-card theme-purple" data-category="prep">
+        <div class="card-top">
+          <div class="card-icon">🧬</div>
+          <span class="card-code-badge">PKKK/300/UP/021–028</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">7 Kelas Ubat Tradisional · Protokol Matriks</div>
+          <div class="card-title">Sample Preparation Master Guide (7 Kelas)</div>
+          <div class="card-desc">Prosedur penyediaan sampel mengikut bentuk dos (tablet, kapsul, cecair, herba kisar) bagi Antikolesterol, Antidiabetik, Diuretik, PPI, Antihipertensi, EDD, dan Domperidone.</div>
+          <div class="card-tags">
+            <span class="card-tag t-purple">7 Kelas Ubat</span>
+            <span class="card-tag t-cyan">Sonikasi</span>
+            <span class="card-tag t-mint">Sentrifugasi</span>
+            <span class="card-tag t-amber">Penurasan 0.45µm</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Rujukan Luar</div>
+          <span class="card-arrow">Buka Panduan →</span>
+        </div>
+      </a>
+
+      <!-- Equipment: Ultrasonic, Vortex & Waterbath -->
+      <a href="sop/sop-300-up-019.html" class="res-card theme-amber" data-category="prep">
+        <div class="card-top">
+          <div class="card-icon">🔧</div>
+          <span class="card-code-badge">PKKK/300/UP/019, 036, 058</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Waterbath Memmert · Vortex Genie 2 · Branson 8210</div>
+          <div class="card-title">Pengendalian Radas Sokongan Makmal</div>
+          <div class="card-desc">SOP rasmi pengendalian radas bantuan penyediaan sampel: Waterbath Memmert WB 45, Alat Vortex Mixer Genie 2, dan Kukus Ultrasonik Branson 8210. Termasuk langkah keselamatan dan penyelenggaraan berkala.</div>
+          <div class="card-tags">
+            <span class="card-tag t-amber">Waterbath WB45</span>
+            <span class="card-tag t-cyan">Vortex Mixer</span>
+            <span class="card-tag t-purple">Ultrasonik</span>
+            <span class="card-tag t-mint">Penyelenggaraan</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> SOP Radas</div>
+          <span class="card-arrow">Buka SOP Radas →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- CATEGORY 5: PENGURUSAN, PORTFOLIO & SLAID -->
+  <!-- ========================================== -->
+  <div class="category-group" id="group-mgmt">
+    <div class="category-header">
+      <div class="cat-icon-badge badge-indigo">📋</div>
+      <h2 class="category-title">Pengurusan Kualiti, Pembentangan & myPortfolio</h2>
+      <span class="category-count badge-indigo">3 Modul</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- myPortfolio PPF 7 -->
+      <a href="portfolio.html" class="res-card theme-indigo" data-category="mgmt">
+        <div class="card-top">
+          <div class="card-icon">📋</div>
+          <span class="card-code-badge">PPF 7 · myPortfolio</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Deskripsi Tugas Rasmi · Carta Alir Kerja</div>
+          <div class="card-title">myPortfolio Unit Penyaringan (PPF 7)</div>
+          <div class="card-desc">Portfolio komprehensif merangkumi 4 aktiviti utama jawatan Penolong Pegawai Farmasi di Unit Penyaringan: Penerimaan sampel, pengujian makmal berjadual, penyelenggaraan alat, dan kawalan rekod kualiti ISO 17025.</div>
+          <div class="card-tags">
+            <span class="card-tag t-indigo">4 Aktiviti</span>
+            <span class="card-tag t-cyan">Carta Alir</span>
+            <span class="card-tag t-mint">Senarai Semak</span>
+            <span class="card-tag t-amber">Undang-Undang</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Live Portfolio</div>
+          <span class="card-arrow">Buka myPortfolio →</span>
+        </div>
+      </a>
+
+      <!-- Sasaran & Hala Tuju Slides -->
+      <a href="https://syariefazman.com/uptslide1" class="res-card theme-cyan" data-category="mgmt">
+        <div class="card-top">
+          <div class="card-icon">📊</div>
+          <span class="card-code-badge">16 Slaid Interaktif</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Pembentangan Rasmi · Unit Penyaringan</div>
+          <div class="card-title">Sasaran & Hala Tuju Unit Penyaringan 2026</div>
+          <div class="card-desc">Slaid pembentangan berasaskan web yang membentangkan statistik pencapaian beban kerja pengujian 2025, sasaran strategik KPI 2026, serta inisiatif transformasi digital makmal di Pusat Kawalan Kualiti (PKKK).</div>
+          <div class="card-tags">
+            <span class="card-tag t-cyan">Slaid Web</span>
+            <span class="card-tag t-mint">Statistik KPI</span>
+            <span class="card-tag t-amber">Hala Tuju 2026</span>
+            <span class="card-tag t-purple">Keyboard Nav</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Slaid Interaktif</div>
+          <span class="card-arrow">Buka Pembentangan →</span>
+        </div>
+      </a>
+
+      <!-- Quality Records Index -->
+      <a href="sop-matrix.html#records" class="res-card theme-purple" data-category="mgmt">
+        <div class="card-top">
+          <div class="card-icon">📝</div>
+          <span class="card-code-badge">61 Rekod Kualiti</span>
+        </div>
+        <div class="card-content">
+          <div class="card-eyebrow">Fail Rekod Kualiti F01–F08 · Borang Rasmi</div>
+          <div class="card-title">Indeks Rekod Kualiti & Borang Makmal (UP/001–064)</div>
+          <div class="card-desc">Pusat kawalan borang lembaran kerja (worksheets), logbook penyelenggaraan alat, borang semakan prestasi neraca (UP/014–016), dan format laporan analisis bagi pematuhan audit ISO/IEC 17025.</div>
+          <div class="card-tags">
+            <span class="card-tag t-purple">Borang UP/001-064</span>
+            <span class="card-tag t-cyan">Logbook Alat</span>
+            <span class="card-tag t-mint">Lembaran Kerja</span>
+            <span class="card-tag t-amber">Audit ISO 17025</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-status"><span class="dot"></span> Indeks Borang</div>
+          <span class="card-arrow">Buka Indeks Rekod →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TRAINING & COMPETENCIES (ISO 17025) -->
+  <!-- ========================================== -->
+  <div class="category-group" style="margin-top: 1rem;">
+    <div class="category-header">
+      <div class="cat-icon-badge badge-mint">🏆</div>
+      <h2 class="category-title">Matriks Latihan & Pengiktirafan Kompetensi (ISO/IEC 17025)</h2>
+      <span class="category-count badge-mint">7 Kompetensi</span>
+    </div>
+
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-icon">🔬</div>
+        <div class="comp-name">SPE & LLE</div>
+        <div class="comp-detail">Teori & Praktikal</div>
+        <div class="comp-badge" style="background:var(--mint-dim);border:1px solid rgba(5,150,105,0.3);color:var(--mint)">Diperakui ✓</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">📊</div>
+        <div class="comp-name">HPLC Screening</div>
+        <div class="comp-detail">Shimadzu Prominence-i</div>
+        <div class="comp-badge" style="background:var(--cyan-dim);border:1px solid rgba(2,132,199,0.3);color:var(--cyan)">Diperakui ✓</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🧬</div>
+        <div class="comp-name">GC-MS Analysis</div>
+        <div class="comp-detail">Agilent & Shimadzu</div>
+        <div class="comp-badge" style="background:var(--cyan-dim);border:1px solid rgba(2,132,199,0.3);color:var(--cyan)">Diperakui ✓</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">⚙️</div>
+        <div class="comp-name">LC-MS/MS Triple Quad</div>
+        <div class="comp-detail">Shimadzu 8045</div>
+        <div class="comp-badge" style="background:var(--cyan-dim);border:1px solid rgba(2,132,199,0.3);color:var(--cyan)">Diperakui ✓</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🔧</div>
+        <div class="comp-name">Mikropipet</div>
+        <div class="comp-detail">Kalibrasi & Verifikasi</div>
+        <div class="comp-badge" style="background:var(--mint-dim);border:1px solid rgba(5,150,105,0.3);color:var(--mint)">LULUS ✓</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">📝</div>
+        <div class="comp-name">Laporan Analisis</div>
+        <div class="comp-detail">Pelaporan Keputusan</div>
+        <div class="comp-badge" style="background:var(--amber-dim);border:1px solid rgba(217,119,6,0.3);color:var(--amber)">Diperakui ✓</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🏭</div>
+        <div class="comp-name">Shimadzu UHPLC</div>
+        <div class="comp-detail">Bengkel Pengendalian</div>
+        <div class="comp-badge" style="background:var(--purple-dim);border:1px solid rgba(124,58,237,0.3);color:var(--purple)">Terlatih ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia<br>
+    <span style="font-size:0.6rem;opacity:0.75">Sistem Arahan Kerja & Enjin Pengiraan Terakreditasi ISO/IEC 17025</span>
+  </div>
+
 </div>
 
 <script src="index.js"></script>
