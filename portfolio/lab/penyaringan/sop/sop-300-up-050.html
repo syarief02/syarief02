@@ -8,143 +8,278 @@
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
-  /* Enhanced SOP Interactive Styling */
+  /* ========================================================= */
+  /* HIGH-CONTRAST, ULTRA-READABLE SOP TYPOGRAPHY & LAYOUT     */
+  /* ========================================================= */
+  
+  :root {
+    --text-heading: #090d16;
+    --text-body: #1e293b;
+    --text-muted: #475569;
+    --card-surface: #ffffff;
+    --card-border-subtle: #cbd5e1;
+    --step-border: #94a3b8;
+  }
+
+  [data-theme="dark"] {
+    --text-heading: #f8fafc;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    --card-surface: rgba(15, 23, 42, 0.85);
+    --card-border-subtle: rgba(255, 255, 255, 0.12);
+    --step-border: rgba(255, 255, 255, 0.18);
+  }
+
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
     box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
+
+  /* Header Table */
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
-    background: var(--glass); border-radius: 12px; overflow: hidden;
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.88rem;
+    background: var(--card-surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border-subtle);
+    box-shadow: var(--shadow-sm);
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
+    border: 1px solid var(--card-border-subtle); padding: 0.85rem 1.1rem; vertical-align: middle; color: var(--text-body);
   }
-  .sop-sec-title {
-    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
-    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
+  .sop-header-table strong { color: var(--text-heading); font-weight: 700; }
+
+  /* ========================================================= */
+  /* SECTION CONTAINERS WITH HIGH-CONTRAST COLORED HEADERS    */
+  /* ========================================================= */
+  .sop-section-container {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 16px;
+    margin-bottom: 2.2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
-  .sop-p {
-    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
+  .sop-section-container:hover {
+    box-shadow: var(--shadow-md);
   }
-  .sop-step-box {
-    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
-    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
+
+  .sop-section-header {
+    padding: 0.9rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    font-weight: 800;
   }
-  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
-  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: #ffffff;
+  }
+  .sec-icon {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Distinct Section Color Themes */
+  .sec-theme-cyan .sop-section-header {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+  }
+  .sec-theme-purple .sop-section-header {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  }
+  .sec-theme-mint .sop-section-header {
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+  .sec-theme-amber .sop-section-header {
+    background: linear-gradient(135deg, #d97706, #b45309);
+  }
+  .sec-theme-indigo .sop-section-header {
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+  }
+
+  .sop-section-body {
+    padding: 1.6rem 1.8rem;
+  }
+
+  /* ========================================================= */
+  /* STEP CARDS (HIGH CONTRAST & INTERACTIVE)                  */
+  /* ========================================================= */
+  .sop-step-card {
+    background: var(--glass);
+    border: 1px solid var(--step-border);
+    border-left: 5px solid var(--cyan);
+    border-radius: 12px;
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .sop-step-card:hover {
+    border-color: var(--cyan);
+    border-left-color: var(--purple);
+    background: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .step-card-header {
+    padding: 0.85rem 1.2rem;
+    background: rgba(2, 132, 199, 0.08);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .step-check-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
   .sop-task-check {
-    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--cyan);
+    flex-shrink: 0;
   }
-  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
+  .sop-step-title {
+    cursor: pointer;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    font-family: var(--font-main);
+  }
+  .step-card-body {
+    padding: 1.1rem 1.3rem;
+  }
+
+  /* Typography */
+  .sop-p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 0.8rem;
+  }
   .sop-list-item {
-    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
-    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    margin-left: 0.8rem;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    margin-bottom: 0.5rem;
   }
-  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-bullet {
+    color: var(--cyan);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
   .sop-list-text { flex: 1; }
 
   /* Keyword Highlights */
-  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
-  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
-  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-flow { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wave { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wt { color: #059669; font-weight: 700; font-family: var(--font-mono); background: rgba(5, 150, 105, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-vol { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-time { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-limit { color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-ph { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
 
   /* Visual Workflow Timeline */
   .wf-track {
     display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 1.8rem;
-    background: var(--glass); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); overflow-x: auto;
+    background: var(--card-surface); padding: 1.2rem 1.4rem; border-radius: 16px; border: 1px solid var(--card-border-subtle); overflow-x: auto;
+    box-shadow: var(--shadow-sm);
   }
   .wf-step { display: flex; align-items: center; gap: 0.6rem; min-width: 140px; }
   .wf-node {
-    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    width: 34px; height: 34px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
     color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
-    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+    font-size: 0.9rem; font-weight: 800; flex-shrink: 0;
   }
-  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
-  .wf-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }
-  .wf-arrow { color: var(--text-dim); font-size: 1rem; opacity: 0.6; flex-shrink: 0; }
+  .wf-name { font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--text-heading); }
+  .wf-desc { font-size: 0.74rem; color: var(--text-muted); line-height: 1.3; }
+  .wf-arrow { color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
 
   /* Executive Summary & Chips */
   .summary-analytes {
-    margin: 1rem 0 1.4rem; padding: 0.9rem 1.2rem; background: var(--glass); border-radius: 12px;
-    border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 0.5rem;
+    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
+    border: 1px solid var(--card-border-subtle); display: flex; flex-direction: column; gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
   }
-  .sum-lbl { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
-  .chips-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .sum-lbl { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; }
+  .chips-container { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .analite-chip {
-    padding: 0.3rem 0.65rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
-    color: var(--purple); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 6px; font-weight: 600;
+    padding: 0.35rem 0.75rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
+    color: var(--purple); font-family: var(--font-mono); font-size: 0.78rem; border-radius: 8px; font-weight: 600;
   }
 
   /* Bench Notes Card */
   .bench-tips-card {
-    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px;
-    padding: 1.2rem; margin-bottom: 1.8rem;
+    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.35); border-radius: 14px;
+    padding: 1.3rem 1.5rem; margin-bottom: 1.8rem; box-shadow: var(--shadow-sm);
   }
-  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--amber); margin-bottom: 0.6rem; }
-  .tips-list { margin-left: 1.5rem; font-size: 0.88rem; line-height: 1.65; color: var(--text-main); }
+  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: #d97706; margin-bottom: 0.7rem; font-weight: 700; }
+  .tips-list { margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--text-body); }
 
   /* Progress Tracker */
   .progress-card {
     background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
-    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
-    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1.1rem 1.5rem;
+    margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    box-shadow: var(--shadow-sm);
   }
-  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
-  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
-  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-left { display: flex; flex-direction: column; gap: 0.35rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 280px; max-width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
-  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }
 
   /* TOC Pills */
-  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
   .toc-pill {
-    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
-    text-decoration: none; transition: all 0.2s ease;
+    padding: 0.45rem 0.9rem; background: var(--card-surface); border: 1px solid var(--card-border-subtle);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-body);
+    text-decoration: none; transition: all 0.2s ease; box-shadow: var(--shadow-sm); font-weight: 600;
   }
-  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
 
   /* Table Cards */
   .table-card {
-    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
-    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
+    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
   }
   .table-card-header {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
-    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
   }
-  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
-  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
   .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
+    border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
   }
-  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
   .seq-sst { background: var(--purple-dim); }
   .seq-iqc { background: var(--cyan-dim); }
-  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
     .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
-    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
+    .sop-section-header { background: #eee !important; color: #000 !important; }
+    .sop-section-header h2 { color: #000 !important; }
+    .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -185,8 +320,8 @@
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.2rem">PKKK/300/UP/050 <span class="g">Screening for Identification of</span></h1>
-    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
+    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/050 <span class="g">Screening for Identification of</span></h1>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
@@ -195,7 +330,7 @@
           <div class="wf-node">1</div>
           <div class="wf-info">
             <div class="wf-name">1. Persediaan</div>
-            <div class="wf-desc">Penerimaan sampel & semakan borang persampelan</div>
+            <div class="wf-desc">Penerimaan sampel & borang</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -203,7 +338,7 @@
           <div class="wf-node">2</div>
           <div class="wf-info">
             <div class="wf-name">2. Pelaksanaan</div>
-            <div class="wf-desc">Langkah kerja operasi mengikut prosedur terperinci</div>
+            <div class="wf-desc">Langkah kerja mengikut SOP</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -211,7 +346,7 @@
           <div class="wf-node">3</div>
           <div class="wf-info">
             <div class="wf-name">3. Verifikasi</div>
-            <div class="wf-desc">Pemeriksaan kualiti & pematuhan kriteria penerimaan</div>
+            <div class="wf-desc">Pemeriksaan kualiti & pematuhan</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -219,7 +354,7 @@
           <div class="wf-node">4</div>
           <div class="wf-info">
             <div class="wf-name">4. Dokumentasi</div>
-            <div class="wf-desc">Perekodan data dalam fail kualiti rasmi NPRA</div>
+            <div class="wf-desc">Perekodan fail kualiti rasmi</div>
           </div>
         </div>
         </div>
@@ -227,7 +362,7 @@
   <!-- Target Analytes / Quick Chips -->
   
         <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran:</span>
+          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
           <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
         </div>
         
@@ -260,10 +395,10 @@
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.2rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.72rem;color:var(--text-muted);font-weight:600">PUSAT KAWALAN KUALITI</span>
         </td>
-        <td colspan="2"><strong>ARAHAN KERJA: SCREENING FOR IDENTIFICATION OF</strong></td>
+        <td colspan="2"><strong style="font-size:0.95rem">ARAHAN KERJA: SCREENING FOR IDENTIFICATION OF</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/050</td>
@@ -278,343 +413,517 @@
     <!-- Quick Navigation TOC Pills -->
     <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">6.0 Procedure</a><a href="#sec-3" class="toc-pill">7.0 Quality Record</a><a href="#sec-4" class="toc-pill">8.0 Attachments</a></div>
 
-    <!-- Sections -->
+    <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-block" id="sec-1">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>1.0 PENGENALAN DOKUMEN</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">1  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">HISTORY OF REVISION</p><p class="sop-p">Issue</p><p class="sop-p">Revision</p><p class="sop-p">Written by</p><p class="sop-p">Reviewed by</p><p class="sop-p">Approved by</p><p class="sop-p">Effective date</p><p class="sop-p">1</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Dr Noraida Mohd</p><p class="sop-p">Zainoor</p><p class="sop-p">15 November</p><p class="sop-p">2016</p><p class="sop-p">2</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">10 February</p><p class="sop-p">2020</p><p class="sop-p">3</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">15 July 2020</p><p class="sop-p">3</p><p class="sop-p">1</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">15 Disember</p><p class="sop-p">2020</p><p class="sop-p">4</p><p class="sop-p">0</p><p class="sop-p">Gopinatha</p><p class="sop-p">Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">1 November</p><p class="sop-p">2022</p><p class="sop-p">5</p><p class="sop-p">0</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">1 April 2024</p><p class="sop-p">5</p><p class="sop-p">1</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">1 Julai 2024</p><p class="sop-p">5</p><p class="sop-p">2</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">2 Januari 2025</p><p class="sop-p">5</p><p class="sop-p">3</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">23 Jun 2025</p><p class="sop-p">5</p><p class="sop-p">4</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">13 Ogos 2025</p><p class="sop-p">6</p><p class="sop-p">0</p><p class="sop-p">Nurul Nadiah Noh</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Ida Syazrina</p><p class="sop-p">Ibrahim</p><p class="sop-p">10 April 2026</p><p class="sop-p">REFERENCE</p><p class="sop-p">Document No.</p><p class="sop-p">Title</p><p class="sop-p">Standard Operating Procedure for HPLC Agilent</p><p class="sop-p">PKKK/300/KOS/013</p><p class="sop-p">Standard Operating Procedure for HPLC Shimadzu Series LC-</p><p class="sop-p">20AT</p><p class="sop-p">Journal of Food and Drug Analysis, Vol.12,No.1,2004</p><p class="sop-p">AMENDMENT:</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to ISO</p><p class="sop-p">9001:2015 version and renaming of the institution from National Pharmaceutical Control</p><p class="sop-p">Bureau (NPCB) to National Pharmaceutical Regulatory Agency (NPRA). Therefore, the</p><p class="sop-p">original document is obsolete and this document is published as Issue 1.</p><p class="sop-p">HISTORY OF REVISION :</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">2  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update on document number from PKK/200/KOS/019 to PKK/200/HMS/007</p><p class="sop-p">ii.</p><p class="sop-p">Update on effective date from 15 November 2016 to 10 February 2020</p><p class="sop-p">iii.</p><p class="sop-p">Update on responsibility.</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Document change from testing procedure PKK/200/HMS/007 to work instruction</p><p class="sop-p">PKK/300/HMS/062</p><p class="sop-p">Issue 3 Revision 1 :</p><p class="sop-p">i.</p><p class="sop-p">Update on name of agency from National Pharmaceutical Regulatory Agency</p><p class="sop-p">(NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update title of document to Screening for Identification of Hydroquinone in Cosmetic</p><p class="sop-p">Products using HPLC technique</p><p class="sop-p">ii.</p><p class="sop-p">Update document number from PKK/300/HMS/062 to PKKK/300/HMS/062</p><p class="sop-p">iii.</p><p class="sop-p">Update paragraph 1.0 Objective</p><p class="sop-p">iv.</p><p class="sop-p">Update paragraph 2.0 Scope</p><p class="sop-p">v.</p><p class="sop-p">Update paragraph 3.0 Definition</p><p class="sop-p">vi.</p><p class="sop-p">Update paragraph 4.0 Flow Chart</p><p class="sop-p">vii.</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">viii.</p><p class="sop-p">Update paragraph 6.0 Procedure</p><p class="sop-p">ix.</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">x.</p><p class="sop-p">Update paragraph 8.0 Attachments</p><p class="sop-p">Issue 5 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update document number from PKKK/300/HMS/062 to PKKK/300/KOS/019</p><p class="sop-p">ii.</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">iii.</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 5 Revision 1 :</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.4.2</p><p class="sop-p">ii.</p><p class="sop-p">Update paragraph 6.5.2 (a)</p><p class="sop-p">Issue 5 Revision 2:</p><p class="sop-p">i.</p><p class="sop-p">Amend document number from PKKK/300/HMS/053 to PKKK/300/KOS/013 and add</p><p class="sop-p">information in reference</p><p class="sop-p">ii.</p><p class="sop-p">Amend paragraph 5.0 Responsibility</p><p class="sop-p">iii.</p><p class="sop-p">Amend paragraph 6.0 Procedure</p><p class="sop-p">iv.</p><p class="sop-p">Omit flow chart in title Summary</p><p class="sop-p">Issue 5 Revision 3:</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.3.2 and 6.3.3</p><p class="sop-p">Issue 5 Revision 4:</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.5</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">3  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">Issue 5 Revision 4:</p><p class="sop-p">i.</p><p class="sop-p">Update effective date from 13 August 2025 to 10 April 2026</p><p class="sop-p">ii. Amend document number from PKKK/300/KOS/013 to PKKK/300/UP/050</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-1" class="sop-step-label">
-                      <strong>1.0</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Objective</p><p class="sop-p"> The test is performed to identify the presence of Hydroquinone in cosmetic cream</p><p class="sop-p">products by using HPLC.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-2" class="sop-step-label">
-                      <strong>2.0</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Scope</p><p class="sop-p"> The screening method is used for identification of Hydroquinone in cosmetic</p><p class="sop-p">cream products received from customers such as Surveillance &amp; Complaint</p><p class="sop-p">Section, Pharmacy Enforcement and others.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-3" class="sop-step-label">
-                      <strong>3.0      Definition</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">IQC – Internal Quality Control</p><p class="sop-p">LOD – Limit of Detection</p><p class="sop-p">OOS – Out of Specification</p><p class="sop-p">Blank sample - Sample which has been tested before and does not contain</p><p class="sop-p">Hydroquinone</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-4" class="sop-step-label">
-                      <strong>4.0</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Flow Chart</p><p class="sop-p">None</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-5" class="sop-step-label">
-                      <strong>5.0</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Responsibility</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-6" class="sop-step-label">
-                      <strong>5.1</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Head of Section</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-7" class="sop-step-label">
-                      <strong>5.1.1 Check and approve investigational reports and test results that fail to</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">comply with specification.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-8" class="sop-step-label">
-                      <strong>5.2</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Pharmacist in charge</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-9" class="sop-step-label">
-                      <strong>5.2.1 Ensure the testing for identification of Hydroquinone conforms to the</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">procedure.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-10" class="sop-step-label">
-                      <strong>5.2.2 Check and approve test results that comply with specification.</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-11" class="sop-step-label">
-                      <strong>5.2.3 Check investigational report for sample that does not comply with the</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">specification.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-12" class="sop-step-label">
-                      <strong>5.3</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Pharmacist</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-13" class="sop-step-label">
-                      <strong>5.3.1</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Supervise testing conducted by the analysts.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-14" class="sop-step-label">
-                      <strong>5.3.2</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Check test results and key in testing results in QUEST system.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-15" class="sop-step-label">
-                      <strong>5.3.3 Conduct OOS investigation and prepare OOS report for sample that</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">does not comply with the specification.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-16" class="sop-step-label">
-                      <strong>5.4</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Analysts</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-17" class="sop-step-label">
-                      <strong>5.4.1</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Perform sample testing according to the approved procedure</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">4  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-18" class="sop-step-label">
-                      <strong>5.4.2</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Prepare test reports</p>
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-1" class="sop-step-title">
+                            1.0
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Objective</p><p class="sop-p"> The test is performed to identify the presence of Hydroquinone in cosmetic cream</p><p class="sop-p">products by using HPLC.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-2" class="sop-step-title">
+                            2.0
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Scope</p><p class="sop-p"> The screening method is used for identification of Hydroquinone in cosmetic</p><p class="sop-p">cream products received from customers such as Surveillance &amp; Complaint</p><p class="sop-p">Section, Pharmacy Enforcement and others.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-3" class="sop-step-title">
+                            3.0      Definition
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">IQC – Internal Quality Control</p><p class="sop-p">LOD – Limit of Detection</p><p class="sop-p">OOS – Out of Specification</p><p class="sop-p">Blank sample - Sample which has been tested before and does not contain</p><p class="sop-p">Hydroquinone</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-4" class="sop-step-title">
+                            4.0
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Flow Chart</p><p class="sop-p">None</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-5" class="sop-step-title">
+                            5.0
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Responsibility</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-6" class="sop-step-title">
+                            5.1
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Head of Section</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-7" class="sop-step-title">
+                            5.1.1 Check and approve investigational reports and test results that fail to
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">comply with specification.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-8" class="sop-step-title">
+                            5.2
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Pharmacist in charge</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-9" class="sop-step-title">
+                            5.2.1 Ensure the testing for identification of Hydroquinone conforms to the
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">procedure.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-10" class="sop-step-title">
+                            5.2.2 Check and approve test results that comply with specification.
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-11" class="sop-step-title">
+                            5.2.3 Check investigational report for sample that does not comply with the
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">specification.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-12" class="sop-step-title">
+                            5.3
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Pharmacist</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-13" class="sop-step-title">
+                            5.3.1
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Supervise testing conducted by the analysts.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-14" class="sop-step-title">
+                            5.3.2
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Check test results and key in testing results in QUEST system.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-15" class="sop-step-title">
+                            5.3.3 Conduct OOS investigation and prepare OOS report for sample that
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">does not comply with the specification.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-16" class="sop-step-title">
+                            5.4
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Analysts</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-17" class="sop-step-title">
+                            5.4.1
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Perform sample testing according to the approved procedure</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">4  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-18" class="sop-step-title">
+                            5.4.2
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Prepare test reports</p>
+                      </div>
+                    </div>
+                    
           </div>
         </div>
         
-        <div class="sop-section-block" id="sec-2">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 6.0 Procedure
+        <div class="sop-section-container sec-theme-amber" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 Procedure</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-19" class="sop-step-label">
-                      <strong>6.1 Equipment / Material</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p"> High Pressure Liquid Chromatograph with photo diode array detector</p><p class="sop-p"> Ultrasonic bath</p><p class="sop-p"> <span class="kw-vol">20 mL</span> Volumetric flasks</p><p class="sop-p"> <span class="kw-vol">50 mL</span> capped Erlenmeyer flasks</p><p class="sop-p"> Measuring cylinder</p><p class="sop-p"> Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p"> Methanol (HPLC grade)</p><p class="sop-p"> Potassium Dihydrogen Phosphate (KH2PO4)</p><p class="sop-p"> Water (Ultrapure water, 18 mega ohm)</p><p class="sop-p"> Orthophosphoric acid 85% (H3PO4)</p><p class="sop-p"> Diluent: 0.05 M Phosphate Buffer Solution <span class="kw-ph">pH 2.5</span></p><p class="sop-p"> Reference material: Hydroquinone Reference Standard</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-20" class="sop-step-label">
-                      <strong>6.2 Chromatographic Parameters</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">  Column</p><p class="sop-p">: C18 (Cosmosil 5 C18 AR-II), 250 mm x 4.6 mm i.d., 5 µm</p><p class="sop-p">  System                 :  Isocratic</p><p class="sop-p">  Mobile phase</p><p class="sop-p">:  0.05M Phosphate buffer solution <span class="kw-ph">pH 2.5</span>/ methanol with</p><p class="sop-p">99:1 (v/v)</p><p class="sop-p">  Temperature</p><p class="sop-p">:  30 oC</p><p class="sop-p">  Flow rate</p><p class="sop-p">:  <span class="kw-flow"><span class="kw-vol">0.9 mL</span>/min</span></p><p class="sop-p">  Detection</p><p class="sop-p">: UV, <span class="kw-wave">280 nm</span></p><p class="sop-p">  Injection volume</p><p class="sop-p">: 20 L</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-21" class="sop-step-label">
-                      <strong>6.3 Preparation of Mobile Phase &amp; Standard Solution</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-22" class="sop-step-label">
-                      <strong>6.31</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-23" class="sop-step-label">
-                      <strong>0.05 M Phosphate Buffer Solution pH 2.5 Preparation</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Weigh <span class="kw-wt">13.685 g</span> Potassium Dihydrogen Phosphate (KH2PO4) into a <span class="kw-vol">500 mL</span></p><p class="sop-p">beaker and dissolve it with <span class="kw-vol">300 mL</span> of water.  Transfer the solution into a <span class="kw-vol">2 L</span></p><p class="sop-p">beaker. Make up to volume with water. Adjust the pH to 2.5 with</p><p class="sop-p">Orthophosphoric acid.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-24" class="sop-step-label">
-                      <strong>6.3.2 Reference Standard Stock Solution Preparation</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Weigh approximately <span class="kw-wt">2.5 mg</span> of the Hydroquinone Reference Standard and</p><p class="sop-p">make up to volume <span class="kw-vol">50 mL</span> with diluent. (<span class="kw-wt">0.05 mg</span>/mL of Hydroquinone).</p><p class="sop-p">Sonicate until it dissolves in diluent before injecting it into the HPLC.</p><p class="sop-p">Note : The reference standard stock solution is stable for 2 months when kept</p><p class="sop-p">in temperature between 2-<span class="kw-temp">8 °C</span></p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">5  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-25" class="sop-step-label">
-                      <strong>6.3.3 Reference Standard Working Solution Preparation</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Pipette <span class="kw-vol">10 mL</span> of Hydroquinone stock solution, make up to volume <span class="kw-vol">20 mL</span> with</p><p class="sop-p">diluent. (<span class="kw-wt">0.025 mg</span>/mL of Hydroquinone). Filter the solution before injecting</p><p class="sop-p">into the HPLC.</p><p class="sop-p">Note : The reference standard working solution is stable for 2 months when</p><p class="sop-p">kept in temperature between 2-<span class="kw-temp">8 °C</span></p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-26" class="sop-step-label">
-                      <strong>6.4 Preparation of Limit of Detection (LOD) Solution &amp; Sample</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-27" class="sop-step-label">
-                      <strong>6.4.1 LOD Solution Preparation</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Pipette <span class="kw-vol">200 µL</span> of Hydroquinone stock solution to <span class="kw-wt">0.5 g</span> of blank sample and</p><p class="sop-p">make up to volume <span class="kw-vol">20 mL</span> with diluent. (<span class="kw-wt">0.0005 mg</span>/mL or 0.002 %w/w).</p><p class="sop-p">Sonicate for <span class="kw-time">30 minutes</span>.  Filter the solution before injecting into the HPLC.</p><p class="sop-p">Note: The weight of reference standard can be modified to minimize the usage of the</p><p class="sop-p">reference standard.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-28" class="sop-step-label">
-                      <strong>6.4.2 Sample Preparation</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Weigh approximately <span class="kw-wt">0.5 g</span> of the sample into a <span class="kw-vol">50 mL</span> capped Erlenmeyer</p><p class="sop-p">flask. Measure <span class="kw-vol">20 mL</span> of diluent using measuring cylinder and pour into</p><p class="sop-p">Erlenmeyer flask. Sonicate for <span class="kw-time">30 minutes</span>.  Filter the solution before injecting</p><p class="sop-p">into the HPLC.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-29" class="sop-step-label">
-                      <strong>6.5 Injection Sequence</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">No. of</p><p class="sop-p">Injection</p><p class="sop-p">Injection ID</p><p class="sop-p">Run time (min)</p><p class="sop-p">1</p><p class="sop-p">Blank / diluent</p><p class="sop-p">20</p><p class="sop-p">2</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">3</p><p class="sop-p">Reference standard</p><p class="sop-p">working solution</p><p class="sop-p">(Check for SST)</p><p class="sop-p">20</p><p class="sop-p">4</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">9</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">10</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">11</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">15</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">16</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">6  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-30" class="sop-step-label">
-                      <strong>6.6 Acceptance Criteria</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-31" class="sop-step-label">
-                      <strong>6.6.1 System Suitability Test (SST) using reference working solution (6.3.3)</strong>
-                    </label>
-                  </div>
-                </div>
-                
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-19" class="sop-step-title">
+                            6.1 Equipment / Material
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p"> High Pressure Liquid Chromatograph with photo diode array detector</p><p class="sop-p"> Ultrasonic bath</p><p class="sop-p"> <span class="kw-vol">20 mL</span> Volumetric flasks</p><p class="sop-p"> <span class="kw-vol">50 mL</span> capped Erlenmeyer flasks</p><p class="sop-p"> Measuring cylinder</p><p class="sop-p"> Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p"> Methanol (HPLC grade)</p><p class="sop-p"> Potassium Dihydrogen Phosphate (KH2PO4)</p><p class="sop-p"> Water (Ultrapure water, 18 mega ohm)</p><p class="sop-p"> Orthophosphoric acid 85% (H3PO4)</p><p class="sop-p"> Diluent: 0.05 M Phosphate Buffer Solution <span class="kw-ph">pH 2.5</span></p><p class="sop-p"> Reference material: Hydroquinone Reference Standard</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-20" class="sop-step-title">
+                            6.2 Chromatographic Parameters
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">  Column</p><p class="sop-p">: C18 (Cosmosil 5 C18 AR-II), 250 mm x 4.6 mm i.d., 5 µm</p><p class="sop-p">  System                 :  Isocratic</p><p class="sop-p">  Mobile phase</p><p class="sop-p">:  0.05M Phosphate buffer solution <span class="kw-ph">pH 2.5</span>/ methanol with</p><p class="sop-p">99:1 (v/v)</p><p class="sop-p">  Temperature</p><p class="sop-p">:  30 oC</p><p class="sop-p">  Flow rate</p><p class="sop-p">:  <span class="kw-flow"><span class="kw-vol">0.9 mL</span>/min</span></p><p class="sop-p">  Detection</p><p class="sop-p">: UV, <span class="kw-wave">280 nm</span></p><p class="sop-p">  Injection volume</p><p class="sop-p">: 20 L</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-21" class="sop-step-title">
+                            6.3 Preparation of Mobile Phase &amp; Standard Solution
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-22" class="sop-step-title">
+                            6.31
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-23" class="sop-step-title">
+                            0.05 M Phosphate Buffer Solution pH 2.5 Preparation
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Weigh <span class="kw-wt">13.685 g</span> Potassium Dihydrogen Phosphate (KH2PO4) into a <span class="kw-vol">500 mL</span></p><p class="sop-p">beaker and dissolve it with <span class="kw-vol">300 mL</span> of water.  Transfer the solution into a <span class="kw-vol">2 L</span></p><p class="sop-p">beaker. Make up to volume with water. Adjust the pH to 2.5 with</p><p class="sop-p">Orthophosphoric acid.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-24" class="sop-step-title">
+                            6.3.2 Reference Standard Stock Solution Preparation
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Weigh approximately <span class="kw-wt">2.5 mg</span> of the Hydroquinone Reference Standard and</p><p class="sop-p">make up to volume <span class="kw-vol">50 mL</span> with diluent. (<span class="kw-wt">0.05 mg</span>/mL of Hydroquinone).</p><p class="sop-p">Sonicate until it dissolves in diluent before injecting it into the HPLC.</p><p class="sop-p">Note : The reference standard stock solution is stable for 2 months when kept</p><p class="sop-p">in temperature between 2-<span class="kw-temp">8 °C</span></p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">5  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-25" class="sop-step-title">
+                            6.3.3 Reference Standard Working Solution Preparation
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Pipette <span class="kw-vol">10 mL</span> of Hydroquinone stock solution, make up to volume <span class="kw-vol">20 mL</span> with</p><p class="sop-p">diluent. (<span class="kw-wt">0.025 mg</span>/mL of Hydroquinone). Filter the solution before injecting</p><p class="sop-p">into the HPLC.</p><p class="sop-p">Note : The reference standard working solution is stable for 2 months when</p><p class="sop-p">kept in temperature between 2-<span class="kw-temp">8 °C</span></p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-26" class="sop-step-title">
+                            6.4 Preparation of Limit of Detection (LOD) Solution &amp; Sample
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-27" class="sop-step-title">
+                            6.4.1 LOD Solution Preparation
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Pipette <span class="kw-vol">200 µL</span> of Hydroquinone stock solution to <span class="kw-wt">0.5 g</span> of blank sample and</p><p class="sop-p">make up to volume <span class="kw-vol">20 mL</span> with diluent. (<span class="kw-wt">0.0005 mg</span>/mL or 0.002 %w/w).</p><p class="sop-p">Sonicate for <span class="kw-time">30 minutes</span>.  Filter the solution before injecting into the HPLC.</p><p class="sop-p">Note: The weight of reference standard can be modified to minimize the usage of the</p><p class="sop-p">reference standard.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-28" class="sop-step-title">
+                            6.4.2 Sample Preparation
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Weigh approximately <span class="kw-wt">0.5 g</span> of the sample into a <span class="kw-vol">50 mL</span> capped Erlenmeyer</p><p class="sop-p">flask. Measure <span class="kw-vol">20 mL</span> of diluent using measuring cylinder and pour into</p><p class="sop-p">Erlenmeyer flask. Sonicate for <span class="kw-time">30 minutes</span>.  Filter the solution before injecting</p><p class="sop-p">into the HPLC.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-29" class="sop-step-title">
+                            6.5 Injection Sequence
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">No. of</p><p class="sop-p">Injection</p><p class="sop-p">Injection ID</p><p class="sop-p">Run time (min)</p><p class="sop-p">1</p><p class="sop-p">Blank / diluent</p><p class="sop-p">20</p><p class="sop-p">2</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">3</p><p class="sop-p">Reference standard</p><p class="sop-p">working solution</p><p class="sop-p">(Check for SST)</p><p class="sop-p">20</p><p class="sop-p">4</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">9</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">10</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">11</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">15</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">16</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">6  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-30" class="sop-step-title">
+                            6.6 Acceptance Criteria
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-31" class="sop-step-title">
+                            6.6.1 System Suitability Test (SST) using reference working solution (6.3.3)
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">i) Tailing factor should be NMT 2.0</span>
                 </div>
                 <p class="sop-p">ii) Theoretical plates should be NLT 1500</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-32" class="sop-step-label">
-                      <strong>6.6.2 Internal Quality Control (IQC) Check</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">LOD solution (6.4.1) is injected in every 5 samples and at the end of analysis</p><p class="sop-p">according to its respective dosage form. Percentage difference of retention</p><p class="sop-p">time for LOD Solution is calculated by taking the retention time of before and</p><p class="sop-p">end of LOD Solution injected in every batch of 5 samples/end of analysis. The</p><p class="sop-p">percentage difference of retention time for LOD Solution should not be more</p><p class="sop-p">than 3 %.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-33" class="sop-step-label">
-                      <strong>6.7 Results Interpretation</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-34" class="sop-step-label">
-                      <strong>6.7.1 Compare the retention time, peak purity and spectrum obtained from the</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">sample chromatogram with that of Hydroquinone working standards</p><p class="sop-p">chromatogram.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-050-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
-                    <label for="step-050-35" class="sop-step-label">
-                      <strong>6.7.2 The sample is positive for Hydroquinone when:</strong>
-                    </label>
-                  </div>
-                </div>
-                
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-32" class="sop-step-title">
+                            6.6.2 Internal Quality Control (IQC) Check
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">LOD solution (6.4.1) is injected in every 5 samples and at the end of analysis</p><p class="sop-p">according to its respective dosage form. Percentage difference of retention</p><p class="sop-p">time for LOD Solution is calculated by taking the retention time of before and</p><p class="sop-p">end of LOD Solution injected in every batch of 5 samples/end of analysis. The</p><p class="sop-p">percentage difference of retention time for LOD Solution should not be more</p><p class="sop-p">than 3 %.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-33" class="sop-step-title">
+                            6.7 Results Interpretation
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-34" class="sop-step-title">
+                            6.7.1 Compare the retention time, peak purity and spectrum obtained from the
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">sample chromatogram with that of Hydroquinone working standards</p><p class="sop-p">chromatogram.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-050-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                          <label for="step-050-35" class="sop-step-title">
+                            6.7.2 The sample is positive for Hydroquinone when:
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">a) The retention time for sample is similar to Hydroquinone working standard</span>
@@ -635,14 +944,18 @@
                   <span class="sop-list-text">d) Peak purity index close to 1.0</span>
                 </div>
                 
+                      </div>
+                    </div>
+                    
           </div>
         </div>
         
-        <div class="sop-section-block" id="sec-3">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 7.0 Quality Record
+        <div class="sop-section-container sec-theme-cyan" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>7.0 Quality Record</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
@@ -652,11 +965,12 @@
           </div>
         </div>
         
-        <div class="sop-section-block" id="sec-4">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 8.0 Attachments
+        <div class="sop-section-container sec-theme-cyan" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>8.0 Attachments</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>

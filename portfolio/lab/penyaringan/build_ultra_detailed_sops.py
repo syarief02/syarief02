@@ -115,26 +115,26 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     # Workflow Steps
     if 'HPLC' in category or 'GC-MS' in category or 'LC-MS' in category or 'Kosmetik' in category:
         workflow_steps = [
-            ("1. Reagen & Piawai", "Penyediaan fasa bergerak, stok & siri kalibrasi"),
+            ("1. Reagen & Piawai", "Penyediaan fasa bergerak, stok & kalibrasi"),
             ("2. Pengekstrakan", "Timbang, sonikasi, sentrifug & turas 0.45µm"),
-            ("3. Persediaan Alat", "Purging saluran, autotune & penstabilan baseline"),
-            ("4. Suntikan Batch", "Turutan Blank, SST (n=6), Sampel & IQC Bracket"),
-            ("5. Verifikasi & Rekod", "Padanan RT, spektrum UV/MS & Laporan UP/005")
+            ("3. Persediaan Alat", "Purging saluran, autotune & baseline"),
+            ("4. Suntikan Batch", "Blank, SST (n=6), Sampel & IQC"),
+            ("5. Verifikasi & Rekod", "Padanan RT, spektrum UV/MS & Laporan")
         ]
     elif 'Alat Timbang' in category:
         workflow_steps = [
-            ("1. Pemeriksaan Fizikal", "Semak aras gelembung (spirit level) & kebersihan"),
-            ("2. Pemanasan (Warm-up)", "Buka suis & biarkan stabil 30 minit"),
-            ("3. Semakan Harian", "Timbang batu piawai harian (Borang UP/014)"),
-            ("4. Ujian Prestasi", "Ujian kepekaan ΔE (UP/015) & kebolehulangan s (UP/016)"),
-            ("5. Carta Kawalan", "Plot graf Shewhart IQC & tandatangan buku log")
+            ("1. Pemeriksaan", "Semak aras gelembung (spirit level)"),
+            ("2. Warm-up", "Buka suis & stabilkan 30 minit"),
+            ("3. Semakan Harian", "Timbang batu piawai harian (UP/014)"),
+            ("4. Ujian Prestasi", "Kepekaan ΔE (UP/015) & kebolehulangan s"),
+            ("5. Carta Kawalan", "Plot graf Shewhart IQC & logbook")
         ]
     else:
         workflow_steps = [
-            ("1. Persediaan", "Penerimaan sampel & semakan borang persampelan"),
-            ("2. Pelaksanaan", "Langkah kerja operasi mengikut prosedur terperinci"),
-            ("3. Verifikasi", "Pemeriksaan kualiti & pematuhan kriteria penerimaan"),
-            ("4. Dokumentasi", "Perekodan data dalam fail kualiti rasmi NPRA")
+            ("1. Persediaan", "Penerimaan sampel & borang"),
+            ("2. Pelaksanaan", "Langkah kerja mengikut SOP"),
+            ("3. Verifikasi", "Pemeriksaan kualiti & pematuhan"),
+            ("4. Dokumentasi", "Perekodan fail kualiti rasmi")
         ]
 
     wf_html = '<div class="wf-track">'
@@ -158,7 +158,7 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
         chips_str = ''.join([f'<span class="analite-chip">{html.escape(a)}</span>' for a in analytes[:8]])
         summary_chips_html = f'''
         <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran:</span>
+          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
           <div class="chips-container">{chips_str}</div>
         </div>
         '''
@@ -229,46 +229,86 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
         </div>
         '''
 
-    # Build sections HTML with step checkboxes
+    # Section theme classifier
+    def get_sec_theme(stitle):
+        st = stitle.lower()
+        if 'tujuan' in st or 'objektif' in st or 'skop' in st:
+            return 'sec-theme-cyan', '🎯'
+        if 'definisi' in st:
+            return 'sec-theme-purple', '📖'
+        if 'tanggungjawab' in st:
+            return 'sec-theme-mint', '👥'
+        if 'prosedur' in st or 'procedure' in st:
+            return 'sec-theme-amber', '🔬'
+        if 'rekod' in st:
+            return 'sec-theme-indigo', '📝'
+        return 'sec-theme-cyan', '◈'
+
+    # Build sections HTML with high-contrast card boxes
     sections_html = ''
     total_steps = 0
     
     for s_idx, s in enumerate(sections):
         sec_title = html.escape(s['title'])
         sec_id = f'sec-{s_idx + 1}'
-        body_p = ''
+        theme_class, sec_icon = get_sec_theme(sec_title)
         
-        for itm_idx, itm in enumerate(s['items']):
-            if re.match(r'^\d+\.\d+', itm):
-                total_steps += 1
-                step_id = f'step-{doc_num_str}-{total_steps}'
-                body_p += f'''
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="{step_id}" class="sop-task-check" onchange="onStepCheckChange('{code}')">
-                    <label for="{step_id}" class="sop-step-label">
-                      <strong>{html.escape(itm)}</strong>
-                    </label>
-                  </div>
-                </div>
-                '''
+        body_content = ''
+        current_step_body = []
+        current_step_header = None
+        
+        def flush_step():
+            nonlocal current_step_body, current_step_header, total_steps, body_content
+            if current_step_header or current_step_body:
+                if current_step_header:
+                    total_steps += 1
+                    step_id = f'step-{doc_num_str}-{total_steps}'
+                    inner_items = ''.join(current_step_body)
+                    body_content += f'''
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="{step_id}" class="sop-task-check" onchange="onStepCheckChange('{code}')">
+                          <label for="{step_id}" class="sop-step-title">
+                            {html.escape(current_step_header)}
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        {inner_items}
+                      </div>
+                    </div>
+                    '''
+                else:
+                    body_content += ''.join(current_step_body)
+                current_step_body = []
+                current_step_header = None
+
+        for itm in s['items']:
+            # Check if this is a sub-step heading (e.g. 6.1, 6.2, 6.3.1, etc.)
+            if re.match(r'^\d+\.\d+(\.\d+)?(\s+|$)', itm):
+                flush_step()
+                current_step_header = itm
             elif itm.startswith(('•', '-', '*')) or re.match(r'^[a-z]\)', itm) or re.match(r'^\d+\)', itm):
-                body_p += f'''
+                current_step_body.append(f'''
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">{highlight_keywords(itm)}</span>
                 </div>
-                '''
+                ''')
             else:
-                body_p += f'<p class="sop-p">{highlight_keywords(itm)}</p>'
+                current_step_body.append(f'<p class="sop-p">{highlight_keywords(itm)}</p>')
+        
+        flush_step()
 
         sections_html += f'''
-        <div class="sop-section-block" id="{sec_id}">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> {sec_title}
+        <div class="sop-section-container {theme_class}" id="{sec_id}">
+          <div class="sop-section-header">
+            <span class="sec-icon">{sec_icon}</span>
+            <h2>{sec_title}</h2>
           </div>
-          <div class="sop-sec-content">
-            {body_p}
+          <div class="sop-section-body">
+            {body_content}
           </div>
         </div>
         '''
@@ -276,10 +316,10 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     # Quick Nav Pills
     nav_pills_html = '<div class="toc-pills">'
     for s_idx, s in enumerate(sections):
-        s_name = s['title'][:32] + ('...' if len(s['title']) > 32 else '')
+        s_name = s['title'][:30] + ('...' if len(s['title']) > 30 else '')
         nav_pills_html += f'<a href="#sec-{s_idx + 1}" class="toc-pill">{html.escape(s_name)}</a>'
     if tables_data:
-        nav_pills_html += '<a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a>'
+        nav_pills_html += f'<a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a>'
     nav_pills_html += '</div>'
 
     html_content = f'''<!DOCTYPE html>
@@ -292,143 +332,278 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
-  /* Enhanced SOP Interactive Styling */
+  /* ========================================================= */
+  /* HIGH-CONTRAST, ULTRA-READABLE SOP TYPOGRAPHY & LAYOUT     */
+  /* ========================================================= */
+  
+  :root {{
+    --text-heading: #090d16;
+    --text-body: #1e293b;
+    --text-muted: #475569;
+    --card-surface: #ffffff;
+    --card-border-subtle: #cbd5e1;
+    --step-border: #94a3b8;
+  }}
+
+  [data-theme="dark"] {{
+    --text-heading: #f8fafc;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    --card-surface: rgba(15, 23, 42, 0.85);
+    --card-border-subtle: rgba(255, 255, 255, 0.12);
+    --step-border: rgba(255, 255, 255, 0.18);
+  }}
+
   .sop-doc-container {{
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
     box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }}
+
+  /* Header Table */
   .sop-header-table {{
-    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
-    background: var(--glass); border-radius: 12px; overflow: hidden;
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.88rem;
+    background: var(--card-surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border-subtle);
+    box-shadow: var(--shadow-sm);
   }}
   .sop-header-table td {{
-    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
+    border: 1px solid var(--card-border-subtle); padding: 0.85rem 1.1rem; vertical-align: middle; color: var(--text-body);
   }}
-  .sop-sec-title {{
-    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
-    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
+  .sop-header-table strong {{ color: var(--text-heading); font-weight: 700; }}
+
+  /* ========================================================= */
+  /* SECTION CONTAINERS WITH HIGH-CONTRAST COLORED HEADERS    */
+  /* ========================================================= */
+  .sop-section-container {{
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 16px;
+    margin-bottom: 2.2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }}
-  .sec-anchor-dot {{ color: var(--cyan); font-size: 0.9rem; }}
-  .sop-p {{
-    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
+  .sop-section-container:hover {{
+    box-shadow: var(--shadow-md);
   }}
-  .sop-step-box {{
-    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
-    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
+
+  .sop-section-header {{
+    padding: 0.9rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    font-weight: 800;
   }}
-  .sop-step-box:hover {{ background: var(--card-hover); border-left-color: var(--purple); }}
-  .step-check-wrap {{ display: flex; align-items: flex-start; gap: 0.8rem; }}
+  .sop-section-header h2 {{
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: #ffffff;
+  }}
+  .sec-icon {{
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }}
+
+  /* Distinct Section Color Themes */
+  .sec-theme-cyan .sop-section-header {{
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+  }}
+  .sec-theme-purple .sop-section-header {{
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  }}
+  .sec-theme-mint .sop-section-header {{
+    background: linear-gradient(135deg, #059669, #047857);
+  }}
+  .sec-theme-amber .sop-section-header {{
+    background: linear-gradient(135deg, #d97706, #b45309);
+  }}
+  .sec-theme-indigo .sop-section-header {{
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+  }}
+
+  .sop-section-body {{
+    padding: 1.6rem 1.8rem;
+  }}
+
+  /* ========================================================= */
+  /* STEP CARDS (HIGH CONTRAST & INTERACTIVE)                  */
+  /* ========================================================= */
+  .sop-step-card {{
+    background: var(--glass);
+    border: 1px solid var(--step-border);
+    border-left: 5px solid var(--cyan);
+    border-radius: 12px;
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }}
+  .sop-step-card:hover {{
+    border-color: var(--cyan);
+    border-left-color: var(--purple);
+    background: var(--card-hover);
+    transform: translateY(-2px);
+  }}
+  .step-card-header {{
+    padding: 0.85rem 1.2rem;
+    background: rgba(2, 132, 199, 0.08);
+    border-bottom: 1px solid var(--glass-border);
+  }}
+  .step-check-wrap {{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }}
   .sop-task-check {{
-    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--cyan);
+    flex-shrink: 0;
   }}
-  .sop-step-label {{ cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }}
+  .sop-step-title {{
+    cursor: pointer;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    font-family: var(--font-main);
+  }}
+  .step-card-body {{
+    padding: 1.1rem 1.3rem;
+  }}
+
+  /* Typography */
+  .sop-p {{
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 0.8rem;
+  }}
   .sop-list-item {{
-    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
-    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    margin-left: 0.8rem;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    margin-bottom: 0.5rem;
   }}
-  .sop-bullet {{ color: var(--cyan); font-weight: bold; flex-shrink: 0; }}
+  .sop-bullet {{
+    color: var(--cyan);
+    font-weight: bold;
+    flex-shrink: 0;
+  }}
   .sop-list-text {{ flex: 1; }}
 
   /* Keyword Highlights */
-  .kw-temp {{ color: var(--amber); font-weight: 700; font-family: var(--font-mono); }}
-  .kw-flow {{ color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }}
-  .kw-wave {{ color: var(--purple); font-weight: 700; font-family: var(--font-mono); }}
-  .kw-wt {{ color: var(--mint); font-weight: 700; font-family: var(--font-mono); }}
-  .kw-vol {{ color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }}
-  .kw-time {{ color: var(--amber); font-weight: 700; font-family: var(--font-mono); }}
-  .kw-limit {{ color: var(--red); font-weight: 700; font-family: var(--font-mono); }}
-  .kw-ph {{ color: var(--purple); font-weight: 700; font-family: var(--font-mono); }}
+  .kw-temp {{ color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
+  .kw-flow {{ color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
+  .kw-wave {{ color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
+  .kw-wt {{ color: #059669; font-weight: 700; font-family: var(--font-mono); background: rgba(5, 150, 105, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
+  .kw-vol {{ color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
+  .kw-time {{ color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
+  .kw-limit {{ color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
+  .kw-ph {{ color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
 
   /* Visual Workflow Timeline */
   .wf-track {{
     display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 1.8rem;
-    background: var(--glass); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); overflow-x: auto;
+    background: var(--card-surface); padding: 1.2rem 1.4rem; border-radius: 16px; border: 1px solid var(--card-border-subtle); overflow-x: auto;
+    box-shadow: var(--shadow-sm);
   }}
   .wf-step {{ display: flex; align-items: center; gap: 0.6rem; min-width: 140px; }}
   .wf-node {{
-    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    width: 34px; height: 34px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
     color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
-    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+    font-size: 0.9rem; font-weight: 800; flex-shrink: 0;
   }}
-  .wf-name {{ font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }}
-  .wf-desc {{ font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }}
-  .wf-arrow {{ color: var(--text-dim); font-size: 1rem; opacity: 0.6; flex-shrink: 0; }}
+  .wf-name {{ font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--text-heading); }}
+  .wf-desc {{ font-size: 0.74rem; color: var(--text-muted); line-height: 1.3; }}
+  .wf-arrow {{ color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }}
 
   /* Executive Summary & Chips */
   .summary-analytes {{
-    margin: 1rem 0 1.4rem; padding: 0.9rem 1.2rem; background: var(--glass); border-radius: 12px;
-    border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 0.5rem;
+    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
+    border: 1px solid var(--card-border-subtle); display: flex; flex-direction: column; gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
   }}
-  .sum-lbl {{ font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }}
-  .chips-container {{ display: flex; flex-wrap: wrap; gap: 0.4rem; }}
+  .sum-lbl {{ font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; }}
+  .chips-container {{ display: flex; flex-wrap: wrap; gap: 0.45rem; }}
   .analite-chip {{
-    padding: 0.3rem 0.65rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
-    color: var(--purple); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 6px; font-weight: 600;
+    padding: 0.35rem 0.75rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
+    color: var(--purple); font-family: var(--font-mono); font-size: 0.78rem; border-radius: 8px; font-weight: 600;
   }}
 
   /* Bench Notes Card */
   .bench-tips-card {{
-    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px;
-    padding: 1.2rem; margin-bottom: 1.8rem;
+    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.35); border-radius: 14px;
+    padding: 1.3rem 1.5rem; margin-bottom: 1.8rem; box-shadow: var(--shadow-sm);
   }}
-  .tips-header {{ display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--amber); margin-bottom: 0.6rem; }}
-  .tips-list {{ margin-left: 1.5rem; font-size: 0.88rem; line-height: 1.65; color: var(--text-main); }}
+  .tips-header {{ display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: #d97706; margin-bottom: 0.7rem; font-weight: 700; }}
+  .tips-list {{ margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--text-body); }}
 
   /* Progress Tracker */
   .progress-card {{
     background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
-    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
-    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1.1rem 1.5rem;
+    margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    box-shadow: var(--shadow-sm);
   }}
-  .progress-left {{ display: flex; flex-direction: column; gap: 0.3rem; }}
-  .progress-title {{ font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }}
-  .progress-bar-bg {{ width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }}
+  .progress-left {{ display: flex; flex-direction: column; gap: 0.35rem; }}
+  .progress-title {{ font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }}
+  .progress-bar-bg {{ width: 280px; max-width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }}
   .progress-bar-fill {{ height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }}
-  .progress-stat {{ font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }}
+  .progress-stat {{ font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }}
 
   /* TOC Pills */
-  .toc-pills {{ display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }}
+  .toc-pills {{ display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }}
   .toc-pill {{
-    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
-    text-decoration: none; transition: all 0.2s ease;
+    padding: 0.45rem 0.9rem; background: var(--card-surface); border: 1px solid var(--card-border-subtle);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-body);
+    text-decoration: none; transition: all 0.2s ease; box-shadow: var(--shadow-sm); font-weight: 600;
   }}
-  .toc-pill:hover {{ border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }}
+  .toc-pill:hover {{ border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }}
   .toc-pill.highlight {{ background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }}
 
   /* Table Cards */
   .table-card {{
-    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
-    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
+    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
   }}
   .table-card-header {{
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
-    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
   }}
-  .table-tag {{ font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }}
-  .table-doc-code {{ font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }}
+  .table-tag {{ font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }}
+  .table-doc-code {{ font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }}
   .table-responsive {{ overflow-x: auto; }}
   .table-official {{
-    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
   }}
   .table-official th, .table-official td {{
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
+    border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
   }}
-  .table-official th {{ background: var(--card-bg); color: var(--text-dim); font-weight: 700; }}
+  .table-official th {{ background: var(--glass); color: var(--text-heading); font-weight: 700; }}
   .seq-sst {{ background: var(--purple-dim); }}
   .seq-iqc {{ background: var(--cyan-dim); }}
-  .seq-blank {{ background: rgba(0,0,0,0.03); color: var(--text-dim); }}
+  .seq-blank {{ background: rgba(0,0,0,0.03); color: var(--text-muted); }}
 
   @media print {{
     .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track {{ display: none !important; }}
     .main {{ max-width: 100% !important; padding: 0 !important; }}
     .sop-doc-container {{ box-shadow: none !important; border: none !important; padding: 0 !important; }}
     body {{ background: #fff !important; color: #000 !important; }}
-    .sop-step-box {{ border-left: 2px solid #000 !important; background: none !important; }}
+    .sop-section-header {{ background: #eee !important; color: #000 !important; }}
+    .sop-section-header h2 {{ color: #000 !important; }}
+    .sop-step-card {{ border-left: 2px solid #000 !important; background: none !important; }}
   }}
 </style>
 </head>
@@ -469,8 +644,8 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.2rem">{code} <span class="g">{title}</span></h1>
-    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: {category}</div>
+    <h1 style="font-size:2.3rem;font-weight:900">{code} <span class="g">{title}</span></h1>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: {category}</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
@@ -497,10 +672,10 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.2rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.72rem;color:var(--text-muted);font-weight:600">PUSAT KAWALAN KUALITI</span>
         </td>
-        <td colspan="2"><strong>ARAHAN KERJA: {html.escape(title.upper())}</strong></td>
+        <td colspan="2"><strong style="font-size:0.95rem">ARAHAN KERJA: {html.escape(title.upper())}</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> {code}</td>
@@ -515,11 +690,11 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     <!-- Quick Navigation TOC Pills -->
     {nav_pills_html}
 
-    <!-- Sections -->
+    <!-- Sections (High-Contrast Colored Blocks) -->
     {sections_html}
 
     <!-- Tables -->
-    {f'<div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>{tables_html}' if tables_html else ''}
+    {f'<div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">{tables_html}</div></div>' if tables_html else ''}
 
   </div>
 
@@ -639,4 +814,4 @@ for f in file_list:
         'url': f'sop/{slug}.html'
     })
 
-print(f'Successfully built {len(all_sops)} ultra-understandable SOP guide pages!')
+print(f'Successfully built {len(all_sops)} high-contrast, ultra-differentiated SOP guide pages!')
