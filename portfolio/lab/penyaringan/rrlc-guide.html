@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/003 — RRLC HP 1200 | NPRA</title>
-<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/003: Pengendalian Alat Rapid Resolution Liquid Chromatography HP1200 Agilent ChemStation.">
+<title>PKKK/300/UP/003 — Panduan Pengendalian RRLC Agilent 1200 Series | NPRA</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/003: Panduan Lengkap Pengendalian, Penyelenggaraan dan Penyediaan Kaedah Rapid Resolution Liquid Chromatography (RRLC HP1200 Agilent ChemStation).">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
     color: var(--purple); font-family: var(--font-mono); font-weight: 800; font-size: 1.1rem; margin-right: 0.4rem;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 2rem 0 0.9rem;
     padding-bottom: 0.4rem; border-bottom: 2px solid var(--purple-dim); display: flex; align-items: center;
   }
   .sop-p {
@@ -36,10 +36,10 @@
     margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.65; color: var(--text-main); margin-bottom: 0.6rem;
   }
   .sop-step-box {
-    background: var(--glass); border-left: 3px solid var(--purple); padding: 0.8rem 1.2rem;
-    border-radius: 0 10px 10px 0; margin: 0.8rem 0; font-size: 0.9rem;
+    background: var(--glass); border-left: 3px solid var(--purple); padding: 1.1rem 1.4rem;
+    border-radius: 0 14px 14px 0; margin: 1.2rem 0; font-size: 0.92rem; box-shadow: var(--shadow-sm);
   }
-  .sop-step-box strong { color: var(--text-bright); }
+  .sop-step-box strong { color: var(--text-bright); font-size: 1rem; }
   .table-official {
     width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; font-family: var(--font-mono);
   }
@@ -47,6 +47,52 @@
     border: 1px solid var(--glass-border); padding: 0.6rem 0.8rem; text-align: left;
   }
   .table-official th { background: var(--glass); color: var(--text-dim); }
+
+  /* Specs Ribbon */
+  .specs-ribbon-card {
+    background: var(--glass); border: 1.5px solid var(--purple); border-radius: 16px;
+    padding: 1.3rem 1.5rem; margin: 1.5rem 0 1.8rem; backdrop-filter: blur(12px); box-shadow: var(--shadow-sm);
+  }
+  .specs-card-header {
+    display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 800;
+    color: var(--text-bright); margin-bottom: 1rem;
+  }
+  .specs-ribbon-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.85rem;
+  }
+  .spec-chip {
+    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+    padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.25rem;
+  }
+  .spec-lbl {
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    color: var(--purple); letter-spacing: 0.05em;
+  }
+  .spec-val { font-size: 0.85rem; color: var(--text-bright); line-height: 1.4; }
+
+  /* Pro Tip Alert */
+  .pro-tip {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(2, 132, 199, 0.08));
+    border: 1px solid var(--purple); border-radius: 12px; padding: 1rem 1.3rem; margin: 1rem 0;
+    font-size: 0.88rem; line-height: 1.6;
+  }
+  .pro-tip-title { font-weight: 800; color: var(--purple); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem; }
+
+  .wf-track {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px;
+    padding: 1.1rem 1.4rem; margin: 1.5rem 0 1.8rem; overflow-x: auto;
+  }
+  .wf-step { display: flex; align-items: center; gap: 0.8rem; flex: 1; min-width: 170px; }
+  .wf-node {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--purple-dim); border: 2px solid var(--purple);
+    color: var(--purple); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
+    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+  }
+  .wf-info { display: flex; flex-direction: column; }
+  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
+  .wf-desc { font-size: 0.72rem; color: var(--text-dim); }
+  .wf-arrow { color: var(--purple); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -67,11 +113,12 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         Master SOP Matrix
       </a>
+      <a href="screening-methods.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        All Methods Hub
+      </a>
       <a href="hplc-guide.html" class="ctrl-btn highlight">
         Shimadzu HPLC (UP/011) →
-      </a>
-      <a href="gcms-egdeg-guide.html" class="ctrl-btn highlight">
-        GC-MS DEG/EG (UP/034) →
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
@@ -82,6 +129,163 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <span id="themeTxt">Dark Mode</span>
       </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk &amp; Kosmetik · Unit Penyaringan</div>
+    <h1>RRLC Agilent <span class="g">1200 Series</span> Guide</h1>
+    <div class="hero-sub">Arahan Kerja Rasmi PKKK/300/UP/003 · Model HP1200 (ChemStation B.04)</div>
+    <p class="hero-desc">
+      Panduan standard operasi bagi pengendalian instrumen Rapid Resolution Liquid Chromatography (RRLC) Agilent 1200 Series. Merangkumi kawalan injap purge manual, persediaan kaedah ChemStation, penentukuran DAD 190–400 nm, susunan urutan batch (Sequence), dan tatacara pencucian kolum.
+    </p>
+  </div>
+
+  <!-- Visual Workflow Track -->
+  <div class="wf-track">
+    <div class="wf-step">
+      <div class="wf-node">1</div>
+      <div class="wf-info"><div class="wf-name">Power &amp; ChemStation</div><div class="wf-desc">Passcode: 3000hanover</div></div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">2</div>
+      <div class="wf-info"><div class="wf-name">Manual Purge Valve</div><div class="wf-desc">Buka injap · Purge 5.0 mL/min</div></div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">3</div>
+      <div class="wf-info"><div class="wf-name">Column Equilibration</div><div class="wf-desc">Tutup injap · Stabilkan DAD</div></div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">4</div>
+      <div class="wf-info"><div class="wf-name">Sequence &amp; Run</div><div class="wf-desc">Blank, SST (n=6), Sampel &amp; IQC</div></div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">5</div>
+      <div class="wf-info"><div class="wf-name">Column Wash &amp; Sleep</div><div class="wf-desc">5% MeOH (1 hr) → 100% Org (30 min)</div></div>
+    </div>
+  </div>
+
+  <!-- Technical Specs Ribbon -->
+  <div class="specs-ribbon-card">
+    <div class="specs-card-header">
+      <span class="specs-icon">⚡</span>
+      <strong>Spesifikasi Teknikal &amp; Parameter Pengendalian Alat (Agilent 1200 Series RRLC):</strong>
+    </div>
+    <div class="specs-ribbon-grid">
+      <div class="spec-chip"><span class="spec-lbl">Instrumen Utama</span><strong class="spec-val">Agilent 1200 Series RRLC (Binary Pump G1312B / DAD SL G1315C)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Perisian Kawalan</span><strong class="spec-val">Agilent ChemStation B.04 / OpenLab CDS</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Passcode Agilent</span><strong class="spec-val">3000hanover (Akses Tetapan Pentadbir)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Injap Purge Pam</span><strong class="spec-val">Injap Manual Berpusing (Putar lawan jam buka, arah jam tutup)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Kadar Alir Purge Pam</span><strong class="spec-val">5.0 mL/min (3.0 min per saluran aktif A &amp; B)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Ketuhar Kolum (TCC)</span><strong class="spec-val">Thermostatted Column Compartment (20 °C – 80 °C)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Pengesan DAD</span><strong class="spec-val">Spectrum Store: All · Range: 190 to 400 nm · Step: 2.0 nm</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Had Tekanan Pam (Pmax)</span><strong class="spec-val">Pmax = 600 bar (Sistem RRLC Tekanan Tinggi)</strong></div>
+    </div>
+  </div>
+
+  <!-- Active Testing Methods Cross-Reference Grid -->
+  <div class="cross-link-container">
+    <div class="cross-header">
+      <span style="font-size:1.2rem">🧪</span>
+      <strong>Kaedah-Kaedah Pengujian Aktif Yang Menggunakan Instrumen Agilent 1200 Series RRLC:</strong>
+    </div>
+    <div class="cross-grid">
+      <a href="steroid-hplc.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/021 · RRLC HP1200</div>
+        <div class="inst-name">Identifikasi Steroid 8-Mix (LLE pH 7.0)</div>
+        <span class="inst-badge">Buka Panduan Steroid →</span>
+      </a>
+      <a href="ppi-hplc.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/025 · RRLC HP1200</div>
+        <div class="inst-name">Identifikasi Proton Pump Inhibitor (PPI)</div>
+        <span class="inst-badge">Buka Panduan PPI →</span>
+      </a>
+      <a href="domperidone-hplc.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/027 · RRLC HP1200</div>
+        <div class="inst-name">Identifikasi Domperidone dalam Produk Tradisional</div>
+        <span class="inst-badge">Buka Panduan Domperidone →</span>
+      </a>
+      <a href="lovastatin.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/031 / 200/UP/002</div>
+        <div class="inst-name">Penentuan Lovastatin HPLC (Agilent 1 UP/044)</div>
+        <span class="inst-badge">Buka Tool Lovastatin →</span>
+      </a>
+      <a href="hydroquinone-hplc.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/050 / 200/UP/001</div>
+        <div class="inst-name">Screening Hydroquinone dalam Kosmetik Krim</div>
+        <span class="inst-badge">Buka Panduan Hydroquinone →</span>
+      </a>
+      <a href="sop/sop-300-up-022.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/022 · Antidiabetik</div>
+        <div class="inst-name">Identifikasi Anti Diabetik dalam Produk Tradisional</div>
+        <span class="inst-badge">Buka SOP 022 →</span>
+      </a>
+      <a href="sop/sop-300-up-024.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/024 · Diuretik</div>
+        <div class="inst-name">Identifikasi Diuretik dalam Produk Tradisional</div>
+        <span class="inst-badge">Buka SOP 024 →</span>
+      </a>
+      <a href="sop/sop-300-up-026.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/026 · Anti-hipertensi</div>
+        <div class="inst-name">Identifikasi Anti-hipertensi dalam Produk Tradisional</div>
+        <span class="inst-badge">Buka SOP 026 →</span>
+      </a>
+      <a href="sop/sop-300-up-028.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/028 · Antikolesterol</div>
+        <div class="inst-name">Identifikasi Antikolesterol dalam Produk Tradisional</div>
+        <span class="inst-badge">Buka SOP 028 →</span>
+      </a>
+      <a href="sop/sop-300-up-056.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/056 · ACM 007</div>
+        <div class="inst-name">Identification of Steroids in Cosmetics (ASEAN ACM)</div>
+        <span class="inst-badge">Buka SOP 056 →</span>
+      </a>
+      <a href="sop/sop-300-up-060.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/060 · Kosmetik</div>
+        <div class="inst-name">Screening of NSAIDs in Cosmetics (Diclofenac, Ibuprofen)</div>
+        <span class="inst-badge">Buka SOP 060 →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Supporting Equipment Cross-References -->
+  <div class="cross-link-container" style="border-left-color:var(--mint);background:rgba(5,150,105,0.06)">
+    <div class="cross-header">
+      <span style="font-size:1.2rem">⚖️</span>
+      <strong>Radas &amp; Prosedur Sokongan Yang Berkaitan:</strong>
+    </div>
+    <div class="cross-grid">
+      <a href="sop/sop-300-up-005.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/005 · Neraca Analitikal</div>
+        <div class="inst-name">Alat Timbang Precisa XT 120A</div>
+        <span class="inst-badge">Buka SOP Alat Timbang →</span>
+      </a>
+      <a href="sop/sop-300-up-008.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/008 · Pelarasan Buffer</div>
+        <div class="inst-name">pH Meter Model FiveEasy Plus</div>
+        <span class="inst-badge">Buka SOP pH Meter →</span>
+      </a>
+      <a href="sop/sop-300-up-058.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/058 · Sonikasi &amp; Degas</div>
+        <div class="inst-name">Ultrasonic Bath Branson 8210 (15–20 min)</div>
+        <span class="inst-badge">Buka SOP Sonikator →</span>
+      </a>
+      <a href="sop/sop-300-up-014.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/014 · Ekstraksi Sampel</div>
+        <div class="inst-name">Pengekstrakan Cecair-Cecair (LLE pH 7.0)</div>
+        <span class="inst-badge">Buka SOP Pengekstrakan →</span>
+      </a>
+      <a href="qc-balance.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/064 · Kawalan Mutu</div>
+        <div class="inst-name">Control Charting &amp; Shewhart IQC Suite</div>
+        <span class="inst-badge">Buka QC Suite →</span>
+      </a>
     </div>
   </div>
 
@@ -97,7 +301,7 @@
         <td colspan="2"><strong>ARAHAN KERJA: PENGENDALIAN ALAT RAPID RESOLUTION LIQUID CHROMATOGRAPHY HP1200</strong></td>
       </tr>
       <tr>
-        <td><strong>No. Dokumen:</strong> PKKK/300/UP/003</td>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/003 (dan HPLC Agilent 1: UP/044)</td>
         <td><strong>Terbitan / Semakan:</strong> 3 / 0</td>
       </tr>
       <tr>
@@ -106,150 +310,118 @@
       </tr>
     </table>
 
-    <!-- 1.0 TUJUAN -->
-    <div class="sop-sec-title"><span class="sop-sec-num">1.0</span> TUJUAN</div>
-    <p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian alat Rapid Resolution Liquid Chromatography HP1200 semasa pengujian sampel dijalankan dengan cekap dan selamat.</p>
+    <!-- 1.0 TUJUAN & SKOP -->
+    <div class="sop-sec-title"><span class="sop-sec-num">1.0</span> TUJUAN &amp; SKOP</div>
+    <p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian alat Rapid Resolution Liquid Chromatography (RRLC) HP1200 semasa pengujian sampel dijalankan dengan cekap, tepat dan selamat mengikut standard akreditasi ISO/IEC 17025.</p>
+    <p class="sop-p">Digunapakai semasa mengendalikan alat RRLC HP1200 bagi pengujian produk tradisional, suplemen kesihatan dan kosmetik di Unit Penyaringan.</p>
 
-    <!-- 2.0 SKOP -->
-    <div class="sop-sec-title"><span class="sop-sec-num">2.0</span> SKOP</div>
-    <p class="sop-p">Prosedur ini hendaklah digunakapakai semasa mengendalikan alat RRLC HP1200 bagi pengujian produk tradisional, suplemen kesihatan dan kosmetik.</p>
-
-    <!-- 3.0 DEFINISI -->
-    <div class="sop-sec-title"><span class="sop-sec-num">3.0</span> DEFINISI</div>
+    <!-- 2.0 DEFINISI -->
+    <div class="sop-sec-title"><span class="sop-sec-num">2.0</span> DEFINISI</div>
     <p class="sop-p"><strong>RRLC</strong>: Rapid Resolution Liquid Chromatography (Kromatografi Cecair Resolusi Pantas).</p>
+    <p class="sop-p"><strong>DAD</strong>: Diode Array Detector (Pengesan Diod Array Agilent G1315C).</p>
 
-    <!-- 4.0 CARTA ALIRAN -->
-    <div class="sop-sec-title"><span class="sop-sec-num">4.0</span> CARTA ALIRAN</div>
-    <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
+    <!-- 3.0 TANGGUNGJAWAB -->
+    <div class="sop-sec-title"><span class="sop-sec-num">3.0</span> TANGGUNGJAWAB</div>
+    <p class="sop-p"><strong>3.1 Pegawai Farmasi:</strong></p>
+    <p class="sop-sub-p">a) Memastikan instrumen RRLC dikendalikan dan diselenggara mengikut spesifikasi.<br>b) Menyelia pelaksanaan analisis dan mengesahkan data SST serta laporan ujian.</p>
+    <p class="sop-p"><strong>3.2 Penolong Pegawai Farmasi (PPF):</strong></p>
+    <p class="sop-sub-p">Mengendalikan instrumen mengikut arahan kerja, menjalankan purging, pemantauan tekanan, dan mengisi buku log instrumen.</p>
 
-    <!-- 5.0 TANGGUNGJAWAB -->
-    <div class="sop-sec-title"><span class="sop-sec-num">5.0</span> TANGGUNGJAWAB</div>
-    <p class="sop-p"><strong>5.1 Ketua Unit / Pegawai Farmasi Bertanggungjawab:</strong></p>
-    <p class="sop-sub-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p>
-    <p class="sop-p"><strong>5.2 Pegawai Farmasi:</strong></p>
-    <p class="sop-sub-p">a) Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.<br>b) Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
-    <p class="sop-p"><strong>5.3 Penolong Pegawai Farmasi U7 / U6:</strong></p>
-    <p class="sop-sub-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
-    <p class="sop-p"><strong>5.4 Penolong Pegawai Farmasi:</strong></p>
-    <p class="sop-sub-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
-
-    <!-- 6.0 PROSEDUR -->
-    <div class="sop-sec-title"><span class="sop-sec-num">6.0</span> PROSEDUR</div>
+    <!-- 4.0 PROSEDUR TERPERINCI -->
+    <div class="sop-sec-title"><span class="sop-sec-num">4.0</span> TATACARA PENGENDALIAN TERPERINCI (STEP-BY-STEP)</div>
 
     <div class="sop-step-box">
-      <strong>6.1 Tatacara Penggunaan</strong>
+      <strong>4.1 Penghidupan Sistem &amp; Operasi Injap Purge Manual</strong>
+      <ol style="margin-left:1.5rem;margin-top:0.5rem;line-height:1.75">
+        <li>Buka suis bekalan kuasa utama di dinding dan unit UPS.</li>
+        <li>Buka suis kuasa pada setiap modul Agilent 1200 (Degasser G1379B, Binary Pump G1312B, Autosampler G1329B, Column Oven G1316B, DAD G1315C).</li>
+        <li>Buka komputer dan klik ikon <strong>“Instrument 1 (online)”</strong> ChemStation pada desktop.</li>
+        <li><strong>Operasi Injap Purge Manual:</strong>
+          <br>Putar injap purge pada pam Binary (injap hitam hadapan pam) <strong>lawan arah jam sebanyak 1.5–2 pusingan</strong> untuk membuka saluran buangan (waste).
+        </li>
+        <li>Pada perisian ChemStation: Klik ikon Pam $\rightarrow$ Pilih <em>Purge</em> $\rightarrow$ Setkan kadar alir <strong>5.0 mL/min selama 3–5 minit</strong> bagi setiap saluran pelarut (Line A &amp; Line B).</li>
+        <li>Setelah gelembung udara keluar sepenuhnya: Turunkan kadar alir kepada <strong>0.1 mL/min</strong> $\rightarrow$ <strong>Putar injap purge ikut arah jam untuk menutup injap dengan kemas</strong> $\rightarrow$ Naikkan kadar alir perlahan-lahan ke kadar alir kaedah analisis.</li>
+      </ol>
+    </div>
+
+    <div class="sop-step-box">
+      <strong>4.2 Penyediaan Kaedah (Method Setup) pada ChemStation</strong>
+      <p style="margin-top:0.4rem">Buka kaedah sedia ada: <code>Method</code> &gt; <code>Load Method</code>. Atau buat kaedah baharu: <code>Method</code> &gt; <code>Edit Entire Method</code>.</p>
+      
+      <p style="margin-top:0.7rem"><strong>4.2.1 Binary Pump Settings:</strong></p>
+      <ul style="margin-left:1.5rem;line-height:1.65">
+        <li>Setkan <em>Flow Rate</em> mengikut SOP ujian (Contoh: 0.7 – 1.8 mL/min).</li>
+        <li>Tetapkan perkadaran pelarut <em>Solvent A</em> (Akueus / Buffer) dan <em>Solvent B</em> (Organik / ACN / MeOH).</li>
+        <li>Tetapkan <em>Stop Time</em> analisis (cth: 20.0 minit, 35.0 minit).</li>
+        <li>Tetapkan <em>Pressure Limits</em>: <strong>Minimum: 10 bar, Maksimum: 400 bar</strong> (atau 600 bar untuk kolum RRHT sub-2µm).</li>
+      </ul>
+
+      <p style="margin-top:0.7rem"><strong>4.2.2 Autosampler (ALS) Settings:</strong> Isikan <em>Injection Volume</em> (cth: 10 µL atau 15 µL) dan tetapkan <em>Draw Speed</em> serta <em>Needle Wash</em>.</p>
+      <p style="margin-top:0.7rem"><strong>4.2.3 Column Compartment (TCC):</strong> Tetapkan suhu ketuhar (cth: 30 °C, 40 °C, 45 °C) dan pastikan kedua-dua pemanas kiri/kanan diaktifkan.</p>
+      <p style="margin-top:0.7rem"><strong>4.2.4 Diode Array Detector (DAD) Settings:</strong></p>
+      <ul style="margin-left:1.5rem;line-height:1.65">
+        <li>Signals: Pilih Signal A (Panjang gelombang sasaran analit, cth: 240 nm, 280 nm, 284 nm) dengan Bandwidth 4 nm.</li>
+        <li>Spectrum Store: Pilih <strong>“All”</strong> (190 nm hingga 400 nm, Step: 2 nm) bagi membolehkan perbandingan spektrum UV penuh dengan Standard Reference.</li>
+      </ul>
+    </div>
+
+    <div class="sop-step-box">
+      <strong>4.3 Penstabilan Garis Dasar &amp; Pemerhatian Spektrum UV (Overlay)</strong>
       <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.75">
-        <li>Buka semua suis utama.</li>
-        <li>Buka semua suis 1200 series UHPLC modules, Agilent Chemstation PC dan mesin pencetak.</li>
-        <li>Masukkan password: <code>3000hanover</code> – Tekan <strong>OK</strong>.</li>
-        <li>Klik pada <strong>RRLC Online</strong> 2x. (Letakkan botol pelarut yang diisi penuh dengan pelarut/fasa gerak yang dikehendaki mengikut analisis. Pastikan solvent inlet filter mencecah fasa gerak dan tidak terkena dinding botol. Semua pelarut <strong>MESTI ditapis menggunakan penapis membran 0.45 µm sebanyak 2 kali</strong>).</li>
-        <li>Pilih tab <strong>Method &amp; Run Control</strong>.</li>
-        <li>Klik butang <strong>ON</strong> (Tunggu sehingga semua gambarajah pada ikon ini menjadi hijau $\rightarrow$ keadaan bersedia).</li>
-        <li>Pilih ikon <strong>METHOD</strong> – load method (berdasarkan ujian yang hendak dijalankan).</li>
-        <li><strong>Purging</strong>:
-          <ul style="margin-left:1.5rem;margin-top:0.3rem">
-            <li>Buka kepala injap purge (pusing <strong>lawan arah jam</strong>).</li>
-            <li>Klik kanan pada bahagian <em>Binary pump</em> $\rightarrow$ <strong>“Method”</strong>.</li>
-            <li>Tetapkan kadar aliran: <strong>5.00 mL/min</strong>, pelarut A: 100% (pelarut lain 0%).</li>
-            <li>Pastikan kesemua pam melalui proses purging secara bergilir-gilir (100%) dalam selang masa <strong>3 minit setiap satu</strong>. Pastikan tiada gelembung udara pada pam dan kadar tekanan pada pump status adalah stabil.</li>
-          </ul>
-        </li>
-        <li>Klik kanan pada bahagian <em>Binpump</em> $\rightarrow$ <strong>“Method”</strong> $\rightarrow$ Klik bahagian Solvent dan pilih pam yang ingin digunakan $\rightarrow$ Tetapkan kadar aliran: <strong>0.1 mL/min</strong> $\rightarrow$ Klik <strong>OK</strong> dan <strong>tutup kepala injap (pusing arah jam)</strong>.</li>
-        <li>Naikkan kadar aliran sedikit demi sedikit sehingga perkadaran yang diinginkan.</li>
-        <li>Tunggu sehingga garisan dasar stabil. Klik butang <strong>Adjust</strong> dan <strong>Balance</strong> (Tunggu sehingga 30 minit).</li>
-        <li>Klik kanan ikon <strong>thermostat</strong> $\rightarrow$ <strong>Method</strong> (masukkan suhu yang dikehendaki) $\rightarrow$ Klik <strong>OK</strong>.</li>
-        <li>Klik kanan ikon <strong>DAD</strong> $\rightarrow$ <strong>Method</strong>:
-          <br>• <em>Signal</em>: masukkan nilai detector (nm) yang dikehendaki.
-          <br>• <em>Spectrum</em>: Store: <strong>All</strong>, Range: <strong>190 to 400 nm</strong>, Step: <strong>2.0 nm</strong> $\rightarrow$ Klik <strong>OK</strong>.
-        </li>
-        <li>Jika ingin menggunakan gradient: Klik kanan ikon <em>binary pump</em> $\rightarrow$ <strong>Method</strong>, pada ruangan <em>timetable</em> klik <strong>Add</strong> dan masukkan data yang dikehendaki $\rightarrow$ Klik <strong>OK</strong>.</li>
-        <li>Klik <code>Method</code> [Toolbar] $\rightarrow$ <code>Save Method As</code> (masukkan sebarang komen mengenai analisis secara ringkas pada <em>Method Information</em>) $\rightarrow$ Klik <strong>OK</strong>.</li>
-        <li><strong>Untuk jalankan analisis secara SEQUENCE:</strong>
-          <ul style="margin-left:1.5rem;margin-top:0.3rem">
-            <li>Klik <code>Sequence</code> [Toolbar] $\rightarrow$ <code>Sequence Parameter</code> (Operator name, Data file subdirectory) $\rightarrow$ Klik <strong>OK</strong>.</li>
-            <li>Klik <code>Sequence</code> [Toolbar] $\rightarrow$ <code>Sequence Table</code> $\rightarrow$ <em>Insert table</em>:
-              <br>• <strong>Sample location</strong>: lokasi vial (dropdown menu)
-              <br>• <strong>Sample name</strong>: nama sampel
-              <br>• <strong>Method name</strong>: fail kaedah
-              <br>• <strong>Inj/Loc</strong>: bilangan injeksi
-              <br>• <strong>Sample type</strong>: dropdown menu
-              <br>• <strong>Update RF</strong>: <strong>Average</strong> · <strong>Update RT</strong>: <strong>Average</strong>
-              <br>• Klik <strong>“Append Line”</strong> untuk menambah baris $\rightarrow$ Klik <strong>OK</strong>.
-            </li>
-            <li>Klik <code>Sequence</code> [Toolbar] $\rightarrow$ <code>Save Sequence Template As</code> $\rightarrow$ Masukkan nama fail $\rightarrow$ Klik <strong>OK</strong>.</li>
-            <li>Klik <strong>Run Control</strong> $\rightarrow$ <strong>Run Sequence</strong> (*Pastikan anda tidak menindih / replace master method yang sedia ada).</li>
-          </ul>
+        <li>Klik kanan pada tetingkap kromatogram online $\rightarrow$ Pilih <strong>“Change”</strong> $\rightarrow$ Pantau garisan dasar (baseline drift &lt; 0.5 mAU/hr).</li>
+        <li>Pastikan bacaan tekanan stabil (tekanan berfluktuasi &lt; 1 bar).</li>
+        <li><strong>Fungsi Overlay Signal Agilent:</strong>
+          <br>Bagi menindih (overlay) UV spektrum puncak sampel dengan standard rujukan: Tekan serentak kekunci <kbd>Ctrl</kbd> + <kbd>Alt</kbd> dan <strong>klik pada puncak kromatogram</strong> untuk memaparkan spektrum UV bertindih secara langsung.
         </li>
       </ol>
     </div>
 
     <div class="sop-step-box">
-      <strong>6.2 Sebelum Memulakan Analisis (Integrasi & Laporan)</strong>
-      <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.75">
-        <li>Untuk mengubah data / peak yang diperolehi dalam laporan: Klik <code>View</code> $\rightarrow$ pilih <em>Data Analysis</em> $\rightarrow$ <code>Report</code> $\rightarrow$ <em>Specify Report</em> $\rightarrow$ <em>Signal Option</em> (Tetapkan Min Value dan Max Value untuk Time Range dan Response Range).</li>
-        <li>Untuk menetapkan minimum area, height dan slope sensitivity:
-          <br>Klik <code>Integration</code> $\rightarrow$ <code>Integration Events</code>:
-          <br>• <em>Slope sensitivity</em>: set value
-          <br>• <em>Height reject</em>: set value
-          <br>• <em>Area reject</em>: set value
-          <br>Klik <code>Exit</code> $\rightarrow$ <em>Save changed events tables?</em> $\rightarrow$ <strong>Yes</strong>.
-        </li>
-        <li>Cetak laporan: Klik <code>View</code> [Toolbar] $\rightarrow$ Klik <code>Data analysis</code> $\rightarrow$ <strong>Print</strong> (atau ikon printer).</li>
-      </ol>
+      <strong>4.4 Susunan Urutan Suntikan (Sequence Setup)</strong>
+      <p style="margin-top:0.3rem">Klik menu <code>Sequence</code> &gt; <code>Sequence Parameters</code> $\rightarrow$ Masukkan laluan fail data (Data Path) dan Subdirectory.
+      <br>Klik <code>Sequence</code> &gt; <code>Sequence Table</code> $\rightarrow$ Masukkan susunan suntikan:</p>
+      <div class="table-wrap">
+        <table class="table-official">
+          <thead><tr><th>Line</th><th>Vial</th><th>Sample Name</th><th>Method Name</th><th>Inj/Vial</th><th>Sample Type</th></tr></thead>
+          <tbody>
+            <tr class="seq-blank"><td>1</td><td>1</td><td>Blank (Methanol / Diluent)</td><td>METHOD.M</td><td>1</td><td>Blank</td></tr>
+            <tr class="seq-sst"><td>2</td><td>2</td><td>Working Standard (SST)</td><td>METHOD.M</td><td>6</td><td>Calibration / SST</td></tr>
+            <tr class="seq-iqc"><td>3</td><td>3</td><td>LOD Sensitivity Check</td><td>METHOD.M</td><td>1</td><td>Control</td></tr>
+            <tr class="seq-blank"><td>4</td><td>1</td><td>Blank Carry-over</td><td>METHOD.M</td><td>1</td><td>Blank</td></tr>
+            <tr><td>5..n</td><td>10..</td><td>Sampel Pengawasan SPPK</td><td>METHOD.M</td><td>2</td><td>Sample</td></tr>
+            <tr class="seq-iqc"><td>End</td><td>2</td><td>IQC Bracketing Standard</td><td>METHOD.M</td><td>1</td><td>Control</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:0.5rem">Simpan Sequence (<code>Sequence &gt; Save Sequence</code>) dan klik butang <strong>“Run Sequence”</strong>.</p>
     </div>
 
     <div class="sop-step-box">
-      <strong>6.3 Spektrum & Pertindihan (Overlay Signal)</strong>
-      <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.75">
-        <li>Untuk melihat analisis yang telah dijalankan: Klik <strong>RRLC Offline</strong> 2x.</li>
-        <li>Klik <code>File</code> $\rightarrow$ <code>Load Signal</code> $\rightarrow$ Pilih filename yang dikehendaki dan klik <strong>OK</strong>.</li>
-        <li>Klik <code>Spectra</code> [Toolbar] $\rightarrow$ Klik <code>Select Peak Spectra</code> (Klik pada mana-mana bahagian peak, imej spectra akan tertera).</li>
-        <li><strong>Bagi proses overlay standard dan sampel:</strong>
-          <ul style="margin-left:1.5rem;margin-top:0.3rem">
-            <li>Klik <code>File</code> $\rightarrow$ <code>Overlay Signal</code> $\rightarrow$ Pilih filename yang dikehendaki $\rightarrow$ Klik <strong>OK</strong>.</li>
-            <li>Klik ikon <em>“Select a set of a peak”</em> atau klik pada imej sampel (spectra sampel akan terhasil).</li>
-            <li>Tekan secara serentak butang: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <strong>klik pada peak standard</strong>. Maka imej spectra standard akan bertindih (overlay) dengan spectra sampel.</li>
-          </ul>
-        </li>
-        <li>Untuk cetak laporan spektrum: Klik <code>Report</code> [Toolbar] $\rightarrow$ <strong>Print</strong>.</li>
+      <strong>4.5 Tatacara Pencucian Sistem &amp; Penutupan (Shutdown)</strong>
+      <ol style="margin-left:1.5rem;margin-top:0.5rem;line-height:1.75">
+        <li>Cuci sistem dan kolum dengan fasa gerak <strong>5% Methanol dalam Air Suling selama 1 jam</strong> pada kadar alir 1.0 mL/min untuk mengeluarkan sisa garam/buffer.</li>
+        <li>Tukar kepada <strong>100% Acetonitrile / Methanol</strong> dan pam selama <strong>30 minit</strong> pada kadar alir 1.0 mL/min untuk mencuci analit hidrofobik.</li>
+        <li>Sekiranya kolum ingin disimpan: Pam larutan simpanan <strong>70% ACN : 30% Air selama 15 minit</strong>.</li>
+        <li>Tutup aliran pam (Turn off Flow) dan matikan lampu DAD (Turn off Lamp).</li>
+        <li>Tutup perisian ChemStation, matikan suis modul instrumen, dan catatkan penggunaan ke dalam logbook.</li>
       </ol>
     </div>
 
-    <div class="sop-step-box">
-      <strong>6.4 Pencucian Sistem Selepas Digunakan</strong>
-      <p class="sop-p">Setelah selesai ujikaji, pastikan sistem terutamanya column dibersihkan dengan sebaiknya bagi mengelak column tersumbat:</p>
-      <ol style="margin-left:1.5rem;line-height:1.7">
-        <li>Cuci sistem HPLC dengan fasa gerak <strong>5% Methanol</strong> yang telah ditapis dengan membran 0.45 µm selama <strong>1 jam dengan kadar aliran 1.0 mL/min</strong>.</li>
-        <li>Kemudian cuci sistem dengan <strong>100% Acetonitrile atau Methanol</strong> (bergantung pada column) yang telah ditapis selama <strong>30 minit dengan kadar aliran 1.0 mL/min</strong> untuk penyimpanan kolum.</li>
-      </ol>
-    </div>
-
-    <div class="sop-step-box">
-      <strong>6.5 Menutup Sistem HPLC</strong>
-      <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.75">
-        <li>Klik ikon <strong>DAD</strong> $\rightarrow$ <em>Control</em> $\rightarrow$ <em>UV Lamp</em> $\rightarrow$ <strong>Off</strong> $\rightarrow$ OK.</li>
-        <li>Klik ikon <strong>Thermostat</strong> $\rightarrow$ <em>Control</em> $\rightarrow$ <strong>Off</strong> $\rightarrow$ OK.</li>
-        <li>Klik ikon <strong>Pump</strong> $\rightarrow$ <em>Set up pump</em> $\rightarrow$ Turunkan kadar aliran sedikit demi sedikit sehingga <strong>0.00 mL/min</strong> $\rightarrow$ OK.</li>
-        <li>Klik <code>File</code> $\rightarrow$ <strong>Exit</strong> $\rightarrow$ <em>Close RRLC Online?</em> $\rightarrow$ <strong>Yes</strong>.</li>
-        <li><em>Switch off LC pump, thermostat and lamp?</em> $\rightarrow$ <strong>Yes</strong>.</li>
-        <li>Start menu $\rightarrow$ <strong>Shut down computer</strong> $\rightarrow$ Yes.</li>
-        <li>Tutup semua butang suis utama pada sistem HPLC.</li>
-      </ol>
-    </div>
-
-    <!-- 7.0 REKOD KUALITI -->
-    <div class="sop-sec-title"><span class="sop-sec-num">7.0</span> REKOD KUALITI</div>
+    <!-- 5.0 REKOD KUALITI -->
+    <div class="sop-sec-title"><span class="sop-sec-num">5.0</span> REKOD KUALITI &amp; BORANG BERKAITAN</div>
     <table class="table-official">
       <thead><tr><th>No. Borang / Dokumen</th><th>Tajuk Rekod Kualiti</th><th>Lokasi Simpanan</th><th>Tempoh Simpanan</th></tr></thead>
       <tbody>
-        <tr><td>-</td><td>Rekod Penyelenggaraan Alat Rapid Resolution Liquid Chromatography HP1200</td><td>Bilik Instrumen HPLC (B2-01)</td><td>6 Tahun</td></tr>
+        <tr><td>Borang UP/003</td><td>Buku Log Pengendalian &amp; Penyelenggaraan RRLC HP1200 Agilent</td><td>Bilik Instrumen HPLC (B2-01)</td><td>6 Tahun</td></tr>
+        <tr><td>Borang UP/044</td><td>Buku Log Pengendalian HPLC Agilent 1</td><td>Bilik Instrumen HPLC (B2-01)</td><td>6 Tahun</td></tr>
+        <tr><td>Borang UP/005</td><td>Borang Keputusan Ujian Penyaringan Kromatografi (HPLC/RRLC)</td><td>Fail Sampel Seksyen SPPK</td><td>6 Tahun</td></tr>
       </tbody>
     </table>
 
   </div>
 
   <div class="footer">
-    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+    Unit Penyaringan ◈ Seksyen Pengujian Produk &amp; Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
   </div>
 </div>
 

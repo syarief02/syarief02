@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/011 — HPLC Shimadzu Prominence-i | NPRA</title>
-<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/011: Pengendalian Alat Shimadzu High Performance Liquid Chromatography (Prominence-i) bagi Ujian Penyaringan Campurpalsu.">
+<title>PKKK/300/UP/011 — Panduan Pengendalian HPLC Shimadzu Prominence-i | NPRA</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/011: Panduan Lengkap Pengendalian, Penyelenggaraan dan Penyediaan Kaedah HPLC Shimadzu Prominence-i (LC-2030C 3D LabSolutions).">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
     color: var(--cyan); font-family: var(--font-mono); font-weight: 800; font-size: 1.1rem; margin-right: 0.4rem;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 2rem 0 0.9rem;
     padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
   }
   .sop-p {
@@ -36,10 +36,10 @@
     margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.65; color: var(--text-main); margin-bottom: 0.6rem;
   }
   .sop-step-box {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.8rem 1.2rem;
-    border-radius: 0 10px 10px 0; margin: 0.8rem 0; font-size: 0.9rem;
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 1.1rem 1.4rem;
+    border-radius: 0 14px 14px 0; margin: 1.2rem 0; font-size: 0.92rem; box-shadow: var(--shadow-sm);
   }
-  .sop-step-box strong { color: var(--text-bright); }
+  .sop-step-box strong { color: var(--text-bright); font-size: 1rem; }
   .table-official {
     width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; font-family: var(--font-mono);
   }
@@ -47,6 +47,52 @@
     border: 1px solid var(--glass-border); padding: 0.6rem 0.8rem; text-align: left;
   }
   .table-official th { background: var(--glass); color: var(--text-dim); }
+
+  /* Specs Ribbon */
+  .specs-ribbon-card {
+    background: var(--glass); border: 1.5px solid var(--cyan); border-radius: 16px;
+    padding: 1.3rem 1.5rem; margin: 1.5rem 0 1.8rem; backdrop-filter: blur(12px); box-shadow: var(--shadow-sm);
+  }
+  .specs-card-header {
+    display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 800;
+    color: var(--text-bright); margin-bottom: 1rem;
+  }
+  .specs-ribbon-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.85rem;
+  }
+  .spec-chip {
+    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+    padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.25rem;
+  }
+  .spec-lbl {
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    color: var(--cyan); letter-spacing: 0.05em;
+  }
+  .spec-val { font-size: 0.85rem; color: var(--text-bright); line-height: 1.4; }
+
+  /* Pro Tip Alert */
+  .pro-tip {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(124, 58, 237, 0.08));
+    border: 1px solid var(--cyan); border-radius: 12px; padding: 1rem 1.3rem; margin: 1rem 0;
+    font-size: 0.88rem; line-height: 1.6;
+  }
+  .pro-tip-title { font-weight: 800; color: var(--cyan); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem; }
+
+  .wf-track {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px;
+    padding: 1.1rem 1.4rem; margin: 1.5rem 0 1.8rem; overflow-x: auto;
+  }
+  .wf-step { display: flex; align-items: center; gap: 0.8rem; flex: 1; min-width: 170px; }
+  .wf-node {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
+    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+  }
+  .wf-info { display: flex; flex-direction: column; }
+  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
+  .wf-desc { font-size: 0.72rem; color: var(--text-dim); }
+  .wf-arrow { color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -67,11 +113,12 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         Master SOP Matrix
       </a>
+      <a href="screening-methods.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        All Methods Hub
+      </a>
       <a href="rrlc-guide.html" class="ctrl-btn highlight">
         Agilent 1200 RRLC (UP/003) →
-      </a>
-      <a href="gcms-egdeg-guide.html" class="ctrl-btn highlight">
-        GC-MS DEG/EG (UP/034) →
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
@@ -82,6 +129,168 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <span id="themeTxt">Dark Mode</span>
       </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk &amp; Kosmetik · Unit Penyaringan</div>
+    <h1>HPLC Shimadzu <span class="g">Prominence-i</span> Guide</h1>
+    <div class="hero-sub">Arahan Kerja Rasmi PKKK/300/UP/011 · Model LC-2030C 3D (LabSolutions CS)</div>
+    <p class="hero-desc">
+      Panduan komprehensif bagi prosedur penghidupan sistem, penyediaan kaedah (method setting), auto-purge saluran pelarut, penstabilan garis dasar PDA, konfigurasi suntikan batch, dan tatacara pencucian kolum untuk pengujian penyaringan campurpalsu.
+    </p>
+  </div>
+
+  <!-- Visual Workflow Track -->
+  <div class="wf-track">
+    <div class="wf-step">
+      <div class="wf-node">1</div>
+      <div class="wf-info"><div class="wf-name">Power &amp; Login</div><div class="wf-desc">Passcode: 00000 · User: Admin</div></div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">2</div>
+      <div class="wf-info"><div class="wf-name">Auto Purge &amp; Prime</div><div class="wf-desc">5.0 mL/min · Buang gelembung</div></div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">3</div>
+      <div class="wf-info"><div class="wf-name">Equilibration &amp; PDA</div><div class="wf-desc">Stabilkan drift &lt; 1.0 mAU/hr</div></div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">4</div>
+      <div class="wf-info"><div class="wf-name">Batch Sequence</div><div class="wf-desc">Blank, SST (n=6), Sampel &amp; IQC</div></div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">5</div>
+      <div class="wf-info"><div class="wf-name">Column Wash &amp; Close</div><div class="wf-desc">Intermediate → 100% Org → Simpan</div></div>
+    </div>
+  </div>
+
+  <!-- Technical Specs Ribbon -->
+  <div class="specs-ribbon-card">
+    <div class="specs-card-header">
+      <span class="specs-icon">⚡</span>
+      <strong>Spesifikasi Teknikal &amp; Parameter Pengendalian Alat (Shimadzu LC-2030C 3D):</strong>
+    </div>
+    <div class="specs-ribbon-grid">
+      <div class="spec-chip"><span class="spec-lbl">Instrumen Utama</span><strong class="spec-val">Shimadzu Prominence-i (LC-2030C 3D)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Perisian Kawalan</span><strong class="spec-val">LabSolutions CS (User: Admin / Password Kosong)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Passcode Mesin</span><strong class="spec-val">00000 (Tekan OK pada panel skrin LCD)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Mod Pam Pelarut</span><strong class="spec-val">Low Pressure Quaternary Gradient (Saluran A, B, C, D)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Kadar Alir Auto Purge</span><strong class="spec-val">5.0 mL/min (3.0 min per saluran aktif)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Ketuhar Kolum (Oven)</span><strong class="spec-val">Suhu 20 °C – 60 °C (Maksimum Had Keselamatan: 80 °C)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Pengesan PDA</span><strong class="spec-val">190 – 800 nm · Suhu Sel diselaraskan dengan Oven</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Autosampler Sampler</span><strong class="spec-val">Kapasiti 2 mL Vials (Kawalan Suhu 4 °C – 40 °C)</strong></div>
+    </div>
+  </div>
+
+  <!-- Active Testing Methods Cross-Reference Grid -->
+  <div class="cross-link-container">
+    <div class="cross-header">
+      <span style="font-size:1.2rem">🧪</span>
+      <strong>Kaedah-Kaedah Pengujian Aktif Yang Menggunakan Instrumen Shimadzu Prominence-i:</strong>
+    </div>
+    <div class="cross-grid">
+      <a href="steroid-hplc.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/021 · HPLC 3 &amp; 4</div>
+        <div class="inst-name">Identifikasi Steroid 8-Mix (LLE pH 7.0)</div>
+        <span class="inst-badge">Buka Panduan Steroid →</span>
+      </a>
+      <a href="ppi-hplc.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/025 · HPLC 4</div>
+        <div class="inst-name">Identifikasi Proton Pump Inhibitor (Omeprazole &amp; Lansoprazole)</div>
+        <span class="inst-badge">Buka Panduan PPI →</span>
+      </a>
+      <a href="domperidone-hplc.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/027 · HPLC 4</div>
+        <div class="inst-name">Identifikasi Domperidone dalam Produk Tradisional</div>
+        <span class="inst-badge">Buka Panduan Domperidone →</span>
+      </a>
+      <a href="lovastatin.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/031 / 200/UP/002</div>
+        <div class="inst-name">Penentuan Lovastatin HPLC &amp; Kalkulator QC</div>
+        <span class="inst-badge">Buka Tool Lovastatin →</span>
+      </a>
+      <a href="hydroquinone-hplc.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/050 / 200/UP/001</div>
+        <div class="inst-name">Screening Hydroquinone dalam Kosmetik Krim</div>
+        <span class="inst-badge">Buka Panduan Hydroquinone →</span>
+      </a>
+      <a href="sop/sop-300-up-022.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/022 · Antidiabetik</div>
+        <div class="inst-name">Identifikasi Anti Diabetik (Glibenclamide, Metformin)</div>
+        <span class="inst-badge">Buka SOP 022 →</span>
+      </a>
+      <a href="sop/sop-300-up-024.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/024 · Diuretik</div>
+        <div class="inst-name">Identifikasi Diuretik (Furosemide, HCTZ)</div>
+        <span class="inst-badge">Buka SOP 024 →</span>
+      </a>
+      <a href="sop/sop-300-up-026.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/026 · Anti-hipertensi</div>
+        <div class="inst-name">Identifikasi Anti-hipertensi (Amlodipine, Losartan)</div>
+        <span class="inst-badge">Buka SOP 026 →</span>
+      </a>
+      <a href="sop/sop-300-up-028.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/028 · Antikolesterol</div>
+        <div class="inst-name">Identifikasi Antikolesterol (Simvastatin, Atorvastatin)</div>
+        <span class="inst-badge">Buka SOP 028 →</span>
+      </a>
+      <a href="sop/sop-300-up-056.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/056 · ACM 007</div>
+        <div class="inst-name">Identification of Steroids in Cosmetics (ASEAN ACM)</div>
+        <span class="inst-badge">Buka SOP 056 →</span>
+      </a>
+      <a href="sop/sop-300-up-060.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/060 · Kosmetik</div>
+        <div class="inst-name">Screening of NSAIDs in Cosmetics (Diclofenac, Ibuprofen)</div>
+        <span class="inst-badge">Buka SOP 060 →</span>
+      </a>
+      <a href="sop/sop-300-up-061.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/061 · Kosmetik</div>
+        <div class="inst-name">Determination of p-Phenylenediamine in Hair Dyes</div>
+        <span class="inst-badge">Buka SOP 061 →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Supporting Equipment Cross-References -->
+  <div class="cross-link-container" style="border-left-color:var(--mint);background:rgba(5,150,105,0.06)">
+    <div class="cross-header">
+      <span style="font-size:1.2rem">⚖️</span>
+      <strong>Radas &amp; Prosedur Sokongan Yang Berkaitan:</strong>
+    </div>
+    <div class="cross-grid">
+      <a href="sop/sop-300-up-005.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/005 · Neraca Analitikal</div>
+        <div class="inst-name">Alat Timbang Precisa XT 120A</div>
+        <span class="inst-badge">Buka SOP Alat Timbang →</span>
+      </a>
+      <a href="sop/sop-300-up-008.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/008 · Pelarasan Buffer</div>
+        <div class="inst-name">pH Meter Model FiveEasy Plus</div>
+        <span class="inst-badge">Buka SOP pH Meter →</span>
+      </a>
+      <a href="sop/sop-300-up-058.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/058 · Sonikasi &amp; Degas</div>
+        <div class="inst-name">Ultrasonic Bath Branson 8210 (15–20 min)</div>
+        <span class="inst-badge">Buka SOP Sonikator →</span>
+      </a>
+      <a href="sop/sop-300-up-014.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/014 · Ekstraksi Sampel</div>
+        <div class="inst-name">Pengekstrakan Cecair-Cecair (LLE pH 7.0)</div>
+        <span class="inst-badge">Buka SOP Pengekstrakan →</span>
+      </a>
+      <a href="qc-balance.html" class="inst-link-card" target="_blank">
+        <div class="inst-code">PKKK/300/UP/064 · Kawalan Mutu</div>
+        <div class="inst-name">Control Charting &amp; Shewhart IQC Suite</div>
+        <span class="inst-badge">Buka QC Suite →</span>
+      </a>
     </div>
   </div>
 
@@ -97,7 +306,7 @@
         <td colspan="2"><strong>ARAHAN KERJA: PENGENDALIAN ALAT SHIMADZU HIGH PERFORMANCE LIQUID CHROMATOGRAPHY (PROMINENCE-I)</strong></td>
       </tr>
       <tr>
-        <td><strong>No. Dokumen:</strong> PKKK/300/UP/011</td>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/011 (dan HPLC 3 &amp; 4: UP/041, UP/042)</td>
         <td><strong>Terbitan / Semakan:</strong> 3 / 0</td>
       </tr>
       <tr>
@@ -107,121 +316,130 @@
     </table>
 
     <!-- 1.0 SKOP -->
-    <div class="sop-sec-title"><span class="sop-sec-num">1.0</span> SKOP</div>
-    <p class="sop-p">Prosedur ini hendaklah digunapakai untuk mengendalikan alat Shimadzu HPLC (Prominence-i) bagi ujian penyaringan campurpalsu dalam produk tradisional, suplemen kesihatan dan kosmetik.</p>
+    <div class="sop-sec-title"><span class="sop-sec-num">1.0</span> SKOP &amp; TUJUAN</div>
+    <p class="sop-p">Prosedur ini hendaklah digunapakai untuk mengendalikan alat Shimadzu HPLC (Prominence-i LC-2030C 3D) bagi ujian penyaringan dan kuantitasi campurpalsu dalam produk tradisional, suplemen kesihatan dan produk kosmetik di Unit Penyaringan.</p>
 
     <!-- 2.0 DEFINISI -->
-    <div class="sop-sec-title"><span class="sop-sec-num">2.0</span> DEFINISI</div>
-    <p class="sop-p"><strong>HPLC</strong>: High Performance Liquid Chromatography (Kromatografi Cecair Berprestasi Tinggi).</p>
+    <div class="sop-sec-title"><span class="sop-sec-num">2.0</span> DEFINISI &amp; SINGKATAN</div>
+    <p class="sop-p">
+      • <strong>HPLC</strong>: High Performance Liquid Chromatography (Kromatografi Cecair Berprestasi Tinggi).<br>
+      • <strong>PDA / DAD</strong>: Photo Diode Array Detector (Pengesan Diod Array bagi imbasan UV 190–800 nm).<br>
+      • <strong>SST</strong>: System Suitability Test (Ujian Kesesuaian Sistem bagi kebolehulangan suntikan %RSD &le; 2.0%).<br>
+      • <strong>IQC</strong>: Internal Quality Control (Kawalan Kualiti Dalaman).<br>
+      • <strong>Auto Purge</strong>: Proses pembuangan gelembung udara dan penggantian pelarut pada kadar alir tinggi 5.0 mL/min.
+    </p>
 
-    <!-- 3.0 CARTA ALIRAN -->
-    <div class="sop-sec-title"><span class="sop-sec-num">3.0</span> CARTA ALIRAN</div>
-    <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
+    <!-- 3.0 TANGGUNGJAWAB -->
+    <div class="sop-sec-title"><span class="sop-sec-num">3.0</span> TANGGUNGJAWAB</div>
+    <p class="sop-p"><strong>3.1 Ketua Unit / Pegawai Farmasi Bertanggungjawab:</strong></p>
+    <p class="sop-sub-p">Memastikan prosedur ini dipatuhi sepenuhnya dan menyelia integriti data kromatografi.</p>
+    <p class="sop-p"><strong>3.2 Pegawai Farmasi:</strong></p>
+    <p class="sop-sub-p">a) Menyelia proses pengendalian alat oleh Penolong Pegawai Farmasi.<br>b) Mengesahkan keputusan integrasi puncak kromatogram dan kesesuaian sistem (SST).</p>
+    <p class="sop-p"><strong>3.3 Penolong Pegawai Farmasi (PPF):</strong></p>
+    <p class="sop-sub-p">Mengendalikan alat mengikut SOP, menjalankan semakan harian, auto-purge, flushing kolum, dan merekod logbook penyelenggaraan alat.</p>
 
-    <!-- 4.0 TANGGUNGJAWAB -->
-    <div class="sop-sec-title"><span class="sop-sec-num">4.0</span> TANGGUNGJAWAB</div>
-    <p class="sop-p"><strong>4.1 Ketua Unit / Pegawai Farmasi Bertanggungjawab:</strong></p>
-    <p class="sop-sub-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p>
-    <p class="sop-p"><strong>4.2 Pegawai Farmasi:</strong></p>
-    <p class="sop-sub-p">a) Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.<br>b) Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
-    <p class="sop-p"><strong>4.3 Penolong Pegawai Farmasi U7 / U6:</strong></p>
-    <p class="sop-sub-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
-    <p class="sop-p"><strong>4.4 Penolong Pegawai Farmasi:</strong></p>
-    <p class="sop-sub-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
-
-    <!-- 5.0 PROSEDUR -->
-    <div class="sop-sec-title"><span class="sop-sec-num">5.0</span> PROSEDUR</div>
+    <!-- 4.0 PROSEDUR TERPERINCI -->
+    <div class="sop-sec-title"><span class="sop-sec-num">4.0</span> TATACARA PENGENDALIAN TERPERINCI (STEP-BY-STEP)</div>
 
     <div class="sop-step-box">
-      <strong>6.1 Tatacara Memulakan LC</strong>
-      <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.7">
-        <li>Buka semua suis utama bekalan kuasa.</li>
-        <li>Buka suis mesin HPLC Shimadzu (LC-2030C 3D).</li>
-        <li>Masukkan password: <code>00000</code> dan tekan <strong>OK</strong>.</li>
-        <li>Klik ikon <strong>“Lab Solution”</strong> pada desktop.</li>
-        <li>Pada paparan, User ID: <code>Admin</code> dan Password dibiarkan kosong. Klik <strong>“OK”</strong>.</li>
-        <li>Dalam menu, klik <strong>“Instrument”</strong> dan seterusnya klik <strong>“LC-2030C 3D”</strong>.</li>
+      <strong>4.1 Tatacara Memulakan LC &amp; Log Masuk Perisian</strong>
+      <ol style="margin-left:1.5rem;margin-top:0.5rem;line-height:1.75">
+        <li>Buka semua suis utama bekalan kuasa di dinding dan suis Unit Bekalan Kuasa Tanpa Gangguan (UPS).</li>
+        <li>Buka suis kuasa pada unit utama mesin HPLC Shimadzu (LC-2030C 3D).</li>
+        <li>Pada panel LCD instrumen, masukkan Passcode: <code>00000</code> dan tekan <strong>OK</strong>.</li>
+        <li>Buka komputer dan klik dua kali pada ikon <strong>“LabSolutions”</strong> di desktop.</li>
+        <li>Pada paparan log masuk, masukkan User ID: <code>Admin</code> dan biarkan ruangan Password kosong. Klik <strong>“OK”</strong>.</li>
+        <li>Dalam menu utama, klik <strong>“Instrument”</strong> dan seterusnya pilih <strong>“LC-2030C 3D”</strong> (atau HPLC 3 / HPLC 4).</li>
       </ol>
     </div>
 
     <div class="sop-step-box">
-      <strong>6.2 Tetapan Kaedah Pengujian (Method Settings)</strong>
-      <p style="margin-top:0.3rem">Buka fail method yang dikehendaki: <code>File</code> &gt; <code>Open Method File</code>.
-      <br>Jika ingin membuat method baharu: <code>File</code> &gt; <code>New Method</code> &gt; <code>Method Settings</code>.</p>
+      <strong>4.2 Tetapan Kaedah Pengujian (Method Settings)</strong>
+      <p style="margin-top:0.4rem">Buka fail method yang dikehendaki: <code>File</code> &gt; <code>Open Method File</code>.
+      <br>Jika ingin membuat kaedah baharu: <code>File</code> &gt; <code>New Method</code> &gt; <code>Method Settings</code>.</p>
       
-      <p style="margin-top:0.6rem"><strong>6.2.1 Pump Settings:</strong></p>
-      <ul style="margin-left:1.5rem;line-height:1.6">
-        <li>Mode: <strong>Low Pressure Gradient (Untuk 4 Valve)</strong></li>
-        <li>Isikan <em>Total Pump Flow</em> berdasarkan Method analisis spesifik.</li>
-        <li>Isikan <em>Solvent B Conc, Solvent C Conc, Solvent D Conc</em> berdasarkan Method (Contoh: B Conc 70% MeOH, C Conc 30% H₂O).</li>
-        <li>Isikan <em>Pressure Limit (Pump A)</em> (cth: Pmax 400 bar).</li>
+      <p style="margin-top:0.7rem"><strong>4.2.1 Pump Settings (Tetapan Pam):</strong></p>
+      <ul style="margin-left:1.5rem;line-height:1.65">
+        <li>Mode: <strong>Low Pressure Gradient (Untuk 4 Saluran A, B, C, D)</strong>.</li>
+        <li>Isikan <em>Total Pump Flow</em> mengikut SOP kaedah spesifik (Contoh: Steroid = 0.7 mL/min, PPI = 1.0 mL/min, Lovastatin = 1.8 mL/min).</li>
+        <li>Tetapkan perkadaran pelarut <em>Solvent B Conc, Solvent C Conc, Solvent D Conc</em> (Contoh: Isokratik 65% Buffer : 35% ACN).</li>
+        <li>Isikan had tekanan <em>Pressure Limit (Pump A)</em>: <strong>Pmax = 400 bar</strong> (Had keselamatan kolum).</li>
       </ul>
 
-      <p style="margin-top:0.6rem"><strong>6.2.2 Autosampler Setting:</strong> Suhu boleh ditetapkan jika diperlukan (cth: 4 °C).</p>
-      <p style="margin-top:0.6rem"><strong>6.2.3 Column Setting:</strong> Tetapkan suhu Oven berdasarkan method yang ditetapkan. Jangan set &gt; 80–85 °C. Tandakan (✓) jika method memerlukan pemanas (heating).</p>
-      <p style="margin-top:0.6rem"><strong>6.2.4 Detector Setting (Menggunakan PDA):</strong> Setkan Start Wavelength dan End Wavelength (190–400 nm). Setkan Cell Temperature mengikuti column oven temperature (sekiranya suhu oven &gt; 60 °C, set Cell Temperature sebagai 60 °C; sekiranya column oven tidak digunakan, Cell Temperature tidak perlu ditandakan).</p>
-      <p style="margin-top:0.6rem"><strong>6.2.5 Data Acquisition:</strong> Isikan LC stop time analisis dan klik <em>Apply to All acquisition time</em>.</p>
-      
-      <p style="margin-top:0.6rem"><strong>6.2.6 LC Time Prog (Changeable Gradient):</strong></p>
-      <p class="sop-sub-p">Sekiranya gradient tidak bertukar digunakan, baris pertama sahaja yang diisikan dengan masa sama dengan LC Stop time.
-      <br>Sekiranya gradient bertukar (changeable gradient) digunakan: Setiap baris menunjukkan satu arahan cara kerja pengubahan mobile phase. Klik <strong>“Draw Curve”</strong> untuk melukis graf. Setiap kali kaedah changeable gradient digunakan, sistem perlu dikalibrasi balik ke setting pam semasa dimulakan sebelum suntikan kedua dijalankan (contoh: jika awal analisis B=30%, akhir analisis B perlu dikembalikan ke 30% untuk elak sebarang shift dalam retention time).</p>
+      <p style="margin-top:0.7rem"><strong>4.2.2 Autosampler Setting:</strong> Tetapkan suhu dulang sampel (Sampler Temperature: 4 °C bagi analit sensitif suhu seperti PPI/Omeprazole, atau Room Temp).</p>
+      <p style="margin-top:0.7rem"><strong>4.2.3 Column Setting:</strong> Tetapkan suhu Oven berdasarkan SOP kaedah (Contoh: 30 °C, 40 °C, 45 °C). <em>*Perhatian: Jangan tetapkan melebihi 80 °C.</em> Tandakan (✓) pada <em>Heater On</em>.</p>
+      <p style="margin-top:0.7rem"><strong>4.2.4 Detector Setting (PDA):</strong> Setkan <em>Start Wavelength</em> 190 nm dan <em>End Wavelength</em> 400 nm (atau 800 nm). Setkan <em>Cell Temperature</em> mengikuti suhu oven kolum (sekiranya suhu oven &gt; 60 °C, tetapkan Cell Temp sebagai 60 °C).</p>
+      <p style="margin-top:0.7rem"><strong>4.2.5 LC Time Program (Changeable Gradient):</strong></p>
+      <p class="sop-sub-p">Bagi analisis gradien, setiap baris mewakili perubahan komposisi fasa bergerak. Klik <strong>“Draw Curve”</strong> untuk mengesahkan profil elusi.
+      <br><strong>Wajib:</strong> Di akhir analisis gradien, pastikan komposisi fasa bergerak dikembalikan kepada komposisi permulaan (Re-equilibration) sekurang-kurangnya 5–10 minit sebelum suntikan seterusnya.</p>
 
-      <p style="margin-top:0.6rem"><strong>6.2.8 Auto Purge:</strong></p>
-      <p class="sop-sub-p">Sistem Auto Purge mengeluarkan buih udara dalam saluran solvent untuk mengelakkan daripada memasuki column. Saluran solvent <strong>wajib</strong> menjalankan Auto Purge sekiranya: (1) Solvent ditambah ke dalam botol, atau (2) Solvent bertukar jenis.
-      <br><em>Jikalau solvent yang perlu ditukar melibatkan Intermediate</em>: Pastikan sistem ditutup dahulu $\rightarrow$ Tunggu Pressure jatuh ke sifar $\rightarrow$ Masukkan pump line ke dalam Intermediate Solution $\rightarrow$ Jalankan Auto Purge $\rightarrow$ Masukkan ke dalam botol solvent dikehendaki dan ulangi Auto Purge. (Activate system after Autopurge tidak ditandakan dalam kes melibatkan Intermediate). Simpan fail method (Save Method File).</p>
+      <div class="pro-tip">
+        <div class="pro-tip-title">⚡ Peraturan Auto Purge &amp; Intermediate Flushing:</div>
+        Auto Purge wajib dijalankan pada kadar 5.0 mL/min selama 3 minit jika pelarut ditambah atau ditukar jenis.
+        <br><strong>Amaran Intermediate:</strong> Jika menukar daripada larutan Buffer Bergaram kepada 100% Organik (Methanol/ACN), saluran <strong>wajib</strong> dibilas dahulu dengan larutan perantara (Intermediate: 90% Air Suling : 10% Methanol) selama 30 minit bagi mengelakkan garam buffer termendap dan menyumbat injap pam.
+      </div>
     </div>
 
     <div class="sop-step-box">
-      <strong>6.3 Start Up dan Flushing Sistem untuk Analisis</strong>
-      <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.7">
-        <li>Buka method file atau create method file baru.</li>
-        <li>Muat turun method file pada ikon <strong>“Download”</strong>.</li>
-        <li>Klik ikon untuk <strong>Auto Purge</strong> dan tunggu sehingga selesai.</li>
-        <li>Sekiranya analisis dijalankan menggunakan air dan pelarut organik (MeOH/ACN), sistem boleh flush menggunakan mobile phase analisis tersebut.</li>
-        <li>Sekiranya mobile phase menggunakan buffer atau pelarut asid, sistem <strong>perlu flush menggunakan 90% air (H₂O) dan 10% Methanol (MeOH)</strong> terlebih dahulu. Selepas itu, flush semula menggunakan mobile phase analisis.</li>
-        <li>Hidupkan sistem (mobile phase pumping) dengan klik ikon <strong>“Instrument On/Off”</strong>. Pastikan bacaan tekanan (Pressure) tertera pada jadual bahagian kanan (jika bacaan 0 menunjukkan sistem tidak berjalan).</li>
+      <strong>4.3 Penstabilan Sistem &amp; Pemantauan PDA Real-Time</strong>
+      <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.75">
+        <li>Muat turun fail kaedah dengan klik butang <strong>“Download”</strong> pada tetingkap RealTime.</li>
+        <li>Klik butang <strong>“Instrument On/Off”</strong> untuk memulakan aliran pam dan pemanas ketuhar.</li>
+        <li>Pantau bacaan tekanan (Pressure). Pastikan tiada turun naik tekanan yang mendadak (Rippling &lt; 2%).</li>
+        <li>Klik ikon <strong>“Plot”</strong> pada tetingkap Real Time untuk memantau garis dasar (baseline) PDA sekurang-kurangnya 15–30 minit sehingga stabil sepenuhnya (Drift &lt; 1.0 mAU/hr).</li>
+        <li>Sebelum memulakan suntikan sampel, klik <strong>“Stop”</strong> pada paparan Plot.</li>
       </ol>
     </div>
 
     <div class="sop-step-box">
-      <strong>6.4 Penstabilan Suhu (Thermal Equilibration) & Pemerhatian PDA Detector</strong>
-      <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.7">
-        <li>Pantau paparan suhu sehingga suhu mencapai bacaan method yang dimuatkan.</li>
-        <li>Klik ikon <strong>“Plot”</strong> pada tetingkap Real Time sekurang-kurangnya dalam tempoh running time kaedah sehingga garisan dasar (baseline) stabil dan tekanan konsisten.</li>
-        <li>Sebelum memulakan suntikan sampel, klik butang <strong>“Stop”</strong> untuk menghentikan Plot.</li>
-        <li>Untuk memerhati gelombang yang dipilih di RealTime: Klik kanan ikon <em>“PDA Chromatogram”</em> $\rightarrow$ <em>“Display Settings”</em> $\rightarrow$ Masukkan gelombang (nm) $\rightarrow$ Klik <strong>“OK”</strong>.</li>
-      </ol>
+      <strong>4.4 Susunan Suntikan Batch (Real Time Batch Sequence)</strong>
+      <p style="margin-top:0.3rem">Klik <strong>“Real Time Batch”</strong> pada panel Assistant Bar sebelah kiri &gt; Klik kanan pada jadual batch &gt; Pilih <strong>“Add Row”</strong>. Susun mengikut urutan ISO 17025 berikut:</p>
+      <div class="table-wrap">
+        <table class="table-official">
+          <thead><tr><th>Vial No.</th><th>Sample Name</th><th>Sample Type</th><th>Inj Volume</th><th>Tujuan / Kriteria</th></tr></thead>
+          <tbody>
+            <tr class="seq-blank"><td>Vial 1</td><td>Blank (Pelarut / Diluent)</td><td>Blank</td><td>10 – 20 µL</td><td>Tiada puncak gangguan pada RT analit sasaran</td></tr>
+            <tr class="seq-sst"><td>Vials 2–7</td><td>Working Standard Solution (SST)</td><td>Standard</td><td>10 – 20 µL</td><td>6× suntikan ulangan: Peak Area %RSD &le; 2.0%, Tailing T &le; 2.0</td></tr>
+            <tr class="seq-iqc"><td>Vial 8</td><td>LOD / Sensitivity Check</td><td>Control</td><td>10 – 20 µL</td><td>Nisbah Signal-to-Noise S/N &ge; 3</td></tr>
+            <tr class="seq-blank"><td>Vial 9</td><td>Blank Re-injection</td><td>Blank</td><td>10 – 20 µL</td><td>Semakan carry-over sistem</td></tr>
+            <tr><td>Vials 10–19</td><td>Sampel Ujian (Inj A &amp; B)</td><td>Unknown</td><td>10 – 20 µL</td><td>2× suntikan bagi setiap sampel pengawasan/aduan</td></tr>
+            <tr class="seq-iqc"><td>Vial 20</td><td>IQC Bracketing Standard</td><td>Control</td><td>10 – 20 µL</td><td>Drift kawasan puncak &le; 5.0% sepanjang batch</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:0.5rem">Simpan fail batch (<code>Save Batch File</code>) dan klik butang hijau <strong>“Start Real Time Batch”</strong>.</p>
     </div>
 
     <div class="sop-step-box">
-      <strong>6.5 Jenis Analisis (Single Run / Real Time Batch Run)</strong>
-      <p style="margin-top:0.3rem"><strong>6.5.1 Single Run:</strong> Acquisition &gt; Klik “Single Run” pada Assistant Bar sebelah kiri &gt; Isikan data file &gt; Start.</p>
-      <p style="margin-top:0.4rem"><strong>6.5.2 Real Time Batch Run:</strong> Main &gt; Klik “Real Time Batch” pada Assistant Bar sebelah kiri &gt; Klik kanan pada batch table &gt; Klik “Add Row”. Isikan Method File, Data File Name, Vial No. dan Tray Name. Simpan batch table dan klik <strong>“Start Real Time Batch”</strong>.</p>
-    </div>
-
-    <div class="sop-step-box">
-      <strong>6.6 Tatacara Penutupan Sistem (System Shutdown)</strong>
-      <ol style="margin-left:1.5rem;margin-top:0.4rem;line-height:1.7">
-        <li><strong>Jika mobile phase air dan pelarut organik (MeOH/ACN)</strong>: Flush menggunakan <strong>100% pelarut organik (ACN/MeOH) selama 30 minit</strong> untuk membersihkan column, diikuti <strong>60–70% pelarut organik : 40–30% air selama 15 minit</strong> dan kemudian disimpan.</li>
-        <li><strong>Jika buffer atau pelarut asid digunakan</strong>: Flush menggunakan <strong>90–95% air dan 10–5% pelarut organik selama 30 minit</strong> $\rightarrow$ diikuti <strong>100% pelarut organik selama 30 minit</strong> $\rightarrow$ akhir sekali flush <strong>15 minit menggunakan 70–60% pelarut organik dan 30–40% air</strong> untuk penyimpanan kolum.</li>
-        <li>Setelah flush selesai, klik <strong>“Instrument ON/OFF”</strong> untuk menutup pam dan pemanas.</li>
-        <li>Tutup perisian RealTime dan perisian LabSolutions.</li>
+      <strong>4.5 Tatacara Pencucian Kolum &amp; Penutupan Sistem (System Shutdown)</strong>
+      <ol style="margin-left:1.5rem;margin-top:0.5rem;line-height:1.75">
+        <li><strong>Jika fasa bergerak mengandungi Buffer / Garam / Asid:</strong>
+          <br>Flush pam dan kolum dengan <strong>90% Air Suling : 10% Methanol selama 30 minit</strong> (@ 1.0 mL/min) $\rightarrow$ kemudian flush dengan <strong>100% Organik (Methanol/ACN) selama 30 minit</strong> $\rightarrow$ akhir sekali flush dengan <strong>70% Pelarut Organik : 30% Air selama 15 minit</strong> bagi penyimpanan kolum.
+        </li>
+        <li><strong>Jika fasa bergerak hanya pelarut organik tulen (MeOH/ACN/Water):</strong>
+          <br>Flush dengan <strong>100% Pelarut Organik selama 30 minit</strong> $\rightarrow$ diikuti <strong>70% Organik : 30% Air selama 15 minit</strong>.
+        </li>
+        <li>Setelah proses flushing selesai, klik ikon <strong>“Instrument ON/OFF”</strong> untuk mematikan pam dan pemanas kolum.</li>
+        <li>Tutup perisian Real Time dan LabSolutions. Matikan suis kuasa utama instrumen dan catatkan penggunaan ke dalam logbook.</li>
       </ol>
     </div>
 
-    <!-- 6.0 REKOD KUALITI -->
-    <div class="sop-sec-title"><span class="sop-sec-num">6.0</span> REKOD KUALITI</div>
+    <!-- 5.0 REKOD KUALITI -->
+    <div class="sop-sec-title"><span class="sop-sec-num">5.0</span> REKOD KUALITI &amp; BORANG BERKAITAN</div>
     <table class="table-official">
       <thead><tr><th>No. Borang / Dokumen</th><th>Tajuk Rekod Kualiti</th><th>Lokasi Simpanan</th><th>Tempoh Simpanan</th></tr></thead>
       <tbody>
-        <tr><td>-</td><td>Rekod Penyelenggaraan Alat Shimadzu High Performance Liquid Chromatography (Prominence-i)</td><td>Bilik Instrumen HPLC (B2-01)</td><td>6 Tahun</td></tr>
+        <tr><td>Borang UP/011</td><td>Buku Log Pengendalian &amp; Penyelenggaraan HPLC Shimadzu (LC-2030C)</td><td>Bilik Instrumen HPLC (B2-01)</td><td>6 Tahun</td></tr>
+        <tr><td>Borang UP/041</td><td>Buku Log Pengendalian HPLC 3 Shimadzu Prominence-i</td><td>Bilik Instrumen HPLC (B2-01)</td><td>6 Tahun</td></tr>
+        <tr><td>Borang UP/042</td><td>Buku Log Pengendalian HPLC 4 Shimadzu Prominence-i</td><td>Bilik Instrumen HPLC (B2-01)</td><td>6 Tahun</td></tr>
+        <tr><td>Borang UP/005</td><td>Borang Keputusan Ujian Penyaringan Kromatografi (HPLC-PDA)</td><td>Fail Sampel Seksyen SPPK</td><td>6 Tahun</td></tr>
       </tbody>
     </table>
 
   </div>
 
   <div class="footer">
-    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+    Unit Penyaringan ◈ Seksyen Pengujian Produk &amp; Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
   </div>
 </div>
 
