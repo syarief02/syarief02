@@ -957,20 +957,16 @@ for f in file_list:
     elif f.endswith('.pdf'):
         paras, tables = parse_pdf(path)
     
+    # Use the pristine official title from filename
     doc_title = title_clean
-    for p in paras[:10]:
-        if 'ARAHAN KERJA' in p.upper() or 'IDENTIFIKASI' in p.upper() or 'PENGENDALIAN' in p.upper() or 'SCREENING' in p.upper():
-            doc_title = p.replace('ARAHAN KERJA :', '').replace('ARAHAN KERJA:', '').strip()
-            break
-            
-    cat = classify_cat(doc_title or title_clean)
+    cat = classify_cat(doc_title)
     rev_str = 'Terbitan 3 Semakan 0'
     date_str = '10 April 2026'
     if '034' in num_str:
         date_str = '1 Julai 2026'
         rev_str = 'Terbitan 1 Semakan 2'
     
-    html_out = format_sop_html(code, doc_title or title_clean, num_str, rev_str, date_str, paras, tables, cat)
+    html_out = format_sop_html(code, doc_title, num_str, rev_str, date_str, paras, tables, cat)
     
     out_file = os.path.join(OUT_DIR, f'{slug}.html')
     with open(out_file, 'w', encoding='utf-8') as out_f:
