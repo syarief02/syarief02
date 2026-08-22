@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKKK/300/UP/001 — Proses Persampelan | NPRA Arahan Kerja 300</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/001: Proses Persampelan — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<link rel="icon" type="image/png" href="../../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-substep {
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  }
+  .sop-list-item {
+    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
+    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+  }
+  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
+  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+  
+  @media print {
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .main { max-width: 100% !important; padding: 0 !important; }
+    .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="../index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="../sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Container -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: PROSES PERSAMPELAN</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/001</td>
+        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- Sections -->
+    
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Tiada Sejarah semakan</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses persampelan yang dijalankan di Unit Penyaringan dijalankan dengan betul dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakapakai untuk menjalankan proses persampelan bagi kesemua sampel yang diterima di Unit Penyaringan.</p><p class="sop-p">DEFINISI</p><p class="sop-p">Tiada definisi untuk prosedur ini</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Cara persampelan adalah berbeza mengikut bentuk dan bilangan sampel yang diterima</p><p class="sop-p">Cara persampelan produk (selain produk kosmetik) adalah seperti berikut :</p><div class="sop-substep"><strong>6.1.1 Serbuk</strong></div><div class="sop-substep"><strong>6.1.1.1 Bungkusan Tunggal</strong></div><p class="sop-p">Timbang berat sampel tersebut. ‘Homogenize’ dengan mengoncangkan sampel tersebut. Ambil 10% sampel perwakilan daripada berat kesuluruhan sampel serbuk tersebut.</p><div class="sop-substep"><strong>6.1.1.2 Bungkusan Pelbagai</strong></div><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Semua sampel di dalam satu kumpulan yang sama akan disatukan di dalam bungkusan lain agar lebih ‘homogenize’.</p><p class="sop-p">Aerosol</p><p class="sop-p">Cara persampelan untuk sampel aerosol adalah sama dengan sampel serbuk.</p><p class="sop-p">Kesemua isi kandungan aerosol akan digunakan. Kaedah yang digunapakai adalah dengan menyembur sampel ini ke dalam bekas kaca sebelum pengekstrakan atau pelarutan dijalankan.</p><p class="sop-p">Tablet, Kapsul, Pil, Suppositori &amp; Gula-gula</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Bungkusan Pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bungkusan berdasarkan ‘square root’ bilangan keseluruhan bungkusan sampel tersebut kepada integer terbesar seterusnya.</p><p class="sop-p">Daripada bungkusan yang dipilih, pilih secara rawak bilangan biji sampel berdasarkan ‘square root’ bilangan keseluruhan biji sampel dalam setiap bungkusan tersebut kepada integer terbesar seterusnya.</p><p class="sop-p">Contoh:- Sampel yang diterima ialah 1000 kerajang</p><p class="sop-p">“square root” 1000 = 32 kerajang</p><p class="sop-p">setiap kerajang mempunyai 10 biji kapsul yang sama</p><p class="sop-p">“square root” 10 = 4 biji kapsul</p><p class="sop-p">Oleh itu:- 4 biji kapsul akan diambil secara rawak dari setiap 32 kerajang.</p><div class="sop-substep"><strong>6.1.3.3 Bagi ujian penentuan kandungan Lovastatin dalam produk tradisional bentuk kapsul menggunakan HPLC, bilangan akhir biji kapsul yang diambil semasa proses persampelan haruslah 20 atau lebih biji kapsul.</strong></div><p class="sop-p">Cecair</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Ambil 10 mL cecair daripada bungkusan tersebut.</p><div class="sop-substep"><strong>6.1.4.2 Bungkusan pelbagai</strong></div><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bekas/paket berdasarkan ‘square root’ bilangan keseluruhan bekas/paket tersebut kepada integer terbesar seterusnya. Hanya 10 mL cecair sahaja akan diambil daripada setiap bekas/paket.</p><p class="sop-p">Bagi sampel yang kurang 10 mL &amp; sampel yang diisi didalam vial kaca, kesemua sampel akan diambil.</p><p class="sop-p">Krim</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Ambil 10% sampel perwakilan daripada berat keseluruhan sampel krim tersebut.</p><p class="sop-p">Bungkusan pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bekas/paket berdasarkan ‘square root’ bilangan keseluruhan bekas/paket tersebut kepada integer terbesar seterusnya. Hanya 10% krim sahaja akan diambil daripada setiap bekas/paket.</p><p class="sop-p">Plaster / Patch</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Ambil semua sampel plaster / patch di dalam bungkusan tunggal tersebut.</p><p class="sop-p">Bungkusan pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan paket berdasarkan ‘square root’ bilangan keseluruhan paket tersebut kepada integer terbesar seterusnya. Hanya 10% daripada jumlah paket sahaja akan diambil daripada setiap bungkusan.</p><p class="sop-p">Penyeragaman Sampel</p><p class="sop-p">Sampel berbentuk serbuk</p><p class="sop-p">Keluarkan sampel dari bungkusan dan masukkan ke dalam plastik. Goncang dan campurkan serbuk dengan menggunakan spatula. Ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk kapsul</p><p class="sop-p">Goncang dan campurkan kapsul dalam bungkusan plastik. Ambil kuantiti yang diperlukan dengan spatula.</p><p class="sop-p">Sampel berbentuk tablet, pil, suppositori dan gula-gula</p><p class="sop-p">Hancurkan sampel dengan menggunakan ‘mortar dan pestle’. Masukkan dalam bungkusan plastik dan campurkan dengan spatula. Ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk krim dan cecair</p><p class="sop-p">Keluarkan sampel dari bungkusan dan masukkan dalam bikar. Kacau dengan rod kaca dan ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk plaster dan patch</p><p class="sop-p">Keluarkan sampel dari paket. Guntingkan plaster / patch kepada bentuk yang lebih kecil ke dalam plastik. Goncangkan plastik tersebut dan ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Cara persampelan produk kosmetik</p><p class="sop-p">Cara persampelan produk kosmetik adalah mengikut pembungkusan yang diterima serta berdasarkan arahan penggunaan yang ditetapkan oleh pengilang (ie: kombinasi produk jika berkenaan).</p><p class="sop-p">Proses persampelan adalah berdasarkan bilangan sampel dan pembungkusan yang diterima. Terdapat 2 teknik persampelan yang digunakan iaitu:</p><p class="sop-p">Representative sampling</p><p class="sop-p">Digunakan bagi sampel yang mempunyai nombor kelompok &amp; tarikh luput yang sama dengan ciri fizikal (eg: saiz pembungkusan, warna) yang sama, namun kuantiti sampel yang diterima untuk pengujian adalah kurang daripada 10.</p><p class="sop-p">Arbitrary sampling</p><p class="sop-p">Digunakan bagi sampel yang mempunyai nombor kelompok &amp; tarikh luput yang sama dengan ciri fizikal (eg: saiz pembungkusan, warna) yang sama, namun kuantiti sampel yang diterima untuk pengujian adalah melebihi 10.</p><p class="sop-p">Nota: Bagi sampel dengan nombor kelompok, tarikh luput dan ciri fizikal yang</p><p class="sop-p">berbeza, persampelan harus dijalankan secara berasingan.</p><div class="sop-substep"><strong>6.2.2    Bilangan sampel yang diterima</strong></div><p class="sop-p">Nota: Sampel yang diterima dalam pek pembungkusan ampul &amp; vial adalah dikecualikan dari kaedah persampelan dalam jadual di atas (sila rujuk kaedah persampelan ampul &amp; vial pada para 6.2.2)</p><div class="sop-substep"><strong>6.2.3 Bentuk pembungkusan/Rupabentuk</strong></div><p class="sop-p">Nota: Bilangan sampel diambil adalah berdasarkan jadual 6.2.1 (kecuali ampul &amp;</p><p class="sop-p">vial)</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">7.  REKOD KUALITI</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/001B	Borang Persampelan Produk Kosmetik</p><p class="sop-p">UP/001A                                                                                                                                               10 Apr-2026</p><p class="sop-p">Rujuk Arahan Kerja PKKK/300/UP/001</p><p class="sop-p">Rujuk Prosedur Kualiti PKKK/200/018</p><p class="sop-p">UP/001B									10 -Apr - 2026</p><p class="sop-p">Rujuk Arahan Kerja PKKK/300/UP/001</p><p class="sop-p">Rujuk Prosedur Kualiti PKKK/200/018</p>
+          </div>
+        </div>
+        
+
+    <!-- Tables -->
+    
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
+          <table class="table-official">
+            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
+          <table class="table-official">
+            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td></td><td>PROSES PERSAMPELAN DARI PERSPEKTIF JABATAN KIMIA MALAYSIA</td></tr><tr><td></td><td>Guideline on representative drug sampling, United Nation Office on Drug and Crime (UNODC) 2009</td></tr><tr><td></td><td>European Commission Taxation and Customs Union (laboratory testing sampling for retail packages (https://ec.europa.eu/taxation_customs/dds2/SAMANCTA/EN/SamplingProcedure/ RetailPackages_EN.htm)</td></tr><tr><td>PKKK/200/018</td><td>Prosedur Persampelan Untuk Analisis Sampel</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
+          <table class="table-official">
+            <tr><th>5.1</th><th>Ketua Unit/Pegawai Farmasi yang bertanggungjawab</th><th>Memastikan arahan kerja ini diikuti semasa melaksanakan  proses persampelan. Menyemak borang persampelan.</th></tr><tr><td>5.2</td><td>Pegawai Farmasi</td><td>Mengagihkan sampel kepada penganalisis. Mengisi borang persampelan. Menyelia proses persampelan yang dijalankan oleh penganalisis. Menyemak laporan proses persampelan.</td></tr><tr><td>5.3</td><td>Penganalisis</td><td>Menjalankan proses persampelan mengikut tatacara yang telah ditetapkan</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
+          <table class="table-official">
+            <tr><th>&lt; 10 bungkusan</th><th>Ambil isi kandungan semua bungkusan tersebut</th></tr><tr><td>10 – 100 bungkusan</td><td>Pilih secara rawak 10 bungkusan dan ambil semua isi kandungan bungkusan tersebut</td></tr><tr><td>&gt;100 bungkusan</td><td>Pilih secara rawak bilangan bungkusan berdasarkan ‘square root’ jumlah keseluruhan bungkusan tersebut kepada integer terbesar seterusnya Daripada bungkusan yang dipilih, pilih secara rawak bilangan paket sampel berdasarkan ‘square root’ bilangan keseluruhan paket sampel dalam setiap bungkusan tersebut kepada integer terbesar seterusnya. Contoh: Terima 1000 bungkusan “square root” 1000 = 32 bungkusan setiap bungkusan mempunyai 10 paket serbuk yang sama “square root” 10 = 4 paket Oleh itu: 4 paket akan diambil secara rawak dari setiap 32 bungkusan.</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
+          <table class="table-official">
+            <tr><th>1-50 biji</th><th>Ambil 50% kandungan bungkusan tetapi tidak melebihi 20 biji</th></tr><tr><td>51-100 biji</td><td>Pilih secara rawak 20 biji</td></tr><tr><td>101-1000 biji</td><td>Pilih secara rawak 30 biji</td></tr><tr><td>&gt;1000 biji</td><td>Pilih secara rawak bilangan biji diambil berdasarkan ‘square root’ jumlah keseluruhan sampel tersebut kepada integer terbesar seterusnya.</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 6</div>
+          <table class="table-official">
+            <tr><th>&lt;10 bungkusan</th><th>Ambil 10% isi kandungan setiap semua bungkusan tersebut</th></tr><tr><td>10-100 bungkusan</td><td>Pilih secara rawak 10 bungkusan dan ambil 10% isi kandungan setiap semua bungkusan tersebut</td></tr><tr><td>&gt;100 bungkusan</td><td>Pilih secara rawak bilangan bungkusan berdasarkan ‘square root’ jumlah keseluruhan bungkusan tersebut kepada integer terbesar seterusnya. Ambil 10% isi kandungan setiap bungkusan tersebut.</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 7</div>
+          <table class="table-official">
+            <tr><th>&lt;10 bungkusan</th><th>Ambil 10% daripada jumlah paket dari setiap bungkusan tersebut</th></tr><tr><td>10-100 bungkusan</td><td>Pilih secara rawak 10 bungkusan dan ambil 10% daripada jumlah paket dari setiap bungkusan tersebut</td></tr><tr><td>&gt;100 bungkusan</td><td>Pilih secara rawak bilangan bungkusan berdasarkan ‘square root’ jumlah keseluruhan bungkusan tersebut kepada integer terbesar seterusnya. Ambil 10% daripada jumlah paket dari setiap bungkusan tersebut</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 8</div>
+          <table class="table-official">
+            <tr><th>Teknik persampelan</th><th>Bilangan sampel diterima (N)</th><th>Bilangan sampel dianalisa (n)</th></tr><tr><td>Representative sampling</td><td>1 - 10</td><td>1</td></tr><tr><td></td><td>11 - 20</td><td>3</td></tr><tr><td></td><td>21 - 30</td><td>4</td></tr><tr><td></td><td>31 - 40</td><td>5</td></tr><tr><td></td><td>41 - 50</td><td>6</td></tr><tr><td></td><td>&gt; 50</td><td>7</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 9</div>
+          <table class="table-official">
+            <tr><th>BENTUK PEMBUNGKUSAN / RUPABENTUK</th><th>TEKNIK PERSAMPELAN</th><th>Berat/Isipadu (g/mL)</th><th>PROSEDUR</th></tr><tr><td>BEKAS / SACHET / TIUB / SABUN / GINCU</td><td></td><td>&lt; 50</td><td>Ambil 0.5 g setiap bekas. Goncang/kacau selama 10 saat. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>BEKAS / SACHET / TIUB / SABUN / GINCU</td><td></td><td>51 - 100</td><td>Ambil 3 g setiap bekas. Goncang/kacau selama 10 saat. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>BEKAS / SACHET / TIUB / SABUN / GINCU</td><td></td><td>101 - 500</td><td>Ambil 5 g setiap bekas. Goncang/kacau selama 10 saat. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>BEKAS / SACHET / TIUB / SABUN / GINCU</td><td></td><td>&gt; 501</td><td>Ambil 10 g setiap bekas. Goncang/kacau selama 10 saat. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>PAM / SPRAY / DROPPER</td><td></td><td>&lt; 50</td><td>Goncang selama 10 saat dan tekan/picit beberapa kali (keluarkan udara &amp; sampel). Ambil 0.5 g setiap bekas. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>PAM / SPRAY / DROPPER</td><td></td><td>51 - 100</td><td>Goncang selama 10 saat dan tekan/picit beberapa kali (keluarkan udara &amp; sampel). Ambil 3 g setiap bekas. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>PAM / SPRAY / DROPPER</td><td></td><td>101 - 500</td><td>Goncang selama 10 saat dan tekan/picit beberapa kali (keluarkan udara &amp; sampel). Ambil 5 g setiap bekas. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>PAM / SPRAY / DROPPER</td><td></td><td>&gt; 501</td><td>Goncang selama 10 saat dan tekan/picit beberapa kali (keluarkan udara &amp; sampel). Ambil 10 g setiap bekas. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>BENTUK PEMBUNGKUSAN / RUPABENTUK</td><td>TEKNIK PERSAMPELAN</td><td>AMPUL/VIAL</td><td>PROSEDUR</td></tr><tr><td>Ampul &amp; Vial</td><td></td><td>1 - 30</td><td>Ambil 1 ampul/vial. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>Ampul &amp; Vial</td><td></td><td>31 - 50</td><td>Ambil 2 ampul/vial. Goncang/Kacau selama 10 saat. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>Ampul &amp; Vial</td><td></td><td>51 - 80</td><td>Ambil 3 ampul/vial. Goncang/Kacau selama 10 saat. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>Ampul &amp; Vial</td><td></td><td>81 - 100</td><td>Ambil 4 ampul/vial. Goncang/Kacau selama 10 saat. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>Ampul &amp; Vial</td><td></td><td>&gt; 100</td><td>Ambil 5 ampul/vial. Goncang/Kacau selama 10 saat. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 10</div>
+          <table class="table-official">
+            <tr><th>SEKSYEN PENGUJIAN PRODUK &amp; KOSMETIK UNIT PENYARINGAN BORANG PERSAMPELAN</th><th>SEKSYEN PENGUJIAN PRODUK &amp; KOSMETIK UNIT PENYARINGAN BORANG PERSAMPELAN</th></tr><tr><td>NO. SAMPEL</td><td></td></tr><tr><td>BENTUK DOSEJ</td><td></td></tr><tr><td>BILANGAN SAMPEL DITERIMA</td><td></td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 11</div>
+          <table class="table-official">
+            <tr><th>PROSES PERSAMPELAN SAMPEL (SAMPLING OF SAMPLE)</th></tr><tr><td>Daripada  _____ (kotak / bekas / bungkusan / botol / peket / blister / strip) yang mengandungi  _____ (kotak kecil / bekas / bungkusan / botol /  biji / gram / mL / vial / uncang / peket / blister / strip),  ambil  _____ (kotak / bekas / bungkusan / botol / peket / biji / gram / mL / vial / uncang / blister / strip).        (Guntingkan / Hancurkan / keluarkan isi / goncangkan / kacaukan). Timbang / Sukat _________ gram / mL.        Pergi ke langkah 2. Daripada  ______ (kotak / bekas / bungkusan / botol / peket / blister / strip) yang telah diambil,  ambil ______ (kotak kecil / bekas / bungkusan / botol / biji / gram / mL / vial / uncang / peket / blister / strip) dari setiap (kotak / bekas / bungkusan / botol / peket / blister / strip). (Guntingkan / hancurkan / keluarkan isi / goncangkan / kacaukan) kesemuanya.  Timbang / Sukat ________ gram / mL.  *Bagi ujian penentuan kandungan Lovastatin, sila pastikan bilangan akhir kapsul yang diambil adalah 20 biji atau lebih.</td></tr><tr><td>DISEDIAKAN OLEH:</td></tr><tr><td>DISEMAK OLEH:</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 12</div>
+          <table class="table-official">
+            <tr><th>SEKSYEN PENGUJIAN PRODUK &amp; KOSMETIK UNIT PENYARINGAN BORANG PERSAMPELAN PRODUK KOSMETIK</th><th>SEKSYEN PENGUJIAN PRODUK &amp; KOSMETIK UNIT PENYARINGAN BORANG PERSAMPELAN PRODUK KOSMETIK</th><th>SEKSYEN PENGUJIAN PRODUK &amp; KOSMETIK UNIT PENYARINGAN BORANG PERSAMPELAN PRODUK KOSMETIK</th></tr><tr><td>NO. SAMPEL</td><td></td><td></td></tr><tr><td>BENTUK DOSEJ</td><td>KRIM / GEL / CECAIR / SABUN / SERBUK / GINCU / UBAT GIGI</td><td>KRIM / GEL / CECAIR / SABUN / SERBUK / GINCU / UBAT GIGI</td></tr><tr><td>BENTUK  PEMBUNGKUSAN</td><td>BEKAS / SACHET / TIUB / PAM / SPRAY / DROPPER / AMPUL / VIAL</td><td>BEKAS / SACHET / TIUB / PAM / SPRAY / DROPPER / AMPUL / VIAL</td></tr><tr><td>TARIKH SAMPEL DITERIMA</td><td></td><td></td></tr><tr><td>BILANGAN SAMPEL DITERIMA</td><td></td><td></td></tr><tr><td>JENIS SAMPEL</td><td>  Pengawasan   Susulan Aduan</td><td>  Aduan / ADR / CPF   Lain-lain</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 13</div>
+          <table class="table-official">
+            <tr><th></th></tr><tr><td>Daripada ______ sampel yang diterima, ambil _____  sampel untuk dianalisa. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>Daripada _____ ampul/vial, ambil ____ ampul/vial. Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>Jika lebih daripada 11 sampel : Daripada _____ sampel yang diterima, ambil   sampel untuk dianalisa.   Timbang berat sampel berdasarkan prosedur tatacara pengujian.</td></tr><tr><td>DISEDIAKAN OLEH &amp; TARIKH:                                            DISEMAK OLEH &amp; TARIKH:</td></tr>
+          </table>
+        </div>
+        
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="../steroid-hplc.js"></script>
+</body>
+</html>

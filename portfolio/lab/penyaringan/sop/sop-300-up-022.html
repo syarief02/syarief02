@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKKK/300/UP/022 — Identifikasi Anti diabetik dalam produk tradisional menggunakan HPLC | NPRA Arahan Kerja 300</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/022: Identifikasi Anti diabetik dalam produk tradisional menggunakan HPLC — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<link rel="icon" type="image/png" href="../../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-substep {
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  }
+  .sop-list-item {
+    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
+    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+  }
+  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
+  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+  
+  @media print {
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .main { max-width: 100% !important; padding: 0 !important; }
+    .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="../index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="../sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Container -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: IDENTIFIKASI ANTI DIABETIK DALAM PRODUK TRADISIONAL MENGGUNAKAN HPLC</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/022</td>
+        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- Sections -->
+    
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Kemaskini 6.6 System suitability test requirement, di mana</p><p class="sop-p">kritieria Theoretical plate telah dikemaskini daripada “(NLT) 1500 kepada “(NLT) 2000”.</p><p class="sop-p">Menambah “%RSD for retention time: Not more than, NMT 2.0%”</p><p class="sop-p">Menambah perenggan 6.7 Internal Quality Control</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Menambah perenggan 6.3.4 Single Standard Stock Solution</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menukar Weigh kepada Measure untuk sampel cecair</p><p class="sop-p">Menambah perenggan 6.8 Acceptance criteria for test sample</p><p class="sop-p">Mengemaskini perenggan 6.5.5 Injection Sequence</p><p class="sop-p">Mengemaskini perenggan 6.9.7 Evidence of analysis report</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan nombor dokumen PKKK/300/UAT/048 kepada PKKK/300/UP/022.</p><p class="sop-p">Pindaan nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-p">PKKK/300/UAT/012 kepada PKKK/300/UP/011</p><p class="sop-p">PKKK/300/UAT/017 kepada PKKK/300/UP/016</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001</p><p class="sop-p">PKKK/300/UAT/009 kepada PKKK/300/UP/008</p><p class="sop-p">PKKK/300/UAT/010 kepada PKKK/300/UP/009</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi Anti- diabetik menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi Anti-diabetik dalam produk tradisional menggunakan HPLC.</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1	HPLC		- High Performance Liquid Chromatography</strong></div><div class="sop-substep"><strong>3.2	RS		- Reference standard</strong></div><div class="sop-substep"><strong>3.3	LOD 		- Limit of Detection</strong></div><div class="sop-substep"><strong>3.4	OOS		- Out of Specification</strong></div><div class="sop-substep"><strong>3.5	UV		- Ultraviolet</strong></div><div class="sop-substep"><strong>3.6	SST		- System Suitability Test</strong></div><div class="sop-substep"><strong>3.7	IQC		- Internal Quality Control</strong></div><div class="sop-substep"><strong>3.8	RSD		- Relative Standard Deviation</strong></div><div class="sop-substep"><strong>3.9	PDA		- Photodiode Array</strong></div><div class="sop-substep"><strong>3.10	RRLC		- Rapid Resolution Liquid Chromatography</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><div class="sop-substep"><strong>5.3      Pegawai Farmasi</strong></div><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><div class="sop-substep"><strong>5.4    Penolong Pegawai Farmasi U7 / U6</strong></div><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan.</p><div class="sop-substep"><strong>5.5    Penolong Pegawai Farmasi</strong></div><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Materials and Equipments</p><div class="sop-substep"><strong>6.1.1 Instrument:</strong></div><p class="sop-p">High Performance Liquid Chromatography with photodiode array (PDA) detector</p><p class="sop-p">pH Meter</p><div class="sop-substep"><strong>6.1.2 Analytical &amp; microbalance</strong></div><div class="sop-substep"><strong>6.1.3 Column: Zorbax Eclipse Plus C18 5 µm, 250 x 4.6 mm or equivalent</strong></div><div class="sop-substep"><strong>6.1.4 Reference standards: Primary or secondary RS or equivalent</strong></div><p class="sop-p">Metformin</p><p class="sop-p">Glipizide</p><p class="sop-p">Gliclazide</p><p class="sop-p">Glibenclamide</p><div class="sop-substep"><strong>6.1.5 Chemicals:</strong></div><p class="sop-p">Ammonium Dihydrogen Orthophosphate</p><p class="sop-p">Sodium Heptane Sulfonate</p><p class="sop-p">Deionized water</p><p class="sop-p">Phosphoric Acid</p><p class="sop-p">Acetonitrile</p><div class="sop-substep"><strong>6.1.6 Glasswares and consumables:</strong></div><p class="sop-p">Beakers (50 ml)</p><p class="sop-p">Solvent filter system</p><p class="sop-p">Nylon solvent filter 0.45 µm</p><p class="sop-p">Solvent bottle (2L and 1L)</p><p class="sop-p">Amber Volumetric Flasks (20 ml)</p><p class="sop-p">Spatula</p><p class="sop-p">Disposable syringe without needle (5 ml)</p><p class="sop-p">2 ml glass screw cap vial</p><p class="sop-p">Preparation of Mobile Phase</p><p class="sop-p">Dissolve 2.30 gm of Ammonium dihydrogen orthophosphate and 1.2 gm of 1-Heptane sulfonic acid sodium salt into 2000 ml deionized water.</p><p class="sop-p">Mix well and adjust to pH3.3 with phosphoric acid.</p><p class="sop-p">Measure 1 L of acetonitrile.</p><p class="sop-p">Filter buffer mobile phase and acetonitrile using nylon solvent filter 0.45 µm and solvent filter system</p><p class="sop-p">Degassed filtered buffer mobile phase and acetonitrile for at least for 20 minutes to ensure no bubble present.</p><p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Individual standard stock solution</p><p class="sop-p">Weigh 10 mg Metformin, Glipizide, Gliclazide and Glibenclamide in 20 ml amber volumetric flask separately. Dissolve and dilute to volume with methanol.</p><p class="sop-p">Concentration of each standard stock: 0.5 mg/ml (500 ppm)</p><p class="sop-p">Mix working standard solution for SST</p><p class="sop-p">Pipette 0.8 ml of each standard stock solution into 20 ml amber volumetric flask. Dilute to volume with methanol and mix well.</p><p class="sop-p">Concentration of each standard in mixed solution: 0.02 mg/ml (20 ppm)</p><div class="sop-substep"><strong>6.3.3    Limit of detection (LOD) solution</strong></div><p class="sop-p">Pipette 2.5 ml of mix working standard solution into 5 ml amber volumetric flask. Dilute to volume with Methanol (0.01 mg/ml or 10 ppm).</p><div class="sop-substep"><strong>6.3.4	Single Standard Stock Solution</strong></div><div class="sop-substep"><strong>6.3.4.1	Prepare a single standard stock solution following the same procedure outlined in 6.3.1 to 6.3.3, but using a single standard instead of multiple standards.</strong></div><div class="sop-substep"><strong>6.3.4.2	This procedure is applicable for screening selected compounds only.</strong></div><p class="sop-p">Preparation of sample</p><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling process differ between different type of dosage form. Please refer to document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Sample preparation for analysis</p><p class="sop-p">For solid sample: Weigh 1 gm of the sample in a beaker and dissolve with 20 ml methanol.</p><p class="sop-p">For liquid sample: Measure 10ml of the sample in a beaker and dissolve with 10 ml methanol.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>2) Sonicate solution for 30 minutes.</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>3) Centrifuge at 3500 rpm for 15 mins</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>4) Filter supernatant layer with 0.45 µm syringe filter into 2 ml vial.</span></div><p class="sop-p">Experimental Method</p><p class="sop-p">The HPLC system used for identification of anti-diabetic are given in Table 1 below.</p><p class="sop-p">Table 1: HPLC system used for identification of anti-diabetic</p><p class="sop-p">Mobile Phase Method</p><p class="sop-p">Solvent gradient program for mobile phase is use in identification of anti-diabetic shown as below:</p><p class="sop-p">Table 2: Gradient program for mobile phase</p><p class="sop-p">Refer to document PKKK/300/UP/003 (RRLC 1200 Series), PKKK/300/UP/011 (HPLC Prominence-i) and PKKK/300/UP/016 (HPLC Flexar) on how to set-up method and HPLC system.</p><p class="sop-p">Standard Injection</p><p class="sop-p">Mix working standard solution must be injected at the beginning of analysis for six times to obtain system suitability test (SST).</p><p class="sop-p">Sample Injection</p><p class="sop-p">Inject each of the sample in duplicate. Compare the retention time and UV spectrum of the peak in the chromatogram of sample with the RS. The sample contains anti-diabetic compound if the retention time and UV spectrum of the sample correspond to the RS.</p><p class="sop-p">Retention time and UV spectrum observation</p><p class="sop-p">To observe and check retention time and UV spectrum of the sample and RS, refer to document PKKK/300/UP/003 (RRLC 1200 Series), PKKK/300/UP/011 (HPLC Prominence-i) and PKKK/300/UP/016 (HPLC Flexar).</p><div class="sop-substep"><strong>6.5.5	Injection Sequence</strong></div><p class="sop-p">First, inject a blank or diluent, then inject mix working standard solution six times (SST).</p><p class="sop-p">Inject the LOD solution before injecting the sample.</p><p class="sop-p">If more than five samples are injected in a single analysis, the LOD solution must be injected once every five samples.</p><p class="sop-p">A blank or diluent must be injected before the next sample injection. Refer to Table 3 for an example of the sequence table:</p><p class="sop-p">Table 3: Injection sequence for identification of anti-diabetics in HPLC</p><p class="sop-p">LOD solution must be injected at the end of the analysis.</p><p class="sop-p">System suitability test requirement</p><p class="sop-p">System suitability test need to be performed for each batch run to ensure the entire system is working properly. Perform at least six replicate injections of mix working standard solution (0.02 mg/ml).</p><p class="sop-p">Acceptance criteria:</p><p class="sop-p">%RSD for retention time: Not more than, NMT 2.0%</p><p class="sop-p">Tailing factor not more than (NMT) 2.0</p><p class="sop-p">Theoretical plate not less than (NLT) 2000</p><p class="sop-p">Internal Quality Control (IQC)</p><div class="sop-substep"><strong>6.7.1 	Inject 10 µL of LOD solution after every 5 samples &amp; at the end of analysis.</strong></div><div class="sop-substep"><strong>6.7.2 	Acceptance criteria for Internal Quality Control Check (IQC):</strong></div><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p><p class="sop-p">Acceptance criteria for test sample</p><div class="sop-substep"><strong>6.8.1 	Compare the retention time and UV spectrum obtained from the sample chromatogram with that of the working standard chromatogram. The identity of each steroid compound is positive if:</strong></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>a)	Retention time of the compound in the sample chromatogram corresponds to the retention time of the same compound in the standard chromatogram.</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>b) 	Peak area of the compound is above than peak area of the LOD concentration (0.01 mg/ml).</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>c) 	The UV spectrum is identical to the spectrum of the standard with similarity of more than 0.999 to the spectrum of standard.</span></div><div class="sop-substep"><strong>6.8.2	If the sample was found to be positive with one of the compounds, new sample preparation should be conducted by second analyst on different date from first analyst.</strong></div><p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number)</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameter including equipment name, mobile phase program and HPLC system.</p><p class="sop-p">List and preparation procedures of RS use in analysis</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only).</p><p class="sop-p">Interpretation of result (Detected, Not Detected or suspected of specific anti-diabetic compound)</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of compound name, peak area and retention time)</p><p class="sop-p">If sample sequence is more than 5 samples, a standard chromatogram will be injected again after 5 sample injections set and presented along with report with the nearest standard chromatogram injection.</p><p class="sop-p">Overlay spectrum of sample that have similar retention time with RS.</p><p class="sop-p">IQC table</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">7.  REKOD KUALITI</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p><p class="sop-p">LAMPIRAN</p><p class="sop-p">UV Spectrum of Anti-Diabetic Standard</p><p class="sop-p">Metformin</p><p class="sop-p">Glipizide</p><p class="sop-p">Gliclazide</p><p class="sop-p">Glibenclamide</p>
+          </div>
+        </div>
+        
+
+    <!-- Tables -->
+    
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
+          <table class="table-official">
+            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr><td>1</td><td>1</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
+          <table class="table-official">
+            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td>PKKK/300/UP/003</td><td>Rapid Resolution Liquid Chromatography HP 1200</td></tr><tr><td>PKKK/300/UP/011</td><td>Shimadzu High Performance Liquid Chromatography (Prominence-i)</td></tr><tr><td>PKKK/300/UP/016</td><td>High Performance Liquid Chromatography Flexar (Perkin Elmer)</td></tr><tr><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr><tr><td>PKKK/300/UP/008</td><td>pH Meter Model FiveEasy Plus</td></tr><tr><td>PKKK/300/UP/009</td><td>Alat Timbang Metler Toledo ME204T</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
+          <table class="table-official">
+            <tr><th>Column</th><th>Zorbax Eclipse Plus – C18 or equivalent</th></tr><tr><td>Dimensions</td><td>250 x 4.6 mm x 5 µm</td></tr><tr><td>Flow rate</td><td>1.2 mL/min</td></tr><tr><td>Column temperature</td><td>30oC</td></tr><tr><td>Autosampler Temperature</td><td>4oC</td></tr><tr><td>Wavelength detector (PDA)</td><td>234 nm</td></tr><tr><td>Injection volume</td><td>10 µL</td></tr><tr><td>Run time</td><td>16 minutes</td></tr><tr><td>Mobile Phase Method</td><td>Gradient program</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
+          <table class="table-official">
+            <tr><th>Time (min)</th><th>Buffer 0.01M Ammonium Dihydrogen Phosphate Buffer + 0.06% Sodium Heptane Sulfonate pH 3.3 (%)</th><th>Acetonitrile (%)</th></tr><tr><td>0</td><td>95</td><td>5</td></tr><tr><td>1</td><td>95</td><td>5</td></tr><tr><td>2</td><td>85</td><td>15</td></tr><tr><td>10</td><td>25</td><td>75</td></tr><tr><td>13</td><td>25</td><td>75</td></tr><tr><td>13.1</td><td>95</td><td>5</td></tr><tr><td>16</td><td>95</td><td>5</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
+          <table class="table-official">
+            <tr><th>No.</th><th>Detail</th><th>No. of Injection</th></tr><tr><td>1</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>2</td><td>Mix working standard solution (SST)</td><td>6</td></tr><tr><td>3</td><td>LOD solution</td><td>1</td></tr><tr><td>4</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>5</td><td>Sample number 1</td><td>2</td></tr><tr><td>6</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>7</td><td>Sample number 2</td><td>2</td></tr><tr><td>8</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>9</td><td>Sample number 3</td><td>2</td></tr><tr><td>10</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>11</td><td>Sample number 4</td><td>2</td></tr><tr><td>12</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>13</td><td>Sample number 5</td><td>2</td></tr><tr><td>14</td><td>LOD solution</td><td>1</td></tr><tr><td>15</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>16</td><td>Sample number 6</td><td>2</td></tr><tr><td>17</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>18</td><td>LOD solution</td><td>1</td></tr>
+          </table>
+        </div>
+        
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="../steroid-hplc.js"></script>
+</body>
+</html>

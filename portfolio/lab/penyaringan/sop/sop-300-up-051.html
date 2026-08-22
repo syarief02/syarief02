@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKKK/300/UP/051 — Determination of Hydroquinone by HPLC | NPRA Arahan Kerja 300</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/051: Determination of Hydroquinone by HPLC — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<link rel="icon" type="image/png" href="../../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-substep {
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  }
+  .sop-list-item {
+    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
+    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+  }
+  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
+  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+  
+  @media print {
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .main { max-width: 100% !important; padding: 0 !important; }
+    .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="../index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="../sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Container -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: DETERMINATION OF HYDROQUINONE BY HPLC</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/051</td>
+        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- Sections -->
+    
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">AMENDMENT :</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to the ISO 9001: 2015 version and the renaming of the institution from National Pharmaceutical Control Bureau (NPCB) to Bahagian Regulatori Farmasi Negara (NPRA). Therefore, the original document is obsolete and this document is published as Version 1.</p><p class="sop-p">HISTORY OF REVISION :</p><p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">Update on document number from PKK/200/KOS/020 to PKK/200/HMS/008</p><p class="sop-p">Update on effective date from 15 November 2016 to 10 February 2020</p><p class="sop-p">Update on responsibility.</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Document change from testing procedure PKK/200/HMS/008 to work instruction PKK/300/HMS/063</p><p class="sop-p">Issue 3 Revision 1 :</p><p class="sop-p">i.	Update on name of agency from National Pharmaceutical Regulatory Agency (NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/063 to PKKK/300/HMS/063</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">Issue 5 Revision 0 :</p><p class="sop-p">i.	Update document number from PKKK/300/HMS/063 to PKKK/300/KOS/020</p><p class="sop-p">ii.	Update paragraph 5.0 Responsibility</p><p class="sop-p">Update paragraph 6.3.5</p><p class="sop-p">Issue 6 Revision 0:</p><p class="sop-p">Update document number from PKKK/300/KOS/020 to PKKK/300/UP/051</p><p class="sop-p">Update Document Effective date from 1 April 2024 to 10 April 2026.</p><p class="sop-p">Update para 7.0 Quality Records :</p><p class="sop-p">KOS/X004 to UP/X010</p><p class="sop-p">KOS/X006 to UP/X011</p><p class="sop-p">KOS/X003 to UP/X009</p><p class="sop-p">KOS/002A to UP/002B</p><p class="sop-p">KOS/X009 to UP/X013</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0	Objective</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">HPLC testing procedure used to quantify the amount of Hydroquinone presence in cosmetic products.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">2.0	Scope</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">The quantification of Hydroquinone applies to cosmetic product that is positively identified to contain hydroquinone.</p><div class="sop-substep"><strong>3.0	Definition</strong></div><div class="sop-substep"><strong>3.1 HPLC	: High Pressure Liquid Chromatography</strong></div><div class="sop-substep"><strong>3.2 PTFE	: Polytetrafluoroethylene</strong></div><div class="sop-substep"><strong>3.3 Analyst	: Pharmacist/Pharmacy assistant/Science Officer</strong></div>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">4.0	Flow Chart</div>
+          <div class="sop-sec-content">
+            <div class="sop-list-item"><span class="sop-bullet">▹</span> <span>- None -</span></div><p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p><div class="sop-substep"><strong>5.1.1	Validate analysis report of failed sample and approve on QUEST System</strong></div><p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis report on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and update into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Perform sample analysis (when necessary) and report</p><p class="sop-p">Analyst</p><p class="sop-p">Perform sample analysis and report</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">6.0	Procedure</div>
+          <div class="sop-sec-content">
+            <div class="sop-substep"><strong>6.1	Equipment/ Materials</strong></div><p class="sop-p">High Pressure Liquid Chromatography with photo diode array detector</p><p class="sop-p">Whatman PTFE disposable syringe filter, 13 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p">Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Water bath</p><p class="sop-p">Volumetric flasks</p><p class="sop-p">Filter paper</p><p class="sop-p">Methanol (HPLC grade)</p><p class="sop-p">Potassium Dihydrogen Phosphate (KH2PO4)</p><p class="sop-p">Water(Ultrapure water, 18 mega ohm)</p><p class="sop-p">Orthophosphoric acid 85% (H3PO4)</p><div class="sop-substep"><strong>0.05M Phosphate Buffer Solution adjusted with orthophosphoric acid to pH 2.5</strong></div><p class="sop-p">Diluent: 0.05M Phosphate Buffer Solution pH 2.5</p><p class="sop-p">Reference material: Hydroquinone Reference Standard</p><div class="sop-substep"><strong>6.2	Chromatographic Parameters</strong></div><p class="sop-p">Test Method</p><p class="sop-p">Reference Standard Preparation (Reference Standard Stock Solution)</p><p class="sop-p">Weigh accurately 20.0 mg of Hydroquinone reference standard in a 20 mL volumetric flask.  Add in a few mL of diluent and sonicate to dissolve the material. Make up to volume with the same diluent (1mg/mL of hydroquinone). Calculate the actual weight of hydroquinone by multiplying the purity of standard:</p><p class="sop-p">~ 20.0 mg of hydroquinone reference standard x Purity</p><p class="sop-p">100</p><p class="sop-p">Reference Standard Solution</p><p class="sop-p">Pipette separately, 1 mL, 2 mL, 3 mL, 4 mL and 5 mL of reference standard stock solution into a 10 mL of volumetric flask and make up to volume with diluent. Filter each of the solution before injecting into the HPLC column. (0.1 mg/mL, 0.2 mg/mL, 0.3 mg/mL, 0.4 mg/mL and 0.5 mg/mL of Hydroquinone respectively)</p><p class="sop-p">Limit of Quantitation (LOQ) Solution</p><p class="sop-p">Pipette 100 µL of reference standard stock solution into a 100 mL volumetric flask and make up to volume with diluent (0.001mg/mL of hydroquinone)</p><p class="sop-p">Internal Quality Control (IQC Solution)</p><p class="sop-p">Pipette 0.02 mL (20 µL) of standard stock solution from part 6.1 and spiked in 0.5 g of blank sample. Dilute both standard and blank sample with 20mL diluent. (0.004% w/w of Hydroquinone).</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Perform sampling procedure according to PKKK/300/KOS/001 Proses Persampelan Untuk Analisis Sampel Unit Kosmetik</p><p class="sop-p">Weigh accurately 0.5 g of sample into a 20 mL volumetric flask and add in a few mL of diluents. Sonicate for 30 minutes until sample is dissolved. Make up to volume with the same diluent.  Filter the solution before injecting into the HPLC. Repeat this procedure to prepare duplicate sample solution.</p><p class="sop-p">Note:	The amount of sample used can be adjustable depends on the availability and condition of sample received.</p><p class="sop-p">Procedure</p><p class="sop-p">System suitability test</p><p class="sop-p">Inject six replicates of reference standard solution with concentration of 0.5 mg/mL. Determine the percentage of relative standard deviation (% RSD) of peak areas. The value of RSD should not be more than 2%.</p><p class="sop-p">Sequence of injection</p><p class="sop-p">Inject 20 µL of each reference standard solutions from part 6.2, LOQ solution, IQC solution and sample preparation into the HPLC column. The sequence of injections is shown in table below. Construct a calibration curve to determine hydroquinone concentration in the sample. Check the coefficient correlation of the graph. The R2 should be at least &gt;0.9900.</p><p class="sop-p">Calculation</p><p class="sop-p">Determine the amount of hydroquinone in the portion of sample taken by using the following formula and the amount of hydroquinone presence in the sample will be reported as percentage of weight per sample weight (% w/w):-</p><p class="sop-p">Determine the concentration of IQC solution from the calibration curve as constructed in 6.2. Plot the recovery value (%) of hydroquinone obtained on the IQC chart. (Currently using limit Recovery 80-120% for IQC &gt; 10µg/kg, based on Official Journal of European Communities 2002/657/EC)</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Five different peak areas/heights from chromatogram of reference standard solutions represent five different concentration levels of standard solutions.  The peak area of the sample solution that obtained from the standard calibration curve is directly proportional to the concentration of hydroquinone in the sample.</p><p class="sop-p">A dilution process shall be carried out if in any case, the peak area/ height of sample solution are more than the area/ height of the highest standard solution concentration (0.5mg/mL), so that the peak area/height falls within the standard calibration range.</p><p class="sop-p">Quality Records</p><p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah HPLC		: UP/X010</p><p class="sop-p">Borang Pengiraan Ujian Kuantifikasi Teknik Kromatografi		: UP/X011</p><p class="sop-p">Rumusan Laporan Pengujian	Kromatografi				: UP/X009</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi		: UP/002B</p><p class="sop-p">Borang Keputusan Ujian Kosmetik					: UP/X013</p><p class="sop-p">Attachments</p><p class="sop-p">Chromatogram of Reference Standard</p><p class="sop-p">Calibration Curve of the Reference Standard</p>
+          </div>
+        </div>
+        
+
+    <!-- Tables -->
+    
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
+          <table class="table-official">
+            <tr><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th></tr><tr><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective date</td></tr><tr><td>1</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Dr Noraida Mohamad Zainoor</td><td>15 November 2016</td></tr><tr><td>2</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 February 2020</td></tr><tr><td>3</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 July 2020</td></tr><tr><td>3</td><td>1</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Disember 2020</td></tr><tr><td>4</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr><tr><td>5</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr><td>6</td><td>0</td><td>Gopinatha Ganesh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
+          <table class="table-official">
+            <tr><th>REFERENCE</th><th>REFERENCE</th></tr><tr><td>Document No.</td><td>Title</td></tr><tr><td></td><td>Standard Operating Procedure for HPLC</td></tr><tr><td></td><td>Journal of Food and Drug Analysis, Vol.12,No.1,2004</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
+          <table class="table-official">
+            <tr><th>◼  Column</th><th>:</th><th>C18 (Cosmosil 5AR-II), 250 mm x 4.6 mm i.d.,  5 µm</th></tr><tr><td>◼  System</td><td>:</td><td>Isocratic</td></tr><tr><td>◼  Mobile phase</td><td>:</td><td>Phosphate buffer solution pH 2.5/methanol with 99:1 (v/v)</td></tr><tr><td>◼  Temperature</td><td>:</td><td>30 oC</td></tr><tr><td>◼  Flow rate</td><td>:</td><td>0.9 mL/min</td></tr><tr><td>◼  Detection</td><td>:</td><td>UV, 280 nm</td></tr><tr><td>◼  Injection volume</td><td>:</td><td>20 μL</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
+          <table class="table-official">
+            <tr><th>No. of Injection</th><th>Injection ID</th><th>Run time (min)</th></tr><tr><td>1</td><td>Blank/ diluent</td><td>20</td></tr><tr><td>2</td><td>SST solution (6x)</td><td>20</td></tr><tr><td>3</td><td>IQC solution</td><td>20</td></tr><tr><td>4</td><td>LOQ solution</td><td>20</td></tr><tr><td>5</td><td>Reference standard solution 1</td><td>20</td></tr><tr><td>6</td><td>Reference standard solution 2</td><td>20</td></tr><tr><td>7</td><td>Reference standard solution 3</td><td>20</td></tr><tr><td>8</td><td>Reference standard solution 4</td><td>20</td></tr><tr><td>9</td><td>Reference standard solution 5</td><td>20</td></tr><tr><td>10</td><td>IQC solution</td><td>20</td></tr><tr><td>11</td><td>Sample A</td><td>20</td></tr><tr><td>12</td><td>Sample B</td><td>20</td></tr><tr><td>13</td><td>IQC Solution</td><td>20</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
+          <table class="table-official">
+            <tr><th>Hydroquinone content (% w/w)</th><th>=</th><th>Concentration of hydroquinone in sample obtained from calibration curve (ug/mL)</th><th>x</th><th>Volume (mL)</th><th>Volume (mL)</th><th>x  Dilution</th><th>x  1</th><th>x</th><th>1</th><th>x</th><th>100</th></tr><tr><td>Hydroquinone content (% w/w)</td><td></td><td>Concentration of hydroquinone in sample obtained from calibration curve (ug/mL)</td><td></td><td>Weigth of sample (g)</td><td>Weigth of sample (g)</td><td>factor</td><td>1000</td><td></td><td>1000</td><td></td><td></td></tr><tr><td>Hydroquinone content (% w/w)</td><td></td><td>Concentration of hydroquinone in sample obtained from calibration curve (ug/mL)</td><td></td><td>Weigth of sample (g)</td><td>Weigth of sample (g)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>Concentration of hydroquinone in sample obtained from calibration curve (ug/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>Concentration of hydroquinone in sample obtained from calibration curve (ug/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>Concentration of hydroquinone in sample obtained from calibration curve (ug/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          </table>
+        </div>
+        
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="../steroid-hplc.js"></script>
+</body>
+</html>

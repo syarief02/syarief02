@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKKK/300/UP/013 — Pengekstrakan Fasa Pepejal | NPRA Arahan Kerja 300</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/013: Pengekstrakan Fasa Pepejal — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<link rel="icon" type="image/png" href="../../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-substep {
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  }
+  .sop-list-item {
+    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
+    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+  }
+  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
+  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+  
+  @media print {
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .main { max-width: 100% !important; padding: 0 !important; }
+    .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="../index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="../sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Container -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: PENGEKSTRAKAN FASA PEPEJAL</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/013</td>
+        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- Sections -->
+    
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">1</p><p class="sop-p">PINDAAN:</p><p class="sop-p">Prosedur ini merupakan dokumen baru selaras dengan usaha menaiktaraf pensijilan institusi ke versi ISO 9001:2015 dan juga penamaan semula nama institusi dari Biro Pengawalan Farmaseutikal Kebangsaan (BPFK) kepada Bahagian Regulatori Farmasi Negara (NPRA). Sehubungan itu, dokumen asal adalah terbatal dan dokumen ini dimulakan semula sebagai Terbitan 1.</p><p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen PKK/200/TSK/001 kepada PKK/200/HMS/014.</p><p class="sop-p">Pindaan tarikh kuatkuasa prosedur daripada 15 November 2016 kepada 20 Februari 2020</p><p class="sop-p">Pindaan nama tatacara daripada Ektraksi Fasa Pepejal kepada Ekstrasi Fasa Pepejal Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</p><p class="sop-p">Batal Unit Penyaringan Tradisional dan Suplemen Kesihatan</p><p class="sop-p">Pindaan Ketua Unit dalam Perenggan Tanggungjawab kepada Ketua Subunit</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen PKK/200/HMS/014 kepada PKK/300/HMS/070.</p><p class="sop-p">Pindaan tarikh kuatkuasa tatacara pengujian daripada 20 Februari 2020 kepada 15 Julai 2020</p><p class="sop-p">Terbitan 3, Semakan 1:</p><p class="sop-p">Meminda perkataan Agensi kepada Bahagian di dalam Perenggan Pindaan.</p><p class="sop-p">Pindaan tarikh kuatkuasa tatacara pengujian daripada 15 Julai 2020 kepada 15 Disember 2020</p><p class="sop-p">Terbitan 4, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/070 kepada PKKK/300/HMS/070</p><p class="sop-p">Pindaan peranan Ketua Subunit pada ruangan Tanggungjawab kepada Ketua Subunit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan No. Borang TSK/04 kepada HMS/026A pada ruangan Klausa 7 Rekod Kualiti</p><p class="sop-p">Pindaan No. Dokumen PKK/300/TSK/016 kepada PKKK/300/HMS/026 pada ruangan Rujukan</p><p class="sop-p">Terbitan 4, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/070 kepada PKKK/300/UAT/014</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab</p><p class="sop-p">pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan No. Borang HMS/026A kepada UAT/001A pada ruangan Klausa 7 Rekod Kualiti</p><p class="sop-p">Mengemaskini tatacara penyediaan sampel di para 6.4 dengan menambah contoh sampel dan menambah langkah terakhir sebelum memulakan analisis dengan GCMS</p><p class="sop-p">Menambah proses Pencucian Alat Ekstrasi Pepejal (SPE Manifold) di para 6.6</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/026 kepada PKKK/300/UAT/001 pada ruangan Rujukan</p><p class="sop-p">Terbitan 4, Semakan 2:</p><p class="sop-p">Mengemaskini 6.4.1, 6.4.2 dan 6.4.3 Operasi Alat dengan iv. Lalukan semua sampel ke dalam syringe column, vi. Lalukan 6 mL (3 mL sebanyak 2 kali) dan vii. Keringkan hasil pengekstrakan di atas water bath pada suhu 40-60oC</p><p class="sop-p">Menambah perenggan 6.6 Penggunaan Pengekstrakan Fasa Pepejal bagi ujian penyaringan yang terlibat</p><p class="sop-p">Mengemaskini penomboran daripada perenggan 6.6 kepada 6.7 Pencucian Alat Pengekstrakan Pepejal (SPE Manifold)</p><p class="sop-p">Mengemaskini perenggan 6.4.1 Kaedah A, 6.4.2 Kaedah B dan 6.4.3 Kaedah C iv.dengan menambah Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">Mengemaskini perenggan 6.4.1 Kaedah A dan 6.4.2 Kaedah B di bawah Operasi Alat dengan menambah SPE column reverse phase C8</p><p class="sop-p">Terbitan 4, Semakan 3:</p><p class="sop-p">Mengemaskini perenggan 6.4 dengan menambah bentuk dosej plaster / patch untuk Kaedah B</p><p class="sop-p">Mengemaskini perenggan 6.4.1 Kaedah A, 6.4.2 Kaedah B dan 6.4.3 Kaedah C di bawah Operasi Alat dengan menambah “Larutkan hasil pengekstrakan dengan lebih kurang 3 mL **ethanol / methanol..”</p><p class="sop-p">Terbitan 5, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen PKK/300/UAT/014 kepada PKK/300/UP/13.</p><p class="sop-p">Pindaan tarikh kuatkuasa tatacara pengujian daripada 1 Julai 2025 kepada 10 April 2026</p><p class="sop-p">Kemaskini (PKKK/300/UAT/001) kepada PKKK/300/UP/001</p><p class="sop-p">Kemaskini (PKKK/300/UAT/020) kepada (PKKK/300/UP/018)</p><p class="sop-p">Kemaskini (PKKK/300/UAT/047) kepada (PKKK/300/UP/021)</p><p class="sop-p">Kemaskini UAT/001 kepada UP/001</p><p class="sop-p">Kemaskini perenggan 6.2 dengan menambah pengendalian sistem vakum pengekstrakan fasa pepejal</p><p class="sop-p">Kemaskini perenggan 6.4 Penyediaan Sampel dan Operasi Alat (Kaedah C) dengan menambah contoh untuk “kapsul lembut minyak”.</p><p class="sop-p">Mengemaskini perenggan 6.4.1, 6.4.2 dan 6.4.3 dengan menambah penekanan kepada kawalan kelembapan katrij bagi mengelakkan masalah &#x27;channeling&#x27; dan “low recover’.</p><p class="sop-p">Kemaskini perenggan 6.4.3 Kaedah C (ii) dengan menambah “Bagi sampel berbentuk kapsul lembut minyak: Timbang sampel 1.0 gm dan masukkan 20 mL chloroform.”</p><p class="sop-p">Kemaskini perenggan 6.7 dengan menambah “ Pastikan tiada sisa pelarut organik tertinggal dalam manifold dan buang sisa cecair dalam waste bottle mengikut prosedur pelupusan sisa kimia.</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan pengekstrakan fasa pepejal yang dijalankan ke atas produk tradisional, suplemen kesihatan dan kosmetik untuk tujuan penyaringan dapat dilaksanakan dengan betul dan selamat.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunapakai untuk menjalankan pengekstrakan fasa pepejal bagi produk tradisional, suplemen kesihatan dan kosmetik untuk tujuan penyaringan, mengikut tatacara pengujian yang dikehendaki.</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1   HCL- Asid Hidroklorik</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa melaksanakan pengekstrakan fasa pepejal ke atas sampel.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia pengekstrakan fasa pepejal yang dijalankan oleh Pegawai Farmasi &amp; Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan pengujian sampel</p><p class="sop-p">Menjalankan pengujian ke atas sampel termasuk kerja-kerja pengekstrakan fasa pepejal mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Penolong Pegawai Farmasi</p><p class="sop-p">Menjalankan pengujian ke atas sampel termasuk kerja-kerja pengekstrakan fasa pepejal mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Peralatan</p><p class="sop-p">Alat pengekstrakan fasa pepejal</p><p class="sop-p">SPE column reverse phase</p><p class="sop-p">SPE column Florisil</p><div class="sop-substep"><strong>6.2   Pengendalian Sistem Vakum Pengekstrakan Fasa Pepejal</strong></div><div class="sop-substep"><strong>6.2.1 Persediaan dan Memulakan Vakum (Startup)</strong></div><p class="sop-p">Pasangkan tiub getah yang menyambungkan vacuum pump dengan alat pengekstrakan fasa pepejal</p><p class="sop-p">Pastikan semua injap kawalan aliran pada unit pengekstrakan fasa pepejal berada dalam kedudukan tertutup (Off).</p><p class="sop-p">Onkan suis vacuum pump</p><div class="sop-substep"><strong>6.2.1   Menghentikan dan Melepaskan Vakum (Shutting Down/Release)</strong></div><p class="sop-p">Setelah proses pengekstrakan selesai, matikan suis pam.</p><p class="sop-p">Buka injap pelepas tekanan secara perlahan-lahan untuk melepaskan tekanan udara dalam sistem.</p><div class="sop-substep"><strong>6.3    Pengendalian Sampel</strong></div><p class="sop-p">Proses persampelan adalah berbeza mengikut bentuk dos sampel. Sila rujuk dokumen PKKK/300/UP/001 (Proses Persampelan).</p><div class="sop-substep"><strong>6.4   Penyediaan Sampel dan Operasi Alat</strong></div><p class="sop-p">Terdapat tiga kaedah penyediaan sampel dan operasi alat yang berbeza, bergantung kepada solubility sampel.</p><p class="sop-p">Kaedah A: Bagi sampel yang larut di dalam air – contohnya serbuk, tablet, kapsul, pil dan cecair</p><p class="sop-p">Kaedah B: Bagi sampel yang tidak larut di dalam air tetapi larut di dalam Methanol - contohnya krim, dan plaster / patch</p><p class="sop-p">Kaedah C: Bagi sampel yang tidak larut di dalam air dan Methanol tetapi larut di dalam Chloroform - contohnya minyak dan kapsul lembut minyak</p><div class="sop-substep"><strong>6.4.1 Kaedah A</strong></div><p class="sop-p">Penyediaan sampel</p><p class="sop-p">Bagi sampel berbentuk serbuk, tablet, kapsul dan pil: Timbang sampel 1.0 gm dan masukkan 20 mL air suling.</p><p class="sop-p">Bagi sampel cecair: Sukat sampel 10 mL dan masukkan 10 mL air suling.</p><p class="sop-p">Sonicate larutan tersebut selama 10-15 minit menggunakan ultrasonic bath.</p><p class="sop-p">Ubah pH larutan sampel kepada pH yang dikehendaki menggunakan</p><p class="sop-p">larutan ammonia atau asid hidroklorik. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">Turas persediaan ini dengan menggunakan kertas turas</p><p class="sop-p">Sampel ini sedia untuk menjalani proses Pengekstrakan Fasa Pepejal.</p><p class="sop-p">Operasi alat</p><p class="sop-p">Letakkan SPE column reverse phase C8 pada alat Pengekstrakan Fasa Pepejal</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 3 mL methanol ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 3 mL air suling ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan semua sampel ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 1 mL larutan methanol 5% ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 6 mL (3 mL sebanyak 2 kali) methanol ke dalam syringe column dan kumpulkan hasil pengekstrakan itu ke dalam mangkuk pijar yang telah dilabelkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Pastikan katrij SPE sentiasa basah dan tidak kering di antara fasa Conditioning sehingga selesai fasa Loading. Jika kering, ulangi fasa Conditioning semula bagi mengelakkan masalah &#x27;channeling&#x27; dan kehilangan sampel (low recovery).</span></div><p class="sop-p">Keringkan hasil pengekstrakan di atas water bath pada suhu 40-60oC</p><p class="sop-p">Larutkan hasil pengekstrakan dengan lebih kurang 3 mL **ethanol / methanol dan turaskan dengan penapis syringe nylon 0.45 µm sebelum memulakan analisis dengan GCMS.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>** Larutan sampel dengan ethanol / methanol adalah berdasarkan cara penyediaan piawai rujukan</span></div><div class="sop-substep"><strong>6.4.2  Kaedah B</strong></div><p class="sop-p">Penyediaan sampel</p><p class="sop-p">Timbang sampel antara 1.0 gm dan masukkan 20 mL methanol ke dalam persediaan diatas.</p><p class="sop-p">Sonicate larutan tersebut selama 10-15 minit menggunakan ultrasonic bath.</p><p class="sop-p">Ubah pH larutan sampel kepada pH yang dikehendaki menggunakan larutan ammonia atau asid hidroklorik. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">Turas persediaan ini dengan menggunakan kertas turas</p><p class="sop-p">Sampel ini sedia untuk menjalani proses Pengekstrakan Fasa Pepejal.</p><p class="sop-p">Operasi alat</p><p class="sop-p">Letakkan SPE column reverse phase C8 pada alat Pengekstrakan Fasa Pepejal</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 3 mL methanol ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 3 mL air suling ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan semua sampel ke dalam syringe column dan kumpulkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 1 mL larutan methanol 5% ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 6 mL (3 mL sebanyak 2 kali) methanol ke dalam syringe column dan kumpulkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Pastikan katrij SPE sentiasa basah dan tidak kering di antara fasa Conditioning sehingga selesai fasa Loading. Jika kering, ulangi fasa Conditioning semula bagi mengelakkan masalah &#x27;channeling&#x27; dan kehilangan sampel (low recovery).</span></div><p class="sop-p">Kumpulkan hasil pengekstrakan (sampel &amp; methanol) ke dalam mangkuk pijar yang telah dilabelkan</p><p class="sop-p">Keringkan hasil pengekstrakan di atas water bath pada suhu 40-60oC</p><p class="sop-p">Larutkan hasil pengekstrakan dengan lebih kurang 3 mL **ethanol / methanol dan turaskan dengan penapis syringe nylon 0.45 µm sebelum memulakan analisis dengan GCMS.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>** Larutan sampel dengan ethanol / methanol adalah berdasarkan cara penyediaan piawai rujukan.</span></div><div class="sop-substep"><strong>6.4.3  Kaedah C</strong></div><p class="sop-p">Penyediaan sampel</p><p class="sop-p">Sukat sampel minyak 10 mL dan masukkan 10 mL chloroform.</p><p class="sop-p">Bagi sampel berbentuk kapsul lembut minyak: Timbang sampel 1.0 gm dan masukkan 20 mL chloroform.</p><p class="sop-p">Sonicate larutan tersebut selama 10-15 minit menggunakan ultrasonic bath.</p><p class="sop-p">Ubah pH larutan sampel kepada pH yang dikehendaki menggunakan larutan ammonia atau asid hidroklorik. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">Turas persediaan ini dengan menggunakan kertas turas</p><p class="sop-p">Sampel ini sedia untuk menjalani proses Pengekstrakan Fasa Pepejal.</p><p class="sop-p">Operasi alat</p><p class="sop-p">Letakkan SPE column Florosil pada alat Pengekstrakan Fasa Pepejal</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 3 mL methanol ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 3 mL chloroform ke dalam syringe column dan keluarkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan semua sampel ke dalam syringe column dan kumpulkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Lalukan 6 mL (3 mL sebanyak 2 kali) chloroform ke dalam syringe column dan kumpulkan</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* Pastikan katrij SPE sentiasa basah dan tidak kering di antara fasa Conditioning sehingga selesai fasa Loading. Jika kering, ulangi fasa Conditioning semula bagi mengelakkan masalah &#x27;channeling&#x27; dan kehilangan sampel (low recovery).</span></div><p class="sop-p">Kumpulkan hasil pengekstrakan (sampel &amp; chloroform) ke dalam mangkuk pijar yang telah dilabelkan</p><p class="sop-p">Keringkan hasil pengekstrakan di atas water bath pada suhu 40-60oC</p><p class="sop-p">Larutkan hasil pengekstrakan dengan lebih kurang 3 mL **ethanol / methanol dan turaskan dengan penapis syringe 0.45µm sebelum memulakan analisis dengan GCMS.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>** Larutan sampel dengan ethanol / methanol adalah berdasarkan penyediaan piawai rujukan.</span></div><div class="sop-substep"><strong>6.5   Penyediaan Sampel untuk Pengujian</strong></div><p class="sop-p">Larutkan hasil ektraksi dengan pelarut organik yang sesuai mengikut tatacara ujian yang dikehendaki.</p><div class="sop-substep"><strong>6.6   Penggunaan Pengekstrakan Fasa Pepejal (SPE)</strong></div><p class="sop-p">Jadual 1: Ujian Penyaringan yang Terlibat dalam Penggunaan Alat Pengekstrakan Fasa Pepejal</p><div class="sop-substep"><strong>6.7   Pencucian Alat Pengekstrakan Pepejal (SPE Manifold)</strong></div><p class="sop-p">Letakkan SPE column reverse phase / SPE column Florosil yang khas untuk pencucian pada alat Pengekstrakan Fasa Pepejal.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>** Penggunaan SPE column reverse phase / SPE column Florosil adalah bergantung kepada kaedah penyediaan sampel.</span></div><p class="sop-p">Masukkan methanol ke dalam syringe column sehingga memenuhi tiub dan keluarkan.</p><p class="sop-p">Ulangi langkah (ii) semula sebanyak 2 kali.</p><p class="sop-p">Tambahkan air suling ke dalam syringe column sehingga memenuhi tabung uji dan keluarkan.</p><p class="sop-p">Pastikan tiada sisa pelarut organik tertinggal dalam alat Pengekstrakan Fasa Pepejal (SPE manifold) dan buang sisa cecair dalam waste bottle mengikut prosedur pelupusan sisa kimia.</p><p class="sop-p">Keringkan alat Pengekstrakan Fasa Pepejal (SPE manifold) di bawah kebuk wasap.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">7.  REKOD KUALITI</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p>
+          </div>
+        </div>
+        
+
+    <!-- Tables -->
+    
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
+          <table class="table-official">
+            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh Kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Wan Nurul Aina Mior Abdullah</td><td>Mazli Muhamad</td><td>15 Nov 2016</td></tr><tr><td>2</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>20 Feb 2020</td></tr><tr><td>3</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Jul 2020</td></tr><tr><td>3</td><td>1</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Dis 2020</td></tr><tr><td>4</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr><td>4</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr><td>4</td><td>2</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>16 Dis 2024</td></tr><tr><td>4</td><td>3</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>5</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
+          <table class="table-official">
+            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
+          <table class="table-official">
+            <tr><th>No.</th><th>Pengekstrakan Fasa Pepejal (SPE)</th><th>Ujian Penyaringan yang Terlibat</th></tr><tr><td>1.</td><td>SPE dengan pH 3, 5, 7, 11 atau 12</td><td>*Pengesanan Bahan Kawalan dan Terlarang dalam Produk Tradisional menggunakan GCMS (PKKK/300/UP/018)  *Sila rujuk kepada Appendix A di bawah Arahan Kerja PKKK/300/UP/018</td></tr><tr><td>2.</td><td>SPE dengan pH 7</td><td>Identifikasi Steroid dalam Produk Tradisional menggunakan HPLC (PKKK/300/UP/021)</td></tr>
+          </table>
+        </div>
+        
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="../steroid-hplc.js"></script>
+</body>
+</html>

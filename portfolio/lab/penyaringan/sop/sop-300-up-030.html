@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKKK/300/UP/030 — Identifikasi dan Kandungan Menthol, Camphor, Methyl Salicylate dan Thymol dalam produk tradisional menggunakan GCMS | NPRA Arahan Kerja 300</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/030: Identifikasi dan Kandungan Menthol, Camphor, Methyl Salicylate dan Thymol dalam produk tradisional menggunakan GCMS — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<link rel="icon" type="image/png" href="../../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-substep {
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  }
+  .sop-list-item {
+    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
+    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+  }
+  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
+  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+  
+  @media print {
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .main { max-width: 100% !important; padding: 0 !important; }
+    .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="../index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="../sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Container -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: IDENTIFIKASI DAN KANDUNGAN MENTHOL, CAMPHOR, METHYL SALICYLATE DAN THYMOL DALAM PRODUK TRADISIONAL MENGGUNAKAN GCMS</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/030</td>
+        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- Sections -->
+    
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Menambah perenggan 6.4.5 Internal Quality Control</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Mengemaskini perenggan 6.4.2 Table for Sequence of Injection</p><p class="sop-p">Mengemaskini perenggan 6.3.1 vi, 6.3.2 ii dan 6.4.2</p><p class="sop-p">Mengemaskini perenggan 6.5 vii dengan menambah “IQC table”</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan nombor dokumen PKKK/300/UAT/056 kepada PKKK/300/UP/030.</p><p class="sop-p">Pindaan nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001;</p><p class="sop-p">PKKK/300/UAT/011 kepada PKKK/300/UP/010;</p><p class="sop-p">iii.	Mengemasikini 6.4.1	Gas chromatographic and MS Condition dengan penambahan Column Dimension pada Table 3. GCMS system for identification and assay of menthol, camphor, methyl salicylate and thymol.</p><p class="sop-p">iv. Mengemaskini  Table 5:  SIM mode for identification and assay of menthol, camphor, methyl salicylate, and thymol dengan penambahan “Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency”.</p><p class="sop-p">v. Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/007	Laporan Pengujian Identifikasi dan Kandungan Menthol, Camphor,</p><p class="sop-p">Methyl Salicylate dan Thymol dalam Produk Tradisional Menggunakan GCMS</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Menthol, Camphor, Methyl Salicylate dan Thymol dalam produk tradisional menggunakan Gas Chromatography-Mass Spectrometer (GCMS) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi dan kandungan Menthol, Camphor, Methyl Salicylate dan Thymol dalam produk tradisional menggunakan Gas Chromatography-Mass Spectrometer (GCMS).</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1	GCMS	-	Gas Chromatography Mass Spectrometer</strong></div><div class="sop-substep"><strong>3.2	GC	-	Gas Chromatography</strong></div><div class="sop-substep"><strong>3.3	MS	-	Mass Spectrometer</strong></div><div class="sop-substep"><strong>3.4	SIM	- Selected ion monitoring</strong></div><div class="sop-substep"><strong>3.5	RS	-	Reference standard</strong></div><div class="sop-substep"><strong>3.6	IS	-	Internal standard</strong></div><div class="sop-substep"><strong>3.7	EI	- Electron ionization</strong></div><div class="sop-substep"><strong>3.8	OOS	-	Out of specification</strong></div><div class="sop-substep"><strong>3.9	SST	- System suitability test</strong></div><div class="sop-substep"><strong>3.10	NMT	- Not more than</strong></div><div class="sop-substep"><strong>3.11	NLT	-	Not less than</strong></div><div class="sop-substep"><strong>3.12	UPA	- Unit Perkhidmatan Analisis</strong></div><div class="sop-substep"><strong>3.13	LOD	-	Limit of Detection</strong></div><div class="sop-substep"><strong>3.14	RSD	- Relative Standard Deviation</strong></div><div class="sop-substep"><strong>3.15	IQC	-	 Internal Quality Control</strong></div><div class="sop-substep"><strong>3.16	Tf	-	Tailing factor</strong></div><div class="sop-substep"><strong>3.17	N	-	Theoretical Plate</strong></div><div class="sop-substep"><strong>3.18	R2	-		Correlation coefficient</strong></div><div class="sop-substep"><strong>3.19	S/N	- Signal to noise</strong></div><div class="sop-substep"><strong>3.20	m/z	-	mass to charge</strong></div><div class="sop-substep"><strong>3.21	% w/w	- percent weight over weight</strong></div><div class="sop-substep"><strong>3.22	DRGD	- Drug Registration Guidance Document</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><div class="sop-substep"><strong>5.1	Ketua Seksyen</strong></div><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagih sampel kepada Pegawai Farmasi.</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><div class="sop-substep"><strong>5.3	Pegawai Farmasi</strong></div><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan.</p><div class="sop-substep"><strong>5.5	Penolong Pegawai Farmasi</strong></div><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Menyediakan laporan ujian.</p><p class="sop-p">PROSEDUR</p><div class="sop-substep"><strong>6.1	Material and Equipment</strong></div><p class="sop-p">Instrument: Gas Chromatography Mass Spectrometer (GCMS)</p><p class="sop-p">Column: BP-624, 6% Cyanopropylphenyl 94% Dimethylpolysiloxane, with dimension of 30 m x 0.25 mm and particle size of 1.4 µm or equivalent.</p><p class="sop-p">Analytical balance and microbalance</p><p class="sop-p">Vortex Mixer</p><p class="sop-p">Sonicator</p><p class="sop-p">Reference standard: Primary or secondary RS of equivalent.</p><p class="sop-p">Menthol</p><p class="sop-p">Camphor</p><p class="sop-p">Methyl Salicylate</p><p class="sop-p">Thymol</p><p class="sop-p">Eugenol</p><p class="sop-p">Chemical:</p><p class="sop-p">Methanol</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Conical flask</p><p class="sop-p">Amber volumetric flask</p><p class="sop-p">Disposable syringe without needle, 5 ml</p><p class="sop-p">Nylon solvent filter, 0.45µm</p><p class="sop-p">Amber glass screw cap vial, 2 ml</p><p class="sop-p">Amber glass screw cap vial, 50 ml</p><div class="sop-substep"><strong>6.2	Preparation of Reference Standard</strong></div><div class="sop-substep"><strong>6.2.1	Preparation of Internal Standard (IS) solution (0.4 mg/ml or 400 µg/ml)</strong></div><p class="sop-p">Liquid form: Pipette 10 µl of eugenol reference standard into a 25 ml amber volumetric flask. Dissolve and dilute to volume with methanol. Filter the solution through a 0.45 µm nylon syringe filter into an amber vial.</p><p class="sop-p">Powder form: Weigh 10 mg of eugenol reference standard into a 25 ml amber volumetric flask. Dissolve and dilute to volume with methanol. Filter the solution through a 0.45 µm nylon syringe filter into an amber vial.</p><div class="sop-substep"><strong>6.2.2	Preparation of Individual Standard Stock Solution (0.4 mg/ml or 400 µg/ml)</strong></div><p class="sop-p">Weigh 8 mg each of thymol, menthol and camphor into separate 20 ml amber volumetric flasks.</p><p class="sop-p">Dissolve and dilute to volume with methanol.</p><p class="sop-p">Filter the solution through a 0.45 µm nylon syringe filter into amber vials.</p><p class="sop-p">For methyl salicylate: Pipette 7 µl of methyl salicylate into a 20 mL amber volumetric flask and repeat steps ii and iii.</p><p class="sop-p">Preparation of Mixed Working Standard Solution (0.1 mg/ml or 100 µg/ml).</p><p class="sop-p">Pipette 12.5 ml of each standard stock solution into an amber 50 ml vial.</p><p class="sop-p">Vortex the vial for 1 minute.</p><div class="sop-substep"><strong>6.2.4	Preparation of Mixed Working Standard Solution for Calibration Curve</strong></div><p class="sop-p">Prepare 1 set of working standard solution for the calibration curve from the mixed working standard solution (0.1 mg/ml). Dilute the solution to obtain five (5) concentrations levels of 3 µg/ml, 10 µg/ml, 20 µg/ml, 40 µg/ml and 80 µg/ml.</p><p class="sop-p">Add the IS solution to each concentration before diluting to volume with methanol.</p><p class="sop-p">Refer to the table below for preparation details:</p><p class="sop-p">Table 1: Preparation of mix working standard solution for calibration curve.</p><p class="sop-p">Option to prepare mix working standard solution for calibration in 5 mL volumetric flask. The preparation as in the table below:</p><p class="sop-p">Table 2: Preparation of mix working standard solution for calibration curve.</p><div class="sop-substep"><strong>6.2.5	System Suitability Solution</strong></div><p class="sop-p">For system suitability test (SST), use the Level 3 concentration (20 µg/ml of each compound) as the system suitability solution.</p><div class="sop-substep"><strong>6.2.6	Preparation of Limit of Detection (LOD) solution (0.001 mg/ml or 1 µg/ml)</strong></div><p class="sop-p">Pipette 50 µl of mixed working standard solution into 5 ml volumetric flask and add 1000 µl of internal standard (IS) solution.</p><p class="sop-p">Mix and dilute to volume with methanol.</p><div class="sop-substep"><strong>6.2.7	Limit of quantitation (LOQ) solution (0.003 mg/ml or 3 µg/ml)</strong></div><p class="sop-p">Use the Level 1 concentration (3 µg/ml of each compound) as the LOQ solution.</p><div class="sop-substep"><strong>6.3	Preparation of Sample</strong></div><p class="sop-p">Patch / Medicated Plaster</p><p class="sop-p">Cut the sample into small pieces.</p><p class="sop-p">Weigh 100 mg of the sample and add 15 ml of methanol into a 50 mL conical flask (duplicate preparation: Replicates A and B).</p><p class="sop-p">Vortex the samples for 1 minute.</p><p class="sop-p">Sonicate with heat at 55°C for 15 minutes.</p><p class="sop-p">Cool the solution to room temperature.</p><p class="sop-p">Add 5 ml of IS solution and 5 ml of methanol.</p><p class="sop-p">Filter the sample solution through a 0.45 µm filter into a 2 ml amber vial.</p><div class="sop-substep"><strong>6.3.2	Liniment / Ointment / Cream</strong></div><p class="sop-p">Sampling the sample according to PKKK/300/UP/001.</p><p class="sop-p">Weigh 100 mg of the sample and add 15 ml of methanol in a 25 ml amber volumetric flask (duplicate preparation: Replicates A and B).</p><p class="sop-p">Vortex the sample for 1 minute.</p><p class="sop-p">Sonicate with heat at 55°C for 15 minutes.</p><p class="sop-p">Cool the solution to room temperature.</p><p class="sop-p">Add 5 ml of IS solution and dilute to volume with methanol.</p><p class="sop-p">Filter the sample solution through a 0.45 µm filter into a 2 mL amber vial.</p><div class="sop-substep"><strong>6.3.3	Sample Dilution</strong></div><p class="sop-p">Perform appropriate dilutions if the sample concentration exceeds the linear range of the calibration curve.</p><p class="sop-p">Document the step-by-step dilution preparation in the worksheet.</p><div class="sop-substep"><strong>6.4	Experimental method</strong></div><div class="sop-substep"><strong>6.4.1	Gas chromatographic and MS Condition</strong></div><p class="sop-p">The GCMS system used for detection of menthol, camphor, methyl salicylate and thymol in traditional product are given in table 2 below.</p><p class="sop-p">Table 3:  GCMS system for identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Table 4: Oven temperature program for identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Table 5:  SIM mode for identification and assay of menthol, camphor, methyl salicylate, and thymol</p><p class="sop-p">(*) Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency.</p><div class="sop-substep"><strong>6.4.2	Sequence of injection</strong></div><p class="sop-p">For each injection, a volume of 0.5 µl of the solution will be administered. The sequence of injection is shown in the table below.</p><p class="sop-p">Table 6: Sequence of injection for identification and assay of menthol, camphor, methyl salicylate and thymol</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* After five samples are injected, the LOD solution will be injected before proceeding with the remaining samples.</span></div><div class="sop-substep"><strong>6.4.3	SST and LOD and LOQ requirement</strong></div><p class="sop-p">The acceptance criteria for SST, LOD and LOQ are shown in the table below.</p><p class="sop-p">Table 7: Requirement for SST, LOD and LOQ of identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Standard injection and calibration curve</p><p class="sop-p">Inject calibration curve solution (Level 1 – 5) to generate linear calibration curve.</p><p class="sop-p">Generate a calibration curve by plotting concentration against area, and determine the linearity equation along with the correlation coefficient (R2).</p><p class="sop-p">This step (ii) can be performed using the instrument’s software (GCMSsolution).</p><p class="sop-p">Ensure that the correlation coefficient (R²) is equal to or greater than 0.995. If the correlation does not meet this requirement, re-inject the working standard solution until the desired criteria are met.</p><div class="sop-substep"><strong>6.4.5	Internal Quality Control (IQC)</strong></div><p class="sop-p">Inject 0.5 µl of LOD solution after every 5 samples &amp; at the end of analysis.</p><p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p><div class="sop-substep"><strong>6.4.6	Interpretation of result</strong></div><p class="sop-p">Identification</p><p class="sop-p">The identification of the target compound is considered positive when the following criteria are met:</p><p class="sop-p">Retention time</p><p class="sop-p">The retention time of the target compound in the sample chromatogram corresponds to the retention time in the chromatogram of the working standard.</p><p class="sop-p">Mass Spectrum Confirmation</p><p class="sop-p">Confirmation is based on the detection of the target ion and reference ions.</p><p class="sop-p">Reference ions are monitored as relative ion intensity, with the maximum permissible tolerance defined in Table 8:</p><p class="sop-p">Table 8: Tolerance for reference ion intensity for identification of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Reporting Results</p><p class="sop-p">NOT DETECTED: The compound is reported as NOT DETECTED when the peak area ratio of the compound to the internal standard (IS) in the sample solution is below the peak area ratio of the standard solution at the limit of detection (LOD, 1 µg/mL).</p><p class="sop-p">BELOW QUANTITATION LIMIT: The compound is reported as BELOW QUANTITATION LIMIT (3 µg/mL) when the peak area ratio of the compound to IS in the sample solution is below the peak area ratio of the standard solution at the limit of quantitation (LOQ, 3 µg/mL)</p><p class="sop-p">Quantifiable Amounts: If the peak area ratio of the compound to IS in the sample solution exceeds the peak area ratio of the standard solution at the LOQ level, the compound&#x27;s concentration must be calculated using the calibration curve extrapolation as outlined in section B. Assay.</p><p class="sop-p">Assay</p><p class="sop-p">The amounts of menthol, camphor, methyl salicylate, and thymol are determined using the extrapolation of the calibration curve.</p><p class="sop-p">Therefore, the final amount of each compound in the sample is calculated and reported as percent weight / weight (% w/w).</p><p class="sop-p">This calculation in step (ii), is performed using the following formula:</p><p class="sop-p">Equation 1: Calculation for the amount of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Limits or specifications</p><p class="sop-p">Menthol and Camphor</p><p class="sop-p">The limits for menthol and camphor are defined according to the Drug Registration Guidance Document (DRGD), Third Edition, Eight Revision, July 2024.</p><p class="sop-p">The limits are outlined in Table 9:</p><p class="sop-p">Table 9: Limits or specifications for the assay of menthol and camphor</p><p class="sop-p">Methyl Salicylate and Thymol</p><p class="sop-p">The DRGD does not specify limits or guidelines for methyl salicylate and thymol.</p><p class="sop-p">If the amounts of these compounds need to be reported, they will be presented as the measured values.</p><div class="sop-substep"><strong>6.5	Analysis Report</strong></div><p class="sop-p">Each sample must have a dedicated analysis report, which includes the following details:</p><p class="sop-p">Sample Details</p><p class="sop-p">Sample name</p><p class="sop-p">Sample number</p><p class="sop-p">Batch number</p><p class="sop-p">Analysis Date</p><p class="sop-p">Equipment Parameters</p><p class="sop-p">Equipment name</p><p class="sop-p">Gas chromatographic (GC) conditions</p><p class="sop-p">Mass spectrometry (MS) conditions.</p><p class="sop-p">Reference Standard (RS)</p><p class="sop-p">List of RS used in the analysis</p><p class="sop-p">Preparation procedure for RS, including printed RS weight</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Sample preparation procedure</p><p class="sop-p">Printed sample weight (duplicate weighing)</p><p class="sop-p">Interpretation of Results</p><p class="sop-p">Detailed interpretation based on criteria outlined in the SOP</p><p class="sop-p">Evidence of Analysis</p><p class="sop-p">Evidence must be attached to the analysis report, including:</p><p class="sop-p">Compilation of chromatograms for calibration curve solutions</p><p class="sop-p">Chromatogram for LOD and LOQ solutions</p><p class="sop-p">Chromatogram of working standard (first injection of SST)</p><p class="sop-p">Compilation of chromatograms for SST</p><p class="sop-p">Chromatogram for blank solution prior to and after the sample solution injection</p><p class="sop-p">Chromatograms for samples A and B</p><p class="sop-p">IQC table</p><p class="sop-p">REKOD KUALITI</p><p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/007	Laporan Pengujian Identifikasi dan Kandungan Menthol, Camphor,</p><p class="sop-p">Methyl Salicylate dan Thymol dalam Produk Tradisional</p><p class="sop-p">Menggunakan GCMS</p>
+          </div>
+        </div>
+        
+
+    <!-- Tables -->
+    
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
+          <table class="table-official">
+            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>17 Feb 2025</td></tr><tr><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Nurul Nadiah Noh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
+          <table class="table-official">
+            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td>PKKK/300/UAT/001</td><td>Proses persampelan (Ujian Penyaringan)</td></tr><tr><td>PKKK/300/UAT/010</td><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td></tr><tr><td></td><td>Drug Registration Guidance Document (DRGD), 3rd Edition, Eight Revision July 2024. (Appendix 7)</td></tr><tr><td></td><td>Drug Registration Guidance Document (DRGD), 3rd Edition, Eight Revision July 2024. (Appendix 18)</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
+          <table class="table-official">
+            <tr><th>Level</th><th>Mixed Standard Stock (µl)</th><th>IS Stock (µl)</th><th>Methanol (µl)</th><th>Concentration of each compound (µg/ml)</th><th>Concentration of IS (µg/ml)</th></tr><tr><td>1 (LOQ)</td><td>45</td><td>300</td><td>1155</td><td>3</td><td>80</td></tr><tr><td>2</td><td>150</td><td>300</td><td>1050</td><td>10</td><td>80</td></tr><tr><td>3</td><td>300</td><td>300</td><td>900</td><td>20</td><td>80</td></tr><tr><td>4</td><td>600</td><td>300</td><td>600</td><td>40</td><td>80</td></tr><tr><td>5</td><td>1200</td><td>300</td><td>-</td><td>80</td><td>80</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
+          <table class="table-official">
+            <tr><th>Level</th><th>Mixed Standard Stock (µL)</th><th>IS Stock (µL)</th><th>Make up to volume with Methanol, mL</th><th>Concentration of each compound (µg/mL)</th><th>Concentration of IS (µg/mL)</th></tr><tr><td>1</td><td>150</td><td>1000</td><td>5</td><td>3</td><td>80</td></tr><tr><td>2</td><td>500</td><td>1000</td><td>5</td><td>10</td><td>80</td></tr><tr><td>3</td><td>1000</td><td>1000</td><td>5</td><td>20</td><td>80</td></tr><tr><td>4</td><td>2000</td><td>1000</td><td>5</td><td>40</td><td>80</td></tr><tr><td>5</td><td>4000</td><td>1000</td><td>5</td><td>80</td><td>80</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
+          <table class="table-official">
+            <tr><th>GC Parameters</th><th>GC Parameters</th></tr><tr><td>Column</td><td>BP-624, 6% Cyanopropylphenyl 94% Dimethylpolysiloxane</td></tr><tr><td>Column Dimension</td><td>30 m x 0.25 mm x 1.4 µm</td></tr><tr><td>Oven temperature</td><td>Refer table 4</td></tr><tr><td>Flow control mode</td><td>Linear Velocity (48.5 cm/sec)</td></tr><tr><td>Flow rate</td><td>1.70 ml/min</td></tr><tr><td>Gas</td><td>Helium (Purity: 99.999%)</td></tr><tr><td>Injection mode</td><td>Split (30:1)</td></tr><tr><td>Injector temperature</td><td>230°C</td></tr><tr><td>Injection volume</td><td>0.5 µL</td></tr><tr><td>MS Parameters</td><td>MS Parameters</td></tr><tr><td>Interface temperature</td><td>230°C</td></tr><tr><td>EI ion source / MS source temperature</td><td>200°C</td></tr><tr><td>EI ionization energy</td><td>70 eV</td></tr><tr><td>Solvent delay</td><td>Scan off: 0 to 3.00 minutes due to solvent peak (methanol)</td></tr><tr><td>Scan range</td><td>m/z 50 to m/z 200</td></tr><tr><td>SIM ions</td><td>Refer table 5</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 6</div>
+          <table class="table-official">
+            <tr><th>Oven ramp</th><th>Rate (°C/min)</th><th>Final temperature (°C)</th><th>Hold time (minute)</th><th>Run time (minute)</th></tr><tr><td>Initial</td><td></td><td>100</td><td>0.0</td><td></td></tr><tr><td>Ramp 1</td><td>5</td><td>170</td><td>0.0</td><td></td></tr><tr><td>Post run</td><td>40</td><td>200</td><td>5.0</td><td>19.75</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 7</div>
+          <table class="table-official">
+            <tr><th>Compound</th><th>Acquisition time (minute)  (*)</th><th>SIM Ions</th><th>Test</th></tr><tr><td>Camphor</td><td>9.00 – 11.00</td><td>1. Target; m/z 108.15</td><td>Quantitation</td></tr><tr><td>Camphor</td><td>9.00 – 11.00</td><td>2. Reference 1: m/z 83.10 3. Reference 2: m/z 79.05</td><td>Qualification</td></tr><tr><td>Menthol</td><td>9.00 – 11.00</td><td>1. Target; m/z 71.05</td><td>Quantitation</td></tr><tr><td>Menthol</td><td>9.00 – 11.00</td><td>2. Reference 1: m/z 57.05 3. Reference 2: m/z 123.05</td><td>Qualification</td></tr><tr><td>Methyl salicylate</td><td>11.00 – 13.00</td><td>1. Target; m/z 120.05</td><td>Quantitation</td></tr><tr><td>Methyl salicylate</td><td>11.00 – 13.00</td><td>2. Reference 1: m/z 152.10 3. Reference 2: m/z 92.00</td><td>Qualification</td></tr><tr><td>Thymol</td><td>13.00 – 18.00</td><td>1. Target; m/z 135.10</td><td>Quantitation</td></tr><tr><td>Thymol</td><td>13.00 – 18.00</td><td>2. Reference 1: m/z 150.15 3. Reference 2: m/z 91.05</td><td>Qualification</td></tr><tr><td>Eugenol</td><td>13.00 – 18.00</td><td>1. Target; m/z 164.10</td><td>Quantitation</td></tr><tr><td>Eugenol</td><td>13.00 – 18.00</td><td>2. Reference 1: m/z 149.10 3. Reference 2: m/z 131.10</td><td>Qualification</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 8</div>
+          <table class="table-official">
+            <tr><th>No. of sequence</th><th>Details</th><th>Total of injection</th></tr><tr><td>1</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>2</td><td>LOD solution</td><td>1</td></tr><tr><td>3 – 7</td><td>Calibration curve solution (Level 1 – 5)</td><td>1 (each level)</td></tr><tr><td>8</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>9 – 14</td><td>System suitability solution</td><td>6</td></tr><tr><td>15</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>16</td><td>Sample 1 (Replicate A)</td><td>1</td></tr><tr><td>17</td><td>Sample 1 (Replicate B)</td><td>1</td></tr><tr><td>18</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>19</td><td>Sample 2 (Replicate A)</td><td>1</td></tr><tr><td>20</td><td>Sample 2 (Replicate B)</td><td>1</td></tr><tr><td>21</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>22</td><td>LOD solution</td><td>1</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 9</div>
+          <table class="table-official">
+            <tr><th>Parameter</th><th>Acceptance criteria</th></tr><tr><td>Tailing factor, Tf</td><td>NMT 2.0</td></tr><tr><td>Theoretical plate, N</td><td>NLT 2000</td></tr><tr><td>% RSD (peak area ratio) for 6 injections of working standard solution at Level 3.</td><td>NMT 5.0 %</td></tr><tr><td>S/N ratio of LOD solution (1 µg/ml)</td><td>NLT 3</td></tr><tr><td>S/N ratio of LOQ solution (3 µg/ml)</td><td>NLT 10</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 10</div>
+          <table class="table-official">
+            <tr><th>Relative ion intensity  (% of base peak)</th><th>Tolerance (%)</th></tr><tr><td>&gt;  50</td><td>± 10</td></tr><tr><td>20 – 50</td><td>± 15</td></tr><tr><td>10 - 20</td><td>± 20</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 11</div>
+          <table class="table-official">
+            <tr><th>Amount of each compound</th><th>=</th><th>Measured Concentration from GCMS (µg/mL)</th><th>x</th><th>Total volume sample solution (mL)</th><th>x</th><th>Dilution Factor (if any)</th><th>x</th><th>Purity (%)</th><th>x</th><th>1</th><th></th></tr><tr><td>(% w/w)</td><td>=</td><td>Measured Concentration from GCMS (µg/mL)</td><td>x</td><td>Weight of Sample Taken (g)</td><td>x</td><td>Dilution Factor (if any)</td><td>x</td><td>Purity (%)</td><td>x</td><td>10000</td><td></td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 12</div>
+          <table class="table-official">
+            <tr><th>Compound</th><th>Restricted Limit</th><th>Reference</th></tr><tr><td>Menthol</td><td>For external preparations:  NMT 10% (active ingredients)</td><td>Appendix 18: List of Permitted, Prohibited and Restricted Substances</td></tr><tr><td>Menthol</td><td>For external preparations: NMT 10% (excipients)</td><td>Appendix 7: Guideline on Registration of Natural Products</td></tr><tr><td>Camphor</td><td>For external preparations: NMT 11%</td><td>Appendix 18: List of Permitted, Prohibited and Restricted Substances</td></tr>
+          </table>
+        </div>
+        
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="../steroid-hplc.js"></script>
+</body>
+</html>

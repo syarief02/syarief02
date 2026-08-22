@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKKK/300/UP/031 — Penentuan Lovastatin dalam produk tradisional menggunakan HPLC | NPRA Arahan Kerja 300</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/031: Penentuan Lovastatin dalam produk tradisional menggunakan HPLC — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<link rel="icon" type="image/png" href="../../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-substep {
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  }
+  .sop-list-item {
+    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
+    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+  }
+  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
+  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+  
+  @media print {
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .main { max-width: 100% !important; padding: 0 !important; }
+    .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="../index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="../sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Container -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: PENENTUAN LOVASTATIN DALAM PRODUK TRADISIONAL MENGGUNAKAN HPLC</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/031</td>
+        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- Sections -->
+    
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Kemaskini 6.6 System suitability test requirement, di mana</p><p class="sop-p">kritieria Theoretical plate telah dikemaskini daripada “(NLT) 1500 kepada “(NLT) 2000”.</p><p class="sop-p">Menambah “%RSD for retention time: Not more than, NMT 2.0%”</p><p class="sop-p">Menambah para 6.7 Internal Quality Control.</p><p class="sop-p">Mengemaskini para 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6 dan 5.5 penolong pegawai farmasi ditukar daripada U29/ U32 kepada U6 / U5.</p><p class="sop-p">Menambah para 6.3.3 Single Standard Stock Solution</p><p class="sop-p">Terbitan 1, Semakan 2:</p><p class="sop-p">Kemaskini perenggan 3.0 Definisi dengan menambah sf – similarity factor dan COA – Certificate of Analysis</p><p class="sop-p">Kemaskini perenggan 6.5 Internal Quality Control, IQC dengan menambahbaik ayat 6.5.1</p><p class="sop-p">Kemaskini perenggan 6.5.2 dengan menambah cara penyediaan sampel IQC sekiranya menggunakan Procedure A: IQC using Previously Tested or ILC Samples (Applicable for samples selected in 6.5.1 (i) and (ii)</p><p class="sop-p">Kemaskini perenggan 6.5.4 dengan menambah cara pengiraan %Recovery untuk Internal Quality Control (IQC) sekiranya menggunakan sampel yang pernah diuji atau sampel daripada Inter-Laboratory Comparison (ILC)</p><p class="sop-p">Kemaskini perenggan 6.6 dengan menambah perenggan 6.6.5 Calibration Check After Sample Injections: Cara pengiraan Calibration Check dan kriteria yang ditetapkan</p><p class="sop-p">Kemaskini perenggan 6.7 Sequence of Injection</p><p class="sop-p">Kemaskini perenggan 6.8.1 dengan pelaporan keputusan a) dan b) hingga dua tempat perpuluhan</p><p class="sop-p">Kemaskini 7.0 Rekod Kualiti dengan menambah borang baru:</p><p class="sop-p">Terbitan 2, Semakan 0</p><p class="sop-p">Pinda nombor dokumen PKKK/300/UAT/057 kepada PKKK/300/UP/031.</p><p class="sop-p">Pinda nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001.</p><p class="sop-p">PKKK/300/UAT/012 kepada PKKK/300/UP/011;</p><p class="sop-p">PKKK/300/UAT/017 kepada PKKK/300/UP/016;</p><p class="sop-p">Pinda nombor borang dalam para 7. Rekod Kualiti:</p><p class="sop-p">UAT/001A kepada    UP/001A</p><p class="sop-p">UAT/008A kepada    UP/008A</p><p class="sop-p">UAT/008B kepada    UP/008B</p><p class="sop-p">UAT/008C kepada    UP/008C</p><p class="sop-p">UAT/008D kepada    UP/008D</p><p class="sop-p">UAT/008E kepada    UP/008E</p><p class="sop-p">UAT/008F kepada    UP/008F</p><p class="sop-p">UAT/008G kepada    UP/008G</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Lovastatin menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi dan kandungan Lovastatin dalam produk tradisional (kecuali kapsul) dengan menggunakan HPLC.</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1	HPLC	- High Performance Liquid Chromatography</strong></div><div class="sop-substep"><strong>3.2	RS	- Reference Standard</strong></div><div class="sop-substep"><strong>3.3	OOS	- Out of Specification</strong></div><div class="sop-substep"><strong>3.4	UV	- Ultraviolet</strong></div><div class="sop-substep"><strong>3.5	LOD	- Limit of Detection</strong></div><div class="sop-substep"><strong>3.6	IQC	- Internal Quality Control</strong></div><div class="sop-substep"><strong>3.7	UPA	- Unit Perkhidmatan Analisis</strong></div><div class="sop-substep"><strong>3.8	SST	- System Suitability Test</strong></div><div class="sop-substep"><strong>3.9	sf	- Similarity Factor</strong></div><div class="sop-substep"><strong>3.10	COA 	- Certificate of Analysis</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Menyemak dan mengesahkan keputusan sampel yang tidak lulus atau di luar spesifikasi (OOS)</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><div class="sop-substep"><strong>5.3    Pegawai Farmasi</strong></div><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian</p><p class="sop-p">Menjalankan kerja-kerja analisis mengikut tatacara yang telah ditetapkan dan menyediakan laporan ujian</p><div class="sop-substep"><strong>5.4    Penolong Pegawai Farmasi U7 / U6</strong></div><p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan</p><div class="sop-substep"><strong>5.5    Penolong Pegawai Farmasi U6 / U5</strong></div><p class="sop-p">Menjalankan kerja-kerja analisis mengikut tatacara yang telah ditetapkan</p><p class="sop-p">Menyediakan laporan ujian</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Materials and Equipment’s</p><p class="sop-p">Instrument :</p><p class="sop-p">High Performance Liquid Chromatography with photodiode array (PDA) detector</p><p class="sop-p">Analytical &amp; microbalance</p><p class="sop-p">Column : Thermo ODS Hypersil 5 µm, 200 x 4.6 mm or equivalent</p><p class="sop-p">Reference standard : Lovastatin USP or equivalent</p><p class="sop-p">Chemical :</p><p class="sop-p">Monobasic Sodium Phosphate</p><p class="sop-p">Phosphoric acid</p><p class="sop-p">Glacial Acetic Acid (AR Grade)</p><p class="sop-p">Sodium hydroxide</p><p class="sop-p">Methanol (HPLC Grade)</p><p class="sop-p">Acetonitrile (HPLC Grade)</p><p class="sop-p">Deionized water</p><p class="sop-p">Glassware’s and consumable :</p><p class="sop-p">Beakers</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Measuring cylinder</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (5 mL)</p><p class="sop-p">2 mL glass screw cap vial</p><p class="sop-p">Preparation of Solutions</p><p class="sop-p">Preparation of diluent</p><p class="sop-p">Preparation of 2M sodium hydroxide: Weigh 8 gm sodium hydroxide and dissolve in 100 mL deionized water.</p><p class="sop-p">Measure 900 mL of deionized water in a beaker and add 3 mL glacial acetic acid. Adjust pH of the solution to pH4 using 2M sodium hydroxide. Transfer the solution into 1 L volumetric flask and make up volume to 1L with deionized water. Then, prepare a mixture of acetonitrile and the resultant solution with composition 80:20.</p><p class="sop-p">Preparation of buffer solution</p><p class="sop-p">Preparation of 1M phosphoric acid: Mix 6.8 mL of 85% (w/w) concentrated phosphoric acid solution to 93.2 mL water to prepare 100 mL of 1M phosphoric acid.</p><p class="sop-p">Dissolve 4.41 gm of monobasic sodium phosphate in 900 mL deionized water, adjust with 1M phosphoric acid to pH4 and make up volume to 1 L with deionized water.</p><p class="sop-p">Preparation of mobile phase</p><p class="sop-p">Prepare a filtered and degassed mixture of acetonitrile and buffer solution (65:35).</p><p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Standard stock solution</p><p class="sop-p">Weigh 10 mg Lovastatin standard in duplicate (A and B) in 100 mL volumetric flask separately. Add 50 mL diluent and sonicate for 5 minutes. Then make up to volume with diluent. Final concentration of this solution is 100 µg/mL.</p><p class="sop-p">Working standard solution (for calibration curve)</p><p class="sop-p">Prepare 1 set of working standard solution for calibration curve from the standard stock solution A (Para 6.3.1). Dilute the standard stock solution A to get five concentration levels of 0.7 µg/mL, 2.0 µg/mL, 10.0 µg/mL, 20.0 µg/mL and 38.0 µg/mL. Filter with 0.45 µm nylon syringe filter and put in vial. Below are the procedures to prepare the solutions:</p><p class="sop-p">To obtain 0.7 µg/mL, measure 0.175 mL of stock standard solution and make up to 25 ml with diluent.</p><p class="sop-p">To obtain 2.0 µg/mL, measure 0.2 mL of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain 10.0 µg/mL, measure 1 mL of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain 20.0 µg/mL, measure 2 mL of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain 38.0 µg/mL, measure 3.8 mL of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">Working standard solution at LOD level, 0.6 µg/mL (300 mg/kg)</p><p class="sop-p">Measure 0.15 mL stock standard solution A and make up to 25 mL with diluent.</p><p class="sop-p">Working standard solution 20.0 µg/mL (for calibration check)</p><p class="sop-p">Dilute the standard stock solution B to get 20.0 µg/mL. To obtain 20.0 µg/mL, measure 2 mL of stock standard solution and make up to 10 mL with diluent. Filter with 0.45 µm nylon syringe filter and put in vial.</p><div class="sop-substep"><strong>6.4 Preparation of sample</strong></div><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling processes differ between different types of dosage form. Please refer to the document PKKK/200/018 (Prosedur Persampelan Untuk Analisis Sampel) dan PKKK/300/UAT/001 (Proses Persampelan Ujian Penyaringan).</p><p class="sop-p">Average weight of the total tablet content</p><p class="sop-p">Weigh 20 tablets of sample individually</p><p class="sop-p">Record weight of each tablet in UAT/007 form</p><p class="sop-p">Calculate the total average weight of the tablets</p><p class="sop-p">Record all the result</p><p class="sop-p">Sample preparation for analysis</p><p class="sop-p">Weigh 200 mg powder of sample (obtain from 6.4.2) in 100ml volumetric flask in duplicate.</p><p class="sop-p">For liquid sample, weigh 200 mg of sample in 100 ml volumetric flask in duplicate.</p><p class="sop-p">Add 60 mL of diluent and sonicate for 15 minutes</p><p class="sop-p">Leave the solution to cool before making it up to volume of 100 mL with diluent</p><p class="sop-p">Filter the sample solution and put in a vial using 0.45 µm nylon syringe filter</p><div class="sop-substep"><strong>6.5 Internal Quality Control, IQC</strong></div><div class="sop-substep"><strong>6.5.1	Prepare the internal quality control (IQC) sample using one of the following methods:</strong></div><p class="sop-p">Previously tested samples (Retained samples with known values)</p><p class="sop-p">Samples from Inter-Laboratory Comparison (ILC)</p><p class="sop-p">Standard spiking method - Sample spiked with Lovastatin at a final concentration of 20.0 µg/mL (10,000 mg/kg)</p><p class="sop-p">Procedure A: IQC using Previously Tested or ILC Samples (Applicable for samples selected in 6.5.1 (i) and (ii):</p><p class="sop-p">For Tablets: Take 20 tablets, crush and mix to homogenize</p><p class="sop-p">For Liquids: Shake the container to homogenize and pour a suitable amount into a beaker</p><p class="sop-p">Weigh 200 mg of the sample into a 100 mL volumetric flask</p><p class="sop-p">Add 60 mL of diluent and sonicate for 15 minutes</p><p class="sop-p">Leave the solution to cool before making it up to volume of 100 mL with diluent</p><p class="sop-p">Filter the sample solution and put in a vial using 0.45 µm nylon syringe filter.</p><p class="sop-p">Procedure B: IQC using Spiking Method (Applicable for samples selected in 6.5.1 (iii):</p><p class="sop-p">Weigh 200mg powder of sample (as obtained in Section 6.4.2) into a 100 mL volumetric flask</p><p class="sop-p">Add in 60 mL diluent</p><p class="sop-p">Perform spiking by adding 20 mL stock standard solution of Lovastatin, 100 µg/mL</p><p class="sop-p">Sonicate for 15 minutes and leave the solution to cool</p><p class="sop-p">Make up to volume of 100 mL with diluent</p><p class="sop-p">Filter the solution and put in a vial using 0.45 µm nylon syringe filter</p><p class="sop-p">IQC sample will be injected twice and percent Recovery, (% Recovery) will be calculated by using the appropriate formula below:</p><p class="sop-p">For previously tested sample or sample from ILC:</p><p class="sop-p">Assigned Value is obtained from:</p><p class="sop-p">For previously tested samples: Refer to the original Certificate of Analysis (COA) for that specific batch.</p><p class="sop-p">For ILC samples: Refer to the ILC Lovastatin Current Report. Use the “Assigned Value” stated in the official report.</p><p class="sop-p">Sample spiked with Lovastatin at 20.0 µg/mL:</p><p class="sop-p">x 100%</p><p class="sop-p">IQC check passed if the IQC sample passed with recovery within 80 – 110%.</p><div class="sop-substep"><strong>6.6 Experimental Method</strong></div><p class="sop-p">The HPLC system used for determination of Lovastatin is given in Table 1 below.</p><p class="sop-p">Table 1: HPLC system for determination of Lovastatin.</p><p class="sop-p">Refer to document PKKK/300/UAT/004 (RRLC 1200 Series), PKKK/300/UAT/012 (HPLC Shimadzu) and PKKK/300/UAT/017 (HPLC Perkin Elmer) on how to operate HPLC system in details.</p><p class="sop-p">System suitability</p><p class="sop-p">In order to check and ensure the system used is fit for the analysis, carry out a system suitability test using working standard solution 20.0 µg/mL (six injections) before starting any sample injection. The requirements are shown in Table 2 below:</p><p class="sop-p">Table 2: Requirement for system suitability test (SST)</p><p class="sop-p">System suitability test have to be done using HPLC offline system</p><p class="sop-p">Click Method         Load method</p><p class="sop-p">Click File          load signal, select 20.0 µg/mL file (1st injection)</p><p class="sop-p">Click Integration        Edit/Set Integration Events Table icon (pencil icon)         click ꭍ</p><p class="sop-p">At chromatogram, discard unnecessary peak</p><p class="sop-p">Next, click</p><p class="sop-p">Record all six peak areas obtained for working standard solution 20.0 µg/mL and ensure the system suitability test requirement as mention in Table 2 are met.</p><p class="sop-p">If the system suitability does not meet the specified requirements, repeat the test until it passes. If necessary, prepare a new working standard solution before proceeding with any working standard solution for calibration curve and sample injections.</p><p class="sop-p">Standard Injection and Calibration curve</p><p class="sop-p">Inject 0.7 µg/mL, 2.0 µg/mL, 10.0 µg/mL, 20.0 µg/mL and 38.0 µg/mL working standard solution before and after analysis by using different working standard solution prepared in 6.3.2. Create the calibration curves of concentration versus area and ensure the correlation coefficient (R2) obtained is equal or more than 0.999. If the correlation does not meet the required criteria, re-inject the working standard solution until the desired acceptance criteria is achieved. If necessary, prepare a new working standard solution before proceeding with any sample injections.</p><p class="sop-p">Steps required to generate the calibration curve:</p><p class="sop-p">Click File         load signal, select 0.7 µg/mL file</p><p class="sop-p">Click Calibration        New calibration Table</p><p class="sop-p">Enter weight of 0.7 µg/mL (e.g. 0.7) at ‘Default Amount’ column and click OK</p><p class="sop-p">Next click load file icon, select 2.0 µg/mL file</p><p class="sop-p">Click Calibration          Add level</p><p class="sop-p">Enter weight of 2.0 µg/mL (e.g. 2.0) at ‘Default Amount’ column and click OK</p><p class="sop-p">Repeat step 6.5.1. iv to 6.5.1.vi for 10.0 µg/mL, 20.0 µg/mL and 38.0 µg/mL working standard solution</p><p class="sop-p">Ensure the correlation coefficient (R2</p><p class="sop-p">Type ‘LOVASTATIN’ at calibration table</p><p class="sop-p">Then, click calibration        Calibration Settings. The calibration setting table will pop up.</p><p class="sop-p">Title: CALIBRATION CURVE FOR LOVASTATIN</p><p class="sop-p">Default Calibration Curve</p><p class="sop-p">Type: Linear</p><p class="sop-p">Origin: Ignore</p><p class="sop-p">Weight: Equal</p><p class="sop-p">Type ‘µg/mL’ at ‘Amount Unit’ column</p><p class="sop-p">Click OK and click OK at Calibration Table</p><p class="sop-p">Sample Injection</p><p class="sop-p">Inject each sample as a single injection. Compare the retention time and UV spectrum of the peak in the chromatogram of sample with the RS. The sample contains Lovastatin if the retention time and UV spectrum of the sample correspond to the RS.</p><p class="sop-p">Retention time and UV spectrum observation</p><p class="sop-p">To observe and check retention time and UV spectrum of the sample and RS, refer to document PKKK/300/UAT/004 (RRLC 1200 Series), PKKK/300/UAT/012 (HPLC Shimadzu) and PKKK/300/UAT/017 (HPLC Perkin Elmer).</p><p class="sop-p">Calibration Check After Sample Injections</p><p class="sop-p">Perform a calibration check by injecting Working Standard Solution B (20.0 µg/mL) at the following intervals:</p><p class="sop-p">After every 5 sample injections</p><p class="sop-p">After completing all sample injections (end of analysis)</p><p class="sop-p">Calculate the % Recovery and Similarity Factor based on the formula below:</p><p class="sop-p">% Recovery for Working Standard Solution B</p><p class="sop-p">The calibration check is considered passed if Recovery is within 95 – 105%.</p><p class="sop-p">Using Similarity Factor, sf</p><p class="sop-p">The similarity factor passes if sf is within 98 – 102%.</p><p class="sop-p">The calibration check must fulfil both criteria in order to verify calibration integrity.</p><p class="sop-p">If either criterion fails:</p><p class="sop-p">Re-inject Working Standard Solution B</p><p class="sop-p">If still out-of-tolerance, prepare a fresh Working Standard Solution B and repeat</p><p class="sop-p">If failure persists, invalidate the batch analysis and investigate (standard preparation, column / system performance, sample preparation).</p><p class="sop-p">Sequence of Injection</p><p class="sop-p">Table 3: Sequence injection for determination of Lovastatin</p><div class="sop-substep"><strong>6.8 Calculation (Reporting the final results)</strong></div><p class="sop-p">If Lovastatin is detected, the amount of Lovastatin needs to be calculated.</p><p class="sop-p">Amount of Lovastatin in %w/w</p><p class="sop-p">(NPRA limit: Not more than 1.00 %w/w)</p><p class="sop-p">The total amount of Lovastatin in sample calculated by the formula below:</p><p class="sop-p">Dose Lovastatin per day (mg/day)</p><p class="sop-p">(NPRA limit: Not more than 10.00 mg/day)</p><p class="sop-p">Tablet Dosage Form</p><p class="sop-p">First, calculate the amount of Lovastatin per tablet (mg/tab) by the formula below:</p><p class="sop-p">Then, the dose Lovastatin per day is calculated by the formula below:</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>*Amount of tablet taken per day = Can be obtained from the dosage information at the sample packaging.</span></div><p class="sop-p">ii) 	Liquid Dosage Form</p><p class="sop-p">Given product label: T mg of red yeast rice / Monascus Purpureus per Y mL#</p><p class="sop-p">Lovastatin content from 6.8.1: Z % w/w</p><p class="sop-p">Formula:</p><p class="sop-p">Lovastatin per Y mL dose (mg) = T</p><p class="sop-p">Then, the dose Lovastatin per day is calculated by the formula below:</p><p class="sop-p">#Number of doses taken per day = Can be obtained from the dosage information at the sample packaging.</p><p class="sop-p">Sample consider not detected with Lovastatin if the area of Lovastatin peak in the sample is below the area of the working standard solution at LOD level that is 300 mg/kg (0.6 µg/mL)</p><p class="sop-p">Result documented in Certificate of Analysis:</p>
+          </div>
+        </div>
+        
+
+    <!-- Tables -->
+    
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
+          <table class="table-official">
+            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis          oleh</td><td>Disemak    oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>28 Mac 2025</td></tr><tr><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>1</td><td>2</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Jan 2026</td></tr><tr><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
+          <table class="table-official">
+            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td>PKKK/300/UP/003</td><td>Rapid Resolution Liquid Chromatography HP 1200</td></tr><tr><td>PKKK/200/018</td><td>Prosedur Persampelan Untuk Analisis Sampel</td></tr><tr><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr><tr><td>PKKK/300/UP/011</td><td>Shimadzu High Performance Liquid Chromatography         (Prominence-i)</td></tr><tr><td>PKKK/300/UP/016</td><td>High Performance Liquid Chromatography Flexar (Perkin Elmer)</td></tr><tr><td></td><td>British Pharmacopoeia (BP) – Appendix XII C, Uniformity of Weight</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
+          <table class="table-official">
+            <tr><th>UAT/008F</th><th>Laporan Internal Quality Control (Menggunakan sampel yang pernah diuji atau sampel ILC)</th></tr><tr><td>UAT/008G</td><td>Borang Calibration Curve for Lovastatin Standard</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
+          <table class="table-official">
+            <tr><th>IQC Sample (%w/w)</th><th>=</th><th>Amount of Lovastatin in IQC sample (µg/mL)</th><th>x</th><th>100 mL</th><th>x</th><th>100</th><th>x</th><th>1</th><th>x</th><th>1</th><th>x</th><th>Standard purity (%)</th></tr><tr><td>IQC Sample (%w/w)</td><td>=</td><td>Weight of IQC sample (gm)</td><td>x</td><td>100 mL</td><td>x</td><td>100</td><td>x</td><td>1000</td><td>x</td><td>1000</td><td>x</td><td>Standard purity (%)</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
+          <table class="table-official">
+            <tr><th>Column</th><th>Thermo ODS Hypersil</th></tr><tr><td>Dimensions</td><td>200 x 4.6 mm x 5 µm</td></tr><tr><td>Flow rate</td><td>1.8 mL/min</td></tr><tr><td>Column temperature</td><td>45 oC</td></tr><tr><td>Wavelength detector (PDA)</td><td>238 nm</td></tr><tr><td>Injection volume</td><td>20 µL</td></tr><tr><td>Run time</td><td>6 minutes</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 6</div>
+          <table class="table-official">
+            <tr><th>Tailing factor (T)</th><th>T &lt; 2</th></tr><tr><td>Capacity factor (k′)</td><td></td></tr><tr><td>Peak area precision of 6 injections of working standard solution (20 µg/mL)</td><td>RSD not more than 2.0%</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 7</div>
+          <table class="table-official">
+            <tr><th>Number of sequences</th><th>Details</th><th>Number of injection</th></tr><tr><td>1</td><td>Working standard solution 20 µg/mL for SST</td><td>6</td></tr><tr><td>2</td><td>Working standard solution A for calibration curve</td><td>1 for each concentration</td></tr><tr><td>3</td><td>Working standard solution at LOD level (0.6 µg/mL), that is equal to 300 mg/kg.</td><td>1</td></tr><tr><td>4</td><td>Mobile phase</td><td>1</td></tr><tr><td>5</td><td>Diluent</td><td>1</td></tr><tr><td>6</td><td>Sample solution 1 (A)</td><td>1</td></tr><tr><td>7</td><td>Sample solution 1 (B)</td><td>1</td></tr><tr><td>8</td><td>IQC sample solution</td><td>2</td></tr><tr><td>9</td><td>Diluent</td><td>1</td></tr><tr><td>10</td><td>Working standard solution B  (20 µg/mL) for calibration check</td><td>1 (inject after every 5 samples)</td></tr><tr><td>11</td><td>Diluent</td><td>1</td></tr><tr><td>12</td><td>Working standard solution B  (20 µg/mL) for calibration check</td><td>1</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 8</div>
+          <table class="table-official">
+            <tr><th>Amount of Lovastatin (%w/w)</th><th>=</th><th>Amount of Lovastatin in sample (µg/mL)</th><th>x</th><th>100 mL</th><th>x</th><th>100</th><th>x</th><th>1</th><th>x</th><th>1</th><th>x</th><th>Standard purity (%)</th></tr><tr><td>Amount of Lovastatin (%w/w)</td><td>=</td><td>Weight of sample (gm)</td><td>x</td><td>100 mL</td><td>x</td><td>100</td><td>x</td><td>1000</td><td>x</td><td>1000</td><td>x</td><td>Standard purity (%)</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 9</div>
+          <table class="table-official">
+            <tr><th>Amount of Lovastatin per tablet</th><th>=</th><th>Amount of Lovastatin in sample (µg/mL)</th><th>x</th><th>100 mL</th><th>Average weight of tablet (gm)</th><th>x</th><th>Standard purity (%)</th></tr><tr><td>(mg/tab)</td><td>=</td><td>1000</td><td>x</td><td>100 mL</td><td>Weight of sample (gm)</td><td>x</td><td>Standard purity (%)</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 10</div>
+          <table class="table-official">
+            <tr><th>Dose Lovastatin per day (mg/day)</th><th>=</th><th>Amount of Lovastatin per tablet (mg/tab)</th><th>x</th><th>Amount of tablet taken per day*</th></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 11</div>
+          <table class="table-official">
+            <tr><th>Dose Lovastatin per day (mg/day)</th><th>=</th><th>Lovastatin per Y mL dose (mg)</th><th>x</th><th>Number of doses per day#</th></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 12</div>
+          <table class="table-official">
+            <tr><th></th><th>IDENTIFIKASI LOVASTATIN</th><th>KANDUNGAN LOVASTATIN</th></tr><tr><td>Lovastatin not detected</td><td>TIDAK DIKESAN</td><td></td></tr><tr><td>Lovastatin detected</td><td>DIKESAN</td><td>Amount of Lovastatin in %w/w Dose Lovastatin per day (mg/day)</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 13</div>
+          <table class="table-official">
+            <tr><th>No.Borang</th><th>Tajuk</th></tr><tr><td>UP/001A</td><td>Borang persampelan</td></tr><tr><td>UP/008A</td><td>Laporan Identification &amp; Assay of Lovastatin</td></tr><tr><td>UP/008B</td><td>Borang Ujian Berat Purata (Ujian Penyaringan)</td></tr><tr><td>UP/008C</td><td>Laporan System Suitability</td></tr><tr><td>UP/008D</td><td>Laporan Internal Quality Control</td></tr><tr><td>UP/008E</td><td>Laporan Lovastatin Limit Test Calculation</td></tr><tr><td>UP/008F</td><td>Laporan Internal Quality Control (Menggunakan sampel yang pernah diuji atau sampel ILC)</td></tr><tr><td>UP/008G</td><td>Borang Calibration Curve for Lovastatin Standard</td></tr>
+          </table>
+        </div>
+        
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="../steroid-hplc.js"></script>
+</body>
+</html>

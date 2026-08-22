@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKKK/300/UP/048 — Identification of Hydroquinone in Cosmetic Products using GCMS | NPRA Arahan Kerja 300</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/048: Identification of Hydroquinone in Cosmetic Products using GCMS — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<link rel="icon" type="image/png" href="../../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-substep {
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  }
+  .sop-list-item {
+    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
+    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+  }
+  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
+  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+  
+  @media print {
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .main { max-width: 100% !important; padding: 0 !important; }
+    .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="../index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="../sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Container -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: IDENTIFICATION OF HYDROQUINONE IN COSMETIC PRODUCTS USING GCMS</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/048</td>
+        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- Sections -->
+    
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">AMENDMENT :</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to the ISO 9001: 2015 version and the renaming of the institution from National Pharmaceutical Control Bureau (NPCB) to National Pharmaceutical Regulatory Agency (NPRA). Therefore, the original document is obsolete and this document is published as Version 1.</p><p class="sop-p">HISTORY OF REVISION :</p><p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">Update on document number from PKK/200/KOS/013 to PKK/200/HMS/002</p><p class="sop-p">Update on effective date from 15 November 2016 to 10 February 2020</p><p class="sop-p">Update on responsibility.</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Document change from testing procedure PKK/200/HMS/002 to work instruction PKK/300/HMS/057</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/057 to PKKK/300/HMS/057</p><p class="sop-p">Update on List of References</p><p class="sop-p">Update on para 6.1 Equipment/Materials</p><p class="sop-p">Update on para 6.2 Chromatographic Parameters</p><p class="sop-p">Update on para 6.3.2 Sample Preparation</p><p class="sop-p">Update on para 6.4 Results</p><p class="sop-p">Issue 4 Revision 1 :</p><p class="sop-p">Update para 6.4 Results</p><p class="sop-p">Issue 5 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/057 to PKKK/300/KOS/016</p><p class="sop-p">Update paragraph 5. Responsibility</p><p class="sop-p">Issue 5 Revision 1 :</p><p class="sop-p">Update paragraph 6.3.1 Reference standard preparation</p><p class="sop-p">Issue 6 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/KOS/016 to PKKK/300/UP/048.</p><p class="sop-p">Update effective date from 1 April  2024 to 10 April 2026</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0	Objective</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">◼	To identify the presence of hydroquinone in cosmetic products using GC-MS.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">2.0	Scope</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">◼	This test method is only to be used for identification of hydroquinone in cosmetic products which is suspected to contain the substance.</p><div class="sop-substep"><strong>3.0	Definition</strong></div><div class="sop-substep"><strong>3.1 GCMS	: Gas Chromatography Mass Spectrometry</strong></div><div class="sop-substep"><strong>3.2 EI		: Electron Ionisation</strong></div><div class="sop-substep"><strong>3.3 Analyst	: Pharmacist/Pharmacy assistant/Science Officer</strong></div>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">4.0	Flow Chart</div>
+          <div class="sop-sec-content">
+            <div class="sop-list-item"><span class="sop-bullet">▹</span> <span>- None -</span></div><p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p><div class="sop-substep"><strong>5.1.1	Validate analysis report of failed sample and approve on QUEST System</strong></div><p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis report on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and update into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Perform sample analysis (when necessary) and report</p><p class="sop-p">Analyst</p><p class="sop-p">Perform sample analysis and report</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">6.0	Procedure</div>
+          <div class="sop-sec-content">
+            <div class="sop-substep"><strong>6.1	Equipment/ Materials</strong></div><p class="sop-p">GCMS – QP 2010</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Glass conical flasks with screw cap</p><p class="sop-p">Volumetric flask (20 mL)</p><p class="sop-p">Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p">GC autosampler vial</p><p class="sop-p">Methanol</p><p class="sop-p">Hydroquinone Reference Standard</p><p class="sop-p">Chromatographic Parameters</p><p class="sop-p">◼  Column	         : Rxi – 5Sil MS 30m x 0.25mm x 0.25µm</p><p class="sop-p">◼  Oven temperature:</p><p class="sop-p">Mode				: EI</p><p class="sop-p">Injection volume		: 1 μL</p><p class="sop-p">Split ratio			: 10:1</p><p class="sop-p">Column flow			: 1.0mL/min</p><p class="sop-p">Inlet temperature		: 250°C</p><p class="sop-p">Interface temperature		: 280°C</p><p class="sop-p">MS Quad temperature	: 150°C</p><p class="sop-p">MS source temperature	: 230°C</p><p class="sop-p">Gas				: Helium</p><p class="sop-p">Test Method</p><p class="sop-p">Reference Standard Preparation</p><p class="sop-p">Weigh accurately 2 mg of Hydroquinone Reference Standard and put it in a 20 mL volumetric flask. Make up to volume with Methanol. Pipette 3 mL of standard solution into 10 mL volumetric flask and make up to volume with Methanol. Filter the solution before injecting into the GCMS. (0.03 mg/mL)</p><p class="sop-p">Note: The concentration of reference standard can be modified according to the system response during analysis.</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Weigh accurately 0.5 g of sample into a glass conical flask. Add in 20 mL of Methanol. Sonicate until it dissolves. Pipette 1 mL of sample solution into 10 mL volumetric flask and make up to volume with Methanol. Filter the solution before injecting into the GCMS.</p><p class="sop-p">Note: Further dilution of sample can be done if the concentration of sample is too high.</p><p class="sop-p">Measurement</p><p class="sop-p">Inject 1 μL of Reference Standard solution and sample preparation into the GCMS and check the chromatogram.</p><p class="sop-p">Results</p><p class="sop-p">From the chromatogram of the sample, a compound is reported as detected (positive) should the retention time and mass spectrum match between the sample and reference standard with more than 80 % similarity. The principal ions for hydroquinone are 110, 53, 39, 54 and 82.</p><p class="sop-p">Quality Records</p><p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah		: UP/X015</p><p class="sop-p">GCMS</p><p class="sop-p">Laporan Siasatan Sampel Gagal (Analyst)			: UP/002A</p><p class="sop-p">Keputusan Ujian Kosmetik					: UP/X013</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p><p class="sop-p">Attachments</p><p class="sop-p">Chromatogram and mass spectrum of Reference Standard Hydroquinone</p>
+          </div>
+        </div>
+        
+
+    <!-- Tables -->
+    
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
+          <table class="table-official">
+            <tr><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th></tr><tr><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective date</td></tr><tr><td>1</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Dr Noraida Mohamad Zainoor</td><td>15 November 2016</td></tr><tr><td>2</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 February 2020</td></tr><tr><td>3</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 July 2020</td></tr><tr><td>4</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr><tr><td>4</td><td>1</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 April 2023</td></tr><tr><td>5</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr><td>5</td><td>1</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 Julai 2024</td></tr><tr><td>6</td><td>0</td><td>Nurul Nadiah Noh</td><td>Gopinatha Ganesh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
+          <table class="table-official">
+            <tr><th>REFERENCE</th><th>REFERENCE</th></tr><tr><td>Document No.</td><td>Title</td></tr><tr><td></td><td>Standard Operating Procedure for GCMS</td></tr><tr><td></td><td>Notes on ‘GCMS in Biomedical Analysis’</td></tr><tr><td></td><td>Notes on HP GCMS</td></tr><tr><td></td><td>Clarke’s Analysis of Drugs and Poisons, Fourth Edition</td></tr><tr><td></td><td>National Library of Medicine (PubChem) website</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
+          <table class="table-official">
+            <tr><th>Oven Ramp</th><th>°C/min</th><th>Next °C</th><th>Hold Time (min)</th><th>Run Time (min)</th></tr><tr><td>Initial</td><td></td><td>100°C</td><td>2</td><td></td></tr><tr><td>Ramp 1</td><td>20</td><td>200°C</td><td>5</td><td></td></tr><tr><td>Ramp 2</td><td>20</td><td>260°C</td><td>5</td><td></td></tr><tr><td>Ramp 3</td><td>20</td><td>280°C</td><td>5</td><td></td></tr><tr><td>Ramp 4</td><td>20</td><td>310°C</td><td>5</td><td></td></tr><tr><td>Post Run</td><td></td><td>100°C</td><td>0</td><td>32.5</td></tr>
+          </table>
+        </div>
+        
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="../steroid-hplc.js"></script>
+</body>
+</html>

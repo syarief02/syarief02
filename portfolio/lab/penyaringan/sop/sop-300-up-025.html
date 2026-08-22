@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKKK/300/UP/025 — Identifikasi Proton Pump Inhibitor dalam produk tradisional menggunakan HPLC | NPRA Arahan Kerja 300</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/025: Identifikasi Proton Pump Inhibitor dalam produk tradisional menggunakan HPLC — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<link rel="icon" type="image/png" href="../../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-substep {
+    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  }
+  .sop-list-item {
+    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
+    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+  }
+  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
+  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
+  
+  @media print {
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .main { max-width: 100% !important; padding: 0 !important; }
+    .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="../index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="../sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Master SOP Matrix
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Container -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: IDENTIFIKASI PROTON PUMP INHIBITOR DALAM PRODUK TRADISIONAL MENGGUNAKAN HPLC</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/025</td>
+        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- Sections -->
+    
+        <div class="sop-section-block">
+          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Kemaskini 6.6 System suitability test requirement, di mana</p><p class="sop-p">kritieria Theoretical plate telah dikemaskini daripada “(NLT) 1500 kepada “(NLT) 2000”.</p><p class="sop-p">Menambah “Relative standard deviation (RSD) of peak area not more than (NMT) 2%”.</p><p class="sop-p">Menambah perenggan 6.5.6 Internal Quality Control</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Menambah perenggan 6.3.4 Single Standard Stock Solution</p><p class="sop-p">Mengemaskini perenggan 6.5.7b dengan “The UV spectrum is identical to the spectrum of the standard with similarity of more than 0.999 to the spectrum of standard.”</p><p class="sop-p">Mengemaskini perenggan 6.5.3 Injection Sequence</p><p class="sop-p">Mengemaskini perenggan 6.6.7 dengan menambah “IQC table”</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindakan nombor dokumen PKKK/300/UAT/051 kepada PKKK/300/UP/025.</p><p class="sop-p">Pindaan nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001</p><p class="sop-p">PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-p">PKKK/300/UAT/012 kepada PKKK/300/UP/011</p><p class="sop-p">PKKK/300/UAT/017 kepada PKKK/300/UP/016</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi proton pump inhibitor (omeprazole dan lansoprazole) menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi proton pump inhibitor (omeprazole dan lansoprazole) dalam produk tradisional menggunakan HPLC.</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1	HPLC		- High Performance Liquid Chromatography</strong></div><div class="sop-substep"><strong>3.2	RS		- Reference standard</strong></div><div class="sop-substep"><strong>3.3	OOS		- Out of Specification</strong></div><div class="sop-substep"><strong>3.4	UV		- Ultraviolet</strong></div><div class="sop-substep"><strong>3.5	IQC		- Internal Quality Control</strong></div><div class="sop-substep"><strong>3.6	PDA		- Photodiode Array</strong></div><div class="sop-substep"><strong>3.7	RSD 		- Relative Standard Deviation</strong></div><div class="sop-substep"><strong>3.8	SST		- System Suitability Test</strong></div><div class="sop-substep"><strong>3.9	RRLC		- Rapid Resolution Liquid Chromatography</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><div class="sop-substep"><strong>5.3      Pegawai Farmasi</strong></div><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><div class="sop-substep"><strong>5.4    Penolong Pegawai Farmasi U7 / U6</strong></div><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan.</p><div class="sop-substep"><strong>5.5    Penolong Pegawai Farmasi</strong></div><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Materials and Equipment</p><p class="sop-p">Instrument:</p><p class="sop-p">High Performance Liquid Chromatography with photodiode array (PDA) detector</p><p class="sop-p">Analytical balance &amp; microbalance.</p><p class="sop-p">Centrifuge</p><p class="sop-p">Column: Zorbax SB C18, 250 nm x 4.6 nm, 5 µm or equivalent.</p><p class="sop-p">Reference standards: Omeprazole and Lansoprazole</p><p class="sop-p">Chemicals:</p><p class="sop-p">Di-sodium hydrogen phosphate anhydrous</p><p class="sop-p">Phosphoric acid</p><p class="sop-p">Acetonitrile</p><p class="sop-p">Methanol</p><p class="sop-p">Deionized water</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Centrifuge tube</p><p class="sop-p">Solvent filter system</p><p class="sop-p">Nylon solvent filter 0.45 µm</p><p class="sop-p">Solvent bottle (1 L)</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (5 ml)</p><p class="sop-p">2 ml glass screw cap vial</p><p class="sop-p">Preparation of Mobile Phase</p><p class="sop-p">Preparation of buffer solution:</p><p class="sop-p">Dissolve 3.549 g of di-Sodium hydrogen phosphate anhydrous (Na2HPO4) in 1000 ml of water in solvent bottle to produce 25 mM di-Sodium hydrogen phosphate. Mix well and adjust to pH 7.6 with phosphoric acid.</p><p class="sop-p">Measure 1000 ml of acetonitrile and transfer in solvent bottle.</p><p class="sop-p">Filter buffer solution and acetonitrile using nylon solvent filter 0.45 µm and solvent filter system</p><p class="sop-p">Degassed filtered mobile phase at least for 20 minutes to ensure no bubble present.</p><p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Individual standard stock solution</p><p class="sop-p">Weigh 10 mg of Omeprazole and Lansoprazole into 20 ml amber volumetric flask separately. Dissolve and dilute to volume with methanol. Final concentration of individual solution is 0.5 mg/ml (500 ppm).</p><p class="sop-p">Working standard solution</p><p class="sop-p">Pipette 0.5 mL of each individual stock solution (500 ppm) into a 10 ml amber volumetric flask. Then make up to volume with methanol and mix well. Final concentration of Omeprazole and Lansoprazole standard solution is 0.025 mg/ml (25 ppm).</p><div class="sop-substep"><strong>6.3.3	Limit of detection (LOD) solution</strong></div><p class="sop-p">Pipette 1.0 ml of working standard solution into 5 ml amber volumetric flask. Make up to volume with methanol and mix well. Final concentration of Omeprazole and Lansoprazole standard solution is 0.005 mg/ml (5 ppm).</p><div class="sop-substep"><strong>6.3.4	Single Standard Stock Solution</strong></div><div class="sop-substep"><strong>6.3.4.1	Prepare a single standard stock solution following the same procedure outlined in 6.3.1 to 6.3.3, but using a single standard instead of multiple standards.</strong></div><div class="sop-substep"><strong>6.3.4.2	This procedure is applicable for screening selected compounds only</strong></div><p class="sop-p">Preparation of sample</p><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling process differ between different type of dosage form. Please refer to document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Sample preparation for analysis</p><p class="sop-p">For samples in the form of tablets, finely grind the sample and weigh 1.0 g of sample in a 50 ml centrifuge tube.</p><p class="sop-p">For samples in the form of capsule, weigh 1.0 g of sample including the capsule shells in a 50 ml centrifuge tube.</p><p class="sop-p">For samples in the form soft capsule, weigh approximately 1 g (± 0.5 g) of sample including the capsule shells in a centrifuge tube.</p><p class="sop-p">For sample in the form of liquid, pipette 10 ml of sample in a 50 ml centrifuge tube.</p><p class="sop-p">Pipette 20 ml of methanol into the centrifuge tube containing sample in the form of tables, capsules and soft capsule. (*Note: Use chloroform for soft capsule samples because this dosage form usually does not dissolve in methanol.)</p><p class="sop-p">Pipette 10 ml of methanol into the centrifuge tube containing sample in the form of liquid.</p><p class="sop-p">Sonicate all samples for approximately 30 minutes.</p><p class="sop-p">Centrifuge sample solution at 4500 rpm for 15 minutes.</p><p class="sop-p">Filter each sample using a 0.45 µm syringe filter before transferring into 2 ml amber HPLC vial.</p><p class="sop-p">Experimental Method</p><p class="sop-p">The HPLC system used for identification of proton pump inhibitor (Omeprazole and Lansoprazole) are given in Table 1 below.</p><p class="sop-p">Table 1: HPLC system used for identification of proton pump inhibitor (Omeprazole and Lansoprazole).</p><p class="sop-p">Mobile Phase Method</p><p class="sop-p">Isocratic elution method for mobile phase is use in for identification of proton pump inhibitor (Omeprazole and Lansoprazole) shown as below:</p><p class="sop-p">Table 2: Isocratic elution method used in for identification of proton pump inhibitor (Omeprazole and Lansoprazole).</p><p class="sop-p">Refer document PKKK/300/UP/003 (RRLC 1200 Series), PKKK/300/UP/011 (HPLC Prominence-I) and PKKK/300/UP/016 (HPLC Flexar) for method and HPLC system set up.</p><p class="sop-p">Injection Sequence</p><p class="sop-p">First inject blank (methanol), then inject mix working standard solution six times (SST).</p><p class="sop-p">Inject the LOD solution before injecting the sample.</p><p class="sop-p">If more than five samples are injected in a single analysis, the LOD solution must be injected once every five samples.</p><p class="sop-p">A blank or diluent must be injected before the next sample injection. Refer to Table 3 for an example of the sequence table:</p><p class="sop-p">Table 3: Sequence injection for identification of proton pump inhibitor (Omeprazole and Lansoprazole).</p><p class="sop-p">LOD solution must be injected at the end of the analysis.</p><p class="sop-p">System Suitability Test (SST) Requirement</p><p class="sop-p">System suitability test need to be performed for each batch run to ensure the entire system is working properly. Perform at least 6 replicate injection of working standard solution (25 ppm).</p><p class="sop-p">Acceptance criteria for SST is as follows:</p><p class="sop-p">%RSD for retention time: Not more than, NMT 2.0%</p><p class="sop-p">Tailing factor: Not more than, NMT 2.0.</p><p class="sop-p">Theoretical plate (N): Not less than, NLT 2000.</p><p class="sop-p">Limit of Detection (LOD) Requirement</p><p class="sop-p">LOD solution will be performed in single injection before injecting the sample solution. Moreover, LOD solution will be injected in every 5 sequence of sample to ensure the entire system is working properly.</p><p class="sop-p">Acceptance criteria for LOD is as follow:</p><p class="sop-p">Signal to noise ratio, S/N is not lower than, NLT 3:1</p><p class="sop-p">Internal Quality Control</p><p class="sop-p">Inject 15 µl of LOD solution after every 5 samples &amp; at the end of analysis.</p><p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p><p class="sop-p">Acceptance criteria for test sample</p><p class="sop-p">Compare the retention time and UV spectrum obtained from the sample chromatogram with that of the working standard chromatogram. The identity of each Omeprazole and Lansoprazole compound is positive if:</p><p class="sop-p">Retention time of the compound in the sample chromatogram corresponds to the retention time of the same compound in the standard chromatogram.</p><p class="sop-p">The UV spectrum is identical to the spectrum of the standard with similarity of more than 0.999 to the spectrum of standard.</p><p class="sop-p">The area of peak detected in sample solution is higher than the peak area detected in LOD standard solution (0.005 mg/ml).</p><p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number)</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameter including equipment name, mobile phase program and HPLC system.</p><p class="sop-p">List and preparation procedures of reference standard use in analysis.</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only)</p><p class="sop-p">Interpretation of result (Detected, Not Detected or suspected of specific anti-cholesterol compound)</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">Chromatogram of LOD solution (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">Chromatogram of System Suitability Test Requirement (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">If sample is sequence at 6 or more, chromatogram of standard before sample must be presented</p><p class="sop-p">Overlay spectrum of sample that have similar retention time with reference standard.</p><p class="sop-p">IQC table</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-block">
+          <div class="sop-sec-title">7.  REKOD KUALITI</div>
+          <div class="sop-sec-content">
+            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p><p class="sop-p">LAMPIRAN (1/2)</p><p class="sop-p">Figure 1: Chromatogram of working standard solution at 280 nm.</p><p class="sop-p">LAMPIRAN (2/2)</p><p class="sop-p">Figure 2: Spectra of a) Omeprazole and b) Lansoprazole in scan range 200-400nm.</p>
+          </div>
+        </div>
+        
+
+    <!-- Tables -->
+    
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
+          <table class="table-official">
+            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr><td>1</td><td>1</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Nurul Nadiah Noh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
+          <table class="table-official">
+            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr><tr><td>PKKK/300/UP/003</td><td>Rapid Resolution Liquid Chromatography HP 1200</td></tr><tr><td>PKKK/300/UP/011</td><td>Shimadzu High Performance Liquid Chromatography (Prominence-i)</td></tr><tr><td>PKKK/300/UP/016</td><td>High Performance Liquid Chromatography Flexar (Perkin Elmer)</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
+          <table class="table-official">
+            <tr><th>Column</th><th>Zorbax SB C18</th></tr><tr><td>Dimensions and particle size</td><td>250 mm x 4.6 mm, 5µm</td></tr><tr><td>Flow rate</td><td>1.0 ml/min</td></tr><tr><td>Column temperature</td><td>30oC</td></tr><tr><td>Auto sampler Temperature</td><td>4oC</td></tr><tr><td>Wavelength detector (PDA)</td><td>280 nm</td></tr><tr><td>Injection volume</td><td>15 µl</td></tr><tr><td>Run time</td><td>20 minutes</td></tr><tr><td>Mobile Phase Method</td><td>Isocratic elution</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
+          <table class="table-official">
+            <tr><th>Run time (minute)</th><th>Mobile phase A: 25mM di-Sodium hydrogen phosphate, pH 7.6 (%)</th><th>Mobile phase B: Acetonitrile (%)</th></tr><tr><td>0.01 – 20.00</td><td>65</td><td>35</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
+          <table class="table-official">
+            <tr><th>No. sequence</th><th>Detail</th><th>No. of njection</th></tr><tr><td>1</td><td>Blank</td><td>1</td></tr><tr><td>2</td><td>Working standard solution for SST</td><td>6</td></tr><tr><td>3</td><td>LOD solution</td><td>1</td></tr><tr><td>4</td><td>Blank</td><td>1</td></tr><tr><td>5</td><td>Sample number 1</td><td>2</td></tr><tr><td>6</td><td>Blank</td><td>1</td></tr><tr><td>7</td><td>Sample number 2</td><td>2</td></tr><tr><td>8</td><td>Blank</td><td>1</td></tr><tr><td>9</td><td>Sample number 3</td><td>2</td></tr><tr><td>10</td><td>Blank</td><td>1</td></tr><tr><td>11</td><td>Sample number 4</td><td>2</td></tr><tr><td>12</td><td>Blank</td><td>1</td></tr><tr><td>13</td><td>Sample number 5</td><td>2</td></tr><tr><td>14</td><td>LOD solution</td><td>1</td></tr><tr><td>15</td><td>Blank</td><td>1</td></tr><tr><td>16</td><td>Sample number 6</td><td>2</td></tr><tr><td>17</td><td>Blank</td><td>1</td></tr><tr><td>18</td><td>LOD solution</td><td>1</td></tr>
+          </table>
+        </div>
+        
+        <div class="table-wrap" style="margin:1.5rem 0">
+          <div class="table-caption">Jadual Kromatografi / Rujukan 6</div>
+          <table class="table-official">
+            <tr><th>a)</th></tr><tr><td>b)</td></tr>
+          </table>
+        </div>
+        
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="../steroid-hplc.js"></script>
+</body>
+</html>
