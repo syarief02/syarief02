@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steroid Screening by Shimadzu HPLC — Step-by-Step SOP Guide | NPRA</title>
+<meta name="description" content="Complete step-by-step practical SOP guide for steroid identification in traditional products using Shimadzu Prominence-i HPLC per PKKK/300/UP/021, PKKK/300/UP/011, and PKKK/300/UP/014.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="steroid-hplc.css">
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan
+      </a>
+      <a href="sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        SOP Matrix
+      </a>
+      <a href="lovastatin.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        Lovastatin Tool
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — PKKK/300/UP/021 · PKKK/300/UP/011 · PKKK/300/UP/014</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Steroid HPLC Screening <span class="g">Step-by-Step Guide</span></h1>
+    <div class="hero-sub">Complete Operational Workflow for Shimadzu Prominence-i (LabSolutions)</div>
+    <p class="hero-desc">
+      Comprehensive, execution-ready practical guide for screening 8 steroid adulterants (Dexamethasone, Betamethasone, Prednisone, Prednisolone, Triamcinolone acetonide, Hydrocortisone acetate, Cortisone acetate, Beta-17-valerate) in traditional medicines.
+    </p>
+
+    <div class="specs-ribbon">
+      <div class="spec-chip"><span class="spec-lbl">Instrument</span> Shimadzu Prominence-i (LC-2030C 3D)</div>
+      <div class="spec-chip"><span class="spec-lbl">Column</span> Kinetex Phenyl-Hexyl 100Å (150×4.6mm, 2.6µm)</div>
+      <div class="spec-chip"><span class="spec-lbl">Flow & Temp</span> 0.7 mL/min @ 40°C</div>
+      <div class="spec-chip"><span class="spec-lbl">PDA Detection</span> 240 nm (Scan 190–400 nm)</div>
+      <div class="spec-chip"><span class="spec-lbl">Extraction</span> LLE with pH 7.0 adjustment</div>
+    </div>
+  </div>
+
+  <!-- Interactive Stepper Progress -->
+  <div class="stepper-nav">
+    <button class="step-btn active" onclick="goToStep(1)" id="stepBtn-1"><span class="step-num">1</span> Preparation & Reagents</button>
+    <button class="step-btn" onclick="goToStep(2)" id="stepBtn-2"><span class="step-num">2</span> Sample Extraction (LLE)</button>
+    <button class="step-btn" onclick="goToStep(3)" id="stepBtn-3"><span class="step-num">3</span> Shimadzu LC Setup</button>
+    <button class="step-btn" onclick="goToStep(4)" id="stepBtn-4"><span class="step-num">4</span> Batch Sequence</button>
+    <button class="step-btn" onclick="goToStep(5)" id="stepBtn-5"><span class="step-num">5</span> Evaluation & Confirmation</button>
+    <button class="step-btn" onclick="goToStep(6)" id="stepBtn-6"><span class="step-num">6</span> Column Wash & Shutdown</button>
+  </div>
+
+  <!-- STEP 1: PREPARATION & REAGENTS -->
+  <div id="step-1" class="guide-step active">
+    <div class="guide-card">
+      <div class="step-header">
+        <div class="step-badge">PHASE 1</div>
+        <h2>Reagent Preparation & Standard Solutions</h2>
+        <div class="step-sop-ref">Ref: PKKK/300/UP/021 Para 6.1 & 6.4</div>
+      </div>
+
+      <div class="task-list">
+        <div class="task-item">
+          <input type="checkbox" id="t1-1" class="task-check">
+          <label for="t1-1">
+            <strong>1.1 Mobile Phase Preparation:</strong>
+            <p>Prepare <strong>Mobile Phase A</strong>: Ultrapure Water (18.2 MΩ·cm) and <strong>Mobile Phase B</strong>: HPLC Grade Acetonitrile (ACN). Sonicate and degas both solvents for 15 minutes in ultrasonic bath before placing onto LC reservoir tray.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t1-2" class="task-check">
+          <label for="t1-2">
+            <strong>1.2 Primary Stock Standard Solutions (1.0 mg/mL):</strong>
+            <p>Weigh accurately <strong>10.0 mg</strong> of each steroid reference standard into separate 10 mL volumetric flasks. Dissolve and make up to volume with HPLC grade <strong>Methanol</strong>.</p>
+            <div class="tags-row">
+              <span class="tag">Prednisone</span>
+              <span class="tag">Prednisolone</span>
+              <span class="tag">Betamethasone</span>
+              <span class="tag">Dexamethasone</span>
+              <span class="tag">Triamcinolone acetonide</span>
+              <span class="tag">Hydrocortisone acetate</span>
+              <span class="tag">Cortisone acetate</span>
+              <span class="tag">Betamethasone-17-valerate</span>
+            </div>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t1-3" class="task-check">
+          <label for="t1-3">
+            <strong>1.3 Mixed Working Standard Solution (0.05 mg/mL):</strong>
+            <p>Pipette <strong>0.5 mL</strong> from each of the 8 individual stock solutions into a single 10 mL volumetric flask. Dilute to volume with <strong>Methanol</strong> (Final concentration = 0.05 mg/mL each).</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t1-4" class="task-check">
+          <label for="t1-4">
+            <strong>1.4 Diluent & Blank:</strong>
+            <p>Prepare <strong>Methanol : Water (1:1 v/v)</strong> as the blank and diluent.</p>
+          </label>
+        </div>
+      </div>
+
+      <div class="step-footer-nav">
+        <span></span>
+        <button class="ctrl-btn highlight" onclick="goToStep(2)">Proceed to Step 2: Sample Extraction →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: SAMPLE EXTRACTION (LLE) -->
+  <div id="step-2" class="guide-step">
+    <div class="guide-card">
+      <div class="step-header">
+        <div class="step-badge">PHASE 2</div>
+        <h2>Liquid-Liquid Extraction (LLE) Protocol</h2>
+        <div class="step-sop-ref">Ref: PKKK/300/UP/014 Para 6.3 & PKKK/300/UP/021 Para 6.3</div>
+      </div>
+
+      <div class="alert-box alert-warning">
+        ⚠️ <strong>CRITICAL REQUIREMENT:</strong> Per SOP 021 Para 6.3, the sample aqueous solution <strong>MUST BE ADJUSTED TO pH 7.0</strong> before organic extraction.
+      </div>
+
+      <div class="task-list">
+        <div class="task-item">
+          <input type="checkbox" id="t2-1" class="task-check">
+          <label for="t2-1">
+            <strong>2.1 Sample Weighing & Dissolution:</strong>
+            <p>Weigh <strong>1.5 g</strong> (or more) of pulverized traditional product sample into a 100 mL beaker. Add <strong>10–50 mL of deionized water</strong>.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t2-2" class="task-check">
+          <label for="t2-2">
+            <strong>2.2 Sonication:</strong>
+            <p>Sonicate the mixture in an ultrasonic bath for <strong>10–15 minutes</strong> to ensure complete dispersion of the matrix.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t2-3" class="task-check">
+          <label for="t2-3">
+            <strong>2.3 pH Adjustment to pH 7.0:</strong>
+            <p>Check pH using pH indicator paper. Add dilute <strong>Ammonia solution</strong> (if acidic) or dilute <strong>HCl</strong> (if basic) dropwise until the solution reaches exactly <strong>pH 7.0</strong>.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t2-4" class="task-check">
+          <label for="t2-4">
+            <strong>2.4 Extraction with Organic Solvent (2× Extractions):</strong>
+            <p>Transfer solution into a 250 mL separating funnel. Add <strong>50 mL of Chloroform</strong> (or Ethyl Acetate).<br>
+            <em>*Pengekstrakan dilakukan menggunakan kaedah lenggang secara perlahan bagi memastikan perpindahan analit ke fasa organik yang maksimum serta mengelakkan pembentukan emulsi.</em> Repeat extraction with another 50 mL organic solvent.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t2-5" class="task-check">
+          <label for="t2-5">
+            <strong>2.5 Phase Separation & Evaporation:</strong>
+            <p>For Chloroform: collect bottom organic layer; filter through filter paper into evaporating dish. Discard top aqueous layer. Evaporate organic extract in evaporating dish until completely dry on a water bath (Memmert WB 45).</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t2-6" class="task-check">
+          <label for="t2-6">
+            <strong>2.6 Reconstitution & Filtration:</strong>
+            <p>Reconstitute dry residue with <strong>3.0 mL of Ethanol</strong>. Filter through <strong>0.45 µm Nylon / PTFE syringe filter</strong> into standard 2 mL HPLC autosampler vial.</p>
+          </label>
+        </div>
+      </div>
+
+      <div class="step-footer-nav">
+        <button class="ctrl-btn" onclick="goToStep(1)">← Back to Step 1</button>
+        <button class="ctrl-btn highlight" onclick="goToStep(3)">Proceed to Step 3: Shimadzu LC Setup →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: SHIMADZU LC SETUP -->
+  <div id="step-3" class="guide-step">
+    <div class="guide-card">
+      <div class="step-header">
+        <div class="step-badge">PHASE 3</div>
+        <h2>Shimadzu Prominence-i & LabSolutions Setup</h2>
+        <div class="step-sop-ref">Ref: PKKK/300/UP/011 & PKKK/300/UP/021 Table 1 & 2</div>
+      </div>
+
+      <div class="task-list">
+        <div class="task-item">
+          <input type="checkbox" id="t3-1" class="task-check">
+          <label for="t3-1">
+            <strong>3.1 Power On & Software Login:</strong>
+            <p>Switch on main power & HPLC machine (password: <code>00000</code>). Open <strong>LabSolutions</strong> software $\rightarrow$ Login (User ID: <code>Admin</code>, Password blank) $\rightarrow$ Click <strong>Instrument</strong> $\rightarrow$ <strong>LC-2030C 3D</strong>.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t3-2" class="task-check">
+          <label for="t3-2">
+            <strong>3.2 Install Analytical Column:</strong>
+            <p>Connect <strong>Phenomenex Kinetex Phenyl-Hexyl 100Å</strong> ($150 \times 4.6\text{ mm}$, $2.6\ \mu\text{m}$) in the direction of flow. Set Column Oven temperature to <strong>40 °C</strong>.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t3-3" class="task-check">
+          <label for="t3-3">
+            <strong>3.3 Method Parameters & Gradient Time Program:</strong>
+            <p>In Method Settings, configure:</p>
+            <div class="table-wrap">
+              <table class="method-table">
+                <thead>
+                  <tr><th>Time (min)</th><th>Module / Command</th><th>Water / Line A (%)</th><th>ACN / Line B (%)</th><th>Flow Rate</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>0.01 – 1.99</td><td>Pump B Conc</td><td>80 %</td><td>20 %</td><td>0.7 mL/min</td></tr>
+                  <tr><td>2.00 – 13.99</td><td>Pump B Conc</td><td>75 %</td><td>25 %</td><td>0.7 mL/min</td></tr>
+                  <tr><td>14.00 – 17.99</td><td>Pump B Conc</td><td>70 %</td><td>30 %</td><td>0.7 mL/min</td></tr>
+                  <tr><td>18.00 – 19.99</td><td>Pump B Conc</td><td>60 %</td><td>40 %</td><td>0.7 mL/min</td></tr>
+                  <tr><td>20.00 – 21.99</td><td>Pump B Conc</td><td>50 %</td><td>50 %</td><td>0.7 mL/min</td></tr>
+                  <tr><td>22.00 – 29.99</td><td>Pump B Conc</td><td>30 %</td><td>70 %</td><td>0.7 mL/min</td></tr>
+                  <tr><td>30.00 – 35.00</td><td>Pump B Conc</td><td>80 %</td><td>20 % (Re-equilibration)</td><td>0.7 mL/min</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="margin-top:0.5rem">PDA Detector: <strong>240 nm</strong> (Scan range: 190–400 nm), Cell Temp: <strong>40 °C</strong>, Injection Volume: <strong>10 µL</strong>, Stop Time: <strong>35.0 min</strong>.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t3-4" class="task-check">
+          <label for="t3-4">
+            <strong>3.4 Auto Purge & Baseline Stabilization:</strong>
+            <p>Execute <strong>Auto Purge</strong> on Lines A & B. Download Method File $\rightarrow$ Click <strong>Instrument ON/OFF</strong> to start flow. Click <strong>Plot</strong> button in RealTime window. Observe baseline and pressure stability (~120–180 bar) for at least 15 minutes before starting injections.</p>
+          </label>
+        </div>
+      </div>
+
+      <div class="step-footer-nav">
+        <button class="ctrl-btn" onclick="goToStep(2)">← Back to Step 2</button>
+        <button class="ctrl-btn highlight" onclick="goToStep(4)">Proceed to Step 4: Batch Sequence →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: BATCH SEQUENCE -->
+  <div id="step-4" class="guide-step">
+    <div class="guide-card">
+      <div class="step-header">
+        <div class="step-badge">PHASE 4</div>
+        <h2>Real-Time Batch Sequence Table</h2>
+        <div class="step-sop-ref">Ref: PKKK/300/UP/021 Table 3 & Para 6.6</div>
+      </div>
+
+      <p style="margin-bottom:1rem">Load autosampler rack into Tray 1 and populate Real Time Batch table:</p>
+
+      <div class="table-wrap">
+        <table class="seq-table">
+          <thead>
+            <tr>
+              <th>Vial / Row</th>
+              <th>Sample / Standard Name</th>
+              <th>Vial Type</th>
+              <th>Inj Count</th>
+              <th>Purpose / Rule</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="seq-blank"><td>1</td><td>Blank (Methanol : Water 1:1)</td><td>Diluent</td><td>1</td><td>System equilibrium & baseline blank</td></tr>
+            <tr class="seq-sst"><td>2–7</td><td>Mixed Working Standard (0.05 mg/mL)</td><td>Standard</td><td>6</td><td><strong>System Suitability Test (SST)</strong></td></tr>
+            <tr><td>8–9</td><td>Sample 1 (Duplicate: Inj 1 & Inj 2)</td><td>Sample</td><td>2</td><td>Sample 1 Adulterant Screening</td></tr>
+            <tr class="seq-blank"><td>10</td><td>Blank (Methanol : Water 1:1)</td><td>Diluent</td><td>1</td><td>Carryover elimination</td></tr>
+            <tr><td>11–12</td><td>Sample 2 (Duplicate: Inj 1 & Inj 2)</td><td>Sample</td><td>2</td><td>Sample 2 Adulterant Screening</td></tr>
+            <tr class="seq-blank"><td>13</td><td>Blank (Methanol : Water 1:1)</td><td>Diluent</td><td>1</td><td>Carryover elimination</td></tr>
+            <tr><td>14–19</td><td>Samples 3 to 5 (Duplicate each)</td><td>Sample</td><td>6</td><td>Screening batch</td></tr>
+            <tr class="seq-iqc"><td>20</td><td>Mixed Working Standard (0.05 mg/mL)</td><td>IQC Check</td><td>1</td><td><strong>IQC Bracket (every 5 samples)</strong></td></tr>
+            <tr class="seq-blank"><td>21</td><td>Blank (Methanol : Water 1:1)</td><td>Diluent</td><td>1</td><td>Wash</td></tr>
+            <tr><td>22–23</td><td>Sample 6 (Duplicate)</td><td>Sample</td><td>2</td><td>Subsequent samples</td></tr>
+            <tr class="seq-iqc"><td>End</td><td>Mixed Working Standard (0.05 mg/mL)</td><td>End Std</td><td>1</td><td><strong>Final Bracket Check</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="step-footer-nav" style="margin-top:1.5rem">
+        <button class="ctrl-btn" onclick="goToStep(3)">← Back to Step 3</button>
+        <button class="ctrl-btn highlight" onclick="goToStep(5)">Proceed to Step 5: Evaluation & Confirmation →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5: EVALUATION & CONFIRMATION -->
+  <div id="step-5" class="guide-step">
+    <div class="guide-card">
+      <div class="step-header">
+        <div class="step-badge">PHASE 5</div>
+        <h2>Data Evaluation, SST Criteria & Confirmation Protocol</h2>
+        <div class="step-sop-ref">Ref: PKKK/300/UP/021 Para 6.6, 6.7, 6.8 & Borang UP/005</div>
+      </div>
+
+      <div class="grid-2col">
+        <div class="eval-box">
+          <div class="eval-title">1. System Suitability Test (SST) Criteria (n = 6)</div>
+          <ul class="eval-list">
+            <li><strong>Retention Time %RSD:</strong> Must be $\le 2.0\%$ across all 6 replicate standard injections.</li>
+            <li><strong>Peak Tailing Factor ($T$):</strong> $T \le 2.0$.</li>
+            <li><strong>Theoretical Plates ($N$):</strong> $N \ge 2000$.</li>
+            <li><strong>Peak Resolution:</strong> All 8 steroid peaks must be well separated (except Betamethasone & Dexamethasone critical pair).</li>
+          </ul>
+        </div>
+
+        <div class="eval-box">
+          <div class="eval-title">2. Internal Quality Control (IQC) Acceptance</div>
+          <ul class="eval-list">
+            <li><strong>Retention Time Drift:</strong> Percentage difference in retention time for mixed standard across the batch must be $\le 3.0\%$.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="eval-box" style="margin-top:1.2rem">
+        <div class="eval-title">3. Positive Identification Criteria (Sample Chromatogram vs Standard)</div>
+        <p>A steroid compound is declared <strong>POSITIVE (DIKESAN)</strong> if and only if:</p>
+        <ol class="eval-list" style="margin-left:1.2rem;margin-top:0.5rem">
+          <li><strong>Retention Time Match:</strong> Retention time of sample peak matches the working standard peak within $\pm 2\%$.</li>
+          <li><strong>UV Spectral Match:</strong> PDA UV absorption spectrum ($190–400\text{ nm}$) overlay shows a spectral similarity index <strong>$> 0.999$</strong> compared to reference standard.</li>
+        </ol>
+      </div>
+
+      <div class="alert-box alert-danger" style="margin-top:1.2rem">
+        🔒 <strong>MANDATORY 2ND ANALYST CONFIRMATION PROTOCOL (Para 6.8.2 – 6.8.4):</strong><br>
+        If a sample tests <strong>POSITIVE</strong> for any steroid:
+        <ol style="margin-left:1.5rem;margin-top:0.4rem">
+          <li>A <strong>Second Analyst</strong> must independently prepare a fresh sample extraction on a <strong>different date</strong> per `PKKK/300/UP/014` (adjusted to pH 7.0).</li>
+          <li>The sample extract must be subjected to <strong>confirmatory analysis using GCMS</strong> (`PKKK/300/UP/004` Agilent 7890/5975C or `PKKK/300/UP/017` Agilent 8890/5977B) before issuing official failed report.</li>
+        </ol>
+      </div>
+
+      <div class="step-footer-nav" style="margin-top:1.5rem">
+        <button class="ctrl-btn" onclick="goToStep(4)">← Back to Step 4</button>
+        <button class="ctrl-btn highlight" onclick="goToStep(6)">Proceed to Step 6: Column Wash & Shutdown →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6: COLUMN WASH & SHUTDOWN -->
+  <div id="step-6" class="guide-step">
+    <div class="guide-card">
+      <div class="step-header">
+        <div class="step-badge">PHASE 6</div>
+        <h2>Post-Analysis Column Wash & System Shutdown</h2>
+        <div class="step-sop-ref">Ref: PKKK/300/UP/011 Para 6.5</div>
+      </div>
+
+      <div class="task-list">
+        <div class="task-item">
+          <input type="checkbox" id="t6-1" class="task-check">
+          <label for="t6-1">
+            <strong>6.1 Organic Flush:</strong>
+            <p>Pump <strong>100% Acetonitrile (or Methanol)</strong> at 0.7 mL/min for <strong>30 minutes</strong> to flush all matrix residues from the column.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t6-2" class="task-check">
+          <label for="t6-2">
+            <strong>6.2 Storage Flush:</strong>
+            <p>Pump <strong>70% Acetonitrile : 30% Ultrapure Water</strong> for <strong>15 minutes</strong> as the column storage solvent.</p>
+          </label>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" id="t6-3" class="task-check">
+          <label for="t6-3">
+            <strong>6.3 Instrument Shutdown:</strong>
+            <p>In LabSolutions RealTime window, click <strong>Instrument ON/OFF</strong> to turn off pumps, oven, and PDA lamp. Close software and log the run in the instrument logbook (<em>Rekod Penyelenggaraan Alat Shimadzu Prominence-i</em>).</p>
+          </label>
+        </div>
+      </div>
+
+      <div class="step-footer-nav" style="margin-top:1.5rem">
+        <button class="ctrl-btn" onclick="goToStep(5)">← Back to Step 5</button>
+        <a href="sop-matrix.html" class="ctrl-btn highlight">Return to Master SOP Matrix →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="steroid-hplc.js"></script>
+</body>
+</html>
