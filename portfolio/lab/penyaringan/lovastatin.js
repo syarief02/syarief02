@@ -370,7 +370,7 @@ function updateReportView() {
   document.getElementById('rep-s-reg').textContent = regNo;
   document.getElementById('rep-s-name').textContent = sName;
   document.getElementById('rep-s-form').textContent = form;
-  document.getElementById('rep-sig-analyst').textContent = analyst;
+  document.getElementById('rep-sig-analyst').textContent = analyst || '(Nama Penganalisis)';
 
   const today = new Date().toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' });
   document.getElementById('rep-date').textContent = today;
