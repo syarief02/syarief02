@@ -289,6 +289,14 @@ function openDocModal(index) {
         </div>
       ` : ''}
 
+      <!-- Dynamic Live-Sync Container (Populated live from actual SOP HTML page) -->
+      <div id="liveSyncContainer" style="margin:1rem 0">
+        <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--cyan);display:flex;align-items:center;gap:0.4rem">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);animation:pulse 1.5s infinite"></span>
+          Menyegerak secara langsung dengan fail SOP rasmi (Live Synchronizing)...
+        </div>
+      </div>
+
       ${(() => {
         const m = doc.code ? doc.code.match(/UP\/(\d{3})/) : null;
         if (m) {
@@ -381,6 +389,74 @@ function openDocModal(index) {
 
   document.getElementById('modalBody').innerHTML = bodyHtml;
   document.getElementById('docModal').classList.add('active');
+
+  // Trigger live fetch from actual SOP HTML page if Level 300
+  if (doc.type === '300') {
+    const m = doc.code ? doc.code.match(/UP\/(\d{3})/) : null;
+    if (m) {
+      const targetUrl = `sop/sop-300-up-${m[1]}.html`;
+      fetch(targetUrl)
+        .then(res => {
+          if (!res.ok) throw new Error('Live page not available');
+          return res.text();
+        })
+        .then(htmlText => {
+          const parser = new DOMParser();
+          const docDom = parser.parseFromString(htmlText, 'text/html');
+          const syncContainer = document.getElementById('liveSyncContainer');
+          if (!syncContainer) return;
+
+          let liveHtml = '';
+
+          // 1. Live Parameters Ribbon
+          const liveSpecs = docDom.querySelector('.specs-ribbon-card');
+          if (liveSpecs) {
+            liveHtml += `
+              <div class="detail-section" style="border:1px solid var(--cyan);border-radius:12px;padding:1rem;background:var(--card-hover)">
+                <div class="detail-heading" style="color:var(--cyan);display:flex;align-items:center;gap:0.4rem">
+                  <span>⚡</span> Spesifikasi &amp; Parameter Kromatografi (Live dari ${targetUrl}):
+                </div>
+                ${liveSpecs.innerHTML}
+              </div>
+            `;
+          }
+
+          // 2. Live Linked Instruments or Methods
+          const liveCross = docDom.querySelector('.cross-link-container');
+          if (liveCross) {
+            liveHtml += `
+              <div class="detail-section" style="margin-top:0.8rem;border:1px solid var(--glass-border);border-radius:12px;padding:1rem;background:var(--glass)">
+                ${liveCross.innerHTML}
+              </div>
+            `;
+          }
+
+          // 3. Live Section Headers Count
+          const sections = docDom.querySelectorAll('.sop-section-header');
+          if (sections.length > 0) {
+            const secTitles = Array.from(sections).map(s => s.querySelector('h2') ? s.querySelector('h2').textContent.trim() : '').filter(Boolean);
+            liveHtml += `
+              <div class="detail-section" style="margin-top:0.8rem">
+                <div class="detail-heading">Struktur Seksyen Dokumen Rasmi (${sections.length} Seksyen):</div>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.4rem">
+                  ${secTitles.map(t => `<span class="form-tag" style="background:var(--cyan-dim);color:var(--cyan);border-color:rgba(2,132,199,0.3)">${t}</span>`).join('')}
+                </div>
+              </div>
+            `;
+          }
+
+          if (liveHtml) {
+            syncContainer.innerHTML = liveHtml;
+          } else {
+            syncContainer.innerHTML = '';
+          }
+        })
+        .catch(err => {
+          const syncContainer = document.getElementById('liveSyncContainer');
+          if (syncContainer) syncContainer.innerHTML = '';
+        });
+    }
+  }
 }
 
 function closeModal(event) {
