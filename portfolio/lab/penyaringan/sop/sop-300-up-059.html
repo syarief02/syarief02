@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -421,7 +506,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 11 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 21 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -446,14 +531,14 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">1.0	Objective</a><a href="#sec-3" class="toc-pill">2.0	Scope</a><a href="#sec-4" class="toc-pill">4.0	Flow Chart</a><a href="#sec-5" class="toc-pill">6.0	Procedure</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (5)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 OBJECTIVE</a><a href="#sec-3" class="toc-pill">2.0 SCOPE</a><a href="#sec-4" class="toc-pill">4.0 FLOW CHART</a><a href="#sec-5" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-6" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-7" class="toc-pill">7.0 QUALITY RECORDS</a><a href="#sec-8" class="toc-pill">8.0 ATTACHMENTS</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (5)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update document number from PKKK/300/HMS/079 to PKKK/300/KOS/030</p><p class="sop-p">Update paragraph 5.0 Responsibilities</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 2 Revision 1:</p><p class="sop-p">Omit paragraph 6.1, 6.2, 6.3 and 6.9</p><p class="sop-p">Rearrange numbering &amp; update paragraph 6.3.5, 6.3.6, 6.3.7 &amp; 6.3.8</p><p class="sop-p">Add in paragraph 6.3.5</p><p class="sop-p">Update note in paragraph 6.3 under standard preparation</p><p class="sop-p">Issue 2 Revision 2:</p><p class="sop-p">Update paragraph 6.3 Test Method</p><p class="sop-p">Add paragraph 6.4 Procedure</p><p class="sop-p">Change numbering to 6.5 Result</p><p class="sop-p">Issue 3 Revision 0:</p><p class="sop-p">Update document number from PKKK/300/KOS/030 to PKKK/300/UP/059.</p><p class="sop-p">Update effective date from  2 January 2025 to 10 April 2026.</p><p class="sop-p">Update	 paragraph 7.0 Quality Records :</p><p class="sop-p">KOS/X005 to UP/X015</p><p class="sop-p">KOS/X009 to UP/X013</p><p class="sop-p">KOS/002A to UP/002B</p>
@@ -462,8 +547,8 @@
         
         <div class="sop-section-container sec-theme-cyan" id="sec-2">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0	Objective</h2>
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 OBJECTIVE</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">◼	To identify the presence of Antimicrobials (Metronidazole, Griseofulvin, Chloramphenicol, Trimethoprim, Clindamycin and Sulfamethoxazole) in cosmetic products using GC-MS.</p>
@@ -472,74 +557,62 @@
         
         <div class="sop-section-container sec-theme-cyan" id="sec-3">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>2.0	Scope</h2>
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SCOPE</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">◼	This test method is only to be used for identification of Antimicrobials (Metronidazole, Griseofulvin, Chloramphenicol, Trimethoprim, Clindamycin and Sulfamethoxazole) in cosmetic products which is suspected to contain the substance.</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-1" class="sop-step-title">
-                            3.0	Definition
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-1" class="sop-step-title">
+                        3.0	Definition
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-2" class="sop-step-title">
-                            3.1 GCMS	: Gas Chromatography Mass Spectrometry
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-2" class="sop-step-title">
+                        3.1 GCMS	: Gas Chromatography Mass Spectrometry
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-3" class="sop-step-title">
-                            3.2 EI		: Electron Ionisation
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-3" class="sop-step-title">
+                        3.2 EI		: Electron Ionisation
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-4" class="sop-step-title">
-                            3.3 Analyst	: Pharmacist/Pharmacy assistant/Science Officer
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-4" class="sop-step-title">
+                        3.3 Analyst	: Pharmacist/Pharmacy assistant/Science Officer
+                      </label>
                     </div>
-                    
+                  </div>
+                </div>
+                
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-4">
+        <div class="sop-section-container sec-theme-purple" id="sec-4">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>4.0	Flow Chart</h2>
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 FLOW CHART</h2>
           </div>
           <div class="sop-section-body">
             
@@ -548,114 +621,243 @@
                   <span class="sop-list-text">- None -</span>
                 </div>
                 <p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-5" class="sop-step-title">
-                            5.1.1	Validate analysis report of failed sample and approve on QUEST System
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis report on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and update into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Perform sample analysis (when necessary) and report</p><p class="sop-p">Pharmacy assistant / Analyst</p><p class="sop-p">Perform sample analysis and report</p>
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-5" class="sop-step-title">
+                        5.1.1	Validate analysis report of failed sample and approve on QUEST System
+                      </label>
                     </div>
-                    
+                  </div>
+                </div>
+                <p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis report on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and update into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Perform sample analysis (when necessary) and report</p><p class="sop-p">Pharmacy assistant / Analyst</p><p class="sop-p">Perform sample analysis and report</p>
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-amber" id="sec-5">
           <div class="sop-section-header">
             <span class="sec-icon">🔬</span>
-            <h2>6.0	Procedure</h2>
+            <h2>6.0 PROCEDURE</h2>
           </div>
           <div class="sop-section-body">
             
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-6" class="sop-step-title">
-                            6.1	Equipment/ Materials
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">GCMS – QP 2010</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Glass conical flasks with screw cap</p><p class="sop-p">Volumetric flask (<span class="kw-vol">20 mL</span>, <span class="kw-vol">10mL</span>, <span class="kw-vol">5 mL</span>)</p><p class="sop-p">Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p">GC autosampler vial</p><p class="sop-p">Ethanol</p><p class="sop-p">Metronidazole, Sulfamethoxazole, Trimethoprim, Chloramphenicol, Griseofulvin and Clindamycin Reference Standard</p><p class="sop-p">Chromatographic Parameters</p><p class="sop-p">◼  Column	         : Rxi – 5Sil MS 30m x 0.25mm x 0.25µm</p><p class="sop-p">◼  Oven temperature:</p><p class="sop-p">.</p><p class="sop-p">Mode				: Split</p><p class="sop-p">Injection volume		: 1 μL</p><p class="sop-p">Split ratio			: 10:1</p><p class="sop-p">Column flow			: <span class="kw-flow"><span class="kw-vol">1.0mL</span>/min</span></p><p class="sop-p">Inlet temperature		: <span class="kw-temp">250°C</span></p><p class="sop-p">Interface temperature		: <span class="kw-temp">280°C</span></p><p class="sop-p">MS source temperature	: <span class="kw-temp">230°C</span></p><p class="sop-p">Gas				: Helium</p><p class="sop-p">Test Method</p><p class="sop-p">Mix Reference Standard Solution Preparation</p><p class="sop-p">Stock Solution 1 (<span class="kw-wt">0.2 mg</span>/mL)</p><p class="sop-p">Weigh accurately <span class="kw-wt">4 mg</span> each of Metronidazole, Trimethoprim, Griseofulvin and Clindamycin Reference Standard and transfer into a <span class="kw-vol">20 mL</span> volumetric flask. Make up to volume with ethanol.</p><p class="sop-p">Stock Solution 2 (<span class="kw-wt">0.5 mg</span>/mL)</p><p class="sop-p">Weigh accurately <span class="kw-wt">5 mg</span> each of Chloramphenicol and Sulfamethoxazole Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask. Make up to volume with ethanol.</p><p class="sop-p">Pipette <span class="kw-vol">2.5 mL</span> of Stock Solution 1 and <span class="kw-vol">6.0 mL</span> of Stock Solution 2. Make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 50 ug/mL of Metronidazole, Trimethoprim, Griseofulvin &amp; Clindamycin and 300 ug/mL of Chloramphenicol &amp; Sulfamethoxazole.</p>
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-6" class="sop-step-title">
+                        6.1	Equipment/ Materials
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-7" class="sop-step-title">
-                            6.3.2	Limit of Detection (LOD) Solution 1 Preparation (0.01 mg/mL)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh accurately <span class="kw-wt">2 mg</span> each of Metronidazole &amp; Griseofulvin Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask, separately. Make up to volume with ethanol. Pipette <span class="kw-vol">0.5 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 10 mcg/mL Metronidazole &amp; Griseofulvin.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">GCMS – QP 2010</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Glass conical flasks with screw cap</p><p class="sop-p">Volumetric flask (<span class="kw-vol">20 mL</span>, <span class="kw-vol">10mL</span>, <span class="kw-vol">5 mL</span>)</p><p class="sop-p">Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p">GC autosampler vial</p><p class="sop-p">Ethanol</p><p class="sop-p">Metronidazole, Sulfamethoxazole, Trimethoprim, Chloramphenicol, Griseofulvin and Clindamycin Reference Standard</p><p class="sop-p">Chromatographic Parameters</p><p class="sop-p">◼  Column	         : Rxi – 5Sil MS 30m x 0.25mm x 0.25µm</p><p class="sop-p">◼  Oven temperature:</p><p class="sop-p">.</p><p class="sop-p">Mode				: Split</p><p class="sop-p">Injection volume		: 1 μL</p><p class="sop-p">Split ratio			: 10:1</p><p class="sop-p">Column flow			: <span class="kw-flow"><span class="kw-vol">1.0mL</span>/min</span></p><p class="sop-p">Inlet temperature		: <span class="kw-temp">250°C</span></p><p class="sop-p">Interface temperature		: <span class="kw-temp">280°C</span></p><p class="sop-p">MS source temperature	: <span class="kw-temp">230°C</span></p><p class="sop-p">Gas				: Helium</p><p class="sop-p">Test Method</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Mix Reference Standard Solution Preparation
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-8" class="sop-step-title">
-                            6.3.3	Limit of Detection (LOD) Solution 2 Preparation (0.10 mg/mL)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh accurately <span class="kw-wt">5 mg</span> of Chloramphenicol Reference Standard and transfer into a <span class="kw-vol">5 mL</span> volumetric flask. Make up to volume with ethanol. Pipette <span class="kw-vol">1 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 100 mcg/mL Chloramphenicol.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Stock Solution 1 (<span class="kw-wt">0.2 mg</span>/mL)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-8" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Weigh accurately <span class="kw-wt">4 mg</span> each of Metronidazole, Trimethoprim, Griseofulvin and Clindamycin Reference Standard and transfer into a <span class="kw-vol">20 mL</span> volumetric flask. Make up to volume with ethanol.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-9" class="sop-step-title">
-                            6.3.4	Limit of Detection (LOD) Solution 3 Preparation (0.04 mg/mL)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh accurately <span class="kw-wt">4 mg</span> of Clindamycin Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask. Make up to volume with ethanol. Pipette <span class="kw-vol">1 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 40 mcg/mL Clindamycin.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Stock Solution 2 (<span class="kw-wt">0.5 mg</span>/mL)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Weigh accurately <span class="kw-wt">5 mg</span> each of Chloramphenicol and Sulfamethoxazole Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask. Make up to volume with ethanol.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-10" class="sop-step-title">
-                            6.3.5	Limit of Detection (LOD) Solution 4 Preparation (0.05 mg/mL)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh accurately <span class="kw-wt">2.5 mg</span> of Trimethoprim Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask. Make up to volume with ethanol. Pipette <span class="kw-vol">2 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 50 mcg/mL Trimethoprim.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Pipette <span class="kw-vol">2.5 mL</span> of Stock Solution 1 and <span class="kw-vol">6.0 mL</span> of Stock Solution 2. Make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 50 ug/mL of Metronidazole, Trimethoprim, Griseofulvin &amp; Clindamycin and 300 ug/mL of Chloramphenicol &amp; Sulfamethoxazole.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-10" class="sop-step-title">
+                        6.3.2	Limit of Detection (LOD) Solution 1 Preparation (<span class="kw-wt">0.01 mg</span>/mL)
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-059-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
-                          <label for="step-059-11" class="sop-step-title">
-                            6.3.6	Sulfamethoxazole Standard Solution Preparation (0.3 mg/mL)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh accurately <span class="kw-wt">5 mg</span> of Sulfamethoxazole Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask. Make up to volume with ethanol. Pipette <span class="kw-vol">6 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 300 ug/mL of Sulfamethoxazole.</p><p class="sop-p">Note:</p><p class="sop-p">Concentration of reference standard solution can be modified as needed, depending on the availability of the standards &amp; response of the instrument</p><p class="sop-p">Mix Reference Standard Solution is prepared for reference in GC-MS data library. The individual standard is freshly prepared only when necessary (ie. when sample fails and requires repetition). Otherwise referencing is done from the GC-MS data library. Standard solution must be prepared individually.</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Weigh accurately <span class="kw-wt">0.5 g</span> of sample into a glass conical flask. Add in <span class="kw-vol">20 mL</span> of ethanol. Sonicate for <span class="kw-time">30 minutes</span>. Filter the solution before injecting into the GCMS.</p><p class="sop-p">Note: Further dilution of sample can be done if the concentration of sample is too high.</p><p class="sop-p">Procedure</p><p class="sop-p">Note: Only standard solution of the compound of interest is injected into the instrument during repeat test for failed samples.</p><p class="sop-p">Results</p><p class="sop-p">From the chromatogram of the sample, a compound is reported as detected (positive) should the retention time and mass spectrum match between the sample and reference standard with more than 80 % similarity. The principal ions for the compounds are:</p><p class="sop-p">If any compound is detected, the procedure is repeated by another analyst on another day. The individual reference standard of the suspected compound is prepared according to the procedure above for confirmation of the compound in sample.</p><p class="sop-p">Quality Records</p><p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah GCMS	: UP/X015</p><p class="sop-p">Keputusan Ujian Kosmetik					: UP/X013</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p><p class="sop-p">Attachments</p><p class="sop-p">Chromatogram and mass spectrum of Reference Standard Griseofulvin, Metronidazole, Chloramphenicol, Trimethoprim, Sulfamethoxazole and Clindamycin.</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Weigh accurately <span class="kw-wt">2 mg</span> each of Metronidazole &amp; Griseofulvin Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask, separately. Make up to volume with ethanol. Pipette <span class="kw-vol">0.5 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 10 mcg/mL Metronidazole &amp; Griseofulvin.
+                      </label>
                     </div>
-                    
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-12" class="sop-step-title">
+                        6.3.3	Limit of Detection (LOD) Solution 2 Preparation (<span class="kw-wt">0.10 mg</span>/mL)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-13" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Weigh accurately <span class="kw-wt">5 mg</span> of Chloramphenicol Reference Standard and transfer into a <span class="kw-vol">5 mL</span> volumetric flask. Make up to volume with ethanol. Pipette <span class="kw-vol">1 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 100 mcg/mL Chloramphenicol.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-14" class="sop-step-title">
+                        6.3.4	Limit of Detection (LOD) Solution 3 Preparation (<span class="kw-wt">0.04 mg</span>/mL)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-15" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Weigh accurately <span class="kw-wt">4 mg</span> of Clindamycin Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask. Make up to volume with ethanol. Pipette <span class="kw-vol">1 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 40 mcg/mL Clindamycin.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-16" class="sop-step-title">
+                        6.3.5	Limit of Detection (LOD) Solution 4 Preparation (<span class="kw-wt">0.05 mg</span>/mL)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-17" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Weigh accurately <span class="kw-wt">2.5 mg</span> of Trimethoprim Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask. Make up to volume with ethanol. Pipette <span class="kw-vol">2 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 50 mcg/mL Trimethoprim.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-18" class="sop-step-title">
+                        6.3.6	Sulfamethoxazole Standard Solution Preparation (<span class="kw-wt">0.3 mg</span>/mL)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-19" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Weigh accurately <span class="kw-wt">5 mg</span> of Sulfamethoxazole Reference Standard and transfer into a <span class="kw-vol">10 mL</span> volumetric flask. Make up to volume with ethanol. Pipette <span class="kw-vol">6 mL</span> of the solution and make up to volume to <span class="kw-vol">10 mL</span> with ethanol to yield 300 ug/mL of Sulfamethoxazole.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Note:</p><p class="sop-p">Concentration of reference standard solution can be modified as needed, depending on the availability of the standards &amp; response of the instrument</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-20" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Mix Reference Standard Solution is prepared for reference in GC-MS data library. The individual standard is freshly prepared only when necessary (ie. when sample fails and requires repetition). Otherwise referencing is done from the GC-MS data library. Standard solution must be prepared individually.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sample Preparation</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-059-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/059')">
+                      <label for="step-059-21" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Weigh accurately <span class="kw-wt">0.5 g</span> of sample into a glass conical flask. Add in <span class="kw-vol">20 mL</span> of ethanol. Sonicate for <span class="kw-time">30 minutes</span>. Filter the solution before injecting into the GCMS.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Note: Further dilution of sample can be done if the concentration of sample is too high.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Note: Only standard solution of the compound of interest is injected into the instrument during repeat test for failed samples.</p><p class="sop-p">Results</p><p class="sop-p">From the chromatogram of the sample, a compound is reported as detected (positive) should the retention time and mass spectrum match between the sample and reference standard with more than 80 % similarity. The principal ions for the compounds are:</p><p class="sop-p">If any compound is detected, the procedure is repeated by another analyst on another day. The individual reference standard of the suspected compound is prepared according to the procedure above for confirmation of the compound in sample.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-7">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7.0 QUALITY RECORDS</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah GCMS	: UP/X015</p><p class="sop-p">Keputusan Ujian Kosmetik					: UP/X013</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-8">
+          <div class="sop-section-header">
+            <span class="sec-icon">📎</span>
+            <h2>8.0 ATTACHMENTS</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Chromatogram and mass spectrum of Reference Standard Griseofulvin, Metronidazole, Chloramphenicol, Trimethoprim, Sulfamethoxazole and Clindamycin.</p>
           </div>
         </div>
         

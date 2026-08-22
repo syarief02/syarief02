@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -367,11 +452,6 @@
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -443,7 +523,7 @@
             <strong>Panduan Khas Pengendalian &amp; Penyelenggaraan Terperinci (Pro Tips):</strong>
           </div>
           <ul class="tips-list">
-            <li>🎯 **Tuning Harian MS**: Jalankan `s.tune` (Standard Tune) atau `a.tune` setiap pagi dan simpan laporan penalaan rasmi.</li><li>💧 **Air/Water Check**: Pastikan $m/z\ 18$ (Air) $< 10\%$ dan $m/z\ 28$ ($N_2$) $< 5\%$ berbanding $m/z\ 69$.</li><li>🌡️ **Suhu Antaramuka & Sumber EI**: EI Source $230\ ^\circ\text{C}$, Transfer Line / Interface $240\ ^\circ\text{C}$, Inlet $250\ ^\circ\text{C}$.</li><li>⏱️ **Solvent Delay**: Tetapkan Solvent Delay $4.00\text{ min}$ bagi melindungi filamen MS daripada beban pelarut Methanol yang pekat.</li><li>📊 **SIM Integration**: Kuantitasi menggunakan Target Ion utama ($m/z\ 31$ bagi EG, $m/z\ 45$ bagi DEG) dan sahkan dengan Qualifier Ions mengikut Had Toleransi Table 6.</li>
+            <li>🎯 **Tuning Harian MS**: Jalankan `s.tune` (Standard Tune) atau `a.tune` setiap pagi dan simpan laporan penalaan rasmi.</li><li>💧 **Air/Water Check**: Pastikan m/z 18 (Air) < 10% dan m/z 28 (N₂) < 5% berbanding m/z 69.</li><li>🌡️ **Suhu Antaramuka & Sumber EI**: EI Source 230 °C, Transfer Line / Interface 240 °C, Inlet 250 °C.</li><li>⏱️ **Solvent Delay**: Tetapkan Solvent Delay 4.00 min bagi melindungi filamen MS daripada beban pelarut Methanol yang pekat.</li><li>📊 **SIM Integration**: Kuantitasi menggunakan Target Ion utama (m/z 31 bagi EG, m/z 45 bagi DEG) dan sahkan dengan Qualifier Ions mengikut Had Toleransi Table 6.</li>
           </ul>
         </div>
         
@@ -467,7 +547,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 3 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 36 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -492,66 +572,540 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (2)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 TUJUAN</a><a href="#sec-3" class="toc-pill">2.0 SKOP</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (2)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/077 kepada PKKK/300/UAT/018</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/018 kepada PKKK/300/UP/017</p><p class="sop-p">Kemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026</p><p class="sop-p">Kemaskini perenggan 3, dengan penambahan definisi TIC dan RTE.</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian dan penyelenggaraan alat Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) semasa pengujian produk tradisional, suplemen kesihatan dan kosmetik untuk tujuan penyaringan dijalankan dengan betul dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakapakai untuk mengendalikan alat GCMS (8890/5977B) bagi pengujian semua produk tradisional, suplemen kesihatan dan kosmetik.</p><p class="sop-p">DEFINISI</p><p class="sop-p">GCMS	- Gas Chromatography Mass Spectroscopy</p><p class="sop-p">TIC - Total Ion Current</p><p class="sop-p">RTE - RunTime Environment</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-017-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
-                          <label for="step-017-1" class="sop-step-title">
-                            5.3      Penolong Pegawai Farmasi U7 / U6
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-017-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
-                          <label for="step-017-2" class="sop-step-title">
-                            5.4     Penolong Pegawai Farmasi
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-017-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
-                          <label for="step-017-3" class="sop-step-title">
-                            6.1 Tatacara Penggunaan
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Buka PC</p><p class="sop-p">Klik 2X ikon</p><p class="sop-p">Paparan di bawah akan muncul di skrin komputer.</p><p class="sop-p">Pilih Method yang ingin digunakan –</p><p class="sop-p">Untuk menghasilkan tatacara pengujian baru, ikut langkah-langkah berikut:</p><p class="sop-p">Pilih Method dan klik Load Method. Kemudian pilih method yang ingin diubah (contoh: default.m). Seterusnya klik Save Method As… dan masukkan nama tatacara yang baru dan fail tersebut akan disimpan.</p><p class="sop-p">Klik Method dan pilih Edit Entire Method</p><p class="sop-p">Pilih bahagian yang ingin diubah (method information, instrument/acquisition atau data analysis)</p><p class="sop-p">Pilih Method dan klik Save. tatacara baru akan disimpan dengan parameter baru yang telah ditetapkan (contoh: Testing Method Latest.m)</p><p class="sop-p">Untuk jalankan sampel:</p><p class="sop-p">Pastikan tuning dilakukan setiap hari sebelum sampel pertama hendak dijalankan pada hari tersebut dan pastikan laporan adalah lulus.</p><p class="sop-p">Pilih icon View &gt; Tune dan Vacuum Control.</p><p class="sop-p">Pilih Standard Spectra Tune (s.tune) atau Autotune (a.tune).</p><p class="sop-p">Setelah selesai Standard Spectra Tune (s.tune) atau Autotune (a.tune), teruskan dengan Tune Evaluation.</p><p class="sop-p">Tunggu seketika sehingga laporan dicetak.</p><p class="sop-p">Pastikan data s.tune atau a.tune yang terbaru telah disimpan.</p><p class="sop-p">.</p><p class="sop-p">Pilih icon View &gt; Instrument Control untuk jalankan analisis.</p><p class="sop-p">Sampel Single Run:</p><p class="sop-p">Pastikan sampel telah dilarutkan dengan pelarut sesuai dan telah ditapis menggunakan penapis 0.45µm ke dalam vial.</p><p class="sop-p">Letak vial di tempatnya dan pastikan nombor kedudukan vial di mana ia diletakkan.</p><p class="sop-p">Kemudian pilih Sequence dan klik New Sequence.</p><p class="sop-p">Masukkan data-data yang diperlukan seperti Sample Name, Vial No, Method Path, Method File, Data File dan Comment (sekiranya ada). Semak semula data yang telah dimasukkan dan klik Run Sequence  untuk mulakan injeksi sampel.</p><p class="sop-p">Sampel Batch Run:</p><p class="sop-p">Jika sampel yang ingin diuji adalah banyak, pengujian sampel boleh dijalankan secara batch sequence / sequence table:</p><p class="sop-p">Pilih Sequence dan klik Edit Sequence.</p><p class="sop-p">Isi maklumat sampel yang diperlukan dalam setiap ruangan column:</p><p class="sop-p">Vial – Nombor sampel di dalam tray vial (No. 1-150)</p><p class="sop-p">Name - Nama sampel seperti dalam worksheet</p><p class="sop-p">Method path - Folder tatacara pengujian yang dijalankan</p><p class="sop-p">Method file - Tatacara pengujian yang dijalankan</p><p class="sop-p">Data path - Folder penyimpanan data pengujian</p><p class="sop-p">Data file – Nama yang unik untuk setiap sample injection</p><p class="sop-p">Comment – Rumusan data bagi sample injection tersebut</p><p class="sop-p">Tambah barisan untuk setiap sample injection berlainan.</p><p class="sop-p">Setelah semua data sampel diisi, klik Run Sequence.</p><p class="sop-p">Isi maklumat pada Operator name dan pastikan maklumat data file directory dan data path dalam sequence table adalah sama.</p><p class="sop-p">Klik Run Sequnce sekiranya semua maklumat yang diisi telah disemak dan tepat.</p><p class="sop-p">Setelah sampel selesai analisis, kromatogram yang diperolehi perlu dianalisis untuk mendapatkan maklumat tertentu terutamanya mass spectrum dan identiti sampel tersebut. Data Analisis perlu dijalankan seperti di bawah:</p><p class="sop-p">Pilih ikon GCMS Data Analysis.</p><p class="sop-p">Pilih File &gt; klik Data File berdasarkan Data Path yang diisi semasa Single Run/ Batch File dijalankan.</p><p class="sop-p">Kemudian pilih Data File yang diingini. Klik OK.</p><p class="sop-p">Pilih peak yang ingin dianalisis (window TIC). Tukar skala jika ingin besar/kecilkan peak:</p><p class="sop-p">Pilih Chromatogram &gt; klik Chromatogram Scaling.</p><p class="sop-p">Pilih Total Ion Current dan klik OK.</p><p class="sop-p">Kemudian pilih Enter Absolute Y-axis value, klik OK.</p><p class="sop-p">Masukkan nilai paksi-Y yang diingini dan klik OK &gt; Done.</p><p class="sop-p">Pilih Select Integrator untuk chromatogram &gt; Chemstation Intergrator/ RTE Intergrator.</p><p class="sop-p">Klik Auto Integrate. Maklumat retention time akan terpapar pada setiap peak yang berjaya di integrasikan.</p><p class="sop-p">Klik Spectrum &gt; Library Search Report untuk menjana laporan sebatian (compound) bagi setiap integrated peak dalam kromatogram.</p><p class="sop-p">Kromatogram dan Library Search Report perlu dicetak dan disertakan dalam laporan sekiranya kromatogram tidak dikesan bahan terkawal atau larangan.</p><p class="sop-p">Untuk mencetak laporan Library Search Report, pilih File &gt; Print&gt; Selected Window.</p><p class="sop-p">Kromatogram bertanda sebatian yang dijumpai, Similariy Search dan Mass Spectrum perlu dicetak sekiranya sampel dikesan bahan kawalan atau larangan.</p><p class="sop-p">Untuk cetak Mass Spectrum:</p><p class="sop-p">Buatkan kotak dalam peak tersebut dengan klik kanan (tanpa lepas).</p><p class="sop-p">Klik kiri 2 kali pada window spektrum bawah spektrum untuk dapatkan jisim spektrum (mass spectrum) bagi peak tersebut yang sepadan dengan mass spectrum library.</p><p class="sop-p">Klik Print pada paparan di skrin.</p><p class="sop-p">Untuk cetak laporan Similarity Search:</p><p class="sop-p">Klik butang Statistik pada paparan di atas.</p><p class="sop-p">Paparan akan bertukar seperti di bawah pada skrin komputer.</p><p class="sop-p">Tekan butang Print untuk cetak laporan.</p><p class="sop-p">Untuk label peak dengan nama bahan sebatian:</p><p class="sop-p">Halakan kursor pada peak yang dipilih.</p><p class="sop-p">Klik kiri dan kanan serentak pada tetikus.</p><p class="sop-p">Isi nama sebatian dan peratusan persamaan (similarity percentage) pada ruangan Text.</p><p class="sop-p">Tekan add dan nama sebatian akan dipaparkan pada peak yang dipilih.</p><p class="sop-p">Untuk cetak kromatogram yang telah dilabel:</p><p class="sop-p">Klik File &gt; Print &gt; Selected Window (2: TIC).</p>
-                      </div>
-                    </div>
-                    
+            
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (1 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 2, Semakan 0:</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (3 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 2, Semakan 1:</p><p class="sop-rev-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-rev-p">Terbitan 3, Semakan 0:</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (2 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Kemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026</p><p class="sop-rev-p">Kemaskini perenggan 3, dengan penambahan definisi TIC dan RTE.</p></div>
+                </details>
+                
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-indigo" id="sec-2">
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 TUJUAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian dan penyelenggaraan alat Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) semasa pengujian produk tradisional, suplemen kesihatan dan kosmetik untuk tujuan penyaringan dijalankan dengan betul dan berkesan.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SKOP</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROSEDUR</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-1" class="sop-step-title">
+                        6.1 Tatacara Penggunaan
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Buka PC</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Klik 2X ikon
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Paparan di bawah akan muncul di skrin komputer.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Pilih Method yang ingin digunakan –
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Untuk menghasilkan tatacara pengujian baru, ikut langkah-langkah berikut:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-4" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Pilih Method dan klik Load Method. Kemudian pilih method yang ingin diubah (contoh: default.m). Seterusnya klik Save Method As… dan masukkan nama tatacara yang baru dan fail tersebut akan disimpan.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Klik Method dan pilih Edit Entire Method
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-6" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Pilih bahagian yang ingin diubah (method information, instrument/acquisition atau data analysis)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Pilih Method dan klik Save. tatacara baru akan disimpan dengan parameter baru yang telah ditetapkan (contoh: Testing Method Latest.m)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Untuk jalankan sampel:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-8" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Pastikan tuning dilakukan setiap hari sebelum sampel pertama hendak dijalankan pada hari tersebut dan pastikan laporan adalah lulus.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Pilih icon View &gt; Tune dan Vacuum Control.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-10" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Pilih Standard Spectra Tune (s.tune) atau Autotune (a.tune).
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Setelah selesai Standard Spectra Tune (s.tune) atau Autotune (a.tune), teruskan dengan Tune Evaluation.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Tunggu seketika sehingga laporan dicetak.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-12" class="sop-step-title">
+                        <span class="action-badge">Langkah 11</span>
+                        Pastikan data s.tune atau a.tune yang terbaru telah disimpan.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-13" class="sop-step-title">
+                        <span class="action-badge">Langkah 12</span>
+                        Pilih icon View &gt; Instrument Control untuk jalankan analisis.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sampel Single Run:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-14" class="sop-step-title">
+                        <span class="action-badge">Langkah 13</span>
+                        Pastikan sampel telah dilarutkan dengan pelarut sesuai dan telah ditapis menggunakan penapis 0.45µm ke dalam vial.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-15" class="sop-step-title">
+                        <span class="action-badge">Langkah 14</span>
+                        Letak vial di tempatnya dan pastikan nombor kedudukan vial di mana ia diletakkan.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Kemudian pilih Sequence dan klik New Sequence.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-16" class="sop-step-title">
+                        <span class="action-badge">Langkah 15</span>
+                        Masukkan data-data yang diperlukan seperti Sample Name, Vial No, Method Path, Method File, Data File dan Comment (sekiranya ada). Semak semula data yang telah dimasukkan dan klik Run Sequence  untuk mulakan injeksi sampel.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sampel Batch Run:</p><p class="sop-p">Jika sampel yang ingin diuji adalah banyak, pengujian sampel boleh dijalankan secara batch sequence / sequence table:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-17" class="sop-step-title">
+                        <span class="action-badge">Langkah 16</span>
+                        Pilih Sequence dan klik Edit Sequence.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Isi maklumat sampel yang diperlukan dalam setiap ruangan column:</p><p class="sop-p">Vial – Nombor sampel di dalam tray vial (No. 1-150)</p><p class="sop-p">Name - Nama sampel seperti dalam worksheet</p><p class="sop-p">Method path - Folder tatacara pengujian yang dijalankan</p><p class="sop-p">Method file - Tatacara pengujian yang dijalankan</p><p class="sop-p">Data path - Folder penyimpanan data pengujian</p><p class="sop-p">Data file – Nama yang unik untuk setiap sample injection</p><p class="sop-p">Comment – Rumusan data bagi sample injection tersebut</p><p class="sop-p">Tambah barisan untuk setiap sample injection berlainan.</p><p class="sop-p">Setelah semua data sampel diisi, klik Run Sequence.</p><p class="sop-p">Isi maklumat pada Operator name dan pastikan maklumat data file directory dan data path dalam sequence table adalah sama.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-18" class="sop-step-title">
+                        <span class="action-badge">Langkah 17</span>
+                        Klik Run Sequnce sekiranya semua maklumat yang diisi telah disemak dan tepat.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Setelah sampel selesai analisis, kromatogram yang diperolehi perlu dianalisis untuk mendapatkan maklumat tertentu terutamanya mass spectrum dan identiti sampel tersebut. Data Analisis perlu dijalankan seperti di bawah:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-19" class="sop-step-title">
+                        <span class="action-badge">Langkah 18</span>
+                        Pilih ikon GCMS Data Analysis.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-20" class="sop-step-title">
+                        <span class="action-badge">Langkah 19</span>
+                        Pilih File &gt; klik Data File berdasarkan Data Path yang diisi semasa Single Run/ Batch File dijalankan.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Kemudian pilih Data File yang diingini. Klik OK.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-21" class="sop-step-title">
+                        <span class="action-badge">Langkah 20</span>
+                        Pilih peak yang ingin dianalisis (window TIC). Tukar skala jika ingin besar/kecilkan peak:
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-22" class="sop-step-title">
+                        <span class="action-badge">Langkah 21</span>
+                        Pilih Chromatogram &gt; klik Chromatogram Scaling.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-23" class="sop-step-title">
+                        <span class="action-badge">Langkah 22</span>
+                        Pilih Total Ion Current dan klik OK.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Kemudian pilih Enter Absolute Y-axis value, klik OK.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-24" class="sop-step-title">
+                        <span class="action-badge">Langkah 23</span>
+                        Masukkan nilai paksi-Y yang diingini dan klik OK &gt; Done.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-25" class="sop-step-title">
+                        <span class="action-badge">Langkah 24</span>
+                        Pilih Select Integrator untuk chromatogram &gt; Chemstation Intergrator/ RTE Intergrator.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-26" class="sop-step-title">
+                        <span class="action-badge">Langkah 25</span>
+                        Klik Auto Integrate. Maklumat retention time akan terpapar pada setiap peak yang berjaya di integrasikan.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-27" class="sop-step-title">
+                        <span class="action-badge">Langkah 26</span>
+                        Klik Spectrum &gt; Library Search Report untuk menjana laporan sebatian (compound) bagi setiap integrated peak dalam kromatogram.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Kromatogram dan Library Search Report perlu dicetak dan disertakan dalam laporan sekiranya kromatogram tidak dikesan bahan terkawal atau larangan.</p><p class="sop-p">Untuk mencetak laporan Library Search Report, pilih File &gt; Print&gt; Selected Window.</p><p class="sop-p">Kromatogram bertanda sebatian yang dijumpai, Similariy Search dan Mass Spectrum perlu dicetak sekiranya sampel dikesan bahan kawalan atau larangan.</p><p class="sop-p">Untuk cetak Mass Spectrum:</p><p class="sop-p">Buatkan kotak dalam peak tersebut dengan klik kanan (tanpa lepas).</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-28" class="sop-step-title">
+                        <span class="action-badge">Langkah 27</span>
+                        Klik kiri 2 kali pada window spektrum bawah spektrum untuk dapatkan jisim spektrum (mass spectrum) bagi peak tersebut yang sepadan dengan mass spectrum library.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-29" class="sop-step-title">
+                        <span class="action-badge">Langkah 28</span>
+                        Klik Print pada paparan di skrin.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Untuk cetak laporan Similarity Search:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-30" class="sop-step-title">
+                        <span class="action-badge">Langkah 29</span>
+                        Klik butang Statistik pada paparan di atas.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Paparan akan bertukar seperti di bawah pada skrin komputer.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-31" class="sop-step-title">
+                        <span class="action-badge">Langkah 30</span>
+                        Tekan butang Print untuk cetak laporan.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Untuk label peak dengan nama bahan sebatian:</p><p class="sop-p">Halakan kursor pada peak yang dipilih.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-32" class="sop-step-title">
+                        <span class="action-badge">Langkah 31</span>
+                        Klik kiri dan kanan serentak pada tetikus.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Isi nama sebatian dan peratusan persamaan (similarity percentage) pada ruangan Text.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-33" class="sop-step-title">
+                        <span class="action-badge">Langkah 32</span>
+                        Tekan add dan nama sebatian akan dipaparkan pada peak yang dipilih.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Untuk cetak kromatogram yang telah dilabel:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-34" class="sop-step-title">
+                        <span class="action-badge">Langkah 33</span>
+                        Klik File &gt; Print &gt; Selected Window (2: TIC).
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📖</span>
+            <h2>3.0 DEFINISI</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">GCMS	- Gas Chromatography Mass Spectroscopy</p><p class="sop-p">TIC - Total Ion Current</p><p class="sop-p">RTE - RunTime Environment</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 CARTA ALIRAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-7">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 TANGGUNGJAWAB</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-35" class="sop-step-title">
+                        5.3      Penolong Pegawai Farmasi U7 / U6
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-017-36" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                      <label for="step-017-36" class="sop-step-title">
+                        5.4     Penolong Pegawai Farmasi
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-8">
           <div class="sop-section-header">
             <span class="sec-icon">📝</span>
-            <h2>7.  REKOD KUALITI</h2>
+            <h2>7. REKOD KUALITI</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Rekod penyelenggaraan alat Gas Chromatography-Mass Spectroscopy Agilent (8890/5977B)</p>
@@ -563,12 +1117,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/017</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>2</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>2</td><td>1</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>2</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>2</td><td>1</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
             </table>
           </div>
         </div>

@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -327,43 +412,38 @@
         <div class="wf-step">
           <div class="wf-node">1</div>
           <div class="wf-info">
-            <div class="wf-name">1. Persediaan</div>
-            <div class="wf-desc">Penerimaan sampel & borang</div>
+            <div class="wf-name">1. Pemeriksaan</div>
+            <div class="wf-desc">Semak keadaan alat & keselamatan</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">2</div>
           <div class="wf-info">
-            <div class="wf-name">2. Pelaksanaan</div>
-            <div class="wf-desc">Langkah kerja mengikut SOP</div>
+            <div class="wf-name">2. Penghidupan</div>
+            <div class="wf-desc">Hidupkan suis & tetapkan parameter</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">3</div>
           <div class="wf-info">
-            <div class="wf-name">3. Verifikasi</div>
-            <div class="wf-desc">Pemeriksaan kualiti & pematuhan</div>
+            <div class="wf-name">3. Penggunaan</div>
+            <div class="wf-desc">Kendalikan alat mengikut SOP</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">4</div>
           <div class="wf-info">
-            <div class="wf-name">4. Dokumentasi</div>
-            <div class="wf-desc">Perekodan fail kualiti rasmi</div>
+            <div class="wf-name">4. Penutupan</div>
+            <div class="wf-desc">Matikan & bersihkan alat</div>
           </div>
         </div>
         </div>
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -393,7 +473,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 3 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 4 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -418,126 +498,165 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">1.  TUJUAN</a><a href="#sec-3" class="toc-pill">2.	SKOP</a><a href="#sec-4" class="toc-pill">3.	DEFINISI</a><a href="#sec-5" class="toc-pill">4.	CARTA ALIRAN</a><a href="#sec-6" class="toc-pill">5. TANGGUNGJAWAB</a><a href="#sec-7" class="toc-pill">6. PROSEDUR</a><a href="#sec-8" class="toc-pill">7.   REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (2)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-3" class="toc-pill">1. TUJUAN</a><a href="#sec-4" class="toc-pill">2. SKOP</a><a href="#sec-5" class="toc-pill">3. DEFINISI</a><a href="#sec-6" class="toc-pill">4. CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5. TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (2)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">PINDAAN:</p><p class="sop-p">Prosedur ini merupakan dokumen baru selaras dengan usaha menaiktaraf pensijilan institusi ke versi ISO 9001:2015 dan juga penamaan semula nama institusi dari Biro Pengawalan Farmaseutikal Kebangsaan (BPFK) kepada Bahagian Regulatori Farmasi Negara (NPRA). Sehubungan itu, dokumen asal adalah terbatal dan dokumen ini dimulakan semula sebagai Terbitan 1.</p><p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen, tajuk dokumen dan tarikh kuatkuasa.</p><p class="sop-p">Meminda Ketua Unit kepada Ketua Subunit</p><p class="sop-p">Meminda ‘ujian penyaringan tradisional dan suplemen kesihatan‘ kepada ‘ujian sampel tradisional, suplemen kesihatan dan kosmetik’</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Meminda perkataan Agensi kepada Bahagian di dalam Perenggan Pindaan</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 10 Februari 2020 kepada 15 Disember 2020</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/028 kepada PKKK/300/HMS/028</p><p class="sop-p">Pindaan peranan Ketua Subunit pada ruangan Tanggungjawab kepada Ketua Subunit / Pegawai Bertanggungjawab</p><p class="sop-p">Terbitan 3, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/028 kepada PKKK/300/UAT/008</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan ‘ujian sampel tradisional, suplemen kesihatan dan kosmetik’ kepada ujian penyaringan campurpalsu pada ruangan Tujuan</p><p class="sop-p">Terbitan 4, Semakan 0:</p><p class="sop-p">i. 	Pindaan No. Dokumen PKKK/300/UAT/008 kepada PKKK/300/UP/007</p><p class="sop-p">ii. 	Pindaan tarikh kuatkuasa arahan kerja daripada 1 Julai 2025 kepada 10 April 2026</p>
+            
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (6 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 2, Semakan 0:</p><p class="sop-rev-p">Kemaskini nombor dokumen, tajuk dokumen dan tarikh kuatkuasa.</p><p class="sop-rev-p">Meminda Ketua Unit kepada Ketua Subunit</p><p class="sop-rev-p">Meminda ‘ujian penyaringan tradisional dan suplemen kesihatan‘ kepada ‘ujian sampel tradisional, suplemen kesihatan dan kosmetik’</p><p class="sop-rev-p">Terbitan 2, Semakan 1:</p><p class="sop-rev-p">Meminda perkataan Agensi kepada Bahagian di dalam Perenggan Pindaan</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (1 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 3, Semakan 0:</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (1 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 3, Semakan 1:</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (3 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 4, Semakan 0:</p><p class="sop-rev-p">i. 	Pindaan No. Dokumen PKKK/300/UAT/008 kepada PKKK/300/UP/007</p><p class="sop-rev-p">ii. 	Pindaan tarikh kuatkuasa arahan kerja daripada 1 Julai 2025 kepada 10 April 2026</p></div>
+                </details>
+                
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+        <div class="sop-section-container sec-theme-amber" id="sec-2">
           <div class="sop-section-header">
-            <span class="sec-icon">🎯</span>
-            <h2>1.  TUJUAN</h2>
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROSEDUR</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">Untuk menjamin radas-radas yang digunakan dalam ujian penyaringan campurpalsu adalah betul-betul bebas dari kontaminasi.</p>
+            <p class="sop-p">Penolong Pegawai Farmasi mengumpulkan semua bekas kaca setelah selesai digunakan dalam pengujian dan sisa pelarut dalam radas dibuang mengikut prosedur 6.2.</p><p class="sop-p">Penolong Pegawai Farmasi membuang sisa organik ke dalam botol yang disediakan dan bertutup dan bilas dengan air paip.</p><p class="sop-p">Pembantu Perawatan Kesihatan merendam radas-radas ke dalam besen di bilik cuci yang diisikan dengan serbuk/cecair pencuci.</p><p class="sop-p">Pembantu Perawatan Kesihatan mencuci bekas kaca dengan tangan menggunakan berus atau menggunakan mesin pencuci radas (rujuk arahan kerja alat mesin basuh alatan kaca).</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-007-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/007')">
+                      <label for="step-007-1" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Bilas bekas kaca dengan air paip sehingga bersih dan tiada sisa bahan pencuci.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Pembantu Perawatan Kesihatan membilas semua bekas kaca dengan menggunakan air suling atau air deionised sebelum dikeringkan.</p><p class="sop-p">Bekas kaca dituskan airnya dahulu.</p><p class="sop-p">Pembantu Perawatan Kesihatan mengeringkannya dalam kabinet pengering yang bertutup atau dalam oven pada suhu <span class="kw-temp">40°C</span> sehingga kering.</p><p class="sop-p">Pembantu Perawatan Kesihatan mengeluarkan bekas kaca yang telah kering dari oven dan disimpan pada rak-rak yang disediakan mengikut susunan bekas kaca tersebut. Bekas kaca volumetrik disimpan dengan penutupnya sekali.</p><p class="sop-p">Kerja mencuci alat kaca perlu dibuat setiap hari supaya bekas kaca sentiasa bersih dan mempunyai stok yang mencukupi untuk digunakan.</p>
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-cyan" id="sec-3">
           <div class="sop-section-header">
             <span class="sec-icon">🎯</span>
-            <h2>2.	SKOP</h2>
+            <h2>1. TUJUAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">Prosedur ini hendaklah digunakan untuk pencucian semua radas-radas kaca dan plastik yang digunakan dalam ujian penyaringan campurpalsu.</p>
+            <p class="sop-p">Untuk menjamin radas-radas yang digunakan dalam ujian penyaringan campurpalsu adalah betul-betul bebas dari kontaminasi.</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-purple" id="sec-4">
+        <div class="sop-section-container sec-theme-cyan" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2. SKOP</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-5">
           <div class="sop-section-header">
             <span class="sec-icon">📖</span>
-            <h2>3.	DEFINISI</h2>
+            <h2>3. DEFINISI</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Tiada.</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-5">
+        <div class="sop-section-container sec-theme-purple" id="sec-6">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>4.	CARTA ALIRAN</h2>
+            <span class="sec-icon">🔀</span>
+            <h2>4. CARTA ALIRAN</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-mint" id="sec-6">
+        <div class="sop-section-container sec-theme-mint" id="sec-7">
           <div class="sop-section-header">
             <span class="sec-icon">👥</span>
             <h2>5. TANGGUNGJAWAB</h2>
           </div>
           <div class="sop-section-body">
             
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-007-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/007')">
-                          <label for="step-007-1" class="sop-step-title">
-                            5.1 Ketua Unit / Pegawai Bertanggungjawab
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Memastikan prosedur ini diikuti seperti yang telah ditetapkan</p>
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-007-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/007')">
+                      <label for="step-007-2" class="sop-step-title">
+                        5.1 Ketua Unit / Pegawai Bertanggungjawab
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-007-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/007')">
-                          <label for="step-007-2" class="sop-step-title">
-                            5.2 Pegawai Farmasi
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Menyelia prosedur ini dilaksanakan dengan betul</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Memastikan prosedur ini diikuti seperti yang telah ditetapkan</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-007-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/007')">
+                      <label for="step-007-3" class="sop-step-title">
+                        5.2 Pegawai Farmasi
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-007-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/007')">
-                          <label for="step-007-3" class="sop-step-title">
-                            5.3 Pembantu Perawatan Kesihatan
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Melaksanakan prosedur seperti yang telah ditetapkan</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Menyelia prosedur ini dilaksanakan dengan betul</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-007-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/007')">
+                      <label for="step-007-4" class="sop-step-title">
+                        5.3 Pembantu Perawatan Kesihatan
+                      </label>
                     </div>
-                    
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-amber" id="sec-7">
-          <div class="sop-section-header">
-            <span class="sec-icon">🔬</span>
-            <h2>6. PROSEDUR</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Penolong Pegawai Farmasi mengumpulkan semua bekas kaca setelah selesai digunakan dalam pengujian dan sisa pelarut dalam radas dibuang mengikut prosedur 6.2.</p><p class="sop-p">Penolong Pegawai Farmasi membuang sisa organik ke dalam botol yang disediakan dan bertutup dan bilas dengan air paip.</p><p class="sop-p">Pembantu Perawatan Kesihatan merendam radas-radas ke dalam besen di bilik cuci yang diisikan dengan serbuk/cecair pencuci.</p><p class="sop-p">Pembantu Perawatan Kesihatan mencuci bekas kaca dengan tangan menggunakan berus atau menggunakan mesin pencuci radas (rujuk arahan kerja alat mesin basuh alatan kaca).</p><p class="sop-p">Bilas bekas kaca dengan air paip sehingga bersih dan tiada sisa bahan pencuci.</p><p class="sop-p">Pembantu Perawatan Kesihatan membilas semua bekas kaca dengan menggunakan air suling atau air deionised sebelum dikeringkan.</p><p class="sop-p">Bekas kaca dituskan airnya dahulu.</p><p class="sop-p">Pembantu Perawatan Kesihatan mengeringkannya dalam kabinet pengering yang bertutup atau dalam oven pada suhu <span class="kw-temp">40°C</span> sehingga kering.</p><p class="sop-p">Pembantu Perawatan Kesihatan mengeluarkan bekas kaca yang telah kering dari oven dan disimpan pada rak-rak yang disediakan mengikut susunan bekas kaca tersebut. Bekas kaca volumetrik disimpan dengan penutupnya sekali.</p><p class="sop-p">Kerja mencuci alat kaca perlu dibuat setiap hari supaya bekas kaca sentiasa bersih dan mempunyai stok yang mencukupi untuk digunakan.</p>
+                  </div>
+                </div>
+                <p class="sop-p">Melaksanakan prosedur seperti yang telah ditetapkan</p>
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-indigo" id="sec-8">
           <div class="sop-section-header">
             <span class="sec-icon">📝</span>
-            <h2>7.   REKOD KUALITI</h2>
+            <h2>7. REKOD KUALITI</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Tiada</p>
@@ -549,12 +668,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/007</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Dilulus oleh</td><td>Tarikh Kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Nurul Izzah Hany Ismail</td><td>Bavahrni a/p Subramaniam</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Nov 2016</td></tr><tr ><td>2</td><td>0</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 Feb 2020</td></tr><tr ><td>2</td><td>1</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Dis 2020</td></tr><tr ><td>3</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>3</td><td>1</td><td>Nurul Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>4</td><td>0</td><td>Nurfatihah Omar</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Nurul Izzah Hany Ismail</td><td>Bavahrni a/p Subramaniam</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Nov 2016</td></tr><tr ><td>2</td><td>0</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 Feb 2020</td></tr><tr ><td>2</td><td>1</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Dis 2020</td></tr><tr ><td>3</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>3</td><td>1</td><td>Nurul Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>4</td><td>0</td><td>Nurfatihah Omar</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
             </table>
           </div>
         </div>

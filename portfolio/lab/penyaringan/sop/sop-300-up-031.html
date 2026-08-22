@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -369,7 +454,7 @@
   
         <div class="summary-analytes">
           <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Lovastatin</span><span class="analite-chip">Simvastatin</span><span class="analite-chip">Atorvastatin</span></div>
+          <div class="chips-container"><span class="analite-chip">Lovastatin</span></div>
         </div>
         
 
@@ -427,7 +512,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 18 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 48 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -452,274 +537,679 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (13)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 TUJUAN</a><a href="#sec-3" class="toc-pill">2.0 SKOP</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-9" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-10" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (13)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Kemaskini 6.6 System suitability test requirement, di mana</p><p class="sop-p">kritieria Theoretical plate telah dikemaskini daripada “(NLT) 1500 kepada “(NLT) 2000”.</p><p class="sop-p">Menambah “%RSD for retention time: Not more than, NMT 2.0%”</p><p class="sop-p">Menambah para 6.7 Internal Quality Control.</p><p class="sop-p">Mengemaskini para 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6 dan 5.5 penolong pegawai farmasi ditukar daripada U29/ U32 kepada U6 / U5.</p><p class="sop-p">Menambah para 6.3.3 Single Standard Stock Solution</p><p class="sop-p">Terbitan 1, Semakan 2:</p><p class="sop-p">Kemaskini perenggan 3.0 Definisi dengan menambah sf – similarity factor dan COA – Certificate of Analysis</p><p class="sop-p">Kemaskini perenggan 6.5 Internal Quality Control, IQC dengan menambahbaik ayat 6.5.1</p><p class="sop-p">Kemaskini perenggan 6.5.2 dengan menambah cara penyediaan sampel IQC sekiranya menggunakan Procedure A: IQC using Previously Tested or ILC Samples (Applicable for samples selected in 6.5.1 (i) and (ii)</p><p class="sop-p">Kemaskini perenggan 6.5.4 dengan menambah cara pengiraan %Recovery untuk Internal Quality Control (IQC) sekiranya menggunakan sampel yang pernah diuji atau sampel daripada Inter-Laboratory Comparison (ILC)</p><p class="sop-p">Kemaskini perenggan 6.6 dengan menambah perenggan 6.6.5 Calibration Check After Sample Injections: Cara pengiraan Calibration Check dan kriteria yang ditetapkan</p><p class="sop-p">Kemaskini perenggan 6.7 Sequence of Injection</p><p class="sop-p">Kemaskini perenggan 6.8.1 dengan pelaporan keputusan a) dan b) hingga dua tempat perpuluhan</p><p class="sop-p">Kemaskini 7.0 Rekod Kualiti dengan menambah borang baru:</p><p class="sop-p">Terbitan 2, Semakan 0</p><p class="sop-p">Pinda nombor dokumen PKKK/300/UAT/057 kepada PKKK/300/UP/031.</p><p class="sop-p">Pinda nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001.</p><p class="sop-p">PKKK/300/UAT/012 kepada PKKK/300/UP/011;</p><p class="sop-p">PKKK/300/UAT/017 kepada PKKK/300/UP/016;</p><p class="sop-p">Pinda nombor borang dalam para 7. Rekod Kualiti:</p><p class="sop-p">UAT/001A kepada    UP/001A</p><p class="sop-p">UAT/008A kepada    UP/008A</p><p class="sop-p">UAT/008B kepada    UP/008B</p><p class="sop-p">UAT/008C kepada    UP/008C</p><p class="sop-p">UAT/008D kepada    UP/008D</p><p class="sop-p">UAT/008E kepada    UP/008E</p><p class="sop-p">UAT/008F kepada    UP/008F</p><p class="sop-p">UAT/008G kepada    UP/008G</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Lovastatin menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi dan kandungan Lovastatin dalam produk tradisional (kecuali kapsul) dengan menggunakan HPLC.</p><p class="sop-p">DEFINISI</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-1" class="sop-step-title">
-                            3.1	HPLC	- High Performance Liquid Chromatography
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+            
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (32 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 1, Semakan 1:</p><p class="sop-rev-p">Kemaskini 6.6 System suitability test requirement, di mana</p><p class="sop-rev-p">kritieria Theoretical plate telah dikemaskini daripada “(NLT) 1500 kepada “(NLT) 2000”.</p><p class="sop-rev-p">Menambah “%RSD for retention time: Not more than, NMT 2.0%”</p><p class="sop-rev-p">Menambah para 6.7 Internal Quality Control.</p><p class="sop-rev-p">Mengemaskini para 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6 dan 5.5 penolong pegawai farmasi ditukar daripada U29/ U32 kepada U6 / U5.</p><p class="sop-rev-p">Menambah para 6.3.3 Single Standard Stock Solution</p><p class="sop-rev-p">Terbitan 1, Semakan 2:</p><p class="sop-rev-p">Kemaskini perenggan 3.0 Definisi dengan menambah sf – similarity factor dan COA – Certificate of Analysis</p><p class="sop-rev-p">Kemaskini perenggan 6.5 Internal Quality Control, IQC dengan menambahbaik ayat 6.5.1</p><p class="sop-rev-p">Kemaskini perenggan 6.5.2 dengan menambah cara penyediaan sampel IQC sekiranya menggunakan Procedure A: IQC using Previously Tested or ILC Samples (Applicable for samples selected in 6.5.1 (i) and (ii)</p><p class="sop-rev-p">Kemaskini perenggan 6.5.4 dengan menambah cara pengiraan %Recovery untuk Internal Quality Control (IQC) sekiranya menggunakan sampel yang pernah diuji atau sampel daripada Inter-Laboratory Comparison (ILC)</p><p class="sop-rev-p">Kemaskini perenggan 6.6 dengan menambah perenggan 6.6.5 Calibration Check After Sample Injections: Cara pengiraan Calibration Check dan kriteria yang ditetapkan</p><p class="sop-rev-p">Kemaskini perenggan 6.7 Sequence of Injection</p><p class="sop-rev-p">Kemaskini perenggan 6.8.1 dengan pelaporan keputusan a) dan b) hingga dua tempat perpuluhan</p><p class="sop-rev-p">Kemaskini 7.0 Rekod Kualiti dengan menambah borang baru:</p><p class="sop-rev-p">Terbitan 2, Semakan 0</p><p class="sop-rev-p">Pinda nombor dokumen PKKK/300/UAT/057 kepada PKKK/300/UP/031.</p><p class="sop-rev-p">Pinda nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-rev-p">PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-rev-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001.</p><p class="sop-rev-p">PKKK/300/UAT/012 kepada PKKK/300/UP/011;</p><p class="sop-rev-p">PKKK/300/UAT/017 kepada PKKK/300/UP/016;</p><p class="sop-rev-p">Pinda nombor borang dalam para 7. Rekod Kualiti:</p><p class="sop-rev-p">UAT/001A kepada    UP/001A</p><p class="sop-rev-p">UAT/008A kepada    UP/008A</p><p class="sop-rev-p">UAT/008B kepada    UP/008B</p><p class="sop-rev-p">UAT/008C kepada    UP/008C</p><p class="sop-rev-p">UAT/008D kepada    UP/008D</p><p class="sop-rev-p">UAT/008E kepada    UP/008E</p><p class="sop-rev-p">UAT/008F kepada    UP/008F</p><p class="sop-rev-p">UAT/008G kepada    UP/008G</p></div>
+                </details>
+                
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 TUJUAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Lovastatin menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SKOP</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROSEDUR</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Materials and Equipment’s</p><p class="sop-p">Instrument :</p><p class="sop-p">High Performance Liquid Chromatography with photodiode array (PDA) detector</p><p class="sop-p">Analytical &amp; microbalance</p><p class="sop-p">Column : Thermo ODS Hypersil 5 µm, 200 x 4.6 mm or equivalent</p><p class="sop-p">Reference standard : Lovastatin USP or equivalent</p><p class="sop-p">Chemical :</p><p class="sop-p">Monobasic Sodium Phosphate</p><p class="sop-p">Phosphoric acid</p><p class="sop-p">Glacial Acetic Acid (AR Grade)</p><p class="sop-p">Sodium hydroxide</p><p class="sop-p">Methanol (HPLC Grade)</p><p class="sop-p">Acetonitrile (HPLC Grade)</p><p class="sop-p">Deionized water</p><p class="sop-p">Glassware’s and consumable :</p><p class="sop-p">Beakers</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Measuring cylinder</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (<span class="kw-vol">5 mL</span>)</p><p class="sop-p"><span class="kw-vol">2 mL</span> glass screw cap vial</p><p class="sop-p">Preparation of Solutions</p><p class="sop-p">Preparation of diluent</p><p class="sop-p">Preparation of 2M sodium hydroxide: Weigh 8 gm sodium hydroxide and dissolve in <span class="kw-vol">100 mL</span> deionized water.</p><p class="sop-p">Measure <span class="kw-vol">900 mL</span> of deionized water in a beaker and add <span class="kw-vol">3 mL</span> glacial acetic acid. Adjust pH of the solution to <span class="kw-ph">pH4</span> using 2M sodium hydroxide. Transfer the solution into <span class="kw-vol">1 L</span> volumetric flask and make up volume to <span class="kw-vol">1L</span> with deionized water. Then, prepare a mixture of acetonitrile and the resultant solution with composition 80:20.</p><p class="sop-p">Preparation of buffer solution</p><p class="sop-p">Preparation of 1M phosphoric acid: Mix <span class="kw-vol">6.8 mL</span> of 85% (w/w) concentrated phosphoric acid solution to <span class="kw-vol">93.2 mL</span> water to prepare <span class="kw-vol">100 mL</span> of 1M phosphoric acid.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-1" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Dissolve 4.41 gm of monobasic sodium phosphate in <span class="kw-vol">900 mL</span> deionized water, adjust with 1M phosphoric acid to <span class="kw-ph">pH4</span> and make up volume to <span class="kw-vol">1 L</span> with deionized water.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-2" class="sop-step-title">
-                            3.2	RS	- Reference Standard
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Preparation of mobile phase</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Prepare a filtered and degassed mixture of acetonitrile and buffer solution (65:35).
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-3" class="sop-step-title">
-                            3.3	OOS	- Out of Specification
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Standard stock solution</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Weigh <span class="kw-wt">10 mg</span> Lovastatin standard in duplicate (A and B) in <span class="kw-vol">100 mL</span> volumetric flask separately. Add <span class="kw-vol">50 mL</span> diluent and sonicate for <span class="kw-time">5 minutes</span>. Then make up to volume with diluent. Final concentration of this solution is <span class="kw-wt">100 µg</span>/mL.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-4" class="sop-step-title">
-                            3.4	UV	- Ultraviolet
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Working standard solution (for calibration curve)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-4" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Prepare 1 set of working standard solution for calibration curve from the standard stock solution A (Para 6.3.1). Dilute the standard stock solution A to get five concentration levels of <span class="kw-wt">0.7 µg</span>/mL, <span class="kw-wt">2.0 µg</span>/mL, <span class="kw-wt">10.0 µg</span>/mL, <span class="kw-wt">20.0 µg</span>/mL and <span class="kw-wt">38.0 µg</span>/mL. Filter with 0.45 µm nylon syringe filter and put in vial. Below are the procedures to prepare the solutions:
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-5" class="sop-step-title">
-                            3.5	LOD	- Limit of Detection
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">To obtain <span class="kw-wt">0.7 µg</span>/mL, measure <span class="kw-vol">0.175 mL</span> of stock standard solution and make up to 25 ml with diluent.</p><p class="sop-p">To obtain <span class="kw-wt">2.0 µg</span>/mL, measure <span class="kw-vol">0.2 mL</span> of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain <span class="kw-wt">10.0 µg</span>/mL, measure <span class="kw-vol">1 mL</span> of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain <span class="kw-wt">20.0 µg</span>/mL, measure <span class="kw-vol">2 mL</span> of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain <span class="kw-wt">38.0 µg</span>/mL, measure <span class="kw-vol">3.8 mL</span> of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">Working standard solution at LOD level, <span class="kw-wt">0.6 µg</span>/mL (<span class="kw-wt">300 mg</span>/kg)</p><p class="sop-p">Measure <span class="kw-vol">0.15 mL</span> stock standard solution A and make up to <span class="kw-vol">25 mL</span> with diluent.</p><p class="sop-p">Working standard solution <span class="kw-wt">20.0 µg</span>/mL (for calibration check)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Dilute the standard stock solution B to get <span class="kw-wt">20.0 µg</span>/mL. To obtain <span class="kw-wt">20.0 µg</span>/mL, measure <span class="kw-vol">2 mL</span> of stock standard solution and make up to <span class="kw-vol">10 mL</span> with diluent. Filter with 0.45 µm nylon syringe filter and put in vial.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-6" class="sop-step-title">
-                            3.6	IQC	- Internal Quality Control
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-6" class="sop-step-title">
+                        6.4 Preparation of sample
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-7" class="sop-step-title">
-                            3.7	UPA	- Unit Perkhidmatan Analisis
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling processes differ between different types of dosage form. Please refer to the document PKKK/200/018 (Prosedur Persampelan Untuk Analisis Sampel) dan PKKK/300/UAT/001 (Proses Persampelan Ujian Penyaringan).</p><p class="sop-p">Average weight of the total tablet content</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Weigh 20 tablets of sample individually
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-8" class="sop-step-title">
-                            3.8	SST	- System Suitability Test
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-8" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Record weight of each tablet in UAT/007 form
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-9" class="sop-step-title">
-                            3.9	sf	- Similarity Factor
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Calculate the total average weight of the tablets</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Record all the result
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-10" class="sop-step-title">
-                            3.10	COA 	- Certificate of Analysis
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Menyemak dan mengesahkan keputusan sampel yang tidak lulus atau di luar spesifikasi (OOS)</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sample preparation for analysis</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-10" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Weigh <span class="kw-wt">200 mg</span> powder of sample (obtain from 6.4.2) in 100ml volumetric flask in duplicate.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-11" class="sop-step-title">
-                            5.3    Pegawai Farmasi
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian</p><p class="sop-p">Menjalankan kerja-kerja analisis mengikut tatacara yang telah ditetapkan dan menyediakan laporan ujian</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">For liquid sample, weigh <span class="kw-wt">200 mg</span> of sample in 100 ml volumetric flask in duplicate.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Add <span class="kw-vol">60 mL</span> of diluent and sonicate for <span class="kw-time">15 minutes</span>
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-12" class="sop-step-title">
-                            5.4    Penolong Pegawai Farmasi U7 / U6
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Leave the solution to cool before making it up to volume of <span class="kw-vol">100 mL</span> with diluent</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-12" class="sop-step-title">
+                        <span class="action-badge">Langkah 11</span>
+                        Filter the sample solution and put in a vial using 0.45 µm nylon syringe filter
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-13" class="sop-step-title">
-                            5.5    Penolong Pegawai Farmasi U6 / U5
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Menjalankan kerja-kerja analisis mengikut tatacara yang telah ditetapkan</p><p class="sop-p">Menyediakan laporan ujian</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Materials and Equipment’s</p><p class="sop-p">Instrument :</p><p class="sop-p">High Performance Liquid Chromatography with photodiode array (PDA) detector</p><p class="sop-p">Analytical &amp; microbalance</p><p class="sop-p">Column : Thermo ODS Hypersil 5 µm, 200 x 4.6 mm or equivalent</p><p class="sop-p">Reference standard : Lovastatin USP or equivalent</p><p class="sop-p">Chemical :</p><p class="sop-p">Monobasic Sodium Phosphate</p><p class="sop-p">Phosphoric acid</p><p class="sop-p">Glacial Acetic Acid (AR Grade)</p><p class="sop-p">Sodium hydroxide</p><p class="sop-p">Methanol (HPLC Grade)</p><p class="sop-p">Acetonitrile (HPLC Grade)</p><p class="sop-p">Deionized water</p><p class="sop-p">Glassware’s and consumable :</p><p class="sop-p">Beakers</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Measuring cylinder</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (<span class="kw-vol">5 mL</span>)</p><p class="sop-p"><span class="kw-vol">2 mL</span> glass screw cap vial</p><p class="sop-p">Preparation of Solutions</p><p class="sop-p">Preparation of diluent</p><p class="sop-p">Preparation of 2M sodium hydroxide: Weigh 8 gm sodium hydroxide and dissolve in <span class="kw-vol">100 mL</span> deionized water.</p><p class="sop-p">Measure <span class="kw-vol">900 mL</span> of deionized water in a beaker and add <span class="kw-vol">3 mL</span> glacial acetic acid. Adjust pH of the solution to <span class="kw-ph">pH4</span> using 2M sodium hydroxide. Transfer the solution into <span class="kw-vol">1 L</span> volumetric flask and make up volume to <span class="kw-vol">1L</span> with deionized water. Then, prepare a mixture of acetonitrile and the resultant solution with composition 80:20.</p><p class="sop-p">Preparation of buffer solution</p><p class="sop-p">Preparation of 1M phosphoric acid: Mix <span class="kw-vol">6.8 mL</span> of 85% (w/w) concentrated phosphoric acid solution to <span class="kw-vol">93.2 mL</span> water to prepare <span class="kw-vol">100 mL</span> of 1M phosphoric acid.</p><p class="sop-p">Dissolve 4.41 gm of monobasic sodium phosphate in <span class="kw-vol">900 mL</span> deionized water, adjust with 1M phosphoric acid to <span class="kw-ph">pH4</span> and make up volume to <span class="kw-vol">1 L</span> with deionized water.</p><p class="sop-p">Preparation of mobile phase</p><p class="sop-p">Prepare a filtered and degassed mixture of acetonitrile and buffer solution (65:35).</p><p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Standard stock solution</p><p class="sop-p">Weigh <span class="kw-wt">10 mg</span> Lovastatin standard in duplicate (A and B) in <span class="kw-vol">100 mL</span> volumetric flask separately. Add <span class="kw-vol">50 mL</span> diluent and sonicate for <span class="kw-time">5 minutes</span>. Then make up to volume with diluent. Final concentration of this solution is <span class="kw-wt">100 µg</span>/mL.</p><p class="sop-p">Working standard solution (for calibration curve)</p><p class="sop-p">Prepare 1 set of working standard solution for calibration curve from the standard stock solution A (Para 6.3.1). Dilute the standard stock solution A to get five concentration levels of <span class="kw-wt">0.7 µg</span>/mL, <span class="kw-wt">2.0 µg</span>/mL, <span class="kw-wt">10.0 µg</span>/mL, <span class="kw-wt">20.0 µg</span>/mL and <span class="kw-wt">38.0 µg</span>/mL. Filter with 0.45 µm nylon syringe filter and put in vial. Below are the procedures to prepare the solutions:</p><p class="sop-p">To obtain <span class="kw-wt">0.7 µg</span>/mL, measure <span class="kw-vol">0.175 mL</span> of stock standard solution and make up to 25 ml with diluent.</p><p class="sop-p">To obtain <span class="kw-wt">2.0 µg</span>/mL, measure <span class="kw-vol">0.2 mL</span> of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain <span class="kw-wt">10.0 µg</span>/mL, measure <span class="kw-vol">1 mL</span> of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain <span class="kw-wt">20.0 µg</span>/mL, measure <span class="kw-vol">2 mL</span> of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">To obtain <span class="kw-wt">38.0 µg</span>/mL, measure <span class="kw-vol">3.8 mL</span> of stock standard solution and make up to 10 ml with diluent.</p><p class="sop-p">Working standard solution at LOD level, <span class="kw-wt">0.6 µg</span>/mL (<span class="kw-wt">300 mg</span>/kg)</p><p class="sop-p">Measure <span class="kw-vol">0.15 mL</span> stock standard solution A and make up to <span class="kw-vol">25 mL</span> with diluent.</p><p class="sop-p">Working standard solution <span class="kw-wt">20.0 µg</span>/mL (for calibration check)</p><p class="sop-p">Dilute the standard stock solution B to get <span class="kw-wt">20.0 µg</span>/mL. To obtain <span class="kw-wt">20.0 µg</span>/mL, measure <span class="kw-vol">2 mL</span> of stock standard solution and make up to <span class="kw-vol">10 mL</span> with diluent. Filter with 0.45 µm nylon syringe filter and put in vial.</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-13" class="sop-step-title">
+                        6.5 Internal Quality Control, IQC
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-14" class="sop-step-title">
-                            6.4 Preparation of sample
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling processes differ between different types of dosage form. Please refer to the document PKKK/200/018 (Prosedur Persampelan Untuk Analisis Sampel) dan PKKK/300/UAT/001 (Proses Persampelan Ujian Penyaringan).</p><p class="sop-p">Average weight of the total tablet content</p><p class="sop-p">Weigh 20 tablets of sample individually</p><p class="sop-p">Record weight of each tablet in UAT/007 form</p><p class="sop-p">Calculate the total average weight of the tablets</p><p class="sop-p">Record all the result</p><p class="sop-p">Sample preparation for analysis</p><p class="sop-p">Weigh <span class="kw-wt">200 mg</span> powder of sample (obtain from 6.4.2) in 100ml volumetric flask in duplicate.</p><p class="sop-p">For liquid sample, weigh <span class="kw-wt">200 mg</span> of sample in 100 ml volumetric flask in duplicate.</p><p class="sop-p">Add <span class="kw-vol">60 mL</span> of diluent and sonicate for <span class="kw-time">15 minutes</span></p><p class="sop-p">Leave the solution to cool before making it up to volume of <span class="kw-vol">100 mL</span> with diluent</p><p class="sop-p">Filter the sample solution and put in a vial using 0.45 µm nylon syringe filter</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-14" class="sop-step-title">
+                        6.5.1	Prepare the internal quality control (IQC) sample using one of the following methods:
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-15" class="sop-step-title">
-                            6.5 Internal Quality Control, IQC
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Previously tested samples (Retained samples with known values)</p><p class="sop-p">Samples from Inter-Laboratory Comparison (ILC)</p><p class="sop-p">Standard spiking method - Sample spiked with Lovastatin at a final concentration of <span class="kw-wt">20.0 µg</span>/mL (10,<span class="kw-wt">000 mg</span>/kg)</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📖</span>
+            <h2>3.0 DEFINISI</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-15" class="sop-step-title">
+                        3.1	HPLC	- High Performance Liquid Chromatography
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-16" class="sop-step-title">
-                            6.5.1	Prepare the internal quality control (IQC) sample using one of the following methods:
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Previously tested samples (Retained samples with known values)</p><p class="sop-p">Samples from Inter-Laboratory Comparison (ILC)</p><p class="sop-p">Standard spiking method - Sample spiked with Lovastatin at a final concentration of <span class="kw-wt">20.0 µg</span>/mL (10,<span class="kw-wt">000 mg</span>/kg)</p><p class="sop-p">Procedure A: IQC using Previously Tested or ILC Samples (Applicable for samples selected in 6.5.1 (i) and (ii):</p><p class="sop-p">For Tablets: Take 20 tablets, crush and mix to homogenize</p><p class="sop-p">For Liquids: Shake the container to homogenize and pour a suitable amount into a beaker</p><p class="sop-p">Weigh <span class="kw-wt">200 mg</span> of the sample into a <span class="kw-vol">100 mL</span> volumetric flask</p><p class="sop-p">Add <span class="kw-vol">60 mL</span> of diluent and sonicate for <span class="kw-time">15 minutes</span></p><p class="sop-p">Leave the solution to cool before making it up to volume of <span class="kw-vol">100 mL</span> with diluent</p><p class="sop-p">Filter the sample solution and put in a vial using 0.45 µm nylon syringe filter.</p><p class="sop-p">Procedure B: IQC using Spiking Method (Applicable for samples selected in 6.5.1 (iii):</p><p class="sop-p">Weigh <span class="kw-wt">200mg</span> powder of sample (as obtained in Section 6.4.2) into a <span class="kw-vol">100 mL</span> volumetric flask</p><p class="sop-p">Add in <span class="kw-vol">60 mL</span> diluent</p><p class="sop-p">Perform spiking by adding <span class="kw-vol">20 mL</span> stock standard solution of Lovastatin, <span class="kw-wt">100 µg</span>/mL</p><p class="sop-p">Sonicate for <span class="kw-time">15 minutes</span> and leave the solution to cool</p><p class="sop-p">Make up to volume of <span class="kw-vol">100 mL</span> with diluent</p><p class="sop-p">Filter the solution and put in a vial using 0.45 µm nylon syringe filter</p><p class="sop-p">IQC sample will be injected twice and percent Recovery, (% Recovery) will be calculated by using the appropriate formula below:</p><p class="sop-p">For previously tested sample or sample from ILC:</p><p class="sop-p">Assigned Value is obtained from:</p><p class="sop-p">For previously tested samples: Refer to the original Certificate of Analysis (COA) for that specific batch.</p><p class="sop-p">For ILC samples: Refer to the ILC Lovastatin Current Report. Use the “Assigned Value” stated in the official report.</p><p class="sop-p">Sample spiked with Lovastatin at <span class="kw-wt">20.0 µg</span>/mL:</p><p class="sop-p">x 100%</p><p class="sop-p">IQC check passed if the IQC sample passed with recovery within 80 – 110%.</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-16" class="sop-step-title">
+                        3.2	RS	- Reference Standard
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-17" class="sop-step-title">
-                            6.6 Experimental Method
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">The HPLC system used for determination of Lovastatin is given in Table 1 below.</p><p class="sop-p">Table 1: HPLC system for determination of Lovastatin.</p><p class="sop-p">Refer to document PKKK/300/UAT/004 (RRLC 1200 Series), PKKK/300/UAT/012 (HPLC Shimadzu) and PKKK/300/UAT/017 (HPLC Perkin Elmer) on how to operate HPLC system in details.</p><p class="sop-p">System suitability</p><p class="sop-p">In order to check and ensure the system used is fit for the analysis, carry out a system suitability test using working standard solution <span class="kw-wt">20.0 µg</span>/mL (six injections) before starting any sample injection. The requirements are shown in Table 2 below:</p><p class="sop-p">Table 2: Requirement for system suitability test (SST)</p><p class="sop-p">System suitability test have to be done using HPLC offline system</p><p class="sop-p">Click Method         Load method</p><p class="sop-p">Click File          load signal, select <span class="kw-wt">20.0 µg</span>/mL file (1st injection)</p><p class="sop-p">Click Integration        Edit/Set Integration Events Table icon (pencil icon)         click ꭍ</p><p class="sop-p">At chromatogram, discard unnecessary peak</p><p class="sop-p">Next, click</p><p class="sop-p">Record all six peak areas obtained for working standard solution <span class="kw-wt">20.0 µg</span>/mL and ensure the system suitability test requirement as mention in Table 2 are met.</p><p class="sop-p">If the system suitability does not meet the specified requirements, repeat the test until it passes. If necessary, prepare a new working standard solution before proceeding with any working standard solution for calibration curve and sample injections.</p><p class="sop-p">Standard Injection and Calibration curve</p><p class="sop-p">Inject <span class="kw-wt">0.7 µg</span>/mL, <span class="kw-wt">2.0 µg</span>/mL, <span class="kw-wt">10.0 µg</span>/mL, <span class="kw-wt">20.0 µg</span>/mL and <span class="kw-wt">38.0 µg</span>/mL working standard solution before and after analysis by using different working standard solution prepared in 6.3.2. Create the calibration curves of concentration versus area and ensure the correlation coefficient (R2) obtained is equal or more than 0.999. If the correlation does not meet the required criteria, re-inject the working standard solution until the desired acceptance criteria is achieved. If necessary, prepare a new working standard solution before proceeding with any sample injections.</p><p class="sop-p">Steps required to generate the calibration curve:</p><p class="sop-p">Click File         load signal, select <span class="kw-wt">0.7 µg</span>/mL file</p><p class="sop-p">Click Calibration        New calibration Table</p><p class="sop-p">Enter weight of <span class="kw-wt">0.7 µg</span>/mL (e.g. 0.7) at ‘Default Amount’ column and click OK</p><p class="sop-p">Next click load file icon, select <span class="kw-wt">2.0 µg</span>/mL file</p><p class="sop-p">Click Calibration          Add level</p><p class="sop-p">Enter weight of <span class="kw-wt">2.0 µg</span>/mL (e.g. 2.0) at ‘Default Amount’ column and click OK</p><p class="sop-p">Repeat step 6.5.1. iv to 6.5.1.vi for <span class="kw-wt">10.0 µg</span>/mL, <span class="kw-wt">20.0 µg</span>/mL and <span class="kw-wt">38.0 µg</span>/mL working standard solution</p><p class="sop-p">Ensure the correlation coefficient (R2</p><p class="sop-p">Type ‘LOVASTATIN’ at calibration table</p><p class="sop-p">Then, click calibration        Calibration Settings. The calibration setting table will pop up.</p><p class="sop-p">Title: CALIBRATION CURVE FOR LOVASTATIN</p><p class="sop-p">Default Calibration Curve</p><p class="sop-p">Type: Linear</p><p class="sop-p">Origin: Ignore</p><p class="sop-p">Weight: Equal</p><p class="sop-p">Type ‘µg/mL’ at ‘Amount Unit’ column</p><p class="sop-p">Click OK and click OK at Calibration Table</p><p class="sop-p">Sample Injection</p><p class="sop-p">Inject each sample as a single injection. Compare the retention time and UV spectrum of the peak in the chromatogram of sample with the RS. The sample contains Lovastatin if the retention time and UV spectrum of the sample correspond to the RS.</p><p class="sop-p">Retention time and UV spectrum observation</p><p class="sop-p">To observe and check retention time and UV spectrum of the sample and RS, refer to document PKKK/300/UAT/004 (RRLC 1200 Series), PKKK/300/UAT/012 (HPLC Shimadzu) and PKKK/300/UAT/017 (HPLC Perkin Elmer).</p><p class="sop-p">Calibration Check After Sample Injections</p><p class="sop-p">Perform a calibration check by injecting Working Standard Solution B (<span class="kw-wt">20.0 µg</span>/mL) at the following intervals:</p><p class="sop-p">After every 5 sample injections</p><p class="sop-p">After completing all sample injections (end of analysis)</p><p class="sop-p">Calculate the % Recovery and Similarity Factor based on the formula below:</p><p class="sop-p">% Recovery for Working Standard Solution B</p><p class="sop-p">The calibration check is considered passed if Recovery is within 95 – 105%.</p><p class="sop-p">Using Similarity Factor, sf</p><p class="sop-p">The similarity factor passes if sf is within 98 – 102%.</p><p class="sop-p">The calibration check must fulfil both criteria in order to verify calibration integrity.</p><p class="sop-p">If either criterion fails:</p><p class="sop-p">Re-inject Working Standard Solution B</p><p class="sop-p">If still out-of-tolerance, prepare a fresh Working Standard Solution B and repeat</p><p class="sop-p">If failure persists, invalidate the batch analysis and investigate (standard preparation, column / system performance, sample preparation).</p><p class="sop-p">Sequence of Injection</p><p class="sop-p">Table 3: Sequence injection for determination of Lovastatin</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-17" class="sop-step-title">
+                        3.3	OOS	- Out of Specification
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-031-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
-                          <label for="step-031-18" class="sop-step-title">
-                            6.8 Calculation (Reporting the final results)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">If Lovastatin is detected, the amount of Lovastatin needs to be calculated.</p><p class="sop-p">Amount of Lovastatin in %w/w</p><p class="sop-p">(NPRA limit: Not more than 1.00 %w/w)</p><p class="sop-p">The total amount of Lovastatin in sample calculated by the formula below:</p><p class="sop-p">Dose Lovastatin per day (mg/day)</p><p class="sop-p">(NPRA limit: Not more than <span class="kw-wt">10.00 mg</span>/day)</p><p class="sop-p">Tablet Dosage Form</p><p class="sop-p">First, calculate the amount of Lovastatin per tablet (mg/tab) by the formula below:</p><p class="sop-p">Then, the dose Lovastatin per day is calculated by the formula below:</p>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-18" class="sop-step-title">
+                        3.4	UV	- Ultraviolet
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-19" class="sop-step-title">
+                        3.5	LOD	- Limit of Detection
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-20" class="sop-step-title">
+                        3.6	IQC	- Internal Quality Control
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-21" class="sop-step-title">
+                        3.7	UPA	- Unit Perkhidmatan Analisis
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-22" class="sop-step-title">
+                        3.8	SST	- System Suitability Test
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-23" class="sop-step-title">
+                        3.9	sf	- Similarity Factor
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-24" class="sop-step-title">
+                        3.10	COA 	- Certificate of Analysis
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 CARTA ALIRAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-7">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 TANGGUNGJAWAB</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Ketua Seksyen</p><p class="sop-p">Menyemak dan mengesahkan keputusan sampel yang tidak lulus atau di luar spesifikasi (OOS)</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-25" class="sop-step-title">
+                        5.3    Pegawai Farmasi
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian</p><p class="sop-p">Menjalankan kerja-kerja analisis mengikut tatacara yang telah ditetapkan dan menyediakan laporan ujian</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-26" class="sop-step-title">
+                        5.4    Penolong Pegawai Farmasi U7 / U6
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-27" class="sop-step-title">
+                        5.5    Penolong Pegawai Farmasi U6 / U5
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Menjalankan kerja-kerja analisis mengikut tatacara yang telah ditetapkan</p><p class="sop-p">Menyediakan laporan ujian</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-8">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">For Tablets: Take 20 tablets, crush and mix to homogenize</p><p class="sop-p">For Liquids: Shake the container to homogenize and pour a suitable amount into a beaker</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-28" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Weigh <span class="kw-wt">200 mg</span> of the sample into a <span class="kw-vol">100 mL</span> volumetric flask
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-29" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Add <span class="kw-vol">60 mL</span> of diluent and sonicate for <span class="kw-time">15 minutes</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Leave the solution to cool before making it up to volume of <span class="kw-vol">100 mL</span> with diluent</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-30" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Filter the sample solution and put in a vial using 0.45 µm nylon syringe filter.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-9">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-31" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Weigh <span class="kw-wt">200mg</span> powder of sample (as obtained in Section 6.4.2) into a <span class="kw-vol">100 mL</span> volumetric flask
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-32" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Add in <span class="kw-vol">60 mL</span> diluent
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Perform spiking by adding <span class="kw-vol">20 mL</span> stock standard solution of Lovastatin, <span class="kw-wt">100 µg</span>/mL</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-33" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Sonicate for <span class="kw-time">15 minutes</span> and leave the solution to cool
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Make up to volume of <span class="kw-vol">100 mL</span> with diluent</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-34" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Filter the solution and put in a vial using 0.45 µm nylon syringe filter
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">IQC sample will be injected twice and percent Recovery, (% Recovery) will be calculated by using the appropriate formula below:</p><p class="sop-p">For previously tested sample or sample from ILC:</p><p class="sop-p">Assigned Value is obtained from:</p><p class="sop-p">For previously tested samples: Refer to the original Certificate of Analysis (COA) for that specific batch.</p><p class="sop-p">For ILC samples: Refer to the ILC Lovastatin Current Report. Use the “Assigned Value” stated in the official report.</p><p class="sop-p">Sample spiked with Lovastatin at <span class="kw-wt">20.0 µg</span>/mL:</p><p class="sop-p">x 100%</p><p class="sop-p">IQC check passed if the IQC sample passed with recovery within 80 – 110%.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-35" class="sop-step-title">
+                        6.6 Experimental Method
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">The HPLC system used for determination of Lovastatin is given in Table 1 below.</p><p class="sop-p">Table 1: HPLC system for determination of Lovastatin.</p><p class="sop-p">Refer to document PKKK/300/UAT/004 (RRLC 1200 Series), PKKK/300/UAT/012 (HPLC Shimadzu) and PKKK/300/UAT/017 (HPLC Perkin Elmer) on how to operate HPLC system in details.</p><p class="sop-p">System suitability</p><p class="sop-p">In order to check and ensure the system used is fit for the analysis, carry out a system suitability test using working standard solution <span class="kw-wt">20.0 µg</span>/mL (six injections) before starting any sample injection. The requirements are shown in Table 2 below:</p><p class="sop-p">Table 2: Requirement for system suitability test (SST)</p><p class="sop-p">System suitability test have to be done using HPLC offline system</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-36" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-36" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Click Method         Load method
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-37" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-37" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Click File          load signal, select <span class="kw-wt">20.0 µg</span>/mL file (1st injection)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-38" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-38" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Click Integration        Edit/Set Integration Events Table icon (pencil icon)         click ꭍ
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">At chromatogram, discard unnecessary peak</p><p class="sop-p">Next, click</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-39" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-39" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Record all six peak areas obtained for working standard solution <span class="kw-wt">20.0 µg</span>/mL and ensure the system suitability test requirement as mention in Table 2 are met.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">If the system suitability does not meet the specified requirements, repeat the test until it passes. If necessary, prepare a new working standard solution before proceeding with any working standard solution for calibration curve and sample injections.</p><p class="sop-p">Standard Injection and Calibration curve</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-40" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-40" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Inject <span class="kw-wt">0.7 µg</span>/mL, <span class="kw-wt">2.0 µg</span>/mL, <span class="kw-wt">10.0 µg</span>/mL, <span class="kw-wt">20.0 µg</span>/mL and <span class="kw-wt">38.0 µg</span>/mL working standard solution before and after analysis by using different working standard solution prepared in 6.3.2. Create the calibration curves of concentration versus area and ensure the correlation coefficient (R2) obtained is equal or more than 0.999. If the correlation does not meet the required criteria, re-inject the working standard solution until the desired acceptance criteria is achieved. If necessary, prepare a new working standard solution before proceeding with any sample injections.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Steps required to generate the calibration curve:</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-41" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-41" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Click File         load signal, select <span class="kw-wt">0.7 µg</span>/mL file
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-42" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-42" class="sop-step-title">
+                        <span class="action-badge">Langkah 11</span>
+                        Click Calibration        New calibration Table
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-43" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-43" class="sop-step-title">
+                        <span class="action-badge">Langkah 12</span>
+                        Enter weight of <span class="kw-wt">0.7 µg</span>/mL (e.g. 0.7) at ‘Default Amount’ column and click OK
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Next click load file icon, select <span class="kw-wt">2.0 µg</span>/mL file</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-44" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-44" class="sop-step-title">
+                        <span class="action-badge">Langkah 13</span>
+                        Click Calibration          Add level
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-45" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-45" class="sop-step-title">
+                        <span class="action-badge">Langkah 14</span>
+                        Enter weight of <span class="kw-wt">2.0 µg</span>/mL (e.g. 2.0) at ‘Default Amount’ column and click OK
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Repeat step 6.5.1. iv to 6.5.1.vi for <span class="kw-wt">10.0 µg</span>/mL, <span class="kw-wt">20.0 µg</span>/mL and <span class="kw-wt">38.0 µg</span>/mL working standard solution</p><p class="sop-p">Ensure the correlation coefficient (R2</p><p class="sop-p">Type ‘LOVASTATIN’ at calibration table</p><p class="sop-p">Then, click calibration        Calibration Settings. The calibration setting table will pop up.</p><p class="sop-p">Title: CALIBRATION CURVE FOR LOVASTATIN</p><p class="sop-p">Default Calibration Curve</p><p class="sop-p">Type: Linear</p><p class="sop-p">Origin: Ignore</p><p class="sop-p">Weight: Equal</p><p class="sop-p">Type ‘µg/mL’ at ‘Amount Unit’ column</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-46" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-46" class="sop-step-title">
+                        <span class="action-badge">Langkah 15</span>
+                        Click OK and click OK at Calibration Table
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sample Injection</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-47" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-47" class="sop-step-title">
+                        <span class="action-badge">Langkah 16</span>
+                        Inject each sample as a single injection. Compare the retention time and UV spectrum of the peak in the chromatogram of sample with the RS. The sample contains Lovastatin if the retention time and UV spectrum of the sample correspond to the RS.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Retention time and UV spectrum observation</p><p class="sop-p">To observe and check retention time and UV spectrum of the sample and RS, refer to document PKKK/300/UAT/004 (RRLC 1200 Series), PKKK/300/UAT/012 (HPLC Shimadzu) and PKKK/300/UAT/017 (HPLC Perkin Elmer).</p><p class="sop-p">Calibration Check After Sample Injections</p><p class="sop-p">Perform a calibration check by injecting Working Standard Solution B (<span class="kw-wt">20.0 µg</span>/mL) at the following intervals:</p><p class="sop-p">After every 5 sample injections</p><p class="sop-p">After completing all sample injections (end of analysis)</p><p class="sop-p">Calculate the % Recovery and Similarity Factor based on the formula below:</p><p class="sop-p">% Recovery for Working Standard Solution B</p><p class="sop-p">The calibration check is considered passed if Recovery is within 95 – 105%.</p><p class="sop-p">Using Similarity Factor, sf</p><p class="sop-p">The similarity factor passes if sf is within 98 – 102%.</p><p class="sop-p">The calibration check must fulfil both criteria in order to verify calibration integrity.</p><p class="sop-p">If either criterion fails:</p><p class="sop-p">Re-inject Working Standard Solution B</p><p class="sop-p">If still out-of-tolerance, prepare a fresh Working Standard Solution B and repeat</p><p class="sop-p">If failure persists, invalidate the batch analysis and investigate (standard preparation, column / system performance, sample preparation).</p><p class="sop-p">Sequence of Injection</p><p class="sop-p">Table 3: Sequence injection for determination of Lovastatin</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-031-48" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/031')">
+                      <label for="step-031-48" class="sop-step-title">
+                        6.8 Calculation (Reporting the final results)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">If Lovastatin is detected, the amount of Lovastatin needs to be calculated.</p><p class="sop-p">Amount of Lovastatin in %w/w</p><p class="sop-p">(NPRA limit: Not more than 1.00 %w/w)</p><p class="sop-p">The total amount of Lovastatin in sample calculated by the formula below:</p><p class="sop-p">Dose Lovastatin per day (mg/day)</p><p class="sop-p">(NPRA limit: Not more than <span class="kw-wt">10.00 mg</span>/day)</p><p class="sop-p">Tablet Dosage Form</p><p class="sop-p">First, calculate the amount of Lovastatin per tablet (mg/tab) by the formula below:</p><p class="sop-p">Then, the dose Lovastatin per day is calculated by the formula below:</p>
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">*Amount of tablet taken per day = Can be obtained from the dosage information at the sample packaging.</span>
                 </div>
                 <p class="sop-p">ii) 	Liquid Dosage Form</p><p class="sop-p">Given product label: T mg of red yeast rice / Monascus Purpureus per Y mL#</p><p class="sop-p">Lovastatin content from 6.8.1: Z % w/w</p><p class="sop-p">Formula:</p><p class="sop-p">Lovastatin per Y mL dose (mg) = T</p><p class="sop-p">Then, the dose Lovastatin per day is calculated by the formula below:</p><p class="sop-p">#Number of doses taken per day = Can be obtained from the dosage information at the sample packaging.</p><p class="sop-p">Sample consider not detected with Lovastatin if the area of Lovastatin peak in the sample is below the area of the working standard solution at LOD level that is <span class="kw-wt">300 mg</span>/kg (<span class="kw-wt">0.6 µg</span>/mL)</p><p class="sop-p">Result documented in Certificate of Analysis:</p>
-                      </div>
-                    </div>
-                    
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-10">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7. REKOD KUALITI</h2>
+          </div>
+          <div class="sop-section-body">
+            
           </div>
         </div>
         
@@ -728,12 +1218,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/031</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis          oleh</td><td>Disemak    oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>28 Mac 2025</td></tr><tr ><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>1</td><td>2</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Jan 2026</td></tr><tr ><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>28 Mac 2025</td></tr><tr ><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>1</td><td>2</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Jan 2026</td></tr><tr ><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
             </table>
           </div>
         </div>

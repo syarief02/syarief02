@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -319,7 +404,7 @@
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
     <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/019 <span class="g">Water bath Memmert WB 45</span></h1>
-    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Radas & Penyelenggaraan</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
@@ -327,43 +412,38 @@
         <div class="wf-step">
           <div class="wf-node">1</div>
           <div class="wf-info">
-            <div class="wf-name">1. Persediaan</div>
-            <div class="wf-desc">Penerimaan sampel & borang</div>
+            <div class="wf-name">1. Pemeriksaan</div>
+            <div class="wf-desc">Semak keadaan alat & keselamatan</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">2</div>
           <div class="wf-info">
-            <div class="wf-name">2. Pelaksanaan</div>
-            <div class="wf-desc">Langkah kerja mengikut SOP</div>
+            <div class="wf-name">2. Penghidupan</div>
+            <div class="wf-desc">Hidupkan suis & tetapkan parameter</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">3</div>
           <div class="wf-info">
-            <div class="wf-name">3. Verifikasi</div>
-            <div class="wf-desc">Pemeriksaan kualiti & pematuhan</div>
+            <div class="wf-name">3. Penggunaan</div>
+            <div class="wf-desc">Kendalikan alat mengikut SOP</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">4</div>
           <div class="wf-info">
-            <div class="wf-name">4. Dokumentasi</div>
-            <div class="wf-desc">Perekodan fail kualiti rasmi</div>
+            <div class="wf-name">4. Penutupan</div>
+            <div class="wf-desc">Matikan & bersihkan alat</div>
           </div>
         </div>
         </div>
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -382,7 +462,7 @@
             <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes):</strong>
           </div>
           <ul class="tips-list">
-            <li>Patuhi amalan keselamatan makmal yang baik (GLP) dan rekodkan semua langkah persediaan dalam lembaran kerja rasmi.</li><li>Sebarang ketakakuran atau sampel luar spesifikasi hendaklah disiasat mengikut Arahan Kerja PKKK/300/UP/002.</li>
+            <li>Pastikan paras air berada di antara tanda MIN dan MAX sebelum memulakan pemanasan.</li><li>Gunakan air demineralized sahaja untuk mengelakkan pembentukan kerak mineral.</li><li>Matikan suis elektrik dan cabut plug sebelum membuka penutup water bath atau mengisi semula air.</li>
           </ul>
         </div>
         
@@ -393,7 +473,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 3 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 13 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -418,66 +498,266 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (2)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 TUJUAN</a><a href="#sec-3" class="toc-pill">2.0 SKOP</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">6.5 PENYELENGGARAAN</a><a href="#sec-9" class="toc-pill">6.6 PEMBERSIHAN</a><a href="#sec-10" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (2)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Meminda No.Dokumen PKKK/200/UAT/022 kepada PKKK/200/UP/019</p><p class="sop-p">Mengemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026</p><p class="sop-p">TUJUAN</p><p class="sop-p">Dokumen ini menyenaraikan prosedur yang perlu dilakukan semasa penggunaan Water Bath Memmert WB 45 untuk memanaskan sampel di makmal.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakapakai untuk mengendalikan alat Water Bath Memmert WB 45 bagi pengujian semua produk tradisional.</p><p class="sop-p">DEFINISI</p><p class="sop-p">Tiada definisi untuk prosedur ini</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-019-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
-                          <label for="step-019-1" class="sop-step-title">
-                            5.3      Penolong Pegawai Farmasi U7 / U6
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-019-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
-                          <label for="step-019-2" class="sop-step-title">
-                            5.4     Penolong Pegawai Farmasi
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-019-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
-                          <label for="step-019-3" class="sop-step-title">
-                            6.1 Tatacara Penggunaan
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Sistem water bath dipasang.</p><p class="sop-p">Isikan air demineralized sehingga paras di antara Min-Max seperti yang penanda di sebelah kanan dinding bahagian dalam. Elektrik plug wajib dicabutkan sebelum penutup water bath dibuka.</p><p class="sop-p">Pasangkan elektrik plug dan hidupkan suis elektrik.</p><p class="sop-p">Hidupkan alat water bath dengan menekan tombol keluar.</p><p class="sop-p">ON</p><p class="sop-p">Tetapkan suhu water bath seperti berikut:</p><p class="sop-p">Pusingkan tombol ke ℃ sehinggan ikon ℃ berkelip.</p><p class="sop-p">Tekan butang SET ke bawah dan putarkan tombol ke suhu yang diperlukan pada masa yang sama.</p><p class="sop-p">Lepaskan butang SET. Sasaran suhu ini akan disimpan.</p><p class="sop-p">Tunggu untuk suhu mencapai sasaran suhu yang ditetapkan.</p><p class="sop-p">Untuk mematikan alat water bath, tekan tombol biar tombol masuk ke dalam.</p><p class="sop-p">OFF</p><p class="sop-p">Matikan suis elektrik.</p><p class="sop-p">Penyelenggaraan</p><p class="sop-p">Sekiranya paras air tidak mencukupi, symbol  akan bernyala berterusan semasa water bath beroperasi.</p><p class="sop-p">Pemanasan akan berhenti. Matikan alat water bath dan biarkan sejuk.</p><p class="sop-p">Isikan air yang secukupnya sehingga paras air yang bersesuaian.</p><p class="sop-p">Water bath hanya boleh beroperasi semula selepas ini.</p><p class="sop-p">Water bath dilengkapi dengan monitoring relay elektronik. Sekiranya terdapat kesalahan semasa operasi atau jika suhu sasaran yang dipilih melebihi <span class="kw-temp">10°C</span>, maka monitoring relay akan meneruskan kawalan pemanasan pada suhu semasa dalam operasi kecemasan. Simbol  akan bernyala berkelip-kelip sebagai amaran.</p><p class="sop-p">Hunbungi Radicare untuk mendapatkan bantuan.</p><p class="sop-p">Pembersihan</p><p class="sop-p">Kebersihan water bath perlu dijaga dan air yang bersih ditukar bila perlu secara berkala.</p><p class="sop-p">Pastikan bahawa objek yang berkarat tidak bersentuhan dengan permukaan alat water bath.</p><p class="sop-p">Sekiranya kesan karat muncul pada permukaan alat water bath, termpat berkenaan perlu dibersihkan dan diasah dengan segera.</p>
-                      </div>
-                    </div>
-                    
+            
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (5 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 1, Semakan 1:</p><p class="sop-rev-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-rev-p">Terbitan 2, Semakan 0:</p><p class="sop-rev-p">Meminda No.Dokumen PKKK/200/UAT/022 kepada PKKK/200/UP/019</p><p class="sop-rev-p">Mengemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026</p></div>
+                </details>
+                
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-indigo" id="sec-2">
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 TUJUAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Dokumen ini menyenaraikan prosedur yang perlu dilakukan semasa penggunaan Water Bath Memmert WB 45 untuk memanaskan sampel di makmal.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SKOP</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROSEDUR</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-1" class="sop-step-title">
+                        6.1 Tatacara Penggunaan
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Sistem water bath dipasang.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Isikan air demineralized sehingga paras di antara Min-Max seperti yang penanda di sebelah kanan dinding bahagian dalam. Elektrik plug wajib dicabutkan sebelum penutup water bath dibuka.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-4" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Pasangkan elektrik plug dan hidupkan suis elektrik.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Hidupkan alat water bath dengan menekan tombol keluar.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">ON</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-6" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Tetapkan suhu water bath seperti berikut:
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Pusingkan tombol ke ℃ sehinggan ikon ℃ berkelip.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-8" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Tekan butang SET ke bawah dan putarkan tombol ke suhu yang diperlukan pada masa yang sama.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Lepaskan butang SET. Sasaran suhu ini akan disimpan.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-10" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Tunggu untuk suhu mencapai sasaran suhu yang ditetapkan.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Untuk mematikan alat water bath, tekan tombol biar tombol masuk ke dalam.</p><p class="sop-p">OFF</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Matikan suis elektrik.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📖</span>
+            <h2>3.0 DEFINISI</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Tiada definisi untuk prosedur ini</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 CARTA ALIRAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-7">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 TANGGUNGJAWAB</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-12" class="sop-step-title">
+                        5.3      Penolong Pegawai Farmasi U7 / U6
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-019-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/019')">
+                      <label for="step-019-13" class="sop-step-title">
+                        5.4     Penolong Pegawai Farmasi
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-rose" id="sec-8">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔧</span>
+            <h2>6.5 PENYELENGGARAAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Sekiranya paras air tidak mencukupi, symbol  akan bernyala berterusan semasa water bath beroperasi.</p><p class="sop-p">Pemanasan akan berhenti. Matikan alat water bath dan biarkan sejuk.</p><p class="sop-p">Isikan air yang secukupnya sehingga paras air yang bersesuaian.</p><p class="sop-p">Water bath hanya boleh beroperasi semula selepas ini.</p><p class="sop-p">Water bath dilengkapi dengan monitoring relay elektronik. Sekiranya terdapat kesalahan semasa operasi atau jika suhu sasaran yang dipilih melebihi <span class="kw-temp">10°C</span>, maka monitoring relay akan meneruskan kawalan pemanasan pada suhu semasa dalam operasi kecemasan. Simbol  akan bernyala berkelip-kelip sebagai amaran.</p><p class="sop-p">Hunbungi Radicare untuk mendapatkan bantuan.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-rose" id="sec-9">
+          <div class="sop-section-header">
+            <span class="sec-icon">🧹</span>
+            <h2>6.6 PEMBERSIHAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Kebersihan water bath perlu dijaga dan air yang bersih ditukar bila perlu secara berkala.</p><p class="sop-p">Pastikan bahawa objek yang berkarat tidak bersentuhan dengan permukaan alat water bath.</p><p class="sop-p">Sekiranya kesan karat muncul pada permukaan alat water bath, termpat berkenaan perlu dibersihkan dan diasah dengan segera.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-10">
           <div class="sop-section-header">
             <span class="sec-icon">📝</span>
-            <h2>7.  REKOD KUALITI</h2>
+            <h2>7. REKOD KUALITI</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Rekod penyelenggaraan alat Water Bath Memmert WB 45.</p>
@@ -489,12 +769,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/019</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Hee Soon Sean</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>1</td><td>1</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>2</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Hee Soon Sean</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>1</td><td>1</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>2</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
             </table>
           </div>
         </div>

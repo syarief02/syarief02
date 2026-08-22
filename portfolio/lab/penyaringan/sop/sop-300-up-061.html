@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -407,7 +492,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 6 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 13 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -432,138 +517,222 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">1.0	Objective</a><a href="#sec-3" class="toc-pill">3.0	Responsibility</a><a href="#sec-4" class="toc-pill">7.0	Quality Records</a><a href="#sec-5" class="toc-pill">8.0	Attachments</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (7)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 OBJECTIVE</a><a href="#sec-3" class="toc-pill">2.0 SCOPE</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-5" class="toc-pill">7.0 QUALITY RECORDS</a><a href="#sec-6" class="toc-pill">8.0 ATTACHMENTS</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (7)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">Sejarah semakan:</p><p class="sop-p">Terbitan 1 Semakan 1:</p><p class="sop-p">Pinda para 1.0 Objective</p><p class="sop-p">Tambah para 6.1 Test Method for Identification</p><p class="sop-p">Tambah para 6.2 Test Method for Quantitation</p><p class="sop-p">Tukar susunan nombor para 6.3, 6.4, 6.5 &amp; 6.6</p><p class="sop-p">Terbitan 1 Semakan 2:</p><p class="sop-p">Pinda tajuk dokumen dari Determination of p- Phenylenediamine in Hair Care Products</p><p class="sop-p">(Penentuan p- Phenylenediamine dalam Produk Penjagaan Rambut) kepada Identification &amp; Determination of p- Phenylenediamine in Hair Care Products</p><p class="sop-p">(Identifikasi &amp; Penentuan p- Phenylenediamine dalam Produk Penjagaan Rambut)</p><p class="sop-p">Terbitan 2 Semakan 0 :</p><p class="sop-p">Pinda no dokumen dari PKKK/300/KOS/033 kepada PKKK/300/UP/061.</p><p class="sop-p">Pinda tarikh kuatkuasa  3 Februari 2026  kepada 10 April 2026.</p><p class="sop-p">Kemaskini para 7.0 Quality Records :</p><p class="sop-p">KOS/X004 kepada UP/X010</p><p class="sop-p">KOS/X006 to UP/X011</p><p class="sop-p">KOS/X003 kepada UP/X009</p><p class="sop-p">KOS/002A kepada UP/002B</p><p class="sop-p">KOS/X009 kepada UP/X013</p>
+            
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (18 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 1 Semakan 1:</p><p class="sop-rev-p">Pinda para 1.0 Objective</p><p class="sop-rev-p">Tambah para 6.1 Test Method for Identification</p><p class="sop-rev-p">Tambah para 6.2 Test Method for Quantitation</p><p class="sop-rev-p">Tukar susunan nombor para 6.3, 6.4, 6.5 &amp; 6.6</p><p class="sop-rev-p">Terbitan 1 Semakan 2:</p><p class="sop-rev-p">Pinda tajuk dokumen dari Determination of p- Phenylenediamine in Hair Care Products</p><p class="sop-rev-p">(Penentuan p- Phenylenediamine dalam Produk Penjagaan Rambut) kepada Identification &amp; Determination of p- Phenylenediamine in Hair Care Products</p><p class="sop-rev-p">(Identifikasi &amp; Penentuan p- Phenylenediamine dalam Produk Penjagaan Rambut)</p><p class="sop-rev-p">Terbitan 2 Semakan 0 :</p><p class="sop-rev-p">Pinda no dokumen dari PKKK/300/KOS/033 kepada PKKK/300/UP/061.</p><p class="sop-rev-p">Pinda tarikh kuatkuasa  3 Februari 2026  kepada 10 April 2026.</p><p class="sop-rev-p">Kemaskini para 7.0 Quality Records :</p><p class="sop-rev-p">KOS/X004 kepada UP/X010</p><p class="sop-rev-p">KOS/X006 to UP/X011</p><p class="sop-rev-p">KOS/X003 kepada UP/X009</p><p class="sop-rev-p">KOS/002A kepada UP/002B</p><p class="sop-rev-p">KOS/X009 kepada UP/X013</p></div>
+                </details>
+                
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-cyan" id="sec-2">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0	Objective</h2>
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 OBJECTIVE</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">The test is performed to identify the presence of p-phenylenediamine and quantify the amount present in hair care products using HPLC.</p><p class="sop-p">Scope</p><p class="sop-p">This method describes the determination of p-Phenylenediamine in hair care products.</p>
+            <p class="sop-p">The test is performed to identify the presence of p-phenylenediamine and quantify the amount present in hair care products using HPLC.</p>
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-cyan" id="sec-3">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>3.0	Responsibility</h2>
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SCOPE</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">Head of Section</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-061-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
-                          <label for="step-061-1" class="sop-step-title">
-                            3.1.1	Validate analysis report of failed samples, investigational reports and approve in QUEST System
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Head of Unit</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis result on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and enter results into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Pharmacy Assistants (Analysts)</p><p class="sop-p">Perform sample testing according to the approved procedure</p><p class="sop-p">Prepare test reports</p><p class="sop-p">Equipment/ Materials</p><p class="sop-p">Ultrapure water</p><p class="sop-p">Acetonitrile, HPLC grade</p><p class="sop-p">Potassium Dihydrogen Phosphate, KH2PO4</p><p class="sop-p">Disodium Hydrogen Phosphate, Na2HPO4</p><p class="sop-p">1-Heptanesulfonic Acid, Sodium Salt</p><p class="sop-p">Sodium Ascorbate</p><p class="sop-p">Phosphate Buffer (25 mM/L phosphate buffer-0.1% heptane sulphonic acid): Dissolve by shaking <span class="kw-wt">3.06 g</span> KH2PO4, <span class="kw-wt">0.38 g</span> Na2HPO4 and <span class="kw-wt">1 g</span> sodium salt of 1-heptane sulfonic acid in <span class="kw-vol">1 L</span> water. Fill up to the mark and mix. Adjust to <span class="kw-ph">pH 6.0</span> by the addition of sodium hydroxide (NaOH) or phosphoric acid (H3PO4)</p><p class="sop-p">0.5% Sodium Ascorbate Solution: Dissolve <span class="kw-wt">1.25 g</span> sodium ascorbate in <span class="kw-vol">250 mL</span> of phosphate buffer.</p><p class="sop-p">Diluent: Mixture of 0.5% sodium ascorbate solution and Acetonitrile (ACN) in 4:6 ratio</p><p class="sop-p">Reference standard: p-Phenylenediamine</p><p class="sop-p">Volumetric Flasks (amber), Class A</p><p class="sop-p">Ultrasonicator Bath</p><p class="sop-p">PTFE Membrane Syringe Filter 0.45µm</p><p class="sop-p">HPLC Parameters</p><p class="sop-p">Procedure</p>
-                      </div>
+            <p class="sop-p">This method describes the determination of p-Phenylenediamine in hair care products.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-1" class="sop-step-title">
+                        3.0	Responsibility
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-061-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
-                          <label for="step-061-2" class="sop-step-title">
-                            6.1 	Test Method for Identification
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Head of Section</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-2" class="sop-step-title">
+                        3.1.1	Validate analysis report of failed samples, investigational reports and approve in QUEST System
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-061-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
-                          <label for="step-061-3" class="sop-step-title">
-                            6.1.1	Standard Stock Preparation 0.8 mg/mL (freshly prepared)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh approximately <span class="kw-wt">8 mg</span> of p-Phenylenediamine standard into a <span class="kw-vol">100 mL</span> volumetric flask (amber) Class A. Dissolve the standard in diluent and fill up to mark and mix.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-061-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
-                          <label for="step-061-4" class="sop-step-title">
-                            6.1.2	Working standard / LOQ preparation (0.024 mg/mL)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Transfer by pipette <span class="kw-vol">3 mL</span> stock solution in a <span class="kw-vol">10 mL</span> volumetric flask, fill up to the mark with diluent and mix.</p><p class="sop-p">Note: The preparation can be modified as long as the final concentration is achieved.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-061-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
-                          <label for="step-061-5" class="sop-step-title">
-                            6.1.3	Sequence of Injection
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">System Suitability</p><p class="sop-p">Tailing factor should be NMT 2.0</p><p class="sop-p">Theoretical plates should be NLT 1500</p><p class="sop-p">Test Method for Quantitation</p><p class="sop-p">Standard Stock Preparation <span class="kw-wt">0.8 mg</span>/mL (freshly prepared)</p><p class="sop-p">Weigh approximately <span class="kw-wt">80 mg</span> of p-Phenylenediamine standard into a <span class="kw-vol">100 mL</span> volumetric flask (amber) Class A. Dissolve the standard in diluent and fill up to mark and mix. Prepare calibration standard solution as following:</p><p class="sop-p">Note: The preparation can be modified as long as the final concentration is achieved.</p><p class="sop-p">Sequence of Injection</p><p class="sop-p">System Suitability Test (SST)</p><p class="sop-p">Relative Standard Deviation (RSD) of retention time NMT 2.0 %</p><p class="sop-p">Tailing factor should be NMT 2.0</p><p class="sop-p">Theoretical plates should be NLT 1500</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Weigh about <span class="kw-wt">0.5 g</span> sample into a <span class="kw-vol">25 mL</span> volumetric flask (amber) Class A. For quantitation purpose, perform duplication of sample.</p><p class="sop-p">Make up to the mark with diluent and mix well.</p><p class="sop-p">Heat the solution in water bath at around 60 ± 1 ºC for about <span class="kw-time">5 minutes</span>.</p><p class="sop-p">Shake the sample gently for 1 minute and sonicate for about <span class="kw-time">5 minutes</span> and allow the sample to cool to room temperature.</p><p class="sop-p">Filter the sample solution/suspension through 0.45 μm PTFE membrane filter into an amber vial.</p><p class="sop-p">Perform the HPLC determination within <span class="kw-time">24 hours</span> after preparation of the samples.</p><p class="sop-p">Note: Due to the nature of sample (easily oxidised), sample weight and dilution factor may be adjusted depending on concentration of p-Phenylenediamine in the sample. Concentration of sample should fall within the standard calibration range.</p><p class="sop-p">Sample Spike Preparation (IQC)</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-061-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
-                          <label for="step-061-6" class="sop-step-title">
-                            7.5 mL of p-Phenylenediamine standard stock solution (6.1.1) is pre-spiked into about 0.5 g of sample blank. The sample is extracted in a similar manner as steps stated in section 6.2. Filter the solution before injecting into the HPLC. IQC is to be injected before and after samples throughout the sequence. Recovery of standard should be within 80 % - 120 % in comparison to area from Std B.
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Result Interpretation:</p><p class="sop-p">Compare the retention time and spectrum obtained from the sample chromatogram with that of p-Phenylenediamine standard solution chromatogram.</p><p class="sop-p">The identity of p-Phenylenediamine is positive if the retention time and the UV spectrum of sample is similar to that obtained from the standard solution.</p><p class="sop-p">Calculations</p><p class="sop-p">Plot a calibration curve and determine the amount of p-Phenylenediamine in %w/w.</p>
-                      </div>
-                    </div>
-                    
+                  </div>
+                </div>
+                <p class="sop-p">Head of Unit</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis result on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and enter results into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Pharmacy Assistants (Analysts)</p><p class="sop-p">Perform sample testing according to the approved procedure</p><p class="sop-p">Prepare test reports</p><p class="sop-p">Equipment/ Materials</p><p class="sop-p">Ultrapure water</p><p class="sop-p">Acetonitrile, HPLC grade</p><p class="sop-p">Potassium Dihydrogen Phosphate, KH2PO4</p><p class="sop-p">Disodium Hydrogen Phosphate, Na2HPO4</p><p class="sop-p">1-Heptanesulfonic Acid, Sodium Salt</p><p class="sop-p">Sodium Ascorbate</p><p class="sop-p">Phosphate Buffer (25 mM/L phosphate buffer-0.1% heptane sulphonic acid): Dissolve by shaking <span class="kw-wt">3.06 g</span> KH2PO4, <span class="kw-wt">0.38 g</span> Na2HPO4 and <span class="kw-wt">1 g</span> sodium salt of 1-heptane sulfonic acid in <span class="kw-vol">1 L</span> water. Fill up to the mark and mix. Adjust to <span class="kw-ph">pH 6.0</span> by the addition of sodium hydroxide (NaOH) or phosphoric acid (H3PO4)</p><p class="sop-p">0.5% Sodium Ascorbate Solution: Dissolve <span class="kw-wt">1.25 g</span> sodium ascorbate in <span class="kw-vol">250 mL</span> of phosphate buffer.</p><p class="sop-p">Diluent: Mixture of 0.5% sodium ascorbate solution and Acetonitrile (ACN) in 4:6 ratio</p><p class="sop-p">Reference standard: p-Phenylenediamine</p><p class="sop-p">Volumetric Flasks (amber), Class A</p><p class="sop-p">Ultrasonicator Bath</p><p class="sop-p">PTFE Membrane Syringe Filter 0.45µm</p><p class="sop-p">HPLC Parameters</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-4">
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>7.0	Quality Records</h2>
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-3" class="sop-step-title">
+                        6.1 	Test Method for Identification
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-4" class="sop-step-title">
+                        6.1.1	Standard Stock Preparation <span class="kw-wt">0.8 mg</span>/mL (freshly prepared)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Weigh approximately <span class="kw-wt">8 mg</span> of p-Phenylenediamine standard into a <span class="kw-vol">100 mL</span> volumetric flask (amber) Class A. Dissolve the standard in diluent and fill up to mark and mix.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-6" class="sop-step-title">
+                        6.1.2	Working standard / LOQ preparation (<span class="kw-wt">0.024 mg</span>/mL)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Transfer by pipette <span class="kw-vol">3 mL</span> stock solution in a <span class="kw-vol">10 mL</span> volumetric flask, fill up to the mark with diluent and mix.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Note: The preparation can be modified as long as the final concentration is achieved.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-8" class="sop-step-title">
+                        6.1.3	Sequence of Injection
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">System Suitability</p><p class="sop-p">Tailing factor should be NMT 2.0</p><p class="sop-p">Theoretical plates should be NLT 1500</p><p class="sop-p">Test Method for Quantitation</p><p class="sop-p">Standard Stock Preparation <span class="kw-wt">0.8 mg</span>/mL (freshly prepared)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Weigh approximately <span class="kw-wt">80 mg</span> of p-Phenylenediamine standard into a <span class="kw-vol">100 mL</span> volumetric flask (amber) Class A. Dissolve the standard in diluent and fill up to mark and mix. Prepare calibration standard solution as following:
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Note: The preparation can be modified as long as the final concentration is achieved.</p><p class="sop-p">Sequence of Injection</p><p class="sop-p">System Suitability Test (SST)</p><p class="sop-p">Relative Standard Deviation (RSD) of retention time NMT 2.0 %</p><p class="sop-p">Tailing factor should be NMT 2.0</p><p class="sop-p">Theoretical plates should be NLT 1500</p><p class="sop-p">Sample Preparation</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-10" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Weigh about <span class="kw-wt">0.5 g</span> sample into a <span class="kw-vol">25 mL</span> volumetric flask (amber) Class A. For quantitation purpose, perform duplication of sample.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Make up to the mark with diluent and mix well.</p><p class="sop-p">Heat the solution in water bath at around 60 ± 1 ºC for about <span class="kw-time">5 minutes</span>.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Shake the sample gently for 1 minute and sonicate for about <span class="kw-time">5 minutes</span> and allow the sample to cool to room temperature.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-12" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Filter the sample solution/suspension through 0.45 μm PTFE membrane filter into an amber vial.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Perform the HPLC determination within <span class="kw-time">24 hours</span> after preparation of the samples.</p><p class="sop-p">Note: Due to the nature of sample (easily oxidised), sample weight and dilution factor may be adjusted depending on concentration of p-Phenylenediamine in the sample. Concentration of sample should fall within the standard calibration range.</p><p class="sop-p">Sample Spike Preparation (IQC)</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-061-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/061')">
+                      <label for="step-061-13" class="sop-step-title">
+                        <span class="kw-vol">7.5 mL</span> of p-Phenylenediamine standard stock solution (6.1.1) is pre-spiked into about <span class="kw-wt">0.5 g</span> of sample blank. The sample is extracted in a similar manner as steps stated in section 6.2. Filter the solution before injecting into the HPLC. IQC is to be injected before and after samples throughout the sequence. Recovery of standard should be within 80 % - 120 % in comparison to area from Std B.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Result Interpretation:</p><p class="sop-p">Compare the retention time and spectrum obtained from the sample chromatogram with that of p-Phenylenediamine standard solution chromatogram.</p><p class="sop-p">The identity of p-Phenylenediamine is positive if the retention time and the UV spectrum of sample is similar to that obtained from the standard solution.</p><p class="sop-p">Calculations</p><p class="sop-p">Plot a calibration curve and determine the amount of p-Phenylenediamine in %w/w.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7.0 QUALITY RECORDS</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah HPLC	: UP/X010</p><p class="sop-p">Borang Pengiraan Ujian Kuantifikasi Teknik Kromatografi	: UP/X011</p><p class="sop-p">Rumusan Laporan Pengujian	Kromatografi			: UP/X009</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p><p class="sop-p">Borang Keputusan Ujian Kosmetik				: UP/X013</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-5">
+        <div class="sop-section-container sec-theme-indigo" id="sec-6">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>8.0	Attachments</h2>
+            <span class="sec-icon">📎</span>
+            <h2>8.0 ATTACHMENTS</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">NA</p>
@@ -575,12 +744,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/061</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Dilulus oleh</td><td>Tarikh Kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Gopinatha Ganesh</td><td>Leong Lip Wai</td><td>Nor Izyani Hanafi</td><td>1 Ogos 2024</td></tr><tr ><td>1</td><td>1</td><td>Gopinatha Ganesh</td><td>Nur Syazana Ahmad Nordin</td><td>Nor Izyani Hanafi</td><td>26 Disember 2025</td></tr><tr ><td>1</td><td>2</td><td>Gopinatha Ganesh</td><td>Nur Syazana Ahmad Nordin</td><td>Nor Izyani Hanafi</td><td>3 Februari 2026</td></tr><tr ><td>2</td><td>0</td><td>Gopinatha Ganesh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Gopinatha Ganesh</td><td>Leong Lip Wai</td><td>Nor Izyani Hanafi</td><td>1 Ogos 2024</td></tr><tr ><td>1</td><td>1</td><td>Gopinatha Ganesh</td><td>Nur Syazana Ahmad Nordin</td><td>Nor Izyani Hanafi</td><td>26 Disember 2025</td></tr><tr ><td>1</td><td>2</td><td>Gopinatha Ganesh</td><td>Nur Syazana Ahmad Nordin</td><td>Nor Izyani Hanafi</td><td>3 Februari 2026</td></tr><tr ><td>2</td><td>0</td><td>Gopinatha Ganesh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
             </table>
           </div>
         </div>

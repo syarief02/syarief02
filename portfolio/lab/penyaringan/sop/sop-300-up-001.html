@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -359,11 +444,6 @@
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Lovastatin</span><span class="analite-chip">Simvastatin</span><span class="analite-chip">Atorvastatin</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -393,7 +473,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 3 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 8 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -418,66 +498,177 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (13)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 TUJUAN</a><a href="#sec-3" class="toc-pill">2.0 SKOP</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (13)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Tiada Sejarah semakan</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses persampelan yang dijalankan di Unit Penyaringan dijalankan dengan betul dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakapakai untuk menjalankan proses persampelan bagi kesemua sampel yang diterima di Unit Penyaringan.</p><p class="sop-p">DEFINISI</p><p class="sop-p">Tiada definisi untuk prosedur ini</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Cara persampelan adalah berbeza mengikut bentuk dan bilangan sampel yang diterima</p><p class="sop-p">Cara persampelan produk (selain produk kosmetik) adalah seperti berikut :</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-001-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
-                          <label for="step-001-1" class="sop-step-title">
-                            6.1.1 Serbuk
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">6.1.1.1 Bungkusan Tunggal</p><p class="sop-p">Timbang berat sampel tersebut. ‘Homogenize’ dengan mengoncangkan sampel tersebut. Ambil 10% sampel perwakilan daripada berat kesuluruhan sampel serbuk tersebut.</p><p class="sop-p">6.1.1.2 Bungkusan Pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Semua sampel di dalam satu kumpulan yang sama akan disatukan di dalam bungkusan lain agar lebih ‘homogenize’.</p><p class="sop-p">Aerosol</p><p class="sop-p">Cara persampelan untuk sampel aerosol adalah sama dengan sampel serbuk.</p><p class="sop-p">Kesemua isi kandungan aerosol akan digunakan. Kaedah yang digunapakai adalah dengan menyembur sampel ini ke dalam bekas kaca sebelum pengekstrakan atau pelarutan dijalankan.</p><p class="sop-p">Tablet, Kapsul, Pil, Suppositori &amp; Gula-gula</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Bungkusan Pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bungkusan berdasarkan ‘square root’ bilangan keseluruhan bungkusan sampel tersebut kepada integer terbesar seterusnya.</p><p class="sop-p">Daripada bungkusan yang dipilih, pilih secara rawak bilangan biji sampel berdasarkan ‘square root’ bilangan keseluruhan biji sampel dalam setiap bungkusan tersebut kepada integer terbesar seterusnya.</p><p class="sop-p">Contoh:- Sampel yang diterima ialah 1000 kerajang</p><p class="sop-p">“square root” 1000 = 32 kerajang</p><p class="sop-p">setiap kerajang mempunyai 10 biji kapsul yang sama</p><p class="sop-p">“square root” 10 = 4 biji kapsul</p><p class="sop-p">Oleh itu:- 4 biji kapsul akan diambil secara rawak dari setiap 32 kerajang.</p><p class="sop-p">6.1.3.3 Bagi ujian penentuan kandungan Lovastatin dalam produk tradisional bentuk kapsul menggunakan HPLC, bilangan akhir biji kapsul yang diambil semasa proses persampelan haruslah 20 atau lebih biji kapsul.</p><p class="sop-p">Cecair</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Ambil <span class="kw-vol">10 mL</span> cecair daripada bungkusan tersebut.</p><p class="sop-p">6.1.4.2 Bungkusan pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bekas/paket berdasarkan ‘square root’ bilangan keseluruhan bekas/paket tersebut kepada integer terbesar seterusnya. Hanya <span class="kw-vol">10 mL</span> cecair sahaja akan diambil daripada setiap bekas/paket.</p><p class="sop-p">Bagi sampel yang kurang <span class="kw-vol">10 mL</span> &amp; sampel yang diisi didalam vial kaca, kesemua sampel akan diambil.</p><p class="sop-p">Krim</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Ambil 10% sampel perwakilan daripada berat keseluruhan sampel krim tersebut.</p><p class="sop-p">Bungkusan pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bekas/paket berdasarkan ‘square root’ bilangan keseluruhan bekas/paket tersebut kepada integer terbesar seterusnya. Hanya 10% krim sahaja akan diambil daripada setiap bekas/paket.</p><p class="sop-p">Plaster / Patch</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Ambil semua sampel plaster / patch di dalam bungkusan tunggal tersebut.</p><p class="sop-p">Bungkusan pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan paket berdasarkan ‘square root’ bilangan keseluruhan paket tersebut kepada integer terbesar seterusnya. Hanya 10% daripada jumlah paket sahaja akan diambil daripada setiap bungkusan.</p><p class="sop-p">Penyeragaman Sampel</p><p class="sop-p">Sampel berbentuk serbuk</p><p class="sop-p">Keluarkan sampel dari bungkusan dan masukkan ke dalam plastik. Goncang dan campurkan serbuk dengan menggunakan spatula. Ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk kapsul</p><p class="sop-p">Goncang dan campurkan kapsul dalam bungkusan plastik. Ambil kuantiti yang diperlukan dengan spatula.</p><p class="sop-p">Sampel berbentuk tablet, pil, suppositori dan gula-gula</p><p class="sop-p">Hancurkan sampel dengan menggunakan ‘mortar dan pestle’. Masukkan dalam bungkusan plastik dan campurkan dengan spatula. Ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk krim dan cecair</p><p class="sop-p">Keluarkan sampel dari bungkusan dan masukkan dalam bikar. Kacau dengan rod kaca dan ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk plaster dan patch</p><p class="sop-p">Keluarkan sampel dari paket. Guntingkan plaster / patch kepada bentuk yang lebih kecil ke dalam plastik. Goncangkan plastik tersebut dan ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Cara persampelan produk kosmetik</p><p class="sop-p">Cara persampelan produk kosmetik adalah mengikut pembungkusan yang diterima serta berdasarkan arahan penggunaan yang ditetapkan oleh pengilang (ie: kombinasi produk jika berkenaan).</p><p class="sop-p">Proses persampelan adalah berdasarkan bilangan sampel dan pembungkusan yang diterima. Terdapat 2 teknik persampelan yang digunakan iaitu:</p><p class="sop-p">Representative sampling</p><p class="sop-p">Digunakan bagi sampel yang mempunyai nombor kelompok &amp; tarikh luput yang sama dengan ciri fizikal (eg: saiz pembungkusan, warna) yang sama, namun kuantiti sampel yang diterima untuk pengujian adalah kurang daripada 10.</p><p class="sop-p">Arbitrary sampling</p><p class="sop-p">Digunakan bagi sampel yang mempunyai nombor kelompok &amp; tarikh luput yang sama dengan ciri fizikal (eg: saiz pembungkusan, warna) yang sama, namun kuantiti sampel yang diterima untuk pengujian adalah melebihi 10.</p><p class="sop-p">Nota: Bagi sampel dengan nombor kelompok, tarikh luput dan ciri fizikal yang</p><p class="sop-p">berbeza, persampelan harus dijalankan secara berasingan.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-001-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
-                          <label for="step-001-2" class="sop-step-title">
-                            6.2.2    Bilangan sampel yang diterima
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Nota: Sampel yang diterima dalam pek pembungkusan ampul &amp; vial adalah dikecualikan dari kaedah persampelan dalam jadual di atas (sila rujuk kaedah persampelan ampul &amp; vial pada para 6.2.2)</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-001-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
-                          <label for="step-001-3" class="sop-step-title">
-                            6.2.3 Bentuk pembungkusan/Rupabentuk
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Nota: Bilangan sampel diambil adalah berdasarkan jadual 6.2.1 (kecuali ampul &amp;</p><p class="sop-p">vial)</p>
-                      </div>
-                    </div>
-                    
+            <p class="sop-p">Tiada Sejarah semakan</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-indigo" id="sec-2">
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 TUJUAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses persampelan yang dijalankan di Unit Penyaringan dijalankan dengan betul dan berkesan.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SKOP</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROSEDUR</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Cara persampelan adalah berbeza mengikut bentuk dan bilangan sampel yang diterima</p><p class="sop-p">Cara persampelan produk (selain produk kosmetik) adalah seperti berikut :</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-001-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
+                      <label for="step-001-1" class="sop-step-title">
+                        6.1.1 Serbuk
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">6.1.1.1 Bungkusan Tunggal</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-001-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
+                      <label for="step-001-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Timbang berat sampel tersebut. ‘Homogenize’ dengan mengoncangkan sampel tersebut. Ambil 10% sampel perwakilan daripada berat kesuluruhan sampel serbuk tersebut.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">6.1.1.2 Bungkusan Pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Semua sampel di dalam satu kumpulan yang sama akan disatukan di dalam bungkusan lain agar lebih ‘homogenize’.</p><p class="sop-p">Aerosol</p><p class="sop-p">Cara persampelan untuk sampel aerosol adalah sama dengan sampel serbuk.</p><p class="sop-p">Kesemua isi kandungan aerosol akan digunakan. Kaedah yang digunapakai adalah dengan menyembur sampel ini ke dalam bekas kaca sebelum pengekstrakan atau pelarutan dijalankan.</p><p class="sop-p">Tablet, Kapsul, Pil, Suppositori &amp; Gula-gula</p><p class="sop-p">Bungkusan tunggal</p><p class="sop-p">Bungkusan Pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bungkusan berdasarkan ‘square root’ bilangan keseluruhan bungkusan sampel tersebut kepada integer terbesar seterusnya.</p><p class="sop-p">Daripada bungkusan yang dipilih, pilih secara rawak bilangan biji sampel berdasarkan ‘square root’ bilangan keseluruhan biji sampel dalam setiap bungkusan tersebut kepada integer terbesar seterusnya.</p><p class="sop-p">Contoh:- Sampel yang diterima ialah 1000 kerajang</p><p class="sop-p">“square root” 1000 = 32 kerajang</p><p class="sop-p">setiap kerajang mempunyai 10 biji kapsul yang sama</p><p class="sop-p">“square root” 10 = 4 biji kapsul</p><p class="sop-p">Oleh itu:- 4 biji kapsul akan diambil secara rawak dari setiap 32 kerajang.</p><p class="sop-p">6.1.3.3 Bagi ujian penentuan kandungan Lovastatin dalam produk tradisional bentuk kapsul menggunakan HPLC, bilangan akhir biji kapsul yang diambil semasa proses persampelan haruslah 20 atau lebih biji kapsul.</p><p class="sop-p">Cecair</p><p class="sop-p">Bungkusan tunggal</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-001-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
+                      <label for="step-001-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Ambil <span class="kw-vol">10 mL</span> cecair daripada bungkusan tersebut.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">6.1.4.2 Bungkusan pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bekas/paket berdasarkan ‘square root’ bilangan keseluruhan bekas/paket tersebut kepada integer terbesar seterusnya. Hanya <span class="kw-vol">10 mL</span> cecair sahaja akan diambil daripada setiap bekas/paket.</p><p class="sop-p">Bagi sampel yang kurang <span class="kw-vol">10 mL</span> &amp; sampel yang diisi didalam vial kaca, kesemua sampel akan diambil.</p><p class="sop-p">Krim</p><p class="sop-p">Bungkusan tunggal</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-001-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
+                      <label for="step-001-4" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Ambil 10% sampel perwakilan daripada berat keseluruhan sampel krim tersebut.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Bungkusan pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan bekas/paket berdasarkan ‘square root’ bilangan keseluruhan bekas/paket tersebut kepada integer terbesar seterusnya. Hanya 10% krim sahaja akan diambil daripada setiap bekas/paket.</p><p class="sop-p">Plaster / Patch</p><p class="sop-p">Bungkusan tunggal</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-001-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
+                      <label for="step-001-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Ambil semua sampel plaster / patch di dalam bungkusan tunggal tersebut.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Bungkusan pelbagai</p><p class="sop-p">Periksa kesemua bungkusan sampel yang diterima. Bungkusan akan dikumpulkan mengikut kesamaan. Daripada bungkusan yang dipilih, pilih secara rawak bilangan paket berdasarkan ‘square root’ bilangan keseluruhan paket tersebut kepada integer terbesar seterusnya. Hanya 10% daripada jumlah paket sahaja akan diambil daripada setiap bungkusan.</p><p class="sop-p">Penyeragaman Sampel</p><p class="sop-p">Sampel berbentuk serbuk</p><p class="sop-p">Keluarkan sampel dari bungkusan dan masukkan ke dalam plastik. Goncang dan campurkan serbuk dengan menggunakan spatula. Ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk kapsul</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-001-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
+                      <label for="step-001-6" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Goncang dan campurkan kapsul dalam bungkusan plastik. Ambil kuantiti yang diperlukan dengan spatula.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sampel berbentuk tablet, pil, suppositori dan gula-gula</p><p class="sop-p">Hancurkan sampel dengan menggunakan ‘mortar dan pestle’. Masukkan dalam bungkusan plastik dan campurkan dengan spatula. Ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk krim dan cecair</p><p class="sop-p">Keluarkan sampel dari bungkusan dan masukkan dalam bikar. Kacau dengan rod kaca dan ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Sampel berbentuk plaster dan patch</p><p class="sop-p">Keluarkan sampel dari paket. Guntingkan plaster / patch kepada bentuk yang lebih kecil ke dalam plastik. Goncangkan plastik tersebut dan ambil kuantiti yang diperlukan untuk timbangan dengan spatula.</p><p class="sop-p">Cara persampelan produk kosmetik</p><p class="sop-p">Cara persampelan produk kosmetik adalah mengikut pembungkusan yang diterima serta berdasarkan arahan penggunaan yang ditetapkan oleh pengilang (ie: kombinasi produk jika berkenaan).</p><p class="sop-p">Proses persampelan adalah berdasarkan bilangan sampel dan pembungkusan yang diterima. Terdapat 2 teknik persampelan yang digunakan iaitu:</p><p class="sop-p">Representative sampling</p><p class="sop-p">Digunakan bagi sampel yang mempunyai nombor kelompok &amp; tarikh luput yang sama dengan ciri fizikal (eg: saiz pembungkusan, warna) yang sama, namun kuantiti sampel yang diterima untuk pengujian adalah kurang daripada 10.</p><p class="sop-p">Arbitrary sampling</p><p class="sop-p">Digunakan bagi sampel yang mempunyai nombor kelompok &amp; tarikh luput yang sama dengan ciri fizikal (eg: saiz pembungkusan, warna) yang sama, namun kuantiti sampel yang diterima untuk pengujian adalah melebihi 10.</p><p class="sop-p">Nota: Bagi sampel dengan nombor kelompok, tarikh luput dan ciri fizikal yang</p><p class="sop-p">berbeza, persampelan harus dijalankan secara berasingan.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-001-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
+                      <label for="step-001-7" class="sop-step-title">
+                        6.2.2    Bilangan sampel yang diterima
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Nota: Sampel yang diterima dalam pek pembungkusan ampul &amp; vial adalah dikecualikan dari kaedah persampelan dalam jadual di atas (sila rujuk kaedah persampelan ampul &amp; vial pada para 6.2.2)</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-001-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/001')">
+                      <label for="step-001-8" class="sop-step-title">
+                        6.2.3 Bentuk pembungkusan/Rupabentuk
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Nota: Bilangan sampel diambil adalah berdasarkan jadual 6.2.1 (kecuali ampul &amp;</p><p class="sop-p">vial)</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📖</span>
+            <h2>3.0 DEFINISI</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Tiada definisi untuk prosedur ini</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 CARTA ALIRAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-7">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 TANGGUNGJAWAB</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-8">
           <div class="sop-section-header">
             <span class="sec-icon">📝</span>
-            <h2>7.  REKOD KUALITI</h2>
+            <h2>7. REKOD KUALITI</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/001B	Borang Persampelan Produk Kosmetik</p><p class="sop-p">UP/001A                                                                                                                                               10 Apr-2026</p><p class="sop-p">Rujuk Arahan Kerja PKKK/300/UP/001</p><p class="sop-p">Rujuk Prosedur Kualiti PKKK/200/018</p><p class="sop-p">UP/001B									10 -Apr - 2026</p><p class="sop-p">Rujuk Arahan Kerja PKKK/300/UP/001</p><p class="sop-p">Rujuk Prosedur Kualiti PKKK/200/018</p>
@@ -489,12 +680,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/001</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
             </table>
           </div>
         </div>

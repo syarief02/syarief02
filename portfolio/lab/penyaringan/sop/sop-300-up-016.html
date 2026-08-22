@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -367,11 +452,6 @@
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -421,7 +501,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 0 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 56 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -446,24 +526,783 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.	REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 TUJUAN</a><a href="#sec-3" class="toc-pill">2.0 SKOP</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/077 kepada PKKK/300/HMS/077</p><p class="sop-p">Pindaan pada senarai Tanggungjawab kepada yang terkini</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/077 kepada PKKK/300/UAT/017</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Terbitan 2, Semakan 2:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/017 kepada PKKK/300/UP/016</p><p class="sop-p">Kemas kini tarikh kuat kuasa dari 1 Julai 2025 kepada 10 Apr 2026.</p><p class="sop-p">Pinda Laporan Penyelenggaraan, Servis dan Kalibrasi di dalam fail alat berkenaan kepada Rekod penyelenggaraan alat Shimadzu High Performance Liquid Chromatography Flexar (Perkin Elmer)</p><p class="sop-p">TUJUAN</p><p class="sop-p">Tujuan prosedur ini adalah untuk menerangkan cara-cara menggunakan alat Perkin Elmer Flexar High Performance Liquid Chromatography.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunapakai semasa menjalankan ujian analitikal dengan menggunakan High Performance Liquid Chromatography.</p><p class="sop-p">DEFINISI</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p><p class="sop-p">Penolong Pegawai Farmasi</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Pengenalan alat</p><p class="sop-p">This instrument consists of the following components:</p><p class="sop-p">FLEXAR LC Pumps</p><p class="sop-p">FLEXAR PDA Plus LC Detector</p><p class="sop-p">FLEXAR LC Column Ovens</p><p class="sop-p">FLEXAR Autosamplers</p><p class="sop-p">Computer</p><p class="sop-p">Printer</p><p class="sop-p">Operasi alat</p><p class="sop-p">Switch ON the battery</p><p class="sop-p">Turn on PC, enter Windows 10</p><p class="sop-p">Turn on HPLC devices</p><p class="sop-p">Double click &lt;TC Navigator&gt; to enter Total Chrom</p><p class="sop-p">Click Run &gt; Take Control</p><p class="sop-p">At this moment, “Hands-on” button grey-out</p><p class="sop-p">Starting the Total Chrom Navigator</p><p class="sop-p">Click Run 🡪 Take Control</p><p class="sop-p">Seizing – establishing software &amp; HPLC communication</p><p class="sop-p">Seizing – Communicating (L) and Communication established. Hands on available (R)</p><p class="sop-p">Preparation</p><p class="sop-p">Start pump &amp; purge lines</p><p class="sop-p">To Start Pump – Click instrument setup</p><p class="sop-p">Browse &amp; Choose a sequence to trigger pump</p><p class="sop-p">Browse sequence</p><p class="sop-p">Select a sequence to trigger pump start</p><p class="sop-p">Select sequence named “StartPump” or “Preparation” 🡪 Click Select</p><p class="sop-p">A sequence displayed 🡪 Action 🡪 Setup</p><p class="sop-p">Set the following</p><p class="sop-p">Status: Setting up</p><p class="sop-p">Status: HPLC Ready / Pump Off 🡪 Click Hands On</p><p class="sop-p">Hands-On 🡪 Pump (or Purge)</p><p class="sop-p">Remove cover of Flexar Pump. Loosen purge valve (Anti Clockwise)</p><p class="sop-p">Pump – Adjust the composition 100% of mobile phase.</p><p class="sop-p">Key in flow rate 3-<span class="kw-flow"><span class="kw-vol">5mL</span>/min</span></p><p class="sop-p">Click Set Value</p><p class="sop-p">Click Start Pump</p><p class="sop-p">Purge for 15 – <span class="kw-vol">30 mL</span> of mobile phase</p><p class="sop-p">Repeat 1 – 6 for other line if necessary</p><p class="sop-p">Tighten purge valve and remove</p><p class="sop-p">Syringe after completed.</p><p class="sop-p">Start the pump for equilibrium</p><p class="sop-p">Connect the column to the inlet and outlet tubing (could be not connected)</p><p class="sop-p">Set the pump at low flow rate for example <span class="kw-flow"><span class="kw-vol">0.5mL</span>/min</span> initially.</p><p class="sop-p">The flow rate and % composition of mobile phases could be change</p><p class="sop-p">Equilibrate the column from by slowly increasing flow rate to <span class="kw-flow"><span class="kw-vol">1mL</span>/min</span> or as required by method</p><p class="sop-p">Flush the column for 20 - <span class="kw-vol">50mL</span> of its volume, or follow the regular in-house practice.</p><p class="sop-p">Benchmark of column C18 (150mm x 4.6mm x 5µm)</p><p class="sop-p">At <span class="kw-vol">1mL</span> of 75% MeOH 25% UPW, pressure redback is 2250psi</p><p class="sop-p">Prepare detector</p><p class="sop-p">Turn on the lamps to set wavelength</p><p class="sop-p">Flush syringe</p><p class="sop-p">Hands On 🡪 Autosampler 🡪 Flush Autosampler (perform a few times to get rid of air bubbles in syringe)</p><p class="sop-p">Set temperature of Autosampler as preparation</p><p class="sop-p">Set oven temperature</p><p class="sop-p">Double click Oven.exe</p><p class="sop-p">Select “Flexar Oven #2”</p><p class="sop-p">Key-in temperature 🡪 Enter</p><p class="sop-p">Set oven temperature</p><p class="sop-p">End of preparation: Run 🡪 Clear Setup</p><p class="sop-p">End of preparation: Run 🡪 Clear Setup 🡪 Status</p><p class="sop-p">Status: No Method – ready for use</p><p class="sop-p">Flush column</p><p class="sop-p">Sequence</p><p class="sop-p">Running sample – Click “Sequence”</p><p class="sop-p">Browse or select sequence / Create New</p><p class="sop-p">Specify the Sample Type, Vial Number, Instrument Method</p><p class="sop-p">Double click the Data column to browse the directory (folder to save raw file) and name the raw file.</p><p class="sop-p">Example of directory and raw files (xxx.raw)</p><p class="sop-p">Highlight rows to run, or just click Actions 🡪 Set Up</p><p class="sop-p">Set accordingly – Check the sample rows</p><p class="sop-p">HPLC Status: Setting Up – Method parameters being send to HPLC (wait a while)</p><p class="sop-p">Status of pre-injection &amp; injection</p><p class="sop-p">Ready – Equilibrium (green) (L) and Pump start / equilibrating flow rates (R)</p><p class="sop-p">Status – Flushing &amp; Running</p><p class="sop-p">Flushing loop, syringe, injecting &amp; running (blue)</p><p class="sop-p">Click Real-Time Plot to view chromatogram progress</p><p class="sop-p">Details – view current run sample</p><p class="sop-p">Method</p><p class="sop-p">Overview of Method Editor (Only run instrument)</p><p class="sop-p">Overview of Method Editor (with calibration &amp; processing Method)</p><p class="sop-p">Click Instrument Control Icon or Instrument 🡪 Instrument Control 🡪 Autosampler</p><p class="sop-p">Autosampler – Set Injection volume &amp; temperature</p><p class="sop-p">Pump configuration</p><p class="sop-p">Pump Program (Isocratic)</p><p class="sop-p">Pump Program (Gradient)</p><p class="sop-p">Summary of Gradient Mode</p><p class="sop-p">Instrument Timed Events – Leave blank 🡪 OK. Save the Method Editor</p><p class="sop-p">Processing Method Integration &amp; Method</p><p class="sop-p">External Calibration</p><p class="sop-p">Click Graphic Edit</p><p class="sop-p">Select and open one of your standard file (raw file). Example here is Data001.raw</p><p class="sop-p">Chromatogram of Data001 will be displayed. Notice that this data file is linked to this method (eg. Test1)</p><p class="sop-p">To optimize the processing method, click &lt;Process&gt;&lt;Noise/Area Threshold&gt;</p><p class="sop-p">Click &amp; drag the background. Click OK to accept the suggested NT &amp; AT. Manually you can increase these number if you want higher thresholds.</p><p class="sop-p">You will notice that most of the noises will not be integrated</p><p class="sop-p">Go to &lt;Edit Components…&gt; to name the components.</p><p class="sop-p">Move the box to the first peak of your interest and type the name of the compound in &lt;Name&gt; field. Click Next. Continue naming the peaks in similar manner.</p><p class="sop-p">Click &lt;Return&gt;</p><p class="sop-p">Click &lt;Save&gt;. You are now saving the method file (eg. Test1)</p><p class="sop-p">To open the method file, click &lt;Other&gt;&lt;Method&gt;</p><p class="sop-p">The method file is opened. Now you can see your component name and retention time appeared in the component list.</p><p class="sop-p">Go to &lt;Component&gt;&lt;Edit Component&gt;</p><p class="sop-p">Click Calibration Page</p><p class="sop-p">Select &lt;Ave calibration factor&gt; if you only have one standard with repeatable runs, or select &lt;Use curve&gt; if more than 2 standards are use.</p><p class="sop-p">Select 1st order for the curve fit type. Choose force the origin if you want the curve to pass through origin without intercepting. Give the name for level field and amount (concentration) in amt field.</p><p class="sop-p">Select second component and do the same setting for all accept the amount</p><p class="sop-p">Click OK</p><p class="sop-p">Go to &lt;Component&gt;&lt;Calibrate…&gt;</p><p class="sop-p">Click the folder icon on the upper right corner and select all the date files for calibration</p><p class="sop-p">Highlight the data file and select the appropriate level. Click Add.</p><p class="sop-p">Click OK</p><p class="sop-p">You can see other’s calibration by highlighting the next component.</p><p class="sop-p">Save the method by clicking the save icon</p><p class="sop-p">Totalchrom – Format Report Editor</p><p class="sop-p">Open the method from Method Editor. Go to &lt;Other&gt;&lt;Report Format Editor&gt;</p><p class="sop-p">A report format is opened with same name as method file name (.rpt)</p><p class="sop-p">Click Default Report title and change the name of the report title accordingly</p><p class="sop-p">Click and delete whichever column you want to delete</p><p class="sop-p">Go to Report and select whichever column you like to include as well as the column number</p><p class="sop-p">Example here showed how to insert column 2 with Component Name</p><p class="sop-p">You must insert Raw Amount column if you have done your calibration. This column is indicating the amount / concentration directly calculated from the calibration curve.</p><p class="sop-p">Go to Option</p><p class="sop-p">To insert the chromatography plot between header and report body, tick &lt;Print replot with reports&gt;</p><p class="sop-p">Click Save icon</p><p class="sop-p">Build a sequence to reprocess stored data</p><p class="sop-p">To build a sequence using a template</p><p class="sop-p">Method Editor 🡪 Other 🡪 Sequence Editor</p><p class="sop-p">Sequence Editor 🡪 File 🡪 New</p><p class="sop-p">Sequence Editor 🡪 File 🡪 New 🡪 Global Parameters</p><p class="sop-p">Set accordingly</p><p class="sop-p">A sequence displayed 🡪 Double click “Data” to input .raw files for each row 🡪 Browse &amp; load the correct raw files for each calibration level &amp; samples.</p><p class="sop-p">Sequence Editor 🡪 Action 🡪 Batch</p><p class="sop-p">Ensure starting &amp; ending row no. set correctly 🡪 Set the rest as following</p><p class="sop-p">Batch reprocessing 🡪 Automatically proceed or click the button as showed in the picture</p><p class="sop-p">Click “Reprocess Results” to view the results files</p><p class="sop-p">Browse the result file one by one (.rst file)</p><p class="sop-p">File 🡪 Print Preview Report</p><p class="sop-p">Print Preview Report</p><p class="sop-p">System Suitability</p><p class="sop-p">TotalChrom Navigator 🡪 Apps 🡪 Suitability</p><p class="sop-p">Option 🡪 Suitability Option</p><p class="sop-p">Signal to Noise (Peak Height vs. baseline)</p><p class="sop-p">Choose the SST criteria 🡪 Input the limits 🡪 OK</p><p class="sop-p">File 🡪 Save As 🡪 OK 🡪 Enter File Name (*.sui)</p><p class="sop-p">Click Data icon</p><p class="sop-p">Results Files Selection 🡪 Choose a Result File (.rst file)</p><p class="sop-p">Click “Print Preview” icon 🡪 Print Option 🡪 OK</p><p class="sop-p">The report displayed the criteria that user has chosen</p><p class="sop-p">Print report as usual</p><p class="sop-p">View / Print Chromatogram</p><p class="sop-p">Click Chromatogram tab</p><p class="sop-p">Select one or more raw files</p><p class="sop-p">View chromatograms 🡪 Click Overlay icon</p><p class="sop-p">Overlay Chromatograms 🡪 2D</p><p class="sop-p">Options 🡪 3-D Preview</p><p class="sop-p">Adjust X and Y axis 🡪 OK</p><p class="sop-p">3-D Chromatogram 🡪 File 🡪 Print 🡪 Check criteria to print</p><p class="sop-p">Summary: Repeatability of multiple injections</p><p class="sop-p">Double click on the summary button</p><p class="sop-p">Click the Add Files icon</p><p class="sop-p">File List 🡪 Select one or more result files (.rst) 🡪 Add</p><p class="sop-p">Files to summarize – displayed the selected .rsst files 🡪 OK</p><p class="sop-p">Load from Result File (or Method)</p><p class="sop-p">Select one of the .rst file added just now (as reference of integration method)</p><p class="sop-p">File 🡪 Open Format 🡪 Select a Summary template (.sum file)</p><p class="sop-p">Summary interface – grey turned to white</p><p class="sop-p">Check data or prints 🡪 Close</p><p class="sop-p">IRIS – Processing software</p><p class="sop-p">Click No if the below appears</p><p class="sop-p">Click File 🡪 Open result file or shortcut</p><p class="sop-p">Browse the first .rst file for viewing spectra</p><p class="sop-p">Main View : Chromatogram, contour, spectra &amp; 3d view</p><p class="sop-p">Use Compare Tab</p><p class="sop-p">Browse and open the 2nd .rst file for comparison</p><p class="sop-p">Compare 2 Chromatogram side by side</p><p class="sop-p">Select different chromatogram at Data Tree at left &amp; right bar</p><p class="sop-p">Overlay chromatogram</p><p class="sop-p">Right click on one of the chromatogram, select ”Overlay Chromatogram”</p><p class="sop-p">Stack View of Chromatogram &amp; Overlay Spectras</p><p class="sop-p">Wavelength Maximum</p><p class="sop-p">Click “Chrom / Spectra” tab</p><p class="sop-p">Click on the peaks of each chromatogram. The RT will appeared under respective data trees.</p><p class="sop-p">Check the same RT of each chromatograms in data trees to compare the spectra.</p><p class="sop-p">Move the cursor on spectra to read and label the optimum wavelengths.</p><p class="sop-p">Click Tools 🡪 Annotation 🡪 Add 🡪 Key-in the compound name for the spectra 🡪 point to the spectra to drop the annotation of spectra.</p><p class="sop-p">Print chromatogram &amp; overlay spectras</p><p class="sop-p">File 🡪 Print 🡪 Choose printer (or PDF) 🡪 Choose All Panels in view</p><p class="sop-p">File 🡪 Save Results</p><p class="sop-p">File 🡪 Print 🡪 All Pane 🡪 OK</p>
+            
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (1 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 2, Semakan 0:</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (1 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 2, Semakan 1:</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (3 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 2, Semakan 2:</p><p class="sop-rev-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-rev-p">Terbitan 3, Semakan 0:</p></div>
+                </details>
+                <p class="sop-p">Kemas kini tarikh kuat kuasa dari 1 Julai 2025 kepada 10 Apr 2026.</p><p class="sop-p">Pinda Laporan Penyelenggaraan, Servis dan Kalibrasi di dalam fail alat berkenaan kepada Rekod penyelenggaraan alat Shimadzu High Performance Liquid Chromatography Flexar (Perkin Elmer)</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-indigo" id="sec-2">
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 TUJUAN</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SKOP</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROSEDUR</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Pengenalan alat</p><p class="sop-p">This instrument consists of the following components:</p><p class="sop-p">FLEXAR LC Pumps</p><p class="sop-p">FLEXAR PDA Plus LC Detector</p><p class="sop-p">FLEXAR LC Column Ovens</p><p class="sop-p">FLEXAR Autosamplers</p><p class="sop-p">Computer</p><p class="sop-p">Printer</p><p class="sop-p">Operasi alat</p><p class="sop-p">Switch ON the battery</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-1" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Turn on PC, enter Windows 10
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Turn on HPLC devices
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Double click &lt;TC Navigator&gt; to enter Total Chrom</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Click Run &gt; Take Control
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">At this moment, “Hands-on” button grey-out</p><p class="sop-p">Starting the Total Chrom Navigator</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-4" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Click Run 🡪 Take Control
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Seizing – establishing software &amp; HPLC communication</p><p class="sop-p">Seizing – Communicating (L) and Communication established. Hands on available (R)</p><p class="sop-p">Preparation</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-5" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Start pump &amp; purge lines
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">To Start Pump – Click instrument setup</p><p class="sop-p">Browse &amp; Choose a sequence to trigger pump</p><p class="sop-p">Browse sequence</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-6" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Select a sequence to trigger pump start
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Select sequence named “StartPump” or “Preparation” 🡪 Click Select
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">A sequence displayed 🡪 Action 🡪 Setup</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-8" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Set the following
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Status: Setting up</p><p class="sop-p">Status: HPLC Ready / Pump Off 🡪 Click Hands On</p><p class="sop-p">Hands-On 🡪 Pump (or Purge)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Remove cover of Flexar Pump. Loosen purge valve (Anti Clockwise)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Pump – Adjust the composition 100% of mobile phase.</p><p class="sop-p">Key in flow rate 3-<span class="kw-flow"><span class="kw-vol">5mL</span>/min</span></p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-10" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Click Set Value
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 11</span>
+                        Click Start Pump
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-12" class="sop-step-title">
+                        <span class="action-badge">Langkah 12</span>
+                        Purge for 15 – <span class="kw-vol">30 mL</span> of mobile phase
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Repeat 1 – 6 for other line if necessary</p><p class="sop-p">Tighten purge valve and remove</p><p class="sop-p">Syringe after completed.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-13" class="sop-step-title">
+                        <span class="action-badge">Langkah 13</span>
+                        Start the pump for equilibrium
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Connect the column to the inlet and outlet tubing (could be not connected)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-14" class="sop-step-title">
+                        <span class="action-badge">Langkah 14</span>
+                        Set the pump at low flow rate for example <span class="kw-flow"><span class="kw-vol">0.5mL</span>/min</span> initially.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">The flow rate and % composition of mobile phases could be change</p><p class="sop-p">Equilibrate the column from by slowly increasing flow rate to <span class="kw-flow"><span class="kw-vol">1mL</span>/min</span> or as required by method</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-15" class="sop-step-title">
+                        <span class="action-badge">Langkah 15</span>
+                        Flush the column for 20 - <span class="kw-vol">50mL</span> of its volume, or follow the regular in-house practice.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Benchmark of column C18 (150mm x 4.6mm x 5µm)</p><p class="sop-p">At <span class="kw-vol">1mL</span> of 75% MeOH 25% UPW, pressure redback is <span class="kw-flow">2250psi</span></p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-16" class="sop-step-title">
+                        <span class="action-badge">Langkah 16</span>
+                        Prepare detector
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-17" class="sop-step-title">
+                        <span class="action-badge">Langkah 17</span>
+                        Turn on the lamps to set wavelength
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-18" class="sop-step-title">
+                        <span class="action-badge">Langkah 18</span>
+                        Flush syringe
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Hands On 🡪 Autosampler 🡪 Flush Autosampler (perform a few times to get rid of air bubbles in syringe)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-19" class="sop-step-title">
+                        <span class="action-badge">Langkah 19</span>
+                        Set temperature of Autosampler as preparation
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-20" class="sop-step-title">
+                        <span class="action-badge">Langkah 20</span>
+                        Set oven temperature
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Double click Oven.exe</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-21" class="sop-step-title">
+                        <span class="action-badge">Langkah 21</span>
+                        Select “Flexar Oven #2”
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Key-in temperature 🡪 Enter</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-22" class="sop-step-title">
+                        <span class="action-badge">Langkah 22</span>
+                        Set oven temperature
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">End of preparation: Run 🡪 Clear Setup</p><p class="sop-p">End of preparation: Run 🡪 Clear Setup 🡪 Status</p><p class="sop-p">Status: No Method – ready for use</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-23" class="sop-step-title">
+                        <span class="action-badge">Langkah 23</span>
+                        Flush column
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sequence</p><p class="sop-p">Running sample – Click “Sequence”</p><p class="sop-p">Browse or select sequence / Create New</p><p class="sop-p">Specify the Sample Type, Vial Number, Instrument Method</p><p class="sop-p">Double click the Data column to browse the directory (folder to save raw file) and name the raw file.</p><p class="sop-p">Example of directory and raw files (xxx.raw)</p><p class="sop-p">Highlight rows to run, or just click Actions 🡪 Set Up</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-24" class="sop-step-title">
+                        <span class="action-badge">Langkah 24</span>
+                        Set accordingly – Check the sample rows
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">HPLC Status: Setting Up – Method parameters being send to HPLC (wait a while)</p><p class="sop-p">Status of pre-injection &amp; injection</p><p class="sop-p">Ready – Equilibrium (green) (L) and Pump start / equilibrating flow rates (R)</p><p class="sop-p">Status – Flushing &amp; Running</p><p class="sop-p">Flushing loop, syringe, injecting &amp; running (blue)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-25" class="sop-step-title">
+                        <span class="action-badge">Langkah 25</span>
+                        Click Real-Time Plot to view chromatogram progress
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Details – view current run sample</p><p class="sop-p">Method</p><p class="sop-p">Overview of Method Editor (Only run instrument)</p><p class="sop-p">Overview of Method Editor (with calibration &amp; processing Method)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-26" class="sop-step-title">
+                        <span class="action-badge">Langkah 26</span>
+                        Click Instrument Control Icon or Instrument 🡪 Instrument Control 🡪 Autosampler
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Autosampler – Set Injection volume &amp; temperature</p><p class="sop-p">Pump configuration</p><p class="sop-p">Pump Program (Isocratic)</p><p class="sop-p">Pump Program (Gradient)</p><p class="sop-p">Summary of Gradient Mode</p><p class="sop-p">Instrument Timed Events – Leave blank 🡪 OK. Save the Method Editor</p><p class="sop-p">Processing Method Integration &amp; Method</p><p class="sop-p">External Calibration</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-27" class="sop-step-title">
+                        <span class="action-badge">Langkah 27</span>
+                        Click Graphic Edit
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-28" class="sop-step-title">
+                        <span class="action-badge">Langkah 28</span>
+                        Select and open one of your standard file (raw file). Example here is Data001.raw
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Chromatogram of Data001 will be displayed. Notice that this data file is linked to this method (eg. Test1)</p><p class="sop-p">To optimize the processing method, click &lt;Process&gt;&lt;Noise/Area Threshold&gt;</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-29" class="sop-step-title">
+                        <span class="action-badge">Langkah 29</span>
+                        Click &amp; drag the background. Click OK to accept the suggested NT &amp; AT. Manually you can increase these number if you want higher thresholds.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">You will notice that most of the noises will not be integrated</p><p class="sop-p">Go to &lt;Edit Components…&gt; to name the components.</p><p class="sop-p">Move the box to the first peak of your interest and type the name of the compound in &lt;Name&gt; field. Click Next. Continue naming the peaks in similar manner.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-30" class="sop-step-title">
+                        <span class="action-badge">Langkah 30</span>
+                        Click &lt;Return&gt;
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-31" class="sop-step-title">
+                        <span class="action-badge">Langkah 31</span>
+                        Click &lt;Save&gt;. You are now saving the method file (eg. Test1)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">To open the method file, click &lt;Other&gt;&lt;Method&gt;</p><p class="sop-p">The method file is opened. Now you can see your component name and retention time appeared in the component list.</p><p class="sop-p">Go to &lt;Component&gt;&lt;Edit Component&gt;</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-32" class="sop-step-title">
+                        <span class="action-badge">Langkah 32</span>
+                        Click Calibration Page
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-33" class="sop-step-title">
+                        <span class="action-badge">Langkah 33</span>
+                        Select &lt;Ave calibration factor&gt; if you only have one standard with repeatable runs, or select &lt;Use curve&gt; if more than 2 standards are use.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-34" class="sop-step-title">
+                        <span class="action-badge">Langkah 34</span>
+                        Select 1st order for the curve fit type. Choose force the origin if you want the curve to pass through origin without intercepting. Give the name for level field and amount (concentration) in amt field.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-35" class="sop-step-title">
+                        <span class="action-badge">Langkah 35</span>
+                        Select second component and do the same setting for all accept the amount
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Click OK</p><p class="sop-p">Go to &lt;Component&gt;&lt;Calibrate…&gt;</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-36" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-36" class="sop-step-title">
+                        <span class="action-badge">Langkah 36</span>
+                        Click the folder icon on the upper right corner and select all the date files for calibration
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Highlight the data file and select the appropriate level. Click Add.</p><p class="sop-p">Click OK</p><p class="sop-p">You can see other’s calibration by highlighting the next component.</p><p class="sop-p">Save the method by clicking the save icon</p><p class="sop-p">Totalchrom – Format Report Editor</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-37" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-37" class="sop-step-title">
+                        <span class="action-badge">Langkah 37</span>
+                        Open the method from Method Editor. Go to &lt;Other&gt;&lt;Report Format Editor&gt;
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">A report format is opened with same name as method file name (.rpt)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-38" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-38" class="sop-step-title">
+                        <span class="action-badge">Langkah 38</span>
+                        Click Default Report title and change the name of the report title accordingly
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-39" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-39" class="sop-step-title">
+                        <span class="action-badge">Langkah 39</span>
+                        Click and delete whichever column you want to delete
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Go to Report and select whichever column you like to include as well as the column number</p><p class="sop-p">Example here showed how to insert column 2 with Component Name</p><p class="sop-p">You must insert Raw Amount column if you have done your calibration. This column is indicating the amount / concentration directly calculated from the calibration curve.</p><p class="sop-p">Go to Option</p><p class="sop-p">To insert the chromatography plot between header and report body, tick &lt;Print replot with reports&gt;</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-40" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-40" class="sop-step-title">
+                        <span class="action-badge">Langkah 40</span>
+                        Click Save icon
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Build a sequence to reprocess stored data</p><p class="sop-p">To build a sequence using a template</p><p class="sop-p">Method Editor 🡪 Other 🡪 Sequence Editor</p><p class="sop-p">Sequence Editor 🡪 File 🡪 New</p><p class="sop-p">Sequence Editor 🡪 File 🡪 New 🡪 Global Parameters</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-41" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-41" class="sop-step-title">
+                        <span class="action-badge">Langkah 41</span>
+                        Set accordingly
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">A sequence displayed 🡪 Double click “Data” to input .raw files for each row 🡪 Browse &amp; load the correct raw files for each calibration level &amp; samples.</p><p class="sop-p">Sequence Editor 🡪 Action 🡪 Batch</p><p class="sop-p">Ensure starting &amp; ending row no. set correctly 🡪 Set the rest as following</p><p class="sop-p">Batch reprocessing 🡪 Automatically proceed or click the button as showed in the picture</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-42" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-42" class="sop-step-title">
+                        <span class="action-badge">Langkah 42</span>
+                        Click “Reprocess Results” to view the results files
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Browse the result file one by one (.rst file)</p><p class="sop-p">File 🡪 Print Preview Report</p><p class="sop-p">Print Preview Report</p><p class="sop-p">System Suitability</p><p class="sop-p">TotalChrom Navigator 🡪 Apps 🡪 Suitability</p><p class="sop-p">Option 🡪 Suitability Option</p><p class="sop-p">Signal to Noise (Peak Height vs. baseline)</p><p class="sop-p">Choose the SST criteria 🡪 Input the limits 🡪 OK</p><p class="sop-p">File 🡪 Save As 🡪 OK 🡪 Enter File Name (*.sui)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-43" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-43" class="sop-step-title">
+                        <span class="action-badge">Langkah 43</span>
+                        Click Data icon
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Results Files Selection 🡪 Choose a Result File (.rst file)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-44" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-44" class="sop-step-title">
+                        <span class="action-badge">Langkah 44</span>
+                        Click “Print Preview” icon 🡪 Print Option 🡪 OK
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">The report displayed the criteria that user has chosen</p><p class="sop-p">Print report as usual</p><p class="sop-p">View / Print Chromatogram</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-45" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-45" class="sop-step-title">
+                        <span class="action-badge">Langkah 45</span>
+                        Click Chromatogram tab
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-46" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-46" class="sop-step-title">
+                        <span class="action-badge">Langkah 46</span>
+                        Select one or more raw files
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">View chromatograms 🡪 Click Overlay icon</p><p class="sop-p">Overlay Chromatograms 🡪 2D</p><p class="sop-p">Options 🡪 3-D Preview</p><p class="sop-p">Adjust X and Y axis 🡪 OK</p><p class="sop-p">3-D Chromatogram 🡪 File 🡪 Print 🡪 Check criteria to print</p><p class="sop-p">Summary: Repeatability of multiple injections</p><p class="sop-p">Double click on the summary button</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-47" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-47" class="sop-step-title">
+                        <span class="action-badge">Langkah 47</span>
+                        Click the Add Files icon
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">File List 🡪 Select one or more result files (.rst) 🡪 Add</p><p class="sop-p">Files to summarize – displayed the selected .rsst files 🡪 OK</p><p class="sop-p">Load from Result File (or Method)</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-48" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-48" class="sop-step-title">
+                        <span class="action-badge">Langkah 48</span>
+                        Select one of the .rst file added just now (as reference of integration method)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">File 🡪 Open Format 🡪 Select a Summary template (.sum file)</p><p class="sop-p">Summary interface – grey turned to white</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-49" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-49" class="sop-step-title">
+                        <span class="action-badge">Langkah 49</span>
+                        Check data or prints 🡪 Close
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">IRIS – Processing software</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-50" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-50" class="sop-step-title">
+                        <span class="action-badge">Langkah 50</span>
+                        Click No if the below appears
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-51" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-51" class="sop-step-title">
+                        <span class="action-badge">Langkah 51</span>
+                        Click File 🡪 Open result file or shortcut
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Browse the first .rst file for viewing spectra</p><p class="sop-p">Main View : Chromatogram, contour, spectra &amp; 3d view</p><p class="sop-p">Use Compare Tab</p><p class="sop-p">Browse and open the 2nd .rst file for comparison</p><p class="sop-p">Compare 2 Chromatogram side by side</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-52" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-52" class="sop-step-title">
+                        <span class="action-badge">Langkah 52</span>
+                        Select different chromatogram at Data Tree at left &amp; right bar
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Overlay chromatogram</p><p class="sop-p">Right click on one of the chromatogram, select ”Overlay Chromatogram”</p><p class="sop-p">Stack View of Chromatogram &amp; Overlay Spectras</p><p class="sop-p">Wavelength Maximum</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-53" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-53" class="sop-step-title">
+                        <span class="action-badge">Langkah 53</span>
+                        Click “Chrom / Spectra” tab
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-54" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-54" class="sop-step-title">
+                        <span class="action-badge">Langkah 54</span>
+                        Click on the peaks of each chromatogram. The RT will appeared under respective data trees.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-55" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-55" class="sop-step-title">
+                        <span class="action-badge">Langkah 55</span>
+                        Check the same RT of each chromatograms in data trees to compare the spectra.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Move the cursor on spectra to read and label the optimum wavelengths.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-016-56" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/016')">
+                      <label for="step-016-56" class="sop-step-title">
+                        <span class="action-badge">Langkah 56</span>
+                        Click Tools 🡪 Annotation 🡪 Add 🡪 Key-in the compound name for the spectra 🡪 point to the spectra to drop the annotation of spectra.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Print chromatogram &amp; overlay spectras</p><p class="sop-p">File 🡪 Print 🡪 Choose printer (or PDF) 🡪 Choose All Panels in view</p><p class="sop-p">File 🡪 Save Results</p><p class="sop-p">File 🡪 Print 🡪 All Pane 🡪 OK</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📖</span>
+            <h2>3.0 DEFINISI</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">HPLC – High Performance Liquid Chromatography</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 CARTA ALIRAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-7">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 TANGGUNGJAWAB</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p><p class="sop-p">Penolong Pegawai Farmasi</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-8">
           <div class="sop-section-header">
             <span class="sec-icon">📝</span>
-            <h2>7.	REKOD KUALITI</h2>
+            <h2>7. REKOD KUALITI</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Rekod penyelenggaraan alat Shimadzu High Performance Liquid Chromatography</p><p class="sop-p">Flexar (Perkin Elmer)</p>
@@ -475,12 +1314,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/016</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Dilulus oleh</td><td>Tarikh Kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Lim Wen Jun</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>1 Jan 2021</td></tr><tr ><td>2</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>2</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>2</td><td>2</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 Apr 2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Lim Wen Jun</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>1 Jan 2021</td></tr><tr ><td>2</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>2</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>2</td><td>2</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 Apr 2026</td></tr>
             </table>
           </div>
         </div>

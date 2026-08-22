@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -367,11 +452,6 @@
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -421,7 +501,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 0 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 3 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -446,34 +526,100 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.0	QUALITY RECORD</a><a href="#sec-3" class="toc-pill">8.0	ATTACHMENTS</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">2.0 SCOPE</a><a href="#sec-3" class="toc-pill">5.0 RESPONSIBILITIES</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROCEDURE</a><a href="#sec-5" class="toc-pill">7.0 QUALITY RECORD</a><a href="#sec-6" class="toc-pill">8.0 ATTACHMENTS</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">AMENDMENT:</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to the ISO 9001: 2015 version and the renaming of the institution from National Pharmaceutical Control Bureau (NPCB) to Bahagian Regulatori Farmasi Negara (NPRA). Therefore, the original document is obsolete and this document is published as Issue 1.</p><p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number from PKK/300/SPKF/049 to PKK/300/HMS/055</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 2 Revision 1:</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 2 Revision 2 :</p><p class="sop-p">i.	Update on name of agency from National Pharmaceutical Regulatory Agency (NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/055 to PKKK/300/HMS/055</p><p class="sop-p">Update document number from PKK/200/048 to PKKK/200/010 in references</p><p class="sop-p">Update paragraph 5. Responsibilities</p><p class="sop-p">Update paragraph 6.9 Performance Check</p><p class="sop-p">Add on paragraph 8.0 Attachments</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/055 to PKKK/300/KOS/014</p><p class="sop-p">Update paragraph 5. Responsibilities</p><p class="sop-p">Issue 4 Revision 1 :</p><p class="sop-p">Update document number from PKKK/300/KOS/014 to PKKK/300/UP/046.</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for weighing balance in the laboratory.</p><p class="sop-p">SCOPE</p><p class="sop-p">This guide shall be used for the operation of Precisa XB 320M Top Pan Balance.</p><p class="sop-p">DEFINITION</p><p class="sop-p">None</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p><p class="sop-p">RESPONSIBILITIES</p><p class="sop-p">PROCEDURE</p><p class="sop-p">Please ensure the power supply adaptor is connected to the unit.</p><p class="sop-p">Switch on the power supply at the mains.</p><p class="sop-p">Press ‘on/off’ button on the keypad and the balance will do a self-test system confirmation.</p><p class="sop-p">After the self-test is completed, the balance display will show <span class="kw-wt">0.000 g</span> (ready mode).</p><p class="sop-p">Remove the top cover (metal plate) from the windshield.</p><p class="sop-p">Place the weighing container onto the balance pan and press “T” to tare the balance.</p><p class="sop-p">After tarring, wait for a few seconds for the balance to be in the mode again, “<span class="kw-wt">0.000 g</span>”</p><p class="sop-p">Put the sample to be weighed inside the weighing container and read the measurement on the display.</p><p class="sop-p">Performance Check</p><p class="sop-p">Refer to PKKK/200/010.</p><p class="sop-p">Sensitivity Test</p><p class="sop-p">This instruments allows a máximum weight of 320gram, therefore;</p><p class="sop-p">First Standard Weight: 5gram, with tolerance not more than <span class="kw-wt">0.0025mg</span></p><p class="sop-p">Second Standard Weight: 200gram, with tolerance not more than <span class="kw-wt">0.1mg</span></p><p class="sop-p">Repeatability Test</p><p class="sop-p">Test is performed using a standard weight of 10gram that is approximately 3% of the maximum allowable weight.</p>
+            <p class="sop-p">AMENDMENT:</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to the ISO 9001: 2015 version and the renaming of the institution from National Pharmaceutical Control Bureau (NPCB) to Bahagian Regulatori Farmasi Negara (NPRA). Therefore, the original document is obsolete and this document is published as Issue 1.</p><p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number from PKK/300/SPKF/049 to PKK/300/HMS/055</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 2 Revision 1:</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 2 Revision 2 :</p><p class="sop-p">i.	Update on name of agency from National Pharmaceutical Regulatory Agency (NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/055 to PKKK/300/HMS/055</p><p class="sop-p">Update document number from PKK/200/048 to PKKK/200/010 in references</p><p class="sop-p">Update paragraph 5. Responsibilities</p><p class="sop-p">Update paragraph 6.9 Performance Check</p><p class="sop-p">Add on paragraph 8.0 Attachments</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/055 to PKKK/300/KOS/014</p><p class="sop-p">Update paragraph 5. Responsibilities</p><p class="sop-p">Issue 4 Revision 1 :</p><p class="sop-p">Update document number from PKKK/300/KOS/014 to PKKK/300/UP/046.</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for weighing balance in the laboratory.</p>
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-cyan" id="sec-2">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>7.0	QUALITY RECORD</h2>
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SCOPE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">This guide shall be used for the operation of Precisa XB 320M Top Pan Balance.</p><p class="sop-p">DEFINITION</p><p class="sop-p">None</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 RESPONSIBILITIES</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Please ensure the power supply adaptor is connected to the unit.</p><p class="sop-p">Switch on the power supply at the mains.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-046-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/046')">
+                      <label for="step-046-1" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Press ‘on/off’ button on the keypad and the balance will do a self-test system confirmation.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After the self-test is completed, the balance display will show <span class="kw-wt">0.000 g</span> (ready mode).</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-046-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/046')">
+                      <label for="step-046-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Remove the top cover (metal plate) from the windshield.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-046-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/046')">
+                      <label for="step-046-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Place the weighing container onto the balance pan and press “T” to tare the balance.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">After tarring, wait for a few seconds for the balance to be in the mode again, “<span class="kw-wt">0.000 g</span>”</p><p class="sop-p">Put the sample to be weighed inside the weighing container and read the measurement on the display.</p><p class="sop-p">Performance Check</p><p class="sop-p">Refer to PKKK/200/010.</p><p class="sop-p">Sensitivity Test</p><p class="sop-p">This instruments allows a máximum weight of 320gram, therefore;</p><p class="sop-p">First Standard Weight: 5gram, with tolerance not more than <span class="kw-wt">0.0025mg</span></p><p class="sop-p">Second Standard Weight: 200gram, with tolerance not more than <span class="kw-wt">0.1mg</span></p><p class="sop-p">Repeatability Test</p><p class="sop-p">Test is performed using a standard weight of 10gram that is approximately 3% of the maximum allowable weight.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7.0 QUALITY RECORD</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-3">
+        <div class="sop-section-container sec-theme-indigo" id="sec-6">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>8.0	ATTACHMENTS</h2>
+            <span class="sec-icon">📎</span>
+            <h2>8.0 ATTACHMENTS</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">None</p>

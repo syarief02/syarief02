@@ -7,6 +7,9 @@ OUT_DIR = r'c:\Users\User\OneDrive\Desktop\syarief02\portfolio\lab\penyaringan\s
 
 os.makedirs(OUT_DIR, exist_ok=True)
 
+# ─── SOP 040 is manually crafted and must never be overwritten ───
+SKIP_OVERWRITE = {'040'}
+
 def clean_text(t):
     if not t: return ''
     return t.strip().replace('\xa0', ' ')
@@ -32,7 +35,7 @@ def parse_pdf(path):
         text = page.get_text('text')
         for line in text.split('\n'):
             line = clean_text(line)
-            if line and not 'CHECK “MASTER LIST”' in line and not 'Page' in line and not 'Testing Procedure' in line:
+            if line and not 'CHECK "MASTER LIST"' in line and not 'Page' in line and not 'Testing Procedure' in line:
                 paras.append(line)
     return paras, []
 
@@ -46,50 +49,223 @@ def highlight_keywords(text):
     t = re.sub(r'(\b\d+(\.\d+)?\s*(?:minit|min|minutes|jam|hours|saat|seconds)\b)', r'<span class="kw-time">\1</span>', t, flags=re.IGNORECASE)
     t = re.sub(r'(\b(?:%RSD|RSD)\s*(?:≤|NMT|&le;)?\s*\d+(\.\d+)?\s*%?)', r'<span class="kw-limit">\1</span>', t, flags=re.IGNORECASE)
     t = re.sub(r'(\bpH\s*\d+(\.\d+)?(\s*±\s*\d+(\.\d+)?)?)', r'<span class="kw-ph">\1</span>', t, flags=re.IGNORECASE)
+    # Highlight m/z values
+    t = re.sub(r'(m/z\s*\d+)', r'<span class="kw-wave">\1</span>', t, flags=re.IGNORECASE)
+    # Highlight kPa, psi, bar
+    t = re.sub(r'(\b\d+(\.\d+)?\s*(?:kPa|psi|bar)\b)', r'<span class="kw-flow">\1</span>', t, flags=re.IGNORECASE)
+    # Highlight kV
+    t = re.sub(r'(\b\d+(\.\d+)?\s*kV\b)', r'<span class="kw-temp">\1</span>', t, flags=re.IGNORECASE)
     return t
 
-def get_target_analytes(title, text):
+# ─── SECTION HEADING KEYWORDS ───
+# Maps standalone keywords to their proper section number and icon/theme
+SECTION_KEYWORDS = {
+    'PINDAAN': ('0.0', 'sec-theme-slate', '📋', 'revision'),
+    'SEJARAH SEMAKAN': ('0.0', 'sec-theme-slate', '📋', 'revision'),
+    'TUJUAN': ('1.0', 'sec-theme-cyan', '🎯', 'normal'),
+    'OBJEKTIF': ('1.0', 'sec-theme-cyan', '🎯', 'normal'),
+    'OBJECTIVE': ('1.0', 'sec-theme-cyan', '🎯', 'normal'),
+    'SKOP': ('2.0', 'sec-theme-cyan', '📐', 'normal'),
+    'SCOPE': ('2.0', 'sec-theme-cyan', '📐', 'normal'),
+    'DEFINISI': ('3.0', 'sec-theme-purple', '📖', 'normal'),
+    'DEFINITIONS': ('3.0', 'sec-theme-purple', '📖', 'normal'),
+    'CARTA ALIRAN': ('4.0', 'sec-theme-purple', '🔀', 'normal'),
+    'FLOW CHART': ('4.0', 'sec-theme-purple', '🔀', 'normal'),
+    'TANGGUNGJAWAB': ('5.0', 'sec-theme-mint', '👥', 'normal'),
+    'RESPONSIBILITIES': ('5.0', 'sec-theme-mint', '👥', 'normal'),
+    'PROSEDUR': ('6.0', 'sec-theme-amber', '🔬', 'procedure'),
+    'PROCEDURE': ('6.0', 'sec-theme-amber', '🔬', 'procedure'),
+    'REKOD KUALITI': ('7.0', 'sec-theme-indigo', '📝', 'normal'),
+    'QUALITY RECORD': ('7.0', 'sec-theme-indigo', '📝', 'normal'),
+    'QUALITY RECORDS': ('7.0', 'sec-theme-indigo', '📝', 'normal'),
+    'LAMPIRAN': ('8.0', 'sec-theme-indigo', '📎', 'normal'),
+    'ATTACHMENTS': ('8.0', 'sec-theme-indigo', '📎', 'normal'),
+    'RUJUKAN': ('9.0', 'sec-theme-indigo', '📚', 'normal'),
+    'REFERENCES': ('9.0', 'sec-theme-indigo', '📚', 'normal'),
+    'PENYELENGGARAAN': ('6.5', 'sec-theme-rose', '🔧', 'normal'),
+    'PEMBERSIHAN': ('6.6', 'sec-theme-rose', '🧹', 'normal'),
+}
+
+def is_section_heading(text):
+    """Check if a paragraph is a standalone section heading (e.g., just 'TUJUAN' or '6.0 PROSEDUR')"""
+    stripped = text.strip().upper()
+    
+    # Pattern 1: Numbered heading like "6.0 PROSEDUR" or "1. TUJUAN"
+    m = re.match(r'^(\d+\.?\d*)\s+(.+)$', stripped)
+    if m:
+        keyword = m.group(2).strip()
+        for k in SECTION_KEYWORDS:
+            if keyword.startswith(k):
+                return True, f"{m.group(1)} {keyword}", SECTION_KEYWORDS[k]
+    
+    # Pattern 2: Standalone keyword like "TUJUAN", "PROSEDUR"
+    for k in SECTION_KEYWORDS:
+        if stripped == k or stripped.startswith(k + ':') or stripped.startswith(k + ' '):
+            return True, f"{SECTION_KEYWORDS[k][0]} {k}", SECTION_KEYWORDS[k]
+        if stripped == k:
+            return True, f"{SECTION_KEYWORDS[k][0]} {k}", SECTION_KEYWORDS[k]
+    
+    return False, None, None
+
+def is_revision_content(text):
+    """Detect revision history / amendment content"""
+    t = text.strip()
+    patterns = [
+        r'^Terbitan\s+\d+',
+        r'^Semakan\s+\d+',
+        r'^Terbitan\s+\d+,?\s*Semakan\s+\d+',
+        r'^i\.\s+Pinda',
+        r'^ii\.\s+Pinda',
+        r'^iii\.\s+Pinda',
+        r'^Kemaskini\s',
+        r'^Meminda\s',
+        r'^Pindaan\s',
+        r'^Mengemaskini\s',
+        r'^Batal\s',
+        r'^Prosedur ini merupakan dokumen baru selaras',
+    ]
+    for p in patterns:
+        if re.match(p, t, re.IGNORECASE):
+            return True
+    return False
+
+def is_procedural_action(text):
+    """Detect if a line is an actionable procedural step"""
+    t = text.strip()
+    # Short strings aren't steps
+    if len(t) < 10:
+        return False
+    action_verbs = [
+        r'^Tekan\b', r'^Hidupkan\b', r'^Matikan\b', r'^Tutup\b', r'^Buka\b',
+        r'^Timbang\b', r'^Isikan\b', r'^Tetapkan\b', r'^Pusingkan\b',
+        r'^Tunggu\b', r'^Pasangkan\b', r'^Cabut\b', r'^Lepaskan\b',
+        r'^Tampal\b', r'^Cetak\b', r'^Simpan\b', r'^Pilih\b', r'^Klik\b',
+        r'^Taip\b', r'^Masukkan\b', r'^Lakukan\b', r'^Jalankan\b',
+        r'^Semak\b', r'^Pastikan\b', r'^Sediakan\b', r'^Bilas\b',
+        r'^Cuci\b', r'^Keringkan\b', r'^Labur\b', r'^Angkat\b',
+        r'^Saring\b', r'^Turas\b', r'^Tuang\b', r'^Campurkan\b',
+        r'^Goncang\b', r'^Guna\b', r'^Gunakan\b', r'^Ulangi\b',
+        r'^Catat\b', r'^Rekod\b', r'^Pindah\b', r'^Biarkan\b',
+        r'^Sambung\b', r'^Laras\b', r'^Letak\b', r'^Ambil\b',
+        r'^Ukur\b', r'^Potong\b', r'^Pipet\b', r'^Set\b',
+        r'^Suntik\b', r'^Inject\b', r'^Flush\b', r'^Purge\b',
+        r'^Run\b', r'^Start\b', r'^Stop\b', r'^Click\b',
+        r'^Press\b', r'^Turn\b', r'^Open\b', r'^Close\b',
+        r'^Select\b', r'^Enter\b', r'^Check\b', r'^Verify\b',
+        r'^Prepare\b', r'^Weigh\b', r'^Fill\b', r'^Rinse\b',
+        r'^Transfer\b', r'^Wait\b', r'^Allow\b', r'^Place\b',
+        r'^Remove\b', r'^Add\b', r'^Mix\b', r'^Shake\b',
+        r'^Filter\b', r'^Dry\b', r'^Record\b', r'^Label\b',
+        r'^Condition\b', r'^Elute\b', r'^Collect\b', r'^Evaporate\b',
+        r'^Reconstitute\b', r'^Sonicate\b', r'^Centrifuge\b',
+        r'^Vortex\b', r'^Dilute\b', r'^Dissolve\b', r'^Store\b',
+        r'^Alat\b', r'^Sistem\b', r'^Sekiranya\b',
+        r'^Elektrik\b', r'^Pemanasan\b', r'^Water bath\b',
+        r'^Kebersihan\b', r'^ON\b', r'^OFF\b',
+    ]
+    for v in action_verbs:
+        if re.match(v, t, re.IGNORECASE):
+            return True
+    return False
+
+def get_target_analytes(title, text, category):
+    """Only return analytes for actual testing methods, not instrument/equipment SOPs"""
+    # Don't show analyte chips for instrument, equipment, balance, extraction, or QA SOPs
+    if category in ('Alat Timbang', 'Radas & Penyelenggaraan', 'Pengekstrakan', 'Kawalan Kualiti & QA'):
+        return []
+    
     t_low = (title + ' ' + text).lower()
     analytes = []
-    if 'steroid' in t_low: analytes = ['Dexamethasone', 'Betamethasone', 'Prednisone', 'Prednisolone', 'Triamcinolone acetonide', 'Hydrocortisone acetate', 'Cortisone acetate', 'Betamethasone-17-valerate']
-    elif 'diabetik' in t_low or 'diabetic' in t_low: analytes = ['Glibenclamide', 'Metformin', 'Gliclazide', 'Glimepiride']
-    elif 'diuretik' in t_low or 'diuretic' in t_low: analytes = ['Hydrochlorothiazide', 'Furosemide', 'Spironolactone']
-    elif 'proton pump' in t_low or 'ppi' in t_low: analytes = ['Omeprazole', 'Lansoprazole']
-    elif 'hipertensi' in t_low: analytes = ['Amlodipine', 'Atenolol', 'Captopril', 'Losartan', 'Hydrochlorothiazide']
-    elif 'domperidone' in t_low: analytes = ['Domperidone']
-    elif 'antikolesterol' in t_low or 'kolesterol' in t_low or 'lovastatin' in t_low: analytes = ['Lovastatin', 'Simvastatin', 'Atorvastatin']
-    elif 'pde-5' in t_low or 'pde5' in t_low or 'edd' in t_low: analytes = ['Sildenafil', 'Tadalafil', 'Vardenafil', 'Analogues']
-    elif 'glycol' in t_low or 'deg' in t_low or 'eg' in t_low: analytes = ['Ethylene Glycol (EG)', 'Diethylene Glycol (DEG)']
-    elif 'menthol' in t_low: analytes = ['Menthol', 'Camphor', 'Methyl Salicylate', 'Thymol']
-    elif 'hydroquinone' in t_low: analytes = ['Hydroquinone']
-    elif 'tretinoin' in t_low: analytes = ['Tretinoin (Retinoic Acid)']
-    elif 'paraben' in t_low or 'hydroxybenzoate' in t_low: analytes = ['Methyl, Ethyl, Propyl, Butyl 4-Hydroxybenzoate']
-    elif 'fluoride' in t_low: analytes = ['Fluoride (F-)']
-    elif 'dopamine' in t_low: analytes = ['Dopamine HCl']
-    elif 'minoxidil' in t_low: analytes = ['Minoxidil']
-    elif 'theophylline' in t_low or 'caffeine' in t_low: analytes = ['Theophylline', 'Caffeine']
-    elif 'antimicrobial' in t_low: analytes = ['Triclosan', 'Climbazole', 'Antimicrobials']
-    elif 'nsaid' in t_low: analytes = ['Diclofenac', 'Mefenamic Acid', 'Ibuprofen', 'Indomethacin', 'Piroxicam', 'Ketoprofen', 'Naproxen']
-    elif 'phenylenediamine' in t_low or 'p-phenylenediamine' in t_low: analytes = ['p-Phenylenediamine (PPD)']
-    elif 'clindamycin' in t_low: analytes = ['Clindamycin']
+    if 'steroid' in t_low and ('hplc' in t_low or 'produk tradisional' in t_low):
+        analytes = ['Dexamethasone', 'Betamethasone', 'Prednisone', 'Prednisolone', 'Triamcinolone acetonide', 'Hydrocortisone acetate', 'Cortisone acetate', 'Betamethasone-17-valerate']
+    elif 'diabetik' in t_low or 'diabetic' in t_low:
+        analytes = ['Glibenclamide', 'Metformin', 'Gliclazide', 'Glimepiride']
+    elif 'diuretik' in t_low or 'diuretic' in t_low:
+        analytes = ['Hydrochlorothiazide', 'Furosemide', 'Spironolactone']
+    elif 'proton pump' in t_low or ('ppi' in t_low and 'hplc' in t_low):
+        analytes = ['Omeprazole', 'Lansoprazole']
+    elif 'hipertensi' in t_low and 'identifikasi' in t_low:
+        analytes = ['Amlodipine', 'Atenolol', 'Captopril', 'Losartan', 'Hydrochlorothiazide']
+    elif 'domperidone' in t_low and 'identifikasi' in t_low:
+        analytes = ['Domperidone']
+    elif ('antikolesterol' in t_low or 'kolesterol' in t_low) and 'identifikasi' in t_low:
+        analytes = ['Lovastatin', 'Simvastatin', 'Atorvastatin']
+    elif 'lovastatin' in t_low and 'kandungan' in t_low:
+        analytes = ['Lovastatin']
+    elif 'pde-5' in t_low or 'pde5' in t_low:
+        analytes = ['Sildenafil', 'Tadalafil', 'Vardenafil', 'Analogues']
+    elif 'edd' in t_low and 'identifikasi' in t_low:
+        analytes = ['Sildenafil', 'Tadalafil', 'Vardenafil', 'Analogues']
+    elif 'diethylene glycol' in t_low or ('glycol' in t_low and ('gcms' in t_low or 'sirap' in t_low or 'syrup' in t_low or 'cecair' in t_low)):
+        analytes = ['Ethylene Glycol (EG)', 'Diethylene Glycol (DEG)']
+    elif 'menthol' in t_low and ('camphor' in t_low or 'identifikasi' in t_low):
+        analytes = ['Menthol', 'Camphor', 'Methyl Salicylate', 'Thymol']
+    elif 'hydroquinone' in t_low and ('identifikasi' in t_low or 'kandungan' in t_low or 'kosmetik' in t_low):
+        analytes = ['Hydroquinone']
+    elif 'tretinoin' in t_low:
+        analytes = ['Tretinoin (Retinoic Acid)']
+    elif 'paraben' in t_low or 'hydroxybenzoate' in t_low:
+        analytes = ['Methyl, Ethyl, Propyl, Butyl 4-Hydroxybenzoate']
+    elif 'fluoride' in t_low:
+        analytes = ['Fluoride (F⁻)']
+    elif 'dopamine' in t_low:
+        analytes = ['Dopamine HCl']
+    elif 'minoxidil' in t_low:
+        analytes = ['Minoxidil']
+    elif 'theophylline' in t_low or ('caffeine' in t_low and 'kosmetik' in t_low):
+        analytes = ['Theophylline', 'Caffeine']
+    elif 'antimicrobial' in t_low:
+        analytes = ['Triclosan', 'Climbazole', 'Antimicrobials']
+    elif 'nsaid' in t_low:
+        analytes = ['Diclofenac', 'Mefenamic Acid', 'Ibuprofen', 'Indomethacin', 'Piroxicam', 'Ketoprofen', 'Naproxen']
+    elif 'phenylenediamine' in t_low or 'p-phenylenediamine' in t_low:
+        analytes = ['p-Phenylenediamine (PPD)']
+    elif 'clindamycin' in t_low:
+        analytes = ['Clindamycin']
+    elif 'antifungal' in t_low or 'antikulat' in t_low:
+        analytes = ['Ketoconazole', 'Miconazole', 'Itraconazole']
     return analytes
 
 def get_bench_tips(category, title):
     t_low = (category + ' ' + title).lower()
     tips = []
-    if 'hplc' in t_low or 'lc' in t_low:
+    if 'hplc' in t_low or 'lc' in t_low or 'rrlc' in t_low:
         tips.append("Tapis semua fasa bergerak (akueus dan organik) menggunakan penuras membran 0.45 µm dan degas dalam kukus ultrasonik selama sekurang-kurangnya 15–20 minit.")
         tips.append("Lakukan Auto Purge / Manual Purge setiap kali pelarut ditambah atau ditukar jenis bagi menyingkirkan buih udara.")
         tips.append("Pastikan garisan dasar (baseline) dan tekanan pam stabil (RSD < 2%) sebelum memulakan suntikan sampel kelompok.")
         tips.append("Bagi sampel matriks kapsul lembut (softgel), gunakan Chloroform kerana gelatin/minyak tidak larut dalam Methanol.")
-    elif 'gcms' in t_low:
+    elif 'gcms' in t_low or 'gc-ms' in t_low:
         tips.append("Lakukan Standard Spectra Tune (s.tune) atau Autotune (a.tune) setiap hari sebelum analisis dan pastikan laporan LULUS.")
         tips.append("Semak paras kebocoran udara/air (Air/Water Check): m/z 18 < 10% dan m/z 28 < 5% berbanding puncak dasar m/z 69.")
         tips.append("Gunakan pelarut berkualiti kromatografi gas dan pastikan septum suntikan ditukar berkala bagi mengelak 'ghost peaks'.")
-    elif 'timbang' in t_low or 'balance' in t_low:
+    elif 'lcms' in t_low or 'lc-ms' in t_low:
+        tips.append("Pastikan Nebulizing Gas, Drying Gas, dan Heating Gas dibekalkan pada tekanan yang mencukupi sebelum menghidupkan MS.")
+        tips.append("Optimumkan Collision Energy (CE) bagi setiap MRM transition untuk mendapat intensiti maksimum.")
+        tips.append("Jalankan Tuning secara berkala dan pastikan sensitivity test LULUS sebelum analisis batch.")
+    elif 'timbang' in t_low or 'balance' in t_low or 'precisa' in t_low or 'sartorius' in t_low or 'mettler' in t_low:
         tips.append("Pastikan gelembung aras (spirit level) berada tepat di tengah bulatan sebelum penimbangan dimulakan.")
         tips.append("Gunakan forsep atau sarung tangan semasa mengendalikan batu timbang piawai; elakkan sentuhan langsung jari.")
         tips.append("Lakukan verifikasi harian (Borang UP/014) dan pemeriksaan kepekaan (UP/015) serta kebolehulangan (UP/016).")
+    elif 'ph meter' in t_low:
+        tips.append("Lakukan kalibrasi 2-titik (pH 4.0 dan pH 7.0) atau 3-titik (pH 4.0, 7.0, 10.0) setiap kali sebelum penggunaan.")
+        tips.append("Bilas elektrod dengan air suling sebelum dan selepas setiap pengukuran.")
+        tips.append("Simpan elektrod dalam larutan penyimpanan KCl 3M. Jangan biarkan elektrod kering.")
+    elif 'water bath' in t_low:
+        tips.append("Pastikan paras air berada di antara tanda MIN dan MAX sebelum memulakan pemanasan.")
+        tips.append("Gunakan air demineralized sahaja untuk mengelakkan pembentukan kerak mineral.")
+        tips.append("Matikan suis elektrik dan cabut plug sebelum membuka penutup water bath atau mengisi semula air.")
+    elif 'ultrasonic' in t_low or 'sonikasi' in t_low:
+        tips.append("Pastikan paras air dalam tangki ultrasonik mencukupi untuk menyelubungi bahagian bawah bekas sampel.")
+        tips.append("Jangan mengendalikan ultrasonik tanpa air dalam tangki kerana boleh merosakkan transducer.")
+    elif 'vortex' in t_low:
+        tips.append("Pastikan bekas sampel ditutup rapat sebelum melakukan vortexing untuk mengelakkan tumpahan.")
+        tips.append("Gunakan kelajuan yang sesuai — terlalu laju boleh menyebabkan emulsi pada sampel pengekstrakan cecair-cecair.")
+    elif 'sentrifug' in t_low or 'centrifuge' in t_low:
+        tips.append("Pastikan tiub sentrifug diimbangkan (balanced) sebelum menjalankan sentrifugasi.")
+        tips.append("Jangan buka penutup sentrifug sehingga rotor berhenti sepenuhnya.")
+    elif 'spe' in t_low or 'pengekstrakan' in t_low or 'lle' in t_low:
+        tips.append("Jangan biarkan kartrij SPE kering semasa proses pengkondisian dan pemuatan sampel.")
+        tips.append("Pastikan pH larutan sampel diselaraskan dengan betul sebelum pemuatan ke kartrij SPE.")
     else:
         tips.append("Patuhi amalan keselamatan makmal yang baik (GLP) dan rekodkan semua langkah persediaan dalam lembaran kerja rasmi.")
         tips.append("Sebarang ketakakuran atau sampel luar spesifikasi hendaklah disiasat mengikut Arahan Kerja PKKK/300/UP/002.")
@@ -98,18 +274,17 @@ def get_bench_tips(category, title):
 def classify_cat(title):
     t = title.lower()
     if 'hplc' in t or 'rrlc' in t: return 'HPLC / LC'
-    if 'gcms' in t or 'gc' in t: return 'GC-MS'
-    if 'lcms' in t: return 'LC-MS/MS'
-    if 'timbang' in t or 'balance' in t: return 'Alat Timbang'
-    if 'ekstrakan' in t or 'spe' in t: return 'Pengekstrakan'
+    if 'gcms' in t or 'gc-ms' in t or ('gc' in t and 'ms' in t): return 'GC-MS'
+    if 'lcms' in t or 'lc-ms' in t: return 'LC-MS/MS'
+    if 'timbang' in t or 'balance' in t or 'precisa' in t or 'sartorius' in t or 'mettler' in t: return 'Alat Timbang'
+    if 'ekstrakan' in t or 'spe' in t or 'lle' in t: return 'Pengekstrakan'
     if 'kosmetik' in t or 'cosmetic' in t: return 'Kosmetik'
-    if 'radas' in t or 'pencucian' in t or 'vortex' in t or 'waterbath' in t or 'ultrasonic' in t or 'ph meter' in t: return 'Radas & Penyelenggaraan'
-    if 'spesifikasi' in t or 'persampelan' in t or 'sisa' in t or 'charting' in t: return 'Kawalan Kualiti & QA'
+    if any(w in t for w in ['radas', 'pencucian', 'vortex', 'waterbath', 'water bath', 'ultrasonic', 'ph meter', 'sentrifug', 'centrifuge', 'pipet', 'mikropipet']): return 'Radas & Penyelenggaraan'
+    if any(w in t for w in ['spesifikasi', 'persampelan', 'sisa', 'charting', 'kawalan', 'verifikasi', 'kalibrasi']): return 'Kawalan Kualiti & QA'
     return 'Kaedah Pengujian'
 
-# Comprehensive Mapping of Analysis Methods to Instrument SOPs
+# ─── Comprehensive Mapping of Analysis Methods to Instrument SOPs ───
 ANALYSIS_TO_INSTRUMENTS = {
-    # HPLC Testing Methods
     '021': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/041', 'Shimadzu Prominence-i (HPLC 3)', 'sop-300-up-041.html'), ('PKKK/300/UP/014', 'Pengekstrakan Cecair-Cecair (LLE)', 'sop-300-up-014.html')],
     '022': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/014', 'Pengekstrakan LLE pH 7.0', 'sop-300-up-014.html')],
     '024': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
@@ -130,8 +305,6 @@ ANALYSIS_TO_INSTRUMENTS = {
     '056': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
     '060': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
     '061': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-
-    # GC-MS Testing Methods
     '018': [('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'), ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'), ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html')],
     '030': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html')],
     '034': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'), ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html')],
@@ -140,8 +313,6 @@ ANALYSIS_TO_INSTRUMENTS = {
     '049': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html')],
     '059': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html')],
     '062': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html')],
-
-    # LCMS Testing Methods
     '015': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
     '023': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
     '029': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
@@ -181,37 +352,176 @@ INSTRUMENT_DEEP_TIPS = {
         "🔄 **Auto Purge Routine**: Wajib jalankan Auto Purge (5.0 mL/min, 3 min setiap saluran) jika solvent ditambah atau ditukar jenis.",
         "⚡ **Intermediate Flushing**: Jika menukar dari larutan Buffer ke Organik 100%, flush saluran dengan Intermediate (Air Suling 90% : MeOH 10%) dahulu.",
         "📈 **PDA Baseline Monitoring**: Klik ikon `Plot` dan tunggu sekurang-kurangnya 15–30 minit sehingga tekanan stabil (RSD < 2%) sebelum klik `Stop` dan mulakan suntikan.",
-        "🧼 **Tatacara Flushing Penutupan**: Buffer $\\rightarrow$ Flush 90:10 Air:MeOH (30 min) $\\rightarrow$ 100% Organik (30 min) $\\rightarrow$ 70:30 Simpanan Kolum (15 min)."
+        "🧼 **Tatacara Flushing Penutupan**: Buffer → Flush 90:10 Air:MeOH (30 min) → 100% Organik (30 min) → 70:30 Simpanan Kolum (15 min)."
     ],
     '003': [
         "🔑 **Akses Sistem Agilent**: Passcode Agilent ChemStation: `3000hanover`.",
-        "🎛️ **Injap Purge Manual**: Pusing lawan arah jam untuk buka $\\rightarrow$ Purge Binary Pump 5.0 mL/min (3 min setiap line) $\\rightarrow$ Turunkan ke 0.1 mL/min $\\rightarrow$ Pusing arah jam untuk tutup injap $\\rightarrow$ Naikkan flow perlahan-lahan.",
+        "🎛️ **Injap Purge Manual**: Pusing lawan arah jam untuk buka → Purge Binary Pump 5.0 mL/min (3 min setiap line) → Turunkan ke 0.1 mL/min → Pusing arah jam untuk tutup injap → Naikkan flow perlahan-lahan.",
         "🌈 **Tetapan DAD**: Spectrum Store: `All`, Range: `190 to 400 nm`, Step: `2.0 nm`.",
         "🔍 **Overlay Signal**: Tekan serentak <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + **Klik pada puncak standard** untuk tindih (overlay) UV spektrum standard dengan sampel.",
-        "🧼 **Pencucian**: Fasa gerak 5% Methanol selama 1 jam @ 1.0 mL/min $\\rightarrow$ 100% Acetonitrile/Methanol selama 30 min @ 1.0 mL/min."
+        "🧼 **Pencucian**: Fasa gerak 5% Methanol selama 1 jam @ 1.0 mL/min → 100% Acetonitrile/Methanol selama 30 min @ 1.0 mL/min."
     ],
     '017': [
         "🎯 **Tuning Harian MS**: Jalankan `s.tune` (Standard Tune) atau `a.tune` setiap pagi dan simpan laporan penalaan rasmi.",
-        "💧 **Air/Water Check**: Pastikan $m/z\\ 18$ (Air) $< 10\\%$ dan $m/z\\ 28$ ($N_2$) $< 5\\%$ berbanding $m/z\\ 69$.",
-        "🌡️ **Suhu Antaramuka & Sumber EI**: EI Source $230\\ ^\\circ\\text{C}$, Transfer Line / Interface $240\\ ^\\circ\\text{C}$, Inlet $250\\ ^\\circ\\text{C}$.",
-        "⏱️ **Solvent Delay**: Tetapkan Solvent Delay $4.00\\text{ min}$ bagi melindungi filamen MS daripada beban pelarut Methanol yang pekat.",
-        "📊 **SIM Integration**: Kuantitasi menggunakan Target Ion utama ($m/z\\ 31$ bagi EG, $m/z\\ 45$ bagi DEG) dan sahkan dengan Qualifier Ions mengikut Had Toleransi Table 6."
+        "💧 **Air/Water Check**: Pastikan m/z 18 (Air) < 10% dan m/z 28 (N₂) < 5% berbanding m/z 69.",
+        "🌡️ **Suhu Antaramuka & Sumber EI**: EI Source 230 °C, Transfer Line / Interface 240 °C, Inlet 250 °C.",
+        "⏱️ **Solvent Delay**: Tetapkan Solvent Delay 4.00 min bagi melindungi filamen MS daripada beban pelarut Methanol yang pekat.",
+        "📊 **SIM Integration**: Kuantitasi menggunakan Target Ion utama (m/z 31 bagi EG, m/z 45 bagi DEG) dan sahkan dengan Qualifier Ions mengikut Had Toleransi Table 6."
     ],
     '010': [
         "🎯 **Shimadzu GCMS Tuning**: Jalankan Autotune melalui GCMSsolution. Pastikan EM Voltage tidak melebihi paras amaran.",
         "🔍 **Penyelenggaraan Inlet**: Tukar Septum suntikan setiap 100 suntikan bagi mengelakkan kebocoran gas pembawa Helium dan ghost peaks.",
-        "🧼 **Bake-Out Kolum**: Lakukan Column Conditioning pada suhu $240–250\\ ^\\circ\\text{C}$ selama 30 minit jika terdapat peningkatan baseline bleeding."
+        "🧼 **Bake-Out Kolum**: Lakukan Column Conditioning pada suhu 240–250 °C selama 30 minit jika terdapat peningkatan baseline bleeding."
     ],
     '012': [
-        "⚡ **LCMS-8045 Triple Quad**: Tetapkan ESI Interface Voltage $+4.0\\text{ kV}$ (Positive mode) atau $-3.0\\text{ kV}$ (Negative mode).",
-        "💨 **Gas Desolvation & Nebulizer**: Nebulizing Gas Flow: $3.0\\text{ L/min}$, Drying Gas Flow: $10.0\\text{ L/min}$, Heating Gas Flow: $10.0\\text{ L/min}$.",
+        "⚡ **LCMS-8045 Triple Quad**: Tetapkan ESI Interface Voltage +4.0 kV (Positive mode) atau -3.0 kV (Negative mode).",
+        "💨 **Gas Desolvation & Nebulizer**: Nebulizing Gas Flow: 3.0 L/min, Drying Gas Flow: 10.0 L/min, Heating Gas Flow: 10.0 L/min.",
         "🎯 **MRM Transitions**: Optimumkan CE (Collision Energy) bagi setiap pecahan ion produk (Product Ion) sasaran."
     ]
 }
 
+# ─── SMART SECTION PARSER ───
+def parse_into_sections(paras):
+    """Parse flat paragraphs into structured sections with smart heading detection.
+    Consolidates all revision-type content into a single section and merges duplicates."""
+    raw_sections = []
+    current_sec = None
+    revision_buffer = []
+    in_revision = False
+    
+    for p in paras:
+        stripped = p.strip()
+        if not stripped:
+            continue
+        
+        # Check if this is a section heading
+        is_heading, heading_title, heading_info = is_section_heading(stripped)
+        
+        if is_heading:
+            # Flush any pending revision content
+            if revision_buffer and current_sec:
+                current_sec['items'].append(('revision_block', revision_buffer[:]))
+                revision_buffer = []
+                in_revision = False
+            
+            sec_num, theme, icon, sec_type = heading_info
+            
+            # If this is a revision heading and we already have a revision section,
+            # just keep the current revision section open (merge into it)
+            if sec_type == 'revision' and current_sec and current_sec['type'] == 'revision':
+                in_revision = True
+                continue
+            
+            # Save previous section
+            if current_sec and (current_sec['items'] or current_sec['title']):
+                raw_sections.append(current_sec)
+            
+            current_sec = {
+                'title': heading_title,
+                'theme': theme,
+                'icon': icon,
+                'type': sec_type,
+                'items': []
+            }
+            in_revision = (sec_type == 'revision')
+            continue
+        
+        # If no section started yet, create a default one
+        if current_sec is None:
+            current_sec = {
+                'title': 'MAKLUMAT DOKUMEN',
+                'theme': 'sec-theme-slate',
+                'icon': '📋',
+                'type': 'revision',
+                'items': []
+            }
+            in_revision = True
+        
+        # Check if this is revision content
+        if is_revision_content(stripped):
+            in_revision = True
+            revision_buffer.append(stripped)
+            continue
+        
+        # If we were collecting revision content and hit non-revision, flush
+        if in_revision and not is_revision_content(stripped):
+            # Check if this is still part of the revision block (short amendment text)
+            if revision_buffer and len(stripped) < 200 and not is_procedural_action(stripped):
+                revision_buffer.append(stripped)
+                continue
+            else:
+                if revision_buffer:
+                    current_sec['items'].append(('revision_block', revision_buffer[:]))
+                    revision_buffer = []
+                in_revision = False
+        
+        # Classify the paragraph type
+        if re.match(r'^\d+\.\d+(\.\d+)?(\s+|$)', stripped):
+            current_sec['items'].append(('numbered_step', stripped))
+        elif stripped.startswith(('•', '-', '*')) or re.match(r'^[a-z]\)', stripped) or re.match(r'^\d+\)', stripped):
+            current_sec['items'].append(('list_item', stripped))
+        elif current_sec['type'] == 'procedure' and is_procedural_action(stripped):
+            current_sec['items'].append(('action_step', stripped))
+        else:
+            current_sec['items'].append(('paragraph', stripped))
+    
+    # Flush remaining
+    if revision_buffer and current_sec:
+        current_sec['items'].append(('revision_block', revision_buffer[:]))
+    if current_sec:
+        raw_sections.append(current_sec)
+    
+    # ─── POST-PROCESSING: Merge duplicate sections ───
+    # 1. Consolidate all revision-type sections into a single one at the top
+    # 2. Merge duplicate section types (e.g., two PROSEDUR sections)
+    sections = []
+    revision_section = None
+    seen_types = {}  # title_key -> section index in sections list
+    
+    for sec in raw_sections:
+        if sec['type'] == 'revision':
+            # Merge all revision sections into one
+            if revision_section is None:
+                revision_section = {
+                    'title': '0.0 SEJARAH PINDAAN & SEMAKAN',
+                    'theme': 'sec-theme-slate',
+                    'icon': '📋',
+                    'type': 'revision',
+                    'items': sec['items'][:]
+                }
+            else:
+                revision_section['items'].extend(sec['items'])
+        else:
+            # For non-revision sections, check for duplicates
+            # Use a key based on the section number prefix (e.g., "6.0")
+            title_upper = sec['title'].upper()
+            sec_key = None
+            for kw in ['TUJUAN', 'SKOP', 'DEFINISI', 'TANGGUNGJAWAB', 'PROSEDUR', 'REKOD KUALITI']:
+                if kw in title_upper:
+                    sec_key = kw
+                    break
+            
+            if sec_key and sec_key in seen_types:
+                # Merge into existing section
+                existing_idx = seen_types[sec_key]
+                sections[existing_idx]['items'].extend(sec['items'])
+            else:
+                if sec_key:
+                    seen_types[sec_key] = len(sections)
+                sections.append(sec)
+    
+    # Put revision section first if it exists and has content
+    final_sections = []
+    if revision_section and revision_section['items']:
+        final_sections.append(revision_section)
+    final_sections.extend(sections)
+    
+    return final_sections
+
+
 def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_data, category):
     full_text = ' '.join(paras)
-    analytes = get_target_analytes(title, full_text)
+    analytes = get_target_analytes(title, full_text, category)
     bench_tips = get_bench_tips(category, title)
     
     # Check if this document has cross-linked instruments or analysis methods
@@ -219,8 +529,8 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     analysis_links = INSTRUMENT_TO_ANALYSIS.get(doc_num_str, [])
     deep_inst_tips = INSTRUMENT_DEEP_TIPS.get(doc_num_str, [])
     
-    # Workflow Steps
-    if 'HPLC' in category or 'GC-MS' in category or 'LC-MS' in category or 'Kosmetik' in category:
+    # Workflow Steps based on category
+    if any(k in category for k in ['HPLC', 'GC-MS', 'LC-MS', 'Kosmetik']):
         workflow_steps = [
             ("1. Reagen & Piawai", "Penyediaan fasa bergerak, stok & kalibrasi"),
             ("2. Pengekstrakan", "Timbang, sonikasi, sentrifug & turas 0.45µm"),
@@ -235,6 +545,21 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
             ("3. Semakan Harian", "Timbang batu piawai harian (UP/014)"),
             ("4. Ujian Prestasi", "Kepekaan ΔE (UP/015) & kebolehulangan s"),
             ("5. Carta Kawalan", "Plot graf Shewhart IQC & logbook")
+        ]
+    elif 'Pengekstrakan' in category:
+        workflow_steps = [
+            ("1. Penyediaan", "Sediakan reagen, kartrij & pelarut"),
+            ("2. Pengkondisian", "Conditioning kartrij / corong pemisah"),
+            ("3. Pemuatan Sampel", "Load sampel & basuh"),
+            ("4. Pengelutan", "Elute analit sasaran"),
+            ("5. Penyejatan & Rekod", "Evaporasi, reconstitute & dokumentasi")
+        ]
+    elif 'Radas' in category:
+        workflow_steps = [
+            ("1. Pemeriksaan", "Semak keadaan alat & keselamatan"),
+            ("2. Penghidupan", "Hidupkan suis & tetapkan parameter"),
+            ("3. Penggunaan", "Kendalikan alat mengikut SOP"),
+            ("4. Penutupan", "Matikan & bersihkan alat"),
         ]
     else:
         workflow_steps = [
@@ -345,27 +670,22 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
         </div>
         '''
 
-    # Detect sections
-    sections = []
-    current_sec = {'title': '1.0 PENGENALAN DOKUMEN', 'items': []}
-    sec_regex = re.compile(r'^((\d+\.0?|[1-9]\.)\s*(TUJUAN|OBJEKTIF|OBJECTIVE|SKOP|SCOPE|DEFINISI|DEFINITIONS|CARTA ALIRAN|FLOW CHART|TANGGUNGJAWAB|RESPONSIBILIT|PROSEDUR|PROCEDURE|REKOD KUALITI|QUALITY RECORD|LAMPIRAN|ATTACHMENTS|RUJUKAN|REFERENCES?))', re.IGNORECASE)
-    
-    for p in paras:
-        m = sec_regex.match(p)
-        if m:
-            if current_sec['items']:
-                sections.append(current_sec)
-            current_sec = {'title': p, 'items': []}
-        else:
-            current_sec['items'].append(p)
-    if current_sec['items']:
-        sections.append(current_sec)
+    # ─── SMART SECTION PARSING ───
+    sections = parse_into_sections(paras)
     
     # Build tables HTML
     tables_html = ''
     for t_idx, tbl in enumerate(tables_data):
         if not tbl or len(tbl) < 1: continue
         t_rows_html = ''
+        
+        # Detect if this is a revision history table (all header cells same)
+        is_revision_table = False
+        if tbl and len(tbl[0]) > 1:
+            unique_headers = set(c.strip() for c in tbl[0])
+            if len(unique_headers) == 1 and 'SEJARAH SEMAKAN' in unique_headers:
+                is_revision_table = True
+        
         for r_idx, row in enumerate(tbl):
             clean_row = [c.replace('\n', ' ').strip() for c in row]
             row_str = ' '.join(clean_row).lower()
@@ -378,14 +698,28 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
                 r_class = 'class="seq-blank"'
             
             if r_idx == 0:
-                t_rows_html += '<tr>' + ''.join([f'<th>{html.escape(c)}</th>' for c in clean_row]) + '</tr>'
+                if is_revision_table:
+                    # Fix: use proper column headers instead of duplicate "SEJARAH SEMAKAN"
+                    t_rows_html += '<tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr>'
+                    continue  # Skip the original broken header row
+                else:
+                    t_rows_html += '<tr>' + ''.join([f'<th>{html.escape(c)}</th>' for c in clean_row]) + '</tr>'
+            elif is_revision_table and r_idx == 1:
+                # Skip the second row which is the real column names (already replaced above)
+                actual_headers = [c.strip() for c in clean_row]
+                if 'Terbitan' in actual_headers:
+                    continue
+                else:
+                    t_rows_html += f'<tr {r_class}>' + ''.join([f'<td>{highlight_keywords(c)}</td>' for c in clean_row]) + '</tr>'
             else:
                 t_rows_html += f'<tr {r_class}>' + ''.join([f'<td>{highlight_keywords(c)}</td>' for c in clean_row]) + '</tr>'
+        
+        table_label = 'SEJARAH SEMAKAN' if is_revision_table else f'JADUAL {t_idx + 1}'
         
         tables_html += f'''
         <div class="table-card" id="table-{t_idx + 1}">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL {t_idx + 1}</span>
+            <span class="table-tag">{table_label}</span>
             <span class="table-doc-code">{code}</span>
           </div>
           <div class="table-responsive">
@@ -396,75 +730,81 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
         </div>
         '''
 
-    def get_sec_theme(stitle):
-        st = stitle.lower()
-        if 'tujuan' in st or 'objektif' in st or 'skop' in st:
-            return 'sec-theme-cyan', '🎯'
-        if 'definisi' in st:
-            return 'sec-theme-purple', '📖'
-        if 'tanggungjawab' in st:
-            return 'sec-theme-mint', '👥'
-        if 'prosedur' in st or 'procedure' in st:
-            return 'sec-theme-amber', '🔬'
-        if 'rekod' in st:
-            return 'sec-theme-indigo', '📝'
-        return 'sec-theme-cyan', '◈'
-
+    # ─── RENDER SECTIONS ───
     sections_html = ''
     total_steps = 0
     
     for s_idx, s in enumerate(sections):
         sec_title = html.escape(s['title'])
         sec_id = f'sec-{s_idx + 1}'
-        theme_class, sec_icon = get_sec_theme(sec_title)
+        theme_class = s['theme']
+        sec_icon = s['icon']
+        sec_type = s['type']
         
         body_content = ''
-        current_step_body = []
-        current_step_header = None
+        action_step_counter = 0
         
-        def flush_step():
-            nonlocal current_step_body, current_step_header, total_steps, body_content
-            if current_step_header or current_step_body:
-                if current_step_header:
-                    total_steps += 1
-                    step_id = f'step-{doc_num_str}-{total_steps}'
-                    inner_items = ''.join(current_step_body)
-                    body_content += f'''
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="{step_id}" class="sop-task-check" onchange="onStepCheckChange('{code}')">
-                          <label for="{step_id}" class="sop-step-title">
-                            {html.escape(current_step_header)}
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        {inner_items}
-                      </div>
+        for item_type, item_data in s['items']:
+            if item_type == 'revision_block':
+                # Render as collapsible
+                rev_items = item_data
+                rev_content = ''.join([f'<p class="sop-rev-p">{html.escape(r)}</p>' for r in rev_items])
+                body_content += f'''
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen ({len(rev_items)} entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body">{rev_content}</div>
+                </details>
+                '''
+            
+            elif item_type == 'numbered_step':
+                total_steps += 1
+                step_id = f'step-{doc_num_str}-{total_steps}'
+                body_content += f'''
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="{step_id}" class="sop-task-check" onchange="onStepCheckChange('{code}')">
+                      <label for="{step_id}" class="sop-step-title">
+                        {highlight_keywords(item_data)}
+                      </label>
                     </div>
-                    '''
-                else:
-                    body_content += ''.join(current_step_body)
-                current_step_body = []
-                current_step_header = None
-
-        for itm in s['items']:
-            if re.match(r'^\d+\.\d+(\.\d+)?(\s+|$)', itm):
-                flush_step()
-                current_step_header = itm
-            elif itm.startswith(('•', '-', '*')) or re.match(r'^[a-z]\)', itm) or re.match(r'^\d+\)', itm):
-                current_step_body.append(f'''
+                  </div>
+                </div>
+                '''
+            
+            elif item_type == 'action_step':
+                total_steps += 1
+                action_step_counter += 1
+                step_id = f'step-{doc_num_str}-{total_steps}'
+                body_content += f'''
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="{step_id}" class="sop-task-check" onchange="onStepCheckChange('{code}')">
+                      <label for="{step_id}" class="sop-step-title">
+                        <span class="action-badge">Langkah {action_step_counter}</span>
+                        {highlight_keywords(item_data)}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                '''
+            
+            elif item_type == 'list_item':
+                body_content += f'''
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">{highlight_keywords(itm)}</span>
+                  <span class="sop-list-text">{highlight_keywords(item_data)}</span>
                 </div>
-                ''')
-            else:
-                current_step_body.append(f'<p class="sop-p">{highlight_keywords(itm)}</p>')
+                '''
+            
+            elif item_type == 'paragraph':
+                body_content += f'<p class="sop-p">{highlight_keywords(item_data)}</p>'
         
-        flush_step()
-
         sections_html += f'''
         <div class="sop-section-container {theme_class}" id="{sec_id}">
           <div class="sop-section-header">
@@ -480,8 +820,11 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     # Quick Nav Pills
     nav_pills_html = '<div class="toc-pills">'
     for s_idx, s in enumerate(sections):
-        s_name = s['title'][:30] + ('...' if len(s['title']) > 30 else '')
-        nav_pills_html += f'<a href="#sec-{s_idx + 1}" class="toc-pill">{html.escape(s_name)}</a>'
+        s_name = s['title'][:35] + ('...' if len(s['title']) > 35 else '')
+        pill_class = 'toc-pill'
+        if s['type'] == 'procedure':
+            pill_class += ' highlight-amber'
+        nav_pills_html += f'<a href="#sec-{s_idx + 1}" class="{pill_class}">{html.escape(s_name)}</a>'
     if tables_data:
         nav_pills_html += f'<a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a>'
     nav_pills_html += '</div>'
@@ -548,7 +891,7 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     box-shadow: var(--shadow-md);
   }}
   .sop-section-header {{
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -574,6 +917,8 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   .sec-theme-mint .sop-section-header {{ background: linear-gradient(135deg, #059669, #047857); }}
   .sec-theme-amber .sop-section-header {{ background: linear-gradient(135deg, #d97706, #b45309); }}
   .sec-theme-indigo .sop-section-header {{ background: linear-gradient(135deg, #4f46e5, #3730a3); }}
+  .sec-theme-rose .sop-section-header {{ background: linear-gradient(135deg, #e11d48, #be123c); }}
+  .sec-theme-slate .sop-section-header {{ background: linear-gradient(135deg, #475569, #334155); }}
 
   .sop-section-body {{ padding: 1.6rem 1.8rem; }}
 
@@ -583,7 +928,7 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }}
@@ -593,10 +938,19 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     background: var(--card-hover);
     transform: translateY(-2px);
   }}
+  .sop-step-card.action-step {{
+    border-left-color: #d97706;
+  }}
+  .sop-step-card.action-step:hover {{
+    border-left-color: #b45309;
+  }}
   .step-card-header {{
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }}
+  .action-step .step-card-header {{
+    background: rgba(217, 119, 6, 0.08);
   }}
   .step-check-wrap {{
     display: flex;
@@ -616,8 +970,27 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }}
   .step-card-body {{ padding: 1.1rem 1.3rem; }}
+  
+  /* Action Step Badge */
+  .action-badge {{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }}
 
   /* Typography */
   .sop-p {{ font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }}
@@ -627,6 +1000,53 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   }}
   .sop-bullet {{ color: var(--cyan); font-weight: bold; flex-shrink: 0; }}
   .sop-list-text {{ flex: 1; }}
+
+  /* Revision History Collapsible */
+  .rev-details {{
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }}
+  .rev-summary {{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }}
+  .rev-summary::-webkit-details-marker {{ display: none; }}
+  .rev-summary:hover {{ color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }}
+  .rev-toggle-icon {{ font-size: 1rem; }}
+  .rev-arrow {{
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }}
+  details[open] .rev-arrow {{ transform: rotate(90deg); }}
+  .rev-body {{
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }}
+  .sop-rev-p {{
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }}
 
   /* Keyword Highlights */
   .kw-temp {{ color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }}
@@ -734,6 +1154,7 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   }}
   .toc-pill:hover {{ border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }}
   .toc-pill.highlight {{ background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }}
+  .toc-pill.highlight-amber {{ background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }}
 
   /* Table Cards */
   .table-card {{
@@ -759,13 +1180,20 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   .seq-blank {{ background: rgba(0,0,0,0.03); color: var(--text-muted); }}
 
   @media print {{
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card {{ display: none !important; }}
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details {{ display: none !important; }}
     .main {{ max-width: 100% !important; padding: 0 !important; }}
     .sop-doc-container {{ box-shadow: none !important; border: none !important; padding: 0 !important; }}
     body {{ background: #fff !important; color: #000 !important; }}
     .sop-section-header {{ background: #eee !important; color: #000 !important; }}
     .sop-section-header h2 {{ color: #000 !important; }}
     .sop-step-card {{ border-left: 2px solid #000 !important; background: none !important; }}
+  }}
+
+  @media (max-width: 768px) {{
+    .sop-doc-container {{ padding: 1.2rem; }}
+    .sop-section-body {{ padding: 1rem; }}
+    .wf-track {{ flex-wrap: wrap; justify-content: center; }}
+    .cross-grid {{ grid-template-columns: 1fr; }}
   }}
 </style>
 </head>
@@ -932,7 +1360,9 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
 '''
     return html_content
 
+# ═══════════════════════════════════════════════════════════════
 # Generate for all files
+# ═══════════════════════════════════════════════════════════════
 all_sops = []
 file_list = sorted(os.listdir(DOCS_DIR))
 
@@ -945,6 +1375,19 @@ for f in file_list:
     num_str = m.group(1)
     code = f'PKKK/300/UP/{num_str}'
     slug = f'sop-300-up-{num_str}'
+    
+    # Skip manually crafted SOPs
+    if num_str in SKIP_OVERWRITE:
+        print(f'  ⏭️  Skipping {code} (manually crafted, preserved)')
+        all_sops.append({
+            'code': code,
+            'title': '(preserved)',
+            'num': num_str,
+            'category': 'GC-MS',
+            'slug': slug,
+            'url': f'sop/{slug}.html'
+        })
+        continue
     
     path = os.path.join(DOCS_DIR, f)
     title_raw = f.replace('.docx', '').replace('.doc', '').replace('.pdf', '')
@@ -980,5 +1423,7 @@ for f in file_list:
         'slug': slug,
         'url': f'sop/{slug}.html'
     })
+    print(f'  ✅ Built {code}: {doc_title[:60]}...' if len(doc_title) > 60 else f'  ✅ Built {code}: {doc_title}')
 
-print(f'Successfully built {len(all_sops)} two-way cross-linked, hyper-detailed SOP guide pages!')
+print(f'\n🎉 Successfully rebuilt {len(all_sops)} crystal-clear, section-parsed SOP guide pages!')
+print(f'   (SOP 040 preserved as manually crafted)')

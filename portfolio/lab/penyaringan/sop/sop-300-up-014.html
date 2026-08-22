@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -327,43 +412,46 @@
         <div class="wf-step">
           <div class="wf-node">1</div>
           <div class="wf-info">
-            <div class="wf-name">1. Persediaan</div>
-            <div class="wf-desc">Penerimaan sampel & borang</div>
+            <div class="wf-name">1. Penyediaan</div>
+            <div class="wf-desc">Sediakan reagen, kartrij & pelarut</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">2</div>
           <div class="wf-info">
-            <div class="wf-name">2. Pelaksanaan</div>
-            <div class="wf-desc">Langkah kerja mengikut SOP</div>
+            <div class="wf-name">2. Pengkondisian</div>
+            <div class="wf-desc">Conditioning kartrij / corong pemisah</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">3</div>
           <div class="wf-info">
-            <div class="wf-name">3. Verifikasi</div>
-            <div class="wf-desc">Pemeriksaan kualiti & pematuhan</div>
+            <div class="wf-name">3. Pemuatan Sampel</div>
+            <div class="wf-desc">Load sampel & basuh</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
         <div class="wf-step">
           <div class="wf-node">4</div>
           <div class="wf-info">
-            <div class="wf-name">4. Dokumentasi</div>
-            <div class="wf-desc">Perekodan fail kualiti rasmi</div>
+            <div class="wf-name">4. Pengelutan</div>
+            <div class="wf-desc">Elute analit sasaran</div>
+          </div>
+        </div>
+        <div class="wf-arrow">➔</div>
+        <div class="wf-step">
+          <div class="wf-node">5</div>
+          <div class="wf-info">
+            <div class="wf-name">5. Penyejatan & Rekod</div>
+            <div class="wf-desc">Evaporasi, reconstitute & dokumentasi</div>
           </div>
         </div>
         </div>
 
   <!-- Target Analytes / Quick Chips -->
   
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
 
   <!-- Cross-Linked Instruments (For Analysis SOPs) -->
   
@@ -382,7 +470,7 @@
             <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes):</strong>
           </div>
           <ul class="tips-list">
-            <li>Patuhi amalan keselamatan makmal yang baik (GLP) dan rekodkan semua langkah persediaan dalam lembaran kerja rasmi.</li><li>Sebarang ketakakuran atau sampel luar spesifikasi hendaklah disiasat mengikut Arahan Kerja PKKK/300/UP/002.</li>
+            <li>Jangan biarkan kartrij SPE kering semasa proses pengkondisian dan pemuatan sampel.</li><li>Pastikan pH larutan sampel diselaraskan dengan betul sebelum pemuatan ke kartrij SPE.</li>
           </ul>
         </div>
         
@@ -393,7 +481,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 12 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 14 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -418,255 +506,306 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">1.   TUJUAN</a><a href="#sec-3" class="toc-pill">2.   SKOP</a><a href="#sec-4" class="toc-pill">3.  DEFINISI</a><a href="#sec-5" class="toc-pill">4.   CARTA ALIRAN</a><a href="#sec-6" class="toc-pill">5.  TANGGUNGJAWAB</a><a href="#sec-7" class="toc-pill">6.   PROSEDUR</a><a href="#sec-8" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-3" class="toc-pill">1. TUJUAN</a><a href="#sec-4" class="toc-pill">2. SKOP</a><a href="#sec-5" class="toc-pill">3. DEFINISI</a><a href="#sec-6" class="toc-pill">4. CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5. TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">PINDAAN:</p><p class="sop-p">Prosedur ini merupakan dokumen baru selaras dengan usaha menaiktaraf pensijilan institusi ke versi ISO 9001:2015 dan juga penamaan semula nama institusi dari Biro Pengawalan Farmaseutikal Kebangsaan (BPFK) kepada Bahagian Regulatori Farmasi Negara (NPRA). Sehubungan itu, dokumen asal adalah terbatal dan dokumen ini dimulakan semula sebagai Terbitan 1.</p><p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen daripada PKK/200/TSK/002 kepada PKK/200/HMS/015</p><p class="sop-p">Pindaan tarikh kuatkuasa daripada 15 November 2016 kepada 20 Februari 2020.</p><p class="sop-p">Pindaan nama tatacara pengujian daripada Ekstraksi Fasa Cecair kepada Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</p><p class="sop-p">Batal Unit Penyaringan Tradisional dan Suplemen Kesihatan</p><p class="sop-p">Pinda Ketua Unit kepada Ketua Subunit.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen PKK/200/HMS/015 kepada PKK/300/HMS/071.</p><p class="sop-p">Pindaan tarikh kuatkuasa tatacara pengujian daripada 20 Februari 2020 kepada 15 Julai 2020.</p><p class="sop-p">Terbitan 3, Semakan 1:</p><p class="sop-p">Meminda perkataan Agensi kepada Bahagian di dalam Perenggan Pindaan.</p><p class="sop-p">Pindaan tarikh kuatkuasa tatacara pengujian daripada 15 Julai 2020 kepada 15 Disember 2020.</p><p class="sop-p">Terbitan 4, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/071 kepada PKKK/300/HMS/071</p><p class="sop-p">Pindaan peranan Ketua Subunit pada ruangan Tanggungjawab kepada Ketua Subunit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan ayat “Sila rujuk dokumen PKK/300/HMS/026” pada klausa 6.2 Proses Persampelan kepada “Sila rujuk dokumen PKKK/300/HMS/026”.</p><p class="sop-p">Pindaan No. Borang TSK/04 kepada HMS/026A pada ruangan Klausa 7 Rekod Kualiti</p><p class="sop-p">Pindaan No. Dokumen PKK/300/TSK/016 kepada PKKK/300/HMS/026 pada ruangan Rujukan</p><p class="sop-p">Terbitan 4, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/071 kepada PKKK/300/UAT/015</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab</p><p class="sop-p">pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan ayat “Sila rujuk dokumen PKKK/300/HMS/026” pada klausa 6.2 Proses Persampelan kepada “Sila rujuk dokumen PKKK/300/UAT/001”.</p><p class="sop-p">Pindaan No. Borang HMS/026A kepada UAT/001A pada ruangan Klausa 7 Rekod Kualiti</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/026 kepada PKKK/300/UAT/001 pada ruangan Rujukan</p><p class="sop-p">Terbitan 4, Semakan 2:</p><p class="sop-p">Kemaskini timbangan sampel daripada 1.0 gm kepada 1.5 gm di para 6.3.1.1 dan 6.3.2.1</p><p class="sop-p">Terbitan 4, Semakan 3:</p><p class="sop-p">Menambah perenggan 6.5 Penggunaan pengekstrakan fasa cecair bagi ujian penyaringan yang terlibat</p><p class="sop-p">Mengemaskini perenggan 6.3.1.3 dan 6.3.2.3 dengan menambah Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH</p><p class="sop-p">Terbitan 4, Semakan 4:</p><p class="sop-p">Mengemaskini perenggan 6.4.1 dengan menambah “lebih kurang <span class="kw-vol">3 mL</span>” pelarut organik Ethanol.</p><p class="sop-p">Terbitan 5, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/015 kepada  PKKK/300/UP/014.</p><p class="sop-p">Kemaskini tarikh kuatkuasa tatacara pengujian daripada 1 Julai 2025 kepada 10 April 2026.</p><p class="sop-p">Kemaskini PKKK/300/UAT/001 kepada PKKK/300/UP/001.</p><p class="sop-p">Kemaskini perenggan 6.3.1.4 dan 6.3.2.4 dengan menambah kaedah lenggang secara perlahan bagi mengoptimumkan perpindahan analit dan mencegah pembentukan emulsi.</p><p class="sop-p">Kemaskini (PKKK/300/UAT/016) kepada (PKKK/300/UP015).</p><p class="sop-p">Kemaskini (PKKK/300/UAT/047) kepada (PKKK/300/UP/021).</p><p class="sop-p">Kemaskini (PKKK/300/UAT/020) kepada (PKKK/UP/018).</p><p class="sop-p">Kemaskini UAT/001A kepada UP/001A.</p>
+            
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (2 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 2, Semakan 0:</p><p class="sop-rev-p">Kemaskini nombor dokumen daripada PKK/200/TSK/002 kepada PKK/200/HMS/015</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (4 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Batal Unit Penyaringan Tradisional dan Suplemen Kesihatan</p><p class="sop-rev-p">Pinda Ketua Unit kepada Ketua Subunit.</p><p class="sop-rev-p">Terbitan 3, Semakan 0:</p><p class="sop-rev-p">Kemaskini nombor dokumen PKK/200/HMS/015 kepada PKK/300/HMS/071.</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (2 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 3, Semakan 1:</p><p class="sop-rev-p">Meminda perkataan Agensi kepada Bahagian di dalam Perenggan Pindaan.</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (1 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 4, Semakan 0:</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (1 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 4, Semakan 1:</p></div>
+                </details>
+                <p class="sop-p">pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p>
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (8 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 4, Semakan 2:</p><p class="sop-rev-p">Kemaskini timbangan sampel daripada 1.0 gm kepada 1.5 gm di para 6.3.1.1 dan 6.3.2.1</p><p class="sop-rev-p">Terbitan 4, Semakan 3:</p><p class="sop-rev-p">Menambah perenggan 6.5 Penggunaan pengekstrakan fasa cecair bagi ujian penyaringan yang terlibat</p><p class="sop-rev-p">Mengemaskini perenggan 6.3.1.3 dan 6.3.2.3 dengan menambah Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH</p><p class="sop-rev-p">Terbitan 4, Semakan 4:</p><p class="sop-rev-p">Mengemaskini perenggan 6.4.1 dengan menambah “lebih kurang 3 mL” pelarut organik Ethanol.</p><p class="sop-rev-p">Terbitan 5, Semakan 0:</p></div>
+                </details>
+                
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (7 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Kemaskini tarikh kuatkuasa tatacara pengujian daripada 1 Julai 2025 kepada 10 April 2026.</p><p class="sop-rev-p">Kemaskini PKKK/300/UAT/001 kepada PKKK/300/UP/001.</p><p class="sop-rev-p">Kemaskini perenggan 6.3.1.4 dan 6.3.2.4 dengan menambah kaedah lenggang secara perlahan bagi mengoptimumkan perpindahan analit dan mencegah pembentukan emulsi.</p><p class="sop-rev-p">Kemaskini (PKKK/300/UAT/016) kepada (PKKK/300/UP015).</p><p class="sop-rev-p">Kemaskini (PKKK/300/UAT/047) kepada (PKKK/300/UP/021).</p><p class="sop-rev-p">Kemaskini (PKKK/300/UAT/020) kepada (PKKK/UP/018).</p><p class="sop-rev-p">Kemaskini UAT/001A kepada UP/001A.</p></div>
+                </details>
+                
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+        <div class="sop-section-container sec-theme-amber" id="sec-2">
           <div class="sop-section-header">
-            <span class="sec-icon">🎯</span>
-            <h2>1.   TUJUAN</h2>
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROSEDUR</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">Untuk memastikan pengekstrakan fasa cecair yang dijalankan ke atas produk tradisional, suplemen kesihatan dan kosmetik dapat dilaksanakan dengan betul dan selamat.</p>
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-1" class="sop-step-title">
+                        6.1 Materials &amp; Equipments
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Beakers</p><p class="sop-p">Separators</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Filter funnel
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-3" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Filter paper
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Evaporating dish</p><p class="sop-p">Measuring cylinder</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Syringe filter</p><p class="sop-p">Disposable syringe</p><p class="sop-p">Aluminium foil</p><p class="sop-p">Chloroform</p><p class="sop-p">Ethyl Acetate</p><p class="sop-p">Deionized water</p><p class="sop-p">Ammonia/HCL</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-4" class="sop-step-title">
+                        6.2 Proses persampelan
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Proses persampelan adalah berbeza mengikut bentuk dos sampel. Sila rujuk dokumen PKKK/300/UP/001 (Proses Persampelan).</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-5" class="sop-step-title">
+                        6.3 Penyediaan sampel
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-6" class="sop-step-title">
+                        6.3.1	Pengekstrakan menggunakan Chloroform
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">6.3.1.1  	Larutkan 1.5 gm atau lebih sampel di dalam bikar mengandungi 10-<span class="kw-vol">50 mL</span> air.</p><p class="sop-p">6.3.1.2  	Sonicate larutan tersebut selama 10-<span class="kw-time">15 minit</span> menggunakan ultrasonic bath.</p><p class="sop-p">6.3.1.3  	Ubah pH larutan sampel kepada pH yang dikehendaki menggunakan larutan Ammonia atau HCL. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">6.3.1.4  	* Lakukan pengekstrakan ke atas larutan tadi sebanyak 2 kali dengan  menggunakan <span class="kw-vol">50 mL</span> atau lebih Chloroform.</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">* Pengekstrakan dilakukan menggunakan kaedah lenggang secara perlahan bagi memastikan perpindahan analit ke fasa organik yang maksimum serta mengelakkan pembentukan emulsi yang boleh menjejaskan proses pemisahan fasa.</span>
+                </div>
+                <p class="sop-p">6.3.1.5  	Tapiskan lapisan bawah (lapisan Chloroform) dengan menggunakan kertas turas. Buangkan lapisan atas (lapisan sampel).</p><p class="sop-p">6.3.1.6  	Keringkan hasil turasan tadi didalam evaporating dish sehingga kering.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-7" class="sop-step-title">
+                        6.3.2	Pengekstrakan menggunakan Ethyl Acetate
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">6.3.2.1 	Larutkan 1.5 gm atau lebih sampel di dalam bikar mengandungi 10-<span class="kw-vol">50 mL</span> air.</p><p class="sop-p">6.3.2.2 	Sonicate larutan tersebut selama 10-<span class="kw-time">15 minit</span> menggunakan ultrasonic bath</p><p class="sop-p">6.3.2.3 	Ubah pH larutan sampel kepada pH yang dikehendaki menggunakan larutan Ammonia atau HCL. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">6.3.2.4  	*Lakukan pengekstrakan ke atas larutan tadi sebanyak 2 kali dengan</p><p class="sop-p">menggunakan <span class="kw-vol">50 mL</span> atau lebih Ethyl Acetate.</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">* Pengekstrakan dilakukan menggunakan kaedah lenggang secara perlahan bagi memastikan perpindahan analit ke fasa organik yang maksimum serta mengelakkan pembentukan emulsi yang boleh menjejaskan proses pemisahan fasa.</span>
+                </div>
+                <p class="sop-p">6.3.2.5  Buangkan lapisan bawah (lapisan sampel). Tapiskan lapisan atas (lapisan Ethyl Acetate) dengan menggunakan kertas turas.</p><p class="sop-p">6.3.2.6 	Keringkan hasil turasan tadi didalam evaporating dish sehingga kering.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-8" class="sop-step-title">
+                        6.4 Penyediaan sampel untuk pengujian
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-9" class="sop-step-title">
+                        6.4.1	Larutkan hasil pengekstrakan (dari 6.3.1 atau 6.3.2) dengan lebih kurang <span class="kw-vol">3 mL</span> pelarut organik Ethanol.
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-10" class="sop-step-title">
+                        6.5 Penggunaan pengekstrakan fasa cecair (LLE)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Jadual 1: Ujian Penyaringan yang Terlibat dalam Penggunaan Pengekstrakan Fasa Cecair</p>
           </div>
         </div>
         
         <div class="sop-section-container sec-theme-cyan" id="sec-3">
           <div class="sop-section-header">
             <span class="sec-icon">🎯</span>
-            <h2>2.   SKOP</h2>
+            <h2>1. TUJUAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">Prosedur ini hendaklah digunapakai untuk menjalankan pengekstrakan fasa cecair bagi sampel tradisional, suplemen kesihatan dan kosmetik yang diterima mengikut tatacara pengujian yang dikehendaki.</p>
+            <p class="sop-p">Untuk memastikan pengekstrakan fasa cecair yang dijalankan ke atas produk tradisional, suplemen kesihatan dan kosmetik dapat dilaksanakan dengan betul dan selamat.</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-purple" id="sec-4">
+        <div class="sop-section-container sec-theme-cyan" id="sec-4">
           <div class="sop-section-header">
-            <span class="sec-icon">📖</span>
-            <h2>3.  DEFINISI</h2>
+            <span class="sec-icon">📐</span>
+            <h2>2. SKOP</h2>
           </div>
           <div class="sop-section-body">
             
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-1" class="sop-step-title">
-                            3.1      HCL – Asid Hidroklorik
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
-                    </div>
-                    
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-cyan" id="sec-5">
+        <div class="sop-section-container sec-theme-purple" id="sec-5">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>4.   CARTA ALIRAN</h2>
+            <span class="sec-icon">📖</span>
+            <h2>3. DEFINISI</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-11" class="sop-step-title">
+                        3.1      HCL – Asid Hidroklorik
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔀</span>
+            <h2>4. CARTA ALIRAN</h2>
           </div>
           <div class="sop-section-body">
             <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
           </div>
         </div>
         
-        <div class="sop-section-container sec-theme-mint" id="sec-6">
+        <div class="sop-section-container sec-theme-mint" id="sec-7">
           <div class="sop-section-header">
             <span class="sec-icon">👥</span>
-            <h2>5.  TANGGUNGJAWAB</h2>
+            <h2>5. TANGGUNGJAWAB</h2>
           </div>
           <div class="sop-section-body">
             
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-2" class="sop-step-title">
-                            5.1	Ketua Unit / Pegawai Farmasi Bertanggungjawab
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Memastikan prosedur ini diikuti semasa melaksanakan pengekstrakan fasa cecair ke atas sampel</p>
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-12" class="sop-step-title">
+                        5.1	Ketua Unit / Pegawai Farmasi Bertanggungjawab
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-3" class="sop-step-title">
-                            5.2      Pegawai Farmasi
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia pengekstrakan fasa cecair yang dijalankan oleh Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan pengujian sampel</p><p class="sop-p">Menjalankan pengujian ke atas sampel termasuk kerja-kerja pengekstrakan fasa pepejal mengikut tatacara yang telah ditetapkan.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-4" class="sop-step-title">
-                            5.3      Penolong Pegawai Farmasi
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Menjalankan pengujian ke atas sampel termasuk kerja-kerja pengekstrakan fasa pepejal mengikut tatacara yang telah ditetapkan.</p>
-                      </div>
-                    </div>
-                    
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-amber" id="sec-7">
-          <div class="sop-section-header">
-            <span class="sec-icon">🔬</span>
-            <h2>6.   PROSEDUR</h2>
-          </div>
-          <div class="sop-section-body">
-            
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-5" class="sop-step-title">
-                            6.1 Materials &amp; Equipments
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Beakers</p><p class="sop-p">Separators</p><p class="sop-p">Filter funnel</p><p class="sop-p">Filter paper</p><p class="sop-p">Evaporating dish</p><p class="sop-p">Measuring cylinder</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Syringe filter</p><p class="sop-p">Disposable syringe</p><p class="sop-p">Aluminium foil</p><p class="sop-p">Chloroform</p><p class="sop-p">Ethyl Acetate</p><p class="sop-p">Deionized water</p><p class="sop-p">Ammonia/HCL</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-6" class="sop-step-title">
-                            6.2 Proses persampelan
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Proses persampelan adalah berbeza mengikut bentuk dos sampel. Sila rujuk dokumen PKKK/300/UP/001 (Proses Persampelan).</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-7" class="sop-step-title">
-                            6.3 Penyediaan sampel
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-8" class="sop-step-title">
-                            6.3.1	Pengekstrakan menggunakan Chloroform
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">6.3.1.1  	Larutkan 1.5 gm atau lebih sampel di dalam bikar mengandungi 10-<span class="kw-vol">50 mL</span> air.</p><p class="sop-p">6.3.1.2  	Sonicate larutan tersebut selama 10-<span class="kw-time">15 minit</span> menggunakan ultrasonic bath.</p><p class="sop-p">6.3.1.3  	Ubah pH larutan sampel kepada pH yang dikehendaki menggunakan larutan Ammonia atau HCL. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">6.3.1.4  	* Lakukan pengekstrakan ke atas larutan tadi sebanyak 2 kali dengan  menggunakan <span class="kw-vol">50 mL</span> atau lebih Chloroform.</p>
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">* Pengekstrakan dilakukan menggunakan kaedah lenggang secara perlahan bagi memastikan perpindahan analit ke fasa organik yang maksimum serta mengelakkan pembentukan emulsi yang boleh menjejaskan proses pemisahan fasa.</span>
+                  </div>
                 </div>
-                <p class="sop-p">6.3.1.5  	Tapiskan lapisan bawah (lapisan Chloroform) dengan menggunakan kertas turas. Buangkan lapisan atas (lapisan sampel).</p><p class="sop-p">6.3.1.6  	Keringkan hasil turasan tadi didalam evaporating dish sehingga kering.</p>
-                      </div>
+                <p class="sop-p">Memastikan prosedur ini diikuti semasa melaksanakan pengekstrakan fasa cecair ke atas sampel</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-13" class="sop-step-title">
+                        5.2      Pegawai Farmasi
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-9" class="sop-step-title">
-                            6.3.2	Pengekstrakan menggunakan Ethyl Acetate
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">6.3.2.1 	Larutkan 1.5 gm atau lebih sampel di dalam bikar mengandungi 10-<span class="kw-vol">50 mL</span> air.</p><p class="sop-p">6.3.2.2 	Sonicate larutan tersebut selama 10-<span class="kw-time">15 minit</span> menggunakan ultrasonic bath</p><p class="sop-p">6.3.2.3 	Ubah pH larutan sampel kepada pH yang dikehendaki menggunakan larutan Ammonia atau HCL. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">6.3.2.4  	*Lakukan pengekstrakan ke atas larutan tadi sebanyak 2 kali dengan</p><p class="sop-p">menggunakan <span class="kw-vol">50 mL</span> atau lebih Ethyl Acetate.</p>
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">* Pengekstrakan dilakukan menggunakan kaedah lenggang secara perlahan bagi memastikan perpindahan analit ke fasa organik yang maksimum serta mengelakkan pembentukan emulsi yang boleh menjejaskan proses pemisahan fasa.</span>
+                  </div>
                 </div>
-                <p class="sop-p">6.3.2.5  Buangkan lapisan bawah (lapisan sampel). Tapiskan lapisan atas (lapisan Ethyl Acetate) dengan menggunakan kertas turas.</p><p class="sop-p">6.3.2.6 	Keringkan hasil turasan tadi didalam evaporating dish sehingga kering.</p>
-                      </div>
+                <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia pengekstrakan fasa cecair yang dijalankan oleh Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan pengujian sampel</p><p class="sop-p">Menjalankan pengujian ke atas sampel termasuk kerja-kerja pengekstrakan fasa pepejal mengikut tatacara yang telah ditetapkan.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-014-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
+                      <label for="step-014-14" class="sop-step-title">
+                        5.3      Penolong Pegawai Farmasi
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-10" class="sop-step-title">
-                            6.4 Penyediaan sampel untuk pengujian
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-11" class="sop-step-title">
-                            6.4.1	Larutkan hasil pengekstrakan (dari 6.3.1 atau 6.3.2) dengan lebih kurang 3 mL pelarut organik Ethanol.
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-014-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/014')">
-                          <label for="step-014-12" class="sop-step-title">
-                            6.5 Penggunaan pengekstrakan fasa cecair (LLE)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Jadual 1: Ujian Penyaringan yang Terlibat dalam Penggunaan Pengekstrakan Fasa Cecair</p>
-                      </div>
-                    </div>
-                    
+                  </div>
+                </div>
+                <p class="sop-p">Menjalankan pengujian ke atas sampel termasuk kerja-kerja pengekstrakan fasa pepejal mengikut tatacara yang telah ditetapkan.</p>
           </div>
         </div>
         
@@ -685,12 +824,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/014</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Wan Nurul Aina Mior Abdullah</td><td>Mazli Muhamad</td><td>15 Nov 2016</td></tr><tr ><td>2</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>20 Feb 2020</td></tr><tr ><td>3</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Jul 2020</td></tr><tr ><td>3</td><td>1</td><td>Lim Wen Jun</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Dis 2020</td></tr><tr ><td>4</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>4</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>4</td><td>2</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr ><td>4</td><td>3</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>16 Dis 2024</td></tr><tr ><td>4</td><td>4</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>5</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April  2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Wan Nurul Aina Mior Abdullah</td><td>Mazli Muhamad</td><td>15 Nov 2016</td></tr><tr ><td>2</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>20 Feb 2020</td></tr><tr ><td>3</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Jul 2020</td></tr><tr ><td>3</td><td>1</td><td>Lim Wen Jun</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Dis 2020</td></tr><tr ><td>4</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>4</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>4</td><td>2</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr ><td>4</td><td>3</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>16 Dis 2024</td></tr><tr ><td>4</td><td>4</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>5</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April  2026</td></tr>
             </table>
           </div>
         </div>

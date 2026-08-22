@@ -60,7 +60,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.9rem 1.4rem;
+    padding: 0.95rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -86,6 +86,8 @@
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+  .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -95,7 +97,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.2rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -105,10 +107,19 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
+  .sop-step-card.action-step {
+    border-left-color: #d97706;
+  }
+  .sop-step-card.action-step:hover {
+    border-left-color: #b45309;
+  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
+  }
+  .action-step .step-card-header {
+    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -128,8 +139,27 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
+    line-height: 1.6;
   }
   .step-card-body { padding: 1.1rem 1.3rem; }
+  
+  /* Action Step Badge */
+  .action-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d97706, #b45309);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
 
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
@@ -139,6 +169,53 @@
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Revision History Collapsible */
+  .rev-details {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .rev-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: rgba(71, 85, 105, 0.06);
+    user-select: none;
+    list-style: none;
+  }
+  .rev-summary::-webkit-details-marker { display: none; }
+  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
+  .rev-toggle-icon { font-size: 1rem; }
+  .rev-arrow {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+  }
+  details[open] .rev-arrow { transform: rotate(90deg); }
+  .rev-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--card-border-subtle);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .sop-rev-p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  }
 
   /* Keyword Highlights */
   .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
@@ -246,6 +323,7 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
   /* Table Cards */
   .table-card {
@@ -271,13 +349,20 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
+  }
+
+  @media (max-width: 768px) {
+    .sop-doc-container { padding: 1.2rem; }
+    .sop-section-body { padding: 1rem; }
+    .wf-track { flex-wrap: wrap; justify-content: center; }
+    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -369,7 +454,7 @@
   
         <div class="summary-analytes">
           <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
+          <div class="chips-container"><span class="analite-chip">Menthol</span><span class="analite-chip">Camphor</span><span class="analite-chip">Methyl Salicylate</span><span class="analite-chip">Thymol</span></div>
         </div>
         
 
@@ -421,7 +506,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 43 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 63 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -446,624 +531,814 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (12)</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 TUJUAN</a><a href="#sec-3" class="toc-pill">2.0 SKOP</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7.0 REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (12)</a></div>
 
     <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+        <div class="sop-section-container sec-theme-slate" id="sec-1">
           <div class="sop-section-header">
-            <span class="sec-icon">◈</span>
-            <h2>1.0 PENGENALAN DOKUMEN</h2>
+            <span class="sec-icon">📋</span>
+            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
           </div>
           <div class="sop-section-body">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Menambah perenggan 6.4.5 Internal Quality Control</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Mengemaskini perenggan 6.4.2 Table for Sequence of Injection</p><p class="sop-p">Mengemaskini perenggan 6.3.1 vi, 6.3.2 ii dan 6.4.2</p><p class="sop-p">Mengemaskini perenggan 6.5 vii dengan menambah “IQC table”</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan nombor dokumen PKKK/300/UAT/056 kepada PKKK/300/UP/030.</p><p class="sop-p">Pindaan nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001;</p><p class="sop-p">PKKK/300/UAT/011 kepada PKKK/300/UP/010;</p><p class="sop-p">iii.	Mengemasikini 6.4.1	Gas chromatographic and MS Condition dengan penambahan Column Dimension pada Table 3. GCMS system for identification and assay of menthol, camphor, methyl salicylate and thymol.</p><p class="sop-p">iv. Mengemaskini  Table 5:  SIM mode for identification and assay of menthol, camphor, methyl salicylate, and thymol dengan penambahan “Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency”.</p><p class="sop-p">v. Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/007	Laporan Pengujian Identifikasi dan Kandungan Menthol, Camphor,</p><p class="sop-p">Methyl Salicylate dan Thymol dalam Produk Tradisional Menggunakan GCMS</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Menthol, Camphor, Methyl Salicylate dan Thymol dalam produk tradisional menggunakan Gas Chromatography-Mass Spectrometer (GCMS) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi dan kandungan Menthol, Camphor, Methyl Salicylate dan Thymol dalam produk tradisional menggunakan Gas Chromatography-Mass Spectrometer (GCMS).</p><p class="sop-p">DEFINISI</p>
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-1" class="sop-step-title">
-                            3.1	GCMS	-	Gas Chromatography Mass Spectrometer
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+            
+                <details class="rev-details">
+                  <summary class="rev-summary">
+                    <span class="rev-toggle-icon">📋</span>
+                    Sejarah Pindaan & Semakan Dokumen (8 entri)
+                    <span class="rev-arrow">▸</span>
+                  </summary>
+                  <div class="rev-body"><p class="sop-rev-p">Terbitan 1, Semakan 1:</p><p class="sop-rev-p">Menambah perenggan 6.4.5 Internal Quality Control</p><p class="sop-rev-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-rev-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-rev-p">Mengemaskini perenggan 6.4.2 Table for Sequence of Injection</p><p class="sop-rev-p">Mengemaskini perenggan 6.3.1 vi, 6.3.2 ii dan 6.4.2</p><p class="sop-rev-p">Mengemaskini perenggan 6.5 vii dengan menambah “IQC table”</p><p class="sop-rev-p">Terbitan 2, Semakan 0:</p></div>
+                </details>
+                <p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001;</p><p class="sop-p">PKKK/300/UAT/011 kepada PKKK/300/UP/010;</p><p class="sop-p">iii.	Mengemasikini 6.4.1	Gas chromatographic and MS Condition dengan penambahan Column Dimension pada Table 3. GCMS system for identification and assay of menthol, camphor, methyl salicylate and thymol.</p><p class="sop-p">iv. Mengemaskini  Table 5:  SIM mode for identification and assay of menthol, camphor, methyl salicylate, and thymol dengan penambahan “Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency”.</p><p class="sop-p">v. Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/007	Laporan Pengujian Identifikasi dan Kandungan Menthol, Camphor,</p><p class="sop-p">Methyl Salicylate dan Thymol dalam Produk Tradisional Menggunakan GCMS</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">🎯</span>
+            <h2>1.0 TUJUAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Menthol, Camphor, Methyl Salicylate dan Thymol dalam produk tradisional menggunakan Gas Chromatography-Mass Spectrometer (GCMS) dilaksanakan dengan cekap dan berkesan.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-cyan" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">📐</span>
+            <h2>2.0 SKOP</h2>
+          </div>
+          <div class="sop-section-body">
+            
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-amber" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROSEDUR</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-1" class="sop-step-title">
+                        6.1	Material and Equipment
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-2" class="sop-step-title">
-                            3.2	GC	-	Gas Chromatography
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Instrument: Gas Chromatography Mass Spectrometer (GCMS)</p><p class="sop-p">Column: BP-624, 6% Cyanopropylphenyl 94% Dimethylpolysiloxane, with dimension of 30 m x 0.25 mm and particle size of 1.4 µm or equivalent.</p><p class="sop-p">Analytical balance and microbalance</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-2" class="sop-step-title">
+                        <span class="action-badge">Langkah 1</span>
+                        Vortex Mixer
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-3" class="sop-step-title">
-                            3.3	MS	-	Mass Spectrometer
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sonicator</p><p class="sop-p">Reference standard: Primary or secondary RS of equivalent.</p><p class="sop-p">Menthol</p><p class="sop-p">Camphor</p><p class="sop-p">Methyl Salicylate</p><p class="sop-p">Thymol</p><p class="sop-p">Eugenol</p><p class="sop-p">Chemical:</p><p class="sop-p">Methanol</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Conical flask</p><p class="sop-p">Amber volumetric flask</p><p class="sop-p">Disposable syringe without needle, 5 ml</p><p class="sop-p">Nylon solvent filter, 0.45µm</p><p class="sop-p">Amber glass screw cap vial, 2 ml</p><p class="sop-p">Amber glass screw cap vial, 50 ml</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-3" class="sop-step-title">
+                        6.2	Preparation of Reference Standard
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-4" class="sop-step-title">
-                            3.4	SIM	- Selected ion monitoring
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-4" class="sop-step-title">
+                        6.2.1	Preparation of Internal Standard (IS) solution (<span class="kw-wt">0.4 mg</span>/ml or <span class="kw-wt">400 µg</span>/ml)
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-5" class="sop-step-title">
-                            3.5	RS	-	Reference standard
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Liquid form: Pipette 10 µl of eugenol reference standard into a 25 ml amber volumetric flask. Dissolve and dilute to volume with methanol. Filter the solution through a 0.45 µm nylon syringe filter into an amber vial.</p><p class="sop-p">Powder form: Weigh <span class="kw-wt">10 mg</span> of eugenol reference standard into a 25 ml amber volumetric flask. Dissolve and dilute to volume with methanol. Filter the solution through a 0.45 µm nylon syringe filter into an amber vial.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-5" class="sop-step-title">
+                        6.2.2	Preparation of Individual Standard Stock Solution (<span class="kw-wt">0.4 mg</span>/ml or <span class="kw-wt">400 µg</span>/ml)
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-6" class="sop-step-title">
-                            3.6	IS	-	Internal standard
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-6" class="sop-step-title">
+                        <span class="action-badge">Langkah 2</span>
+                        Weigh <span class="kw-wt">8 mg</span> each of thymol, menthol and camphor into separate 20 ml amber volumetric flasks.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-7" class="sop-step-title">
-                            3.7	EI	- Electron ionization
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-7" class="sop-step-title">
+                        <span class="action-badge">Langkah 3</span>
+                        Dissolve and dilute to volume with methanol.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-8" class="sop-step-title">
-                            3.8	OOS	-	Out of specification
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-8" class="sop-step-title">
+                        <span class="action-badge">Langkah 4</span>
+                        Filter the solution through a 0.45 µm nylon syringe filter into amber vials.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-9" class="sop-step-title">
-                            3.9	SST	- System suitability test
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">For methyl salicylate: Pipette 7 µl of methyl salicylate into a <span class="kw-vol">20 mL</span> amber volumetric flask and repeat steps ii and iii.</p><p class="sop-p">Preparation of Mixed Working Standard Solution (<span class="kw-wt">0.1 mg</span>/ml or <span class="kw-wt">100 µg</span>/ml).</p><p class="sop-p">Pipette 12.5 ml of each standard stock solution into an amber 50 ml vial.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-9" class="sop-step-title">
+                        <span class="action-badge">Langkah 5</span>
+                        Vortex the vial for 1 minute.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-10" class="sop-step-title">
-                            3.10	NMT	- Not more than
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-10" class="sop-step-title">
+                        6.2.4	Preparation of Mixed Working Standard Solution for Calibration Curve
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-11" class="sop-step-title">
-                            3.11	NLT	-	Not less than
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-11" class="sop-step-title">
+                        <span class="action-badge">Langkah 6</span>
+                        Prepare 1 set of working standard solution for the calibration curve from the mixed working standard solution (<span class="kw-wt">0.1 mg</span>/ml). Dilute the solution to obtain five (5) concentrations levels of <span class="kw-wt">3 µg</span>/ml, <span class="kw-wt">10 µg</span>/ml, <span class="kw-wt">20 µg</span>/ml, <span class="kw-wt">40 µg</span>/ml and <span class="kw-wt">80 µg</span>/ml.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-12" class="sop-step-title">
-                            3.12	UPA	- Unit Perkhidmatan Analisis
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-12" class="sop-step-title">
+                        <span class="action-badge">Langkah 7</span>
+                        Add the IS solution to each concentration before diluting to volume with methanol.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-13" class="sop-step-title">
-                            3.13	LOD	-	Limit of Detection
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Refer to the table below for preparation details:</p><p class="sop-p">Table 1: Preparation of mix working standard solution for calibration curve.</p><p class="sop-p">Option to prepare mix working standard solution for calibration in <span class="kw-vol">5 mL</span> volumetric flask. The preparation as in the table below:</p><p class="sop-p">Table 2: Preparation of mix working standard solution for calibration curve.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-13" class="sop-step-title">
+                        6.2.5	System Suitability Solution
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-14" class="sop-step-title">
-                            3.14	RSD	- Relative Standard Deviation
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">For system suitability test (SST), use the Level 3 concentration (<span class="kw-wt">20 µg</span>/ml of each compound) as the system suitability solution.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-14" class="sop-step-title">
+                        6.2.6	Preparation of Limit of Detection (LOD) solution (<span class="kw-wt">0.001 mg</span>/ml or <span class="kw-wt">1 µg</span>/ml)
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-15" class="sop-step-title">
-                            3.15	IQC	-	 Internal Quality Control
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Pipette 50 µl of mixed working standard solution into 5 ml volumetric flask and add 1000 µl of internal standard (IS) solution.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-15" class="sop-step-title">
+                        <span class="action-badge">Langkah 8</span>
+                        Mix and dilute to volume with methanol.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-16" class="sop-step-title">
-                            3.16	Tf	-	Tailing factor
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-16" class="sop-step-title">
+                        6.2.7	Limit of quantitation (LOQ) solution (<span class="kw-wt">0.003 mg</span>/ml or <span class="kw-wt">3 µg</span>/ml)
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-17" class="sop-step-title">
-                            3.17	N	-	Theoretical Plate
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Use the Level 1 concentration (<span class="kw-wt">3 µg</span>/ml of each compound) as the LOQ solution.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-17" class="sop-step-title">
+                        6.3	Preparation of Sample
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-18" class="sop-step-title">
-                            3.18	R2	-		Correlation coefficient
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Patch / Medicated Plaster</p><p class="sop-p">Cut the sample into small pieces.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-18" class="sop-step-title">
+                        <span class="action-badge">Langkah 9</span>
+                        Weigh <span class="kw-wt">100 mg</span> of the sample and add 15 ml of methanol into a <span class="kw-vol">50 mL</span> conical flask (duplicate preparation: Replicates A and B).
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-19" class="sop-step-title">
-                            3.19	S/N	- Signal to noise
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-19" class="sop-step-title">
+                        <span class="action-badge">Langkah 10</span>
+                        Vortex the samples for 1 minute.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-20" class="sop-step-title">
-                            3.20	m/z	-	mass to charge
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-20" class="sop-step-title">
+                        <span class="action-badge">Langkah 11</span>
+                        Sonicate with heat at <span class="kw-temp">55°C</span> for <span class="kw-time">15 minutes</span>.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-21" class="sop-step-title">
-                            3.21	% w/w	- percent weight over weight
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Cool the solution to room temperature.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-21" class="sop-step-title">
+                        <span class="action-badge">Langkah 12</span>
+                        Add 5 ml of IS solution and 5 ml of methanol.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-22" class="sop-step-title">
-                            3.22	DRGD	- Drug Registration Guidance Document
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-22" class="sop-step-title">
+                        <span class="action-badge">Langkah 13</span>
+                        Filter the sample solution through a 0.45 µm filter into a 2 ml amber vial.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-23" class="sop-step-title">
-                            5.1	Ketua Seksyen
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagih sampel kepada Pegawai Farmasi.</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-23" class="sop-step-title">
+                        6.3.2	Liniment / Ointment / Cream
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-24" class="sop-step-title">
-                            5.3	Pegawai Farmasi
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Sampling the sample according to PKKK/300/UP/001.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-24" class="sop-step-title">
+                        <span class="action-badge">Langkah 14</span>
+                        Weigh <span class="kw-wt">100 mg</span> of the sample and add 15 ml of methanol in a 25 ml amber volumetric flask (duplicate preparation: Replicates A and B).
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-25" class="sop-step-title">
-                            5.5	Penolong Pegawai Farmasi
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Menyediakan laporan ujian.</p><p class="sop-p">PROSEDUR</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-25" class="sop-step-title">
+                        <span class="action-badge">Langkah 15</span>
+                        Vortex the sample for 1 minute.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-26" class="sop-step-title">
-                            6.1	Material and Equipment
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Instrument: Gas Chromatography Mass Spectrometer (GCMS)</p><p class="sop-p">Column: BP-624, 6% Cyanopropylphenyl 94% Dimethylpolysiloxane, with dimension of 30 m x 0.25 mm and particle size of 1.4 µm or equivalent.</p><p class="sop-p">Analytical balance and microbalance</p><p class="sop-p">Vortex Mixer</p><p class="sop-p">Sonicator</p><p class="sop-p">Reference standard: Primary or secondary RS of equivalent.</p><p class="sop-p">Menthol</p><p class="sop-p">Camphor</p><p class="sop-p">Methyl Salicylate</p><p class="sop-p">Thymol</p><p class="sop-p">Eugenol</p><p class="sop-p">Chemical:</p><p class="sop-p">Methanol</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Conical flask</p><p class="sop-p">Amber volumetric flask</p><p class="sop-p">Disposable syringe without needle, 5 ml</p><p class="sop-p">Nylon solvent filter, 0.45µm</p><p class="sop-p">Amber glass screw cap vial, 2 ml</p><p class="sop-p">Amber glass screw cap vial, 50 ml</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-26" class="sop-step-title">
+                        <span class="action-badge">Langkah 16</span>
+                        Sonicate with heat at <span class="kw-temp">55°C</span> for <span class="kw-time">15 minutes</span>.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-27" class="sop-step-title">
-                            6.2	Preparation of Reference Standard
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Cool the solution to room temperature.</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-27" class="sop-step-title">
+                        <span class="action-badge">Langkah 17</span>
+                        Add 5 ml of IS solution and dilute to volume with methanol.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-28" class="sop-step-title">
-                            6.2.1	Preparation of Internal Standard (IS) solution (0.4 mg/ml or 400 µg/ml)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Liquid form: Pipette 10 µl of eugenol reference standard into a 25 ml amber volumetric flask. Dissolve and dilute to volume with methanol. Filter the solution through a 0.45 µm nylon syringe filter into an amber vial.</p><p class="sop-p">Powder form: Weigh <span class="kw-wt">10 mg</span> of eugenol reference standard into a 25 ml amber volumetric flask. Dissolve and dilute to volume with methanol. Filter the solution through a 0.45 µm nylon syringe filter into an amber vial.</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-28" class="sop-step-title">
+                        <span class="action-badge">Langkah 18</span>
+                        Filter the sample solution through a 0.45 µm filter into a <span class="kw-vol">2 mL</span> amber vial.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-29" class="sop-step-title">
-                            6.2.2	Preparation of Individual Standard Stock Solution (0.4 mg/ml or 400 µg/ml)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Weigh <span class="kw-wt">8 mg</span> each of thymol, menthol and camphor into separate 20 ml amber volumetric flasks.</p><p class="sop-p">Dissolve and dilute to volume with methanol.</p><p class="sop-p">Filter the solution through a 0.45 µm nylon syringe filter into amber vials.</p><p class="sop-p">For methyl salicylate: Pipette 7 µl of methyl salicylate into a <span class="kw-vol">20 mL</span> amber volumetric flask and repeat steps ii and iii.</p><p class="sop-p">Preparation of Mixed Working Standard Solution (<span class="kw-wt">0.1 mg</span>/ml or <span class="kw-wt">100 µg</span>/ml).</p><p class="sop-p">Pipette 12.5 ml of each standard stock solution into an amber 50 ml vial.</p><p class="sop-p">Vortex the vial for 1 minute.</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-29" class="sop-step-title">
+                        6.3.3	Sample Dilution
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-30" class="sop-step-title">
-                            6.2.4	Preparation of Mixed Working Standard Solution for Calibration Curve
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Prepare 1 set of working standard solution for the calibration curve from the mixed working standard solution (<span class="kw-wt">0.1 mg</span>/ml). Dilute the solution to obtain five (5) concentrations levels of <span class="kw-wt">3 µg</span>/ml, <span class="kw-wt">10 µg</span>/ml, <span class="kw-wt">20 µg</span>/ml, <span class="kw-wt">40 µg</span>/ml and <span class="kw-wt">80 µg</span>/ml.</p><p class="sop-p">Add the IS solution to each concentration before diluting to volume with methanol.</p><p class="sop-p">Refer to the table below for preparation details:</p><p class="sop-p">Table 1: Preparation of mix working standard solution for calibration curve.</p><p class="sop-p">Option to prepare mix working standard solution for calibration in <span class="kw-vol">5 mL</span> volumetric flask. The preparation as in the table below:</p><p class="sop-p">Table 2: Preparation of mix working standard solution for calibration curve.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Perform appropriate dilutions if the sample concentration exceeds the linear range of the calibration curve.</p><p class="sop-p">Document the step-by-step dilution preparation in the worksheet.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-30" class="sop-step-title">
+                        6.4	Experimental method
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-31" class="sop-step-title">
-                            6.2.5	System Suitability Solution
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">For system suitability test (SST), use the Level 3 concentration (<span class="kw-wt">20 µg</span>/ml of each compound) as the system suitability solution.</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-31" class="sop-step-title">
+                        6.4.1	Gas chromatographic and MS Condition
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-32" class="sop-step-title">
-                            6.2.6	Preparation of Limit of Detection (LOD) solution (0.001 mg/ml or 1 µg/ml)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Pipette 50 µl of mixed working standard solution into 5 ml volumetric flask and add 1000 µl of internal standard (IS) solution.</p><p class="sop-p">Mix and dilute to volume with methanol.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">The GCMS system used for detection of menthol, camphor, methyl salicylate and thymol in traditional product are given in table 2 below.</p><p class="sop-p">Table 3:  GCMS system for identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Table 4: Oven temperature program for identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Table 5:  SIM mode for identification and assay of menthol, camphor, methyl salicylate, and thymol</p><p class="sop-p">(*) Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-32" class="sop-step-title">
+                        6.4.2	Sequence of injection
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-33" class="sop-step-title">
-                            6.2.7	Limit of quantitation (LOQ) solution (0.003 mg/ml or 3 µg/ml)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Use the Level 1 concentration (<span class="kw-wt">3 µg</span>/ml of each compound) as the LOQ solution.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-34" class="sop-step-title">
-                            6.3	Preparation of Sample
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Patch / Medicated Plaster</p><p class="sop-p">Cut the sample into small pieces.</p><p class="sop-p">Weigh <span class="kw-wt">100 mg</span> of the sample and add 15 ml of methanol into a <span class="kw-vol">50 mL</span> conical flask (duplicate preparation: Replicates A and B).</p><p class="sop-p">Vortex the samples for 1 minute.</p><p class="sop-p">Sonicate with heat at <span class="kw-temp">55°C</span> for <span class="kw-time">15 minutes</span>.</p><p class="sop-p">Cool the solution to room temperature.</p><p class="sop-p">Add 5 ml of IS solution and 5 ml of methanol.</p><p class="sop-p">Filter the sample solution through a 0.45 µm filter into a 2 ml amber vial.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-35" class="sop-step-title">
-                            6.3.2	Liniment / Ointment / Cream
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Sampling the sample according to PKKK/300/UP/001.</p><p class="sop-p">Weigh <span class="kw-wt">100 mg</span> of the sample and add 15 ml of methanol in a 25 ml amber volumetric flask (duplicate preparation: Replicates A and B).</p><p class="sop-p">Vortex the sample for 1 minute.</p><p class="sop-p">Sonicate with heat at <span class="kw-temp">55°C</span> for <span class="kw-time">15 minutes</span>.</p><p class="sop-p">Cool the solution to room temperature.</p><p class="sop-p">Add 5 ml of IS solution and dilute to volume with methanol.</p><p class="sop-p">Filter the sample solution through a 0.45 µm filter into a <span class="kw-vol">2 mL</span> amber vial.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-36" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-36" class="sop-step-title">
-                            6.3.3	Sample Dilution
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Perform appropriate dilutions if the sample concentration exceeds the linear range of the calibration curve.</p><p class="sop-p">Document the step-by-step dilution preparation in the worksheet.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-37" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-37" class="sop-step-title">
-                            6.4	Experimental method
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-38" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-38" class="sop-step-title">
-                            6.4.1	Gas chromatographic and MS Condition
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">The GCMS system used for detection of menthol, camphor, methyl salicylate and thymol in traditional product are given in table 2 below.</p><p class="sop-p">Table 3:  GCMS system for identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Table 4: Oven temperature program for identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Table 5:  SIM mode for identification and assay of menthol, camphor, methyl salicylate, and thymol</p><p class="sop-p">(*) Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency.</p>
-                      </div>
-                    </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-39" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-39" class="sop-step-title">
-                            6.4.2	Sequence of injection
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">For each injection, a volume of 0.5 µl of the solution will be administered. The sequence of injection is shown in the table below.</p><p class="sop-p">Table 6: Sequence of injection for identification and assay of menthol, camphor, methyl salicylate and thymol</p>
+                  </div>
+                </div>
+                <p class="sop-p">For each injection, a volume of 0.5 µl of the solution will be administered. The sequence of injection is shown in the table below.</p><p class="sop-p">Table 6: Sequence of injection for identification and assay of menthol, camphor, methyl salicylate and thymol</p>
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
                   <span class="sop-list-text">* After five samples are injected, the LOD solution will be injected before proceeding with the remaining samples.</span>
                 </div>
                 
-                      </div>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-33" class="sop-step-title">
+                        6.4.3	SST and LOD and LOQ requirement
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-40" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-40" class="sop-step-title">
-                            6.4.3	SST and LOD and LOQ requirement
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">The acceptance criteria for SST, LOD and LOQ are shown in the table below.</p><p class="sop-p">Table 7: Requirement for SST, LOD and LOQ of identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Standard injection and calibration curve</p><p class="sop-p">Inject calibration curve solution (Level 1 – 5) to generate linear calibration curve.</p><p class="sop-p">Generate a calibration curve by plotting concentration against area, and determine the linearity equation along with the correlation coefficient (R2).</p><p class="sop-p">This step (ii) can be performed using the instrument’s software (GCMSsolution).</p><p class="sop-p">Ensure that the correlation coefficient (R²) is equal to or greater than 0.995. If the correlation does not meet this requirement, re-inject the working standard solution until the desired criteria are met.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">The acceptance criteria for SST, LOD and LOQ are shown in the table below.</p><p class="sop-p">Table 7: Requirement for SST, LOD and LOQ of identification and assay of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Standard injection and calibration curve</p>
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-34" class="sop-step-title">
+                        <span class="action-badge">Langkah 19</span>
+                        Inject calibration curve solution (Level 1 – 5) to generate linear calibration curve.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-41" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-41" class="sop-step-title">
-                            6.4.5	Internal Quality Control (IQC)
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Inject 0.5 µl of LOD solution after every 5 samples &amp; at the end of analysis.</p><p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Generate a calibration curve by plotting concentration against area, and determine the linearity equation along with the correlation coefficient (R2).</p><p class="sop-p">This step (ii) can be performed using the instrument’s software (GCMSsolution).</p><p class="sop-p">Ensure that the correlation coefficient (R²) is equal to or greater than 0.995. If the correlation does not meet this requirement, re-inject the working standard solution until the desired criteria are met.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-35" class="sop-step-title">
+                        6.4.5	Internal Quality Control (IQC)
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-42" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-42" class="sop-step-title">
-                            6.4.6	Interpretation of result
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Identification</p><p class="sop-p">The identification of the target compound is considered positive when the following criteria are met:</p><p class="sop-p">Retention time</p><p class="sop-p">The retention time of the target compound in the sample chromatogram corresponds to the retention time in the chromatogram of the working standard.</p><p class="sop-p">Mass Spectrum Confirmation</p><p class="sop-p">Confirmation is based on the detection of the target ion and reference ions.</p><p class="sop-p">Reference ions are monitored as relative ion intensity, with the maximum permissible tolerance defined in Table 8:</p><p class="sop-p">Table 8: Tolerance for reference ion intensity for identification of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Reporting Results</p><p class="sop-p">NOT DETECTED: The compound is reported as NOT DETECTED when the peak area ratio of the compound to the internal standard (IS) in the sample solution is below the peak area ratio of the standard solution at the limit of detection (LOD, <span class="kw-wt">1 µg</span>/mL).</p><p class="sop-p">BELOW QUANTITATION LIMIT: The compound is reported as BELOW QUANTITATION LIMIT (<span class="kw-wt">3 µg</span>/mL) when the peak area ratio of the compound to IS in the sample solution is below the peak area ratio of the standard solution at the limit of quantitation (LOQ, <span class="kw-wt">3 µg</span>/mL)</p><p class="sop-p">Quantifiable Amounts: If the peak area ratio of the compound to IS in the sample solution exceeds the peak area ratio of the standard solution at the LOQ level, the compound&#x27;s concentration must be calculated using the calibration curve extrapolation as outlined in section B. Assay.</p><p class="sop-p">Assay</p><p class="sop-p">The amounts of menthol, camphor, methyl salicylate, and thymol are determined using the extrapolation of the calibration curve.</p><p class="sop-p">Therefore, the final amount of each compound in the sample is calculated and reported as percent weight / weight (% w/w).</p><p class="sop-p">This calculation in step (ii), is performed using the following formula:</p><p class="sop-p">Equation 1: Calculation for the amount of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Limits or specifications</p><p class="sop-p">Menthol and Camphor</p><p class="sop-p">The limits for menthol and camphor are defined according to the Drug Registration Guidance Document (DRGD), Third Edition, Eight Revision, July 2024.</p><p class="sop-p">The limits are outlined in Table 9:</p><p class="sop-p">Table 9: Limits or specifications for the assay of menthol and camphor</p><p class="sop-p">Methyl Salicylate and Thymol</p><p class="sop-p">The DRGD does not specify limits or guidelines for methyl salicylate and thymol.</p><p class="sop-p">If the amounts of these compounds need to be reported, they will be presented as the measured values.</p>
-                      </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card action-step">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-36" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-36" class="sop-step-title">
+                        <span class="action-badge">Langkah 20</span>
+                        Inject 0.5 µl of LOD solution after every 5 samples &amp; at the end of analysis.
+                      </label>
                     </div>
-                    
-                    <div class="sop-step-card">
-                      <div class="step-card-header">
-                        <div class="step-check-wrap">
-                          <input type="checkbox" id="step-030-43" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
-                          <label for="step-030-43" class="sop-step-title">
-                            6.5	Analysis Report
-                          </label>
-                        </div>
-                      </div>
-                      <div class="step-card-body">
-                        <p class="sop-p">Each sample must have a dedicated analysis report, which includes the following details:</p><p class="sop-p">Sample Details</p><p class="sop-p">Sample name</p><p class="sop-p">Sample number</p><p class="sop-p">Batch number</p><p class="sop-p">Analysis Date</p><p class="sop-p">Equipment Parameters</p><p class="sop-p">Equipment name</p><p class="sop-p">Gas chromatographic (GC) conditions</p><p class="sop-p">Mass spectrometry (MS) conditions.</p><p class="sop-p">Reference Standard (RS)</p><p class="sop-p">List of RS used in the analysis</p><p class="sop-p">Preparation procedure for RS, including printed RS weight</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Sample preparation procedure</p><p class="sop-p">Printed sample weight (duplicate weighing)</p><p class="sop-p">Interpretation of Results</p><p class="sop-p">Detailed interpretation based on criteria outlined in the SOP</p><p class="sop-p">Evidence of Analysis</p><p class="sop-p">Evidence must be attached to the analysis report, including:</p><p class="sop-p">Compilation of chromatograms for calibration curve solutions</p><p class="sop-p">Chromatogram for LOD and LOQ solutions</p><p class="sop-p">Chromatogram of working standard (first injection of SST)</p><p class="sop-p">Compilation of chromatograms for SST</p><p class="sop-p">Chromatogram for blank solution prior to and after the sample solution injection</p><p class="sop-p">Chromatograms for samples A and B</p><p class="sop-p">IQC table</p><p class="sop-p">REKOD KUALITI</p><p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/007	Laporan Pengujian Identifikasi dan Kandungan Menthol, Camphor,</p><p class="sop-p">Methyl Salicylate dan Thymol dalam Produk Tradisional</p><p class="sop-p">Menggunakan GCMS</p>
-                      </div>
+                  </div>
+                </div>
+                <p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-37" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-37" class="sop-step-title">
+                        6.4.6	Interpretation of result
+                      </label>
                     </div>
-                    
+                  </div>
+                </div>
+                <p class="sop-p">Identification</p><p class="sop-p">The identification of the target compound is considered positive when the following criteria are met:</p><p class="sop-p">Retention time</p><p class="sop-p">The retention time of the target compound in the sample chromatogram corresponds to the retention time in the chromatogram of the working standard.</p><p class="sop-p">Mass Spectrum Confirmation</p><p class="sop-p">Confirmation is based on the detection of the target ion and reference ions.</p><p class="sop-p">Reference ions are monitored as relative ion intensity, with the maximum permissible tolerance defined in Table 8:</p><p class="sop-p">Table 8: Tolerance for reference ion intensity for identification of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Reporting Results</p><p class="sop-p">NOT DETECTED: The compound is reported as NOT DETECTED when the peak area ratio of the compound to the internal standard (IS) in the sample solution is below the peak area ratio of the standard solution at the limit of detection (LOD, <span class="kw-wt">1 µg</span>/mL).</p><p class="sop-p">BELOW QUANTITATION LIMIT: The compound is reported as BELOW QUANTITATION LIMIT (<span class="kw-wt">3 µg</span>/mL) when the peak area ratio of the compound to IS in the sample solution is below the peak area ratio of the standard solution at the limit of quantitation (LOQ, <span class="kw-wt">3 µg</span>/mL)</p><p class="sop-p">Quantifiable Amounts: If the peak area ratio of the compound to IS in the sample solution exceeds the peak area ratio of the standard solution at the LOQ level, the compound&#x27;s concentration must be calculated using the calibration curve extrapolation as outlined in section B. Assay.</p><p class="sop-p">Assay</p><p class="sop-p">The amounts of menthol, camphor, methyl salicylate, and thymol are determined using the extrapolation of the calibration curve.</p><p class="sop-p">Therefore, the final amount of each compound in the sample is calculated and reported as percent weight / weight (% w/w).</p><p class="sop-p">This calculation in step (ii), is performed using the following formula:</p><p class="sop-p">Equation 1: Calculation for the amount of menthol, camphor, methyl salicylate and thymol</p><p class="sop-p">Limits or specifications</p><p class="sop-p">Menthol and Camphor</p><p class="sop-p">The limits for menthol and camphor are defined according to the Drug Registration Guidance Document (DRGD), Third Edition, Eight Revision, July 2024.</p><p class="sop-p">The limits are outlined in Table 9:</p><p class="sop-p">Table 9: Limits or specifications for the assay of menthol and camphor</p><p class="sop-p">Methyl Salicylate and Thymol</p><p class="sop-p">The DRGD does not specify limits or guidelines for methyl salicylate and thymol.</p><p class="sop-p">If the amounts of these compounds need to be reported, they will be presented as the measured values.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-38" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-38" class="sop-step-title">
+                        6.5	Analysis Report
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Each sample must have a dedicated analysis report, which includes the following details:</p><p class="sop-p">Sample Details</p><p class="sop-p">Sample name</p><p class="sop-p">Sample number</p><p class="sop-p">Batch number</p><p class="sop-p">Analysis Date</p><p class="sop-p">Equipment Parameters</p><p class="sop-p">Equipment name</p><p class="sop-p">Gas chromatographic (GC) conditions</p><p class="sop-p">Mass spectrometry (MS) conditions.</p><p class="sop-p">Reference Standard (RS)</p><p class="sop-p">List of RS used in the analysis</p><p class="sop-p">Preparation procedure for RS, including printed RS weight</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Sample preparation procedure</p><p class="sop-p">Printed sample weight (duplicate weighing)</p><p class="sop-p">Interpretation of Results</p><p class="sop-p">Detailed interpretation based on criteria outlined in the SOP</p><p class="sop-p">Evidence of Analysis</p><p class="sop-p">Evidence must be attached to the analysis report, including:</p><p class="sop-p">Compilation of chromatograms for calibration curve solutions</p><p class="sop-p">Chromatogram for LOD and LOQ solutions</p><p class="sop-p">Chromatogram of working standard (first injection of SST)</p><p class="sop-p">Compilation of chromatograms for SST</p><p class="sop-p">Chromatogram for blank solution prior to and after the sample solution injection</p><p class="sop-p">Chromatograms for samples A and B</p><p class="sop-p">IQC table</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-5">
+          <div class="sop-section-header">
+            <span class="sec-icon">📖</span>
+            <h2>3.0 DEFINISI</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-39" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-39" class="sop-step-title">
+                        3.1	GCMS	-	Gas Chromatography Mass Spectrometer
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-40" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-40" class="sop-step-title">
+                        3.2	GC	-	Gas Chromatography
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-41" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-41" class="sop-step-title">
+                        3.3	MS	-	Mass Spectrometer
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-42" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-42" class="sop-step-title">
+                        3.4	SIM	- Selected ion monitoring
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-43" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-43" class="sop-step-title">
+                        3.5	RS	-	Reference standard
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-44" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-44" class="sop-step-title">
+                        3.6	IS	-	Internal standard
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-45" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-45" class="sop-step-title">
+                        3.7	EI	- Electron ionization
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-46" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-46" class="sop-step-title">
+                        3.8	OOS	-	Out of specification
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-47" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-47" class="sop-step-title">
+                        3.9	SST	- System suitability test
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-48" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-48" class="sop-step-title">
+                        3.10	NMT	- Not more than
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-49" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-49" class="sop-step-title">
+                        3.11	NLT	-	Not less than
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-50" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-50" class="sop-step-title">
+                        3.12	UPA	- Unit Perkhidmatan Analisis
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-51" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-51" class="sop-step-title">
+                        3.13	LOD	-	Limit of Detection
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-52" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-52" class="sop-step-title">
+                        3.14	RSD	- Relative Standard Deviation
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-53" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-53" class="sop-step-title">
+                        3.15	IQC	-	 Internal Quality Control
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-54" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-54" class="sop-step-title">
+                        3.16	Tf	-	Tailing factor
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-55" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-55" class="sop-step-title">
+                        3.17	N	-	Theoretical Plate
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-56" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-56" class="sop-step-title">
+                        3.18	R2	-		Correlation coefficient
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-57" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-57" class="sop-step-title">
+                        3.19	S/N	- Signal to noise
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-58" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-58" class="sop-step-title">
+                        3.20	m/z	-	mass to charge
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-59" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-59" class="sop-step-title">
+                        3.21	% w/w	- percent weight over weight
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-60" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-60" class="sop-step-title">
+                        3.22	DRGD	- Drug Registration Guidance Document
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-purple" id="sec-6">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔀</span>
+            <h2>4.0 CARTA ALIRAN</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-mint" id="sec-7">
+          <div class="sop-section-header">
+            <span class="sec-icon">👥</span>
+            <h2>5.0 TANGGUNGJAWAB</h2>
+          </div>
+          <div class="sop-section-body">
+            
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-61" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-61" class="sop-step-title">
+                        5.1	Ketua Seksyen
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagih sampel kepada Pegawai Farmasi.</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-62" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-62" class="sop-step-title">
+                        5.3	Pegawai Farmasi
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan.</p>
+                <div class="sop-step-card">
+                  <div class="step-card-header">
+                    <div class="step-check-wrap">
+                      <input type="checkbox" id="step-030-63" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/030')">
+                      <label for="step-030-63" class="sop-step-title">
+                        5.5	Penolong Pegawai Farmasi
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Menyediakan laporan ujian.</p>
+          </div>
+        </div>
+        
+        <div class="sop-section-container sec-theme-indigo" id="sec-8">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7.0 REKOD KUALITI</h2>
+          </div>
+          <div class="sop-section-body">
+            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/007	Laporan Pengujian Identifikasi dan Kandungan Menthol, Camphor,</p><p class="sop-p">Methyl Salicylate dan Thymol dalam Produk Tradisional</p><p class="sop-p">Menggunakan GCMS</p>
           </div>
         </div>
         
@@ -1072,12 +1347,12 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 1</span>
+            <span class="table-tag">SEJARAH SEMAKAN</span>
             <span class="table-doc-code">PKKK/300/UP/030</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>17 Feb 2025</td></tr><tr ><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Nurul Nadiah Noh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>17 Feb 2025</td></tr><tr ><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Nurul Nadiah Noh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
             </table>
           </div>
         </div>
@@ -1125,7 +1400,7 @@
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>GC Parameters</th><th>GC Parameters</th></tr><tr ><td>Column</td><td>BP-624, 6% Cyanopropylphenyl 94% Dimethylpolysiloxane</td></tr><tr ><td>Column Dimension</td><td>30 m x 0.25 mm x 1.4 µm</td></tr><tr ><td>Oven temperature</td><td>Refer table 4</td></tr><tr ><td>Flow control mode</td><td>Linear Velocity (48.5 cm/sec)</td></tr><tr ><td>Flow rate</td><td><span class="kw-flow">1.70 ml/min</span></td></tr><tr ><td>Gas</td><td>Helium (Purity: 99.999%)</td></tr><tr ><td>Injection mode</td><td>Split (30:1)</td></tr><tr ><td>Injector temperature</td><td><span class="kw-temp">230°C</span></td></tr><tr ><td>Injection volume</td><td><span class="kw-vol">0.5 µL</span></td></tr><tr ><td>MS Parameters</td><td>MS Parameters</td></tr><tr ><td>Interface temperature</td><td><span class="kw-temp">230°C</span></td></tr><tr ><td>EI ion source / MS source temperature</td><td><span class="kw-temp">200°C</span></td></tr><tr ><td>EI ionization energy</td><td>70 eV</td></tr><tr ><td>Solvent delay</td><td>Scan off: 0 to <span class="kw-time">3.00 minutes</span> due to solvent peak (methanol)</td></tr><tr ><td>Scan range</td><td>m/z 50 to m/z 200</td></tr><tr ><td>SIM ions</td><td>Refer table 5</td></tr>
+              <tr><th>GC Parameters</th><th>GC Parameters</th></tr><tr ><td>Column</td><td>BP-624, 6% Cyanopropylphenyl 94% Dimethylpolysiloxane</td></tr><tr ><td>Column Dimension</td><td>30 m x 0.25 mm x 1.4 µm</td></tr><tr ><td>Oven temperature</td><td>Refer table 4</td></tr><tr ><td>Flow control mode</td><td>Linear Velocity (48.5 cm/sec)</td></tr><tr ><td>Flow rate</td><td><span class="kw-flow">1.70 ml/min</span></td></tr><tr ><td>Gas</td><td>Helium (Purity: 99.999%)</td></tr><tr ><td>Injection mode</td><td>Split (30:1)</td></tr><tr ><td>Injector temperature</td><td><span class="kw-temp">230°C</span></td></tr><tr ><td>Injection volume</td><td><span class="kw-vol">0.5 µL</span></td></tr><tr ><td>MS Parameters</td><td>MS Parameters</td></tr><tr ><td>Interface temperature</td><td><span class="kw-temp">230°C</span></td></tr><tr ><td>EI ion source / MS source temperature</td><td><span class="kw-temp">200°C</span></td></tr><tr ><td>EI ionization energy</td><td>70 eV</td></tr><tr ><td>Solvent delay</td><td>Scan off: 0 to <span class="kw-time">3.00 minutes</span> due to solvent peak (methanol)</td></tr><tr ><td>Scan range</td><td><span class="kw-wave">m/z 50</span> to <span class="kw-wave">m/z 200</span></td></tr><tr ><td>SIM ions</td><td>Refer table 5</td></tr>
             </table>
           </div>
         </div>
@@ -1149,7 +1424,7 @@
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>Compound</th><th>Acquisition time (minute)  (*)</th><th>SIM Ions</th><th>Test</th></tr><tr ><td>Camphor</td><td>9.00 – 11.00</td><td>1. Target; m/z 108.15</td><td>Quantitation</td></tr><tr ><td>Camphor</td><td>9.00 – 11.00</td><td>2. Reference 1: m/z 83.10 3. Reference 2: m/z 79.05</td><td>Qualification</td></tr><tr ><td>Menthol</td><td>9.00 – 11.00</td><td>1. Target; m/z 71.05</td><td>Quantitation</td></tr><tr ><td>Menthol</td><td>9.00 – 11.00</td><td>2. Reference 1: m/z 57.05 3. Reference 2: m/z 123.05</td><td>Qualification</td></tr><tr ><td>Methyl salicylate</td><td>11.00 – 13.00</td><td>1. Target; m/z 120.05</td><td>Quantitation</td></tr><tr ><td>Methyl salicylate</td><td>11.00 – 13.00</td><td>2. Reference 1: m/z 152.10 3. Reference 2: m/z 92.00</td><td>Qualification</td></tr><tr ><td>Thymol</td><td>13.00 – 18.00</td><td>1. Target; m/z 135.10</td><td>Quantitation</td></tr><tr ><td>Thymol</td><td>13.00 – 18.00</td><td>2. Reference 1: m/z 150.15 3. Reference 2: m/z 91.05</td><td>Qualification</td></tr><tr ><td>Eugenol</td><td>13.00 – 18.00</td><td>1. Target; m/z 164.10</td><td>Quantitation</td></tr><tr ><td>Eugenol</td><td>13.00 – 18.00</td><td>2. Reference 1: m/z 149.10 3. Reference 2: m/z 131.10</td><td>Qualification</td></tr>
+              <tr><th>Compound</th><th>Acquisition time (minute)  (*)</th><th>SIM Ions</th><th>Test</th></tr><tr ><td>Camphor</td><td>9.00 – 11.00</td><td>1. Target; <span class="kw-wave">m/z 108</span>.15</td><td>Quantitation</td></tr><tr ><td>Camphor</td><td>9.00 – 11.00</td><td>2. Reference 1: <span class="kw-wave">m/z 83</span>.10 3. Reference 2: <span class="kw-wave">m/z 79</span>.05</td><td>Qualification</td></tr><tr ><td>Menthol</td><td>9.00 – 11.00</td><td>1. Target; <span class="kw-wave">m/z 71</span>.05</td><td>Quantitation</td></tr><tr ><td>Menthol</td><td>9.00 – 11.00</td><td>2. Reference 1: <span class="kw-wave">m/z 57</span>.05 3. Reference 2: <span class="kw-wave">m/z 123</span>.05</td><td>Qualification</td></tr><tr ><td>Methyl salicylate</td><td>11.00 – 13.00</td><td>1. Target; <span class="kw-wave">m/z 120</span>.05</td><td>Quantitation</td></tr><tr ><td>Methyl salicylate</td><td>11.00 – 13.00</td><td>2. Reference 1: <span class="kw-wave">m/z 152</span>.10 3. Reference 2: <span class="kw-wave">m/z 92</span>.00</td><td>Qualification</td></tr><tr ><td>Thymol</td><td>13.00 – 18.00</td><td>1. Target; <span class="kw-wave">m/z 135</span>.10</td><td>Quantitation</td></tr><tr ><td>Thymol</td><td>13.00 – 18.00</td><td>2. Reference 1: <span class="kw-wave">m/z 150</span>.15 3. Reference 2: <span class="kw-wave">m/z 91</span>.05</td><td>Qualification</td></tr><tr ><td>Eugenol</td><td>13.00 – 18.00</td><td>1. Target; <span class="kw-wave">m/z 164</span>.10</td><td>Quantitation</td></tr><tr ><td>Eugenol</td><td>13.00 – 18.00</td><td>2. Reference 1: <span class="kw-wave">m/z 149</span>.10 3. Reference 2: <span class="kw-wave">m/z 131</span>.10</td><td>Qualification</td></tr>
             </table>
           </div>
         </div>
