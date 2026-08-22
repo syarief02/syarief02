@@ -1,15 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="ms" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GC-MS DEG & EG Analysis Operating Guide — PKKK/300/UP/034 | NPRA</title>
-<meta name="description" content="Super comprehensive standard operating procedure guide for Diethylene Glycol (DEG) and Ethylene Glycol (EG) GC-MS analysis in medicinal syrups per PKKK/300/UP/034 and UP/017.">
+<title>PKKK/300/UP/034 — EG & DEG GCMS | NPRA</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/034: Identifikasi dan Kandungan Diethylene Glycol dan Ethylene Glycol dalam Ubat Cecair menggunakan GCMS.">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="steroid-hplc.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-num {
+    color: var(--amber); font-family: var(--font-mono); font-weight: 800; font-size: 1.1rem; margin-right: 0.4rem;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--amber-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.7; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-sub-p {
+    margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.65; color: var(--text-main); margin-bottom: 0.6rem;
+  }
+  .sop-step-box {
+    background: var(--glass); border-left: 3px solid var(--amber); padding: 0.8rem 1.2rem;
+    border-radius: 0 10px 10px 0; margin: 0.8rem 0; font-size: 0.9rem;
+  }
+  .sop-step-box strong { color: var(--text-bright); }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.8rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); }
+</style>
 </head>
 <body>
 
@@ -27,18 +65,19 @@
       </a>
       <a href="sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        SOP Matrix
+        Master SOP Matrix
       </a>
       <a href="hplc-guide.html" class="ctrl-btn highlight">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        Shimadzu HPLC Guide →
+        Shimadzu HPLC (UP/011) →
       </a>
       <a href="rrlc-guide.html" class="ctrl-btn highlight">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        Agilent RRLC Guide →
+        Agilent 1200 RRLC (UP/003) →
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="window.print()">
+        🖨️ Cetak / Print SOP
+      </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <span id="themeTxt">Dark Mode</span>
@@ -46,210 +85,206 @@
     </div>
   </div>
 
-  <!-- Hero Header -->
-  <div class="hero">
-    <div class="hero-org">🇲🇾 NPRA — PKKK/300/UP/034 · PKKK/300/UP/017 · PKKK/300/UP/004</div><br>
-    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1>GC-MS DEG & EG <span class="g">Analysis Guide</span></h1>
-    <div class="hero-sub">Standard Operating Procedure: Diethylene Glycol & Ethylene Glycol in Medicinal Syrups</div>
-    <p class="hero-desc">
-      Comprehensive analytical procedure for high-sensitivity toxic glycol screening and quantitation: daily MS autotuning, Wax capillary column operation, SIM target/qualifier ion acquisition, 5-level calibration curve, syrup sample preparation, and USP specification compliance.
+  <!-- Document Body -->
+  <div class="sop-doc-container">
+
+    <!-- Official Header Table -->
+    <table class="sop-header-table">
+      <tr>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--amber)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        </td>
+        <td colspan="2"><strong>ARAHAN KERJA: IDENTIFIKASI DAN KANDUNGAN DIETHYLENE GLYCOL DAN ETHYLENE GLYCOL DALAM UBAT CECAIR MENGGUNAKAN GCMS</strong></td>
+      </tr>
+      <tr>
+        <td><strong>No. Dokumen:</strong> PKKK/300/UP/034</td>
+        <td><strong>Terbitan / Semakan:</strong> 1 / 2</td>
+      </tr>
+      <tr>
+        <td><strong>Tarikh Kuatkuasa:</strong> 1 Julai 2026</td>
+        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+      </tr>
+    </table>
+
+    <!-- 1.0 TUJUAN -->
+    <div class="sop-sec-title"><span class="sop-sec-num">1.0</span> TUJUAN</div>
+    <p class="sop-p">Prosedur ini menggariskan tatacara untuk pengenalpastian (identifikasi) dan penentuan kandungan secara kuantitatif (assay) bagi sebatian Diethylene Glycol (DEG) dan Ethylene Glycol (EG) dalam sediaan ubat cecair dengan menggunakan kromatografi gas spektrometer jisim (GC-MS).</p>
+
+    <!-- 2.0 SKOP -->
+    <div class="sop-sec-title"><span class="sop-sec-num">2.0</span> SKOP</div>
+    <p class="sop-p">Prosedur ini digunapakai untuk produk berdaftar dan tidak berdaftar dalam bentuk sediaan cecair / sirap / ampaian (suspension) perubatan yang diterima di Unit Penyaringan.</p>
+
+    <!-- 3.0 DEFINISI -->
+    <div class="sop-sec-title"><span class="sop-sec-num">3.0</span> DEFINISI</div>
+    <p class="sop-p">
+      • <strong>DEG</strong>: Diethylene Glycol<br>
+      • <strong>EG</strong>: Ethylene Glycol<br>
+      • <strong>GC-MS</strong>: Gas Chromatography-Mass Spectrometry<br>
+      • <strong>TIC</strong>: Total Ion Current<br>
+      • <strong>RTE</strong>: RunTime Environment<br>
+      • <strong>SIM</strong>: Selected Ion Monitoring<br>
+      • <strong>LOD</strong>: Limit of Detection ($2\ \mu\text{g/mL}$, bersamaan $0.02\% v/v$ dalam sampel)<br>
+      • <strong>LOQ</strong>: Limit of Quantitation ($6\ \mu\text{g/mL}$, bersamaan $0.06\% v/v$ dalam sampel)<br>
+      • <strong>SST</strong>: System Suitability Test<br>
+      • <strong>IQC</strong>: Internal Quality Control
     </p>
 
-    <div class="specs-ribbon">
-      <div class="spec-chip"><span class="spec-lbl">Document</span> PKKK/300/UP/034 (1 Julai 2026)</div>
-      <div class="spec-chip"><span class="spec-lbl">Instrument</span> Agilent 8890/5977B, 7890/5975C & Shimadzu QP2010</div>
-      <div class="spec-chip"><span class="spec-lbl">Column</span> BP20 Wax (30 m × 0.25 mm × 0.25 µm)</div>
-      <div class="spec-chip"><span class="spec-lbl">Carrier Gas</span> Helium (99.999%) @ 0.65 mL/min (30 cm/s)</div>
-      <div class="spec-chip"><span class="spec-lbl">Injection</span> 1.0 µL Split 20:1 @ 250 °C</div>
-      <div class="spec-chip"><span class="spec-lbl">USP Limit</span> NMT 0.10 % v/v for both EG & DEG</div>
-    </div>
-  </div>
+    <!-- 4.0 CARTA ALIRAN -->
+    <div class="sop-sec-title"><span class="sop-sec-num">4.0</span> CARTA ALIRAN</div>
+    <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
 
-  <!-- Guide Content Card -->
-  <div class="guide-card">
+    <!-- 5.0 TANGGUNGJAWAB -->
+    <div class="sop-sec-title"><span class="sop-sec-num">5.0</span> TANGGUNGJAWAB</div>
+    <p class="sop-p"><strong>5.1 Ketua Unit / Pegawai Farmasi Bertanggungjawab:</strong></p>
+    <p class="sop-sub-p">Memastikan prosedur ini diikuti semasa pengendalian ujian.</p>
+    <p class="sop-p"><strong>5.2 Pegawai Farmasi:</strong></p>
+    <p class="sop-sub-p">a) Menyelia proses analisis oleh Penolong Pegawai Farmasi.<br>b) Menyemak keputusan pengujian dan mengesahkan laporan analisis.</p>
+    <p class="sop-p"><strong>5.3 Penolong Pegawai Farmasi U7 / U6 &amp; 5.4 Penolong Pegawai Farmasi:</strong></p>
+    <p class="sop-sub-p">Menjalankan pengujian sampel mengikut prosedur operasi yang ditetapkan.</p>
 
-    <div class="step-header">
-      <div class="step-badge">FASA 1: PENENTUKURAN HARIAN (TUNING)</div>
-      <h2>1.0 Verifikasi Prestasi GC-MS: Autotune & Tune Evaluation</h2>
-      <div class="step-sop-ref">Ref: PKKK/300/UP/017 Para 6.1.4 & PKKK/300/UP/034</div>
+    <!-- 6.0 PROSEDUR -->
+    <div class="sop-sec-title"><span class="sop-sec-num">6.0</span> PROSEDUR</div>
+
+    <div class="sop-step-box">
+      <strong>6.1 Bahan &amp; Radas</strong>
+      <p class="sop-p">GCMS Shimadzu QP2010 Ultra / Agilent 7890A-5975C / Agilent 8890-5977B, Turus BP20 (Wax) $30\text{ m} \times 0.25\text{ mm} \times 0.25\ \mu\text{m}$, Gas Helium (99.999%), Methanol (HPLC grade), Piawai Rujukan Ethylene Glycol &amp; Diethylene Glycol RS, Kukus ultrasonik, Mikropipet terentukur, Kelalang volumetrik 5 mL &amp; 100 mL, Penuras membran 0.45 µm, Vial amber 2 mL.</p>
     </div>
-    <div class="acc-body">
-      <ol style="margin-left:1.5rem;line-height:1.75">
-        <li><strong>Kewajipan Tuning Harian</strong>: Penalaan spektrometri jisim (MS Tuning) <strong>MESTI</strong> dijalankan setiap hari sebelum sampel pertama dianalisis. Laporan penalaan mestilah <strong>LULUS (PASS)</strong>.</li>
-        <li><strong>Langkah Penalaan pada Agilent ChemStation / MassHunter</strong>:
-          <ul style="margin-left:1.5rem;margin-top:0.3rem">
-            <li>Klik ikon menu <code>View</code> $\rightarrow$ <code>Tune and Vacuum Control</code>.</li>
-            <li>Pilih <strong>Standard Spectra Tune (s.tune)</strong> atau <strong>Autotune (a.tune)</strong>.</li>
-            <li>Setelah penalaan selesai, teruskan dengan <strong>Tune Evaluation</strong>.</li>
-            <li>Semak parameter penerimaan:
-              <br>• Kebocoran Udara/Air (Air/Water Check): Puncak $m/z\ 18\ (\text{H}_2\text{O}) < 10\%$ dan $m/z\ 28\ (\text{N}_2) < 5\%$ berbanding puncak base $m/z\ 69$ PFTBA.
-              <br>• Jisim Penentukuran PFTBA: $m/z\ 69\ (\pm 0.2)$, $m/z\ 219\ (\pm 0.2)$, dan $m/z\ 502\ (\pm 0.2)$.
-              <br>• Kelebaran Puncak (Peak Width): $0.55 \pm 0.10\ \text{amu}$.
-            </li>
-            <li>Pastikan fail <code>a.tune</code> atau <code>s.tune</code> yang lulus telah disimpan dan laporan dicetak.</li>
-            <li>Klik menu <code>View</code> $\rightarrow$ <code>Instrument Control</code> untuk kembali ke tetingkap analisis.</li>
-          </ul>
-        </li>
+
+    <div class="sop-step-box">
+      <strong>6.3 Penyediaan Standard &amp; Sampel</strong>
+      <p style="margin-top:0.3rem"><strong>6.3.1 Larutan Piawai Kalibrasi (Aras 1 – 5 &amp; LOD):</strong></p>
+      <table class="table-official">
+        <thead>
+          <tr><th>Aras</th><th>Stok Campuran (µL)</th><th>Isipadu Akhir MeOH (mL)</th><th>Kepekatan EG (µg/mL)</th><th>Kepekatan DEG (µg/mL)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1 (LOQ)</strong></td><td>135 µL</td><td>5.0 mL</td><td>6.01</td><td>6.04</td></tr>
+          <tr><td><strong>2</strong></td><td>180 µL</td><td>5.0 mL</td><td>8.01</td><td>8.05</td></tr>
+          <tr class="seq-sst"><td><strong>3 (SST)</strong></td><td>225 µL</td><td>5.0 mL</td><td>10.02</td><td>10.06</td></tr>
+          <tr><td><strong>4</strong></td><td>270 µL</td><td>5.0 mL</td><td>12.02</td><td>12.07</td></tr>
+          <tr><td><strong>5</strong></td><td>315 µL</td><td>5.0 mL</td><td>14.02</td><td>14.09</td></tr>
+          <tr class="seq-blank"><td><strong>LOD</strong></td><td>45 µL</td><td>5.0 mL</td><td>2.00</td><td>2.01</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:0.8rem"><strong>6.3.2 Penyediaan Sampel Cecair / Sirap / Ampaian:</strong></p>
+      <ol style="margin-left:1.5rem;line-height:1.7">
+        <li>Goncang botol sampel perlahan-lahan untuk sebatikan sampel secara homogen.</li>
+        <li>Pipet tepat <strong>1.0 mL sampel</strong> dan masukkan kira-kira 50 mL Methanol ke dalam kelalang volumetrik 100 mL (sediakan duplikasi: <strong>Replicates A dan B</strong>).</li>
+        <li>Sonikasi larutan selama <strong>5 minit</strong> dalam kukus ultrasonik.</li>
+        <li>Sejukkan larutan ke suhu bilik dan <strong>genapkan ke tanda senggatan 100.0 mL</strong> dengan Methanol.</li>
+        <li>Turas larutan menggunakan <strong>penuras 0.45 µm</strong> ke dalam vial amber 2 mL.</li>
       </ol>
+      <p style="margin-top:0.5rem"><em>6.3.3 Sample Dilution</em>: Lakukan pencairan jika kepekatan sampel melebihi julat linear keluk kalibrasi.</p>
     </div>
 
-    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+    <div class="sop-step-box">
+      <strong>6.4 Kaedah Eksperimen &amp; Parameter GC-MS</strong>
+      <table class="table-official">
+        <tr><td style="width:30%"><strong>Turus (Column)</strong></td><td>BP20 (Wax), 30 m × 0.25 mm × 0.25 µm</td></tr>
+        <tr><td><strong>Kadar Aliran &amp; Gas</strong></td><td>Helium (99.999%), 0.65 mL/min (Linear Velocity: 30.0 cm/sec)</td></tr>
+        <tr><td><strong>Mod &amp; Suhu Suntikan</strong></td><td>Split (20:1) @ 250 °C, Isipadu: 1.0 µL</td></tr>
+        <tr><td><strong>Suhu Sumber &amp; Antaramuka MS</strong></td><td>EI Source: 230 °C, Interface: 240 °C, Tenaga EI: 70 eV</td></tr>
+        <tr><td><strong>Solvent Delay</strong></td><td>Scan off: 0.00 hingga 4.00 minit (elak puncak Methanol)</td></tr>
+      </table>
 
-    <div class="step-header">
-      <div class="step-badge">FASA 2: PARAMETER INSTRUMEN & SIM</div>
-      <h2>2.0 Konfigurasi Parameter Kromatografi Gas & Spektrometri Jisim (GC-MS)</h2>
-      <div class="step-sop-ref">Ref: PKKK/300/UP/034 Table 1, 2 & 3</div>
+      <p style="margin-top:0.8rem"><strong>Jadual Program Suhu Oven (Table 3):</strong></p>
+      <table class="table-official">
+        <thead><tr><th>Ramp</th><th>Kadar (°C/min)</th><th>Suhu Akhir (°C)</th><th>Masa Tahanan (min)</th><th>Jumlah Masa (min)</th></tr></thead>
+        <tbody>
+          <tr><td>Initial</td><td>-</td><td>100 °C</td><td>1.00 min</td><td>-</td></tr>
+          <tr><td>Ramp 1</td><td>10.0 °C/min</td><td>130 °C</td><td>7.00 min</td><td>-</td></tr>
+          <tr><td>Ramp 2</td><td>20.0 °C/min</td><td>240 °C</td><td>3.00 min</td><td>-</td></tr>
+          <tr><td>Post run</td><td>20.0 °C/min</td><td>250 °C</td><td>3.00 min</td><td>23.0 min</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:0.8rem"><strong>Mod SIM (Selected Ion Monitoring, Table 4):</strong></p>
+      <table class="table-official">
+        <thead><tr><th>Sebatian</th><th>Tetingkap Masa (min)</th><th>SIM Ions</th><th>ID / Peranan</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2"><strong>Ethylene glycol (EG)</strong></td><td rowspan="2">4.50 – 11.00 min</td><td>1. Target: <strong>m/z 31</strong></td><td>Kuantitasi (Quantitation)</td></tr>
+          <tr><td>2. Ref 1: <strong>m/z 33</strong> · Ref 2: <strong>m/z 62</strong></td><td>Kualifikasi (Qualification)</td></tr>
+          <tr><td rowspan="2"><strong>Diethylene glycol (DEG)</strong></td><td rowspan="2">11.00 – 20.00 min</td><td>1. Target: <strong>m/z 45</strong></td><td>Kuantitasi (Quantitation)</td></tr>
+          <tr><td>2. Ref 1: <strong>m/z 75</strong> · Ref 2: <strong>m/z 31</strong></td><td>Kualifikasi (Qualification)</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="acc-body">
-      <div class="specs-grid">
-        <div class="spec-box">
-          <span class="lbl">1. Inlet & Turus GC</span>
-          <strong>Inlet: 250 °C · Split 20:1 · Inj: 1.0 µL</strong>
-          <span style="font-size:0.8rem;color:var(--text-dim)">Turus BP20 Wax (30 m × 0.25 mm × 0.25 µm). Gas pembawa Helium ketulenan 99.999% pada kadar 0.65 mL/min (Linear Velocity: 30.0 cm/sec).</span>
-        </div>
-        <div class="spec-box">
-          <span class="lbl">2. Suhu Sumber & Antaramuka MS</span>
-          <strong>EI Source: 230 °C · Interface: 240 °C</strong>
-          <span style="font-size:0.8rem;color:var(--text-dim)">Tenaga Pengionan (EI): 70 eV. Solvent Delay: 4.00 minit (Pengesan dimatikan semasa puncak pelarut Methanol elut).</span>
-        </div>
+
+    <div class="sop-step-box">
+      <strong>6.4.2 Turutan Suntikan (Sequence of Injection)</strong>
+      <p class="sop-p"><code>1. Blank (MeOH)</code> $\rightarrow$ <code>2–7. SST Level 3 (6x)</code> $\rightarrow$ <code>8. LOD</code> $\rightarrow$ <code>9–13. Kalibrasi Level 1–5</code> $\rightarrow$ <code>14. Blank</code> $\rightarrow$ <code>15–16. Sampel 1 (A & B)</code> $\rightarrow$ <code>17. Blank</code> $\rightarrow$ <code>18–29. Sampel 2 hingga 5</code> $\rightarrow$ <code>30. LOD (IQC Bracket)</code> $\rightarrow$ <code>31. Blank</code> $\rightarrow$ <code>32–33. Sampel 6 (A & B)</code> $\rightarrow$ <code>Akhir. LOD</code>.</p>
+    </div>
+
+    <div class="sop-step-box">
+      <strong>6.4.3 &amp; 6.4.5 Kriteria Kesesuaian Sistem (SST) &amp; IQC Check</strong>
+      <table class="table-official">
+        <thead><tr><th>Parameter</th><th>Kriteria Penerimaan</th></tr></thead>
+        <tbody>
+          <tr><td>Faktor Pengekoran (Tailing factor, Tf)</td><td>Tidak Melebihi (NMT) 2.5</td></tr>
+          <tr><td>Plat Teori (Theoretical plates, N)</td><td>Tidak Kurang (NLT) 2000</td></tr>
+          <tr><td>% RSD keluasan puncak bagi 6 suntikan piawai Aras 3</td><td>Tidak Melebihi (NMT) 10.0 %</td></tr>
+          <tr><td>Nisbah S/N larutan LOD (2 µg/mL)</td><td>Tidak Kurang (NLT) 3</td></tr>
+          <tr><td>Nisbah S/N larutan LOQ (6 µg/mL)</td><td>Tidak Kurang (NLT) 10</td></tr>
+          <tr><td>Kelinearan Keluk Kalibrasi ($R^2$)</td><td>$R^2 \ge 0.9950$</td></tr>
+          <tr><td>IQC: Perbezaan % Waktu Penahanan LOD setiap 5 sampel</td><td>Tidak Melebihi (NMT) 3.0 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sop-step-box">
+      <strong>6.4.6 Interpretasi Keputusan, Syarat Had &amp; Formula Pengiraan</strong>
+      <p style="margin-top:0.3rem"><strong>A. Toleransi Nisbah Ion Kualifikasi (Table 6):</strong></p>
+      <table class="table-official">
+        <thead><tr><th>Intensiti Ion Relatif (% Base Peak)</th><th>Toleransi Dibenarkan (%)</th></tr></thead>
+        <tbody>
+          <tr><td>&gt; 50 %</td><td>± 10 %</td></tr>
+          <tr><td>20 – 50 %</td><td>± 15 %</td></tr>
+          <tr><td>10 – 20 %</td><td>± 20 %</td></tr>
+          <tr><td>&lt; 10 %</td><td>± 50 %</td></tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:0.8rem"><strong>B. Pelaporan Keputusan &amp; Had Sempadan (Borderline):</strong></p>
+      <ul style="margin-left:1.5rem;line-height:1.65">
+        <li><strong>NOT DETECTED</strong>: Dilaporkan jika keluasan puncak &lt; LOD 2 µg/mL (&lt; 0.02% v/v).</li>
+        <li><strong>BELOW QUANTITATION LIMIT</strong>: Dilaporkan jika keluasan &ge; LOD tetapi &lt; LOQ 6 µg/mL (&lt; 0.06% v/v).</li>
+        <li><strong>Borderline LOD</strong>: Jika satu replikat &lt; LOD dan satu &ge; LOD, gunakan purata replikat.</li>
+        <li><strong>Borderline LOQ</strong>: Jika satu &lt; LOQ dan satu &ge; LOQ, jalankan ujian ulangan dengan bahagian sampel baharu bersama keluk kalibrasi.</li>
+      </ul>
+
+      <p style="margin-top:0.8rem"><strong>C. Formula Pengiraan Kandungan (% v/v):</strong></p>
+      <div style="font-size:0.85rem;background:var(--card-bg);padding:0.8rem;border-radius:8px;font-family:var(--font-mono);margin:0.5rem 0">
+        % v/v = [Kepekatan GCMS (µg/mL) × Isipadu Akhir Sampel (100 mL) × Faktor Pencairan] / [Isipadu Sampel Asal (1.0 mL) × 10,000 × Ketumpatan]
       </div>
+      <p style="font-size:0.8rem;color:var(--text-dim)">*Ketumpatan: EG = 1.113 g/mL · DEG = 1.118 g/mL.</p>
 
-      <div class="section-divider" style="margin-top:1.2rem">PROGRAM SUHU OVEN GC (RUN TIME: 23.0 MIN)</div>
-      <div class="table-wrap">
-        <table class="method-table">
-          <thead><tr><th>Peringkat Oven</th><th>Kadar Peningkatan (°C/min)</th><th>Suhu Sasaran (°C)</th><th>Masa Tahanan / Hold (min)</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Suhu Awal (Initial)</strong></td><td>-</td><td>100 °C</td><td>1.00 min</td></tr>
-            <tr><td><strong>Ramp 1</strong></td><td>10.0 °C/min</td><td>130 °C</td><td>7.00 min</td></tr>
-            <tr><td><strong>Ramp 2</strong></td><td>20.0 °C/min</td><td>240 °C</td><td>3.00 min</td></tr>
-            <tr><td><strong>Post-Run</strong></td><td>20.0 °C/min</td><td>250 °C</td><td>3.00 min</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="section-divider" style="margin-top:1.2rem">TETAPAN ION PEMANTAUAN PILIHAN (SIM IONS TABLE)</div>
-      <div class="table-wrap">
-        <table class="method-table">
-          <thead><tr><th>Sebatian Sasaran</th><th>Tetingkap Masa Perolehan (min)</th><th>Ion Kuantitasi (Target Ion)</th><th>Ion Kualifikasi (Qualifier Ions)</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Ethylene glycol (EG)</strong></td><td>4.50 – 11.00 min</td><td><strong>m/z 31</strong></td><td>Reference 1: <code>m/z 33</code> · Reference 2: <code>m/z 62</code></td></tr>
-            <tr><td><strong>Diethylene glycol (DEG)</strong></td><td>11.00 – 20.00 min</td><td><strong>m/z 45</strong></td><td>Reference 1: <code>m/z 75</code> · Reference 2: <code>m/z 31</code></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
-
-    <div class="step-header">
-      <div class="step-badge">FASA 3: PENYEDIAAN SAMPEL SIRAP</div>
-      <h2>3.0 Tatacara Penyediaan Larutan Kalibrasi & Sampel Sirap Ubat</h2>
-      <div class="step-sop-ref">Ref: PKKK/300/UP/034 Para 6.3 & 6.4</div>
-    </div>
-    <div class="acc-body">
-      <ol style="margin-left:1.5rem;line-height:1.75">
-        <li><strong>Larutan Kalibrasi (5 Aras dalam Methanol)</strong>:
-          <br>Daripada Larutan Stok Piawai Campuran (EG ~222.7 µg/mL & DEG ~223.7 µg/mL):
-          <ul style="margin-left:1.5rem;margin-top:0.3rem">
-            <li><strong>Aras 1 (LOQ)</strong>: Pipet 135 µL stok $\rightarrow$ genapkan ke 5.0 mL dengan Methanol (EG: 6.01 µg/mL, DEG: 6.04 µg/mL).</li>
-            <li><strong>Aras 2</strong>: Pipet 180 µL stok $\rightarrow$ genapkan ke 5.0 mL (EG: 8.01 µg/mL, DEG: 8.05 µg/mL).</li>
-            <li><strong>Aras 3 (SST)</strong>: Pipet 225 µL stok $\rightarrow$ genapkan ke 5.0 mL (EG: 10.02 µg/mL, DEG: 10.06 µg/mL).</li>
-            <li><strong>Aras 4</strong>: Pipet 270 µL stok $\rightarrow$ genapkan ke 5.0 mL (EG: 12.02 µg/mL, DEG: 12.07 µg/mL).</li>
-            <li><strong>Aras 5</strong>: Pipet 315 µL stok $\rightarrow$ genapkan ke 5.0 mL (EG: 14.02 µg/mL, DEG: 14.09 µg/mL).</li>
-            <li><strong>Larutan LOD</strong>: Pipet 45 µL stok $\rightarrow$ genapkan ke 5.0 mL (2.00 µg/mL).</li>
-          </ul>
-        </li>
-        <li style="margin-top:0.6rem"><strong>Penyediaan Sampel Sirap Perubatan</strong>:
-          <ul style="margin-left:1.5rem;margin-top:0.3rem">
-            <li>Goncang botol sirap sehingga homogen sepenuhnya.</li>
-            <li>Pipet tepat <strong>100 µL sampel sirap</strong> menggunakan mikropipet terentukur ke dalam kelalang volumetrik 10 mL.</li>
-            <li>Tambah sedikit Methanol (HPLC grade), goncang perlahan untuk melarutkan matriks sirap/propilena glikol, kemudian <strong>genapkan tepat sehingga 10.0 mL</strong> dengan Methanol.</li>
-            <li>Vorteks selama <strong>30 saat</strong>. Pindahkan ke dalam vial autosampler GC. Sediakan dalam bentuk <strong>duplikasi (Sampel Replicate A dan Replicate B)</strong>.</li>
-          </ul>
-        </li>
-      </ol>
-    </div>
-
-    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
-
-    <div class="step-header">
-      <div class="step-badge">FASA 4: SEQUENCE & INTEGRASI</div>
-      <h2>4.0 Jadual Suntikan Kelompok & Analisis Data GC-MS</h2>
-      <div class="step-sop-ref">Ref: PKKK/300/UP/034 Table 4 & PKKK/300/UP/017 Para 6.1.6</div>
-    </div>
-    <div class="acc-body">
-      <p><strong>Turutan Suntikan (Sequence Table):</strong></p>
-      <div class="table-wrap">
-        <table class="method-table">
-          <thead><tr><th>No. Suntikan</th><th>Butiran Suntikan</th><th>Bil. Suntikan</th><th>Tujuan</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td>Blank (Methanol)</td><td>1</td><td>Pembersihan & baseline</td></tr>
-            <tr class="seq-sst"><td>2 – 7</td><td>Larutan Piawai Kesesuaian Sistem (Aras 3)</td><td>6</td><td><strong>Ujian Kesesuaian Sistem (SST)</strong></td></tr>
-            <tr><td>8</td><td>Larutan LOD (2.0 µg/mL)</td><td>1</td><td>Semakan Sensitiviti Had Pengesanan</td></tr>
-            <tr><td>9 – 13</td><td>Larutan Kalibrasi (Aras 1 hingga Aras 5)</td><td>5</td><td><strong>Pembinaan Keluk Kalibrasi Linear</strong></td></tr>
-            <tr><td>14</td><td>Blank (Methanol)</td><td>1</td><td>Elak carryover</td></tr>
-            <tr><td>15 – 16</td><td>Sampel 1 (Replicate A & Replicate B)</td><td>2</td><td>Pengujian kuantitatif duplikasi</td></tr>
-            <tr><td>17</td><td>Blank (Methanol)</td><td>1</td><td>Pencucian</td></tr>
-            <tr><td>18 – 29</td><td>Sampel 2 hingga 5 (Duplikasi & Blank)</td><td>12</td><td>Kelompok pengujian</td></tr>
-            <tr class="seq-iqc"><td>30</td><td>Larutan LOD</td><td>1</td><td><strong>Kawalan Kualiti Dalaman (IQC Bracket)</strong></td></tr>
-            <tr><td>31 – 34</td><td>Sampel 6 (Replicate A & B) & Blank</td><td>4</td><td>Sampel seterusnya</td></tr>
-            <tr class="seq-iqc"><td>35</td><td>Larutan LOD</td><td>1</td><td><strong>Semakan Akhir Analisis</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="section-divider" style="margin-top:1.2rem">TATACARA INTEGRASI & PEMPROSESAN DATA</div>
-      <ol style="margin-left:1.5rem;line-height:1.75">
-        <li>Buka perisian <strong>GCMS Data Analysis</strong>. Buka fail data daripada folder sequence.</li>
-        <li>Pada tetingkap TIC (Total Ion Current), laraskan skala paksi-Y: <code>Chromatogram</code> $\rightarrow$ <code>Chromatogram Scaling</code> $\rightarrow$ <em>Enter Absolute Y-axis value</em>.</li>
-        <li>Pilih integrator: <code>Select Integrator</code> $\rightarrow$ <strong>RTE Integrator</strong> (atau ChemStation Integrator) $\rightarrow$ Klik <strong>Auto Integrate</strong>.</li>
-        <li><strong>Nisbah Ion Kualifikasi (Ion Ratio Qualification)</strong>:
-          <br>Semak nisbah intensiti puncak ion rujukan berbanding ion kuantitasi sasaran:
-          <br>• Intensiti nisbah &gt; 50% base peak: Had toleransi mestilah dalam lingkungan <strong>± 10%</strong>.
-          <br>• Intensiti nisbah 20–50%: Had toleransi <strong>± 15%</strong>.
-        </li>
-      </ol>
-    </div>
-
-    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
-
-    <div class="step-header">
-      <div class="step-badge">FASA 5: PENGIRAAN & SPESIFIKASI USP</div>
-      <h2>5.0 Kriteria Penerimaan, Formula Kuantitasi & Had Spesifikasi USP</h2>
-      <div class="step-sop-ref">Ref: PKKK/300/UP/034 Para 6.4.2 & Borang UP/009</div>
-    </div>
-    <div class="acc-body">
-      <div class="grid-2col">
-        <div class="eval-box">
-          <div class="eval-title">Kriteria Kesesuaian Sistem (SST)</div>
-          <ul class="eval-list">
-            <li><strong>%RSD Keluasan Puncak (Aras 3, n=6):</strong> $\le 10.0\%$.</li>
-            <li><strong>Faktor Pengekoran ($T_f$):</strong> $\le 2.5$.</li>
-            <li><strong>Plat Teori ($N$):</strong> $\ge 2000$.</li>
-            <li><strong>Sensitiviti:</strong> LOD $S/N \ge 3$; LOQ $S/N \ge 10$.</li>
-            <li><strong>Kelinearan Garis Kalibrasi:</strong> $r^2 \ge 0.99$.</li>
-          </ul>
-        </div>
-
-        <div class="eval-box">
-          <div class="eval-title">Formula Pengiraan Kandungan (% v/v)</div>
-          <div style="font-size:0.85rem;background:var(--card-bg);padding:0.8rem;border-radius:8px;font-family:var(--font-mono)">
-            % v/v = [Kepekatan GCMS (µg/mL) × 10 mL] / [100 µL × 10,000 × Ketumpatan]
-          </div>
-          <div style="margin-top:0.8rem;font-size:0.82rem;color:var(--text-dim)">
-            Ketumpatan: EG = 1.113 g/mL · DEG = 1.118 g/mL.
-          </div>
-        </div>
-      </div>
-
-      <div class="alert-box alert-danger" style="margin-top:1.5rem">
-        🚨 <strong>HAD KAWALAN KESELAMATAN UBAT (USP-NF & NPRA):</strong>
-        <br>• Kandungan <strong>Ethylene glycol (EG)</strong> dalam ubat sirap: <strong>Tidak Melebihi 0.10% v/v</strong>.
-        <br>• Kandungan <strong>Diethylene glycol (DEG)</strong> dalam ubat sirap: <strong>Tidak Melebihi 0.10% v/v</strong>.
-        <br><em>*Sekiranya mana-mana sebatian didapati melebihi had 0.10% v/v, sampel diisytiharkan <strong>GAGAL / TIDAK MEMATUHI SPESIFIKASI (OOS)</strong> dan tindakan siasatan segera hendaklah diambil di bawah Borang UP/009 dan UP/002A.</em>
+      <div class="alert-box alert-danger" style="margin-top:1rem">
+        ⚖️ <strong>HAD SPESIFIKASI USP-NF MONOGRAPH &amp; NPRA:</strong>
+        <br>• Had Kawalan Ethylene Glycol dalam sirap perubatan: <strong>Tidak Lebih Daripada (NMT) 0.10% v/v</strong>.
+        <br>• Had Kawalan Diethylene Glycol dalam sirap perubatan: <strong>Tidak Lebih Daripada (NMT) 0.10% v/v</strong>.
       </div>
     </div>
+
+    <!-- 7.0 REKOD KUALITI -->
+    <div class="sop-sec-title"><span class="sop-sec-num">7.0</span> REKOD KUALITI</div>
+    <table class="table-official">
+      <thead><tr><th>No. Borang</th><th>Tajuk Rekod Kualiti</th><th>Lokasi Fail</th><th>Tempoh Simpanan</th></tr></thead>
+      <tbody>
+        <tr><td><strong>UP/001A</strong></td><td>Borang Persampelan</td><td>Fail Rekod Makmal</td><td>6 Tahun</td></tr>
+        <tr><td><strong>UP/009</strong></td><td>Laporan Pengujian Identifikasi dan Kandungan DEG dan EG Menggunakan GCMS</td><td>Fail Pengujian Produk</td><td>6 Tahun</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 8.0 RUJUKAN -->
+    <div class="sop-sec-title"><span class="sop-sec-num">8.0</span> RUJUKAN</div>
+    <ul style="margin-left:1.5rem;font-size:0.88rem;line-height:1.6;color:var(--text-main)">
+      <li>PKKK/300/UP/001: Proses persampelan (Ujian Penyaringan)</li>
+      <li>PKKK/300/UP/010: Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</li>
+      <li>PKKK/300/UP/004: Gas Chromatography-Mass Spectroscopy Agilent (7890A/5975C)</li>
+      <li>PKKK/300/UP/017: Gas Chromatography Mass Spectroscopy Agilent (8890/5977B)</li>
+      <li>USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753.</li>
+    </ul>
 
   </div>
 
