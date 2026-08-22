@@ -229,9 +229,17 @@ function openDocModal(index) {
       ` : ''}
 
       ${doc.code === 'PKKK/200/UP/002' ? `
-        <div style="margin-top:0.5rem">
+        <div style="margin-top:0.8rem">
           <a href="lovastatin.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
-            🚀 Launch Interactive Lovastatin HPLC Calculator & Report Generator
+            💊 Launch Interactive Lovastatin HPLC Calculator & Report Generator →
+          </a>
+        </div>
+      ` : ''}
+
+      ${doc.code === 'PKKK/200/UP/001' ? `
+        <div style="margin-top:0.8rem">
+          <a href="hydroquinone-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
+            🧴 View Comprehensive Hydroquinone in Cosmetics HPLC Guide →
           </a>
         </div>
       ` : ''}
@@ -258,6 +266,46 @@ function openDocModal(index) {
           Kategori: <strong>${doc.category}</strong>. Prosedur operasi standard ini digunapakai bagi memastikan kebolehulangan dan ketepatan data analisis di Seksyen Pengujian Produk & Kosmetik.
         </div>
       </div>
+
+      ${doc.code === 'PKKK/300/UP/021' ? `
+        <div style="margin-top:0.8rem">
+          <a href="steroid-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
+            🔬 View Comprehensive Steroids 8-Mix HPLC Guide →
+          </a>
+        </div>
+      ` : ''}
+
+      ${doc.code === 'PKKK/300/UP/025' ? `
+        <div style="margin-top:0.8rem">
+          <a href="ppi-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
+            💊 View Comprehensive Proton Pump Inhibitors (PPI) HPLC Guide →
+          </a>
+        </div>
+      ` : ''}
+
+      ${doc.code === 'PKKK/300/UP/027' ? `
+        <div style="margin-top:0.8rem">
+          <a href="domperidone-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
+            🧪 View Comprehensive Domperidone HPLC Guide →
+          </a>
+        </div>
+      ` : ''}
+
+      ${doc.code === 'PKKK/300/UP/034' ? `
+        <div style="margin-top:0.8rem">
+          <a href="deg-eg-gcms.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
+            🧬 View Comprehensive EG & DEG in Syrups GC-MS Guide →
+          </a>
+        </div>
+      ` : ''}
+
+      ${(doc.code === 'PKKK/300/UP/064' || doc.category === 'Alat Timbang') ? `
+        <div style="margin-top:0.8rem">
+          <a href="qc-balance.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
+            ⚖️ Launch Interactive Balance Verification & QC Suite →
+          </a>
+        </div>
+      ` : ''}
     `;
   } else {
     // Rekod Kualiti

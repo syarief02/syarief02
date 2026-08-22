@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proton Pump Inhibitors (PPI) HPLC SOP Guide — PKKK/300/UP/025 | NPRA</title>
+<meta name="description" content="Comprehensive step-by-step SOP analysis guide for identification of Proton Pump Inhibitors (Omeprazole and Lansoprazole) in traditional products using HPLC per PKKK/300/UP/025.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="steroid-hplc.css">
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        SOP Matrix
+      </a>
+      <a href="screening-methods.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        All Screening Methods
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — PKKK/300/UP/025 (Terbitan 2 Semakan 0)</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Proton Pump Inhibitors <span class="g">HPLC Guide</span></h1>
+    <div class="hero-sub">Identifikasi Omeprazole & Lansoprazole dalam Produk Tradisional</div>
+    <p class="hero-desc">
+      Comprehensive analytical procedure for qualitative identification of adulterant proton pump inhibitors (Omeprazole and Lansoprazole) in traditional medicines, health supplements, and botanical preparations.
+    </p>
+
+    <div class="specs-ribbon">
+      <div class="spec-chip"><span class="spec-lbl">Document</span> PKKK/300/UP/025</div>
+      <div class="spec-chip"><span class="spec-lbl">Column</span> Zorbax SB C18 (250 × 4.6 mm, 5 µm)</div>
+      <div class="spec-chip"><span class="spec-lbl">Mobile Phase</span> Isocratic: 65% Buffer pH 7.6 : 35% ACN</div>
+      <div class="spec-chip"><span class="spec-lbl">Flow & Temp</span> 1.0 mL/min @ 30 °C (Sampler: 4 °C)</div>
+      <div class="spec-chip"><span class="spec-lbl">PDA Detection</span> 280 nm (Scan 190–400 nm)</div>
+      <div class="spec-chip"><span class="spec-lbl">Run Time</span> 20.0 minutes</div>
+    </div>
+  </div>
+
+  <!-- Content Card -->
+  <div class="guide-card">
+
+    <div class="step-header">
+      <div class="step-badge">ARAHAN KERJA RASMI</div>
+      <h2>1.0 Objektif & Skop Pengujian</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/025 Para 1.0 & 2.0</div>
+    </div>
+    <div class="acc-body">
+      <p><strong>1.0 Tujuan:</strong> Untuk menyediakan tatacara pengujian bagi pengesanan bahan campur palsu Proton Pump Inhibitor (Omeprazole dan Lansoprazole) dalam produk tradisional dan suplemen kesihatan secara kromatografi cecair berprestasi tinggi (HPLC-PDA).</p>
+      <p><strong>2.0 Skop:</strong> Digunapakai untuk sampel pengawasan pasaran (surveillance), aduan, pendaftaran produk, dan sampel penguatkuasaan farmasi yang diterima di Unit Penyaringan.</p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">BAHAN & RADAS</div>
+      <h2>2.0 Radas, Reagen & Penyediaan Larutan Piawai</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/025 Para 6.1 – 6.3</div>
+    </div>
+    <div class="acc-body">
+      <p>• <strong>Penyediaan Fasa Bergerak (Mobile Phase)</strong>:
+        <br>Timbang <strong>3.55 g Anhydrous di-Sodium Hydrogen Phosphate (Na₂HPO₄)</strong> dan larutkan dalam 1000 mL Ultrapure Water (18.2 MΩ). Laraskan nilai pH kepada <strong>pH 7.6 ± 0.05</strong> menggunakan asid ortofosforik (H₃PO₄) cair. Turas menggunakan membran nilon 0.45 µm dan degas selama sekurang-kurangnya 20 minit.
+        <br>Campurkan <strong>65% Buffer pH 7.6</strong> dan <strong>35% Acetonitrile (HPLC Grade)</strong> secara isokratik.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Stok Piawai Tunggal (1.0 mg/mL)</strong>:
+        <br>Timbang tepat <strong>10.0 mg Omeprazole RS</strong> dan <strong>10.0 mg Lansoprazole RS</strong> ke dalam kelalang volumetrik 10 mL berasingan. Larutkan dan genapkan dengan Methanol.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Piawai Campuran Bekerja (0.05 mg/mL)</strong>:
+        <br>Pipet <strong>0.5 mL</strong> daripada setiap larutan stok ke dalam kelalang volumetrik 10 mL yang sama dan genapkan dengan Methanol.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Had Pengesanan (LOD Solution, 0.003 mg/mL)</strong>:
+        <br>Pipet <strong>0.6 mL</strong> larutan piawai campuran bekerja ke dalam kelalang volumetrik 10 mL dan genapkan dengan Methanol.
+      </p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">PENYEDIAAN SAMPEL</div>
+      <h2>3.0 Tatacara Pengekstrakan Sampel Matriks</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/025 Para 6.4</div>
+    </div>
+    <div class="acc-body">
+      <ol style="margin-left:1.5rem;line-height:1.7">
+        <li><strong>Bentuk Tablet / Kapsul / Serbuk</strong>: Hancurkan tablet atau kosongkan cangkang kapsul sehingga menjadi serbuk halus homogen. Timbang tepat <strong>1.0 g sampel</strong> ke dalam tiub emparan (centrifuge tube) 50 mL.</li>
+        <li><strong>Penambahan Pelarut</strong>: Pipet <strong>20.0 mL Methanol</strong> ke dalam tiub emparan.
+          <br><em>*PERHATIAN: Bagi sediaan kapsul lembut (softgel), gunakan <strong>20.0 mL Chloroform</strong> kerana matriks minyak/gelatin tidak larut sempurna dalam Methanol.</em></li>
+        <li><strong>Sonikasi</strong>: Letakkan tiub di dalam kukus ultrasonik dan sonikasi selama <strong>15 minit</strong>.</li>
+        <li><strong>Pengemparan (Centrifuge)</strong>: Empar larutan pada kelajuan <strong>3000 rpm selama 10 minit</strong> bagi memisahkan enapan pepejal.</li>
+        <li><strong>Penurasan</strong>: Ambil cecair atas (supernatant) dan turas menggunakan <strong>penuras picagari 0.45 µm (Nylon/PTFE)</strong> terus ke dalam vial autosampler HPLC.</li>
+      </ol>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">KROMATOGRAFI</div>
+      <h2>4.0 Parameter Instrumen & Turutan Suntikan (Sequence)</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/025 Table 1 & Table 3</div>
+    </div>
+    <div class="acc-body">
+      <div class="table-wrap">
+        <table class="method-table">
+          <thead>
+            <tr><th>No. Turutan</th><th>Identiti Suntikan</th><th>Bil. Suntikan</th><th>Tujuan / Kriteria</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Blank (Methanol)</td><td>1</td><td>Penstabilan garisan dasar (baseline)</td></tr>
+            <tr class="seq-sst"><td>2–7</td><td>Larutan Piawai Bekerja (0.05 mg/mL)</td><td>6</td><td><strong>Ujian Kesesuaian Sistem (SST)</strong></td></tr>
+            <tr><td>8</td><td>Larutan LOD (0.003 mg/mL)</td><td>1</td><td>Verifikasi sensitiviti had pengesanan</td></tr>
+            <tr><td>9</td><td>Blank (Methanol)</td><td>1</td><td>Elak carryover</td></tr>
+            <tr><td>10–11</td><td>Sampel 1 (Suntikan A & B)</td><td>2</td><td>Ujian identifikasi duplikasi</td></tr>
+            <tr><td>12</td><td>Blank (Methanol)</td><td>1</td><td>Pencucian turus antara sampel</td></tr>
+            <tr><td>13–18</td><td>Sampel 2 hingga 5 (Duplikasi)</td><td>8</td><td>Pengujian kelompok</td></tr>
+            <tr class="seq-iqc"><td>19</td><td>Larutan LOD</td><td>1</td><td><strong>Kawalan Kualiti Dalaman (IQC Bracket)</strong></td></tr>
+            <tr><td>20</td><td>Blank (Methanol)</td><td>1</td><td>Pembersihan</td></tr>
+            <tr><td>21–22</td><td>Sampel 6 (Suntikan A & B)</td><td>2</td><td>Sampel berikutnya</td></tr>
+            <tr class="seq-iqc"><td>Akhir</td><td>Larutan LOD</td><td>1</td><td><strong>Semakan Akhir Analisis</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">INTERPRETASI</div>
+      <h2>5.0 Kriteria Kesesuaian Sistem & Interpretasi Keputusan</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/025 Para 6.5.6 – 6.5.7</div>
+    </div>
+    <div class="acc-body">
+      <div class="grid-2col">
+        <div class="eval-box">
+          <div class="eval-title">Kriteria Kesesuaian Sistem (SST)</div>
+          <ul class="eval-list">
+            <li><strong>%RSD Waktu Penahanan (RT):</strong> Tidak melebihi (NMT) <strong>2.0%</strong> bagi 6 suntikan piawai.</li>
+            <li><strong>Faktor Pengekoran (Tailing Factor):</strong> $T \le 2.0$.</li>
+            <li><strong>Plat Teori (Theoretical Plates, N):</strong> $N \ge 2000$.</li>
+            <li><strong>IQC Drift:</strong> Perbezaan peratusan waktu penahanan larutan LOD tidak melebihi <strong>3.0%</strong> sepanjang analisis.</li>
+          </ul>
+        </div>
+
+        <div class="eval-box">
+          <div class="eval-title">Kriteria Positif (DIKESAN)</div>
+          <ul class="eval-list">
+            <li><strong>Waktu Penahanan:</strong> Puncak kromatogram sampel bersamaan dengan waktu penahanan piawai rujukan dalam julat <strong>± 2%</strong>.</li>
+            <li><strong>Spektrum UV:</strong> Spektrum UV PDA ($190–400\text{ nm}$) sepadan dengan spektrum piawai dengan indeks persamaan <strong>&gt; 0.999</strong>.</li>
+            <li><strong>Keluasan Puncak:</strong> Puncak sampel melebihi keluasan puncak larutan LOD ($0.003\text{ mg/mL}$).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert-box alert-danger" style="margin-top:1.5rem">
+        🔒 <strong>PROTOKOL PENGESAHAN MAKMAL (Para 6.5.7c):</strong>
+        <br>Sekiranya sampel disyaki <strong>POSITIF</strong> mengandungi Omeprazole atau Lansoprazole, penyediaan sampel baharu hendaklah dijalankan oleh <strong>Penganalisis Kedua (Second Analyst)</strong> pada tarikh berbeza dan disahkan melalui <strong>analisis GCMS</strong> (`PKKK/300/UP/004` / `PKKK/300/UP/017`).
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="steroid-hplc.js"></script>
+</body>
+</html>

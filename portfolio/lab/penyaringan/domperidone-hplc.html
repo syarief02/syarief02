@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domperidone HPLC SOP Guide — PKKK/300/UP/027 | NPRA</title>
+<meta name="description" content="Comprehensive step-by-step SOP analysis guide for identification of Domperidone in traditional products using HPLC per PKKK/300/UP/027.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="steroid-hplc.css">
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        SOP Matrix
+      </a>
+      <a href="screening-methods.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        All Screening Methods
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — PKKK/300/UP/027 (Terbitan 2 Semakan 0)</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Domperidone <span class="g">HPLC Guide</span></h1>
+    <div class="hero-sub">Identifikasi Domperidone dalam Produk Tradisional</div>
+    <p class="hero-desc">
+      Comprehensive analytical procedure for qualitative identification of adulterant Domperidone (antiemetic/prokinetic agent) in traditional medicines, slimming herbs, and digestive health supplements.
+    </p>
+
+    <div class="specs-ribbon">
+      <div class="spec-chip"><span class="spec-lbl">Document</span> PKKK/300/UP/027</div>
+      <div class="spec-chip"><span class="spec-lbl">Column</span> Zorbax Eclipse Plus C18 (150 × 4.6 mm, 5 µm)</div>
+      <div class="spec-chip"><span class="spec-lbl">Mobile Phase</span> Gradient: 20 mM KH₂PO₄ pH 3.0 : ACN</div>
+      <div class="spec-chip"><span class="spec-lbl">Flow & Temp</span> 1.0 mL/min @ 40 °C (Sampler: 4 °C)</div>
+      <div class="spec-chip"><span class="spec-lbl">PDA Detection</span> 284 nm (Scan 190–400 nm)</div>
+      <div class="spec-chip"><span class="spec-lbl">Run Time</span> 20.0 minutes</div>
+    </div>
+  </div>
+
+  <!-- Content Card -->
+  <div class="guide-card">
+
+    <div class="step-header">
+      <div class="step-badge">ARAHAN KERJA RASMI</div>
+      <h2>1.0 Objektif & Skop Pengujian</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/027 Para 1.0 & 2.0</div>
+    </div>
+    <div class="acc-body">
+      <p><strong>1.0 Tujuan:</strong> Untuk menyediakan tatacara operasi standard bagi pengesanan bahan campur palsu Domperidone dalam produk tradisional dan suplemen kesihatan secara kromatografi cecair berprestasi tinggi (HPLC-PDA).</p>
+      <p><strong>2.0 Skop:</strong> Digunapakai untuk sampel pengawasan pasaran, aduan pengguna, pendaftaran produk, dan sampel tindakan undang-undang farmasi di Seksyen Pengujian Produk & Kosmetik.</p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">BAHAN & RADAS</div>
+      <h2>2.0 Radas, Reagen & Penyediaan Larutan Piawai</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/027 Para 6.1 – 6.3</div>
+    </div>
+    <div class="acc-body">
+      <p>• <strong>Penyediaan Fasa Bergerak (Mobile Phase A)</strong>:
+        <br>Timbang <strong>2.72 g Potassium Dihydrogen Phosphate (KH₂PO₄)</strong> ke dalam bikar dan larutkan dalam 1000 mL Ultrapure Water (18.2 MΩ). Laraskan pH kepada <strong>pH 3.0 ± 0.05</strong> menggunakan asid ortofosforik (H₃PO₄) 85%. Turas menggunakan penuras membran nilon 0.45 µm dan degas selama sekurang-kurangnya 20 minit.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Fasa Bergerak B</strong>: Acetonitrile (HPLC Grade), didegas 20 minit.</p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Stok Piawai Domperidone (1.0 mg/mL)</strong>:
+        <br>Timbang tepat <strong>10.0 mg Domperidone RS</strong> ke dalam kelalang volumetrik 10 mL. Larutkan dan genapkan dengan Methanol (HPLC Grade).
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Piawai Bekerja (0.05 mg/mL)</strong>:
+        <br>Pipet <strong>0.5 mL</strong> daripada larutan stok ke dalam kelalang volumetrik 10 mL dan genapkan dengan Methanol.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Had Pengesanan (LOD Solution, 0.003 mg/mL)</strong>:
+        <br>Pipet <strong>0.6 mL</strong> larutan piawai bekerja ke dalam kelalang volumetrik 10 mL dan genapkan dengan Methanol.
+      </p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">PENYEDIAAN SAMPEL</div>
+      <h2>3.0 Tatacara Pengekstrakan Sampel Matriks</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/027 Para 6.4</div>
+    </div>
+    <div class="acc-body">
+      <ol style="margin-left:1.5rem;line-height:1.7">
+        <li><strong>Bentuk Pepejal (Tablet / Kapsul / Serbuk)</strong>: Timbang tepat <strong>1.0 g sampel</strong> (atau sukat 1.0 mL bagi sediaan cecair) ke dalam tiub emparan 50 mL.</li>
+        <li><strong>Penambahan Pelarut</strong>: Tambah <strong>20.0 mL Methanol</strong>. (<em>Gunakan 20.0 mL Chloroform bagi sediaan softgel kapsul</em>).</li>
+        <li><strong>Sonikasi</strong>: Sonikasi dalam kukus ultrasonik selama <strong>15 minit</strong>.</li>
+        <li><strong>Pengemparan</strong>: Empar pada kelajuan <strong>3000 rpm selama 10 minit</strong>.</li>
+        <li><strong>Penurasan</strong>: Turas cecair atas menggunakan <strong>penuras picagari 0.45 µm (Nylon/PTFE)</strong> ke dalam vial HPLC.</li>
+      </ol>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">KROMATOGRAFI</div>
+      <h2>4.0 Program Gradien & Turutan Suntikan</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/027 Table 2 & Table 3</div>
+    </div>
+    <div class="acc-body">
+      <div class="table-wrap">
+        <table class="method-table">
+          <thead>
+            <tr><th>Masa (min)</th><th>Buffer 20 mM KH₂PO₄ pH 3.0 (%)</th><th>Acetonitrile (%)</th><th>Kadar Alir (mL/min)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0.01 – 1.99</td><td>90 %</td><td>10 %</td><td>1.0 mL/min</td></tr>
+            <tr><td>2.00 – 3.99</td><td>70 %</td><td>30 %</td><td>1.0 mL/min</td></tr>
+            <tr><td>4.00 – 7.99</td><td>50 %</td><td>50 %</td><td>1.0 mL/min</td></tr>
+            <tr><td>8.00 – 11.99</td><td>40 %</td><td>60 %</td><td>1.0 mL/min</td></tr>
+            <tr><td>12.00 – 14.09</td><td>30 %</td><td>70 %</td><td>1.0 mL/min</td></tr>
+            <tr><td>14.10 – 20.00</td><td>90 %</td><td>10 % (Re-equilibration)</td><td>1.0 mL/min</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-divider" style="margin-top:1.2rem">TURUTAN SUNTIKAN (SEQUENCE TABLE)</div>
+      <p><code>1. Blank</code> $\rightarrow$ <code>2–7. Domperidone RS (6x SST)</code> $\rightarrow$ <code>8. LOD Solution</code> $\rightarrow$ <code>9. Blank</code> $\rightarrow$ <code>10–11. Sampel 1 (Inj A & B)</code> $\rightarrow$ <code>12. Blank</code> $\rightarrow$ <code>13–18. Sampel 2 hingga 5</code> $\rightarrow$ <code>19. LOD Solution (IQC)</code> $\rightarrow$ <code>Akhir. LOD Solution</code>.</p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">INTERPRETASI</div>
+      <h2>5.0 Kriteria Kesesuaian Sistem & Interpretasi Keputusan</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/027 Para 6.5.6 – 6.5.7</div>
+    </div>
+    <div class="acc-body">
+      <div class="grid-2col">
+        <div class="eval-box">
+          <div class="eval-title">Kriteria Kesesuaian Sistem (SST)</div>
+          <ul class="eval-list">
+            <li><strong>%RSD Waktu Penahanan:</strong> $\le 2.0\%$ bagi 6 suntikan piawai.</li>
+            <li><strong>Tailing Factor ($T$):</strong> $T \le 2.0$.</li>
+            <li><strong>Plat Teori ($N$):</strong> $N \ge 2000$.</li>
+            <li><strong>IQC Drift:</strong> Perbezaan waktu penahanan LOD $\le 3.0\%$.</li>
+          </ul>
+        </div>
+
+        <div class="eval-box">
+          <div class="eval-title">Kriteria Pengesanan (DIKESAN)</div>
+          <ul class="eval-list">
+            <li><strong>Waktu Penahanan:</strong> Puncak kromatogram sampel bersamaan dengan piawai Domperidone dalam julat <strong>± 2%</strong>.</li>
+            <li><strong>Spektrum UV:</strong> Spektrum UV PDA ($190–400\text{ nm}$, $\lambda_{max} = 284\text{ nm}$) sepadan dengan indeks persamaan <strong>&gt; 0.999</strong>.</li>
+            <li><strong>Sensitiviti:</strong> Puncak sampel $\ge$ keluasan puncak larutan LOD ($0.003\text{ mg/mL}$).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert-box alert-danger" style="margin-top:1.5rem">
+        🔒 <strong>PROTOKOL PENGESAHAN MAKMAL:</strong>
+        <br>Sekiranya sampel disyaki <strong>POSITIF</strong> Domperidone, pengekstrakan baharu hendaklah dijalankan oleh <strong>Penganalisis Kedua</strong> pada tarikh berbeza dan disahkan melalui <strong>analisis GCMS</strong> (`PKKK/300/UP/004` / `PKKK/300/UP/017`).
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="steroid-hplc.js"></script>
+</body>
+</html>
