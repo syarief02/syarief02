@@ -107,10 +107,117 @@ def classify_cat(title):
     if 'spesifikasi' in t or 'persampelan' in t or 'sisa' in t or 'charting' in t: return 'Kawalan Kualiti & QA'
     return 'Kaedah Pengujian'
 
+# Comprehensive Mapping of Analysis Methods to Instrument SOPs
+ANALYSIS_TO_INSTRUMENTS = {
+    # HPLC Testing Methods
+    '021': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/041', 'Shimadzu Prominence-i (HPLC 3)', 'sop-300-up-041.html'), ('PKKK/300/UP/014', 'Pengekstrakan Cecair-Cecair (LLE)', 'sop-300-up-014.html')],
+    '022': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/014', 'Pengekstrakan LLE pH 7.0', 'sop-300-up-014.html')],
+    '024': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
+    '025': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/042', 'Shimadzu Prominence-i (HPLC 4)', 'sop-300-up-042.html')],
+    '026': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
+    '027': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
+    '028': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
+    '031': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/044', 'HPLC Agilent 1', 'sop-300-up-044.html')],
+    '032': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
+    '033': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
+    '035': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
+    '050': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
+    '051': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
+    '052': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
+    '053': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
+    '054': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
+    '055': [('PKKK/300/UP/043', 'HPLC Ion Chromatography Shimadzu LC-20AR', 'sop-300-up-043.html')],
+    '056': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
+    '060': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
+    '061': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
+
+    # GC-MS Testing Methods
+    '018': [('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'), ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'), ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html')],
+    '030': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html')],
+    '034': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'), ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html')],
+    '047': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html')],
+    '048': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html')],
+    '049': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html')],
+    '059': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html')],
+    '062': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html')],
+
+    # LCMS Testing Methods
+    '015': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
+    '023': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
+    '029': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
+}
+
+# Reverse Mapping of Instruments to All Active Analysis Methods
+INSTRUMENT_TO_ANALYSIS = {
+    '011': [('PKKK/300/UP/021', 'Steroid 8-Mix HPLC', 'sop-300-up-021.html'), ('PKKK/300/UP/022', 'Anti Diabetik HPLC', 'sop-300-up-022.html'), ('PKKK/300/UP/024', 'Diuretik HPLC', 'sop-300-up-024.html'), ('PKKK/300/UP/025', 'Proton Pump Inhibitor (PPI) HPLC', 'sop-300-up-025.html'), ('PKKK/300/UP/026', 'Anti-hipertensi HPLC', 'sop-300-up-026.html'), ('PKKK/300/UP/027', 'Domperidone HPLC', 'sop-300-up-027.html'), ('PKKK/300/UP/028', 'Antikolesterol HPLC', 'sop-300-up-028.html'), ('PKKK/300/UP/031', 'Lovastatin HPLC', 'sop-300-up-031.html'), ('PKKK/300/UP/050', 'Hydroquinone in Cosmetics HPLC', 'sop-300-up-050.html'), ('PKKK/300/UP/060', 'NSAIDs in Cosmetics HPLC', 'sop-300-up-060.html')],
+    '003': [('PKKK/300/UP/021', 'Steroid 8-Mix HPLC', 'sop-300-up-021.html'), ('PKKK/300/UP/022', 'Anti Diabetik HPLC', 'sop-300-up-022.html'), ('PKKK/300/UP/025', 'Proton Pump Inhibitor (PPI) HPLC', 'sop-300-up-025.html'), ('PKKK/300/UP/027', 'Domperidone HPLC', 'sop-300-up-027.html'), ('PKKK/300/UP/031', 'Lovastatin HPLC', 'sop-300-up-031.html'), ('PKKK/300/UP/056', 'Steroids in Cosmetics ACM 007', 'sop-300-up-056.html')],
+    '017': [('PKKK/300/UP/034', 'Diethylene Glycol & Ethylene Glycol in Syrups GCMS', 'sop-300-up-034.html'), ('PKKK/300/UP/018', 'Bahan Kawalan & Terlarang GCMS', 'sop-300-up-018.html'), ('PKKK/300/UP/030', 'Menthol, Camphor & Methyl Salicylate GCMS', 'sop-300-up-030.html'), ('PKKK/300/UP/047', 'Theophylline & Caffeine GCMS', 'sop-300-up-047.html'), ('PKKK/300/UP/048', 'Hydroquinone GCMS', 'sop-300-up-048.html'), ('PKKK/300/UP/049', 'Diethylene Glycol in Toothpaste GCMS', 'sop-300-up-049.html'), ('PKKK/300/UP/059', 'Antimicrobials in Cosmetics GCMS', 'sop-300-up-059.html'), ('PKKK/300/UP/062', 'Volatile Compounds in Cosmetics GCMS', 'sop-300-up-062.html')],
+    '010': [('PKKK/300/UP/034', 'Diethylene Glycol & Ethylene Glycol GCMS', 'sop-300-up-034.html'), ('PKKK/300/UP/018', 'Bahan Kawalan GCMS', 'sop-300-up-018.html'), ('PKKK/300/UP/030', 'Menthol & Camphor GCMS', 'sop-300-up-030.html'), ('PKKK/300/UP/047', 'Theophylline & Caffeine GCMS', 'sop-300-up-047.html')],
+    '004': [('PKKK/300/UP/034', 'Diethylene Glycol & Ethylene Glycol GCMS', 'sop-300-up-034.html'), ('PKKK/300/UP/018', 'Bahan Kawalan GCMS', 'sop-300-up-018.html'), ('PKKK/300/UP/059', 'Antimicrobials GCMS', 'sop-300-up-059.html')],
+    '040': [('PKKK/300/UP/034', 'Diethylene Glycol & Ethylene Glycol GCMS', 'sop-300-up-034.html'), ('PKKK/300/UP/018', 'Bahan Kawalan GCMS', 'sop-300-up-018.html')],
+    '012': [('PKKK/300/UP/029', 'PDE-5 Inhibitors in Traditional Products LC-MS/MS', 'sop-300-up-029.html'), ('PKKK/300/UP/023', 'Antifungal in Traditional Products LC-MS', 'sop-300-up-023.html'), ('PKKK/300/UP/015', 'Id EDD in Traditional Products LC-MS', 'sop-300-up-015.html')],
+    '041': [('PKKK/300/UP/021', 'Steroid 8-Mix HPLC', 'sop-300-up-021.html'), ('PKKK/300/UP/025', 'Proton Pump Inhibitor (PPI) HPLC', 'sop-300-up-025.html')],
+    '042': [('PKKK/300/UP/025', 'Proton Pump Inhibitor (PPI) HPLC', 'sop-300-up-025.html'), ('PKKK/300/UP/027', 'Domperidone HPLC', 'sop-300-up-027.html')],
+    '043': [('PKKK/300/UP/055', 'Fluoride in Toothpaste Products Ion Chromatography', 'sop-300-up-055.html')],
+    '044': [('PKKK/300/UP/031', 'Lovastatin HPLC', 'sop-300-up-031.html')],
+    '045': [('PKKK/300/UP/021', 'Steroid 8-Mix HPLC', 'sop-300-up-021.html')],
+    '016': [('PKKK/300/UP/021', 'Steroid 8-Mix HPLC', 'sop-300-up-021.html'), ('PKKK/300/UP/022', 'Anti Diabetik HPLC', 'sop-300-up-022.html')],
+    '057': [('PKKK/300/UP/021', 'Steroid 8-Mix HPLC', 'sop-300-up-021.html'), ('PKKK/300/UP/026', 'Anti-hipertensi HPLC', 'sop-300-up-026.html')],
+    '005': [('PKKK/300/UP/014', 'Penyediaan Sampel LLE', 'sop-300-up-014.html'), ('PKKK/300/UP/013', 'Penyediaan Sampel SPE', 'sop-300-up-013.html'), ('PKKK/300/UP/031', 'Penimbangan Sampel Lovastatin', 'sop-300-up-031.html'), ('PKKK/300/UP/064', 'Control Charting & Shewhart IQC', 'sop-300-up-064.html')],
+    '006': [('PKKK/300/UP/014', 'Penyediaan Sampel LLE', 'sop-300-up-014.html'), ('PKKK/300/UP/013', 'Penyediaan Sampel SPE', 'sop-300-up-013.html'), ('PKKK/300/UP/064', 'Control Charting & Shewhart IQC', 'sop-300-up-064.html')],
+    '009': [('PKKK/300/UP/014', 'Penyediaan Sampel LLE', 'sop-300-up-014.html'), ('PKKK/300/UP/064', 'Control Charting & Shewhart IQC', 'sop-300-up-064.html')],
+    '020': [('PKKK/300/UP/031', 'Penimbangan Piawai Rujukan Lovastatin (Mikro)', 'sop-300-up-031.html'), ('PKKK/300/UP/064', 'Control Charting & Shewhart IQC', 'sop-300-up-064.html')],
+    '038': [('PKKK/300/UP/031', 'Penimbangan Piawai Rujukan Lovastatin', 'sop-300-up-031.html'), ('PKKK/300/UP/064', 'Control Charting & Shewhart IQC', 'sop-300-up-064.html')],
+    '046': [('PKKK/300/UP/001', 'Penimbangan Kasar Persampelan', 'sop-300-up-001.html'), ('PKKK/300/UP/064', 'Control Charting & Shewhart IQC', 'sop-300-up-064.html')],
+    '008': [('PKKK/300/UP/021', 'Penyelarasan pH 7.0 Fasa Bergerak Steroid', 'sop-300-up-021.html'), ('PKKK/300/UP/025', 'Penyelarasan pH 7.6 Buffer Phosphate PPI', 'sop-300-up-025.html'), ('PKKK/300/UP/027', 'Penyelarasan pH 3.0 Buffer KH2PO4 Domperidone', 'sop-300-up-027.html'), ('PKKK/300/UP/014', 'Penyelarasan pH Pengekstrakan LLE', 'sop-300-up-014.html')],
+    '058': [('PKKK/300/UP/034', 'Sonikasi Sampel Sirap EG/DEG (5 minit)', 'sop-300-up-034.html'), ('PKKK/300/UP/021', 'Sonikasi Ekstrak Sampel Steroid (15 minit)', 'sop-300-up-021.html'), ('PKKK/300/UP/025', 'Sonikasi Ekstrak Sampel PPI (15 minit)', 'sop-300-up-025.html'), ('PKKK/300/UP/031', 'Sonikasi Ekstrak Lovastatin (15 minit)', 'sop-300-up-031.html')],
+    '036': [('PKKK/300/UP/014', 'Vortexing Sampel Pengekstrakan LLE (1 minit)', 'sop-300-up-014.html'), ('PKKK/300/UP/013', 'Vortexing Sampel SPE', 'sop-300-up-013.html')],
+}
+
+# Rich Operational Troubleshooting / Deep Guide Enhancements for Instruments
+INSTRUMENT_DEEP_TIPS = {
+    '011': [
+        "🔑 **Akses Sistem**: User ID: `Admin` (Password: dibiarkan kosong), Passcode Mesin: `00000`.",
+        "🔄 **Auto Purge Routine**: Wajib jalankan Auto Purge (5.0 mL/min, 3 min setiap saluran) jika solvent ditambah atau ditukar jenis.",
+        "⚡ **Intermediate Flushing**: Jika menukar dari larutan Buffer ke Organik 100%, flush saluran dengan Intermediate (Air Suling 90% : MeOH 10%) dahulu.",
+        "📈 **PDA Baseline Monitoring**: Klik ikon `Plot` dan tunggu sekurang-kurangnya 15–30 minit sehingga tekanan stabil (RSD < 2%) sebelum klik `Stop` dan mulakan suntikan.",
+        "🧼 **Tatacara Flushing Penutupan**: Buffer $\\rightarrow$ Flush 90:10 Air:MeOH (30 min) $\\rightarrow$ 100% Organik (30 min) $\\rightarrow$ 70:30 Simpanan Kolum (15 min)."
+    ],
+    '003': [
+        "🔑 **Akses Sistem Agilent**: Passcode Agilent ChemStation: `3000hanover`.",
+        "🎛️ **Injap Purge Manual**: Pusing lawan arah jam untuk buka $\\rightarrow$ Purge Binary Pump 5.0 mL/min (3 min setiap line) $\\rightarrow$ Turunkan ke 0.1 mL/min $\\rightarrow$ Pusing arah jam untuk tutup injap $\\rightarrow$ Naikkan flow perlahan-lahan.",
+        "🌈 **Tetapan DAD**: Spectrum Store: `All`, Range: `190 to 400 nm`, Step: `2.0 nm`.",
+        "🔍 **Overlay Signal**: Tekan serentak <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + **Klik pada puncak standard** untuk tindih (overlay) UV spektrum standard dengan sampel.",
+        "🧼 **Pencucian**: Fasa gerak 5% Methanol selama 1 jam @ 1.0 mL/min $\\rightarrow$ 100% Acetonitrile/Methanol selama 30 min @ 1.0 mL/min."
+    ],
+    '017': [
+        "🎯 **Tuning Harian MS**: Jalankan `s.tune` (Standard Tune) atau `a.tune` setiap pagi dan simpan laporan penalaan rasmi.",
+        "💧 **Air/Water Check**: Pastikan $m/z\\ 18$ (Air) $< 10\\%$ dan $m/z\\ 28$ ($N_2$) $< 5\\%$ berbanding $m/z\\ 69$.",
+        "🌡️ **Suhu Antaramuka & Sumber EI**: EI Source $230\\ ^\\circ\\text{C}$, Transfer Line / Interface $240\\ ^\\circ\\text{C}$, Inlet $250\\ ^\\circ\\text{C}$.",
+        "⏱️ **Solvent Delay**: Tetapkan Solvent Delay $4.00\\text{ min}$ bagi melindungi filamen MS daripada beban pelarut Methanol yang pekat.",
+        "📊 **SIM Integration**: Kuantitasi menggunakan Target Ion utama ($m/z\\ 31$ bagi EG, $m/z\\ 45$ bagi DEG) dan sahkan dengan Qualifier Ions mengikut Had Toleransi Table 6."
+    ],
+    '010': [
+        "🎯 **Shimadzu GCMS Tuning**: Jalankan Autotune melalui GCMSsolution. Pastikan EM Voltage tidak melebihi paras amaran.",
+        "🔍 **Penyelenggaraan Inlet**: Tukar Septum suntikan setiap 100 suntikan bagi mengelakkan kebocoran gas pembawa Helium dan ghost peaks.",
+        "🧼 **Bake-Out Kolum**: Lakukan Column Conditioning pada suhu $240–250\\ ^\\circ\\text{C}$ selama 30 minit jika terdapat peningkatan baseline bleeding."
+    ],
+    '012': [
+        "⚡ **LCMS-8045 Triple Quad**: Tetapkan ESI Interface Voltage $+4.0\\text{ kV}$ (Positive mode) atau $-3.0\\text{ kV}$ (Negative mode).",
+        "💨 **Gas Desolvation & Nebulizer**: Nebulizing Gas Flow: $3.0\\text{ L/min}$, Drying Gas Flow: $10.0\\text{ L/min}$, Heating Gas Flow: $10.0\\text{ L/min}$.",
+        "🎯 **MRM Transitions**: Optimumkan CE (Collision Energy) bagi setiap pecahan ion produk (Product Ion) sasaran."
+    ]
+}
+
 def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_data, category):
     full_text = ' '.join(paras)
     analytes = get_target_analytes(title, full_text)
     bench_tips = get_bench_tips(category, title)
+    
+    # Check if this document has cross-linked instruments or analysis methods
+    inst_links = ANALYSIS_TO_INSTRUMENTS.get(doc_num_str, [])
+    analysis_links = INSTRUMENT_TO_ANALYSIS.get(doc_num_str, [])
+    deep_inst_tips = INSTRUMENT_DEEP_TIPS.get(doc_num_str, [])
     
     # Workflow Steps
     if 'HPLC' in category or 'GC-MS' in category or 'LC-MS' in category or 'Kosmetik' in category:
@@ -160,6 +267,66 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
         <div class="summary-analytes">
           <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
           <div class="chips-container">{chips_str}</div>
+        </div>
+        '''
+
+    # Cross-Linked Instrument Banner (For Analysis SOPs)
+    cross_inst_html = ''
+    if inst_links:
+        inst_cards = ''.join([
+            f'''
+            <a href="{link[2]}" class="inst-link-card">
+              <div class="inst-code">{link[0]}</div>
+              <div class="inst-name">{link[1]}</div>
+              <span class="inst-badge">Buka Panduan Alat →</span>
+            </a>
+            ''' for link in inst_links
+        ])
+        cross_inst_html = f'''
+        <div class="cross-link-container">
+          <div class="cross-header">
+            <span class="cross-icon">⚙️</span>
+            <strong>SOP Pengendalian Alat Yang Digunakan Untuk Ujian Ini:</strong>
+          </div>
+          <div class="cross-grid">{inst_cards}</div>
+        </div>
+        '''
+
+    # Cross-Linked Analysis Banner (For Instrument SOPs)
+    cross_analysis_html = ''
+    if analysis_links:
+        ana_cards = ''.join([
+            f'''
+            <a href="{link[2]}" class="analysis-link-card">
+              <div class="ana-code">{link[0]}</div>
+              <div class="ana-name">{link[1]}</div>
+              <span class="ana-badge">Buka SOP Kaedah →</span>
+            </a>
+            ''' for link in analysis_links
+        ])
+        cross_analysis_html = f'''
+        <div class="cross-link-container analysis-theme">
+          <div class="cross-header">
+            <span class="cross-icon">🧪</span>
+            <strong>Kaedah-Kaedah Pengujian Aktif Menggunakan Instrumen Ini:</strong>
+          </div>
+          <div class="cross-grid">{ana_cards}</div>
+        </div>
+        '''
+
+    # Deep Operating Tips for Instruments
+    deep_tips_html = ''
+    if deep_inst_tips:
+        dt_list = ''.join([f'<li>{t}</li>' for t in deep_inst_tips])
+        deep_tips_html = f'''
+        <div class="deep-tips-card">
+          <div class="tips-header">
+            <span class="tips-icon">⚡</span>
+            <strong>Panduan Khas Pengendalian &amp; Penyelenggaraan Terperinci (Pro Tips):</strong>
+          </div>
+          <ul class="tips-list">
+            {dt_list}
+          </ul>
         </div>
         '''
 
@@ -229,7 +396,6 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
         </div>
         '''
 
-    # Section theme classifier
     def get_sec_theme(stitle):
         st = stitle.lower()
         if 'tujuan' in st or 'objektif' in st or 'skop' in st:
@@ -244,7 +410,6 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
             return 'sec-theme-indigo', '📝'
         return 'sec-theme-cyan', '◈'
 
-    # Build sections HTML with high-contrast card boxes
     sections_html = ''
     total_steps = 0
     
@@ -285,7 +450,6 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
                 current_step_header = None
 
         for itm in s['items']:
-            # Check if this is a sub-step heading (e.g. 6.1, 6.2, 6.3.1, etc.)
             if re.match(r'^\d+\.\d+(\.\d+)?(\s+|$)', itm):
                 flush_step()
                 current_step_header = itm
@@ -335,10 +499,6 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
-  /* ========================================================= */
-  /* HIGH-CONTRAST, ULTRA-READABLE SOP TYPOGRAPHY & LAYOUT     */
-  /* ========================================================= */
-  
   :root {{
     --text-heading: #090d16;
     --text-body: #1e293b;
@@ -374,9 +534,7 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   }}
   .sop-header-table strong {{ color: var(--text-heading); font-weight: 700; }}
 
-  /* ========================================================= */
-  /* SECTION CONTAINERS WITH HIGH-CONTRAST COLORED HEADERS    */
-  /* ========================================================= */
+  /* Sections */
   .sop-section-container {{
     background: var(--card-surface);
     border: 1px solid var(--card-border-subtle);
@@ -389,7 +547,6 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   .sop-section-container:hover {{
     box-shadow: var(--shadow-md);
   }}
-
   .sop-section-header {{
     padding: 0.9rem 1.4rem;
     display: flex;
@@ -412,30 +569,15 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     justify-content: center;
   }}
 
-  /* Distinct Section Color Themes */
-  .sec-theme-cyan .sop-section-header {{
-    background: linear-gradient(135deg, #0284c7, #0369a1);
-  }}
-  .sec-theme-purple .sop-section-header {{
-    background: linear-gradient(135deg, #7c3aed, #6d28d9);
-  }}
-  .sec-theme-mint .sop-section-header {{
-    background: linear-gradient(135deg, #059669, #047857);
-  }}
-  .sec-theme-amber .sop-section-header {{
-    background: linear-gradient(135deg, #d97706, #b45309);
-  }}
-  .sec-theme-indigo .sop-section-header {{
-    background: linear-gradient(135deg, #4f46e5, #3730a3);
-  }}
+  .sec-theme-cyan .sop-section-header {{ background: linear-gradient(135deg, #0284c7, #0369a1); }}
+  .sec-theme-purple .sop-section-header {{ background: linear-gradient(135deg, #7c3aed, #6d28d9); }}
+  .sec-theme-mint .sop-section-header {{ background: linear-gradient(135deg, #059669, #047857); }}
+  .sec-theme-amber .sop-section-header {{ background: linear-gradient(135deg, #d97706, #b45309); }}
+  .sec-theme-indigo .sop-section-header {{ background: linear-gradient(135deg, #4f46e5, #3730a3); }}
 
-  .sop-section-body {{
-    padding: 1.6rem 1.8rem;
-  }}
+  .sop-section-body {{ padding: 1.6rem 1.8rem; }}
 
-  /* ========================================================= */
-  /* STEP CARDS (HIGH CONTRAST & INTERACTIVE)                  */
-  /* ========================================================= */
+  /* Step Cards */
   .sop-step-card {{
     background: var(--glass);
     border: 1px solid var(--step-border);
@@ -475,32 +617,15 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     color: var(--text-heading);
     font-family: var(--font-main);
   }}
-  .step-card-body {{
-    padding: 1.1rem 1.3rem;
-  }}
+  .step-card-body {{ padding: 1.1rem 1.3rem; }}
 
   /* Typography */
-  .sop-p {{
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--text-body);
-    margin-bottom: 0.8rem;
-  }}
+  .sop-p {{ font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }}
   .sop-list-item {{
-    display: flex;
-    gap: 0.65rem;
-    align-items: flex-start;
-    margin-left: 0.8rem;
-    font-size: 0.93rem;
-    line-height: 1.75;
-    color: var(--text-body);
-    margin-bottom: 0.5rem;
+    display: flex; gap: 0.65rem; align-items: flex-start; margin-left: 0.8rem; font-size: 0.93rem;
+    line-height: 1.75; color: var(--text-body); margin-bottom: 0.5rem;
   }}
-  .sop-bullet {{
-    color: var(--cyan);
-    font-weight: bold;
-    flex-shrink: 0;
-  }}
+  .sop-bullet {{ color: var(--cyan); font-weight: bold; flex-shrink: 0; }}
   .sop-list-text {{ flex: 1; }}
 
   /* Keyword Highlights */
@@ -528,6 +653,43 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   .wf-name {{ font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--text-heading); }}
   .wf-desc {{ font-size: 0.74rem; color: var(--text-muted); line-height: 1.3; }}
   .wf-arrow {{ color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }}
+
+  /* Two-Way Cross Link Grid */
+  .cross-link-container {{
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(124, 58, 237, 0.08));
+    border: 1px solid var(--cyan); border-radius: 16px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
+    box-shadow: var(--shadow-sm);
+  }}
+  .cross-link-container.analysis-theme {{
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.08), rgba(2, 132, 199, 0.08));
+    border-color: var(--mint);
+  }}
+  .cross-header {{
+    display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 800;
+    color: var(--text-heading); margin-bottom: 1rem;
+  }}
+  .cross-icon {{ font-size: 1.15rem; }}
+  .cross-grid {{
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.8rem;
+  }}
+  .inst-link-card, .analysis-link-card {{
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 12px;
+    padding: 0.9rem 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.3rem;
+    transition: all 0.2s ease; box-shadow: var(--shadow-sm);
+  }}
+  .inst-link-card:hover, .analysis-link-card:hover {{
+    border-color: var(--cyan); transform: translateY(-2px); box-shadow: var(--shadow-md);
+  }}
+  .inst-code, .ana-code {{ font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--cyan); }}
+  .inst-name, .ana-name {{ font-size: 0.85rem; font-weight: 700; color: var(--text-heading); line-height: 1.35; }}
+  .inst-badge, .ana-badge {{ font-size: 0.72rem; font-weight: 600; color: var(--purple); margin-top: 0.2rem; }}
+
+  /* Deep Tips Card */
+  .deep-tips-card {{
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(2, 132, 199, 0.08));
+    border: 1px solid var(--purple); border-radius: 14px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
+    box-shadow: var(--shadow-sm);
+  }}
 
   /* Executive Summary & Chips */
   .summary-analytes {{
@@ -597,7 +759,7 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   .seq-blank {{ background: rgba(0,0,0,0.03); color: var(--text-muted); }}
 
   @media print {{
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track {{ display: none !important; }}
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card {{ display: none !important; }}
     .main {{ max-width: 100% !important; padding: 0 !important; }}
     .sop-doc-container {{ box-shadow: none !important; border: none !important; padding: 0 !important; }}
     body {{ background: #fff !important; color: #000 !important; }}
@@ -653,6 +815,15 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
 
   <!-- Target Analytes / Quick Chips -->
   {summary_chips_html}
+
+  <!-- Cross-Linked Instruments (For Analysis SOPs) -->
+  {cross_inst_html}
+
+  <!-- Cross-Linked Analysis (For Instrument SOPs) -->
+  {cross_analysis_html}
+
+  <!-- Deep Operating Tips for Instruments -->
+  {deep_tips_html}
 
   <!-- Bench Notes & Precautions -->
   {tips_html}
@@ -814,4 +985,4 @@ for f in file_list:
         'url': f'sop/{slug}.html'
     })
 
-print(f'Successfully built {len(all_sops)} high-contrast, ultra-differentiated SOP guide pages!')
+print(f'Successfully built {len(all_sops)} two-way cross-linked, hyper-detailed SOP guide pages!')
