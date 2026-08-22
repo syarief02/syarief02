@@ -37,32 +37,150 @@ def parse_pdf(path):
     return paras, []
 
 def highlight_keywords(text):
-    # Highlight numbers with units, limits, temperatures, etc.
-    # Protect html tags first
     t = html.escape(text)
-    # Highlight temperatures
     t = re.sub(r'(\b\d+(\.\d+)?\s*°C\b)', r'<span class="kw-temp">\1</span>', t)
-    # Highlight flow rates
     t = re.sub(r'(\b\d+(\.\d+)?\s*(?:mL/min|µL/min|mil/min)\b)', r'<span class="kw-flow">\1</span>', t, flags=re.IGNORECASE)
-    # Highlight wavelengths
     t = re.sub(r'(\b\d{3}\s*nm\b)', r'<span class="kw-wave">\1</span>', t, flags=re.IGNORECASE)
-    # Highlight weights
     t = re.sub(r'(\b\d+(\.\d+)?\s*(?:mg|g|µg|kg)\b)', r'<span class="kw-wt">\1</span>', t)
-    # Highlight volumes
     t = re.sub(r'(\b\d+(\.\d+)?\s*(?:mL|µL|L)\b)', r'<span class="kw-vol">\1</span>', t)
-    # Highlight durations
     t = re.sub(r'(\b\d+(\.\d+)?\s*(?:minit|min|minutes|jam|hours|saat|seconds)\b)', r'<span class="kw-time">\1</span>', t, flags=re.IGNORECASE)
-    # Highlight limits / RSD
     t = re.sub(r'(\b(?:%RSD|RSD)\s*(?:≤|NMT|&le;)?\s*\d+(\.\d+)?\s*%?)', r'<span class="kw-limit">\1</span>', t, flags=re.IGNORECASE)
-    # Highlight pH
     t = re.sub(r'(\bpH\s*\d+(\.\d+)?(\s*±\s*\d+(\.\d+)?)?)', r'<span class="kw-ph">\1</span>', t, flags=re.IGNORECASE)
     return t
 
+def get_target_analytes(title, text):
+    t_low = (title + ' ' + text).lower()
+    analytes = []
+    if 'steroid' in t_low: analytes = ['Dexamethasone', 'Betamethasone', 'Prednisone', 'Prednisolone', 'Triamcinolone acetonide', 'Hydrocortisone acetate', 'Cortisone acetate', 'Betamethasone-17-valerate']
+    elif 'diabetik' in t_low or 'diabetic' in t_low: analytes = ['Glibenclamide', 'Metformin', 'Gliclazide', 'Glimepiride']
+    elif 'diuretik' in t_low or 'diuretic' in t_low: analytes = ['Hydrochlorothiazide', 'Furosemide', 'Spironolactone']
+    elif 'proton pump' in t_low or 'ppi' in t_low: analytes = ['Omeprazole', 'Lansoprazole']
+    elif 'hipertensi' in t_low: analytes = ['Amlodipine', 'Atenolol', 'Captopril', 'Losartan', 'Hydrochlorothiazide']
+    elif 'domperidone' in t_low: analytes = ['Domperidone']
+    elif 'antikolesterol' in t_low or 'kolesterol' in t_low or 'lovastatin' in t_low: analytes = ['Lovastatin', 'Simvastatin', 'Atorvastatin']
+    elif 'pde-5' in t_low or 'pde5' in t_low or 'edd' in t_low: analytes = ['Sildenafil', 'Tadalafil', 'Vardenafil', 'Analogues']
+    elif 'glycol' in t_low or 'deg' in t_low or 'eg' in t_low: analytes = ['Ethylene Glycol (EG)', 'Diethylene Glycol (DEG)']
+    elif 'menthol' in t_low: analytes = ['Menthol', 'Camphor', 'Methyl Salicylate', 'Thymol']
+    elif 'hydroquinone' in t_low: analytes = ['Hydroquinone']
+    elif 'tretinoin' in t_low: analytes = ['Tretinoin (Retinoic Acid)']
+    elif 'paraben' in t_low or 'hydroxybenzoate' in t_low: analytes = ['Methyl, Ethyl, Propyl, Butyl 4-Hydroxybenzoate']
+    elif 'fluoride' in t_low: analytes = ['Fluoride (F-)']
+    elif 'dopamine' in t_low: analytes = ['Dopamine HCl']
+    elif 'minoxidil' in t_low: analytes = ['Minoxidil']
+    elif 'theophylline' in t_low or 'caffeine' in t_low: analytes = ['Theophylline', 'Caffeine']
+    elif 'antimicrobial' in t_low: analytes = ['Triclosan', 'Climbazole', 'Antimicrobials']
+    elif 'nsaid' in t_low: analytes = ['Diclofenac', 'Mefenamic Acid', 'Ibuprofen', 'Indomethacin', 'Piroxicam', 'Ketoprofen', 'Naproxen']
+    elif 'phenylenediamine' in t_low or 'p-phenylenediamine' in t_low: analytes = ['p-Phenylenediamine (PPD)']
+    elif 'clindamycin' in t_low: analytes = ['Clindamycin']
+    return analytes
+
+def get_bench_tips(category, title):
+    t_low = (category + ' ' + title).lower()
+    tips = []
+    if 'hplc' in t_low or 'lc' in t_low:
+        tips.append("Tapis semua fasa bergerak (akueus dan organik) menggunakan penuras membran 0.45 µm dan degas dalam kukus ultrasonik selama sekurang-kurangnya 15–20 minit.")
+        tips.append("Lakukan Auto Purge / Manual Purge setiap kali pelarut ditambah atau ditukar jenis bagi menyingkirkan buih udara.")
+        tips.append("Pastikan garisan dasar (baseline) dan tekanan pam stabil (RSD < 2%) sebelum memulakan suntikan sampel kelompok.")
+        tips.append("Bagi sampel matriks kapsul lembut (softgel), gunakan Chloroform kerana gelatin/minyak tidak larut dalam Methanol.")
+    elif 'gcms' in t_low:
+        tips.append("Lakukan Standard Spectra Tune (s.tune) atau Autotune (a.tune) setiap hari sebelum analisis dan pastikan laporan LULUS.")
+        tips.append("Semak paras kebocoran udara/air (Air/Water Check): m/z 18 < 10% dan m/z 28 < 5% berbanding puncak dasar m/z 69.")
+        tips.append("Gunakan pelarut berkualiti kromatografi gas dan pastikan septum suntikan ditukar berkala bagi mengelak 'ghost peaks'.")
+    elif 'timbang' in t_low or 'balance' in t_low:
+        tips.append("Pastikan gelembung aras (spirit level) berada tepat di tengah bulatan sebelum penimbangan dimulakan.")
+        tips.append("Gunakan forsep atau sarung tangan semasa mengendalikan batu timbang piawai; elakkan sentuhan langsung jari.")
+        tips.append("Lakukan verifikasi harian (Borang UP/014) dan pemeriksaan kepekaan (UP/015) serta kebolehulangan (UP/016).")
+    else:
+        tips.append("Patuhi amalan keselamatan makmal yang baik (GLP) dan rekodkan semua langkah persediaan dalam lembaran kerja rasmi.")
+        tips.append("Sebarang ketakakuran atau sampel luar spesifikasi hendaklah disiasat mengikut Arahan Kerja PKKK/300/UP/002.")
+    return tips
+
+def classify_cat(title):
+    t = title.lower()
+    if 'hplc' in t or 'rrlc' in t: return 'HPLC / LC'
+    if 'gcms' in t or 'gc' in t: return 'GC-MS'
+    if 'lcms' in t: return 'LC-MS/MS'
+    if 'timbang' in t or 'balance' in t: return 'Alat Timbang'
+    if 'ekstrakan' in t or 'spe' in t: return 'Pengekstrakan'
+    if 'kosmetik' in t or 'cosmetic' in t: return 'Kosmetik'
+    if 'radas' in t or 'pencucian' in t or 'vortex' in t or 'waterbath' in t or 'ultrasonic' in t or 'ph meter' in t: return 'Radas & Penyelenggaraan'
+    if 'spesifikasi' in t or 'persampelan' in t or 'sisa' in t or 'charting' in t: return 'Kawalan Kualiti & QA'
+    return 'Kaedah Pengujian'
+
 def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_data, category):
+    full_text = ' '.join(paras)
+    analytes = get_target_analytes(title, full_text)
+    bench_tips = get_bench_tips(category, title)
+    
+    # Workflow Steps
+    if 'HPLC' in category or 'GC-MS' in category or 'LC-MS' in category or 'Kosmetik' in category:
+        workflow_steps = [
+            ("1. Reagen & Piawai", "Penyediaan fasa bergerak, stok & siri kalibrasi"),
+            ("2. Pengekstrakan", "Timbang, sonikasi, sentrifug & turas 0.45µm"),
+            ("3. Persediaan Alat", "Purging saluran, autotune & penstabilan baseline"),
+            ("4. Suntikan Batch", "Turutan Blank, SST (n=6), Sampel & IQC Bracket"),
+            ("5. Verifikasi & Rekod", "Padanan RT, spektrum UV/MS & Laporan UP/005")
+        ]
+    elif 'Alat Timbang' in category:
+        workflow_steps = [
+            ("1. Pemeriksaan Fizikal", "Semak aras gelembung (spirit level) & kebersihan"),
+            ("2. Pemanasan (Warm-up)", "Buka suis & biarkan stabil 30 minit"),
+            ("3. Semakan Harian", "Timbang batu piawai harian (Borang UP/014)"),
+            ("4. Ujian Prestasi", "Ujian kepekaan ΔE (UP/015) & kebolehulangan s (UP/016)"),
+            ("5. Carta Kawalan", "Plot graf Shewhart IQC & tandatangan buku log")
+        ]
+    else:
+        workflow_steps = [
+            ("1. Persediaan", "Penerimaan sampel & semakan borang persampelan"),
+            ("2. Pelaksanaan", "Langkah kerja operasi mengikut prosedur terperinci"),
+            ("3. Verifikasi", "Pemeriksaan kualiti & pematuhan kriteria penerimaan"),
+            ("4. Dokumentasi", "Perekodan data dalam fail kualiti rasmi NPRA")
+        ]
+
+    wf_html = '<div class="wf-track">'
+    for idx, (w_title, w_desc) in enumerate(workflow_steps):
+        wf_html += f'''
+        <div class="wf-step">
+          <div class="wf-node">{idx + 1}</div>
+          <div class="wf-info">
+            <div class="wf-name">{w_title}</div>
+            <div class="wf-desc">{w_desc}</div>
+          </div>
+        </div>
+        '''
+        if idx < len(workflow_steps) - 1:
+            wf_html += '<div class="wf-arrow">➔</div>'
+    wf_html += '</div>'
+
+    # Build Quick Executive Summary Banner
+    summary_chips_html = ''
+    if analytes:
+        chips_str = ''.join([f'<span class="analite-chip">{html.escape(a)}</span>' for a in analytes[:8]])
+        summary_chips_html = f'''
+        <div class="summary-analytes">
+          <span class="sum-lbl">🎯 Sebatian Sasaran:</span>
+          <div class="chips-container">{chips_str}</div>
+        </div>
+        '''
+
+    tips_html = ''
+    if bench_tips:
+        tips_list = ''.join([f'<li>{t}</li>' for t in bench_tips])
+        tips_html = f'''
+        <div class="bench-tips-card">
+          <div class="tips-header">
+            <span class="tips-icon">💡</span>
+            <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes):</strong>
+          </div>
+          <ul class="tips-list">
+            {tips_list}
+          </ul>
+        </div>
+        '''
+
     # Detect sections
     sections = []
     current_sec = {'title': '1.0 PENGENALAN DOKUMEN', 'items': []}
-    
     sec_regex = re.compile(r'^((\d+\.0?|[1-9]\.)\s*(TUJUAN|OBJEKTIF|OBJECTIVE|SKOP|SCOPE|DEFINISI|DEFINITIONS|CARTA ALIRAN|FLOW CHART|TANGGUNGJAWAB|RESPONSIBILIT|PROSEDUR|PROCEDURE|REKOD KUALITI|QUALITY RECORD|LAMPIRAN|ATTACHMENTS|RUJUKAN|REFERENCES?))', re.IGNORECASE)
     
     for p in paras:
@@ -83,8 +201,6 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
         t_rows_html = ''
         for r_idx, row in enumerate(tbl):
             clean_row = [c.replace('\n', ' ').strip() for c in row]
-            
-            # Row class highlight for sequence tables
             row_str = ' '.join(clean_row).lower()
             r_class = ''
             if 'sst' in row_str or 'system suitability' in row_str:
@@ -123,7 +239,6 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
         body_p = ''
         
         for itm_idx, itm in enumerate(s['items']):
-            # If item is a major step (e.g. 6.1, 6.2, 6.3, 6.4)
             if re.match(r'^\d+\.\d+', itm):
                 total_steps += 1
                 step_id = f'step-{doc_num_str}-{total_steps}'
@@ -161,10 +276,10 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     # Quick Nav Pills
     nav_pills_html = '<div class="toc-pills">'
     for s_idx, s in enumerate(sections):
-        s_name = s['title'][:30] + ('...' if len(s['title']) > 30 else '')
+        s_name = s['title'][:32] + ('...' if len(s['title']) > 32 else '')
         nav_pills_html += f'<a href="#sec-{s_idx + 1}" class="toc-pill">{html.escape(s_name)}</a>'
     if tables_data:
-        nav_pills_html += '<a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a>'
+        nav_pills_html += '<a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a>'
     nav_pills_html += '</div>'
 
     html_content = f'''<!DOCTYPE html>
@@ -176,7 +291,7 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
 <meta name="description" content="Arahan Kerja Rasmi {code}: {title} — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
@@ -228,6 +343,41 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   .kw-limit {{ color: var(--red); font-weight: 700; font-family: var(--font-mono); }}
   .kw-ph {{ color: var(--purple); font-weight: 700; font-family: var(--font-mono); }}
 
+  /* Visual Workflow Timeline */
+  .wf-track {{
+    display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 1.8rem;
+    background: var(--glass); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); overflow-x: auto;
+  }}
+  .wf-step {{ display: flex; align-items: center; gap: 0.6rem; min-width: 140px; }}
+  .wf-node {{
+    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
+    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+  }}
+  .wf-name {{ font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }}
+  .wf-desc {{ font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }}
+  .wf-arrow {{ color: var(--text-dim); font-size: 1rem; opacity: 0.6; flex-shrink: 0; }}
+
+  /* Executive Summary & Chips */
+  .summary-analytes {{
+    margin: 1rem 0 1.4rem; padding: 0.9rem 1.2rem; background: var(--glass); border-radius: 12px;
+    border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 0.5rem;
+  }}
+  .sum-lbl {{ font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }}
+  .chips-container {{ display: flex; flex-wrap: wrap; gap: 0.4rem; }}
+  .analite-chip {{
+    padding: 0.3rem 0.65rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
+    color: var(--purple); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 6px; font-weight: 600;
+  }}
+
+  /* Bench Notes Card */
+  .bench-tips-card {{
+    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px;
+    padding: 1.2rem; margin-bottom: 1.8rem;
+  }}
+  .tips-header {{ display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--amber); margin-bottom: 0.6rem; }}
+  .tips-list {{ margin-left: 1.5rem; font-size: 0.88rem; line-height: 1.65; color: var(--text-main); }}
+
   /* Progress Tracker */
   .progress-card {{
     background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
@@ -274,7 +424,7 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
   .seq-blank {{ background: rgba(0,0,0,0.03); color: var(--text-dim); }}
 
   @media print {{
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills {{ display: none !important; }}
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track {{ display: none !important; }}
     .main {{ max-width: 100% !important; padding: 0 !important; }}
     .sop-doc-container {{ box-shadow: none !important; border: none !important; padding: 0 !important; }}
     body {{ background: #fff !important; color: #000 !important; }}
@@ -322,6 +472,15 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     <h1 style="font-size:2.2rem">{code} <span class="g">{title}</span></h1>
     <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: {category}</div>
   </div>
+
+  <!-- Visual Workflow Timeline -->
+  {wf_html}
+
+  <!-- Target Analytes / Quick Chips -->
+  {summary_chips_html}
+
+  <!-- Bench Notes & Precautions -->
+  {tips_html}
 
   <!-- Progress Tracker Card -->
   <div class="progress-card">
@@ -431,19 +590,6 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
 all_sops = []
 file_list = sorted(os.listdir(DOCS_DIR))
 
-# Category classifier helper
-def classify_cat(title):
-    t = title.lower()
-    if 'hplc' in t or 'rrlc' in t: return 'HPLC / LC'
-    if 'gcms' in t or 'gc' in t: return 'GC-MS'
-    if 'lcms' in t: return 'LC-MS/MS'
-    if 'timbang' in t or 'balance' in t: return 'Alat Timbang'
-    if 'ekstrakan' in t or 'spe' in t: return 'Pengekstrakan'
-    if 'kosmetik' in t or 'cosmetic' in t: return 'Kosmetik'
-    if 'radas' in t or 'pencucian' in t or 'vortex' in t or 'waterbath' in t or 'ultrasonic' in t or 'ph meter' in t: return 'Radas & Penyelenggaraan'
-    if 'spesifikasi' in t or 'persampelan' in t or 'sisa' in t or 'charting' in t: return 'Kawalan Kualiti & QA'
-    return 'Kaedah Pengujian'
-
 for f in file_list:
     if f.startswith('~$'): continue
     
@@ -493,4 +639,4 @@ for f in file_list:
         'url': f'sop/{slug}.html'
     })
 
-print(f'Successfully built and formatted {len(all_sops)} ultra-detailed SOP guide pages!')
+print(f'Successfully built {len(all_sops)} ultra-understandable SOP guide pages!')

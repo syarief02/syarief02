@@ -7,7 +7,7 @@
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/019: Water bath Memmert WB 45 — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
@@ -59,6 +59,41 @@
   .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
   .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
 
+  /* Visual Workflow Timeline */
+  .wf-track {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 1.8rem;
+    background: var(--glass); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); overflow-x: auto;
+  }
+  .wf-step { display: flex; align-items: center; gap: 0.6rem; min-width: 140px; }
+  .wf-node {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
+    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+  }
+  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
+  .wf-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }
+  .wf-arrow { color: var(--text-dim); font-size: 1rem; opacity: 0.6; flex-shrink: 0; }
+
+  /* Executive Summary & Chips */
+  .summary-analytes {
+    margin: 1rem 0 1.4rem; padding: 0.9rem 1.2rem; background: var(--glass); border-radius: 12px;
+    border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .sum-lbl { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
+  .chips-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .analite-chip {
+    padding: 0.3rem 0.65rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
+    color: var(--purple); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 6px; font-weight: 600;
+  }
+
+  /* Bench Notes Card */
+  .bench-tips-card {
+    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px;
+    padding: 1.2rem; margin-bottom: 1.8rem;
+  }
+  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--amber); margin-bottom: 0.6rem; }
+  .tips-list { margin-left: 1.5rem; font-size: 0.88rem; line-height: 1.65; color: var(--text-main); }
+
   /* Progress Tracker */
   .progress-card {
     background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
@@ -105,7 +140,7 @@
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
@@ -154,6 +189,62 @@
     <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
   </div>
 
+  <!-- Visual Workflow Timeline -->
+  <div class="wf-track">
+        <div class="wf-step">
+          <div class="wf-node">1</div>
+          <div class="wf-info">
+            <div class="wf-name">1. Persediaan</div>
+            <div class="wf-desc">Penerimaan sampel & semakan borang persampelan</div>
+          </div>
+        </div>
+        <div class="wf-arrow">➔</div>
+        <div class="wf-step">
+          <div class="wf-node">2</div>
+          <div class="wf-info">
+            <div class="wf-name">2. Pelaksanaan</div>
+            <div class="wf-desc">Langkah kerja operasi mengikut prosedur terperinci</div>
+          </div>
+        </div>
+        <div class="wf-arrow">➔</div>
+        <div class="wf-step">
+          <div class="wf-node">3</div>
+          <div class="wf-info">
+            <div class="wf-name">3. Verifikasi</div>
+            <div class="wf-desc">Pemeriksaan kualiti & pematuhan kriteria penerimaan</div>
+          </div>
+        </div>
+        <div class="wf-arrow">➔</div>
+        <div class="wf-step">
+          <div class="wf-node">4</div>
+          <div class="wf-info">
+            <div class="wf-name">4. Dokumentasi</div>
+            <div class="wf-desc">Perekodan data dalam fail kualiti rasmi NPRA</div>
+          </div>
+        </div>
+        </div>
+
+  <!-- Target Analytes / Quick Chips -->
+  
+        <div class="summary-analytes">
+          <span class="sum-lbl">🎯 Sebatian Sasaran:</span>
+          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
+        </div>
+        
+
+  <!-- Bench Notes & Precautions -->
+  
+        <div class="bench-tips-card">
+          <div class="tips-header">
+            <span class="tips-icon">💡</span>
+            <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes):</strong>
+          </div>
+          <ul class="tips-list">
+            <li>Patuhi amalan keselamatan makmal yang baik (GLP) dan rekodkan semua langkah persediaan dalam lembaran kerja rasmi.</li><li>Sebarang ketakakuran atau sampel luar spesifikasi hendaklah disiasat mengikut Arahan Kerja PKKK/300/UP/002.</li>
+          </ul>
+        </div>
+        
+
   <!-- Progress Tracker Card -->
   <div class="progress-card">
     <div class="progress-left">
@@ -185,7 +276,7 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a></div>
 
     <!-- Sections -->
     
