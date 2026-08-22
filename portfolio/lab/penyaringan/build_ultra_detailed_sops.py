@@ -1,4 +1,5 @@
 import os, sys, re, html, docx, fitz, json
+from sync_sop_matrix_and_guides import SOP_PARAMS
 
 sys.stdout.reconfigure(encoding='utf-8')
 
@@ -736,6 +737,37 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
             wf_html += '<div class="wf-arrow">➔</div>'
     wf_html += '</div>'
 
+    # Build Parameters Ribbon / Grid
+    params = SOP_PARAMS.get(doc_num_str, {})
+    param_chips = []
+    if params.get('instrument'):
+        param_chips.append(f'<div class="spec-chip"><span class="spec-lbl">Instrumen Utama</span><strong class="spec-val">{html.escape(params["instrument"])}</strong></div>')
+    if params.get('column'):
+        param_chips.append(f'<div class="spec-chip"><span class="spec-lbl">Turus / Column</span><strong class="spec-val">{html.escape(params["column"])}</strong></div>')
+    if params.get('mobile_phase'):
+        param_chips.append(f'<div class="spec-chip"><span class="spec-lbl">Fasa Bergerak / Pelarut</span><strong class="spec-val">{html.escape(params["mobile_phase"])}</strong></div>')
+    if params.get('flow_rate') or params.get('temp'):
+        flow_temp = f'{params.get("flow_rate", "-")} @ {params.get("temp", "-")}'
+        param_chips.append(f'<div class="spec-chip"><span class="spec-lbl">Kadar Alir &amp; Suhu</span><strong class="spec-val">{html.escape(flow_temp)}</strong></div>')
+    if params.get('wavelength'):
+        param_chips.append(f'<div class="spec-chip"><span class="spec-lbl">Pengesan / Gelombang / SIM</span><strong class="spec-val">{html.escape(params["wavelength"])}</strong></div>')
+    if params.get('sst_criteria'):
+        param_chips.append(f'<div class="spec-chip"><span class="spec-lbl">Kriteria Kesesuaian Sistem (SST)</span><strong class="spec-val">{html.escape(params["sst_criteria"])}</strong></div>')
+    if params.get('limits'):
+        param_chips.append(f'<div class="spec-chip highlight-limit"><span class="spec-lbl">Had Kawalan Rasmi</span><strong class="spec-val highlight-amber-text">{html.escape(params["limits"])}</strong></div>')
+
+    specs_ribbon_html = ''
+    if param_chips:
+        specs_ribbon_html = f'''
+        <div class="specs-ribbon-card">
+          <div class="specs-card-header">
+            <span class="specs-icon">⚡</span>
+            <strong>Spesifikasi &amp; Parameter Kromatografi / Analitikal (Official Parameters):</strong>
+          </div>
+          <div class="specs-ribbon-grid">{"".join(param_chips)}</div>
+        </div>
+        '''
+
     # Build Quick Executive Summary Banner
     summary_chips_html = ''
     if analytes:
@@ -1263,6 +1295,71 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
     box-shadow: var(--shadow-sm);
   }}
 
+  /* Parameters Specs Ribbon Card */
+  .specs-ribbon-card {{
+    background: var(--card-surface);
+    border: 1.5px solid var(--cyan);
+    border-radius: 16px;
+    padding: 1.3rem 1.5rem;
+    margin: 1.5rem 0 1.8rem;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+  }}
+  .specs-card-header {{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 1rem;
+  }}
+  .specs-icon {{ font-size: 1.2rem; }}
+  .specs-ribbon-grid {{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.85rem;
+  }}
+  .spec-chip {{
+    background: var(--glass);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    transition: all 0.2s ease;
+  }}
+  .spec-chip:hover {{
+    border-color: var(--cyan);
+    background: var(--card-surface);
+    transform: translateY(-2px);
+  }}
+  .spec-chip.highlight-limit {{
+    border-color: rgba(217, 119, 6, 0.4);
+    background: var(--amber-dim);
+  }}
+  .spec-lbl {{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--cyan);
+    letter-spacing: 0.05em;
+  }}
+  .highlight-limit .spec-lbl {{
+    color: #d97706;
+  }}
+  .spec-val {{
+    font-size: 0.85rem;
+    color: var(--text-heading);
+    line-height: 1.4;
+  }}
+  .highlight-amber-text {{
+    color: #d97706;
+    font-weight: 800;
+  }}
+
   /* Executive Summary & Chips */
   .summary-analytes {{
     margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
@@ -1392,6 +1489,9 @@ def format_sop_html(code, title, doc_num_str, rev_str, date_str, paras, tables_d
 
   <!-- Visual Workflow Timeline -->
   {wf_html}
+
+  <!-- Chromatographic / Analytical Parameters Specs Ribbon -->
+  {specs_ribbon_html}
 
   <!-- Target Analytes / Quick Chips -->
   {summary_chips_html}

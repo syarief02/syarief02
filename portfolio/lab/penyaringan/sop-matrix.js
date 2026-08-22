@@ -251,7 +251,36 @@ function openDocModal(index) {
         <div class="param-item"><span class="param-label">Status Terbitan</span><span class="param-val">${doc.status}</span></div>
         <div class="param-item"><span class="param-label">Tarikh Kuatkuasa</span><span class="param-val">${doc.effective_date}</span></div>
         <div class="param-item"><span class="param-label">Lokasi Fail / Makmal</span><span class="param-val">${doc.location || 'Makmal Penyaringan'}</span></div>
+        ${doc.instrument ? `<div class="param-item"><span class="param-label">Instrumen Utama</span><span class="param-val">${doc.instrument}</span></div>` : ''}
+        ${doc.column ? `<div class="param-item"><span class="param-label">Turus / Column</span><span class="param-val">${doc.column}</span></div>` : ''}
+        ${doc.mobile_phase ? `<div class="param-item"><span class="param-label">Fasa Bergerak / Gas Pembawa</span><span class="param-val">${doc.mobile_phase}</span></div>` : ''}
+        ${doc.flow_rate || doc.temp ? `<div class="param-item"><span class="param-label">Kadar Alir / Suhu</span><span class="param-val">${doc.flow_rate || '-'} ${doc.temp ? `@ ${doc.temp}` : ''}</span></div>` : ''}
+        ${doc.wavelength ? `<div class="param-item"><span class="param-label">Pengesan / Gelombang / SIM</span><span class="param-val">${doc.wavelength}</span></div>` : ''}
+        ${doc.sst_criteria ? `<div class="param-item"><span class="param-label">Kriteria SST / Kualiti</span><span class="param-val">${doc.sst_criteria}</span></div>` : ''}
       </div>
+
+      ${doc.limits ? `
+        <div class="detail-section">
+          <div class="detail-heading">Had Kawalan / Had Toleransi Rasmi</div>
+          <div class="detail-content" style="border-left:3px solid var(--amber);font-weight:600">${doc.limits}</div>
+        </div>
+      ` : ''}
+
+      ${doc.scope ? `
+        <div class="detail-section">
+          <div class="detail-heading">Objektif & Skop Pengujian</div>
+          <div class="detail-content">${doc.scope}</div>
+        </div>
+      ` : ''}
+
+      ${doc.forms && doc.forms.length ? `
+        <div class="detail-section">
+          <div class="detail-heading">Borang & Rekod Kualiti Berkaitan</div>
+          <div class="forms-tags">
+            ${doc.forms.map(f => `<span class="form-tag">${f}</span>`).join('')}
+          </div>
+        </div>
+      ` : ''}
 
       ${doc.remarks ? `
         <div class="detail-section">
@@ -260,19 +289,12 @@ function openDocModal(index) {
         </div>
       ` : ''}
 
-      <div class="detail-section">
-        <div class="detail-heading">Klasifikasi Kategori</div>
-        <div class="detail-content">
-          Kategori: <strong>${doc.category}</strong>. Prosedur operasi standard ini digunapakai bagi memastikan kebolehulangan dan ketepatan data analisis di Seksyen Pengujian Produk & Kosmetik.
-        </div>
-      </div>
-
       ${(() => {
         const m = doc.code ? doc.code.match(/UP\/(\d{3})/) : null;
         if (m) {
           return `
-            <div style="margin-top:0.8rem">
-              <a href="sop/sop-300-up-${m[1]}.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem;font-size:0.85rem">
+            <div style="margin-top:1rem">
+              <a href="sop/sop-300-up-${m[1]}.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem;font-size:0.88rem;font-weight:700">
                 📖 Buka Arahan Kerja Rasmi Lengkap (PKKK/300/UP/${m[1]}) →
               </a>
             </div>
