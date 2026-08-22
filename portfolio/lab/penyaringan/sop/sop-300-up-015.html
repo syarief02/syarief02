@@ -8,143 +8,278 @@
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
-  /* Enhanced SOP Interactive Styling */
+  /* ========================================================= */
+  /* HIGH-CONTRAST, ULTRA-READABLE SOP TYPOGRAPHY & LAYOUT     */
+  /* ========================================================= */
+  
+  :root {
+    --text-heading: #090d16;
+    --text-body: #1e293b;
+    --text-muted: #475569;
+    --card-surface: #ffffff;
+    --card-border-subtle: #cbd5e1;
+    --step-border: #94a3b8;
+  }
+
+  [data-theme="dark"] {
+    --text-heading: #f8fafc;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    --card-surface: rgba(15, 23, 42, 0.85);
+    --card-border-subtle: rgba(255, 255, 255, 0.12);
+    --step-border: rgba(255, 255, 255, 0.18);
+  }
+
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
     box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
+
+  /* Header Table */
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
-    background: var(--glass); border-radius: 12px; overflow: hidden;
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.88rem;
+    background: var(--card-surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border-subtle);
+    box-shadow: var(--shadow-sm);
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
+    border: 1px solid var(--card-border-subtle); padding: 0.85rem 1.1rem; vertical-align: middle; color: var(--text-body);
   }
-  .sop-sec-title {
-    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
-    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
+  .sop-header-table strong { color: var(--text-heading); font-weight: 700; }
+
+  /* ========================================================= */
+  /* SECTION CONTAINERS WITH HIGH-CONTRAST COLORED HEADERS    */
+  /* ========================================================= */
+  .sop-section-container {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 16px;
+    margin-bottom: 2.2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
-  .sop-p {
-    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
+  .sop-section-container:hover {
+    box-shadow: var(--shadow-md);
   }
-  .sop-step-box {
-    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
-    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
+
+  .sop-section-header {
+    padding: 0.9rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    font-weight: 800;
   }
-  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
-  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: #ffffff;
+  }
+  .sec-icon {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Distinct Section Color Themes */
+  .sec-theme-cyan .sop-section-header {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+  }
+  .sec-theme-purple .sop-section-header {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  }
+  .sec-theme-mint .sop-section-header {
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+  .sec-theme-amber .sop-section-header {
+    background: linear-gradient(135deg, #d97706, #b45309);
+  }
+  .sec-theme-indigo .sop-section-header {
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+  }
+
+  .sop-section-body {
+    padding: 1.6rem 1.8rem;
+  }
+
+  /* ========================================================= */
+  /* STEP CARDS (HIGH CONTRAST & INTERACTIVE)                  */
+  /* ========================================================= */
+  .sop-step-card {
+    background: var(--glass);
+    border: 1px solid var(--step-border);
+    border-left: 5px solid var(--cyan);
+    border-radius: 12px;
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .sop-step-card:hover {
+    border-color: var(--cyan);
+    border-left-color: var(--purple);
+    background: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .step-card-header {
+    padding: 0.85rem 1.2rem;
+    background: rgba(2, 132, 199, 0.08);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .step-check-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
   .sop-task-check {
-    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--cyan);
+    flex-shrink: 0;
   }
-  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
+  .sop-step-title {
+    cursor: pointer;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    font-family: var(--font-main);
+  }
+  .step-card-body {
+    padding: 1.1rem 1.3rem;
+  }
+
+  /* Typography */
+  .sop-p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 0.8rem;
+  }
   .sop-list-item {
-    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
-    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    margin-left: 0.8rem;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    margin-bottom: 0.5rem;
   }
-  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-bullet {
+    color: var(--cyan);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
   .sop-list-text { flex: 1; }
 
   /* Keyword Highlights */
-  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
-  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
-  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-flow { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wave { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wt { color: #059669; font-weight: 700; font-family: var(--font-mono); background: rgba(5, 150, 105, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-vol { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-time { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-limit { color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-ph { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
 
   /* Visual Workflow Timeline */
   .wf-track {
     display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 1.8rem;
-    background: var(--glass); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); overflow-x: auto;
+    background: var(--card-surface); padding: 1.2rem 1.4rem; border-radius: 16px; border: 1px solid var(--card-border-subtle); overflow-x: auto;
+    box-shadow: var(--shadow-sm);
   }
   .wf-step { display: flex; align-items: center; gap: 0.6rem; min-width: 140px; }
   .wf-node {
-    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    width: 34px; height: 34px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
     color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
-    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+    font-size: 0.9rem; font-weight: 800; flex-shrink: 0;
   }
-  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
-  .wf-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }
-  .wf-arrow { color: var(--text-dim); font-size: 1rem; opacity: 0.6; flex-shrink: 0; }
+  .wf-name { font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--text-heading); }
+  .wf-desc { font-size: 0.74rem; color: var(--text-muted); line-height: 1.3; }
+  .wf-arrow { color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
 
   /* Executive Summary & Chips */
   .summary-analytes {
-    margin: 1rem 0 1.4rem; padding: 0.9rem 1.2rem; background: var(--glass); border-radius: 12px;
-    border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 0.5rem;
+    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
+    border: 1px solid var(--card-border-subtle); display: flex; flex-direction: column; gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
   }
-  .sum-lbl { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
-  .chips-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .sum-lbl { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; }
+  .chips-container { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .analite-chip {
-    padding: 0.3rem 0.65rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
-    color: var(--purple); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 6px; font-weight: 600;
+    padding: 0.35rem 0.75rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
+    color: var(--purple); font-family: var(--font-mono); font-size: 0.78rem; border-radius: 8px; font-weight: 600;
   }
 
   /* Bench Notes Card */
   .bench-tips-card {
-    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px;
-    padding: 1.2rem; margin-bottom: 1.8rem;
+    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.35); border-radius: 14px;
+    padding: 1.3rem 1.5rem; margin-bottom: 1.8rem; box-shadow: var(--shadow-sm);
   }
-  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--amber); margin-bottom: 0.6rem; }
-  .tips-list { margin-left: 1.5rem; font-size: 0.88rem; line-height: 1.65; color: var(--text-main); }
+  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: #d97706; margin-bottom: 0.7rem; font-weight: 700; }
+  .tips-list { margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--text-body); }
 
   /* Progress Tracker */
   .progress-card {
     background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
-    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
-    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1.1rem 1.5rem;
+    margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    box-shadow: var(--shadow-sm);
   }
-  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
-  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
-  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-left { display: flex; flex-direction: column; gap: 0.35rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 280px; max-width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
-  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }
 
   /* TOC Pills */
-  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
   .toc-pill {
-    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
-    text-decoration: none; transition: all 0.2s ease;
+    padding: 0.45rem 0.9rem; background: var(--card-surface); border: 1px solid var(--card-border-subtle);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-body);
+    text-decoration: none; transition: all 0.2s ease; box-shadow: var(--shadow-sm); font-weight: 600;
   }
-  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
 
   /* Table Cards */
   .table-card {
-    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
-    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
+    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
   }
   .table-card-header {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
-    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
   }
-  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
-  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
   .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
+    border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
   }
-  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
   .seq-sst { background: var(--purple-dim); }
   .seq-iqc { background: var(--cyan-dim); }
-  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
     .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
-    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
+    .sop-section-header { background: #eee !important; color: #000 !important; }
+    .sop-section-header h2 { color: #000 !important; }
+    .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -185,8 +320,8 @@
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.2rem">PKKK/300/UP/015 <span class="g">Id EDD dalam produk tradisional</span></h1>
-    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
+    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/015 <span class="g">Id EDD dalam produk tradisional</span></h1>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
@@ -195,7 +330,7 @@
           <div class="wf-node">1</div>
           <div class="wf-info">
             <div class="wf-name">1. Persediaan</div>
-            <div class="wf-desc">Penerimaan sampel & semakan borang persampelan</div>
+            <div class="wf-desc">Penerimaan sampel & borang</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -203,7 +338,7 @@
           <div class="wf-node">2</div>
           <div class="wf-info">
             <div class="wf-name">2. Pelaksanaan</div>
-            <div class="wf-desc">Langkah kerja operasi mengikut prosedur terperinci</div>
+            <div class="wf-desc">Langkah kerja mengikut SOP</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -211,7 +346,7 @@
           <div class="wf-node">3</div>
           <div class="wf-info">
             <div class="wf-name">3. Verifikasi</div>
-            <div class="wf-desc">Pemeriksaan kualiti & pematuhan kriteria penerimaan</div>
+            <div class="wf-desc">Pemeriksaan kualiti & pematuhan</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -219,7 +354,7 @@
           <div class="wf-node">4</div>
           <div class="wf-info">
             <div class="wf-name">4. Dokumentasi</div>
-            <div class="wf-desc">Perekodan data dalam fail kualiti rasmi NPRA</div>
+            <div class="wf-desc">Perekodan fail kualiti rasmi</div>
           </div>
         </div>
         </div>
@@ -227,7 +362,7 @@
   <!-- Target Analytes / Quick Chips -->
   
         <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran:</span>
+          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
           <div class="chips-container"><span class="analite-chip">Sildenafil</span><span class="analite-chip">Tadalafil</span><span class="analite-chip">Vardenafil</span><span class="analite-chip">Analogues</span></div>
         </div>
         
@@ -251,7 +386,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 17 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 13 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -260,10 +395,10 @@
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.2rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.72rem;color:var(--text-muted);font-weight:600">PUSAT KAWALAN KUALITI</span>
         </td>
-        <td colspan="2"><strong>ARAHAN KERJA: ID EDD DALAM PRODUK TRADISIONAL</strong></td>
+        <td colspan="2"><strong style="font-size:0.95rem">ARAHAN KERJA: ID EDD DALAM PRODUK TRADISIONAL</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/015</td>
@@ -276,175 +411,205 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (6)</a></div>
 
-    <!-- Sections -->
+    <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-block" id="sec-1">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>1.0 PENGENALAN DOKUMEN</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">PINDAAN:</p><p class="sop-p">Prosedur ini merupakan dokumen baru selaras dengan usaha menaiktaraf pensijilan institusi ke versi ISO 9001:2015 dan juga penamaan semula nama institusi dari Biro Pengawalan Farmaseutikal Kebangsaan (BPFK) kepada Bahagian Regulatori Farmasi Negara (NPRA). Sehubungan itu, dokumen asal adalah terbatal dan dokumen ini dimulakan semula sebagai Terbitan 1.</p><p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen daripada PKK/200/TSK/003 kepada PKK/200/HMS/016</p><p class="sop-p">Pindaan tarikh kuatkuasa daripada 15 November 2016 kepada 20 Februari 2020.</p><p class="sop-p">Batal Unit Penyaringan Tradisional dan Suplemen Kesihatan</p><p class="sop-p">Meminda Seksyen Pengujian Ubat Komplementari kepada Seksyen Pengujian Produk &amp; Kosmetik</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen daripada PKK/200/HMS/016 kepada PKK/300/HMS/072.</p><p class="sop-p">Pindaan tarikh kuatkuasa tatacara pengujian daripada 20 Februari 2020 kepada 15 Julai 2020.</p><p class="sop-p">Kemaskini skop tatacara pengujian dimana perkataan sampel pendaftaran dan pengawasan dibatalkan.</p><p class="sop-p">Terbitan 3, Semakan 1:</p><p class="sop-p">Meminda perkataan Agensi kepada Bahagian di dalam ruangan Pindaan.</p><p class="sop-p">Menambah jawatan Ketua Subunit selepas Ketua Unit di dalam subperenggan 5.2.</p><p class="sop-p">Pindaan tarikh kuatkuasa tatacara pengujian daripada 15 Julai 2020 kepada 15 Disember 2022.</p><p class="sop-p">Terbitan 4, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/072 kepada PKKK/300/HMS/072</p><p class="sop-p">Pindaan No. Dokumen dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKK/300/HMS/071 kepada  PKKK/300/HMS/071</p><p class="sop-p">PKK/300/TSK/006  kepada  PKKK/300/HMS/021</p><p class="sop-p">PKK/300/TSK/007  kepada  PKKK/300/HMS/022</p><p class="sop-p">PKK/300/TSK/016  kepada  PKKK/300/HMS/026</p><p class="sop-p">Pindaan peranan Ketua Unit &amp; Ketua Subunit pada ruangan Tanggungjawab kepada Ketua Unit / Ketua Subunit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan peranan Penolong Pegawai Farmasi KUP U32 pada ruangan Tanggungjawab kepada Penolong Pegawai Farmasi U36 / U32</p><p class="sop-p">Batal ayat “berbentuk kapsul, tablet dan serbuk” pada ruangan SKOP dan peranan Ketua Seksyen / Pengurus Teknikal pada ruangan tanggungjawab</p><p class="sop-p">Pindaan ayat pada klausa 6.2.1 iaitu “Sila rujuk dokumen PKK/300/HMS/026” kepada “Sila rujuk dokumen PKKK/300/HMS/026”.</p><p class="sop-p">Pindaan ayat pada klausa 6.5 dan 6.5.1 iaitu “Rujuk dokumen PKK/300/TSK/006 dan PKK/300/TSK/007” kepada “Rujuk dokumen PKKK/300/HMS/021 dan PKKK/300/HMS/022”</p><p class="sop-p">Pindaan ayat pada klausa 5.4 iaitu Seksyen Perkhidmatan Makmal kepada Unit Perkhidmatan Analisis</p><p class="sop-p">Pindaan No. Borang TSK/04 kepada HMS/026A di bawah 7. Rekod Kualiti</p><p class="sop-p">Terbitan 4, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/072 kepada PKKK/300/UAT/016</p><p class="sop-p">Pindaan No. Dokumen dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/HMS/071 kepada PKKK/300/UAT/015</p><p class="sop-p">PKKK/300/HMS/022 kepada PKKK/300/UAT/004</p><p class="sop-p">PKKK/300/HMS/026 kepada PKKK/300/UAT/001</p><p class="sop-p">Batal No. Dokumen PKKK/300/HMS/021</p><p class="sop-p">Pindaan peranan Ketua Unit / Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan ayat pada klausa 6.2.1 iaitu “Sila rujuk dokumen PKKK/300/HMS/026” kepada “Sila rujuk dokumen PKKK/300/UAT/001”.</p><p class="sop-p">Pindaan ayat pada klausa 6.5 dan 6.5.1 iaitu “Rujuk dokumen PKKK/300/HMS/021 dan PKKK/300/HMS/022” kepada “Rujuk dokumen PKKK/300/UAT/004”</p><p class="sop-p">Pindaan No. Borang HMS/026A kepada UAT/001A di bawah 7. Rekod Kualiti</p><p class="sop-p">Terbitan 4, Semakan 2:</p><p class="sop-p">Mengemaskini 5. Tanggungjawab Ketua Seksyen, Ketua Unit / Pegawai Farmasi Bertanggungjawab dan Pegawai Farmasi</p><p class="sop-p">Mengemaskini perenggan 6.2.2 di mana Ekstrak larutan sampel sebanyak 2 kali dengan <span class="kw-vol">50 mL</span> chloroform menggunakan separating funnel dan Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">Menambah perenggan 6.5 System Suitability Test Requirement</p><p class="sop-p">Mengemaskini penomboran perenggan 6.5 Experimental Method kepada perenggan 6.6</p><p class="sop-p">Mengemaskini perenggan 6.6 Table 1</p><p class="sop-p">Terbitan 4, Semakan 3:</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-p">Mengemaskini perenggan 6.5 System Suitability Test di mana kriteria Theoretical plate telah dikemaskini kepada %RSD for retention time: Not more than, NMT 2.0%</p><p class="sop-p">Menambah perenggan 6.6.1 Internal Quality Control</p><p class="sop-p">Menambah perenggan 6.4.3 Larutan Stok Piawai Rujukan Tunggal</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Mengemaskini perenggan 6.6 injection sequence table</p><p class="sop-p">Terbitan 5, Semakan 0:</p><p class="sop-p">Mengemaskini nombor dokumen daripada PKK/300/UAT/016 kepada  PKK/300/UP/015</p><p class="sop-p">Mengemaskini tarikh kuatkuasa daripada 1 Julai 2025 kepada 10 April 2026</p><p class="sop-p">Mengemaskini PKKK/300/UAT/015 kepada PKKK/300/UP/014</p><p class="sop-p">Mengemaskini PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-p">Mengemaskini PKKK/300/UAT/001 kepada PKKK/300/UP/001</p><p class="sop-p">Mengemaskini perenggan 6.2 dengan menambah sila rujuk dokumen PKKK/300/UP/014 (Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik)</p><p class="sop-p">Mengemaskini perenggan 6.6, 6.6.2 dengan menambah arahan kerja PKKK/300/UP/011 (Shimadzu High Performance Liquid Chormatography)</p><p class="sop-p">Penambahan perenggan 6.6.3 Tatacara bagi Ketepuan Analit Ekstrem (Extreme Analyte Saturation)</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah UP/005 Laporan Pengujian HPLC</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi Sildenafil, Vardenafil dan Tadalafil menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunapakai semasa menjalankan ujian identifikasi Sildenafil, Tadalafil dan Vardenafil dalam produk tradisional menggunakan HPLC.</p><p class="sop-p">DEFINISI</p><p class="sop-p">HPLC	- High Performance Liquid Chromatography</p><p class="sop-p">RS 	- Reference standard</p><p class="sop-p">OOS    - Out of Specification</p><p class="sop-p">LLE	- Liquid- liquid extraction</p><p class="sop-p">IQC	- Internal Quality Control</p><p class="sop-p">RSD  	- Relative Standard Deviation</p><p class="sop-p">RRLC	- Rapid Resolution Liquid Chromatography</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini diikuti semasa menjalankan ujian identifikasi Sildenafil, Vardenafil dan Tadalafil dalam produk tradisional.</p><p class="sop-p">Menyemak &amp; mengesahkan laporan ujian yang tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa melaksanakan ujian identifikasi Sildenafil, Vardenafil dan Tadalafil dalam produk tradisional.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan.</p><p class="sop-p">Penolong Pegawai Farmasi</p><p class="sop-p">Menjalankan kerja-kerja analisis mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Peralatan</p><p class="sop-p">HPLC AGILENT 1100/RRLC AGILENT 1200 SERIES</p><p class="sop-p">Column: ZORBAX Eclipse XDB-Phenyl 5µ, 150 x 4.6 mm</p><p class="sop-p">Reference standard:  Sildenafil Citrate, Vardenafil &amp; Tadalafil</p><p class="sop-p">Trifluoroacetic Acid (HPLC Grade)</p><p class="sop-p">Acetonitrile (HPLC Grade)</p><p class="sop-p">Ammonia 25%</p><p class="sop-p">Deionized water</p><p class="sop-p">Beakers</p><p class="sop-p">Separators</p><p class="sop-p">Filter funnel</p><p class="sop-p">Filter paper 1PS</p><p class="sop-p">Evaporating dish</p><p class="sop-p">Measuring cylinder</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Syringe filter 0.45µm</p><p class="sop-p">Syringe</p><p class="sop-p">Aluminium foil</p><p class="sop-p">Membrane filter 0.45µm</p><p class="sop-p">Penyediaan Sampel</p><p class="sop-p">Sampel yang perlu diuji menggunakan tatacara pengujian ini perlu diekstrak terlebih dahulu menggunakan teknik Liquid-liquid extraction (LLE). Sila rujuk dokumen PKKK/300/UP/014 (Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik)</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-1" class="sop-step-label">
-                      <strong>6.2.1	Pengendalian Sampel (sampling)</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Proses persampelan adalah berbeza mengikut bentuk dosej. Sila rujuk dokumen PKKK/300/UP/001 (Proses Persampelan).</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-2" class="sop-step-label">
-                      <strong>6.2.2 Liquid-liquid Extraction (LLE)</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Timbang sampel minimum 1.5 gm dan larutkan di dalam <span class="kw-vol">20 mL</span> deionized water.</p><p class="sop-p">Sonicate selama <span class="kw-time">15 minit</span>.</p><p class="sop-p">Ubah pH larutan sampel menggunakan ammonia kepada pH &gt;11. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">Ekstrak larutan sampel sebanyak 2 kali dengan <span class="kw-vol">50 mL</span> chloroform menggunakan separating funnel.</p><p class="sop-p">Turas lapisan bawah (lapisan chloroform) menggunakan 1PS filter paper ke dalam evaporating dish yang berlabel. Baki lapisan atas larutan jangan dibuang dan teruskan langkah berikutnya.</p><p class="sop-p">Ulang langkah iv dan v menggunakan baki larutan sampel di dalam separating funnel tadi.</p><p class="sop-p">Keringkan larutan sampel (air dry) tersebut di bawah fume cupboard.</p><p class="sop-p">Setelah kering, residu yang diperolehi dilarutkan dengan lebih kurang <span class="kw-vol">3 mL</span> Acetonitrile:Water (50:50).</p><p class="sop-p">Turas larutan tersebut ke dalam vial menggunakan 0.45µm syringe filter.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-3" class="sop-step-label">
-                      <strong>6.3	Penyediaan Larutan</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-4" class="sop-step-label">
-                      <strong>6.3.1 Diluent</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Sediakan larutan campuran acetonitrile dan deionized water dengan komposisi 1:1</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-5" class="sop-step-label">
-                      <strong>6.3.2 Mobile phase</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Sediakan campuran <span class="kw-vol">500 mL</span> deionized water dan <span class="kw-vol">500mL</span> acetonitrile. Kemudian, tambahkan <span class="kw-vol">1 mL</span> trifluoroacetic acid. Turas larutan tersebut menggunakan 0.45 µm membrane filter kemudian degassed larutan tersebut selama <span class="kw-time">10 minit</span>.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-6" class="sop-step-label">
-                      <strong>6.4	Penyediaan Piawai Rujukan</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-7" class="sop-step-label">
-                      <strong>6.4.1 Larutan Stok</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Timbang <span class="kw-wt">10 mg</span> RS (sildenafil citrate, vardenafil dan tadalafil) secara berasingan di dalam kelalang volumetrik <span class="kw-vol">10 mL</span>. Larutkan menggunakan diluent untuk menghasilkan larutan yang berkepekatan <span class="kw-wt">1 mg</span>/mL.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-8" class="sop-step-label">
-                      <strong>6.4.2 Larutan Piawai Rujukan</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Campurkan <span class="kw-vol">0.5 mL</span> setiap larutan stok RS yang telah disediakan pada perenggan 6.4.1 di dalam kelalang volumetrik <span class="kw-vol">10 mL</span>. Tambahkan diluent sehingga <span class="kw-vol">10 mL</span> untuk memperoleh larutan yang berkepekatan <span class="kw-wt">0.05 mg</span>/mL (setiap RS). Turas larutan piawai rujukan ke dalam vial menggunakan 0.45µm syringe filter.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-9" class="sop-step-label">
-                      <strong>6.4.3 Larutan Stok Piawai Rujukan Tunggal</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-10" class="sop-step-label">
-                      <strong>6.4.3.1	Sediakan larutan stok piawai rujukan tunggal dengan mengikut prosedur yang dinyatakan dalam 6.4.1 hingga 6.4.2, tetapi dengan menggunakan satu piawai rujukan tunggal sahaja (single standard solution).</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-11" class="sop-step-label">
-                      <strong>6.4.3.2	Prosedur ini hanya diguna pakai untuk menjalankan ujian identifikasi satu kompaun sahaja.</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-12" class="sop-step-label">
-                      <strong>6.5	System Suitability Test Requirement (SST)</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">System Suitability Test perlu dijalankan untuk setiap analisis bagi memastikan keseluruhan sistem berfungsi dengan baik. Jalankan sekurang-kurangnya enam suntikan replikasi larutan piawai rujukan (<span class="kw-wt">0.05 mg</span>/mL)</p><p class="sop-p">Kriteria:</p><p class="sop-p">%RSD for retention time: Not more than, NMT 2.0%</p><p class="sop-p">Tailing factor not more than (NMT) 2.0</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-13" class="sop-step-label">
-                      <strong>6.6	Experimental Method</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Sistem HPLC yang digunapakai untuk tatacara pengujian ini adalah seperti Table 1 di bawah.</p><p class="sop-p">Table 1: HPLC system used for identification of Sildenafil, Vardenafil &amp; Tadalafil</p><p class="sop-p">Rujuk dokumen PKKK/300/UP/003 (RRLC 1200 series) dan PKKK/300/UP/011 (Shimadzu High Performance Liquid Chormatography) berkenaan prosedur penggunaan alat-alat ini.</p><p class="sop-p">Injek diluent, kemudian injek larutan piawai rujukan <span class="kw-wt">0.05mg</span>/mL sebanyak enam kali apabila HPLC telah sedia untuk analisis.</p><p class="sop-p">Kemudian injek larutan sampel secara duplicate juga. Perhatikan peak dan spectrum sampel yang diperolehi.</p><p class="sop-p">Sekiranya terdapat lebih daripada lima sampel berbeza dalam satu analisis, larutan piawai rujukan perlu diinjek sekali bagi setiap lima sampel.</p><p class="sop-p">Injek diluent sebelum sampel seterusnya.</p><p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">Injek <span class="kw-vol">10 µL</span> larutan piawai rujukan selepas setiap lima sampel dan sebelum menamatkan analisis.</p><p class="sop-p">Kriteria untuk Internal Quality Control Check (IQC):</p><p class="sop-p">Peratus perbezaan retention time bagi larutan piawai rujukan tidak 	boleh melebihi 3% bagi setiap kumpulan 5 sampel tersebut.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-14" class="sop-step-label">
-                      <strong>6.6.2 Pemerhatian Spektrum dan Kriteria Padanan Saringan</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Rujuk dokumen PKKK/300/UP/003 (RRLC 1200 series) atau PKKK/300/UP/011 (Shimadzu HPLC). Perhatikan peak dan spectrum yang diperolehi untuk sampel dan bandingkan dengan peak dan spectrum RS.</p><p class="sop-p">Sesuatu sampel dianggap mempunyai indikasi kehadiran analit dan wajib diteruskan dengan pemilihan tatacara pengesahan di bawah perenggan 6.6.3 sekiranya memenuhi kriteria berikut:</p><p class="sop-p">i. Perbezaan Retention Time antara puncak sampel dengan piawai rujukan 	tidak melebihi ±3% ATAU</p><p class="sop-p">ii. Secara visual, spektrum UV sampel menunjukkan corak penyerapan 	yang identikal atau setara dengan profil piawai rujukan ATAU</p><p class="sop-p">iii. Nilai Similarity Factor puncak bagi sampel hendaklah mencapai sekurang-kurangnya 0.999. Sekiranya puncak menunjukkan tanda ketepuan melampau (saturated/flat-top), nilai Similarity Factor 0.999 mungkin tidak tercapai pada peringkat ini. Sampel tetap dikategorikan sebagai mempunyai indikasi kehadiran analit berdasarkan kriteria (i) atau (ii), dan hendaklah diteruskan terus ke 6.6.3.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-15" class="sop-step-label">
-                      <strong>6.6.3 Pemilihan Tatacara Pengesahan Muktamad</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Bagi sampel yang mempunyai indikasi kehadiran analit (perenggan 6.6.2), penganalisis hendaklah memilih salah satu daripada dua tatacara pengesahan berikut berdasarkan integriti puncak dan respons instrumen:</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-16" class="sop-step-label">
-                      <strong>6.6.3.1 TATACARA A: Pengesahan secara Penambahan Piawai (Spiking)</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Semak area sampel yang diperolehi. Sekiranya area yang diperolehi melebihi 5000 maU, cairkan larutan sampel tersebut menggunakan formula pengiraan di bawah.</p><p class="sop-p">Volume of diluent (mL) =</p><p class="sop-p">Kemudian campurkan <span class="kw-vol">1mL</span> sampel dengan diluent (volum diluent rujuk hasil pengiraan perenggan i). Sonicate selama <span class="kw-time">5 minit</span>.</p><p class="sop-p">Turas larutan tersebut ke dalam vial menggunakan 0.45µm syringe filter.</p><p class="sop-p">Injek larutan sampel diluted menggunakan tatacara pengujian yang sama.</p><p class="sop-p">Semak area untuk diluted sample.</p><p class="sop-p">Untuk mendapatkan kepekatan RS untuk spiking, guna formula pengiraan di bawah.</p><p class="sop-p">Concentration of RS (mg/ml) =</p><p class="sop-p">Spike <span class="kw-vol">0.5mL</span> larutan sampel diluted dengan <span class="kw-vol">0.5mL</span> RS (1:1) ke dalam vial.</p><p class="sop-p">Injek larutan spiked dan semak peak dan spectrum yang diperolehi.</p><p class="sop-p">Cetak laporan.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-015-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
-                    <label for="step-015-17" class="sop-step-label">
-                      <strong>6.6.3.2 TATACARA B: Pengesahan secara Pencairan Lanjutan</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Tatacara ini dipilih sebagai alternatif pengesahan muktamad bagi sampel berkepekatan ekstrem, di mana respons puncak menunjukkan tanda ketepuan detektor (detector saturation), puncak terpotong (truncated peak), atau melampaui julat dinamik linear. Pencairan lanjutan perlu dilakukan untuk sampel dalam kategori ini.</p><p class="sop-p">i. Pencairan asas boleh dilakukan menggunakan dilution factor atau volume of diluent yang dikira menggunakan formula di 6.6.3.1 (i).</p><p class="sop-p">ii. Proses pencairan boleh dilakukan secara berperingkat mengikut kesesuaian.</p><p class="sop-p">iii. Bagi kes ketepuan ekstrem, anggaran gandaan pencairan yang lebih tinggi boleh digunakan sebagai sasaran awal bagi memastikan respons analit kembali ke julat linear detektor dengan efisien.</p><p class="sop-p">iv. Langkah 6.6.3.2 (i) perlu diulangi sekiranya respon puncak masih menunjukkan tanda ketepuan detektor.</p><p class="sop-p">v. Penggunaan Tatacara B adalah sah sebagai bukti identifikasi akhir apabila memenuhi kriteria berikut:</p><p class="sop-p">a. 	Respons puncak sampel adalah setara/setanding dengan respons piawai rujukan (SST).</p><p class="sop-p">b. 	Nilai similarity factor mestilah mencapai 0.999 pada kepekatan setara tersebut.</p><p class="sop-p">c. 	Visual overlay menunjukkan padanan profil penyerapan UV yang sempurna apabila ditindih dengan piawai rujukan.</p><p class="sop-p">vii. Semua rantaian kromatogram yang terhasil daripada siri pencairan ini (contoh: 1:53, 1:75, 1:100, 1:350) hendaklah dilampirkan sebagai rantaian bukti teknikal penentuan julat linear yang sahih.</p><p class="sop-p">REKOD KUALITI</p><p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p>
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-1" class="sop-step-title">
+                            6.2.1	Pengendalian Sampel (sampling)
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Proses persampelan adalah berbeza mengikut bentuk dosej. Sila rujuk dokumen PKKK/300/UP/001 (Proses Persampelan).</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-2" class="sop-step-title">
+                            6.2.2 Liquid-liquid Extraction (LLE)
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Timbang sampel minimum 1.5 gm dan larutkan di dalam <span class="kw-vol">20 mL</span> deionized water.</p><p class="sop-p">Sonicate selama <span class="kw-time">15 minit</span>.</p><p class="sop-p">Ubah pH larutan sampel menggunakan ammonia kepada pH &gt;11. Nilai pH yang diinginkan boleh diperiksa dengan menggunakan kertas pH.</p><p class="sop-p">Ekstrak larutan sampel sebanyak 2 kali dengan <span class="kw-vol">50 mL</span> chloroform menggunakan separating funnel.</p><p class="sop-p">Turas lapisan bawah (lapisan chloroform) menggunakan 1PS filter paper ke dalam evaporating dish yang berlabel. Baki lapisan atas larutan jangan dibuang dan teruskan langkah berikutnya.</p><p class="sop-p">Ulang langkah iv dan v menggunakan baki larutan sampel di dalam separating funnel tadi.</p><p class="sop-p">Keringkan larutan sampel (air dry) tersebut di bawah fume cupboard.</p><p class="sop-p">Setelah kering, residu yang diperolehi dilarutkan dengan lebih kurang <span class="kw-vol">3 mL</span> Acetonitrile:Water (50:50).</p><p class="sop-p">Turas larutan tersebut ke dalam vial menggunakan 0.45µm syringe filter.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-3" class="sop-step-title">
+                            6.3	Penyediaan Larutan
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-4" class="sop-step-title">
+                            6.3.1 Diluent
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Sediakan larutan campuran acetonitrile dan deionized water dengan komposisi 1:1</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-5" class="sop-step-title">
+                            6.3.2 Mobile phase
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Sediakan campuran <span class="kw-vol">500 mL</span> deionized water dan <span class="kw-vol">500mL</span> acetonitrile. Kemudian, tambahkan <span class="kw-vol">1 mL</span> trifluoroacetic acid. Turas larutan tersebut menggunakan 0.45 µm membrane filter kemudian degassed larutan tersebut selama <span class="kw-time">10 minit</span>.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-6" class="sop-step-title">
+                            6.4	Penyediaan Piawai Rujukan
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-7" class="sop-step-title">
+                            6.4.1 Larutan Stok
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Timbang <span class="kw-wt">10 mg</span> RS (sildenafil citrate, vardenafil dan tadalafil) secara berasingan di dalam kelalang volumetrik <span class="kw-vol">10 mL</span>. Larutkan menggunakan diluent untuk menghasilkan larutan yang berkepekatan <span class="kw-wt">1 mg</span>/mL.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-8" class="sop-step-title">
+                            6.4.2 Larutan Piawai Rujukan
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Campurkan <span class="kw-vol">0.5 mL</span> setiap larutan stok RS yang telah disediakan pada perenggan 6.4.1 di dalam kelalang volumetrik <span class="kw-vol">10 mL</span>. Tambahkan diluent sehingga <span class="kw-vol">10 mL</span> untuk memperoleh larutan yang berkepekatan <span class="kw-wt">0.05 mg</span>/mL (setiap RS). Turas larutan piawai rujukan ke dalam vial menggunakan 0.45µm syringe filter.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-9" class="sop-step-title">
+                            6.4.3 Larutan Stok Piawai Rujukan Tunggal
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">6.4.3.1	Sediakan larutan stok piawai rujukan tunggal dengan mengikut prosedur yang dinyatakan dalam 6.4.1 hingga 6.4.2, tetapi dengan menggunakan satu piawai rujukan tunggal sahaja (single standard solution).</p><p class="sop-p">6.4.3.2	Prosedur ini hanya diguna pakai untuk menjalankan ujian identifikasi satu kompaun sahaja.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-10" class="sop-step-title">
+                            6.5	System Suitability Test Requirement (SST)
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">System Suitability Test perlu dijalankan untuk setiap analisis bagi memastikan keseluruhan sistem berfungsi dengan baik. Jalankan sekurang-kurangnya enam suntikan replikasi larutan piawai rujukan (<span class="kw-wt">0.05 mg</span>/mL)</p><p class="sop-p">Kriteria:</p><p class="sop-p">%RSD for retention time: Not more than, NMT 2.0%</p><p class="sop-p">Tailing factor not more than (NMT) 2.0</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-11" class="sop-step-title">
+                            6.6	Experimental Method
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Sistem HPLC yang digunapakai untuk tatacara pengujian ini adalah seperti Table 1 di bawah.</p><p class="sop-p">Table 1: HPLC system used for identification of Sildenafil, Vardenafil &amp; Tadalafil</p><p class="sop-p">Rujuk dokumen PKKK/300/UP/003 (RRLC 1200 series) dan PKKK/300/UP/011 (Shimadzu High Performance Liquid Chormatography) berkenaan prosedur penggunaan alat-alat ini.</p><p class="sop-p">Injek diluent, kemudian injek larutan piawai rujukan <span class="kw-wt">0.05mg</span>/mL sebanyak enam kali apabila HPLC telah sedia untuk analisis.</p><p class="sop-p">Kemudian injek larutan sampel secara duplicate juga. Perhatikan peak dan spectrum sampel yang diperolehi.</p><p class="sop-p">Sekiranya terdapat lebih daripada lima sampel berbeza dalam satu analisis, larutan piawai rujukan perlu diinjek sekali bagi setiap lima sampel.</p><p class="sop-p">Injek diluent sebelum sampel seterusnya.</p><p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">Injek <span class="kw-vol">10 µL</span> larutan piawai rujukan selepas setiap lima sampel dan sebelum menamatkan analisis.</p><p class="sop-p">Kriteria untuk Internal Quality Control Check (IQC):</p><p class="sop-p">Peratus perbezaan retention time bagi larutan piawai rujukan tidak 	boleh melebihi 3% bagi setiap kumpulan 5 sampel tersebut.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-12" class="sop-step-title">
+                            6.6.2 Pemerhatian Spektrum dan Kriteria Padanan Saringan
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Rujuk dokumen PKKK/300/UP/003 (RRLC 1200 series) atau PKKK/300/UP/011 (Shimadzu HPLC). Perhatikan peak dan spectrum yang diperolehi untuk sampel dan bandingkan dengan peak dan spectrum RS.</p><p class="sop-p">Sesuatu sampel dianggap mempunyai indikasi kehadiran analit dan wajib diteruskan dengan pemilihan tatacara pengesahan di bawah perenggan 6.6.3 sekiranya memenuhi kriteria berikut:</p><p class="sop-p">i. Perbezaan Retention Time antara puncak sampel dengan piawai rujukan 	tidak melebihi ±3% ATAU</p><p class="sop-p">ii. Secara visual, spektrum UV sampel menunjukkan corak penyerapan 	yang identikal atau setara dengan profil piawai rujukan ATAU</p><p class="sop-p">iii. Nilai Similarity Factor puncak bagi sampel hendaklah mencapai sekurang-kurangnya 0.999. Sekiranya puncak menunjukkan tanda ketepuan melampau (saturated/flat-top), nilai Similarity Factor 0.999 mungkin tidak tercapai pada peringkat ini. Sampel tetap dikategorikan sebagai mempunyai indikasi kehadiran analit berdasarkan kriteria (i) atau (ii), dan hendaklah diteruskan terus ke 6.6.3.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-015-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/015')">
+                          <label for="step-015-13" class="sop-step-title">
+                            6.6.3 Pemilihan Tatacara Pengesahan Muktamad
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Bagi sampel yang mempunyai indikasi kehadiran analit (perenggan 6.6.2), penganalisis hendaklah memilih salah satu daripada dua tatacara pengesahan berikut berdasarkan integriti puncak dan respons instrumen:</p><p class="sop-p">6.6.3.1 TATACARA A: Pengesahan secara Penambahan Piawai (Spiking)</p><p class="sop-p">Semak area sampel yang diperolehi. Sekiranya area yang diperolehi melebihi 5000 maU, cairkan larutan sampel tersebut menggunakan formula pengiraan di bawah.</p><p class="sop-p">Volume of diluent (mL) =</p><p class="sop-p">Kemudian campurkan <span class="kw-vol">1mL</span> sampel dengan diluent (volum diluent rujuk hasil pengiraan perenggan i). Sonicate selama <span class="kw-time">5 minit</span>.</p><p class="sop-p">Turas larutan tersebut ke dalam vial menggunakan 0.45µm syringe filter.</p><p class="sop-p">Injek larutan sampel diluted menggunakan tatacara pengujian yang sama.</p><p class="sop-p">Semak area untuk diluted sample.</p><p class="sop-p">Untuk mendapatkan kepekatan RS untuk spiking, guna formula pengiraan di bawah.</p><p class="sop-p">Concentration of RS (mg/ml) =</p><p class="sop-p">Spike <span class="kw-vol">0.5mL</span> larutan sampel diluted dengan <span class="kw-vol">0.5mL</span> RS (1:1) ke dalam vial.</p><p class="sop-p">Injek larutan spiked dan semak peak dan spectrum yang diperolehi.</p><p class="sop-p">Cetak laporan.</p><p class="sop-p">6.6.3.2 TATACARA B: Pengesahan secara Pencairan Lanjutan</p><p class="sop-p">Tatacara ini dipilih sebagai alternatif pengesahan muktamad bagi sampel berkepekatan ekstrem, di mana respons puncak menunjukkan tanda ketepuan detektor (detector saturation), puncak terpotong (truncated peak), atau melampaui julat dinamik linear. Pencairan lanjutan perlu dilakukan untuk sampel dalam kategori ini.</p><p class="sop-p">i. Pencairan asas boleh dilakukan menggunakan dilution factor atau volume of diluent yang dikira menggunakan formula di 6.6.3.1 (i).</p><p class="sop-p">ii. Proses pencairan boleh dilakukan secara berperingkat mengikut kesesuaian.</p><p class="sop-p">iii. Bagi kes ketepuan ekstrem, anggaran gandaan pencairan yang lebih tinggi boleh digunakan sebagai sasaran awal bagi memastikan respons analit kembali ke julat linear detektor dengan efisien.</p><p class="sop-p">iv. Langkah 6.6.3.2 (i) perlu diulangi sekiranya respon puncak masih menunjukkan tanda ketepuan detektor.</p><p class="sop-p">v. Penggunaan Tatacara B adalah sah sebagai bukti identifikasi akhir apabila memenuhi kriteria berikut:</p><p class="sop-p">a. 	Respons puncak sampel adalah setara/setanding dengan respons piawai rujukan (SST).</p><p class="sop-p">b. 	Nilai similarity factor mestilah mencapai 0.999 pada kepekatan setara tersebut.</p><p class="sop-p">c. 	Visual overlay menunjukkan padanan profil penyerapan UV yang sempurna apabila ditindih dengan piawai rujukan.</p><p class="sop-p">vii. Semua rantaian kromatogram yang terhasil daripada siri pencairan ini (contoh: 1:53, 1:75, 1:100, 1:350) hendaklah dilampirkan sebagai rantaian bukti teknikal penentuan julat linear yang sahih.</p><p class="sop-p">REKOD KUALITI</p><p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p>
+                      </div>
+                    </div>
+                    
           </div>
         </div>
         
 
     <!-- Tables -->
-    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+    <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
             <span class="table-tag">JADUAL 1</span>
@@ -516,7 +681,7 @@
             </table>
           </div>
         </div>
-        
+        </div></div>
 
   </div>
 

@@ -8,143 +8,278 @@
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
-  /* Enhanced SOP Interactive Styling */
+  /* ========================================================= */
+  /* HIGH-CONTRAST, ULTRA-READABLE SOP TYPOGRAPHY & LAYOUT     */
+  /* ========================================================= */
+  
+  :root {
+    --text-heading: #090d16;
+    --text-body: #1e293b;
+    --text-muted: #475569;
+    --card-surface: #ffffff;
+    --card-border-subtle: #cbd5e1;
+    --step-border: #94a3b8;
+  }
+
+  [data-theme="dark"] {
+    --text-heading: #f8fafc;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    --card-surface: rgba(15, 23, 42, 0.85);
+    --card-border-subtle: rgba(255, 255, 255, 0.12);
+    --step-border: rgba(255, 255, 255, 0.18);
+  }
+
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
     box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
+
+  /* Header Table */
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
-    background: var(--glass); border-radius: 12px; overflow: hidden;
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.88rem;
+    background: var(--card-surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border-subtle);
+    box-shadow: var(--shadow-sm);
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
+    border: 1px solid var(--card-border-subtle); padding: 0.85rem 1.1rem; vertical-align: middle; color: var(--text-body);
   }
-  .sop-sec-title {
-    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
-    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
+  .sop-header-table strong { color: var(--text-heading); font-weight: 700; }
+
+  /* ========================================================= */
+  /* SECTION CONTAINERS WITH HIGH-CONTRAST COLORED HEADERS    */
+  /* ========================================================= */
+  .sop-section-container {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 16px;
+    margin-bottom: 2.2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
-  .sop-p {
-    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
+  .sop-section-container:hover {
+    box-shadow: var(--shadow-md);
   }
-  .sop-step-box {
-    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
-    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
+
+  .sop-section-header {
+    padding: 0.9rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    font-weight: 800;
   }
-  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
-  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: #ffffff;
+  }
+  .sec-icon {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Distinct Section Color Themes */
+  .sec-theme-cyan .sop-section-header {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+  }
+  .sec-theme-purple .sop-section-header {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  }
+  .sec-theme-mint .sop-section-header {
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+  .sec-theme-amber .sop-section-header {
+    background: linear-gradient(135deg, #d97706, #b45309);
+  }
+  .sec-theme-indigo .sop-section-header {
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+  }
+
+  .sop-section-body {
+    padding: 1.6rem 1.8rem;
+  }
+
+  /* ========================================================= */
+  /* STEP CARDS (HIGH CONTRAST & INTERACTIVE)                  */
+  /* ========================================================= */
+  .sop-step-card {
+    background: var(--glass);
+    border: 1px solid var(--step-border);
+    border-left: 5px solid var(--cyan);
+    border-radius: 12px;
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .sop-step-card:hover {
+    border-color: var(--cyan);
+    border-left-color: var(--purple);
+    background: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .step-card-header {
+    padding: 0.85rem 1.2rem;
+    background: rgba(2, 132, 199, 0.08);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .step-check-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
   .sop-task-check {
-    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--cyan);
+    flex-shrink: 0;
   }
-  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
+  .sop-step-title {
+    cursor: pointer;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    font-family: var(--font-main);
+  }
+  .step-card-body {
+    padding: 1.1rem 1.3rem;
+  }
+
+  /* Typography */
+  .sop-p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 0.8rem;
+  }
   .sop-list-item {
-    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
-    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    margin-left: 0.8rem;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    margin-bottom: 0.5rem;
   }
-  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-bullet {
+    color: var(--cyan);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
   .sop-list-text { flex: 1; }
 
   /* Keyword Highlights */
-  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
-  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
-  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-flow { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wave { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wt { color: #059669; font-weight: 700; font-family: var(--font-mono); background: rgba(5, 150, 105, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-vol { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-time { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-limit { color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-ph { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
 
   /* Visual Workflow Timeline */
   .wf-track {
     display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 1.8rem;
-    background: var(--glass); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); overflow-x: auto;
+    background: var(--card-surface); padding: 1.2rem 1.4rem; border-radius: 16px; border: 1px solid var(--card-border-subtle); overflow-x: auto;
+    box-shadow: var(--shadow-sm);
   }
   .wf-step { display: flex; align-items: center; gap: 0.6rem; min-width: 140px; }
   .wf-node {
-    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    width: 34px; height: 34px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
     color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
-    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+    font-size: 0.9rem; font-weight: 800; flex-shrink: 0;
   }
-  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
-  .wf-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }
-  .wf-arrow { color: var(--text-dim); font-size: 1rem; opacity: 0.6; flex-shrink: 0; }
+  .wf-name { font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--text-heading); }
+  .wf-desc { font-size: 0.74rem; color: var(--text-muted); line-height: 1.3; }
+  .wf-arrow { color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
 
   /* Executive Summary & Chips */
   .summary-analytes {
-    margin: 1rem 0 1.4rem; padding: 0.9rem 1.2rem; background: var(--glass); border-radius: 12px;
-    border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 0.5rem;
+    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
+    border: 1px solid var(--card-border-subtle); display: flex; flex-direction: column; gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
   }
-  .sum-lbl { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
-  .chips-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .sum-lbl { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; }
+  .chips-container { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .analite-chip {
-    padding: 0.3rem 0.65rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
-    color: var(--purple); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 6px; font-weight: 600;
+    padding: 0.35rem 0.75rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
+    color: var(--purple); font-family: var(--font-mono); font-size: 0.78rem; border-radius: 8px; font-weight: 600;
   }
 
   /* Bench Notes Card */
   .bench-tips-card {
-    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px;
-    padding: 1.2rem; margin-bottom: 1.8rem;
+    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.35); border-radius: 14px;
+    padding: 1.3rem 1.5rem; margin-bottom: 1.8rem; box-shadow: var(--shadow-sm);
   }
-  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--amber); margin-bottom: 0.6rem; }
-  .tips-list { margin-left: 1.5rem; font-size: 0.88rem; line-height: 1.65; color: var(--text-main); }
+  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: #d97706; margin-bottom: 0.7rem; font-weight: 700; }
+  .tips-list { margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--text-body); }
 
   /* Progress Tracker */
   .progress-card {
     background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
-    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
-    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1.1rem 1.5rem;
+    margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    box-shadow: var(--shadow-sm);
   }
-  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
-  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
-  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-left { display: flex; flex-direction: column; gap: 0.35rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 280px; max-width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
-  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }
 
   /* TOC Pills */
-  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
   .toc-pill {
-    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
-    text-decoration: none; transition: all 0.2s ease;
+    padding: 0.45rem 0.9rem; background: var(--card-surface); border: 1px solid var(--card-border-subtle);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-body);
+    text-decoration: none; transition: all 0.2s ease; box-shadow: var(--shadow-sm); font-weight: 600;
   }
-  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
 
   /* Table Cards */
   .table-card {
-    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
-    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
+    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
   }
   .table-card-header {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
-    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
   }
-  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
-  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
   .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
+    border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
   }
-  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
   .seq-sst { background: var(--purple-dim); }
   .seq-iqc { background: var(--cyan-dim); }
-  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
     .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
-    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
+    .sop-section-header { background: #eee !important; color: #000 !important; }
+    .sop-section-header h2 { color: #000 !important; }
+    .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -185,8 +320,8 @@
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.2rem">PKKK/300/UP/002 <span class="g">Penyiasatan Sampel Luar Spesifikasi</span></h1>
-    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Pengekstrakan</div>
+    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/002 <span class="g">Penyiasatan Sampel Luar Spesifikasi</span></h1>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Pengekstrakan</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
@@ -195,7 +330,7 @@
           <div class="wf-node">1</div>
           <div class="wf-info">
             <div class="wf-name">1. Persediaan</div>
-            <div class="wf-desc">Penerimaan sampel & semakan borang persampelan</div>
+            <div class="wf-desc">Penerimaan sampel & borang</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -203,7 +338,7 @@
           <div class="wf-node">2</div>
           <div class="wf-info">
             <div class="wf-name">2. Pelaksanaan</div>
-            <div class="wf-desc">Langkah kerja operasi mengikut prosedur terperinci</div>
+            <div class="wf-desc">Langkah kerja mengikut SOP</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -211,7 +346,7 @@
           <div class="wf-node">3</div>
           <div class="wf-info">
             <div class="wf-name">3. Verifikasi</div>
-            <div class="wf-desc">Pemeriksaan kualiti & pematuhan kriteria penerimaan</div>
+            <div class="wf-desc">Pemeriksaan kualiti & pematuhan</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -219,7 +354,7 @@
           <div class="wf-node">4</div>
           <div class="wf-info">
             <div class="wf-name">4. Dokumentasi</div>
-            <div class="wf-desc">Perekodan data dalam fail kualiti rasmi NPRA</div>
+            <div class="wf-desc">Perekodan fail kualiti rasmi</div>
           </div>
         </div>
         </div>
@@ -227,7 +362,7 @@
   <!-- Target Analytes / Quick Chips -->
   
         <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran:</span>
+          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
           <div class="chips-container"><span class="analite-chip">Dexamethasone</span><span class="analite-chip">Betamethasone</span><span class="analite-chip">Prednisone</span><span class="analite-chip">Prednisolone</span><span class="analite-chip">Triamcinolone acetonide</span><span class="analite-chip">Hydrocortisone acetate</span><span class="analite-chip">Cortisone acetate</span><span class="analite-chip">Betamethasone-17-valerate</span></div>
         </div>
         
@@ -251,7 +386,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 14 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 8 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -260,10 +395,10 @@
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.2rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.72rem;color:var(--text-muted);font-weight:600">PUSAT KAWALAN KUALITI</span>
         </td>
-        <td colspan="2"><strong>ARAHAN KERJA: PENYIASATAN SAMPEL LUAR SPESIFIKASI</strong></td>
+        <td colspan="2"><strong style="font-size:0.95rem">ARAHAN KERJA: PENYIASATAN SAMPEL LUAR SPESIFIKASI</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/002</td>
@@ -276,157 +411,145 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (5)</a></div>
 
-    <!-- Sections -->
+    <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-block" id="sec-1">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>1.0 PENGENALAN DOKUMEN</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">SEJARAH SEMAKAN:</p><p class="sop-p">Tiada Sejarah semakan.</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan langkah-langkah yang perlu diambil bagi pengesahan sampel yang yang gagal ujian kawalan kualiti adalah tepat dan bersesuaian.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunapakai untuk semua sampel yang diterima di Unit Penyaringan.</p><p class="sop-p">DEFINISI</p><p class="sop-p">KS		- Ketua Seksyen</p><p class="sop-p">KU 		– Ketua Unit</p><p class="sop-p">OOS		- Out of Specification</p><p class="sop-p">JKPKALS 	- Jawatankuasa Penilaian Keputusan Analisis Luar Spesifikasi</p><p class="sop-p">TLC 		- Thin Layer Chromatography</p><p class="sop-p">HPLC 		- High Performance Liquid Chromatography</p><p class="sop-p">GC-MS 	- Gas Chromatography-Mass Spectrometry</p><p class="sop-p">LC-MS 	- Liquid Chromatography-Mass Spectrometry</p><p class="sop-p">UPA		- Unit Perkhidmatan Analisis</p><p class="sop-p">PDF		- Gaussian probability density function</p><p class="sop-p">MOU		- Measurement of Uncertainty</p><p class="sop-p">MS		- Malaysian Standard</p><p class="sop-p">ISO 		- International Organization for Standardization</p><p class="sop-p">IEC		- International Electrotechnical Commission</p><p class="sop-p">PEG.		- Pegawai</p><p class="sop-p">PEN. PEG.	- Penolong Pegawai</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen (KS)</p><p class="sop-p">Menyemak &amp; mengesahkan laporan OOS dan keputusan ujian bagi sampel gagal ujian</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Menyemak &amp; mengesahkan laporan OOS dan keputusan ujian bagi sampel gagal ujian</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian dan memasukkan keputusan ujian sampel dalam sistem QUEST</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian</p><p class="sop-p">Menjalankan pengujian ke atas sampel sekiranya perlu</p><p class="sop-p">Penolong Pegawai Farmasi U6 / U5</p><p class="sop-p">Menjalankan pengujian ke atas sampel dan menyediakan laporan ujian</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Merekod bilangan ujian dan menghantar laporan OOS berserta dengan laporan kesuluruhan ujian ke Unit Perkhidmatan Analisis untuk simpanan</p><p class="sop-p">Menjalankan pengujian ke atas sampel sekiranya perlu</p><p class="sop-p">PROSEDUR</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-1" class="sop-step-label">
-                      <strong>6.1 Prosedur</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Ujian penyaringan kedua dijalankan ke atas sampel yang didapati gagal ujian penyaringan pertama.</p><p class="sop-p">Ujian ulangan (penyaringan kedua) dijalankan mengikut tatacara ujian yang ditetapkan oleh Pegawai Farmasi.</p><p class="sop-p">Ujian ulangan (penyaringan kedua atau ketiga) perlu dijalankan pada hari berlainan dengan ujian penyaringan pertama. Penyediaan sampel yang baru perlu digunakan apabila ujian ulangan dijalankan. Prosedur ujian ulangan yang perlu dijalankan untuk pengesahan keputusan luar spesifikasi adalah seperti berikut:</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-2" class="sop-step-label">
-                      <strong>6.1.3.1 Ujian menggunakan dua teknik pengujian yang berbeza</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Ujian penyaringan pertama</p><p class="sop-p">Penganalisis pertama menjalankan pengujian menggunakan teknik pengujian seperti HPLC. Sekiranya keputusan yang diperolehi disyaki mengandungi bahan campurpalsu atau gagal bahan pencemar, ujian ulangan perlu dijalankan.</p><p class="sop-p">Ujian penyaringan kedua</p><p class="sop-p">Penganalisis pertama atau kedua menjalankan ujian pengesahan menggunakan teknik pengujian yang berbeza daripada ujian penyaringan pertama seperti GC-MS/LC-MS dengan menggunakan penyediaan sampel yang baru. Jalankan pengujian pada hari yang berlainan dengan ujian penyaringan pertama. Sekiranya kedua-dua keputusan adalah gagal, sampel akan diklasifikasi sebagai luar spesifikasi. Jika salah satu keputusan adalah lulus, ujian ulangan oleh penganalisis kedua atau ketiga perlu dijalankan. Jika kedua-dua keputusan adalah lulus, sampel tersebut dianggap sebagai lulus. Jika kedua-dua keputusan masih gagal, sampel akan diklasifikasi sebagai luar spesifikasi.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-3" class="sop-step-label">
-                      <strong>6.1.3.2 Ujian menggunakan dua teknik pengujian yang sama iaitu HPLC atau mass spectrometry</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Ujian penyaringan pertama</p><p class="sop-p">Penganalisis pertama menjalankan pengujian menggunakan teknik pengujian HPLC atau mass spectrometry (GC-MS/LC-MS). Sekiranya keputusan yang diperolehi disyaki mengandungi bahan campurpalsu atau gagal bahan pencemar, ujian ulangan perlu dijalankan.</p><p class="sop-p">Untuk bahan campurpalsu yang menggunakan teknik pengujian GC-MS/LC-MS, penyediaan sampel dijalankan mengikut ujian identifikasi yang dipohon (merujuk kepada Appendix A di PKKK/300/UP/020). Jika ujian identifikasi yang dipohon tersebut mempunyai lebih daripada satu penyediaan sampel, contohnya Solid Phase Extraction (SPE) atau Direct Dissolve Ethanol (EtOH), kaedah Direct Dissolve Ethanol akan dipilih terlebih dahulu dengan tujuan untuk mempercepatkan proses penyediaan sampel tersebut.</p><p class="sop-p">Rentetan daripada pernyataan di atas, jika terdapat beberapa permohonan ujian identifikasi yang berlainan dan penyediaan sampel adalah secara kaedah SPE pada kondisi pH yang sama, maka kaedah secara SPE akan dipilih terlebih dahulu berbanding kaedah Direct Dissolve Ethanol.</p><p class="sop-p">Ujian penyaringan kedua</p><p class="sop-p">Penganalisis kedua menjalankan ujian pengesahan menggunakan teknik pengujian yang sama dengan ujian penyaringan pertama dengan menggunakan penyediaan sampel yang baru. Jalankan pengujian pada hari yang berlainan dengan ujian penyaringan pertama. Sekiranya kedua-dua keputusan adalah gagal, sampel akan diklasifikasi sebagai luar spesifikasi. Jika salah satu keputusan adalah lulus, ujian ulangan oleh penganalisis ketiga perlu dijalankan.</p><p class="sop-p">Untuk bahan campurpalsu yang menggunakan teknik pengujian GC-MS/LC-MS, penyediaan sampel dijalankan berdasarkan pH yang bersesuaian merujuk kepada Appendix A di PKKK/300/UP/020 untuk memperolehi relative ion intensities terhadap m/z yang jelas dan ketara; atau</p><p class="sop-p">Jika keputusan sampel gagal diperoleh lebih daripada satu kaedah penyediaan sampel, maka penganalisis kedua akan memilih satu kaedah yang terbaik untuk menjalankan ujian pengesahan berdasarkan interpretasi dari relative ion intensities terhadap m/z atau kaedah penyediaan sampel yang lebih ringkas dan cepat; atau</p><p class="sop-p">Penganalisis kedua boleh menggunakan kaedah penyediaan sampel yang sama dengan penganalisa pertama semasa menjalankan ujian pengesahan, walaupun kaedah penyediaan sampel tersebut tidak tersenarai dalam Appendix A PKKK/300/UP/020.</p><p class="sop-p">Sekiranya baki sampel tidak mencukupi untuk menjalankan ujian ulangan yang memerlukan penyediaan sampel lebih daripada satu pH, penganalisis kedua boleh memilih satu kaedah yang terbaik untuk menjalankan ujian pengesahan berdasarkan interpretasi dari relative ion intensities terhadap m/z.</p><p class="sop-p">Ujian penyaringan ketiga</p><p class="sop-p">Penganalisis ketiga menjalankan ujian pengesahan menggunakan teknik pengujian yang sama dengan ujian penyaringan pertama dan kedua dengan menggunakan penyediaan sampel yang baru pada hari yang berlainan dengan ujian penyaringan pertama dan kedua. Jika kedua-dua keputusan adalah lulus, sampel tersebut dianggap sebagai lulus. Jika kedua-dua keputusan masih gagal, sampel tersebut akan diklasifikasi sebagai luar spesifikasi.</p><p class="sop-p">[*Untuk ujian yang menggunakan alat Gas Chromatography-Mass Spectroscopy (GCMS) dan Liquid Chromatography-Mass Spectrometry (LCMS), larutan piawai rujukan perlu diuji bersama-sama sampel semasa ujian ulangan. Keputusan GAGAL diberikan apabila padanan perpustakaan alat oleh larutan piawai rujukan dan sampel adalah sama atau melebihi 80%.]</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-4" class="sop-step-label">
-                      <strong>6.1.3.3 Pengurusan Analisis Sampel Multi-Komponen – Sampel yang melibatkan lebih daripada satu unit dengan permohonan dua atau lebih ujian penyaringan (Management of Multi-component Sample Analysis)</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Penyediaan Sampel</p><p class="sop-p">Sekiranya sampel yang diterima mengandungi unit yang berbeza (contoh: kapsul hijau dan kapsul merah), sampel tersebut perlu diasingkan, dan dianalisis secara individu. Pengekstrakan sampel boleh dijalankan menggunakan kaedah Pengekstrakan Fasa Pepejal (SPE) pada tahap pH yang optimum (<span class="kw-ph">pH 3</span>, 7, atau 11), atau melalui kaedah Direct Dissolve with Ethanol, bergantung kepada target analyte profile (contoh: SPE <span class="kw-ph">pH 3</span> digunakan untuk saringan awal NSAIDs).</p><p class="sop-p">Tindakan bagi Keputusan Positif Saringan GCMS</p><p class="sop-p">Bagi sampel yang dipohon untuk menjalankan ujian penyaringan NSAIDs dan steroid, jika steroid (contoh: Dexamethasone) dikesan dalam sampel kapsul hijau semasa menjalankan ujian penyaringan NSAIDS pada SPE <span class="kw-ph">pH 3</span>, penganalisis kedua perlu mengulangi ujian pengesahan untuk kapsul hijau tersebut.</p><p class="sop-p">Ujian ulangan perlu dijalankan oleh penganalisis kedua menggunakan kaedah penyediaan sampel (SPE <span class="kw-ph">pH 3</span>) dan tatacara pengujian GCMS (PKKK/300/UAT/020) yang sama seperti yang dijalankan oleh penganalisis pertama.</p><p class="sop-p">Jika penganalisis kedua mengesahkan keputusan positif tersebut, sampel kapsul hijau akan dilaporkan sebagai positif Dexamethasone dan keputusan adalah Gagal.</p><p class="sop-p">Tindakan bagi Keputusan Negatif Saringan GCMS (khusus untuk Saringan Steroid Komprehensif)</p><p class="sop-p">Bagi sampel kapsul merah yang tidak dikesan dengan steroid paa saringan awal (SPE <span class="kw-ph">pH3</span>):</p><p class="sop-p">Sampel tersebut perlu diteruskan dengan ujian penyaringan steroid komprehensif menggunakan kaedah HPLC (Rujuk Prosedur PKKK/300/UAT/047).</p><p class="sop-p">Penyediaan sampel baru untuk kapsul merah hendaklah dijalankan melalui pengekstrakan semula pada kondisi optimum SPE <span class="kw-ph">pH 7</span>.</p><p class="sop-p">Ekstrak SPE <span class="kw-ph">pH 7</span> yang dihasilkan akan digunakan untuk analisis HPLC.</p><p class="sop-p">Ujian pengesanan sampel kosmetik</p><p class="sop-p">Ujian pengesanan sampel kosmetik melalui teknik kromatografi</p><p class="sop-p">Ujian ulangan dijalankan oleh penganalisa berbeza pada hari yang berlainan.</p><p class="sop-p">Ujian ulangan dijalankan dengan menyediakan sampel dalam duplikasi dan satu sampel spiked pada kepekatan yang telah ditetapkan.</p><p class="sop-p">Setiap sampel yang disediakan pada para ii perlu diselang dengan larutan diluent, sebelum dan selepas sampel.</p><p class="sop-p">Ujian kandungan melalui teknik kromatografi</p><p class="sop-p">Ujian ulangan dijalankan oleh penganalisis berbeza pada hari yang berlainan.</p><p class="sop-p">Ujian ulangan dijalankan dengan menyediakan sampel dalam duplikasi.</p><p class="sop-p">Pelaporan keputusan bagi sampel yang tidak mencukupi</p><p class="sop-p">Sekiranya proses penyediaan sampel bagi analisis kali pertama tidak dapat dijalankan kerana sampel yang diterima tidak mencukupi, sampel akan dilaporkan sebagai ‘LULUS’ dengan ulasan pada laporan ujian dan sistem Quest.</p><p class="sop-p">Jika baki sampel tidak mencukupi untuk ujian ulangan pertama atau kedua, sampel akan dilaporkan sebagai ‘TIDAK LULUS’:</p><p class="sop-p">Apabila laporan analisis pertama menunjukkan sampel dikesan/tidak dikesan bahan yang dianalisa atau melebihi had yang telah ditetapkan dengan ulasan pada laporan ujian dan sistem Quest.</p><p class="sop-p">Apabila laporan analisis pertama &amp; ujian ulangan pertama menunjukkan sampel dikesan/tidak dikesan bahan yang dianalisa atau kesemua bacaan melebihi had yang telah ditetapkan dengan ulasan pada laporan ujian.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-5" class="sop-step-label">
-                      <strong>6.1.3.5 Ujian Penentuan Lovastatin dalam produk tradisional dengan menggunakan HPLC (PKKK/200/UP/006)</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Ujian penyaringan pertama</p><p class="sop-p">Penganalisis pertama menjalankan pengujian menggunakan teknik pengujian HPLC. Sekiranya keputusan yang diperolehi adalah gagal, ujian ulangan perlu dijalankan.</p><p class="sop-p">Ujian penyaringan kedua</p><p class="sop-p">Penganalisis kedua menjalankan ujian pengesahan menggunakan teknik pengujian yang sama dengan ujian penyaringan pertama iaitu HPLC dengan menggunakan penyediaan sampel yang baru. Jalankan pengujian pada hari yang berlainan dengan ujian penyaringan pertama.</p><p class="sop-p">Sekiranya ujian ulangan (penyaringan kedua) tidak dapat dijalankan atas sebab seperti baki sampel tidak mencukupi atau telah habis, ketiadaan piawai rujukan untuk pengesahan semasa ujian penyaringan kedua, keputusan ujian akan dilaporkan sebagai ‘Tidak lulus’ tetapi pada bahagian ulasan (dalam laporan ujian) dan bahagian Remarks (dalam QUEST) akan dicatatkan ‘Ujian pengesahan tidak dapat dijalankan kerana baki sampel tidak mencukupi / Ujian pengesahan tidak dapat dijalankan kerana ketiadaan piawai rujukan bahan tersebut. Keputusan yang diperolehi adalah berdasarkan perbandingan dangan Library alat sahaja.</p><p class="sop-p">Sekiranya keputusan ujian ulangan (penyaringan kedua) didapati lulus, ujian ulangan (penyaringan ketiga) akan dijalankan.</p><p class="sop-p">Keputusan ujian secara keseluruhannya akan dilaporkan sebagai lulus, andai keputusan ujian penyaringan ketiga adalah lulus. Sekiranya keputusan ujian penyaringan ketiga adalah gagal, keputusan keseluruhan sampel tersebut akan dilaporkan sebagai gagal.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-6" class="sop-step-label">
-                      <strong>6.2 Pematuhan Kepada Semua Parameter Ujian</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-7" class="sop-step-label">
-                      <strong>6.2.1	Apabila sesuatu sampel itu didapati gagal ujian penyaringan, Pegawai Farmasi perlulah memastikan semua parameter berikut dipatuhi:</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Tarikh kalibrasi &amp; servis PPM alat yang digunakan adalah mengikut jadual</p><p class="sop-p">Ujian dijalankan mengikut tatacara yang ditetapkan</p><p class="sop-p">Bagi Penentuan Kandungan Lovastatin dalam Produk Tradisional, pemakaian Decision rule telah dilaksanakan</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-8" class="sop-step-label">
-                      <strong>6.2.2 	Pengiraan Decision rule adalah seperti berikut (Decision rule hanya terpakai untuk tatacara yang diakreditasi oleh MS ISO/IEC 17025:2017):</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">For Lovastatin content measurement: The measurement result, y, is obtained with a known standard uncertainty, u(y). A decision rule can be established by considering a guard band. The strategy is to directly compare the measurement results with the acceptance zone limit. If the results fall within the acceptance zone, they are considered accepted. If the results fall outside the acceptance zone, they are deemed non-compliant.</p><p class="sop-p">For a single tolerance upper limit (TU): When the standard uncertainty, u(y), and the probability of type 1 error (α) are known, the guard band upper limit can be derived using the Gaussian probability density function (PDF), as shown in Figure 1.</p><p class="sop-p">Figure 1. Derivation of guard band upper limit, GU (y: measurement result; TU: Single tolerance upper limit; u(y): Standard uncertainty; α: probability of type 1 error)</p><p class="sop-p">Critical value tables for normal PDF: For α is 0.05, the critical value [Φ-1 (1-α)] is 1.645. This value can also be derived using software functions. For instance, in MS Excel, the formula NORMINV (probability, mean, standard deviation), namely NORMINV (0.95, 0, 1) will give 1.645.</p><p class="sop-p">For guarded acceptance, the guard band upper limit can be calculated as:</p><p class="sop-p">GU1 = TU - u(y).[Φ-1 (1- α)]</p><p class="sop-p">For guarded rejection, the guard band upper limit can be calculated as below:</p><p class="sop-p">GU2 = TU + u(y).[Φ-1 (1- α)]</p><p class="sop-p">GU: Guard band upper limit</p><p class="sop-p">TU: Tolerance upper limit</p><p class="sop-p">u(y): Standard uncertainty</p><p class="sop-p">α: probability of type 1 error</p><p class="sop-p">Figure 2: Guard band for single (upper) tolerance and guarded acceptance defined with an expanded uncertainty of 95%</p><p class="sop-p">Contoh pengiraan had Lovastatin dalam kapsul:</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-9" class="sop-step-label">
-                      <strong>6.2.3	Penentuan Decision Rule untuk ujian had lovastatin dalam kapsul adalah berdasarkan nilai Measurement of Uncertainty (MOU), di mana nilai MOU akan dikaji semula setiap 2 tahun.</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Table 1: Statement of conformity</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-10" class="sop-step-label">
-                      <strong>6.2.4	Sila rujuk Table 1 untuk Statement of Conformity</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-11" class="sop-step-label">
-                      <strong>6.2.5	Melaporkan keputusan ujian yang gagal bagi analisis yang menggunapakai Decision Rule adalah seperti berikut:</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-12" class="sop-step-label">
-                      <strong>6.2.5.1	Keputusan ujian mestilah dilaporkan dalam format:</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">“Keputusan pengujian + Expanded Uncertainty”</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-13" class="sop-step-label">
-                      <strong>6.2.5.2	Kenyataan akhir keputusan yang gagal adalah:</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">“The uncertainty with the result was calculated using a coverage factor of 2 and is equivalent to a confidence level of approximately 95%”. The probability that the limit of Lovastatin in traditional product has exceeded is at least 95%.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-002-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
-                    <label for="step-002-14" class="sop-step-label">
-                      <strong>6.3 Pengesahan Ujian</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">Keputusan ujian GAGAL perlu disahkan oleh Ketua Unit dan Ketua Seksyen.</p><p class="sop-p">Sekiranya keputusan penyaringan adalah meragukan, ujian ulangan di atas</p><p class="sop-p">arahan Ketua Unit atau Ketua Seksyen boleh dijalankan.</p>
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-002-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
+                          <label for="step-002-1" class="sop-step-title">
+                            6.1 Prosedur
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Ujian penyaringan kedua dijalankan ke atas sampel yang didapati gagal ujian penyaringan pertama.</p><p class="sop-p">Ujian ulangan (penyaringan kedua) dijalankan mengikut tatacara ujian yang ditetapkan oleh Pegawai Farmasi.</p><p class="sop-p">Ujian ulangan (penyaringan kedua atau ketiga) perlu dijalankan pada hari berlainan dengan ujian penyaringan pertama. Penyediaan sampel yang baru perlu digunakan apabila ujian ulangan dijalankan. Prosedur ujian ulangan yang perlu dijalankan untuk pengesahan keputusan luar spesifikasi adalah seperti berikut:</p><p class="sop-p">6.1.3.1 Ujian menggunakan dua teknik pengujian yang berbeza</p><p class="sop-p">Ujian penyaringan pertama</p><p class="sop-p">Penganalisis pertama menjalankan pengujian menggunakan teknik pengujian seperti HPLC. Sekiranya keputusan yang diperolehi disyaki mengandungi bahan campurpalsu atau gagal bahan pencemar, ujian ulangan perlu dijalankan.</p><p class="sop-p">Ujian penyaringan kedua</p><p class="sop-p">Penganalisis pertama atau kedua menjalankan ujian pengesahan menggunakan teknik pengujian yang berbeza daripada ujian penyaringan pertama seperti GC-MS/LC-MS dengan menggunakan penyediaan sampel yang baru. Jalankan pengujian pada hari yang berlainan dengan ujian penyaringan pertama. Sekiranya kedua-dua keputusan adalah gagal, sampel akan diklasifikasi sebagai luar spesifikasi. Jika salah satu keputusan adalah lulus, ujian ulangan oleh penganalisis kedua atau ketiga perlu dijalankan. Jika kedua-dua keputusan adalah lulus, sampel tersebut dianggap sebagai lulus. Jika kedua-dua keputusan masih gagal, sampel akan diklasifikasi sebagai luar spesifikasi.</p><p class="sop-p">6.1.3.2 Ujian menggunakan dua teknik pengujian yang sama iaitu HPLC atau mass spectrometry</p><p class="sop-p">Ujian penyaringan pertama</p><p class="sop-p">Penganalisis pertama menjalankan pengujian menggunakan teknik pengujian HPLC atau mass spectrometry (GC-MS/LC-MS). Sekiranya keputusan yang diperolehi disyaki mengandungi bahan campurpalsu atau gagal bahan pencemar, ujian ulangan perlu dijalankan.</p><p class="sop-p">Untuk bahan campurpalsu yang menggunakan teknik pengujian GC-MS/LC-MS, penyediaan sampel dijalankan mengikut ujian identifikasi yang dipohon (merujuk kepada Appendix A di PKKK/300/UP/020). Jika ujian identifikasi yang dipohon tersebut mempunyai lebih daripada satu penyediaan sampel, contohnya Solid Phase Extraction (SPE) atau Direct Dissolve Ethanol (EtOH), kaedah Direct Dissolve Ethanol akan dipilih terlebih dahulu dengan tujuan untuk mempercepatkan proses penyediaan sampel tersebut.</p><p class="sop-p">Rentetan daripada pernyataan di atas, jika terdapat beberapa permohonan ujian identifikasi yang berlainan dan penyediaan sampel adalah secara kaedah SPE pada kondisi pH yang sama, maka kaedah secara SPE akan dipilih terlebih dahulu berbanding kaedah Direct Dissolve Ethanol.</p><p class="sop-p">Ujian penyaringan kedua</p><p class="sop-p">Penganalisis kedua menjalankan ujian pengesahan menggunakan teknik pengujian yang sama dengan ujian penyaringan pertama dengan menggunakan penyediaan sampel yang baru. Jalankan pengujian pada hari yang berlainan dengan ujian penyaringan pertama. Sekiranya kedua-dua keputusan adalah gagal, sampel akan diklasifikasi sebagai luar spesifikasi. Jika salah satu keputusan adalah lulus, ujian ulangan oleh penganalisis ketiga perlu dijalankan.</p><p class="sop-p">Untuk bahan campurpalsu yang menggunakan teknik pengujian GC-MS/LC-MS, penyediaan sampel dijalankan berdasarkan pH yang bersesuaian merujuk kepada Appendix A di PKKK/300/UP/020 untuk memperolehi relative ion intensities terhadap m/z yang jelas dan ketara; atau</p><p class="sop-p">Jika keputusan sampel gagal diperoleh lebih daripada satu kaedah penyediaan sampel, maka penganalisis kedua akan memilih satu kaedah yang terbaik untuk menjalankan ujian pengesahan berdasarkan interpretasi dari relative ion intensities terhadap m/z atau kaedah penyediaan sampel yang lebih ringkas dan cepat; atau</p><p class="sop-p">Penganalisis kedua boleh menggunakan kaedah penyediaan sampel yang sama dengan penganalisa pertama semasa menjalankan ujian pengesahan, walaupun kaedah penyediaan sampel tersebut tidak tersenarai dalam Appendix A PKKK/300/UP/020.</p><p class="sop-p">Sekiranya baki sampel tidak mencukupi untuk menjalankan ujian ulangan yang memerlukan penyediaan sampel lebih daripada satu pH, penganalisis kedua boleh memilih satu kaedah yang terbaik untuk menjalankan ujian pengesahan berdasarkan interpretasi dari relative ion intensities terhadap m/z.</p><p class="sop-p">Ujian penyaringan ketiga</p><p class="sop-p">Penganalisis ketiga menjalankan ujian pengesahan menggunakan teknik pengujian yang sama dengan ujian penyaringan pertama dan kedua dengan menggunakan penyediaan sampel yang baru pada hari yang berlainan dengan ujian penyaringan pertama dan kedua. Jika kedua-dua keputusan adalah lulus, sampel tersebut dianggap sebagai lulus. Jika kedua-dua keputusan masih gagal, sampel tersebut akan diklasifikasi sebagai luar spesifikasi.</p><p class="sop-p">[*Untuk ujian yang menggunakan alat Gas Chromatography-Mass Spectroscopy (GCMS) dan Liquid Chromatography-Mass Spectrometry (LCMS), larutan piawai rujukan perlu diuji bersama-sama sampel semasa ujian ulangan. Keputusan GAGAL diberikan apabila padanan perpustakaan alat oleh larutan piawai rujukan dan sampel adalah sama atau melebihi 80%.]</p><p class="sop-p">6.1.3.3 Pengurusan Analisis Sampel Multi-Komponen – Sampel yang melibatkan lebih daripada satu unit dengan permohonan dua atau lebih ujian penyaringan (Management of Multi-component Sample Analysis)</p><p class="sop-p">Penyediaan Sampel</p><p class="sop-p">Sekiranya sampel yang diterima mengandungi unit yang berbeza (contoh: kapsul hijau dan kapsul merah), sampel tersebut perlu diasingkan, dan dianalisis secara individu. Pengekstrakan sampel boleh dijalankan menggunakan kaedah Pengekstrakan Fasa Pepejal (SPE) pada tahap pH yang optimum (<span class="kw-ph">pH 3</span>, 7, atau 11), atau melalui kaedah Direct Dissolve with Ethanol, bergantung kepada target analyte profile (contoh: SPE <span class="kw-ph">pH 3</span> digunakan untuk saringan awal NSAIDs).</p><p class="sop-p">Tindakan bagi Keputusan Positif Saringan GCMS</p><p class="sop-p">Bagi sampel yang dipohon untuk menjalankan ujian penyaringan NSAIDs dan steroid, jika steroid (contoh: Dexamethasone) dikesan dalam sampel kapsul hijau semasa menjalankan ujian penyaringan NSAIDS pada SPE <span class="kw-ph">pH 3</span>, penganalisis kedua perlu mengulangi ujian pengesahan untuk kapsul hijau tersebut.</p><p class="sop-p">Ujian ulangan perlu dijalankan oleh penganalisis kedua menggunakan kaedah penyediaan sampel (SPE <span class="kw-ph">pH 3</span>) dan tatacara pengujian GCMS (PKKK/300/UAT/020) yang sama seperti yang dijalankan oleh penganalisis pertama.</p><p class="sop-p">Jika penganalisis kedua mengesahkan keputusan positif tersebut, sampel kapsul hijau akan dilaporkan sebagai positif Dexamethasone dan keputusan adalah Gagal.</p><p class="sop-p">Tindakan bagi Keputusan Negatif Saringan GCMS (khusus untuk Saringan Steroid Komprehensif)</p><p class="sop-p">Bagi sampel kapsul merah yang tidak dikesan dengan steroid paa saringan awal (SPE <span class="kw-ph">pH3</span>):</p><p class="sop-p">Sampel tersebut perlu diteruskan dengan ujian penyaringan steroid komprehensif menggunakan kaedah HPLC (Rujuk Prosedur PKKK/300/UAT/047).</p><p class="sop-p">Penyediaan sampel baru untuk kapsul merah hendaklah dijalankan melalui pengekstrakan semula pada kondisi optimum SPE <span class="kw-ph">pH 7</span>.</p><p class="sop-p">Ekstrak SPE <span class="kw-ph">pH 7</span> yang dihasilkan akan digunakan untuk analisis HPLC.</p><p class="sop-p">Ujian pengesanan sampel kosmetik</p><p class="sop-p">Ujian pengesanan sampel kosmetik melalui teknik kromatografi</p><p class="sop-p">Ujian ulangan dijalankan oleh penganalisa berbeza pada hari yang berlainan.</p><p class="sop-p">Ujian ulangan dijalankan dengan menyediakan sampel dalam duplikasi dan satu sampel spiked pada kepekatan yang telah ditetapkan.</p><p class="sop-p">Setiap sampel yang disediakan pada para ii perlu diselang dengan larutan diluent, sebelum dan selepas sampel.</p><p class="sop-p">Ujian kandungan melalui teknik kromatografi</p><p class="sop-p">Ujian ulangan dijalankan oleh penganalisis berbeza pada hari yang berlainan.</p><p class="sop-p">Ujian ulangan dijalankan dengan menyediakan sampel dalam duplikasi.</p><p class="sop-p">Pelaporan keputusan bagi sampel yang tidak mencukupi</p><p class="sop-p">Sekiranya proses penyediaan sampel bagi analisis kali pertama tidak dapat dijalankan kerana sampel yang diterima tidak mencukupi, sampel akan dilaporkan sebagai ‘LULUS’ dengan ulasan pada laporan ujian dan sistem Quest.</p><p class="sop-p">Jika baki sampel tidak mencukupi untuk ujian ulangan pertama atau kedua, sampel akan dilaporkan sebagai ‘TIDAK LULUS’:</p><p class="sop-p">Apabila laporan analisis pertama menunjukkan sampel dikesan/tidak dikesan bahan yang dianalisa atau melebihi had yang telah ditetapkan dengan ulasan pada laporan ujian dan sistem Quest.</p><p class="sop-p">Apabila laporan analisis pertama &amp; ujian ulangan pertama menunjukkan sampel dikesan/tidak dikesan bahan yang dianalisa atau kesemua bacaan melebihi had yang telah ditetapkan dengan ulasan pada laporan ujian.</p><p class="sop-p">6.1.3.5 Ujian Penentuan Lovastatin dalam produk tradisional dengan menggunakan HPLC (PKKK/200/UP/006)</p><p class="sop-p">Ujian penyaringan pertama</p><p class="sop-p">Penganalisis pertama menjalankan pengujian menggunakan teknik pengujian HPLC. Sekiranya keputusan yang diperolehi adalah gagal, ujian ulangan perlu dijalankan.</p><p class="sop-p">Ujian penyaringan kedua</p><p class="sop-p">Penganalisis kedua menjalankan ujian pengesahan menggunakan teknik pengujian yang sama dengan ujian penyaringan pertama iaitu HPLC dengan menggunakan penyediaan sampel yang baru. Jalankan pengujian pada hari yang berlainan dengan ujian penyaringan pertama.</p><p class="sop-p">Sekiranya ujian ulangan (penyaringan kedua) tidak dapat dijalankan atas sebab seperti baki sampel tidak mencukupi atau telah habis, ketiadaan piawai rujukan untuk pengesahan semasa ujian penyaringan kedua, keputusan ujian akan dilaporkan sebagai ‘Tidak lulus’ tetapi pada bahagian ulasan (dalam laporan ujian) dan bahagian Remarks (dalam QUEST) akan dicatatkan ‘Ujian pengesahan tidak dapat dijalankan kerana baki sampel tidak mencukupi / Ujian pengesahan tidak dapat dijalankan kerana ketiadaan piawai rujukan bahan tersebut. Keputusan yang diperolehi adalah berdasarkan perbandingan dangan Library alat sahaja.</p><p class="sop-p">Sekiranya keputusan ujian ulangan (penyaringan kedua) didapati lulus, ujian ulangan (penyaringan ketiga) akan dijalankan.</p><p class="sop-p">Keputusan ujian secara keseluruhannya akan dilaporkan sebagai lulus, andai keputusan ujian penyaringan ketiga adalah lulus. Sekiranya keputusan ujian penyaringan ketiga adalah gagal, keputusan keseluruhan sampel tersebut akan dilaporkan sebagai gagal.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-002-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
+                          <label for="step-002-2" class="sop-step-title">
+                            6.2 Pematuhan Kepada Semua Parameter Ujian
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-002-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
+                          <label for="step-002-3" class="sop-step-title">
+                            6.2.1	Apabila sesuatu sampel itu didapati gagal ujian penyaringan, Pegawai Farmasi perlulah memastikan semua parameter berikut dipatuhi:
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Tarikh kalibrasi &amp; servis PPM alat yang digunakan adalah mengikut jadual</p><p class="sop-p">Ujian dijalankan mengikut tatacara yang ditetapkan</p><p class="sop-p">Bagi Penentuan Kandungan Lovastatin dalam Produk Tradisional, pemakaian Decision rule telah dilaksanakan</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-002-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
+                          <label for="step-002-4" class="sop-step-title">
+                            6.2.2 	Pengiraan Decision rule adalah seperti berikut (Decision rule hanya terpakai untuk tatacara yang diakreditasi oleh MS ISO/IEC 17025:2017):
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">For Lovastatin content measurement: The measurement result, y, is obtained with a known standard uncertainty, u(y). A decision rule can be established by considering a guard band. The strategy is to directly compare the measurement results with the acceptance zone limit. If the results fall within the acceptance zone, they are considered accepted. If the results fall outside the acceptance zone, they are deemed non-compliant.</p><p class="sop-p">For a single tolerance upper limit (TU): When the standard uncertainty, u(y), and the probability of type 1 error (α) are known, the guard band upper limit can be derived using the Gaussian probability density function (PDF), as shown in Figure 1.</p><p class="sop-p">Figure 1. Derivation of guard band upper limit, GU (y: measurement result; TU: Single tolerance upper limit; u(y): Standard uncertainty; α: probability of type 1 error)</p><p class="sop-p">Critical value tables for normal PDF: For α is 0.05, the critical value [Φ-1 (1-α)] is 1.645. This value can also be derived using software functions. For instance, in MS Excel, the formula NORMINV (probability, mean, standard deviation), namely NORMINV (0.95, 0, 1) will give 1.645.</p><p class="sop-p">For guarded acceptance, the guard band upper limit can be calculated as:</p><p class="sop-p">GU1 = TU - u(y).[Φ-1 (1- α)]</p><p class="sop-p">For guarded rejection, the guard band upper limit can be calculated as below:</p><p class="sop-p">GU2 = TU + u(y).[Φ-1 (1- α)]</p><p class="sop-p">GU: Guard band upper limit</p><p class="sop-p">TU: Tolerance upper limit</p><p class="sop-p">u(y): Standard uncertainty</p><p class="sop-p">α: probability of type 1 error</p><p class="sop-p">Figure 2: Guard band for single (upper) tolerance and guarded acceptance defined with an expanded uncertainty of 95%</p><p class="sop-p">Contoh pengiraan had Lovastatin dalam kapsul:</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-002-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
+                          <label for="step-002-5" class="sop-step-title">
+                            6.2.3	Penentuan Decision Rule untuk ujian had lovastatin dalam kapsul adalah berdasarkan nilai Measurement of Uncertainty (MOU), di mana nilai MOU akan dikaji semula setiap 2 tahun.
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Table 1: Statement of conformity</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-002-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
+                          <label for="step-002-6" class="sop-step-title">
+                            6.2.4	Sila rujuk Table 1 untuk Statement of Conformity
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-002-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
+                          <label for="step-002-7" class="sop-step-title">
+                            6.2.5	Melaporkan keputusan ujian yang gagal bagi analisis yang menggunapakai Decision Rule adalah seperti berikut:
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">6.2.5.1	Keputusan ujian mestilah dilaporkan dalam format:</p><p class="sop-p">“Keputusan pengujian + Expanded Uncertainty”</p><p class="sop-p">6.2.5.2	Kenyataan akhir keputusan yang gagal adalah:</p><p class="sop-p">“The uncertainty with the result was calculated using a coverage factor of 2 and is equivalent to a confidence level of approximately 95%”. The probability that the limit of Lovastatin in traditional product has exceeded is at least 95%.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-002-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/002')">
+                          <label for="step-002-8" class="sop-step-title">
+                            6.3 Pengesahan Ujian
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">Keputusan ujian GAGAL perlu disahkan oleh Ketua Unit dan Ketua Seksyen.</p><p class="sop-p">Sekiranya keputusan penyaringan adalah meragukan, ujian ulangan di atas</p><p class="sop-p">arahan Ketua Unit atau Ketua Seksyen boleh dijalankan.</p>
+                      </div>
+                    </div>
+                    
           </div>
         </div>
         
-        <div class="sop-section-block" id="sec-2">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 7.  REKOD KUALITI
+        <div class="sop-section-container sec-theme-indigo" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">📝</span>
+            <h2>7.  REKOD KUALITI</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/002A	Laporan Siasatan Untuk Sampel Gagal</p><p class="sop-p">UP/002B	Laporan Siasatan Sampel Kosmetik Tidak Lulus Ujian Kromatografi</p>
           </div>
         </div>
         
 
     <!-- Tables -->
-    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+    <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
             <span class="table-tag">JADUAL 1</span>
@@ -486,7 +609,7 @@
             </table>
           </div>
         </div>
-        
+        </div></div>
 
   </div>
 

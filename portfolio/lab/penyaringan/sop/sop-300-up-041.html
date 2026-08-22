@@ -8,143 +8,278 @@
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
-  /* Enhanced SOP Interactive Styling */
+  /* ========================================================= */
+  /* HIGH-CONTRAST, ULTRA-READABLE SOP TYPOGRAPHY & LAYOUT     */
+  /* ========================================================= */
+  
+  :root {
+    --text-heading: #090d16;
+    --text-body: #1e293b;
+    --text-muted: #475569;
+    --card-surface: #ffffff;
+    --card-border-subtle: #cbd5e1;
+    --step-border: #94a3b8;
+  }
+
+  [data-theme="dark"] {
+    --text-heading: #f8fafc;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    --card-surface: rgba(15, 23, 42, 0.85);
+    --card-border-subtle: rgba(255, 255, 255, 0.12);
+    --step-border: rgba(255, 255, 255, 0.18);
+  }
+
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
     box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
+
+  /* Header Table */
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
-    background: var(--glass); border-radius: 12px; overflow: hidden;
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.88rem;
+    background: var(--card-surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border-subtle);
+    box-shadow: var(--shadow-sm);
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
+    border: 1px solid var(--card-border-subtle); padding: 0.85rem 1.1rem; vertical-align: middle; color: var(--text-body);
   }
-  .sop-sec-title {
-    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
-    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
+  .sop-header-table strong { color: var(--text-heading); font-weight: 700; }
+
+  /* ========================================================= */
+  /* SECTION CONTAINERS WITH HIGH-CONTRAST COLORED HEADERS    */
+  /* ========================================================= */
+  .sop-section-container {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 16px;
+    margin-bottom: 2.2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
-  .sop-p {
-    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
+  .sop-section-container:hover {
+    box-shadow: var(--shadow-md);
   }
-  .sop-step-box {
-    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
-    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
+
+  .sop-section-header {
+    padding: 0.9rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    font-weight: 800;
   }
-  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
-  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: #ffffff;
+  }
+  .sec-icon {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Distinct Section Color Themes */
+  .sec-theme-cyan .sop-section-header {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+  }
+  .sec-theme-purple .sop-section-header {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  }
+  .sec-theme-mint .sop-section-header {
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+  .sec-theme-amber .sop-section-header {
+    background: linear-gradient(135deg, #d97706, #b45309);
+  }
+  .sec-theme-indigo .sop-section-header {
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+  }
+
+  .sop-section-body {
+    padding: 1.6rem 1.8rem;
+  }
+
+  /* ========================================================= */
+  /* STEP CARDS (HIGH CONTRAST & INTERACTIVE)                  */
+  /* ========================================================= */
+  .sop-step-card {
+    background: var(--glass);
+    border: 1px solid var(--step-border);
+    border-left: 5px solid var(--cyan);
+    border-radius: 12px;
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .sop-step-card:hover {
+    border-color: var(--cyan);
+    border-left-color: var(--purple);
+    background: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .step-card-header {
+    padding: 0.85rem 1.2rem;
+    background: rgba(2, 132, 199, 0.08);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .step-check-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
   .sop-task-check {
-    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--cyan);
+    flex-shrink: 0;
   }
-  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
+  .sop-step-title {
+    cursor: pointer;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    font-family: var(--font-main);
+  }
+  .step-card-body {
+    padding: 1.1rem 1.3rem;
+  }
+
+  /* Typography */
+  .sop-p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 0.8rem;
+  }
   .sop-list-item {
-    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
-    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    margin-left: 0.8rem;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    margin-bottom: 0.5rem;
   }
-  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-bullet {
+    color: var(--cyan);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
   .sop-list-text { flex: 1; }
 
   /* Keyword Highlights */
-  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
-  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
-  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-flow { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wave { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wt { color: #059669; font-weight: 700; font-family: var(--font-mono); background: rgba(5, 150, 105, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-vol { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-time { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-limit { color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-ph { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
 
   /* Visual Workflow Timeline */
   .wf-track {
     display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 1.8rem;
-    background: var(--glass); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); overflow-x: auto;
+    background: var(--card-surface); padding: 1.2rem 1.4rem; border-radius: 16px; border: 1px solid var(--card-border-subtle); overflow-x: auto;
+    box-shadow: var(--shadow-sm);
   }
   .wf-step { display: flex; align-items: center; gap: 0.6rem; min-width: 140px; }
   .wf-node {
-    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    width: 34px; height: 34px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
     color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
-    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+    font-size: 0.9rem; font-weight: 800; flex-shrink: 0;
   }
-  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
-  .wf-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }
-  .wf-arrow { color: var(--text-dim); font-size: 1rem; opacity: 0.6; flex-shrink: 0; }
+  .wf-name { font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--text-heading); }
+  .wf-desc { font-size: 0.74rem; color: var(--text-muted); line-height: 1.3; }
+  .wf-arrow { color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
 
   /* Executive Summary & Chips */
   .summary-analytes {
-    margin: 1rem 0 1.4rem; padding: 0.9rem 1.2rem; background: var(--glass); border-radius: 12px;
-    border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 0.5rem;
+    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
+    border: 1px solid var(--card-border-subtle); display: flex; flex-direction: column; gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
   }
-  .sum-lbl { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
-  .chips-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .sum-lbl { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; }
+  .chips-container { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .analite-chip {
-    padding: 0.3rem 0.65rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
-    color: var(--purple); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 6px; font-weight: 600;
+    padding: 0.35rem 0.75rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
+    color: var(--purple); font-family: var(--font-mono); font-size: 0.78rem; border-radius: 8px; font-weight: 600;
   }
 
   /* Bench Notes Card */
   .bench-tips-card {
-    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px;
-    padding: 1.2rem; margin-bottom: 1.8rem;
+    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.35); border-radius: 14px;
+    padding: 1.3rem 1.5rem; margin-bottom: 1.8rem; box-shadow: var(--shadow-sm);
   }
-  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--amber); margin-bottom: 0.6rem; }
-  .tips-list { margin-left: 1.5rem; font-size: 0.88rem; line-height: 1.65; color: var(--text-main); }
+  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: #d97706; margin-bottom: 0.7rem; font-weight: 700; }
+  .tips-list { margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--text-body); }
 
   /* Progress Tracker */
   .progress-card {
     background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
-    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
-    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1.1rem 1.5rem;
+    margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    box-shadow: var(--shadow-sm);
   }
-  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
-  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
-  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-left { display: flex; flex-direction: column; gap: 0.35rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 280px; max-width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
-  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }
 
   /* TOC Pills */
-  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
   .toc-pill {
-    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
-    text-decoration: none; transition: all 0.2s ease;
+    padding: 0.45rem 0.9rem; background: var(--card-surface); border: 1px solid var(--card-border-subtle);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-body);
+    text-decoration: none; transition: all 0.2s ease; box-shadow: var(--shadow-sm); font-weight: 600;
   }
-  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
 
   /* Table Cards */
   .table-card {
-    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
-    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
+    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
   }
   .table-card-header {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
-    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
   }
-  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
-  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
   .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
+    border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
   }
-  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
   .seq-sst { background: var(--purple-dim); }
   .seq-iqc { background: var(--cyan-dim); }
-  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
     .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
-    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
+    .sop-section-header { background: #eee !important; color: #000 !important; }
+    .sop-section-header h2 { color: #000 !important; }
+    .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -185,8 +320,8 @@
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.2rem">PKKK/300/UP/041 <span class="g">HPLC Shimadzu Series Prominence-i (HPLC 3)</span></h1>
-    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
+    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/041 <span class="g">HPLC Shimadzu Series Prominence-i (HPLC 3)</span></h1>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
@@ -195,7 +330,7 @@
           <div class="wf-node">1</div>
           <div class="wf-info">
             <div class="wf-name">1. Reagen & Piawai</div>
-            <div class="wf-desc">Penyediaan fasa bergerak, stok & siri kalibrasi</div>
+            <div class="wf-desc">Penyediaan fasa bergerak, stok & kalibrasi</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -211,7 +346,7 @@
           <div class="wf-node">3</div>
           <div class="wf-info">
             <div class="wf-name">3. Persediaan Alat</div>
-            <div class="wf-desc">Purging saluran, autotune & penstabilan baseline</div>
+            <div class="wf-desc">Purging saluran, autotune & baseline</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -219,7 +354,7 @@
           <div class="wf-node">4</div>
           <div class="wf-info">
             <div class="wf-name">4. Suntikan Batch</div>
-            <div class="wf-desc">Turutan Blank, SST (n=6), Sampel & IQC Bracket</div>
+            <div class="wf-desc">Blank, SST (n=6), Sampel & IQC</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -227,7 +362,7 @@
           <div class="wf-node">5</div>
           <div class="wf-info">
             <div class="wf-name">5. Verifikasi & Rekod</div>
-            <div class="wf-desc">Padanan RT, spektrum UV/MS & Laporan UP/005</div>
+            <div class="wf-desc">Padanan RT, spektrum UV/MS & Laporan</div>
           </div>
         </div>
         </div>
@@ -235,7 +370,7 @@
   <!-- Target Analytes / Quick Chips -->
   
         <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran:</span>
+          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
           <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
         </div>
         
@@ -268,10 +403,10 @@
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.2rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.72rem;color:var(--text-muted);font-weight:600">PUSAT KAWALAN KUALITI</span>
         </td>
-        <td colspan="2"><strong>ARAHAN KERJA: HPLC SHIMADZU SERIES PROMINENCE-I (HPLC 3)</strong></td>
+        <td colspan="2"><strong style="font-size:0.95rem">ARAHAN KERJA: HPLC SHIMADZU SERIES PROMINENCE-I (HPLC 3)</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/041</td>
@@ -284,15 +419,16 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
 
-    <!-- Sections -->
+    <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-block" id="sec-1">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>1.0 PENGENALAN DOKUMEN</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number from PKK/300/KOS/013 to PKK/300/HMS/011</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Change document number from PKK/300/HMS/011 to PKKK/300/HMS/011</p><p class="sop-p">Amend paragraph 5.0 Responsibilities</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Change document number from PKKK/300/HMS/011 to PKKK/300/KOS/007</p><p class="sop-p">Amend paragraph 5.0 Responsibilities</p><p class="sop-p">Issue 4 Revision1  :</p><p class="sop-p">Change document number from PKKK/300/KOS/007 to PKKK/300/UP/041.</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026.</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for High Performance Liquid Chromatography (HPLC) in the laboratory.</p><p class="sop-p">SCOPE</p><p class="sop-p">This guide shall be used for the operation of HPLC Shimadzu Series Prominence-i</p><p class="sop-p">DEFINITION</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p><p class="sop-p">RESPONSIBILITIES</p><p class="sop-p">PROCEDURE</p><p class="sop-p">Section A: Real Time – Data Acquisition</p><p class="sop-p">Starting Up LC</p><p class="sop-p">Turning on the POWER ON.</p><p class="sop-p">At the PC, double click on “LabSolutions” icon.</p><p class="sop-p">The User I.D: Admin, while the Password is left blank. Click “OK”.</p><p class="sop-p">In the menu, click “Instrument”, then double click to open Real Time Analysis.</p><p class="sop-p">User will then hear a ‘Beep’ sound, it is indicating that the instrument is connected with the software.</p><p class="sop-p">If the system shows LC – Not Connected, user can check the System Configuration at Assistant Bar. Make sure the correct modules are registered in the right hand side box.</p><p class="sop-p">The “RealTime” access the online analysis application: method settings and actual data collection.</p><p class="sop-p">The “RealTime” window will then be open. Beeps can be heard.</p><p class="sop-p">Insert the column inside the column oven.</p><p class="sop-p">Please make sure the column flow direction is correct by following the column information provided by the suppliers.</p><p class="sop-p">Make sure that the correct detector tubing is connected to the column outlet. (Each detector has its own tubing)</p><p class="sop-p">Please make sure the solvent line in each pump (A, B, C, &amp; D) is inserted into the correct mobile phase for that method :</p><p class="sop-p">If analysis method only uses mobile phase that consist of water and organic solvents (MEOH or ACN):</p><p class="sop-p">The system can be straight flush with the mobile phase that is required by the analysis method.</p><p class="sop-p">If buffer or acidify solvent is to be used for mobile phase:</p><p class="sop-p">The system must 1st be flush with Water 95% with 5% organic solvent</p><p class="sop-p">( Acetonitrile or Methanol )</p>
                 <div class="sop-list-item">
                   <span class="sop-bullet">▹</span>
@@ -334,21 +470,26 @@
                   <span class="sop-list-text">3) After dragging the data, the data will be presented at the report template. Finally click on “Print” button to start the printing.</span>
                 </div>
                 <p class="sop-p">How create own report template:</p><p class="sop-p">Click on “Report format”.</p><p class="sop-p">After the template is created, it can be save for future use by going to File, select “Save Template As”.</p><p class="sop-p">To Print, user must drag and drop the data to the template:</p><p class="sop-p">Finally click on the “Print” icon.</p><p class="sop-p">Performance Check</p><p class="sop-p">Performance Check will be carried out in every analysis to ensure the sensitivity for the instrument is always at its optimum level. It is carried out by performing the System Suitability Test using the Standard solution/ Mix Standard Solution and to ensure that the parameters below are fulfilled:</p><p class="sop-p">Tailing factor &lt; 2.0</p><p class="sop-p">Theoretical plates &gt; 1500</p><p class="sop-p">QUALITY RECORD</p><p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-041-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/041')">
-                    <label for="step-041-1" class="sop-step-label">
-                      <strong>8.0  FORMS</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">None</p>
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-041-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/041')">
+                          <label for="step-041-1" class="sop-step-title">
+                            8.0  FORMS
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">None</p>
+                      </div>
+                    </div>
+                    
           </div>
         </div>
         
 
     <!-- Tables -->
-    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+    <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
             <span class="table-tag">JADUAL 1</span>
@@ -384,7 +525,7 @@
             </table>
           </div>
         </div>
-        
+        </div></div>
 
   </div>
 

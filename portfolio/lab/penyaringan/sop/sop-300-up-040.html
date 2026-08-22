@@ -8,143 +8,278 @@
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
-  /* Enhanced SOP Interactive Styling */
+  /* ========================================================= */
+  /* HIGH-CONTRAST, ULTRA-READABLE SOP TYPOGRAPHY & LAYOUT     */
+  /* ========================================================= */
+  
+  :root {
+    --text-heading: #090d16;
+    --text-body: #1e293b;
+    --text-muted: #475569;
+    --card-surface: #ffffff;
+    --card-border-subtle: #cbd5e1;
+    --step-border: #94a3b8;
+  }
+
+  [data-theme="dark"] {
+    --text-heading: #f8fafc;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    --card-surface: rgba(15, 23, 42, 0.85);
+    --card-border-subtle: rgba(255, 255, 255, 0.12);
+    --step-border: rgba(255, 255, 255, 0.18);
+  }
+
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
     box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
+
+  /* Header Table */
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
-    background: var(--glass); border-radius: 12px; overflow: hidden;
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.88rem;
+    background: var(--card-surface); border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border-subtle);
+    box-shadow: var(--shadow-sm);
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
+    border: 1px solid var(--card-border-subtle); padding: 0.85rem 1.1rem; vertical-align: middle; color: var(--text-body);
   }
-  .sop-sec-title {
-    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
-    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
+  .sop-header-table strong { color: var(--text-heading); font-weight: 700; }
+
+  /* ========================================================= */
+  /* SECTION CONTAINERS WITH HIGH-CONTRAST COLORED HEADERS    */
+  /* ========================================================= */
+  .sop-section-container {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 16px;
+    margin-bottom: 2.2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
-  .sop-p {
-    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
+  .sop-section-container:hover {
+    box-shadow: var(--shadow-md);
   }
-  .sop-step-box {
-    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
-    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
+
+  .sop-section-header {
+    padding: 0.9rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    font-weight: 800;
   }
-  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
-  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: #ffffff;
+  }
+  .sec-icon {
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Distinct Section Color Themes */
+  .sec-theme-cyan .sop-section-header {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+  }
+  .sec-theme-purple .sop-section-header {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  }
+  .sec-theme-mint .sop-section-header {
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+  .sec-theme-amber .sop-section-header {
+    background: linear-gradient(135deg, #d97706, #b45309);
+  }
+  .sec-theme-indigo .sop-section-header {
+    background: linear-gradient(135deg, #4f46e5, #3730a3);
+  }
+
+  .sop-section-body {
+    padding: 1.6rem 1.8rem;
+  }
+
+  /* ========================================================= */
+  /* STEP CARDS (HIGH CONTRAST & INTERACTIVE)                  */
+  /* ========================================================= */
+  .sop-step-card {
+    background: var(--glass);
+    border: 1px solid var(--step-border);
+    border-left: 5px solid var(--cyan);
+    border-radius: 12px;
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .sop-step-card:hover {
+    border-color: var(--cyan);
+    border-left-color: var(--purple);
+    background: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .step-card-header {
+    padding: 0.85rem 1.2rem;
+    background: rgba(2, 132, 199, 0.08);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .step-check-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
   .sop-task-check {
-    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--cyan);
+    flex-shrink: 0;
   }
-  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
+  .sop-step-title {
+    cursor: pointer;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    font-family: var(--font-main);
+  }
+  .step-card-body {
+    padding: 1.1rem 1.3rem;
+  }
+
+  /* Typography */
+  .sop-p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 0.8rem;
+  }
   .sop-list-item {
-    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
-    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    margin-left: 0.8rem;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    margin-bottom: 0.5rem;
   }
-  .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-bullet {
+    color: var(--cyan);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
   .sop-list-text { flex: 1; }
 
   /* Keyword Highlights */
-  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
-  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
-  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
-  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
-  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
-  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-flow { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wave { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-wt { color: #059669; font-weight: 700; font-family: var(--font-mono); background: rgba(5, 150, 105, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-vol { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-time { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-limit { color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-ph { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
 
   /* Visual Workflow Timeline */
   .wf-track {
     display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 1.8rem;
-    background: var(--glass); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--glass-border); overflow-x: auto;
+    background: var(--card-surface); padding: 1.2rem 1.4rem; border-radius: 16px; border: 1px solid var(--card-border-subtle); overflow-x: auto;
+    box-shadow: var(--shadow-sm);
   }
   .wf-step { display: flex; align-items: center; gap: 0.6rem; min-width: 140px; }
   .wf-node {
-    width: 32px; height: 32px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
+    width: 34px; height: 34px; border-radius: 50%; background: var(--cyan-dim); border: 2px solid var(--cyan);
     color: var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
-    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+    font-size: 0.9rem; font-weight: 800; flex-shrink: 0;
   }
-  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
-  .wf-desc { font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }
-  .wf-arrow { color: var(--text-dim); font-size: 1rem; opacity: 0.6; flex-shrink: 0; }
+  .wf-name { font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--text-heading); }
+  .wf-desc { font-size: 0.74rem; color: var(--text-muted); line-height: 1.3; }
+  .wf-arrow { color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
 
   /* Executive Summary & Chips */
   .summary-analytes {
-    margin: 1rem 0 1.4rem; padding: 0.9rem 1.2rem; background: var(--glass); border-radius: 12px;
-    border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 0.5rem;
+    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
+    border: 1px solid var(--card-border-subtle); display: flex; flex-direction: column; gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
   }
-  .sum-lbl { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
-  .chips-container { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .sum-lbl { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; }
+  .chips-container { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .analite-chip {
-    padding: 0.3rem 0.65rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
-    color: var(--purple); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 6px; font-weight: 600;
+    padding: 0.35rem 0.75rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
+    color: var(--purple); font-family: var(--font-mono); font-size: 0.78rem; border-radius: 8px; font-weight: 600;
   }
 
   /* Bench Notes Card */
   .bench-tips-card {
-    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.3); border-radius: 14px;
-    padding: 1.2rem; margin-bottom: 1.8rem;
+    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.35); border-radius: 14px;
+    padding: 1.3rem 1.5rem; margin-bottom: 1.8rem; box-shadow: var(--shadow-sm);
   }
-  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.92rem; color: var(--amber); margin-bottom: 0.6rem; }
-  .tips-list { margin-left: 1.5rem; font-size: 0.88rem; line-height: 1.65; color: var(--text-main); }
+  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: #d97706; margin-bottom: 0.7rem; font-weight: 700; }
+  .tips-list { margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--text-body); }
 
   /* Progress Tracker */
   .progress-card {
     background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
-    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
-    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1.1rem 1.5rem;
+    margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    box-shadow: var(--shadow-sm);
   }
-  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
-  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
-  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-left { display: flex; flex-direction: column; gap: 0.35rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 280px; max-width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
   .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
-  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }
 
   /* TOC Pills */
-  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
   .toc-pill {
-    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
-    text-decoration: none; transition: all 0.2s ease;
+    padding: 0.45rem 0.9rem; background: var(--card-surface); border: 1px solid var(--card-border-subtle);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-body);
+    text-decoration: none; transition: all 0.2s ease; box-shadow: var(--shadow-sm); font-weight: 600;
   }
-  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
 
   /* Table Cards */
   .table-card {
-    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
-    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
+    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
   }
   .table-card-header {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
-    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
   }
-  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
-  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
   .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
+    border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
   }
-  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
   .seq-sst { background: var(--purple-dim); }
   .seq-iqc { background: var(--cyan-dim); }
-  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
     .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
-    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
+    .sop-section-header { background: #eee !important; color: #000 !important; }
+    .sop-section-header h2 { color: #000 !important; }
+    .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -185,8 +320,8 @@
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.2rem">PKKK/300/UP/040 <span class="g">GCMS Shimadzu QP2010 Ultra</span></h1>
-    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: GC-MS</div>
+    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/040 <span class="g">GCMS Shimadzu QP2010 Ultra</span></h1>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: GC-MS</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
@@ -195,7 +330,7 @@
           <div class="wf-node">1</div>
           <div class="wf-info">
             <div class="wf-name">1. Reagen & Piawai</div>
-            <div class="wf-desc">Penyediaan fasa bergerak, stok & siri kalibrasi</div>
+            <div class="wf-desc">Penyediaan fasa bergerak, stok & kalibrasi</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -211,7 +346,7 @@
           <div class="wf-node">3</div>
           <div class="wf-info">
             <div class="wf-name">3. Persediaan Alat</div>
-            <div class="wf-desc">Purging saluran, autotune & penstabilan baseline</div>
+            <div class="wf-desc">Purging saluran, autotune & baseline</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -219,7 +354,7 @@
           <div class="wf-node">4</div>
           <div class="wf-info">
             <div class="wf-name">4. Suntikan Batch</div>
-            <div class="wf-desc">Turutan Blank, SST (n=6), Sampel & IQC Bracket</div>
+            <div class="wf-desc">Blank, SST (n=6), Sampel & IQC</div>
           </div>
         </div>
         <div class="wf-arrow">➔</div>
@@ -227,7 +362,7 @@
           <div class="wf-node">5</div>
           <div class="wf-info">
             <div class="wf-name">5. Verifikasi & Rekod</div>
-            <div class="wf-desc">Padanan RT, spektrum UV/MS & Laporan UP/005</div>
+            <div class="wf-desc">Padanan RT, spektrum UV/MS & Laporan</div>
           </div>
         </div>
         </div>
@@ -235,7 +370,7 @@
   <!-- Target Analytes / Quick Chips -->
   
         <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran:</span>
+          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
           <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
         </div>
         
@@ -268,10 +403,10 @@
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.2rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.72rem;color:var(--text-muted);font-weight:600">PUSAT KAWALAN KUALITI</span>
         </td>
-        <td colspan="2"><strong>ARAHAN KERJA: GCMS SHIMADZU QP2010 ULTRA</strong></td>
+        <td colspan="2"><strong style="font-size:0.95rem">ARAHAN KERJA: GCMS SHIMADZU QP2010 ULTRA</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/040</td>
@@ -284,121 +419,165 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">2.0	SCOPE</a><a href="#sec-3" class="toc-pill">6.0 PROCEDURE</a><a href="#sec-4" class="toc-pill">7.0	QUALITY RECORD</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data ({len(tables_data)})</a></div>
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">2.0	SCOPE</a><a href="#sec-3" class="toc-pill">6.0 PROCEDURE</a><a href="#sec-4" class="toc-pill">7.0	QUALITY RECORD</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (3)</a></div>
 
-    <!-- Sections -->
+    <!-- Sections (High-Contrast Colored Blocks) -->
     
-        <div class="sop-section-block" id="sec-1">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+        <div class="sop-section-container sec-theme-cyan" id="sec-1">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>1.0 PENGENALAN DOKUMEN</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">AMENDMENT:</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to the ISO 9001: 2015 version and the renaming of the institution from National Pharmaceutical Control Bureau (NPCB) to National Pharmaceutical Regulatory Agency (NPRA). Therefore, the original document is obsolete and this document is published as Issue 1.</p><p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number from PKK/300/KOS/012 to PKK/300/HMS/010</p><p class="sop-p">Update on the title</p><p class="sop-p">Issue 2 Revision 1 :</p><p class="sop-p">Update on name of agency from National Pharmaceutical Regulatory Agency (NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Change language on 6.2 Performance Check from Bahasa Melayu to English</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/010 to PKKK/300/HMS/010</p><p class="sop-p">Update paragraph 5. Responsibilities</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/010 to PKKK/300/KOS/006</p><p class="sop-p">Update paragraph 5. Responsibilities</p><p class="sop-p">Issue 4 Revision 1 :</p><p class="sop-p">Update document number from PKKK/300/KOS/006 to PKKK/300/UP/040.</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026.</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-040-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
-                    <label for="step-040-1" class="sop-step-label">
-                      <strong>1.0 	PURPOSE</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">This document is intended to establish a standard operating manual for Gas Chromatography Mass Spectrometer (GCMS) in the laboratory.</p>
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-040-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+                          <label for="step-040-1" class="sop-step-title">
+                            1.0 	PURPOSE
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">This document is intended to establish a standard operating manual for Gas Chromatography Mass Spectrometer (GCMS) in the laboratory.</p>
+                      </div>
+                    </div>
+                    
           </div>
         </div>
         
-        <div class="sop-section-block" id="sec-2">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 2.0	SCOPE
+        <div class="sop-section-container sec-theme-cyan" id="sec-2">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>2.0	SCOPE</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">This guide shall be used for the operation of GCMS Shimadzu QP2010 Ultra</p>
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-040-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
-                    <label for="step-040-2" class="sop-step-label">
-                      <strong>3.0	DEFINITION</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-040-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
-                    <label for="step-040-3" class="sop-step-label">
-                      <strong>3.1 GCMS – Gas Chromatography Mass Spectrometer</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-040-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
-                    <label for="step-040-4" class="sop-step-label">
-                      <strong>3.2 FWHM – Full width at half maximum</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-040-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
-                    <label for="step-040-5" class="sop-step-label">
-                      <strong>3.3 UPS – Uninterrupted Power Supply</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-040-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
-                    <label for="step-040-6" class="sop-step-label">
-                      <strong>3.4 GC – Gas Chromatography</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-040-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
-                    <label for="step-040-7" class="sop-step-label">
-                      <strong>3.5 MS – Mass Spectrometer</strong>
-                    </label>
-                  </div>
-                </div>
-                
-                <div class="sop-step-box">
-                  <div class="step-check-wrap">
-                    <input type="checkbox" id="step-040-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
-                    <label for="step-040-8" class="sop-step-label">
-                      <strong>4.0	FLOWCHART</strong>
-                    </label>
-                  </div>
-                </div>
-                <p class="sop-p">None</p>
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-040-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+                          <label for="step-040-2" class="sop-step-title">
+                            3.0	DEFINITION
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-040-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+                          <label for="step-040-3" class="sop-step-title">
+                            3.1 GCMS – Gas Chromatography Mass Spectrometer
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-040-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+                          <label for="step-040-4" class="sop-step-title">
+                            3.2 FWHM – Full width at half maximum
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-040-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+                          <label for="step-040-5" class="sop-step-title">
+                            3.3 UPS – Uninterrupted Power Supply
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-040-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+                          <label for="step-040-6" class="sop-step-title">
+                            3.4 GC – Gas Chromatography
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-040-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+                          <label for="step-040-7" class="sop-step-title">
+                            3.5 MS – Mass Spectrometer
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        
+                      </div>
+                    </div>
+                    
+                    <div class="sop-step-card">
+                      <div class="step-card-header">
+                        <div class="step-check-wrap">
+                          <input type="checkbox" id="step-040-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+                          <label for="step-040-8" class="sop-step-title">
+                            4.0	FLOWCHART
+                          </label>
+                        </div>
+                      </div>
+                      <div class="step-card-body">
+                        <p class="sop-p">None</p>
+                      </div>
+                    </div>
+                    
           </div>
         </div>
         
-        <div class="sop-section-block" id="sec-3">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 6.0 PROCEDURE
+        <div class="sop-section-container sec-theme-amber" id="sec-3">
+          <div class="sop-section-header">
+            <span class="sec-icon">🔬</span>
+            <h2>6.0 PROCEDURE</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">(A) Start up GCMS system</p><p class="sop-p">1.   Switch on UPS.</p><p class="sop-p">Switch on any peripheral or accessory equipment connected to the system, before switching on the main GCMS system.</p><p class="sop-p">Switch on any sample pretreatment unit connected to the system before switching on the GCMS system.</p><p class="sop-p">Turn on the power to the GC.</p><p class="sop-p">Turn on the power to the MS.</p><p class="sop-p">Turn on the power to the computer, printer and display.</p><p class="sop-p">Double click &lt;GCMS Real Time Analysis&gt; icon.</p><p class="sop-p">Click OK when Lab Solutions GCMS Solution prompt appears.</p><p class="sop-p">Open the carrier gas cylinder valve to supply carrier gas.</p><p class="sop-p">Click the &lt;Vacuum Control&gt; icon on the &lt;Real Time&gt; assistant bar.</p><p class="sop-p">Click &lt;Auto Startup&gt;.</p><p class="sop-p">When &lt;Completed&gt; is displayed, click &lt;Close&gt;.</p><p class="sop-p">Wait for <span class="kw-time">10 minutes</span> after starting up the vaccum system to check for vaccum leakage.</p><p class="sop-p">Click the &lt;Tuning&gt; icon on the &lt;Real Time&gt; assistant bar.</p><p class="sop-p">Click the &lt;Peak Monitor View&gt; icon on the &lt;Tuning&gt; assistant bar.</p><p class="sop-p">Check for vacuum leaks.</p><p class="sop-p">Click &lt;Monitor Group&gt; and select &lt;Water,Air&gt; from the list.</p><p class="sop-p">Click &lt;Filament On/Off&gt; to turn on the filament. Peaks will be displayed In three windows.</p><p class="sop-p">Change the detector voltage gradually so that the peak height for m/z 18 (water) corresponds to half the height of display window.</p><p class="sop-p">Compare the peak height for m/z 18 (water) and m/z 28 (nitrogen). Check that the peak height for m/z 28 (nitrogen) is not more than twice that for m/z 18 (water).</p><p class="sop-p">Click &lt;Filament On/Off&gt; to turn off filament.</p><p class="sop-p">Close &lt;Tuning&gt; window.</p><p class="sop-p">Click the &lt;Top&gt; icon on the assistant bar.</p><p class="sop-p">(B) Execute Autotuning</p><p class="sop-p">Wait for approximately <span class="kw-time">2 hours</span> (before starting qualitative analysis) or <span class="kw-time">4 hours</span> (before starting quantitative analysis) after starting up the vacuum system and then perform autotuning.</p><p class="sop-p">Click &lt;Tuning&gt; icon on the &lt;Real Time&gt; assistant bar.</p><p class="sop-p">Click the &lt;Peak Monitor View&gt; icon on the &lt;Tuning&gt; assistant bar.</p><p class="sop-p">Select &lt;New Tuning File&gt; on the &lt;File&gt; menu.</p><p class="sop-p">Select the filament to be used.</p><p class="sop-p">Click &lt;Start Auto Tuning&gt; icon on the &lt;Tuning&gt; assistant bar.</p><p class="sop-p">Enter a file name and click &lt;Save&gt;.</p><p class="sop-p">Autotuning starts. When Autotuning is completed, a report is printed.</p><p class="sop-p">Click &lt;Save&gt; on the toolbar.</p><p class="sop-p">(C) Qualitative Analysis</p><p class="sop-p">Start up the &lt;GCMS Real Time Analysis&gt; program.</p><p class="sop-p">Click the &lt;Data Acquisition&gt; icon on the &lt;Real Time&gt; assistant bar.</p><p class="sop-p">Select &lt;New Method File&gt; on the &lt;File&gt; menu.</p><p class="sop-p">Click the &lt;Sampler&gt; tab and specify the number of rinses appropriate for the sample.</p><p class="sop-p">Click the &lt;GC&gt; tab and set the analysis conditions.</p><p class="sop-p">Click the &lt;MS&gt; tab and set the analysis conditions.</p><p class="sop-p">Select &lt;Qualitative Parameters&gt; on the &lt;Method&gt; menu.</p><p class="sop-p">Click the &lt;Similarity Search&gt; tab and set the search conditions.</p><p class="sop-p">Select &lt;Save Method File As&gt; on the &lt;File&gt; menu.</p><p class="sop-p">Enter a file name and click &lt;Save&gt;.</p><p class="sop-p">To run a sample, click the &lt;Data Acquisition&gt; icon on the &lt;Real Time&gt; assistant bar.</p><p class="sop-p">Load a Method File and execute autotuning.</p><p class="sop-p">Click the &lt;Sample Login&gt; icon on the &lt;Acquisition&gt; assistant bar.</p><p class="sop-p">Key in the following :</p><p class="sop-p">Sample Name</p><p class="sop-p">Sample ID</p><p class="sop-p">Data File</p><p class="sop-p">Vial #</p><p class="sop-p">Injection Volume</p><p class="sop-p">Load Tuning File</p><p class="sop-p">Click OK</p><p class="sop-p">Click &lt;Download&gt; icon on the &lt;Acquisition&gt; assistant bar.</p><p class="sop-p">To analyse the data :</p><p class="sop-p">Double click the &lt;GCMS Postrun Analysis&gt; icon.</p><p class="sop-p">Click the &lt;Qualitative&gt; icon on the &lt;Postrun&gt; assistant bar.</p><p class="sop-p">Double click the data file to analyse.</p><p class="sop-p">Specify a range to be enlarged in the chromatogram by dragging the mouse.</p><p class="sop-p">Move the mouse pointer to the peak top and double click.</p><p class="sop-p">To substract the background, click &lt;Spectrum Subtraction&gt; on the toolbar. Double click at the background processing position (red arrow shown).</p><p class="sop-p">Click the &lt;Similarity Search&gt; icon on the &lt;Qualitative&gt; assistant bar.</p><p class="sop-p">Check the similarity search results displayed. Select the checkbox for the applicable compound to enter in the spectrum. Click &lt;Register Spectrum Table&gt;.</p><p class="sop-p">Repeat step (iv) to (viii) for other target compounds.</p><p class="sop-p">Click the &lt;Qualitative Table&gt; icon on the &lt;Qualitative&gt; assistant bar.</p><p class="sop-p">Double click &lt;Done&gt; in the first row of the spectrum process table. &lt;Similarity Search Result&gt; window opens.</p><p class="sop-p">Select the box for the applicable compound to enter a compound name in spectrum table</p><p class="sop-p">Click &lt;Copy marked compound name to the Spectrum Process Table&gt;.</p><p class="sop-p">Repeat step (xi) to (xiii) to search results of all target compounds.</p><p class="sop-p">Close the &lt;Qualitative Table&gt; window and click &lt;Save&gt; on the toolbar.</p><p class="sop-p">Click &lt;Report Format&gt; icon on the &lt;Postrun&gt; assistant bar.</p><p class="sop-p">Click the &lt;New&gt; icon. Select the report template needed.</p><p class="sop-p">Click the &lt;Data&gt; tab under the &lt;Data Explorer&gt; window.</p><p class="sop-p">Select the data to be printed out and drag it into the report template.</p><p class="sop-p">Click &lt;Print&gt;.</p><p class="sop-p">(D) Quantitative Analysis</p><p class="sop-p">Register the retention times and mass spectra of the target compounds in the spectrum table process based on the Qualitative Analysis done earlier.</p><p class="sop-p">Click &lt;Compound Table&gt; icon on the &lt;Postrun&gt; assistant bar.</p><p class="sop-p">From Data Explorer, double click the data file in which the spectrum process table for the target compounds was saved.</p><p class="sop-p">Click the &lt;Wizard(New)&gt; icon on the &lt;Compound Table&gt; assistant bar.</p><p class="sop-p">Select &lt;Use current Spectrum Process Table&gt; and then click &lt;Next&gt;.</p><p class="sop-p">Click &lt;Next&gt;.</p><p class="sop-p">Select a row in the table, check the mass spectrum for each compound and click &lt;Next&gt;.</p><p class="sop-p">Specify the calibration curve type, the quantitative method and other parameters required and click &lt;Next&gt;.</p><p class="sop-p">Make the appropriate settings for concentrations and measurement ions and click &lt;Next&gt;.</p><p class="sop-p">Set the type, compound name, target ion and reference ion for each substance. After entering the required information for all the compounds, click &lt;Next&gt;.</p><p class="sop-p">Click &lt;Finish&gt;.</p><p class="sop-p">Click the &lt;Save Compound Table&gt; icon on the &lt;Compound Table&gt; assistant bar.</p><p class="sop-p">Click &lt;Save&gt;.</p><p class="sop-p">Click the &lt;Create SIM Table[COAST]&gt; icon on the &lt;Compound Table&gt; assistant bar.</p><p class="sop-p">Enter a file name and click &lt;Save&gt;.</p><p class="sop-p">Maximise the &lt;Creation of Automatic SIM Table[COAST] window.</p><p class="sop-p">Select &lt;SIM&gt; and click &lt;Update SIM Table&gt;.</p><p class="sop-p">A SIM Table is created automatically. Check the chromatogram and the SIM table and if no changes are required, click &lt;OK&gt;.</p><p class="sop-p">Start the &lt;GCMS Real Time Analysis&gt; program and click the &lt;Batch Processing&gt; icon on the &lt;Real Time&gt; assistant bar.</p><p class="sop-p">Select &lt;New Batch File&gt; on the &lt;File&gt; menu.</p><p class="sop-p">Click the &lt;Wizard&gt; icon on the &lt;Batch&gt; assistant bar.</p><p class="sop-p">Create a batch table by keying in the following :</p><p class="sop-p">Select &lt;Standard &amp; Unknown&gt;</p><p class="sop-p">Specify the method file to be used</p><p class="sop-p">Select &lt;Quantitative&gt;</p><p class="sop-p">Click &lt;Next&gt;</p><p class="sop-p">Vial#</p><p class="sop-p">Injection Volume</p><p class="sop-p">Average Count</p><p class="sop-p">Click &lt;Next&gt;</p><p class="sop-p">Data File Name</p><p class="sop-p">Click &lt;Next&gt;</p><p class="sop-p">Vial#</p><p class="sop-p">Sample Count</p><p class="sop-p">Injection Volume</p><p class="sop-p">Click &lt;Next&gt;</p><p class="sop-p">Data File Name</p><p class="sop-p">Click &lt;Finish&gt;</p><p class="sop-p">Select &lt;Save Batch File As&gt; on the &lt;File&gt; menu</p><p class="sop-p">Open the folder where the method file is saved, enter a name and save the file</p><p class="sop-p">Set the syringe rinse solvent and samples in the autosampler</p><p class="sop-p">Click the &lt;Start&gt; icon on the &lt;Batch&gt; assistant bar.</p><p class="sop-p">To analyse the data :</p><p class="sop-p">Start the &lt;GCMS Postrun Analysis&gt; program and click the &lt;Calibration Curve&gt; icon on the &lt;Postrun&gt; assistant bar.</p><p class="sop-p">Open the method file used in analysis from Data Explorer</p><p class="sop-p">Drag and drop the result data according to the calibration levels and a line is plotted</p><p class="sop-p">Select a compound in the compound table and click the calibration curve level</p><p class="sop-p">Only after correcting the calibration curves, click &lt;Save&gt; on the toolbar to save the method file</p><p class="sop-p">Click &lt;Report Format&gt; icon on the &lt;Postrun&gt; assistant bar.</p><p class="sop-p">Click the &lt;New&gt; icon. Select the report template needed.</p><p class="sop-p">Click the &lt;Data&gt; tab under the &lt;Data Explorer&gt; window.</p><p class="sop-p">Select the data to be printed out and drag it into the report template.</p><p class="sop-p">Click &lt;Print&gt;.</p><p class="sop-p">(E) Shutting Down GCMS</p><p class="sop-p">Click the &lt;Vacuum Control&gt; icon on the &lt;Real Time&gt; assistant bar.</p><p class="sop-p">Click &lt;Auto Shutdown&gt;.</p><p class="sop-p">When &lt;Completed&gt; is displayed, click &lt;Close&gt;.</p><p class="sop-p">Quit the &lt;GCMS Real Time Analysis&gt; program and all other programs that are running.</p><p class="sop-p">Turn off the power to the computer, printer and display.</p><p class="sop-p">Turn off the power to the MS unit.</p><p class="sop-p">Turn off the power to the GC unit.</p><p class="sop-p">Turn off the accessory/peripheral equipment.</p><p class="sop-p">Performance Check</p><p class="sop-p">Performance Check will be carried out at each analysis to ensure the sensitivity for the instrument is always at its optimum level. It is carried out by performing Autotuning and the parameters below must be fulfilled :</p><p class="sop-p">FWHM value within the range 0.5 to 0.7</p><p class="sop-p">Detector voltage &lt; 2 kV</p><p class="sop-p">Relative Intensity Ratio for m/z 502 &gt; 2%</p><p class="sop-p">Peak Intensity for m/z 69 is at least  2 times in comparison to m/z 28</p>
           </div>
         </div>
         
-        <div class="sop-section-block" id="sec-4">
-          <div class="sop-sec-title">
-            <span class="sec-anchor-dot">◈</span> 7.0	QUALITY RECORD
+        <div class="sop-section-container sec-theme-cyan" id="sec-4">
+          <div class="sop-section-header">
+            <span class="sec-icon">◈</span>
+            <h2>7.0	QUALITY RECORD</h2>
           </div>
-          <div class="sop-sec-content">
+          <div class="sop-section-body">
             <p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p><p class="sop-p">FORMS</p><p class="sop-p">Autotuning Report</p>
           </div>
         </div>
         
 
     <!-- Tables -->
-    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+    <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
         <div class="table-card" id="table-1">
           <div class="table-card-header">
             <span class="table-tag">JADUAL 1</span>
@@ -434,7 +613,7 @@
             </table>
           </div>
         </div>
-        
+        </div></div>
 
   </div>
 
