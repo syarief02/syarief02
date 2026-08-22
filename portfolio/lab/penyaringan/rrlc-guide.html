@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agilent 1200 RRLC Operating Guide — PKKK/300/UP/003 | NPRA</title>
+<meta name="description" content="Super comprehensive standard operating procedure guide for Agilent 1200 Series Rapid Resolution Liquid Chromatography (RRLC) with ChemStation per PKKK/300/UP/003.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="steroid-hplc.css">
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        SOP Matrix
+      </a>
+      <a href="hplc-guide.html" class="ctrl-btn highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        Shimadzu HPLC Guide →
+      </a>
+      <a href="gcms-egdeg-guide.html" class="ctrl-btn highlight">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        GC-MS EG/DEG Guide →
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — PKKK/300/UP/003 (Terbitan 3 Semakan 0)</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Agilent 1200 RRLC <span class="g">Operating Guide</span></h1>
+    <div class="hero-sub">Rapid Resolution Liquid Chromatography HP 1200 (Agilent ChemStation)</div>
+    <p class="hero-desc">
+      Detailed procedural manual for high-pressure binary gradient screening: module startup, manual purge valve deaeration, ChemStation method configuration, DAD spectral acquisition (190–400 nm), sequence table automation, offline peak integration, and spectral overlay analysis.
+    </p>
+
+    <div class="specs-ribbon">
+      <div class="spec-chip"><span class="spec-lbl">Document</span> PKKK/300/UP/003 (10 April 2026)</div>
+      <div class="spec-chip"><span class="spec-lbl">Instrument</span> Agilent 1200 Series RRLC / UHPLC</div>
+      <div class="spec-chip"><span class="spec-lbl">Software</span> Agilent ChemStation (RRLC Online & Offline)</div>
+      <div class="spec-chip"><span class="spec-lbl">Detector</span> Diode Array Detector (DAD SL)</div>
+      <div class="spec-chip"><span class="spec-lbl">Passcode</span> Windows / ChemStation: 3000hanover</div>
+    </div>
+  </div>
+
+  <!-- Guide Content Card -->
+  <div class="guide-card">
+
+    <div class="step-header">
+      <div class="step-badge">FASA 1: STARTUP & PURGING</div>
+      <h2>1.0 Tatacara Memulakan RRLC & Nyahgas Saluran (Purging)</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/003 Para 6.1.1 – 6.1.9</div>
+    </div>
+    <div class="acc-body">
+      <ol style="margin-left:1.5rem;line-height:1.75">
+        <li><strong>Suis Kuasa</strong>: Buka semua suis utama bekalan elektrik, suis modul-modul 1200 Series UHPLC, PC ChemStation, dan mesin pencetak.</li>
+        <li><strong>Kata Laluan Log Masuk</strong>: Masukkan kata laluan: <code>3000hanover</code> dan tekan <strong>OK</strong>.</li>
+        <li><strong>Fasa Bergerak</strong>: Masukkan botol pelarut yang telah ditapis <strong>2 kali menggunakan membran 0.45 µm</strong>. Pastikan batu penuras (solvent inlet filter) terendam di dalam pelarut tanpa menyentuh dinding botol.</li>
+        <li><strong>Buka Perisian</strong>: Klik dua kali ikon <strong>RRLC Online</strong> pada desktop.</li>
+        <li><strong>Pengaktifan Modul</strong>: Pilih tab <strong>Method & Run Control</strong> $\rightarrow$ Klik butang <strong>ON</strong>. Tunggu sehingga semua ikon modul bertukar kepada warna hijau (keadaan sedia / ready).</li>
+        <li><strong>Muat Turun Kaedah</strong>: Pilih menu <code>Method</code> $\rightarrow$ <code>Load Method</code> (pilih kaedah analisis yang dikehendaki).</li>
+        <li><strong>Nyahgas Injap Purge Manual (Purging)</strong>:
+          <ul style="margin-left:1.5rem;margin-top:0.3rem">
+            <li>Buka kepala injap purge pada pam (pusing <strong>lawan arah jam</strong> sebanyak 1/2 hingga 1 pusingan).</li>
+            <li>Klik kanan pada ikon <strong>Binary Pump</strong> $\rightarrow$ <strong>Method</strong>.</li>
+            <li>Tetapkan kadar alir (flow rate): <strong>5.00 mL/min</strong>.</li>
+            <li>Tetapkan Pelarut A: 100% (saluran lain 0%). Alirkan selama <strong>3 minit</strong>.</li>
+            <li>Ulangi langkah di atas secara bergilir-gilir untuk Pelarut B (100%), C, dan D selama 3 minit setiap satu.</li>
+            <li>Pastikan tiada gelembung udara dalam tiub dan bacaan tekanan adalah stabil.</li>
+          </ul>
+        </li>
+        <li><strong>Tutup Injap Purge & Naikkan Aliran</strong>:
+          <ul style="margin-left:1.5rem;margin-top:0.3rem">
+            <li>Klik kanan Binary Pump $\rightarrow$ Method $\rightarrow$ Pilih saluran pelarut kaedah $\rightarrow$ Set kadar alir kepada <strong>0.1 mL/min</strong> $\rightarrow$ Klik <strong>OK</strong>.</li>
+            <li>Tutup kepala injap purge (pusing <strong>mengikut arah jam</strong> sehingga ketat dengan jari).</li>
+            <li>Naikkan kadar alir sedikit demi sedikit (ramping) sehingga mencapai kadar alir analisis yang ditetapkan (contoh: 1.0 mL/min).</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">FASA 2: IMBANGAN & DETECTOR</div>
+      <h2>2.0 Penstabilan Garisan Dasar, Thermostat & Pengesan DAD</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/003 Para 6.1.10 – 6.1.13</div>
+    </div>
+    <div class="acc-body">
+      <ol style="margin-left:1.5rem;line-height:1.75">
+        <li><strong>Penstabilan Baseline (Zero / Balance)</strong>: Alirkan fasa bergerak selama 15–30 minit. Klik butang <strong>Adjust</strong> dan seterusnya <strong>Balance</strong> untuk menetapkan garisan dasar kepada sifar.</li>
+        <li><strong>Tetapan Suhu Ketuhar Kolum (Thermostat)</strong>:
+          <br>Klik kanan ikon <strong>Thermostat</strong> $\rightarrow$ <strong>Method</strong> $\rightarrow$ Masukkan suhu sasaran analisis (contoh: 30 °C atau 40 °C) $\rightarrow$ Klik <strong>OK</strong>.
+        </li>
+        <li><strong>Tetapan Pengesan DAD (Diode Array Detector)</strong>:
+          <br>Klik kanan ikon <strong>DAD</strong> $\rightarrow$ <strong>Method</strong>:
+          <ul style="margin-left:1.5rem;margin-top:0.3rem">
+            <li><strong>Signal</strong>: Masukkan panjang gelombang analit (contoh: 240 nm, 280 nm, atau 284 nm) dengan lebar jalur (Bandwidth: 4 nm).</li>
+            <li><strong>Spectrum Storage</strong>: Pilih <code>Store: All</code></li>
+            <li><strong>Spectrum Range</strong>: <code>190 to 400 nm</code></li>
+            <li><strong>Step</strong>: <code>2.0 nm</code> $\rightarrow$ Klik <strong>OK</strong>.</li>
+          </ul>
+        </li>
+        <li><strong>Jadual Waktu Gradien (Timetable)</strong>:
+          <br>Jika menggunakan gradien: Klik kanan <strong>Binary Pump</strong> $\rightarrow$ <strong>Method</strong> $\rightarrow$ Pada bahagian <em>Timetable</em>, klik <strong>Add</strong> untuk memasukkan masa, % Pelarut B, dan kadar alir mengikut arahan kerja.
+        </li>
+        <li><strong>Simpan Kaedah</strong>: Klik menu <code>Method</code> $\rightarrow$ <code>Save Method As...</code> $\rightarrow$ Masukkan nama fail kaedah dan catatan ringkas.</li>
+      </ol>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">FASA 3: SEQUENCE OTOMASI</div>
+      <h2>3.0 Penyediaan & Pelaksanaan Sequence Injection</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/003 Para 6.1.14 – 6.1.16</div>
+    </div>
+    <div class="acc-body">
+      <ol style="margin-left:1.5rem;line-height:1.75">
+        <li><strong>Parameter Sequence</strong>:
+          <br>Klik <code>Sequence</code> [Toolbar] $\rightarrow$ <code>Sequence Parameters</code>:
+          <ul style="margin-left:1.5rem;margin-top:0.3rem">
+            <li><strong>Operator Name</strong>: Masukkan nama/jawatan penganalisis.</li>
+            <li><strong>Data File / Subdirectory</strong>: Masukkan nama folder unik penyimpanan data batch.</li>
+            <li>Klik <strong>OK</strong>.</li>
+          </ul>
+        </li>
+        <li><strong>Jadual Suntikan (Sequence Table)</strong>:
+          <br>Klik <code>Sequence</code> $\rightarrow$ <code>Sequence Table</code> $\rightarrow$ Masukkan butiran berikut:
+          <div class="table-wrap" style="margin-top:0.6rem">
+            <table class="method-table">
+              <thead><tr><th>Medan Parameter</th><th>Keterangan & Nilai Input</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Sample Location</strong></td><td>Pilih lokasi kedudukan vial dari menu lungsur (dropdown: cth Vial 1, Vial 2).</td></tr>
+                <tr><td><strong>Sample Name</strong></td><td>Nama unik sampel / standard / blank mengikut lembaran kerja.</td></tr>
+                <tr><td><strong>Method Name</strong></td><td>Pilih fail kaedah yang berkaitan (.M).</td></tr>
+                <tr><td><strong>Inj / Loc</strong></td><td>Bilangan suntikan untuk satu vial (contoh: 1 untuk blank, 6 untuk SST, 2 untuk sampel).</td></tr>
+                <tr><td><strong>Sample Type</strong></td><td>Pilih: Sample / Calibration / Blank.</td></tr>
+                <tr><td><strong>Update RF / RT</strong></td><td>Pilih: <strong>Average</strong>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:0.4rem">Klik butang <strong>Append Line</strong> untuk menambah baris suntikan seterusnya $\rightarrow$ Klik <strong>OK</strong>.</p>
+        </li>
+        <li><strong>Simpan & Jalankan Sequence</strong>:
+          <br>Klik <code>Sequence</code> $\rightarrow$ <code>Save Sequence Template As...</code> $\rightarrow$ Masukkan nama fail.
+          <br>Klik <code>Run Control</code> $\rightarrow$ <strong>Run Sequence</strong> untuk memulakan analisis automatik.
+        </li>
+      </ol>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">FASA 4: ANALISIS DATA & SPEKTRA</div>
+      <h2>4.0 Pemprosesan Kromatogram, Integrasi & Spektrum Pertindihan (Overlay)</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/003 Para 6.2 & 6.3</div>
+    </div>
+    <div class="acc-body">
+      <ol style="margin-left:1.5rem;line-height:1.75">
+        <li><strong>Buka Mod Offline</strong>: Klik dua kali ikon <strong>RRLC Offline</strong> pada desktop.</li>
+        <li><strong>Muat Data</strong>: Klik <code>File</code> $\rightarrow$ <code>Load Signal...</code> $\rightarrow$ Pilih fail kromatogram sampel $\rightarrow$ Klik <strong>OK</strong>.</li>
+        <li><strong>Tetapan Parameter Integrasi</strong>:
+          <br>Klik <code>Integration</code> $\rightarrow$ <code>Integration Events</code> $\rightarrow$ Masukkan nilai <em>Slope Sensitivity</em>, <em>Height Reject</em>, dan <em>Area Reject</em> $\rightarrow$ Klik <strong>Exit</strong> dan simpan perubahaan (Yes).
+        </li>
+        <li><strong>Pemerhatian Spektrum UV Analit</strong>:
+          <br>Klik <code>Spectra</code> [Toolbar] $\rightarrow$ <code>Select Peak Spectra</code> $\rightarrow$ Klik pada puncak analit dalam kromatogram. Imej spektrum UV (190–400 nm) bagi puncak tersebut akan dipaparkan.
+        </li>
+        <li><strong>Pertindihan Spektrum (Spectra Overlay) Sampel vs Standard</strong>:
+          <ul style="margin-left:1.5rem;margin-top:0.3rem">
+            <li>Klik <code>File</code> $\rightarrow$ <code>Overlay Signal...</code> $\rightarrow$ Pilih fail kromatogram Piawai Rujukan.</li>
+            <li>Klik pada imej puncak sampel.</li>
+            <li>Tekan serentak butang: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <strong>Klik pada puncak Standard</strong>.</li>
+            <li>Imej spektrum standard akan bertindih (overlay) tepat di atas spektrum sampel bagi verifikasi identiti analit.</li>
+          </ul>
+        </li>
+        <li><strong>Cetak Laporan</strong>: Klik <code>Report</code> [Toolbar] $\rightarrow$ <strong>Print</strong>.</li>
+      </ol>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">FASA 5: PENCUCIAN & SHUTDOWN</div>
+      <h2>5.0 Tatacara Pencucian Turus & Penutupan Lengkap Sistem</h2>
+      <div class="step-sop-ref">Ref: PKKK/300/UP/003 Para 6.4 & 6.5</div>
+    </div>
+    <div class="acc-body">
+      <div class="alert-box alert-warning">
+        🧼 <strong>PROTOKOL PENCUCIAN SISTEM (SYSTEM WASHING):</strong>
+        <br>1. Alirkan pelarut <strong>5% Methanol dalam Air</strong> (ditapis 0.45 µm) selama <strong>1 jam</strong> pada kadar alir 1.0 mL/min untuk menyingkirkan garam penimbal.
+        <br>2. Alirkan <strong>100% Acetonitrile atau Methanol</strong> selama <strong>30 minit</strong> pada kadar 1.0 mL/min sebagai pelarut penyimpanan kolum.
+      </div>
+
+      <p style="margin-top:1rem"><strong>Tatacara Shutdown Harian:</strong></p>
+      <ol style="margin-left:1.5rem;line-height:1.75">
+        <li>Klik ikon <strong>DAD</strong> $\rightarrow$ <em>Control</em> $\rightarrow$ <em>UV Lamp</em> $\rightarrow$ <strong>Off</strong> $\rightarrow$ OK.</li>
+        <li>Klik ikon <strong>Thermostat</strong> $\rightarrow$ <em>Control</em> $\rightarrow$ <strong>Off</strong> $\rightarrow$ OK.</li>
+        <li>Klik ikon <strong>Pump</strong> $\rightarrow$ <em>Set up pump</em> $\rightarrow$ Turunkan kadar alir sedikit demi sedikit sehingga <strong>0.00 mL/min</strong> $\rightarrow$ OK.</li>
+        <li>Klik <code>File</code> $\rightarrow$ <strong>Exit</strong> $\rightarrow$ <em>Close RRLC Online?</em>: <strong>Yes</strong>.</li>
+        <li><em>Switch off LC pump, thermostat and lamp?</em>: <strong>Yes</strong>.</li>
+        <li>Tutup suis komputer (Shut down PC) dan padamkan suis utama modul Agilent 1200.</li>
+        <li>Isi dan tandatangan buku log: <em>Rekod Penyelenggaraan Alat Rapid Resolution Liquid Chromatography HP1200</em>.</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="steroid-hplc.js"></script>
+</body>
+</html>
