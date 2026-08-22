@@ -285,37 +285,189 @@ def classify_cat(title):
 
 # ─── Comprehensive Mapping of Analysis Methods to Instrument SOPs ───
 ANALYSIS_TO_INSTRUMENTS = {
-    '021': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/041', 'Shimadzu Prominence-i (HPLC 3)', 'sop-300-up-041.html'), ('PKKK/300/UP/014', 'Pengekstrakan Cecair-Cecair (LLE)', 'sop-300-up-014.html')],
-    '022': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/014', 'Pengekstrakan LLE pH 7.0', 'sop-300-up-014.html')],
-    '024': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
-    '025': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/042', 'Shimadzu Prominence-i (HPLC 4)', 'sop-300-up-042.html')],
-    '026': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
-    '027': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
-    '028': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
-    '031': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'), ('PKKK/300/UP/044', 'HPLC Agilent 1', 'sop-300-up-044.html')],
-    '032': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-    '033': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-    '035': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-    '050': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
-    '051': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-    '052': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-    '053': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-    '054': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-    '055': [('PKKK/300/UP/043', 'HPLC Ion Chromatography Shimadzu LC-20AR', 'sop-300-up-043.html')],
-    '056': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
-    '060': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'), ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html')],
-    '061': [('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html')],
-    '018': [('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'), ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'), ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html')],
-    '030': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html')],
-    '034': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'), ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html')],
-    '047': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html')],
-    '048': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html')],
-    '049': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html')],
-    '059': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'), ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html')],
-    '062': [('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html')],
-    '015': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
-    '023': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
-    '029': [('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html')],
+    # HPLC Testing Methods
+    '021': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/041', 'Shimadzu Prominence-i (HPLC 3)', 'sop-300-up-041.html'),
+        ('PKKK/300/UP/014', 'Pengekstrakan Cecair-Cecair (LLE pH 7.0)', 'sop-300-up-014.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/019', 'Water bath Memmert WB 45', 'sop-300-up-019.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '022': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/014', 'Pengekstrakan LLE pH 7.0', 'sop-300-up-014.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '024': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '025': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/042', 'Shimadzu Prominence-i (HPLC 4)', 'sop-300-up-042.html'),
+        ('PKKK/300/UP/008', 'pH Meter Model FiveEasy Plus', 'sop-300-up-008.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '026': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '027': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/042', 'Shimadzu Prominence-i (HPLC 4)', 'sop-300-up-042.html'),
+        ('PKKK/300/UP/008', 'pH Meter Model FiveEasy Plus', 'sop-300-up-008.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '028': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '031': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/044', 'HPLC Agilent 1', 'sop-300-up-044.html'),
+        ('PKKK/300/UP/020', 'Alat Timbang Sartorius MSE 225S (Mikro)', 'sop-300-up-020.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '032': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '033': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '035': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '050': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/008', 'pH Meter Model FiveEasy Plus', 'sop-300-up-008.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '051': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/008', 'pH Meter Model FiveEasy Plus', 'sop-300-up-008.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '052': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '053': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '054': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '055': [
+        ('PKKK/300/UP/043', 'HPLC Ion Chromatography Shimadzu LC-20AR', 'sop-300-up-043.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '056': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/014', 'Pengekstrakan LLE pH 7.0', 'sop-300-up-014.html')
+    ],
+    '060': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/003', 'Agilent 1200 Series RRLC', 'sop-300-up-003.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '061': [
+        ('PKKK/300/UP/011', 'HPLC Shimadzu Prominence-i', 'sop-300-up-011.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+
+    # GC-MS Testing Methods
+    '018': [
+        ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html'),
+        ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'),
+        ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'),
+        ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '030': [
+        ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html'),
+        ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'),
+        ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '034': [
+        ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra (COAST SIM)', 'sop-300-up-040.html'),
+        ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'),
+        ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'),
+        ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210 (5 min)', 'sop-300-up-058.html')
+    ],
+    '047': [
+        ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html'),
+        ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'),
+        ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '048': [
+        ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html'),
+        ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '049': [
+        ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html'),
+        ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'),
+        ('PKKK/300/UP/010', 'GCMS Shimadzu QP2010', 'sop-300-up-010.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '059': [
+        ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html'),
+        ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'),
+        ('PKKK/300/UP/004', 'GCMS Agilent 7890A / 5975C', 'sop-300-up-004.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+    '062': [
+        ('PKKK/300/UP/040', 'GCMS Shimadzu QP2010 Ultra', 'sop-300-up-040.html'),
+        ('PKKK/300/UP/017', 'GCMS Agilent 8890 / 5977B', 'sop-300-up-017.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html')
+    ],
+
+    # LC-MS/MS Testing Methods
+    '015': [
+        ('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/013', 'Pengekstrakan Fasa Pepejal (SPE)', 'sop-300-up-013.html')
+    ],
+    '023': [
+        ('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad', 'sop-300-up-012.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
+    '029': [
+        ('PKKK/300/UP/012', 'LCMS-8045 Shimadzu Triple Quad (MRM)', 'sop-300-up-012.html'),
+        ('PKKK/300/UP/005', 'Alat Timbang Precisa XT 120A', 'sop-300-up-005.html'),
+        ('PKKK/300/UP/058', 'Ultrasonic Bath Branson 8210', 'sop-300-up-058.html')
+    ],
 }
 
 # Reverse Mapping of Instruments to All Active Analysis Methods
