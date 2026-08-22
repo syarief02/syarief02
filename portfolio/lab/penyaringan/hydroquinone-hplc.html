@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydroquinone in Cosmetics HPLC SOP Guide — PKKK/200/UP/001 | NPRA</title>
+<meta name="description" content="Comprehensive step-by-step Level 200 SOP guide for screening identification of Hydroquinone in cosmetic cream products using HPLC per PKKK/200/UP/001.">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="steroid-hplc.css">
+</head>
+<body>
+
+<div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Unit Penyaringan Hub
+      </a>
+      <a href="sop-matrix.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        SOP Matrix
+      </a>
+      <a href="screening-methods.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        All Screening Methods
+      </a>
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeTxt">Dark Mode</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <div class="hero-org">🇲🇾 NPRA — PKKK/200/UP/001 (Terbitan 2 Semakan 2)</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1>Hydroquinone in Cosmetics <span class="g">HPLC Guide</span></h1>
+    <div class="hero-sub">Prosedur Level 200: Screening for Identification of Hydroquinone in Cosmetic Cream Products</div>
+    <p class="hero-desc">
+      Official ISO/IEC 17025 accredited screening procedure for the detection of banned skin-whitening agent Hydroquinone in cosmetic creams, lotions, and dermatological preparations using HPLC-PDA.
+    </p>
+
+    <div class="specs-ribbon">
+      <div class="spec-chip"><span class="spec-lbl">Document</span> PKKK/200/UP/001</div>
+      <div class="spec-chip"><span class="spec-lbl">Column</span> Cosmosil 5 C18 AR-II (250 × 4.6 mm, 5 µm)</div>
+      <div class="spec-chip"><span class="spec-lbl">Mobile Phase</span> Isocratic: 99% Phosphate Buffer pH 2.5 : 1% MeOH</div>
+      <div class="spec-chip"><span class="spec-lbl">Flow & Temp</span> 0.9 mL/min @ 30 °C</div>
+      <div class="spec-chip"><span class="spec-lbl">UV Detection</span> 280 nm · Inj Vol: 20 µL</div>
+      <div class="spec-chip"><span class="spec-lbl">LOD Limit</span> 0.0005 mg/mL (0.002 % w/w)</div>
+    </div>
+  </div>
+
+  <!-- Content Card -->
+  <div class="guide-card">
+
+    <div class="step-header">
+      <div class="step-badge">OBJEKTIF & SKOP</div>
+      <h2>1.0 Objektif & Skop Pengujian</h2>
+      <div class="step-sop-ref">Ref: PKKK/200/UP/001 Para 1.0 & 2.0</div>
+    </div>
+    <div class="acc-body">
+      <p><strong>1.0 Objektif:</strong> Untuk mengenal pasti kehadiran bahan racun berjadual Hydroquinone dalam produk krim kosmetik secara kromatografi cecair berprestasi tinggi (HPLC-PDA).</p>
+      <p><strong>2.0 Skop:</strong> Kaedah penyaringan ini digunapakai untuk identifikasi Hydroquinone dalam produk kosmetik krim yang diterima daripada Seksyen Survelan & Aduan, Cawangan Penguatkuasaan Farmasi, dan pihak berkepentingan.</p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">BAHAN & RADAS</div>
+      <h2>2.0 Radas, Reagen & Penyediaan Larutan Piawai</h2>
+      <div class="step-sop-ref">Ref: PKKK/200/UP/001 Para 4.0 & 6.3</div>
+    </div>
+    <div class="acc-body">
+      <p>• <strong>Penyediaan Pelarut Penimbal 0.05 M Phosphate Buffer pH 2.5 (Diluent)</strong>:
+        <br>Timbang <strong>13.685 g Potassium Dihydrogen Phosphate (KH₂PO₄)</strong> ke dalam bikar 500 mL dan larutkan dengan 300 mL air suling ultrapure. Pindahkan ke dalam bikar 2 L dan genapkan dengan air sehingga tanda 2000 mL. Laraskan nilai pH kepada <strong>pH 2.5 ± 0.05</strong> menggunakan asid ortofosforik (H₃PO₄) 85%. Turas (0.45 µm) dan degas 20 minit.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Fasa Bergerak (Mobile Phase)</strong>:
+        <br>Campurkan <strong>99% 0.05 M Phosphate Buffer Solution pH 2.5</strong> dan <strong>1% Methanol (HPLC grade)</strong> secara isokratik.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Stok Piawai Hydroquinone (0.05 mg/mL)</strong>:
+        <br>Timbang lebih kurang <strong>2.5 mg Hydroquinone RS</strong> ke dalam kelalang volumetrik 50 mL dan genapkan dengan diluent buffer pH 2.5. Sonikasi sehingga larut sepenuhnya.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Piawai Bekerja (0.025 mg/mL)</strong>:
+        <br>Pipet <strong>10.0 mL</strong> larutan stok ke dalam kelalang volumetrik 20 mL dan genapkan dengan diluent buffer. Turas sebelum disuntik.
+      </p>
+      <p style="margin-top:0.8rem">• <strong>Larutan Had Pengesanan (LOD Solution, 0.0005 mg/mL / 0.002% w/w)</strong>:
+        <br>Pipet <strong>200 µL larutan stok Hydroquinone</strong> ke dalam kelalang 20 mL mengandungi <strong>0.5 g sampel blank</strong> (matriks krim kosong tanpa hydroquinone), genapkan dengan 20 mL diluent, dan sonikasi selama 30 minit.
+      </p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">PENYEDIAAN SAMPEL</div>
+      <h2>3.0 Penyediaan Sampel Krim Kosmetik (Para 6.4.2)</h2>
+      <div class="step-sop-ref">Ref: PKKK/200/UP/001 Para 6.4.2</div>
+    </div>
+    <div class="acc-body">
+      <ol style="margin-left:1.5rem;line-height:1.7">
+        <li>Timbang tepat kira-kira <strong>0.5 g sampel krim</strong> ke dalam kelalang Erlenmeyer 50 mL bertutup.</li>
+        <li>Sukat <strong>20.0 mL diluent (Phosphate Buffer pH 2.5)</strong> menggunakan silinder penyukat dan masukkan ke dalam kelalang.</li>
+        <li>Tutup kelalang dan letakkan di dalam kukus ultrasonik. Sonikasi selama <strong>30 minit</strong> bagi mengekstrak keluar hydroquinone daripada emulsi krim.</li>
+        <li>Turas larutan menggunakan <strong>penuras membran nilon 0.45 µm</strong> sebelum disuntik ke dalam HPLC.</li>
+      </ol>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">KROMATOGRAFI</div>
+      <h2>4.0 Parameter Kromatografi & Turutan Suntikan</h2>
+      <div class="step-sop-ref">Ref: PKKK/200/UP/001 Para 5.0 & 6.5</div>
+    </div>
+    <div class="acc-body">
+      <div class="specs-grid">
+        <div class="spec-box"><span class="lbl">Turus</span><strong>Cosmosil 5 C18 AR-II (250 × 4.6 mm, 5 µm)</strong></div>
+        <div class="spec-box"><span class="lbl">Suhu Turus</span><strong>30 °C</strong></div>
+        <div class="spec-box"><span class="lbl">Kadar Aliran</span><strong>0.9 mL/min</strong></div>
+        <div class="spec-box"><span class="lbl">Pengesan</span><strong>UV / PDA @ 280 nm</strong></div>
+        <div class="spec-box"><span class="lbl">Isipadu Suntikan</span><strong>20 µL</strong></div>
+        <div class="spec-box"><span class="lbl">Masa Analisis</span><strong>20.0 minit (Puncak ~5.5–6.5 min)</strong></div>
+      </div>
+
+      <div class="section-divider" style="margin-top:1.2rem">TURUTAN SUNTIKAN (SEQUENCE TABLE)</div>
+      <p><code>1. Blank / Diluent</code> $\rightarrow$ <code>2. Larutan LOD (0.0005 mg/mL)</code> $\rightarrow$ <code>3. Piawai Bekerja Hydroquinone (SST)</code> $\rightarrow$ <code>4. Larutan LOD</code> $\rightarrow$ <code>5–7. Sampel Kosmetik 1 hingga 3</code> $\rightarrow$ <code>8. Larutan LOD (IQC Bracket)</code> $\rightarrow$ <code>9–13. Sampel 4 hingga 8</code> $\rightarrow$ <code>Akhir. Larutan LOD</code>.</p>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.8rem 0">
+
+    <div class="step-header">
+      <div class="step-badge">INTERPRETASI & REKOD</div>
+      <h2>5.0 Kriteria SST, Interpretasi Keputusan & Rekod Kualiti</h2>
+      <div class="step-sop-ref">Ref: PKKK/200/UP/001 Para 6.6, 7.0 & Borang UP/X013</div>
+    </div>
+    <div class="acc-body">
+      <div class="grid-2col">
+        <div class="eval-box">
+          <div class="eval-title">Kriteria Kesesuaian Sistem (SST)</div>
+          <ul class="eval-list">
+            <li><strong>Faktor Pengekoran (Tailing Factor):</strong> $T \le 2.0$.</li>
+            <li><strong>Plat Teori ($N$):</strong> $N \ge 1500$.</li>
+            <li><strong>IQC Drift (% Perbezaan RT LOD):</strong> Tidak melebihi (NMT) <strong>3.0%</strong> bagi setiap kelompok 5 sampel.</li>
+          </ul>
+        </div>
+
+        <div class="eval-box">
+          <div class="eval-title">Kriteria Sampel Positif Hydroquinone</div>
+          <ul class="eval-list">
+            <li><strong>Waktu Penahanan (RT):</strong> Sepadan dengan piawai Hydroquinone.</li>
+            <li><strong>Keluasan Puncak:</strong> Melebihi keluasan puncak larutan LOD ($0.002\% w/w$).</li>
+            <li><strong>Spektrum UV:</strong> Sepadan dengan spektrum piawai Hydroquinone ($\lambda_{max} = 280\text{ nm}$).</li>
+            <li><strong>Ketulenan Puncak (Peak Purity):</strong> Indeks ketulenan puncak menghampiri <strong>1.0</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-divider" style="margin-top:1.5rem">REKOD KUALITI & BORANG RASMI</div>
+      <div class="tags-row">
+        <span class="tag" style="background:var(--cyan-dim);color:var(--cyan);border-color:rgba(2,132,199,0.3)">UP/X009 (Borang Tatacara Pengujian HPLC)</span>
+        <span class="tag" style="background:var(--mint-dim);color:var(--mint);border-color:rgba(5,150,105,0.3)">UP/X013 (Borang Keputusan Ujian Sampel Kosmetik)</span>
+        <span class="tag" style="background:var(--red-dim);color:var(--red);border-color:rgba(220,38,38,0.3)">UP/002B (Laporan Siasatan Sampel Kosmetik Tidak Lulus)</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+  </div>
+</div>
+
+<script src="steroid-hplc.js"></script>
+</body>
+</html>
