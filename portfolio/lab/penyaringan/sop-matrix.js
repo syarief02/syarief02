@@ -267,41 +267,71 @@ function openDocModal(index) {
         </div>
       </div>
 
+      ${(() => {
+        const m = doc.code ? doc.code.match(/UP\/(\d{3})/) : null;
+        if (m) {
+          return `
+            <div style="margin-top:0.8rem">
+              <a href="sop/sop-300-up-${m[1]}.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem;font-size:0.85rem">
+                📖 Buka Arahan Kerja Rasmi Lengkap (PKKK/300/UP/${m[1]}) →
+              </a>
+            </div>
+          `;
+        }
+        return '';
+      })()}
+
       ${doc.code === 'PKKK/300/UP/021' ? `
-        <div style="margin-top:0.8rem">
-          <a href="steroid-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
-            🔬 View Comprehensive Steroids 8-Mix HPLC Guide →
+        <div style="margin-top:0.5rem">
+          <a href="steroid-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.6rem;font-size:0.82rem">
+            🔬 Interactive Steroids 8-Mix HPLC Step Guide →
           </a>
         </div>
       ` : ''}
 
       ${doc.code === 'PKKK/300/UP/025' ? `
-        <div style="margin-top:0.8rem">
-          <a href="ppi-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
-            💊 View Comprehensive Proton Pump Inhibitors (PPI) HPLC Guide →
+        <div style="margin-top:0.5rem">
+          <a href="ppi-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.6rem;font-size:0.82rem">
+            💊 Interactive Proton Pump Inhibitors (PPI) HPLC Guide →
           </a>
         </div>
       ` : ''}
 
       ${doc.code === 'PKKK/300/UP/027' ? `
-        <div style="margin-top:0.8rem">
-          <a href="domperidone-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
-            🧪 View Comprehensive Domperidone HPLC Guide →
+        <div style="margin-top:0.5rem">
+          <a href="domperidone-hplc.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.6rem;font-size:0.82rem">
+            🧪 Interactive Domperidone HPLC Guide →
           </a>
         </div>
       ` : ''}
 
       ${doc.code === 'PKKK/300/UP/034' ? `
-        <div style="margin-top:0.8rem">
-          <a href="deg-eg-gcms.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
-            🧬 View Comprehensive EG & DEG in Syrups GC-MS Guide →
+        <div style="margin-top:0.5rem">
+          <a href="gcms-egdeg-guide.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.6rem;font-size:0.82rem">
+            🧬 Interactive EG & DEG in Syrups GC-MS Guide →
+          </a>
+        </div>
+      ` : ''}
+
+      ${(doc.code === 'PKKK/300/UP/011' || doc.code === 'PKKK/300/UP/041' || doc.code === 'PKKK/300/UP/042') ? `
+        <div style="margin-top:0.5rem">
+          <a href="hplc-guide.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.6rem;font-size:0.82rem">
+            💻 Interactive Shimadzu Prominence-i HPLC Operating Guide →
+          </a>
+        </div>
+      ` : ''}
+
+      ${doc.code === 'PKKK/300/UP/003' ? `
+        <div style="margin-top:0.5rem">
+          <a href="rrlc-guide.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.6rem;font-size:0.82rem">
+            ⚡ Interactive Agilent 1200 Series RRLC Operating Guide →
           </a>
         </div>
       ` : ''}
 
       ${(doc.code === 'PKKK/300/UP/064' || doc.category === 'Alat Timbang') ? `
-        <div style="margin-top:0.8rem">
-          <a href="qc-balance.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.75rem">
+        <div style="margin-top:0.5rem">
+          <a href="qc-balance.html" class="ctrl-btn highlight" style="width:100%;justify-content:center;padding:0.6rem;font-size:0.82rem">
             ⚖️ Launch Interactive Balance Verification & QC Suite →
           </a>
         </div>
