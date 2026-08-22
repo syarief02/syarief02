@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/049 — Screening of Diethylene Glycol in Toothpaste Preparations using GCMS | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/049 — Screening of Diethylene Glycol in Toothpaste Preparations using GCMS | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/049: Screening of Diethylene Glycol in Toothpaste Preparations using GCMS — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/049')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,65 +146,127 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/049 <span class="g">Screening of Diethylene Glycol in Toothpaste Preparations using GCMS</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: GC-MS</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 2 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: SCREENING OF DIETHYLENE GLYCOL IN TOOTHPASTE PREPARATIONS USING GCMS</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/049</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">1.0	Objective</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">AMENDMENT :</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to the ISO 9001: 2015 version and the renaming of the institution from National Pharmaceutical Control Bureau (NPCB) to Bahagian Regulatori Farmasi Negara (NPRA). Therefore, the original document is obsolete and this document is published as Version 1.</p><p class="sop-p">HISTORY OF REVISION :</p><p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">Update on document number from PKK/200/KOS/015 to PKK/200/HMS/004</p><p class="sop-p">Update on effective date from 15 November 2016 to 10 February 2020</p><p class="sop-p">Update on responsibility.</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Document change from testing procedure PKK/200/HMS/004 to work instruction PKK/300/HMS/059</p><p class="sop-p">Issue 3 Revision 1 :</p><p class="sop-p">i.	Update on name of agency from National Pharmaceutical Regulatory Agency (NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/059 to PKKK/300/HMS/059</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 5 Revision 0 :</p><p class="sop-p">i.	Update document number from PKKK/300/HMS/059 to PKKK/300/KOS/017</p><p class="sop-p">ii.	Update paragraph 5.0 Responsibility</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 5 Revision 1 :</p><p class="sop-p">i.	Update document number from PKKK/300/KOS/017 to PKKK/300/UP/048</p><p class="sop-p">Ii.          Update effective date from 1 April  2024 to 10 April 2026</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0	Objective</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0	Objective
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">◼	To screen the presence of Diethylene Glycol in toothpaste preparations using GC-MS.</p><p class="sop-p">Scope</p><p class="sop-p">◼	This test method is only to be used for screening of Diethylene Glycol in toothpaste preparations which is suspected to contain the substance.  It is a qualitative test and not for quantitative purpose.</p><p class="sop-p">Definition</p><p class="sop-p">GCMS	: Gas Chromatography Mass Spectrometry</p><div class="sop-substep"><strong>3.2 Analyst	: Pharmacist/Pharmacy assistant/Science Officer</strong></div><p class="sop-p">Flow Chart</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>- None -</span></div><p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p><div class="sop-substep"><strong>5.1.1	Validate analysis report of failed sample and approve on QUEST System</strong></div><p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis report on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and update into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Perform sample analysis (when necessary) and report</p><p class="sop-p">Pharmacy assistant</p><p class="sop-p">Perform sample analysis and report</p><p class="sop-p">Procedure</p><p class="sop-p">Equipment/ Materials</p><p class="sop-p">Hewlett Packard Gas Chromatograph Mass Detector</p><p class="sop-p">Ethanol</p><p class="sop-p">25mL volumetric flask</p><p class="sop-p">50mL volumetric flask</p><p class="sop-p">Filter paper</p><p class="sop-p">Diethylene Glycol from Sigma no.D.3381 (Reference Standard)</p><p class="sop-p">Chromatographic Parameters</p><p class="sop-p">◼  Column	         :	J &amp; W DB – 17 MS, 30m x 250 µm x 0.25 µm</p><p class="sop-p">◼  Oven temperature:</p><p class="sop-p">◼  Injector temp	:  250°C</p><p class="sop-p">Aux temp		:  280°C</p><p class="sop-p">MS temp		:  230°C</p><p class="sop-p">Quad. temp		:  150°C</p><p class="sop-p">◼  Mode 		:  Split</p><p class="sop-p">◼  Split Ratio		:  10 : 01</p><p class="sop-p">◼  Column Flow	:  1.4 mL/min</p><p class="sop-p">◼  Injection volume	:  1 μL</p><p class="sop-p">Test Method</p><p class="sop-p">Reference Standard Preparation</p><p class="sop-p">Pippette accurately 20µL of the Reference Standard (using micropipette) and make up to 50mL with Ethanol.  Further dilute the solution by taking 4mL and make up to 50mL with Ethanol.  Filter the solution before injecting into the GCMS.</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Weigh accurately 2 g of toothpaste into a 25 mL volumetric flask and add 25 mL with Ethanol.  Sonicate for 30 minutes.  Filter the solution before injecting into the GCMS.</p><p class="sop-p">Measurement</p><p class="sop-p">Inject 1 μL each of the Reference Standard solutions and Sample preparation into the GCMS and check for the chromatogram.</p><p class="sop-p">Results</p><p class="sop-p">Compare the retention time in the chromatogram and mass in the mass spectrum obtained from the sample with that of the Diethylene Glycol standard.</p><p class="sop-p">The identity test is positive if the retention time of the sample is identical to that obtained from the standard chromatogram and the mass (m/z) of the substance matching the mass (m/z) of the standard.</p><p class="sop-p">If the sample positive with Diethylene Glycol, further steps is carried out where by an equal amount of standard solution and sample solution was mixed and injected into the GCMS (spiking sample &amp; standard).</p><p class="sop-p">Quality Records</p><p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah		: UP/x015</p><p class="sop-p">GCMS</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p><p class="sop-p">Keputusan Ujian Kosmetik					: UP/X013</p><p class="sop-p">Attachments</p><p class="sop-p">None</p>
+            <p class="sop-p">◼	To screen the presence of Diethylene Glycol in toothpaste preparations using GC-MS.</p><p class="sop-p">Scope</p><p class="sop-p">◼	This test method is only to be used for screening of Diethylene Glycol in toothpaste preparations which is suspected to contain the substance.  It is a qualitative test and not for quantitative purpose.</p><p class="sop-p">Definition</p><p class="sop-p">GCMS	: Gas Chromatography Mass Spectrometry</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-049-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/049')">
+                    <label for="step-049-1" class="sop-step-label">
+                      <strong>3.2 Analyst	: Pharmacist/Pharmacy assistant/Science Officer</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Flow Chart</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">- None -</span>
+                </div>
+                <p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-049-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/049')">
+                    <label for="step-049-2" class="sop-step-label">
+                      <strong>5.1.1	Validate analysis report of failed sample and approve on QUEST System</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis report on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and update into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Perform sample analysis (when necessary) and report</p><p class="sop-p">Pharmacy assistant</p><p class="sop-p">Perform sample analysis and report</p><p class="sop-p">Procedure</p><p class="sop-p">Equipment/ Materials</p><p class="sop-p">Hewlett Packard Gas Chromatograph Mass Detector</p><p class="sop-p">Ethanol</p><p class="sop-p"><span class="kw-vol">25mL</span> volumetric flask</p><p class="sop-p"><span class="kw-vol">50mL</span> volumetric flask</p><p class="sop-p">Filter paper</p><p class="sop-p">Diethylene Glycol from Sigma no.D.3381 (Reference Standard)</p><p class="sop-p">Chromatographic Parameters</p><p class="sop-p">◼  Column	         :	J &amp; W DB – 17 MS, 30m x 250 µm x 0.25 µm</p><p class="sop-p">◼  Oven temperature:</p><p class="sop-p">◼  Injector temp	:  <span class="kw-temp">250°C</span></p><p class="sop-p">Aux temp		:  <span class="kw-temp">280°C</span></p><p class="sop-p">MS temp		:  <span class="kw-temp">230°C</span></p><p class="sop-p">Quad. temp		:  <span class="kw-temp">150°C</span></p><p class="sop-p">◼  Mode 		:  Split</p><p class="sop-p">◼  Split Ratio		:  10 : 01</p><p class="sop-p">◼  Column Flow	:  <span class="kw-flow"><span class="kw-vol">1.4 mL</span>/min</span></p><p class="sop-p">◼  Injection volume	:  1 μL</p><p class="sop-p">Test Method</p><p class="sop-p">Reference Standard Preparation</p><p class="sop-p">Pippette accurately <span class="kw-vol">20µL</span> of the Reference Standard (using micropipette) and make up to <span class="kw-vol">50mL</span> with Ethanol.  Further dilute the solution by taking <span class="kw-vol">4mL</span> and make up to <span class="kw-vol">50mL</span> with Ethanol.  Filter the solution before injecting into the GCMS.</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Weigh accurately <span class="kw-wt">2 g</span> of toothpaste into a <span class="kw-vol">25 mL</span> volumetric flask and add <span class="kw-vol">25 mL</span> with Ethanol.  Sonicate for <span class="kw-time">30 minutes</span>.  Filter the solution before injecting into the GCMS.</p><p class="sop-p">Measurement</p><p class="sop-p">Inject 1 μL each of the Reference Standard solutions and Sample preparation into the GCMS and check for the chromatogram.</p><p class="sop-p">Results</p><p class="sop-p">Compare the retention time in the chromatogram and mass in the mass spectrum obtained from the sample with that of the Diethylene Glycol standard.</p><p class="sop-p">The identity test is positive if the retention time of the sample is identical to that obtained from the standard chromatogram and the mass (m/z) of the substance matching the mass (m/z) of the standard.</p><p class="sop-p">If the sample positive with Diethylene Glycol, further steps is carried out where by an equal amount of standard solution and sample solution was mixed and injected into the GCMS (spiking sample &amp; standard).</p><p class="sop-p">Quality Records</p><p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah		: UP/x015</p><p class="sop-p">GCMS</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p><p class="sop-p">Keputusan Ujian Kosmetik					: UP/X013</p><p class="sop-p">Attachments</p><p class="sop-p">None</p>
           </div>
         </div>
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th></tr><tr><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective date</td></tr><tr><td>1</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Dr Noraida Mohamad Zainoor</td><td>15 November 2016</td></tr><tr><td>2</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 February 2020</td></tr><tr><td>3</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 July 2020</td></tr><tr><td>3</td><td>1</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Disember 2020</td></tr><tr><td>4</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr><tr><td>5</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr><td>5</td><td>1</td><td>Nurul Nadiah Noh</td><td>Gopinatha Ganesh</td><td>Ida Syazrina Ibrahim</td><td>10 Apr 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/049</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th></tr><tr ><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective date</td></tr><tr ><td>1</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Dr Noraida Mohamad Zainoor</td><td>15 November 2016</td></tr><tr ><td>2</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 February 2020</td></tr><tr ><td>3</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 July 2020</td></tr><tr ><td>3</td><td>1</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Disember 2020</td></tr><tr ><td>4</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr><tr ><td>5</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr ><td>5</td><td>1</td><td>Nurul Nadiah Noh</td><td>Gopinatha Ganesh</td><td>Ida Syazrina Ibrahim</td><td>10 Apr 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>REFERENCE</th><th>REFERENCE</th></tr><tr><td>Document No.</td><td>Title</td></tr><tr><td></td><td>Standard Operating Procedure for GCMS</td></tr><tr><td></td><td>Notes on ‘GCMS in Biomedical Analysis’</td></tr><tr><td></td><td>Notes on HP GCMS</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/049</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>REFERENCE</th><th>REFERENCE</th></tr><tr ><td>Document No.</td><td>Title</td></tr><tr ><td></td><td>Standard Operating Procedure for GCMS</td></tr><tr ><td></td><td>Notes on ‘GCMS in Biomedical Analysis’</td></tr><tr ><td></td><td>Notes on HP GCMS</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>Rate</th><th>Temperature</th><th>Hold Time</th></tr><tr><td></td><td>90°C</td><td>5 min</td></tr><tr><td>20°C/min</td><td>190°C</td><td>10 min</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/049</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Rate</th><th>Temperature</th><th>Hold Time</th></tr><tr ><td></td><td><span class="kw-temp">90°C</span></td><td><span class="kw-time">5 min</span></td></tr><tr ><td><span class="kw-temp">20°C</span>/min</td><td><span class="kw-temp">190°C</span></td><td><span class="kw-time">10 min</span></td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -154,6 +277,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/049');
+  });
+</script>
 </body>
 </html>

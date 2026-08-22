@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/018 — Pengesanan Bahan Kawalan dan Terlarang dalam produk Tradisional menggunakan GCMS | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/018 — Pengesanan Bahan Kawalan dan Terlarang dalam produk Tradisional menggunakan GCMS | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/018: Pengesanan Bahan Kawalan dan Terlarang dalam produk Tradisional menggunakan GCMS — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/018')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,38 +146,224 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/018 <span class="g">Pengesanan Bahan Kawalan dan Terlarang dalam produk Tradisional menggunakan GCMS</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: GC-MS</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 18 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: PENGESANAN BAHAN KAWALAN DAN TERLARANG DALAM PRODUK TRADISIONAL MENGGUNAKAN GCMS</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/018</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.       REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/083 kepada PKKK/300/UAT/020</p><p class="sop-p">Pindaan pada senarai Tanggungjawab kepada yang terkini</p><p class="sop-p">Pindaan No. Dokumen dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/HMS/023 kepada PKKK/300/UAT/005</p><p class="sop-p">PKKK/300/HMS/031 kepada PKKK/300/UAT/011</p><p class="sop-p">PKKK/300/HMS/080 kepada PKKK/300/UAT/018</p><p class="sop-p">PKKK/300/HMS/026 kepada PKKK/300/UAT/001</p><p class="sop-p">PKKK/300/HMS/070 kepada PKKK/300/UAT/014</p><p class="sop-p">PKKK/300/HMS/071 kepada PKKK/300/UAT/015</p><p class="sop-p">Menambah langkah penyediaan sampel dengan lebih terperinci di para 6.4.2</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Pindaan Perenggan 6.4 Experimental method pada Quadrupole temperature dari 150oC (Max 250oC) kepada 150oC (Max 200oC)</p><p class="sop-p">Memansuhkan perenggan 6.2.2 dan mengemaskini ‘Preparation of working standard solution’di perenggan 6.2.1</p><p class="sop-p">Mengemaskini penomboran di perenggan 6</p><p class="sop-p">Menambah 6.4.2 System Suitability Test by Tuning Evaluation</p><p class="sop-p">Mengemaskini Appendix A</p><p class="sop-p">dengan menambah nota tambahan: ‘All compounds can be detected under all pH conditions and with direct dissolution in ethanol. This appendix specifies the conditions in which each compound&#x27;s peak is most prominent.’</p><p class="sop-p">mengemaskini nama komponen dan penyediaan sampel pada nombor 45 dan 64.</p><p class="sop-p">Terbitan 2, Semakan 2:</p><p class="sop-p">Mengemaskini rujukan dengan menambah Buku Manual GCMS Agilent (7890/5975C), GCMS Agilent (8890/5977B) dan GCMS Shimadzu QP2010 Ultra</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menambah tuning parameter dan kriteria untuk setiap model GCMS yang digunakan</p><p class="sop-p">Mengemaskini perenggan 3.0 Definisi dengan menambah SPE Solid Phase Extraction, LLE Liquid Phase Extraction, LOD Limit of Detection dan PtP Peak-to-peak</p><p class="sop-p">Mengemaskini Appendix A dengan menambah SPE dan LLE untuk compounds yang berkenaan dan menambah compound Ticlopidine</p><p class="sop-p">Mengemaskini perenggan 6.3.2 kepada When samples require pH adjustment prior to analysis, either Solid-Phase Extraction (SPE) or Liquid-Liquid Extraction (LLE) may be employed</p><p class="sop-p">Menambah perenggan 6.4.5 Determination of LOD dan seterusnya mengemaskini kini penomboran perenggan 6.4.6 Mass Spectrum Observation dan 6.4.7 Injection Sequence.</p><p class="sop-p">Terbitan 2, Semakan 3:</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Mengemaskini Appendix A dengan menambah compound Terbinafine</p><p class="sop-p">Terbitan 2, Semakan 4:</p><p class="sop-p">Mengemaskini perenggan 3.Definisi</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan mengemaskini parameter Relative Abundance Ion m/z 219/69 dan 502/69 (Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) dan (7890/5975C) dan menambahkan spesifikasi parameter untuk Atune.</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menambahkan Table 4: Tuning Parameters and Acceptance Criteria for GCMS Systems (Shimadzu).</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menambahkan kenyataan System Verification 6.4.2.4 – 6.4.2.6.</p><p class="sop-p">Mengemaskini perenggan 6.4.5 dengan menambah Identification of Steroids by GCMS (6.4.5.1 – 6.4.5.3)</p><p class="sop-p">Mengemaskini Appendix A dengan menyatakan LLE pH 7 *(Use LLE only if SPE is not feasible) untuk kompaun Betamethasone, Dexamethasone dan Prednisolone.</p><p class="sop-p">Mengemaskini perenggan 6.5.7 dengan menambah Tuning Report.</p><p class="sop-p">Mengemaskini perengan 6.4.8 dengan menggantikan nombor jadual Table 4: Injection sequence for GCMS analysis kepada Table 5: Injection sequence for GCMS analysis</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/020 kepada PKKK/300/UP/018.</p><p class="sop-p">Kemaskini tarikh kuatkuasa dari 15 Januari 2026 kepada 10 April 2026.</p><p class="sop-p">Pindaan No. Dokumen dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/005 kepada PKKK/300/UP/004</p><p class="sop-p">PKKK/300/UAT/11 kepada PKKK/300/UP/010</p><p class="sop-p">PKKK/300/UAT/18 kepada PKKK/300/UP/017</p><p class="sop-p">PKKK/300/UAT/001	kepada PKKK/300/UP/001</p><p class="sop-p">PKKK/300/UAT/014 kepada PKKK/300/UP/013</p><p class="sop-p">PKKK/300/UAT/015 kepada PKKK/300/UP/014</p><p class="sop-p">Mengemaskini perenggan 6.4.2.1 dengan menambah conduct daily tuning.</p><p class="sop-p">Menambah perenggan 6.4.2.4 For qualitative screening with Agilent GCMS Systems, configure the instrument using Standard Spectra Tune rather than Autotune. This preserves standard ion-ratio targets, ensuring consistent fragmentation patterns that are crucial for reliable spectral library matching.</p><p class="sop-p">Mengemaskini perenggan 6.5.6 dengan menambah utilizing the initial sample analysis as the primary basis for reporting.</p><p class="sop-p">Diclofenac dan ketoprofen dikeluarkan dari senarai Appendix A</p><p class="sop-p">Kemaskini perenggan 3 dengan menambah definisi HP 5MS, EM, m/z, PW dan NSAIDS.</p><p class="sop-p">Mengemaskini Relative Abundance Ion m/z 69 untuk Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra) di Table 4: Tuning Parameters and Acceptance Criteria for GCMS Systems (Shimadzu) kepada Ratio Precursor Ion m/z 69.</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/004	Laporan Pengesanan Bahan Kawalan dan Terlarang dalam produk Tradisional</p><p class="sop-p">menggunakan GCMS</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian pengesanan bahan terlarang dan terhad (atau bahan kawalan dan terlarang) dalam produk tradisional menggunakan alat Gas Chromatography Mass Spectrometry (GCMS) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian pengesanan bahan terlarang dan terhad dalam produk tradisional menggunakan GCMS.</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1	GCMS		- Gas Chromatography Mass Spectrometry</strong></div><div class="sop-substep"><strong>3.2	RS		- Reference standard</strong></div><div class="sop-substep"><strong>3.3	OOS		- Out of Specification</strong></div><div class="sop-substep"><strong>3.4	EI		- Electron Ionizer</strong></div><div class="sop-substep"><strong>3.5	SPE		- Solid Phase Extraction</strong></div><div class="sop-substep"><strong>3.6	LLE 		- Liquid Phase Extraction</strong></div><div class="sop-substep"><strong>3.7	LOD		- Limit of Detection</strong></div><div class="sop-substep"><strong>3.8	PtP		- Peak-to-peak</strong></div><div class="sop-substep"><strong>3.9	s.tune		- Standard Spectra Tune</strong></div><div class="sop-substep"><strong>3.10	a.tune		- Autotune</strong></div><div class="sop-substep"><strong>3.10	HP 5MS	- Hewlett-Packard (5%-Phenyl)-methylpolysiloxane</strong></div><div class="sop-substep"><strong>3.11	NSAIDS	- Non-Steroidal Anti-Inflammatory Drugs</strong></div><div class="sop-substep"><strong>3.12	m/z		- (Mass-to-Charge ratio)</strong></div><div class="sop-substep"><strong>3.13	EM volts	- Electron Multiplier Voltage</strong></div><div class="sop-substep"><strong>3.14	PW		- Peak Width</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan</p><div class="sop-substep"><strong>5.5    	Penolong Pegawai Farmasi</strong></div><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Materials and Equipments</p><p class="sop-p">Instrument:</p><p class="sop-p">Gas Chromatography with single quadrupole Mass Spectrometry (EI)</p><p class="sop-p">Column:</p><p class="sop-p">HP 5MS 0.25µ, 30 m x 0.25 mm or equivalent</p><p class="sop-p">Reference standards:</p><p class="sop-p">Primary or secondary RS or equivalent (Refer Appendix A)</p><p class="sop-p">Chemical:</p><p class="sop-p">Ethanol</p><p class="sop-p">Glasswares and consumables:</p><p class="sop-p">Beakers</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (5 mL)</p><p class="sop-p">2 mL glass screw cap vial</p><div class="sop-substep"><strong>6.2      Preparation of Reference Standard</strong></div><p class="sop-p">Working standard solution</p><p class="sop-p">Weigh 10 mg of RS in 10 mL volumetric flask separately. Make up to volume with ethanol. The final concentration of the individual solution is 1 mg/mL.</p><div class="sop-substep"><strong>6.3      Preparation of sample</strong></div><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling processes differ between different types of dosage form. Please refer to the document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Sample preparation for analysis</p><p class="sop-p">The sample preparation process varies depending on the compound of interest. Three main methods are applied: Solid-Phase Extraction (SPE), Liquid-Liquid Extraction (LLE), and direct dissolved with ethanol.</p><p class="sop-p">When samples require pH adjustment prior to analysis, either Solid-Phase Extraction (SPE) or Liquid-Liquid Extraction (LLE) may be employed. Detailed procedures for both techniques can be found in documents PKKK/300/UP/013 and PKKK/300/UP/014.</p><p class="sop-p">For preparing samples by direct dissolving in Ethanol, the procedure is as follows:</p><p class="sop-p">Weight 1 gram of the sample (for dosage form such as capsule, powder, pill and cream) or measure 10 mL of the sample (for liquid dosage forms) into a beaker.</p><p class="sop-p">Add 10 mL of ethanol and sonicate for 10 minutes.</p><p class="sop-p">Filter the sample into the vial using 0.45µm nylon syringe filter and inject it into GCMS.</p><p class="sop-p">Experimental Method</p><p class="sop-p">The GCMS system used for detection of controlled and prohibited compounds in traditional products are given in Table 1 below.</p><p class="sop-p">Table 1: GCMS system for detection of controlled and prohibited compound</p><p class="sop-p">Column Temperature Program</p><p class="sop-p">Method apply column temperature program for detection of prohibited and restricted compound in traditional product:</p><p class="sop-p">Table 2: Column Temperature Program</p><p class="sop-p">Refer to document PKKK/300/UP/004 (GCMS Agilent 7890/5975C), PKKK/300/UP/010 (GCMS Shimadzu QP2010 Ultra), PKKK/300/UP/017 (GCMS Agilent 8890/5977B) on how to set-up temperature program and GCMS system.</p><p class="sop-p">System Suitability Test by Tuning Evaluation and System Verification</p><p class="sop-p">Conduct daily tuning using the system&#x27;s built-in software to ensure the GCMS is performing optimally and capable of delivering accurate and reliable results.</p><p class="sop-p">Verify key tuning parameters as specified in Table 3.</p><p class="sop-p">The generated tuning report must meet predefined criteria for the GCMS model before proceeding with sample analysis.</p><p class="sop-p">Table 3: Tuning Parameters and Acceptance Criteria for GCMS Systems (Agilent).</p><p class="sop-p">Table 4: Tuning Parameters and Acceptance Criteria for GCMS Systems (Shimadzu)</p><p class="sop-p">For qualitative screening with Agilent GCMS Systems, configure the instrument using Standard Spectra Tune rather than Autotune. This preserves standard ion-ratio targets, ensuring consistent fragmentation patterns that are crucial for reliable spectral library matching.</p><p class="sop-p">For routine system performance verification, the Tune Evaluation function shall be performed daily (or as specified). This function is accessed in the instrument software by selecting Tune &gt; Tune Evaluation.</p><p class="sop-p">Tune Evaluation automatically turns on the MS and collects the required data to generate a detailed verification report.</p><p class="sop-p">The report provides an automatic review and evaluation of key tune parameters, including: Mass Axis Calibration, Isotope Ratios, Precursor’s Presence, Air and Water Levels, and Multiplier Voltage. The acceptance criteria for evaluation remain consistent, irrespective of whether the system is evaluating a Standard Spectra Tune or an Autotune.</p><p class="sop-p">Standard Injection</p><p class="sop-p">Method verification is required when a compound of interest has not been tested (e.g. in a new instrument). Verification is performed by injecting a working standard solution once as assurance that the method is able to detect compounds with minimum library match at 80% in similarity. Repeat the process if library matching is less than minimum requirement or prepare a new working standard (by altering working standard concentration depending on peak intensity) if the problem is not resolved.</p><p class="sop-p">In the confirmation test (2nd analysis), a working standard solution is injected together during sample analysis (to ensure the system is at optimal condition with minimum library matching at 80%).</p><p class="sop-p">Sample Injection</p><p class="sop-p">Inject each of the samples in duplicate. Compare retention time and mass spectrum of the peak in the chromatogram of the sample with the library (NIST or In-house).</p><p class="sop-p">The sample contains compounds if the retention time matched with reference standard and mass spectrum of the sample has minimum similarity matching with the library at 80%. No carry over from the previous sample is ensured by checking the chromatogram of diluent before sample injection (absent of compound detected).</p><p class="sop-p">Identification of Steroids by GCMS</p><p class="sop-p">Identification of Steroids by GCMS in Multi-Component Samples</p><p class="sop-p">Individual Analysis of Sample</p><p class="sop-p">If a received sample consists of different components or colours (e.g. a green capsule and a red capsule) and is requested for analysis using this GCMS screening method, each component shall be analysed individually. Sample extraction may utilize Solid-Phase Extraction (SPE) at varying pH levels (pH 3, 7, or 11), or by Direct Dissolve Ethanol, depending on the target analyte profile (e.g., SPE pH 3 for initial NSAID screening).</p><p class="sop-p">Re-analysis for Positive Screening Results</p><p class="sop-p">If one of the analysed sample components (e.g. the green capsule) detects the presence of a steroid compound (e.g. Dexamethasone) via the GCMS screening method, the second analyst is mandated to repeat the confirmatory analysis for that specific component. The repeat analysis must use the exact same extraction technique (e.g. SPE pH3) and test method as utilized by the first analyst.</p><p class="sop-p">Follow-up Action for Negative Screening Results</p><p class="sop-p">For any sample component that does not detect the target compound(s) via the initial GCMS screening method (e.g., the red capsule), or where the detected compound (e.g., Dexamethasone detected in SPE pH 3) is known to yield a LODcleaner, more definitive result using a different established extraction (e.g., SPE pH 7), that component shall then proceed to analysis using the specific steroid HPLC method (Method Reference: PKKK/300/UP/047), utilizing the SPE pH 7 extraction procedure.</p><p class="sop-p">This step is to ensure comprehensive screening, as the GCMS method may miss polar steroids or those less efficiently extracted at the initial screening pH (e.g., pH 3, optimized for NSAIDs). Switching to the HPLC method with the optimized extraction (SPE pH 7) provides the necessary sensitivity and selectivity for conclusive steroid detection.</p><p class="sop-p">Determination of Limit of Detection (LOD)</p><p class="sop-p">Limit of Detection (LOD) for a compound is determined using peak-to-peak (PtP) Signal-to-Noise Ratio (S/N) analysis.</p><p class="sop-p">Prepare the compound concentration as described in Section 6.2.1.</p><p class="sop-p">Analyze the prepared solution to generate a PtP profile of the compound.</p><p class="sop-p">Calculate the Signal-to-Noise Ratio (S/N) from the PtP data.</p><p class="sop-p">LOD Calculation</p><p class="sop-p">The LOD concentration is calculated to achieve a minimum PtP S/N ratio of 3:1 using the formula:</p><p class="sop-p">LOD Concentration =</p><p class="sop-p">Example: For a 1 mg/mL (equivalent to 1000 ppm) Chlorpheniramine standard with a PtP S/N of 3924.65:</p><p class="sop-p">LOD Concentration =</p><p class="sop-p">= 0.76 ppm</p><p class="sop-p">Verification of LOD</p><p class="sop-p">Inject approximately 1 ppm of the compound into the system.</p><p class="sop-p">If the PtP S/N ratio is less than 3, prepare a higher concentration and repeat the injection until the PtP S/N is at least 3.</p><p class="sop-p">This procedure provides a temporary LOD concentration for use in the confirmation test (2nd analysis) until method validation is completed.</p><p class="sop-p">Upon completion of method validation, the validated LOD will replace the temporary LOD and a new procedure will be developed accordingly.</p><p class="sop-p">Mass spectrum observation</p><p class="sop-p">To observe and check mass spectrum of the sample and reference standard, refer to document PKKK/300/UP/004 (GCMS Agilent 7890/5975C), PKKK/300/UP/010 (GCMS Shimadzu QP2010 Ultra), PKKK/300/UP/017 (GCMS Agilent 8890/5977B).</p><p class="sop-p">Injection Sequence</p><p class="sop-p">Injection of diluent (ethanol) must be performed before and after sample injection. Refer to Table 5 for example of sequence table:</p><p class="sop-p">Table 5: Injection sequence for GCMS analysis</p><p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number)</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameter including equipment name, mobile phase program, GCMS system and name of method file.</p><p class="sop-p">List and preparation procedures of reference standard use in analysis.</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only)</p><p class="sop-p">Interpretation of result (Detected, Not Detected or suspected of specific compound),</p><p class="sop-p">utilizing the initial sample analysis as the primary basis for reporting.</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Tuning Report</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of compound name, peak area and retention time)</p><p class="sop-p">Chromatogram of 1st and 2nd injection of standard (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">Library matching for mass spectrum of sample that have similar retention time with RS (contain information of similarity index and comparison of mass spectrum with RS)</p>
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/083 kepada PKKK/300/UAT/020</p><p class="sop-p">Pindaan pada senarai Tanggungjawab kepada yang terkini</p><p class="sop-p">Pindaan No. Dokumen dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/HMS/023 kepada PKKK/300/UAT/005</p><p class="sop-p">PKKK/300/HMS/031 kepada PKKK/300/UAT/011</p><p class="sop-p">PKKK/300/HMS/080 kepada PKKK/300/UAT/018</p><p class="sop-p">PKKK/300/HMS/026 kepada PKKK/300/UAT/001</p><p class="sop-p">PKKK/300/HMS/070 kepada PKKK/300/UAT/014</p><p class="sop-p">PKKK/300/HMS/071 kepada PKKK/300/UAT/015</p><p class="sop-p">Menambah langkah penyediaan sampel dengan lebih terperinci di para 6.4.2</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Pindaan Perenggan 6.4 Experimental method pada Quadrupole temperature dari 150oC (Max 250oC) kepada 150oC (Max 200oC)</p><p class="sop-p">Memansuhkan perenggan 6.2.2 dan mengemaskini ‘Preparation of working standard solution’di perenggan 6.2.1</p><p class="sop-p">Mengemaskini penomboran di perenggan 6</p><p class="sop-p">Menambah 6.4.2 System Suitability Test by Tuning Evaluation</p><p class="sop-p">Mengemaskini Appendix A</p><p class="sop-p">dengan menambah nota tambahan: ‘All compounds can be detected under all pH conditions and with direct dissolution in ethanol. This appendix specifies the conditions in which each compound&#x27;s peak is most prominent.’</p><p class="sop-p">mengemaskini nama komponen dan penyediaan sampel pada nombor 45 dan 64.</p><p class="sop-p">Terbitan 2, Semakan 2:</p><p class="sop-p">Mengemaskini rujukan dengan menambah Buku Manual GCMS Agilent (7890/5975C), GCMS Agilent (8890/5977B) dan GCMS Shimadzu QP2010 Ultra</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menambah tuning parameter dan kriteria untuk setiap model GCMS yang digunakan</p><p class="sop-p">Mengemaskini perenggan 3.0 Definisi dengan menambah SPE Solid Phase Extraction, LLE Liquid Phase Extraction, LOD Limit of Detection dan PtP Peak-to-peak</p><p class="sop-p">Mengemaskini Appendix A dengan menambah SPE dan LLE untuk compounds yang berkenaan dan menambah compound Ticlopidine</p><p class="sop-p">Mengemaskini perenggan 6.3.2 kepada When samples require pH adjustment prior to analysis, either Solid-Phase Extraction (SPE) or Liquid-Liquid Extraction (LLE) may be employed</p><p class="sop-p">Menambah perenggan 6.4.5 Determination of LOD dan seterusnya mengemaskini kini penomboran perenggan 6.4.6 Mass Spectrum Observation dan 6.4.7 Injection Sequence.</p><p class="sop-p">Terbitan 2, Semakan 3:</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Mengemaskini Appendix A dengan menambah compound Terbinafine</p><p class="sop-p">Terbitan 2, Semakan 4:</p><p class="sop-p">Mengemaskini perenggan 3.Definisi</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan mengemaskini parameter Relative Abundance Ion m/z 219/69 dan 502/69 (Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) dan (7890/5975C) dan menambahkan spesifikasi parameter untuk Atune.</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menambahkan Table 4: Tuning Parameters and Acceptance Criteria for GCMS Systems (Shimadzu).</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menambahkan kenyataan System Verification 6.4.2.4 – 6.4.2.6.</p><p class="sop-p">Mengemaskini perenggan 6.4.5 dengan menambah Identification of Steroids by GCMS (6.4.5.1 – 6.4.5.3)</p><p class="sop-p">Mengemaskini Appendix A dengan menyatakan LLE <span class="kw-ph">pH 7</span> *(Use LLE only if SPE is not feasible) untuk kompaun Betamethasone, Dexamethasone dan Prednisolone.</p><p class="sop-p">Mengemaskini perenggan 6.5.7 dengan menambah Tuning Report.</p><p class="sop-p">Mengemaskini perengan 6.4.8 dengan menggantikan nombor jadual Table 4: Injection sequence for GCMS analysis kepada Table 5: Injection sequence for GCMS analysis</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/020 kepada PKKK/300/UP/018.</p><p class="sop-p">Kemaskini tarikh kuatkuasa dari 15 Januari 2026 kepada 10 April 2026.</p><p class="sop-p">Pindaan No. Dokumen dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/005 kepada PKKK/300/UP/004</p><p class="sop-p">PKKK/300/UAT/11 kepada PKKK/300/UP/010</p><p class="sop-p">PKKK/300/UAT/18 kepada PKKK/300/UP/017</p><p class="sop-p">PKKK/300/UAT/001	kepada PKKK/300/UP/001</p><p class="sop-p">PKKK/300/UAT/014 kepada PKKK/300/UP/013</p><p class="sop-p">PKKK/300/UAT/015 kepada PKKK/300/UP/014</p><p class="sop-p">Mengemaskini perenggan 6.4.2.1 dengan menambah conduct daily tuning.</p><p class="sop-p">Menambah perenggan 6.4.2.4 For qualitative screening with Agilent GCMS Systems, configure the instrument using Standard Spectra Tune rather than Autotune. This preserves standard ion-ratio targets, ensuring consistent fragmentation patterns that are crucial for reliable spectral library matching.</p><p class="sop-p">Mengemaskini perenggan 6.5.6 dengan menambah utilizing the initial sample analysis as the primary basis for reporting.</p><p class="sop-p">Diclofenac dan ketoprofen dikeluarkan dari senarai Appendix A</p><p class="sop-p">Kemaskini perenggan 3 dengan menambah definisi HP 5MS, EM, m/z, PW dan NSAIDS.</p><p class="sop-p">Mengemaskini Relative Abundance Ion m/z 69 untuk Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra) di Table 4: Tuning Parameters and Acceptance Criteria for GCMS Systems (Shimadzu) kepada Ratio Precursor Ion m/z 69.</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/004	Laporan Pengesanan Bahan Kawalan dan Terlarang dalam produk Tradisional</p><p class="sop-p">menggunakan GCMS</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian pengesanan bahan terlarang dan terhad (atau bahan kawalan dan terlarang) dalam produk tradisional menggunakan alat Gas Chromatography Mass Spectrometry (GCMS) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian pengesanan bahan terlarang dan terhad dalam produk tradisional menggunakan GCMS.</p><p class="sop-p">DEFINISI</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-1" class="sop-step-label">
+                      <strong>3.1	GCMS		- Gas Chromatography Mass Spectrometry</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-2" class="sop-step-label">
+                      <strong>3.2	RS		- Reference standard</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-3" class="sop-step-label">
+                      <strong>3.3	OOS		- Out of Specification</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-4" class="sop-step-label">
+                      <strong>3.4	EI		- Electron Ionizer</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-5" class="sop-step-label">
+                      <strong>3.5	SPE		- Solid Phase Extraction</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-6" class="sop-step-label">
+                      <strong>3.6	LLE 		- Liquid Phase Extraction</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-7" class="sop-step-label">
+                      <strong>3.7	LOD		- Limit of Detection</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-8" class="sop-step-label">
+                      <strong>3.8	PtP		- Peak-to-peak</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-9" class="sop-step-label">
+                      <strong>3.9	s.tune		- Standard Spectra Tune</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-10" class="sop-step-label">
+                      <strong>3.10	a.tune		- Autotune</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-11" class="sop-step-label">
+                      <strong>3.10	HP 5MS	- Hewlett-Packard (5%-Phenyl)-methylpolysiloxane</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-12" class="sop-step-label">
+                      <strong>3.11	NSAIDS	- Non-Steroidal Anti-Inflammatory Drugs</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-13" class="sop-step-label">
+                      <strong>3.12	m/z		- (Mass-to-Charge ratio)</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-14" class="sop-step-label">
+                      <strong>3.13	EM volts	- Electron Multiplier Voltage</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-15" class="sop-step-label">
+                      <strong>3.14	PW		- Peak Width</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-16" class="sop-step-label">
+                      <strong>5.5    	Penolong Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Materials and Equipments</p><p class="sop-p">Instrument:</p><p class="sop-p">Gas Chromatography with single quadrupole Mass Spectrometry (EI)</p><p class="sop-p">Column:</p><p class="sop-p">HP 5MS 0.25µ, 30 m x 0.25 mm or equivalent</p><p class="sop-p">Reference standards:</p><p class="sop-p">Primary or secondary RS or equivalent (Refer Appendix A)</p><p class="sop-p">Chemical:</p><p class="sop-p">Ethanol</p><p class="sop-p">Glasswares and consumables:</p><p class="sop-p">Beakers</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (<span class="kw-vol">5 mL</span>)</p><p class="sop-p"><span class="kw-vol">2 mL</span> glass screw cap vial</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-17" class="sop-step-label">
+                      <strong>6.2      Preparation of Reference Standard</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Working standard solution</p><p class="sop-p">Weigh <span class="kw-wt">10 mg</span> of RS in <span class="kw-vol">10 mL</span> volumetric flask separately. Make up to volume with ethanol. The final concentration of the individual solution is <span class="kw-wt">1 mg</span>/mL.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-018-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/018')">
+                    <label for="step-018-18" class="sop-step-label">
+                      <strong>6.3      Preparation of sample</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling processes differ between different types of dosage form. Please refer to the document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Sample preparation for analysis</p><p class="sop-p">The sample preparation process varies depending on the compound of interest. Three main methods are applied: Solid-Phase Extraction (SPE), Liquid-Liquid Extraction (LLE), and direct dissolved with ethanol.</p><p class="sop-p">When samples require pH adjustment prior to analysis, either Solid-Phase Extraction (SPE) or Liquid-Liquid Extraction (LLE) may be employed. Detailed procedures for both techniques can be found in documents PKKK/300/UP/013 and PKKK/300/UP/014.</p><p class="sop-p">For preparing samples by direct dissolving in Ethanol, the procedure is as follows:</p><p class="sop-p">Weight 1 gram of the sample (for dosage form such as capsule, powder, pill and cream) or measure <span class="kw-vol">10 mL</span> of the sample (for liquid dosage forms) into a beaker.</p><p class="sop-p">Add <span class="kw-vol">10 mL</span> of ethanol and sonicate for <span class="kw-time">10 minutes</span>.</p><p class="sop-p">Filter the sample into the vial using 0.45µm nylon syringe filter and inject it into GCMS.</p><p class="sop-p">Experimental Method</p><p class="sop-p">The GCMS system used for detection of controlled and prohibited compounds in traditional products are given in Table 1 below.</p><p class="sop-p">Table 1: GCMS system for detection of controlled and prohibited compound</p><p class="sop-p">Column Temperature Program</p><p class="sop-p">Method apply column temperature program for detection of prohibited and restricted compound in traditional product:</p><p class="sop-p">Table 2: Column Temperature Program</p><p class="sop-p">Refer to document PKKK/300/UP/004 (GCMS Agilent 7890/5975C), PKKK/300/UP/010 (GCMS Shimadzu QP2010 Ultra), PKKK/300/UP/017 (GCMS Agilent 8890/5977B) on how to set-up temperature program and GCMS system.</p><p class="sop-p">System Suitability Test by Tuning Evaluation and System Verification</p><p class="sop-p">Conduct daily tuning using the system&#x27;s built-in software to ensure the GCMS is performing optimally and capable of delivering accurate and reliable results.</p><p class="sop-p">Verify key tuning parameters as specified in Table 3.</p><p class="sop-p">The generated tuning report must meet predefined criteria for the GCMS model before proceeding with sample analysis.</p><p class="sop-p">Table 3: Tuning Parameters and Acceptance Criteria for GCMS Systems (Agilent).</p><p class="sop-p">Table 4: Tuning Parameters and Acceptance Criteria for GCMS Systems (Shimadzu)</p><p class="sop-p">For qualitative screening with Agilent GCMS Systems, configure the instrument using Standard Spectra Tune rather than Autotune. This preserves standard ion-ratio targets, ensuring consistent fragmentation patterns that are crucial for reliable spectral library matching.</p><p class="sop-p">For routine system performance verification, the Tune Evaluation function shall be performed daily (or as specified). This function is accessed in the instrument software by selecting Tune &gt; Tune Evaluation.</p><p class="sop-p">Tune Evaluation automatically turns on the MS and collects the required data to generate a detailed verification report.</p><p class="sop-p">The report provides an automatic review and evaluation of key tune parameters, including: Mass Axis Calibration, Isotope Ratios, Precursor’s Presence, Air and Water Levels, and Multiplier Voltage. The acceptance criteria for evaluation remain consistent, irrespective of whether the system is evaluating a Standard Spectra Tune or an Autotune.</p><p class="sop-p">Standard Injection</p><p class="sop-p">Method verification is required when a compound of interest has not been tested (e.g. in a new instrument). Verification is performed by injecting a working standard solution once as assurance that the method is able to detect compounds with minimum library match at 80% in similarity. Repeat the process if library matching is less than minimum requirement or prepare a new working standard (by altering working standard concentration depending on peak intensity) if the problem is not resolved.</p><p class="sop-p">In the confirmation test (2nd analysis), a working standard solution is injected together during sample analysis (to ensure the system is at optimal condition with minimum library matching at 80%).</p><p class="sop-p">Sample Injection</p><p class="sop-p">Inject each of the samples in duplicate. Compare retention time and mass spectrum of the peak in the chromatogram of the sample with the library (NIST or In-house).</p><p class="sop-p">The sample contains compounds if the retention time matched with reference standard and mass spectrum of the sample has minimum similarity matching with the library at 80%. No carry over from the previous sample is ensured by checking the chromatogram of diluent before sample injection (absent of compound detected).</p><p class="sop-p">Identification of Steroids by GCMS</p><p class="sop-p">Identification of Steroids by GCMS in Multi-Component Samples</p><p class="sop-p">Individual Analysis of Sample</p><p class="sop-p">If a received sample consists of different components or colours (e.g. a green capsule and a red capsule) and is requested for analysis using this GCMS screening method, each component shall be analysed individually. Sample extraction may utilize Solid-Phase Extraction (SPE) at varying pH levels (<span class="kw-ph">pH 3</span>, 7, or 11), or by Direct Dissolve Ethanol, depending on the target analyte profile (e.g., SPE <span class="kw-ph">pH 3</span> for initial NSAID screening).</p><p class="sop-p">Re-analysis for Positive Screening Results</p><p class="sop-p">If one of the analysed sample components (e.g. the green capsule) detects the presence of a steroid compound (e.g. Dexamethasone) via the GCMS screening method, the second analyst is mandated to repeat the confirmatory analysis for that specific component. The repeat analysis must use the exact same extraction technique (e.g. SPE <span class="kw-ph">pH3</span>) and test method as utilized by the first analyst.</p><p class="sop-p">Follow-up Action for Negative Screening Results</p><p class="sop-p">For any sample component that does not detect the target compound(s) via the initial GCMS screening method (e.g., the red capsule), or where the detected compound (e.g., Dexamethasone detected in SPE <span class="kw-ph">pH 3</span>) is known to yield a LODcleaner, more definitive result using a different established extraction (e.g., SPE <span class="kw-ph">pH 7</span>), that component shall then proceed to analysis using the specific steroid HPLC method (Method Reference: PKKK/300/UP/047), utilizing the SPE <span class="kw-ph">pH 7</span> extraction procedure.</p><p class="sop-p">This step is to ensure comprehensive screening, as the GCMS method may miss polar steroids or those less efficiently extracted at the initial screening pH (e.g., <span class="kw-ph">pH 3</span>, optimized for NSAIDs). Switching to the HPLC method with the optimized extraction (SPE <span class="kw-ph">pH 7</span>) provides the necessary sensitivity and selectivity for conclusive steroid detection.</p><p class="sop-p">Determination of Limit of Detection (LOD)</p><p class="sop-p">Limit of Detection (LOD) for a compound is determined using peak-to-peak (PtP) Signal-to-Noise Ratio (S/N) analysis.</p><p class="sop-p">Prepare the compound concentration as described in Section 6.2.1.</p><p class="sop-p">Analyze the prepared solution to generate a PtP profile of the compound.</p><p class="sop-p">Calculate the Signal-to-Noise Ratio (S/N) from the PtP data.</p><p class="sop-p">LOD Calculation</p><p class="sop-p">The LOD concentration is calculated to achieve a minimum PtP S/N ratio of 3:1 using the formula:</p><p class="sop-p">LOD Concentration =</p><p class="sop-p">Example: For a <span class="kw-wt">1 mg</span>/mL (equivalent to 1000 ppm) Chlorpheniramine standard with a PtP S/N of 3924.65:</p><p class="sop-p">LOD Concentration =</p><p class="sop-p">= 0.76 ppm</p><p class="sop-p">Verification of LOD</p><p class="sop-p">Inject approximately 1 ppm of the compound into the system.</p><p class="sop-p">If the PtP S/N ratio is less than 3, prepare a higher concentration and repeat the injection until the PtP S/N is at least 3.</p><p class="sop-p">This procedure provides a temporary LOD concentration for use in the confirmation test (2nd analysis) until method validation is completed.</p><p class="sop-p">Upon completion of method validation, the validated LOD will replace the temporary LOD and a new procedure will be developed accordingly.</p><p class="sop-p">Mass spectrum observation</p><p class="sop-p">To observe and check mass spectrum of the sample and reference standard, refer to document PKKK/300/UP/004 (GCMS Agilent 7890/5975C), PKKK/300/UP/010 (GCMS Shimadzu QP2010 Ultra), PKKK/300/UP/017 (GCMS Agilent 8890/5977B).</p><p class="sop-p">Injection Sequence</p><p class="sop-p">Injection of diluent (ethanol) must be performed before and after sample injection. Refer to Table 5 for example of sequence table:</p><p class="sop-p">Table 5: Injection sequence for GCMS analysis</p><p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number)</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameter including equipment name, mobile phase program, GCMS system and name of method file.</p><p class="sop-p">List and preparation procedures of reference standard use in analysis.</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only)</p><p class="sop-p">Interpretation of result (Detected, Not Detected or suspected of specific compound),</p><p class="sop-p">utilizing the initial sample analysis as the primary basis for reporting.</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Tuning Report</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of compound name, peak area and retention time)</p><p class="sop-p">Chromatogram of 1st and 2nd injection of standard (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">Library matching for mass spectrum of sample that have similar retention time with RS (contain information of similarity index and comparison of mass spectrum with RS)</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.       REKOD KUALITI</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.       REKOD KUALITI
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/004	Laporan Pengesanan Bahan Kawalan dan Terlarang dalam produk</p><p class="sop-p">Tradisional menggunakan GCMS</p><p class="sop-p">APPENDIX A</p><p class="sop-p">Note: All compounds can be detected under all pH conditions and with direct dissolution in ethanol. This appendix specifies the conditions in which each compound&#x27;s peak is most prominent.</p>
           </div>
@@ -124,61 +371,101 @@
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr><td>2</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr><td>2</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr><td>2</td><td>2</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>16 Dis 2024</td></tr><tr><td>2</td><td>3</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>2</td><td>4</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Jan 2026</td></tr><tr><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/018</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>2</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>2</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr ><td>2</td><td>2</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>16 Dis 2024</td></tr><tr ><td>2</td><td>3</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>2</td><td>4</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Jan 2026</td></tr><tr ><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td>PKKK/300/UP/004</td><td>Gas Chromatography-Mass Spectroscopy Agilent (7890A/5975C)</td></tr><tr><td>PKKK/300/UP/010</td><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td></tr><tr><td>PKKK/300/UP/017</td><td>Gas Chromatography-Mass Spectroscopy Agilent (8890/5977B)</td></tr><tr><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr><tr><td>PKKK/300/UP/013</td><td>Pengekstrakan Fasa Pepejal Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</td></tr><tr><td>PKKK/300/UP/014</td><td>Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</td></tr><tr><td></td><td>Buku Manual GCMS Agilent (7890/5975C), GCMS Agilent (8890/5977B) dan GCMS Shimadzu QP2010 Ultra</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/018</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td>PKKK/300/UP/004</td><td>Gas Chromatography-Mass Spectroscopy Agilent (7890A/5975C)</td></tr><tr ><td>PKKK/300/UP/010</td><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td></tr><tr ><td>PKKK/300/UP/017</td><td>Gas Chromatography-Mass Spectroscopy Agilent (8890/5977B)</td></tr><tr ><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr><tr ><td>PKKK/300/UP/013</td><td>Pengekstrakan Fasa Pepejal Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</td></tr><tr ><td>PKKK/300/UP/014</td><td>Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</td></tr><tr ><td></td><td>Buku Manual GCMS Agilent (7890/5975C), GCMS Agilent (8890/5977B) dan GCMS Shimadzu QP2010 Ultra</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>Column</th><th>Column</th></tr><tr><td>Type</td><td>HP 5MS</td></tr><tr><td>Dimensions</td><td>30 m x 0.25 mm x 0.25µm</td></tr><tr><td>Mobile phase</td><td>Mobile phase</td></tr><tr><td>Type</td><td>Helium</td></tr><tr><td>Gas flow rate</td><td>1.0 mL/min</td></tr><tr><td>Gas Chromatography</td><td>Gas Chromatography</td></tr><tr><td>Column temperature</td><td>Temperature program</td></tr><tr><td>Injection volume</td><td>1 µL</td></tr><tr><td>Injection mode</td><td>Splitless</td></tr><tr><td>Injector temperature (Front inlet)</td><td>250oC</td></tr><tr><td>Run time</td><td>32.5 minutes</td></tr><tr><td>Mass Spectrometry</td><td>Mass Spectrometry</td></tr><tr><td>Detector temperature</td><td></td></tr><tr><td>EI / MS source</td><td>230oC (Max 250oC)</td></tr><tr><td>Quadrupole</td><td>150oC (Max 200oC)</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/018</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Column</th><th>Column</th></tr><tr ><td>Type</td><td>HP 5MS</td></tr><tr ><td>Dimensions</td><td>30 m x 0.25 mm x 0.25µm</td></tr><tr ><td>Mobile phase</td><td>Mobile phase</td></tr><tr ><td>Type</td><td>Helium</td></tr><tr ><td>Gas flow rate</td><td><span class="kw-flow"><span class="kw-vol">1.0 mL</span>/min</span></td></tr><tr ><td>Gas Chromatography</td><td>Gas Chromatography</td></tr><tr ><td>Column temperature</td><td>Temperature program</td></tr><tr ><td>Injection volume</td><td><span class="kw-vol">1 µL</span></td></tr><tr ><td>Injection mode</td><td>Splitless</td></tr><tr ><td>Injector temperature (Front inlet)</td><td>250oC</td></tr><tr ><td>Run time</td><td><span class="kw-time">32.5 minutes</span></td></tr><tr ><td>Mass Spectrometry</td><td>Mass Spectrometry</td></tr><tr ><td>Detector temperature</td><td></td></tr><tr ><td>EI / MS source</td><td>230oC (Max 250oC)</td></tr><tr ><td>Quadrupole</td><td>150oC (Max 200oC)</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
-          <table class="table-official">
-            <tr><th>Initial TºC</th><th>Initial Time</th><th>Max. TºC</th><th>Run time</th></tr><tr><td>100oC</td><td>2.00 min</td><td>350oC</td><td>32.5</td></tr><tr><td>Ramps :</td><td>Rate</td><td>Final Temp</td><td>Final Time</td></tr><tr><td></td><td>20.00</td><td>200</td><td>5.00</td></tr><tr><td></td><td>20.00</td><td>260</td><td>5.00</td></tr><tr><td></td><td>20.00</td><td>280</td><td>5.00</td></tr><tr><td></td><td>20.00</td><td>310</td><td>5.00</td></tr>
-          </table>
+        <div class="table-card" id="table-4">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 4</span>
+            <span class="table-doc-code">PKKK/300/UP/018</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Initial TºC</th><th>Initial Time</th><th>Max. TºC</th><th>Run time</th></tr><tr ><td>100oC</td><td><span class="kw-time">2.00 min</span></td><td>350oC</td><td>32.5</td></tr><tr ><td>Ramps :</td><td>Rate</td><td>Final Temp</td><td>Final Time</td></tr><tr ><td></td><td>20.00</td><td>200</td><td>5.00</td></tr><tr ><td></td><td>20.00</td><td>260</td><td>5.00</td></tr><tr ><td></td><td>20.00</td><td>280</td><td>5.00</td></tr><tr ><td></td><td>20.00</td><td>310</td><td>5.00</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
-          <table class="table-official">
-            <tr><th>GCMS Model</th><th>Parameters</th><th>Acceptance Criteria</th><th>Acceptance Criteria</th></tr><tr><td>GCMS Model</td><td>Parameters</td><td>Standard Spectra Tune  (s.tune)</td><td>Autotune (a.tune)</td></tr><tr><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Relative Abundance Ion m/z 69</td><td>100%</td><td>100%</td></tr><tr><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Relative Abundance Ion m/z 219/69</td><td>40 - 85%</td><td>70 – 150%</td></tr><tr><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Relative Abundance Ion m/z 502/69</td><td>2 – 5 %</td><td>&gt; 3%</td></tr><tr><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Em Volts</td><td></td><td></td></tr><tr><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Mass peak width (PW50)</td><td>0.55 ± 0.1</td><td>0.60 ± 0.1</td></tr>
-          </table>
+        <div class="table-card" id="table-5">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 5</span>
+            <span class="table-doc-code">PKKK/300/UP/018</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>GCMS Model</th><th>Parameters</th><th>Acceptance Criteria</th><th>Acceptance Criteria</th></tr><tr ><td>GCMS Model</td><td>Parameters</td><td>Standard Spectra Tune  (s.tune)</td><td>Autotune (a.tune)</td></tr><tr ><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Relative Abundance Ion m/z 69</td><td>100%</td><td>100%</td></tr><tr ><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Relative Abundance Ion m/z 219/69</td><td>40 - 85%</td><td>70 – 150%</td></tr><tr ><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Relative Abundance Ion m/z 502/69</td><td>2 – 5 %</td><td>&gt; 3%</td></tr><tr ><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Em Volts</td><td></td><td></td></tr><tr ><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) and (7890/5975C)   With Tuning Standard: PFTBA (Perfluorotributylamine)</td><td>Mass peak width (PW50)</td><td>0.55 ± 0.1</td><td>0.60 ± 0.1</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 6</div>
-          <table class="table-official">
-            <tr><th>GCMS Model</th><th>Parameters</th><th>Acceptance Criteria</th></tr><tr><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td>Full Width at half minimum (FWHM)</td><td>0.5-0.7</td></tr><tr><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td>Detector Voltage</td><td></td></tr><tr><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td>Relative intensity ratio for m/z 502</td><td></td></tr><tr><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td>Ratio Precursor Ion m/z 69</td><td>100%</td></tr>
-          </table>
+        <div class="table-card" id="table-6">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 6</span>
+            <span class="table-doc-code">PKKK/300/UP/018</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>GCMS Model</th><th>Parameters</th><th>Acceptance Criteria</th></tr><tr ><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td>Full Width at half minimum (FWHM)</td><td>0.5-0.7</td></tr><tr ><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td>Detector Voltage</td><td></td></tr><tr ><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td>Relative intensity ratio for m/z 502</td><td></td></tr><tr ><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td>Ratio Precursor Ion m/z 69</td><td>100%</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 7</div>
-          <table class="table-official">
-            <tr><th>No.</th><th>Detail</th><th>No. of injection</th></tr><tr><td>1</td><td>Diluent (ethanol)</td><td>1</td></tr><tr><td>2</td><td>Sample number 1</td><td>2</td></tr><tr><td>3</td><td>Diluent (ethanol)</td><td>1</td></tr><tr><td>4</td><td>Sample number 2</td><td>2</td></tr><tr><td>5</td><td>Diluent (ethanol)</td><td>1</td></tr><tr><td>6</td><td>LOD (if any)</td><td>1</td></tr>
-          </table>
+        <div class="table-card" id="table-7">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 7</span>
+            <span class="table-doc-code">PKKK/300/UP/018</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>No.</th><th>Detail</th><th>No. of injection</th></tr><tr class="seq-blank"><td>1</td><td>Diluent (ethanol)</td><td>1</td></tr><tr ><td>2</td><td>Sample number 1</td><td>2</td></tr><tr class="seq-blank"><td>3</td><td>Diluent (ethanol)</td><td>1</td></tr><tr ><td>4</td><td>Sample number 2</td><td>2</td></tr><tr class="seq-blank"><td>5</td><td>Diluent (ethanol)</td><td>1</td></tr><tr class="seq-iqc"><td>6</td><td>LOD (if any)</td><td>1</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 8</div>
-          <table class="table-official">
-            <tr><th>Bil</th><th>Compound name</th><th>Sample preparation</th></tr><tr><td></td><td>Alprazolam</td><td>SPE pH 3, 7, 11 and Direct dissolve ethanol</td></tr><tr><td></td><td>Acetylsalicylic acid / aspirin</td><td>SPE pH 3</td></tr><tr><td></td><td>Atenolol</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Atropine</td><td>SPE pH 11</td></tr><tr><td></td><td>Benzocaine</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Betamethasone</td><td>i)	SPE pH 7 ii)	*LLE pH 7  *(Use LLE only if SPE is not feasible)</td></tr><tr><td></td><td>Bisacodyl</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Bromhexine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Buclizine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Bupropion</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Caffeine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Camphor</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Captopril</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Carbimazole</td><td>SPE pH 12</td></tr><tr><td></td><td>Celecoxib</td><td>SPE pH 11 or direct dissolve ethanol</td></tr><tr><td></td><td>Chloramphenicol</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Chlorpheniramine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Cinnarizine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Citalopram</td><td>SPE pH 3, 7, 11 and Direct dissolve ethanol</td></tr><tr><td></td><td>Clindamycin</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Clotrimazole</td><td>SPE pH 3, 7, 11</td></tr><tr><td></td><td>Codeine</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Colchicine</td><td>SPE pH 11 or direct dissolve ethanol</td></tr><tr><td></td><td>Cyropheptadiene</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Dexamethasone</td><td>i)	SPE pH 7 ii)	*LLE pH 7  *(Use LLE only if SPE is not feasible)</td></tr><tr><td></td><td>Dexchlorpheniramine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Dextromethorphan</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Diazepam</td><td>SPE pH 3, 7, 11 and Direct dissolve ethanol</td></tr><tr><td></td><td>Dibucaine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Dimenhydrinate</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Diphenhydramine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Diphenoxylate</td><td>SPE pH 7</td></tr><tr><td></td><td>Econazole</td><td>SPE pH 3, 7, 11</td></tr><tr><td></td><td>Ephedrine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Estradiol Benzoate</td><td>SPE pH 7</td></tr><tr><td></td><td>Ethinyl Oestradiol</td><td>SPE pH 7</td></tr><tr><td></td><td>Fenfluramine</td><td>SPE pH 5, 11 and Direct dissolve ethanol</td></tr><tr><td></td><td>Fluoxetine</td><td>SPE pH 3, 7, 11 and Direct dissolve ethanol</td></tr><tr><td></td><td>Griseofulvin</td><td>SPE pH 3, 7, 11</td></tr><tr><td></td><td>Guaifenesin</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Hydroquinone</td><td>SPE pH 12 or Direct dissolve ethanol</td></tr><tr><td></td><td>Hyoscine</td><td>SPE pH 11</td></tr><tr><td></td><td>Ibuprofen</td><td>SPE pH 3</td></tr><tr><td></td><td>Lidocaine</td><td>SPE pH 11 or Direct dissolve Ethanol</td></tr><tr><td></td><td>Loperamide</td><td>SPE pH 11</td></tr><tr><td></td><td>Loratadine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Mefenamic acid</td><td>SPE pH 3</td></tr><tr><td></td><td>Menthol</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Metoclopramide</td><td>SPE pH 11</td></tr><tr><td></td><td>Methadone</td><td>SPE pH 11</td></tr><tr><td></td><td>Methamphetamine</td><td>SPE pH 3, 7, 11 and Direct dissolve ethanol</td></tr><tr><td></td><td>Methimazole</td><td>SPE pH 12</td></tr><tr><td></td><td>Methyl salicylate</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Methyl Testosterone</td><td>SPE pH 7</td></tr><tr><td></td><td>Metoprolol</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Metronidazole</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Miconazole</td><td>SPE pH 3, 7, 11</td></tr><tr><td></td><td>Midazolam</td><td>SPE pH 3, 7, 11 and Direct dissolve ethanol</td></tr><tr><td></td><td>Minoxidil</td><td>SPE pH 3</td></tr><tr><td></td><td>Morphine</td><td>SPE pH 11</td></tr><tr><td></td><td>N-desmethylsibutramine</td><td>SPE pH 5, 11 and direct dissolve ethanol</td></tr><tr><td></td><td>Naproxen</td><td>SPE pH 3</td></tr><tr><td></td><td>Nifedipine</td><td>SPE pH 3 or Direct dissolve ethanol</td></tr><tr><td></td><td>Nicotine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Norethisterone</td><td>SPE pH 7</td></tr><tr><td></td><td>Orphenadrine</td><td>SPE pH 11</td></tr><tr><td></td><td>Paracetamol</td><td>SPE pH 3</td></tr><tr><td></td><td>Phenolphthalein</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Phentermine</td><td>SPE pH 5, 11 and direct dissolve ethanol</td></tr><tr><td></td><td>Phenylbutazone</td><td>SPE pH 3</td></tr><tr><td></td><td>Phenylpropanolamine</td><td>SPE pH 11</td></tr><tr><td></td><td>Prednisolone</td><td>i)	SPE pH 7 ii)	*LLE pH 7  *(Use LLE only if SPE is not feasible)</td></tr><tr><td></td><td>Prilocaine</td><td>SPE pH 11 or direct dissolve Ethanol</td></tr><tr><td></td><td>Prochlorperazine</td><td>SPE pH 11</td></tr><tr><td></td><td>Progesterone</td><td>SPE pH 7</td></tr><tr><td></td><td>Promethazine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Pseudoephedrine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Salbutamol</td><td>SPE pH 11</td></tr><tr><td></td><td>Salicylic acid</td><td>SPE pH 3</td></tr><tr><td></td><td>Sibutramine</td><td>SPE pH 5, 11 and direct dissolve ethanol</td></tr><tr><td></td><td>Simvastatin</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Sulfametaxole</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Tadalafil</td><td>SPE pH 3</td></tr><tr><td></td><td>Terbinafine</td><td>SPE pH 3, 7, 11</td></tr><tr><td></td><td>Terbutaline</td><td>SPE pH 11</td></tr><tr><td></td><td>Testosterone</td><td>SPE pH 7</td></tr><tr><td></td><td>Testosterone Propionate</td><td>SPE pH 7</td></tr><tr><td></td><td>Tetracaine</td><td>SPE pH 11 or Direct dissolve ethanol</td></tr><tr><td></td><td>Tetrahydrozoline</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Theophylline</td><td>SPE pH 11</td></tr><tr><td></td><td>Thymol</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Ticlopidine</td><td>SPE pH 11</td></tr><tr><td></td><td>Tramadol</td><td>SPE pH 11</td></tr><tr><td></td><td>Trimethoprim</td><td>Direct dissolve ethanol</td></tr><tr><td></td><td>Yohimbine</td><td>Direct dissolve ethanol</td></tr>
-          </table>
+        <div class="table-card" id="table-8">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 8</span>
+            <span class="table-doc-code">PKKK/300/UP/018</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Bil</th><th>Compound name</th><th>Sample preparation</th></tr><tr ><td></td><td>Alprazolam</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11 and Direct dissolve ethanol</td></tr><tr ><td></td><td>Acetylsalicylic acid / aspirin</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Atenolol</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Atropine</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Benzocaine</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Betamethasone</td><td>i)	SPE <span class="kw-ph">pH 7</span> ii)	*LLE <span class="kw-ph">pH 7</span>  *(Use LLE only if SPE is not feasible)</td></tr><tr ><td></td><td>Bisacodyl</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Bromhexine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Buclizine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Bupropion</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Caffeine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Camphor</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Captopril</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Carbimazole</td><td>SPE <span class="kw-ph">pH 12</span></td></tr><tr ><td></td><td>Celecoxib</td><td>SPE <span class="kw-ph">pH 11</span> or direct dissolve ethanol</td></tr><tr ><td></td><td>Chloramphenicol</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Chlorpheniramine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Cinnarizine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Citalopram</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11 and Direct dissolve ethanol</td></tr><tr ><td></td><td>Clindamycin</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Clotrimazole</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11</td></tr><tr ><td></td><td>Codeine</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Colchicine</td><td>SPE <span class="kw-ph">pH 11</span> or direct dissolve ethanol</td></tr><tr ><td></td><td>Cyropheptadiene</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Dexamethasone</td><td>i)	SPE <span class="kw-ph">pH 7</span> ii)	*LLE <span class="kw-ph">pH 7</span>  *(Use LLE only if SPE is not feasible)</td></tr><tr ><td></td><td>Dexchlorpheniramine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Dextromethorphan</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Diazepam</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11 and Direct dissolve ethanol</td></tr><tr ><td></td><td>Dibucaine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Dimenhydrinate</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Diphenhydramine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Diphenoxylate</td><td>SPE <span class="kw-ph">pH 7</span></td></tr><tr ><td></td><td>Econazole</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11</td></tr><tr ><td></td><td>Ephedrine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Estradiol Benzoate</td><td>SPE <span class="kw-ph">pH 7</span></td></tr><tr ><td></td><td>Ethinyl Oestradiol</td><td>SPE <span class="kw-ph">pH 7</span></td></tr><tr ><td></td><td>Fenfluramine</td><td>SPE <span class="kw-ph">pH 5</span>, 11 and Direct dissolve ethanol</td></tr><tr ><td></td><td>Fluoxetine</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11 and Direct dissolve ethanol</td></tr><tr ><td></td><td>Griseofulvin</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11</td></tr><tr ><td></td><td>Guaifenesin</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Hydroquinone</td><td>SPE <span class="kw-ph">pH 12</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Hyoscine</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Ibuprofen</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Lidocaine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve Ethanol</td></tr><tr ><td></td><td>Loperamide</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Loratadine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Mefenamic acid</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Menthol</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Metoclopramide</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Methadone</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Methamphetamine</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11 and Direct dissolve ethanol</td></tr><tr ><td></td><td>Methimazole</td><td>SPE <span class="kw-ph">pH 12</span></td></tr><tr ><td></td><td>Methyl salicylate</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Methyl Testosterone</td><td>SPE <span class="kw-ph">pH 7</span></td></tr><tr ><td></td><td>Metoprolol</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Metronidazole</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Miconazole</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11</td></tr><tr ><td></td><td>Midazolam</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11 and Direct dissolve ethanol</td></tr><tr ><td></td><td>Minoxidil</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Morphine</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>N-desmethylsibutramine</td><td>SPE <span class="kw-ph">pH 5</span>, 11 and direct dissolve ethanol</td></tr><tr ><td></td><td>Naproxen</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Nifedipine</td><td>SPE <span class="kw-ph">pH 3</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Nicotine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Norethisterone</td><td>SPE <span class="kw-ph">pH 7</span></td></tr><tr ><td></td><td>Orphenadrine</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Paracetamol</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Phenolphthalein</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Phentermine</td><td>SPE <span class="kw-ph">pH 5</span>, 11 and direct dissolve ethanol</td></tr><tr ><td></td><td>Phenylbutazone</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Phenylpropanolamine</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Prednisolone</td><td>i)	SPE <span class="kw-ph">pH 7</span> ii)	*LLE <span class="kw-ph">pH 7</span>  *(Use LLE only if SPE is not feasible)</td></tr><tr ><td></td><td>Prilocaine</td><td>SPE <span class="kw-ph">pH 11</span> or direct dissolve Ethanol</td></tr><tr ><td></td><td>Prochlorperazine</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Progesterone</td><td>SPE <span class="kw-ph">pH 7</span></td></tr><tr ><td></td><td>Promethazine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Pseudoephedrine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Salbutamol</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Salicylic acid</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Sibutramine</td><td>SPE <span class="kw-ph">pH 5</span>, 11 and direct dissolve ethanol</td></tr><tr ><td></td><td>Simvastatin</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Sulfametaxole</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Tadalafil</td><td>SPE <span class="kw-ph">pH 3</span></td></tr><tr ><td></td><td>Terbinafine</td><td>SPE <span class="kw-ph">pH 3</span>, 7, 11</td></tr><tr ><td></td><td>Terbutaline</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Testosterone</td><td>SPE <span class="kw-ph">pH 7</span></td></tr><tr ><td></td><td>Testosterone Propionate</td><td>SPE <span class="kw-ph">pH 7</span></td></tr><tr ><td></td><td>Tetracaine</td><td>SPE <span class="kw-ph">pH 11</span> or Direct dissolve ethanol</td></tr><tr ><td></td><td>Tetrahydrozoline</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Theophylline</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Thymol</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Ticlopidine</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Tramadol</td><td>SPE <span class="kw-ph">pH 11</span></td></tr><tr ><td></td><td>Trimethoprim</td><td>Direct dissolve ethanol</td></tr><tr ><td></td><td>Yohimbine</td><td>Direct dissolve ethanol</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -189,6 +476,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/018');
+  });
+</script>
 </body>
 </html>

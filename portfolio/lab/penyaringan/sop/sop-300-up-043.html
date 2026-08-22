@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/043 — HPLC  Ion  Chromatography System Shimadzu LC-20AR | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/043 — HPLC  Ion  Chromatography System Shimadzu LC-20AR | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/043: HPLC  Ion  Chromatography System Shimadzu LC-20AR — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/043')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,58 +146,124 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/043 <span class="g">HPLC  Ion  Chromatography System Shimadzu LC-20AR</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 1 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: HPLC  ION  CHROMATOGRAPHY SYSTEM SHIMADZU LC-20AR</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/043</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number from PKK/300/KOS/015 to PKK/300/HMS/013</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/013 to PKKK/300/HMS/013.</p><p class="sop-p">Update paragraph 5.0 Responsilities.</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/013 to PKKK/300/KOS/009</p><p class="sop-p">Update paragraph 5.0 Responsilities.</p><p class="sop-p">Issue 4 Revision1  :</p><p class="sop-p">Change document number from PKKK/300/KOS/009 to PKKK/300/UP/043.</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026.</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for Ion Chromatography System in the laboratory.</p><p class="sop-p">SCOPE</p><p class="sop-p">This guide shall be used for the operation of HPLC Ion Chromatography System Shimadzu LC-20AR</p><p class="sop-p">DEFINITION</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p><p class="sop-p">RESPONSIBILITIES</p><p class="sop-p">PROCEDURE</p><p class="sop-p">Section A: Real Time – Data Acquisition</p><p class="sop-p">Starting Up LC</p><p class="sop-p">Turning on the POWER ON.</p><p class="sop-p">At the PC, double click on “LabSolutions” icon.</p><p class="sop-p">The User I.D: Admin, while the Password is left blank. Click “OK”.</p><p class="sop-p">In the menu, click “Instrument”, then double click to open Real Time Analysis.</p><p class="sop-p">User will then hear a ‘Beep’ sound, it is indicating that the instrument is connected with the software.</p><p class="sop-p">If the system shows LC – Not Connected, user can check the System Configuration at Assistant Bar. Make sure the correct modules are registered in the right hand side box.</p><p class="sop-p">The “RealTime” access the online analysis application: method settings and actual data collection.</p><p class="sop-p">The “RealTime” window will then be open. Beeps can be heard.</p><p class="sop-p">Insert the column inside the column oven.</p><p class="sop-p">Please make sure the column flow direction is correct by following the column information provided by the suppliers.</p><p class="sop-p">Make sure that the correct detector tubing is connected to the column outlet. (Each detector has its own tubing)</p><p class="sop-p">Please make sure the solvent line in each pump (A, B, C, &amp; D) is inserted into the correct mobile phase for that method.</p><p class="sop-p">Check that the system configuration is correct.</p><p class="sop-p">Click ok.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>m)  Before starting any analysis, method parameter must 1st be keyed-in.</span></div><p class="sop-p">Instrument Parameters</p><p class="sop-p">Data Acquisition</p><p class="sop-p">LC Time Prog.:</p><p class="sop-p">User can set up gradient for the method (changing of solvent composition during data acquisition)</p><p class="sop-p">Auto Purge:</p><p class="sop-p">Auto purge allows system to purge out air in the solvent lines to prevent them from entering the column. It is highly recommended to perform purging.</p><p class="sop-p">Un-tick “Active” button</p><p class="sop-p">Solvent lines should also be purged to remove bubbles:</p><p class="sop-p">When solvents are added to the solvent bottles or when changing the solvents to different solvents. Whenever the solvent lines are changed from one solvent to another, there must always be an intermediate. This is important to make sure there are no cross contamination of the solvents and aqueous solutions.</p><p class="sop-p">Cell Temperature</p><p class="sop-p">The cell temperature of the detector should be set 3˚C higher than the oven temperature.</p><p class="sop-p">3. Start up and flushing the system for analysis.</p><p class="sop-p">Open or create a method file.</p><p class="sop-p">Download the method file. By clicking on the  icon.</p><p class="sop-p">Click on this icon to start the auto purging.</p><p class="sop-p">Wait for the auto-purge to finish.</p><p class="sop-p">Key-in the wavelength that needs to be view:</p><p class="sop-p">Then click “OK”</p><p class="sop-p">The chromatogram of the wavelength selected can now be viewed.</p><p class="sop-p">Type of Run (Single/Real Time Batch Run/Post Run)</p><p class="sop-p">Monitor the detector baseline on the recorder or integrator, usually the baseline is stable about two hours after starting temperature control. Analysis can start when the baseline is stable.</p><p class="sop-p">Single Run</p><p class="sop-p">Please click on Single Run at Assistant Bar.                      .</p><p class="sop-p">Fill up the date file name.</p><p class="sop-p">Real Time Batch Run</p><p class="sop-p">Batch run can be used in multiple analysis.</p><p class="sop-p">At Assistant Bar, click on Realtime Batch.</p><p class="sop-p">To create a batch table, user can add rows at the table. Right Hand Click on the table, select Add Row.</p><p class="sop-p">Fill up the table accordingly for Method File, Data File Name, Vial no. and Tray name.</p><p class="sop-p">Finally, save the batch table and then click on Start Realtime Batch.</p><p class="sop-p">6.    Post run - Data Processing</p><p class="sop-p">User can perform data processing and reporting using post run.</p><p class="sop-p">Post Run is offline. It is not neccessary to turn on the instrument.</p><p class="sop-p">Double click on LabSolutions.</p><p class="sop-p">Click on Post Run.</p><p class="sop-p">Integration &amp; Compound Table</p><p class="sop-p">1.The Postrun window will open, select “Data Analysis” icon on the “Assistant Bar” to open the Data Analysis window:</p><p class="sop-p">2. Open the standard data collected in the “RealTime” window. Click “Edit” in the</p><p class="sop-p">“Method View” window.</p><p class="sop-p">Start with the 1st Sub-window: Integration. On that window click “Program”. A sub-window will appear.</p><p class="sop-p">In this integration window, please make sure that the required peaks are integrated correctly (Valley to valley) and remove the integration for the unwanted peaks.</p><p class="sop-p">After setting the Integration parameter, got to the next sub-window in the “Method view”:</p><p class="sop-p">After that go to “Quantitative” sub-window:</p><p class="sop-p">After that go to “Compound” sub window:</p><p class="sop-p">When finish, the compound table will look like below:</p><p class="sop-p">Then, please key-in the concentration of each compound’s concentration according to the standards prepared.</p><p class="sop-p">After Integration, Identification, Quantitation &amp; Compound sub-window have been filled; finally click “View” to register the changes.</p><p class="sop-p">After clicking “View” all the peaks on the chromatogram should be labelled and integrated properly.</p><p class="sop-p">Then, click on “Apply Method” to register all the settings to method and follow the steps:</p><p class="sop-p">Now the method’s integration and compound table settings have been saved and updated.</p><p class="sop-p">Finally, go to “File” and “Save data file”.</p><p class="sop-p">8. Calibration curve.</p><p class="sop-p">After Section 7, the updated method can be use to form the calibration curve.</p><p class="sop-p">If the Calibration Standards are injected and the data collected AFTER Section 7 is carried out; then the calibration curve will automatically be created by the system during the injections.</p><p class="sop-p">Please follow step 2 (a) onwards on how to view this calibration curve.</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Calibration curve” icon.</p><p class="sop-p">The calibration curve can automatically be viewed.</p><p class="sop-p">Finally, go to “File” and select “Save method File”.</p><p class="sop-p">If the Calibration Standards are injected and the data collected BEFORE Section A is carried out; then the calibration curve is not automatically created yet. Please follow step 3 (a) onwards on how to create the calibration curve in postrun.</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Postrun Batch” icon.</p><p class="sop-p">Got to file, select “New Batch”. Highlight all the standards that was injected and should be used for the formation of the calibration curve:</p><p class="sop-p">Make sure the sample type, method file and level is correct.</p><p class="sop-p">After checking the settings, save the Batch and click “Start Postrun Batch” icon.</p><p class="sop-p">Wait for it to finish process. After that close the batch file.</p><p class="sop-p">To view the newly form calibration curve:</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Calibration curve” icon.</p><p class="sop-p">The calibration curve can automatically be viewed.</p><p class="sop-p">Finally, go to “File” and select “Save method File”.</p><p class="sop-p">After the calibration curve is formed and checked. Please use this complete analysis method to collect and inject the samples (unknown). The sample or unknown will be automatically identified and quantified.</p><p class="sop-p">To view the results of the sample or unknown :</p><p class="sop-p">Open the data in “Data Analysis” window.</p><p class="sop-p">Look at the “Results View” – look under “Peak Table” tap or “Compound” tap</p><p class="sop-p">9. Report Printing.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>1) In the Main Menu on the “Assistant Bar”; click on “Report Format”</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>2) If the report template that have been created. Double click on the required report template to open it.</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>3) After dragging the data, the data will be presented at the report template. Finally click on “Print” button to start the printing.</span></div><p class="sop-p">How create own report template:</p><p class="sop-p">Click on “Report format”.</p><p class="sop-p">After the template is created, it can be save for future use by going to File, select “Save Template As”.</p><p class="sop-p">To Print, user must drag and drop the data to the template:</p><p class="sop-p">Finally click on the “Print” icon.</p><p class="sop-p">Performance Check</p><p class="sop-p">Performance Check will be carried out in every analysis to ensure the sensitivity for the instrument is always at its optimum level. It is carried out by performing the System Suitability Test using the Standard solution/ Mix Standard Solution and to ensure that the parameters below are fulfilled:</p><p class="sop-p">Tailing factor &lt; 2.0</p><p class="sop-p">Theoretical plates &gt; 2000</p><p class="sop-p">Capacity Factor within 1 to 5</p><p class="sop-p">QUALITY RECORD</p><p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p><div class="sop-substep"><strong>8.0  FORMS</strong></div><p class="sop-p">None</p>
+            <p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0:</p><p class="sop-p">Update on the document number from PKK/300/KOS/015 to PKK/300/HMS/013</p><p class="sop-p">Update on the responsibilities</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/013 to PKKK/300/HMS/013.</p><p class="sop-p">Update paragraph 5.0 Responsilities.</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/013 to PKKK/300/KOS/009</p><p class="sop-p">Update paragraph 5.0 Responsilities.</p><p class="sop-p">Issue 4 Revision1  :</p><p class="sop-p">Change document number from PKKK/300/KOS/009 to PKKK/300/UP/043.</p><p class="sop-p">Update effective date from  1 April  2024 to 10 April 2026.</p><p class="sop-p">PURPOSE</p><p class="sop-p">This document is intended to establish a standard operating manual for Ion Chromatography System in the laboratory.</p><p class="sop-p">SCOPE</p><p class="sop-p">This guide shall be used for the operation of HPLC Ion Chromatography System Shimadzu LC-20AR</p><p class="sop-p">DEFINITION</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">FLOWCHART</p><p class="sop-p">None</p><p class="sop-p">RESPONSIBILITIES</p><p class="sop-p">PROCEDURE</p><p class="sop-p">Section A: Real Time – Data Acquisition</p><p class="sop-p">Starting Up LC</p><p class="sop-p">Turning on the POWER ON.</p><p class="sop-p">At the PC, double click on “LabSolutions” icon.</p><p class="sop-p">The User I.D: Admin, while the Password is left blank. Click “OK”.</p><p class="sop-p">In the menu, click “Instrument”, then double click to open Real Time Analysis.</p><p class="sop-p">User will then hear a ‘Beep’ sound, it is indicating that the instrument is connected with the software.</p><p class="sop-p">If the system shows LC – Not Connected, user can check the System Configuration at Assistant Bar. Make sure the correct modules are registered in the right hand side box.</p><p class="sop-p">The “RealTime” access the online analysis application: method settings and actual data collection.</p><p class="sop-p">The “RealTime” window will then be open. Beeps can be heard.</p><p class="sop-p">Insert the column inside the column oven.</p><p class="sop-p">Please make sure the column flow direction is correct by following the column information provided by the suppliers.</p><p class="sop-p">Make sure that the correct detector tubing is connected to the column outlet. (Each detector has its own tubing)</p><p class="sop-p">Please make sure the solvent line in each pump (A, B, C, &amp; D) is inserted into the correct mobile phase for that method.</p><p class="sop-p">Check that the system configuration is correct.</p><p class="sop-p">Click ok.</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">m)  Before starting any analysis, method parameter must 1st be keyed-in.</span>
+                </div>
+                <p class="sop-p">Instrument Parameters</p><p class="sop-p">Data Acquisition</p><p class="sop-p">LC Time Prog.:</p><p class="sop-p">User can set up gradient for the method (changing of solvent composition during data acquisition)</p><p class="sop-p">Auto Purge:</p><p class="sop-p">Auto purge allows system to purge out air in the solvent lines to prevent them from entering the column. It is highly recommended to perform purging.</p><p class="sop-p">Un-tick “Active” button</p><p class="sop-p">Solvent lines should also be purged to remove bubbles:</p><p class="sop-p">When solvents are added to the solvent bottles or when changing the solvents to different solvents. Whenever the solvent lines are changed from one solvent to another, there must always be an intermediate. This is important to make sure there are no cross contamination of the solvents and aqueous solutions.</p><p class="sop-p">Cell Temperature</p><p class="sop-p">The cell temperature of the detector should be set 3˚C higher than the oven temperature.</p><p class="sop-p">3. Start up and flushing the system for analysis.</p><p class="sop-p">Open or create a method file.</p><p class="sop-p">Download the method file. By clicking on the  icon.</p><p class="sop-p">Click on this icon to start the auto purging.</p><p class="sop-p">Wait for the auto-purge to finish.</p><p class="sop-p">Key-in the wavelength that needs to be view:</p><p class="sop-p">Then click “OK”</p><p class="sop-p">The chromatogram of the wavelength selected can now be viewed.</p><p class="sop-p">Type of Run (Single/Real Time Batch Run/Post Run)</p><p class="sop-p">Monitor the detector baseline on the recorder or integrator, usually the baseline is stable about two hours after starting temperature control. Analysis can start when the baseline is stable.</p><p class="sop-p">Single Run</p><p class="sop-p">Please click on Single Run at Assistant Bar.                      .</p><p class="sop-p">Fill up the date file name.</p><p class="sop-p">Real Time Batch Run</p><p class="sop-p">Batch run can be used in multiple analysis.</p><p class="sop-p">At Assistant Bar, click on Realtime Batch.</p><p class="sop-p">To create a batch table, user can add rows at the table. Right Hand Click on the table, select Add Row.</p><p class="sop-p">Fill up the table accordingly for Method File, Data File Name, Vial no. and Tray name.</p><p class="sop-p">Finally, save the batch table and then click on Start Realtime Batch.</p><p class="sop-p">6.    Post run - Data Processing</p><p class="sop-p">User can perform data processing and reporting using post run.</p><p class="sop-p">Post Run is offline. It is not neccessary to turn on the instrument.</p><p class="sop-p">Double click on LabSolutions.</p><p class="sop-p">Click on Post Run.</p><p class="sop-p">Integration &amp; Compound Table</p><p class="sop-p">1.The Postrun window will open, select “Data Analysis” icon on the “Assistant Bar” to open the Data Analysis window:</p><p class="sop-p">2. Open the standard data collected in the “RealTime” window. Click “Edit” in the</p><p class="sop-p">“Method View” window.</p><p class="sop-p">Start with the 1st Sub-window: Integration. On that window click “Program”. A sub-window will appear.</p><p class="sop-p">In this integration window, please make sure that the required peaks are integrated correctly (Valley to valley) and remove the integration for the unwanted peaks.</p><p class="sop-p">After setting the Integration parameter, got to the next sub-window in the “Method view”:</p><p class="sop-p">After that go to “Quantitative” sub-window:</p><p class="sop-p">After that go to “Compound” sub window:</p><p class="sop-p">When finish, the compound table will look like below:</p><p class="sop-p">Then, please key-in the concentration of each compound’s concentration according to the standards prepared.</p><p class="sop-p">After Integration, Identification, Quantitation &amp; Compound sub-window have been filled; finally click “View” to register the changes.</p><p class="sop-p">After clicking “View” all the peaks on the chromatogram should be labelled and integrated properly.</p><p class="sop-p">Then, click on “Apply Method” to register all the settings to method and follow the steps:</p><p class="sop-p">Now the method’s integration and compound table settings have been saved and updated.</p><p class="sop-p">Finally, go to “File” and “Save data file”.</p><p class="sop-p">8. Calibration curve.</p><p class="sop-p">After Section 7, the updated method can be use to form the calibration curve.</p><p class="sop-p">If the Calibration Standards are injected and the data collected AFTER Section 7 is carried out; then the calibration curve will automatically be created by the system during the injections.</p><p class="sop-p">Please follow step 2 (a) onwards on how to view this calibration curve.</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Calibration curve” icon.</p><p class="sop-p">The calibration curve can automatically be viewed.</p><p class="sop-p">Finally, go to “File” and select “Save method File”.</p><p class="sop-p">If the Calibration Standards are injected and the data collected BEFORE Section A is carried out; then the calibration curve is not automatically created yet. Please follow step 3 (a) onwards on how to create the calibration curve in postrun.</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Postrun Batch” icon.</p><p class="sop-p">Got to file, select “New Batch”. Highlight all the standards that was injected and should be used for the formation of the calibration curve:</p><p class="sop-p">Make sure the sample type, method file and level is correct.</p><p class="sop-p">After checking the settings, save the Batch and click “Start Postrun Batch” icon.</p><p class="sop-p">Wait for it to finish process. After that close the batch file.</p><p class="sop-p">To view the newly form calibration curve:</p><p class="sop-p">On the Main Menu on the “Assistant Bar”, click on “Calibration curve” icon.</p><p class="sop-p">The calibration curve can automatically be viewed.</p><p class="sop-p">Finally, go to “File” and select “Save method File”.</p><p class="sop-p">After the calibration curve is formed and checked. Please use this complete analysis method to collect and inject the samples (unknown). The sample or unknown will be automatically identified and quantified.</p><p class="sop-p">To view the results of the sample or unknown :</p><p class="sop-p">Open the data in “Data Analysis” window.</p><p class="sop-p">Look at the “Results View” – look under “Peak Table” tap or “Compound” tap</p><p class="sop-p">9. Report Printing.</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">1) In the Main Menu on the “Assistant Bar”; click on “Report Format”</span>
+                </div>
+                
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">2) If the report template that have been created. Double click on the required report template to open it.</span>
+                </div>
+                
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">3) After dragging the data, the data will be presented at the report template. Finally click on “Print” button to start the printing.</span>
+                </div>
+                <p class="sop-p">How create own report template:</p><p class="sop-p">Click on “Report format”.</p><p class="sop-p">After the template is created, it can be save for future use by going to File, select “Save Template As”.</p><p class="sop-p">To Print, user must drag and drop the data to the template:</p><p class="sop-p">Finally click on the “Print” icon.</p><p class="sop-p">Performance Check</p><p class="sop-p">Performance Check will be carried out in every analysis to ensure the sensitivity for the instrument is always at its optimum level. It is carried out by performing the System Suitability Test using the Standard solution/ Mix Standard Solution and to ensure that the parameters below are fulfilled:</p><p class="sop-p">Tailing factor &lt; 2.0</p><p class="sop-p">Theoretical plates &gt; 2000</p><p class="sop-p">Capacity Factor within 1 to 5</p><p class="sop-p">QUALITY RECORD</p><p class="sop-p">Maintenance, Service and Calibration reports are to be filed accordingly</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-043-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/043')">
+                    <label for="step-043-1" class="sop-step-label">
+                      <strong>8.0  FORMS</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">None</p>
           </div>
         </div>
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>REVISION HISTORY</th><th>REVISION HISTORY</th><th>REVISION HISTORY</th><th>REVISION HISTORY</th><th>REVISION HISTORY</th><th>REVISION HISTORY</th></tr><tr><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective Date</td></tr><tr><td>1</td><td>0</td><td>Norshahriza Ahmad</td><td>Gopinatha a/l Ganesh</td><td>Ooi Suat Hong</td><td>1 Mac 2017</td></tr><tr><td>2</td><td>0</td><td>Norshahriza Ahamad</td><td>Gopinatha a/l Ganesh</td><td>Ooi Suat Hong</td><td>10 Februari 2020</td></tr><tr><td>3</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr><tr><td>4</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr><td>4</td><td>1</td><td>Nurul Nadiah Noh</td><td>Gopinatha Ganesh</td><td>Ida Syazrina Ibrahim</td><td>10 Apr 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/043</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>REVISION HISTORY</th><th>REVISION HISTORY</th><th>REVISION HISTORY</th><th>REVISION HISTORY</th><th>REVISION HISTORY</th><th>REVISION HISTORY</th></tr><tr ><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective Date</td></tr><tr ><td>1</td><td>0</td><td>Norshahriza Ahmad</td><td>Gopinatha a/l Ganesh</td><td>Ooi Suat Hong</td><td>1 Mac 2017</td></tr><tr ><td>2</td><td>0</td><td>Norshahriza Ahamad</td><td>Gopinatha a/l Ganesh</td><td>Ooi Suat Hong</td><td>10 Februari 2020</td></tr><tr ><td>3</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr><tr ><td>4</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr ><td>4</td><td>1</td><td>Nurul Nadiah Noh</td><td>Gopinatha Ganesh</td><td>Ida Syazrina Ibrahim</td><td>10 Apr 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>REFERENCES</th><th>REFERENCES</th></tr><tr><td>Document No.</td><td>Title</td></tr><tr><td>Serial No: L202150</td><td>Shimadzu High Performance Liquid Chromatograph System Guide</td></tr><tr><td></td><td>LabSolutions LC Getting Started Guide (LC-20AR)</td></tr><tr><td>10251</td><td>Shimadzu Corp</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/043</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>REFERENCES</th><th>REFERENCES</th></tr><tr ><td>Document No.</td><td>Title</td></tr><tr ><td>Serial No: L202150</td><td>Shimadzu High Performance Liquid Chromatograph System Guide</td></tr><tr ><td></td><td>LabSolutions LC Getting Started Guide (LC-20AR)</td></tr><tr ><td>10251</td><td>Shimadzu Corp</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>5.1</th><th>Head of Unit</th><th>Approve and implement the work procedure in the laboratory.</th></tr><tr><td>5.2</td><td>Pharmacist</td><td>Revise the work procedure from time to time and ensure adherence to the work procedure implemented.</td></tr><tr><td>5.3</td><td>Pharmacist / Pharmacist Assistant / Analyst</td><td>To operate the instrument as per the procedure implemented.</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/043</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>5.1</th><th>Head of Unit</th><th>Approve and implement the work procedure in the laboratory.</th></tr><tr ><td>5.2</td><td>Pharmacist</td><td>Revise the work procedure from time to time and ensure adherence to the work procedure implemented.</td></tr><tr ><td>5.3</td><td>Pharmacist / Pharmacist Assistant / Analyst</td><td>To operate the instrument as per the procedure implemented.</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -147,6 +274,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/043');
+  });
+</script>
 </body>
 </html>

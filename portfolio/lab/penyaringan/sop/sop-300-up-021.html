@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/021 — Identifikasi Steroid dalam Produk tradisional menggunakan HPLC | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/021 — Identifikasi Steroid dalam Produk tradisional menggunakan HPLC | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/021: Identifikasi Steroid dalam Produk tradisional menggunakan HPLC — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/021')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,100 +146,372 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/021 <span class="g">Identifikasi Steroid dalam Produk tradisional menggunakan HPLC</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 22 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: IDENTIFIKASI STEROID DALAM PRODUK TRADISIONAL MENGGUNAKAN HPLC</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/021</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">0Z</p><p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Kemaskini 6.6 System suitability test requirement, di mana</p><p class="sop-p">kriteria Theoretical plate telah dikemaskini daripada “(NLT) 1500 kepada “(NLT) 2000”.</p><p class="sop-p">Menambah “%RSD for retention time: Not more than, NMT 2.0%”</p><p class="sop-p">Menambah perenggan 6.7 Internal Quality Control.</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Menambah perenggan 6.3.3 Single Standard Stock Solution</p><p class="sop-p">Mengemaskini perenggan 6.5.5 Injection Sequence</p><p class="sop-p">Mengemaskini perenggan 6.8.1(b) dengan menambah “The UV spectrum is identical to the spectrum of the standard with similarity of more than 0.999 to the spectrum of standard.”</p><p class="sop-p">Mengemaskini perenggan 6.9g dengan menambah “IQC table”</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Meminda No.Dokumen dari PKKK/300/UAT/047 kepada PKKK/300/UP/021</p><p class="sop-p">Mengemaskini tarikh kuatkuasa dari 1 Julai 2026 kepada 10 April 2026</p><p class="sop-p">Mengemaskini No. Dokumen rujukan dari Unit Analisis Tradisional kepada Unit Penyaringan:</p><p class="sop-p">PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-p">PKKK/300/UAT/012 kepada PKKK/300/UP/011</p><p class="sop-p">PKKK/300/UAT/017 kepada PKKK/300/UP/016</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001</p><p class="sop-p">PKKK/300/UAT/014 kepada PKKK/300/UP/013</p><p class="sop-p">PKKK/300/UAT/015 kepada PKKK/300/UP/014</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menambah “Use LLE only if SPE is not feasible.”</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi steroid menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi steroid dalam produk tradisional menggunakan HPLC.</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1	HPLC		- High Performance Liquid Chromatography</strong></div><div class="sop-substep"><strong>3.2	RS		- Reference Standard</strong></div><div class="sop-substep"><strong>3.3	OOS		- Out of Specification</strong></div><div class="sop-substep"><strong>3.4	UV		- Ultraviolet</strong></div><div class="sop-substep"><strong>3.5	SST		- System Suitability Test</strong></div><div class="sop-substep"><strong>3.6	IQC		- Internal Quality Control</strong></div><div class="sop-substep"><strong>3.7	RSD		- Relative Standard Deviation</strong></div><div class="sop-substep"><strong>3.8	PDA		- Photodiode Array</strong></div><div class="sop-substep"><strong>3.9	RRLC		- Rapid Resolution Liquid Chromatography</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><div class="sop-substep"><strong>5.3      Pegawai Farmasi</strong></div><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p><div class="sop-substep"><strong>5.4    Penolong Pegawai Farmasi U7 / U6</strong></div><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan</p><div class="sop-substep"><strong>5.5    Penolong Pegawai Farmasi</strong></div><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Materials and Equipment</p><p class="sop-p">Instrument:</p><p class="sop-p">High Performance Liquid Chromatography with photodiode array (PDA) detector</p><p class="sop-p">Analytical &amp; microbalance</p><p class="sop-p">Column: Kinetex Phenyl-Hexyl 2.6µm, 150 x 4.6 mm or equivalent</p><p class="sop-p">Reference standards: Primary or secondary RS or equivalent</p><p class="sop-p">Prednisolone</p><p class="sop-p">Prednisone</p><p class="sop-p">Betamethasone</p><p class="sop-p">Dexamethasone</p><p class="sop-p">Triamcinolone acetonide</p><p class="sop-p">Hydrocortisone acetate</p><p class="sop-p">Cortisone acetate</p><p class="sop-p">Betamethasone-17-valerate</p><p class="sop-p">Chemicals:</p><p class="sop-p">Ethanol</p><p class="sop-p">Acetonitrile</p><p class="sop-p">Deionized water</p><p class="sop-p">Ammonia</p><p class="sop-p">Methanol</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Beakers (50 mL)</p><p class="sop-p">Solvent filter system</p><p class="sop-p">Nylon solvent filter 0.45 µm</p><p class="sop-p">Solvent bottle (1 L)</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Disposable syringe without needle (5 mL)</p><p class="sop-p">2 mL glass screw cap vial</p><p class="sop-p">Preparation of Mobile Phase</p><p class="sop-p">Measure 1 L of water and transfer in a solvent bottle.</p><p class="sop-p">Repeat step i. for acetonitrile.</p><p class="sop-p">Filter water and acetonitrile using nylon solvent filter 0.45 µm and solvent filter system</p><p class="sop-p">Degassed filtered mobile phase at least for 20 minutes to ensure no bubble present.</p><p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Individual standard stock solution</p><p class="sop-p">Weigh 10 mg Prednisolone, Prednisone, Betamethasone, Dexamethasone, Triamcinolone acetonide, Hydrocortisone acetate, Cortisone acetate and Betamethasone-17-Valerate standard in 10 mL volumetric flask separately. Make up to volume with ethanol. The final concentration of individual solution is 1 mg/mL.</p><p class="sop-p">Mix working standard solution</p><p class="sop-p">Prepare a mixed working standard solution of 0.05 mg/mL in concentration by transferring 1 mL of each standard stock solution into one volumetric flask (20 mL) and make up to volume with ethanol. Mix well.</p><div class="sop-substep"><strong>6.3.3	Single Standard Stock Solution</strong></div><div class="sop-substep"><strong>6.3.3.1	Prepare a single standard stock solution following the same procedure outlined in 6.3.1 to 6.3.2, but using a single standard instead of multiple standards.</strong></div><div class="sop-substep"><strong>6.3.3.2	This procedure is applicable for screening selected compounds only</strong></div><p class="sop-p">Preparation of sample</p><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling processes differ between different type of dosage form. Please refer to the document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Sample preparation for analysis</p><p class="sop-p">Sample preparation differ between dosage forms. Please refer to document PKKK/300/UP/013 (Pengekstrakan Fasa Pepejal Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik) and PKKK/300/UP/014 (Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik). Use LLE only if SPE is not feasible.</p><p class="sop-p">Sample pH is adjusted to pH7 before the extraction process is performed.</p><p class="sop-p">Experimental Method</p><div class="sop-substep"><strong>6.5.1 	The HPLC system used for identification of steroids are given in Table 1 below.</strong></div><p class="sop-p">Table 1: HPLC system used for identification of steroids.</p><p class="sop-p">Mobile Phase Method</p><p class="sop-p">Solvent gradient program for mobile phase is use in identification of steroids shown as below:</p><p class="sop-p">Table 2: Solvent gradient program for identification of steroids.</p><p class="sop-p">Refer to document PKKK/300/UP/003 (RRLC 1200 Series), PKKK/300/UP/011 (HPLC Prominence-i) and PKKK/300/UP/016 (HPLC Flexar) on how to set-up method and HPLC system.</p><p class="sop-p">Standard Injection and System Suitability</p><p class="sop-p">Mix working standard solution must be injected at the beginning of analysis (six injections). Repeat the injection or prepare a new mix standard solution if the chromatogram of reference standard is not well separated (except betamethasone &amp; dexamethasone) or peak is not sharp.</p><p class="sop-p">Sample Injection</p><p class="sop-p">Inject each of the sample in duplicate. Compare the retention time and UV spectrum of the peak in the chromatogram of the sample with the reference standard. The sample contains steroid compounds if the retention time and UV spectrum of the sample correspond to the reference standard.</p><p class="sop-p">Retention time and UV spectrum observation</p><p class="sop-p">To observe and check retention time and UV spectrum of the sample and RS, refer to document PKKK/300/UP/003 (RRLC 1200 Series), PKKK/300/UP/011 (HPLC Prominence-i) and PKKK/300/UP/016 (HPLC Flexar).</p><p class="sop-p">Injection Sequence</p><p class="sop-p">First, inject a blank or diluent, then inject a mix working standard solution six times (SST) before injecting the sample.</p><p class="sop-p">Inject the sample in duplicate.</p><p class="sop-p">If more than five samples are injected in a single analysis, the mix working standard solution must be injected once every five samples.</p><p class="sop-p">A blank or diluent must be injected before the next sample injection. Refer to Table 3 for an example of the sequence table:</p><p class="sop-p">Table 3: Sequence injection for identification of steroid in HPLC</p><p class="sop-p">Mix working standard solution must be injected at the end of the analysis.</p><p class="sop-p">System suitability test requirement</p><p class="sop-p">System suitability tests need to be performed for each batch run to ensure the entire system is working properly. Perform at least six replicate injections of mix working standard solution (0.05 mg/mL).</p><p class="sop-p">Acceptance criteria:</p><p class="sop-p">%RSD for retention time: Not more than, NMT 2.0%</p><p class="sop-p">Tailing factor not more than (NMT) 2.0.</p><p class="sop-p">Theoretical plate not less than (NLT) 2000.</p><p class="sop-p">Internal Quality Control (IQC)</p><div class="sop-substep"><strong>6.7.1 	Inject 10 µL of mix standard solution after every 5 samples &amp; at the end of analysis.</strong></div><div class="sop-substep"><strong>6.7.2 	Acceptance criteria for Internal Quality Control Check (IQC):</strong></div><p class="sop-p">The percentage difference of retention time for a mixed standard solution should not be more than 3 % for every batch of 5 samples.</p><p class="sop-p">Acceptance criteria for test sample</p><div class="sop-substep"><strong>6.8.1 Compare the retention time and UV spectrum obtained from the sample chromatogram with that of the working standard chromatogram. The identity of each steroid compound is positive if:</strong></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>a)	Retention time of the compound in the sample chromatogram corresponds to the retention time of the same compound in the standard chromatogram.</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>b)	The UV spectrum is identical to the spectrum of the standard with similarity of more than 0.999 to the spectrum of standard.</span></div><div class="sop-substep"><strong>6.8.2 If the sample was found to be positive with one of the compounds, new sample preparation should be conducted by a second analyst on a different date from the first analyst.</strong></div><div class="sop-substep"><strong>6.8.3	The second analyst will prepare a new sample following 6.3.2 in the guidelines outlined in PKKK/300/UP/014 (Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik). The pH of the sample will need to be adjusted to pH 7.</strong></div><div class="sop-substep"><strong>6.8.4	The sample will then be analyzed using GCMS (PKKK/300/UP/004, Gas Chromatography Mass Spectroscopy Agilent 7890A/5975C or PKKK/300/UP/017, Gas Chromatography Mass Spectroscopy Agilent 8890/5977B).</strong></div><p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number)</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameters including equipment name, mobile phase program and HPLC system.</p><p class="sop-p">List and preparation procedures of reference solution use in analysis.</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only)</p><p class="sop-p">Interpretation of result (Detected, Not Detected or suspected of specific steroid compound)</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">Chromatogram of 1st and 2nd injection of standard (with minimum information of compound name, peak area and retention time). If the sample is sequenced at 6 or more, a chromatogram of standard before sample must be presented.</p><p class="sop-p">Overlay spectrum of samples that have similar retention time with reference standard.</p><p class="sop-p">IQC table</p>
+            <p class="sop-p">0Z</p><p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Kemaskini 6.6 System suitability test requirement, di mana</p><p class="sop-p">kriteria Theoretical plate telah dikemaskini daripada “(NLT) 1500 kepada “(NLT) 2000”.</p><p class="sop-p">Menambah “%RSD for retention time: Not more than, NMT 2.0%”</p><p class="sop-p">Menambah perenggan 6.7 Internal Quality Control.</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Menambah perenggan 6.3.3 Single Standard Stock Solution</p><p class="sop-p">Mengemaskini perenggan 6.5.5 Injection Sequence</p><p class="sop-p">Mengemaskini perenggan 6.8.1(b) dengan menambah “The UV spectrum is identical to the spectrum of the standard with similarity of more than 0.999 to the spectrum of standard.”</p><p class="sop-p">Mengemaskini perenggan <span class="kw-wt">6.9g</span> dengan menambah “IQC table”</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Meminda No.Dokumen dari PKKK/300/UAT/047 kepada PKKK/300/UP/021</p><p class="sop-p">Mengemaskini tarikh kuatkuasa dari 1 Julai 2026 kepada 10 April 2026</p><p class="sop-p">Mengemaskini No. Dokumen rujukan dari Unit Analisis Tradisional kepada Unit Penyaringan:</p><p class="sop-p">PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-p">PKKK/300/UAT/012 kepada PKKK/300/UP/011</p><p class="sop-p">PKKK/300/UAT/017 kepada PKKK/300/UP/016</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001</p><p class="sop-p">PKKK/300/UAT/014 kepada PKKK/300/UP/013</p><p class="sop-p">PKKK/300/UAT/015 kepada PKKK/300/UP/014</p><p class="sop-p">Mengemaskini perenggan 6.4.2 dengan menambah “Use LLE only if SPE is not feasible.”</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi steroid menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi steroid dalam produk tradisional menggunakan HPLC.</p><p class="sop-p">DEFINISI</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-1" class="sop-step-label">
+                      <strong>3.1	HPLC		- High Performance Liquid Chromatography</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-2" class="sop-step-label">
+                      <strong>3.2	RS		- Reference Standard</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-3" class="sop-step-label">
+                      <strong>3.3	OOS		- Out of Specification</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-4" class="sop-step-label">
+                      <strong>3.4	UV		- Ultraviolet</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-5" class="sop-step-label">
+                      <strong>3.5	SST		- System Suitability Test</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-6" class="sop-step-label">
+                      <strong>3.6	IQC		- Internal Quality Control</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-7" class="sop-step-label">
+                      <strong>3.7	RSD		- Relative Standard Deviation</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-8" class="sop-step-label">
+                      <strong>3.8	PDA		- Photodiode Array</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-9" class="sop-step-label">
+                      <strong>3.9	RRLC		- Rapid Resolution Liquid Chromatography</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-10" class="sop-step-label">
+                      <strong>5.3      Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyemak laporan ujian</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-11" class="sop-step-label">
+                      <strong>5.4    Penolong Pegawai Farmasi U7 / U6</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-12" class="sop-step-label">
+                      <strong>5.5    Penolong Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Materials and Equipment</p><p class="sop-p">Instrument:</p><p class="sop-p">High Performance Liquid Chromatography with photodiode array (PDA) detector</p><p class="sop-p">Analytical &amp; microbalance</p><p class="sop-p">Column: Kinetex Phenyl-Hexyl 2.6µm, 150 x 4.6 mm or equivalent</p><p class="sop-p">Reference standards: Primary or secondary RS or equivalent</p><p class="sop-p">Prednisolone</p><p class="sop-p">Prednisone</p><p class="sop-p">Betamethasone</p><p class="sop-p">Dexamethasone</p><p class="sop-p">Triamcinolone acetonide</p><p class="sop-p">Hydrocortisone acetate</p><p class="sop-p">Cortisone acetate</p><p class="sop-p">Betamethasone-17-valerate</p><p class="sop-p">Chemicals:</p><p class="sop-p">Ethanol</p><p class="sop-p">Acetonitrile</p><p class="sop-p">Deionized water</p><p class="sop-p">Ammonia</p><p class="sop-p">Methanol</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Beakers (<span class="kw-vol">50 mL</span>)</p><p class="sop-p">Solvent filter system</p><p class="sop-p">Nylon solvent filter 0.45 µm</p><p class="sop-p">Solvent bottle (<span class="kw-vol">1 L</span>)</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Disposable syringe without needle (<span class="kw-vol">5 mL</span>)</p><p class="sop-p"><span class="kw-vol">2 mL</span> glass screw cap vial</p><p class="sop-p">Preparation of Mobile Phase</p><p class="sop-p">Measure <span class="kw-vol">1 L</span> of water and transfer in a solvent bottle.</p><p class="sop-p">Repeat step i. for acetonitrile.</p><p class="sop-p">Filter water and acetonitrile using nylon solvent filter 0.45 µm and solvent filter system</p><p class="sop-p">Degassed filtered mobile phase at least for <span class="kw-time">20 minutes</span> to ensure no bubble present.</p><p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Individual standard stock solution</p><p class="sop-p">Weigh <span class="kw-wt">10 mg</span> Prednisolone, Prednisone, Betamethasone, Dexamethasone, Triamcinolone acetonide, Hydrocortisone acetate, Cortisone acetate and Betamethasone-17-Valerate standard in <span class="kw-vol">10 mL</span> volumetric flask separately. Make up to volume with ethanol. The final concentration of individual solution is <span class="kw-wt">1 mg</span>/mL.</p><p class="sop-p">Mix working standard solution</p><p class="sop-p">Prepare a mixed working standard solution of <span class="kw-wt">0.05 mg</span>/mL in concentration by transferring <span class="kw-vol">1 mL</span> of each standard stock solution into one volumetric flask (<span class="kw-vol">20 mL</span>) and make up to volume with ethanol. Mix well.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-13" class="sop-step-label">
+                      <strong>6.3.3	Single Standard Stock Solution</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-14" class="sop-step-label">
+                      <strong>6.3.3.1	Prepare a single standard stock solution following the same procedure outlined in 6.3.1 to 6.3.2, but using a single standard instead of multiple standards.</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-15" class="sop-step-label">
+                      <strong>6.3.3.2	This procedure is applicable for screening selected compounds only</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Preparation of sample</p><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling processes differ between different type of dosage form. Please refer to the document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Sample preparation for analysis</p><p class="sop-p">Sample preparation differ between dosage forms. Please refer to document PKKK/300/UP/013 (Pengekstrakan Fasa Pepejal Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik) and PKKK/300/UP/014 (Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik). Use LLE only if SPE is not feasible.</p><p class="sop-p">Sample pH is adjusted to <span class="kw-ph">pH7</span> before the extraction process is performed.</p><p class="sop-p">Experimental Method</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-16" class="sop-step-label">
+                      <strong>6.5.1 	The HPLC system used for identification of steroids are given in Table 1 below.</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Table 1: HPLC system used for identification of steroids.</p><p class="sop-p">Mobile Phase Method</p><p class="sop-p">Solvent gradient program for mobile phase is use in identification of steroids shown as below:</p><p class="sop-p">Table 2: Solvent gradient program for identification of steroids.</p><p class="sop-p">Refer to document PKKK/300/UP/003 (RRLC 1200 Series), PKKK/300/UP/011 (HPLC Prominence-i) and PKKK/300/UP/016 (HPLC Flexar) on how to set-up method and HPLC system.</p><p class="sop-p">Standard Injection and System Suitability</p><p class="sop-p">Mix working standard solution must be injected at the beginning of analysis (six injections). Repeat the injection or prepare a new mix standard solution if the chromatogram of reference standard is not well separated (except betamethasone &amp; dexamethasone) or peak is not sharp.</p><p class="sop-p">Sample Injection</p><p class="sop-p">Inject each of the sample in duplicate. Compare the retention time and UV spectrum of the peak in the chromatogram of the sample with the reference standard. The sample contains steroid compounds if the retention time and UV spectrum of the sample correspond to the reference standard.</p><p class="sop-p">Retention time and UV spectrum observation</p><p class="sop-p">To observe and check retention time and UV spectrum of the sample and RS, refer to document PKKK/300/UP/003 (RRLC 1200 Series), PKKK/300/UP/011 (HPLC Prominence-i) and PKKK/300/UP/016 (HPLC Flexar).</p><p class="sop-p">Injection Sequence</p><p class="sop-p">First, inject a blank or diluent, then inject a mix working standard solution six times (SST) before injecting the sample.</p><p class="sop-p">Inject the sample in duplicate.</p><p class="sop-p">If more than five samples are injected in a single analysis, the mix working standard solution must be injected once every five samples.</p><p class="sop-p">A blank or diluent must be injected before the next sample injection. Refer to Table 3 for an example of the sequence table:</p><p class="sop-p">Table 3: Sequence injection for identification of steroid in HPLC</p><p class="sop-p">Mix working standard solution must be injected at the end of the analysis.</p><p class="sop-p">System suitability test requirement</p><p class="sop-p">System suitability tests need to be performed for each batch run to ensure the entire system is working properly. Perform at least six replicate injections of mix working standard solution (<span class="kw-wt">0.05 mg</span>/mL).</p><p class="sop-p">Acceptance criteria:</p><p class="sop-p">%RSD for retention time: Not more than, NMT 2.0%</p><p class="sop-p">Tailing factor not more than (NMT) 2.0.</p><p class="sop-p">Theoretical plate not less than (NLT) 2000.</p><p class="sop-p">Internal Quality Control (IQC)</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-17" class="sop-step-label">
+                      <strong>6.7.1 	Inject 10 µL of mix standard solution after every 5 samples &amp; at the end of analysis.</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-18" class="sop-step-label">
+                      <strong>6.7.2 	Acceptance criteria for Internal Quality Control Check (IQC):</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">The percentage difference of retention time for a mixed standard solution should not be more than 3 % for every batch of 5 samples.</p><p class="sop-p">Acceptance criteria for test sample</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-19" class="sop-step-label">
+                      <strong>6.8.1 Compare the retention time and UV spectrum obtained from the sample chromatogram with that of the working standard chromatogram. The identity of each steroid compound is positive if:</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">a)	Retention time of the compound in the sample chromatogram corresponds to the retention time of the same compound in the standard chromatogram.</span>
+                </div>
+                
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">b)	The UV spectrum is identical to the spectrum of the standard with similarity of more than 0.999 to the spectrum of standard.</span>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-20" class="sop-step-label">
+                      <strong>6.8.2 If the sample was found to be positive with one of the compounds, new sample preparation should be conducted by a second analyst on a different date from the first analyst.</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-21" class="sop-step-label">
+                      <strong>6.8.3	The second analyst will prepare a new sample following 6.3.2 in the guidelines outlined in PKKK/300/UP/014 (Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik). The pH of the sample will need to be adjusted to pH 7.</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-021-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/021')">
+                    <label for="step-021-22" class="sop-step-label">
+                      <strong>6.8.4	The sample will then be analyzed using GCMS (PKKK/300/UP/004, Gas Chromatography Mass Spectroscopy Agilent 7890A/5975C or PKKK/300/UP/017, Gas Chromatography Mass Spectroscopy Agilent 8890/5977B).</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number)</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameters including equipment name, mobile phase program and HPLC system.</p><p class="sop-p">List and preparation procedures of reference solution use in analysis.</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only)</p><p class="sop-p">Interpretation of result (Detected, Not Detected or suspected of specific steroid compound)</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">Chromatogram of 1st and 2nd injection of standard (with minimum information of compound name, peak area and retention time). If the sample is sequenced at 6 or more, a chromatogram of standard before sample must be presented.</p><p class="sop-p">Overlay spectrum of samples that have similar retention time with reference standard.</p><p class="sop-p">IQC table</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.  REKOD KUALITI</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.  REKOD KUALITI
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p><p class="sop-p">LAMPIRAN (1/4)</p><p class="sop-p">Figure 1: Chromatogram of mix working standard solution at 240nm.</p><p class="sop-p">LAMPIRAN (2/4)</p><p class="sop-p">Figure 2: Spectra of a) Prednisone, b) Prednisolone and c) Betamethasone in scan range 100-400nm.</p><p class="sop-p">LAMPIRAN (3/4)</p><p class="sop-p">Figure 3: Spectra of d) Dexamethasone, e) Triamcinolone acetonide and f) Hydrocortisone acetate in scan range 100-400nm.</p><p class="sop-p">LAMPIRAN (4/4)</p><p class="sop-p">Figure 4: Spectra of g) Cortisone acetate and h) Beta-17-valerate in scan range 100-400nm.</p>
+            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p><p class="sop-p">LAMPIRAN (1/4)</p><p class="sop-p">Figure 1: Chromatogram of mix working standard solution at <span class="kw-wave">240nm</span>.</p><p class="sop-p">LAMPIRAN (2/4)</p><p class="sop-p">Figure 2: Spectra of a) Prednisone, b) Prednisolone and c) Betamethasone in scan range 100-<span class="kw-wave">400nm</span>.</p><p class="sop-p">LAMPIRAN (3/4)</p><p class="sop-p">Figure 3: Spectra of d) Dexamethasone, e) Triamcinolone acetonide and f) Hydrocortisone acetate in scan range 100-<span class="kw-wave">400nm</span>.</p><p class="sop-p">LAMPIRAN (4/4)</p><p class="sop-p">Figure 4: Spectra of g) Cortisone acetate and h) Beta-17-valerate in scan range 100-<span class="kw-wave">400nm</span>.</p>
           </div>
         </div>
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>2</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/021</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr ><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>2</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td></td><td>ASEAN Harmonised Method ACM 007</td></tr><tr><td>PKKK/300/UP/003</td><td>Rapid Resolution Liquid Chromatography HP 1200</td></tr><tr><td>PKKK/300/UP/011</td><td>Shimadzu High Performance Liquid Chromatography (Prominence-i)</td></tr><tr><td>PKKK/300/UP/016</td><td>High Performance Liquid Chromatography Flexar (Perkin Elmer)</td></tr><tr><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr><tr><td>PKKK/300/UP/013</td><td>Pengekstrakan Fasa Pepejal Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</td></tr><tr><td>PKKK/300/UP/014</td><td>Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/021</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td></td><td>ASEAN Harmonised Method ACM 007</td></tr><tr ><td>PKKK/300/UP/003</td><td>Rapid Resolution Liquid Chromatography HP 1200</td></tr><tr ><td>PKKK/300/UP/011</td><td>Shimadzu High Performance Liquid Chromatography (Prominence-i)</td></tr><tr ><td>PKKK/300/UP/016</td><td>High Performance Liquid Chromatography Flexar (Perkin Elmer)</td></tr><tr ><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr><tr ><td>PKKK/300/UP/013</td><td>Pengekstrakan Fasa Pepejal Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</td></tr><tr ><td>PKKK/300/UP/014</td><td>Pengekstrakan Fasa Cecair Bagi Produk Tradisional, Suplemen Kesihatan dan Kosmetik</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>Column</th><th>Kinetex Phenyl-Hexyl 100A or equivalent</th></tr><tr><td>Dimensions &amp; Particle size</td><td>2.6µm, 150 x 4.6 mm</td></tr><tr><td>Flow rate</td><td>0.7 mL/min</td></tr><tr><td>Column temperature</td><td>40oC</td></tr><tr><td>Wavelength detector (PDA)</td><td>240 nm</td></tr><tr><td>Injection volume</td><td>10 µL</td></tr><tr><td>Run time</td><td>35 minutes</td></tr><tr><td>Mobile Phase Method</td><td>Gradient program</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/021</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Column</th><th>Kinetex Phenyl-Hexyl 100A or equivalent</th></tr><tr ><td>Dimensions &amp; Particle size</td><td>2.6µm, 150 x 4.6 mm</td></tr><tr ><td>Flow rate</td><td><span class="kw-flow"><span class="kw-vol">0.7 mL</span>/min</span></td></tr><tr ><td>Column temperature</td><td>40oC</td></tr><tr ><td>Wavelength detector (PDA)</td><td><span class="kw-wave">240 nm</span></td></tr><tr ><td>Injection volume</td><td><span class="kw-vol">10 µL</span></td></tr><tr ><td>Run time</td><td><span class="kw-time">35 minutes</span></td></tr><tr ><td>Mobile Phase Method</td><td>Gradient program</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
-          <table class="table-official">
-            <tr><th>Time (min)</th><th>Water (%)</th><th>Acetonitrile (%)</th></tr><tr><td>0.01 – 1.99</td><td>80</td><td>20</td></tr><tr><td>2.00 - 13.99</td><td>75</td><td>25</td></tr><tr><td>14.00 - 17.99</td><td>70</td><td>30</td></tr><tr><td>18.00 – 19.99</td><td>60</td><td>40</td></tr><tr><td>20.00 – 21.99</td><td>50</td><td>50</td></tr><tr><td>22.00 - 29.99</td><td>30</td><td>70</td></tr><tr><td>30.00 – 35.00</td><td>80</td><td>20</td></tr>
-          </table>
+        <div class="table-card" id="table-4">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 4</span>
+            <span class="table-doc-code">PKKK/300/UP/021</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Time (min)</th><th>Water (%)</th><th>Acetonitrile (%)</th></tr><tr ><td>0.01 – 1.99</td><td>80</td><td>20</td></tr><tr ><td>2.00 - 13.99</td><td>75</td><td>25</td></tr><tr ><td>14.00 - 17.99</td><td>70</td><td>30</td></tr><tr ><td>18.00 – 19.99</td><td>60</td><td>40</td></tr><tr ><td>20.00 – 21.99</td><td>50</td><td>50</td></tr><tr ><td>22.00 - 29.99</td><td>30</td><td>70</td></tr><tr ><td>30.00 – 35.00</td><td>80</td><td>20</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
-          <table class="table-official">
-            <tr><th>No.</th><th>Detail</th><th>No. of injection</th></tr><tr><td>1</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>2</td><td>Mix working standard solution (for SST)</td><td>6</td></tr><tr><td>3</td><td>Sample number 1</td><td>2</td></tr><tr><td>4</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>5</td><td>Sample number 2</td><td>2</td></tr><tr><td>6</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>7</td><td>Sample number 3</td><td>2</td></tr><tr><td>8</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>9</td><td>Sample number 4</td><td>2</td></tr><tr><td>10</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>11</td><td>Sample number 5</td><td>2</td></tr><tr><td>12</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>13</td><td>Mix working standard solution</td><td>1</td></tr><tr><td>14</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>15</td><td>Sample number 6</td><td>2</td></tr><tr><td>16</td><td>Blank / Diluent</td><td>1</td></tr><tr><td>17</td><td>Mix working standard solution (for SST)</td><td>1</td></tr>
-          </table>
+        <div class="table-card" id="table-5">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 5</span>
+            <span class="table-doc-code">PKKK/300/UP/021</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>No.</th><th>Detail</th><th>No. of injection</th></tr><tr class="seq-blank"><td>1</td><td>Blank / Diluent</td><td>1</td></tr><tr class="seq-sst"><td>2</td><td>Mix working standard solution (for SST)</td><td>6</td></tr><tr ><td>3</td><td>Sample number 1</td><td>2</td></tr><tr class="seq-blank"><td>4</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>5</td><td>Sample number 2</td><td>2</td></tr><tr class="seq-blank"><td>6</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>7</td><td>Sample number 3</td><td>2</td></tr><tr class="seq-blank"><td>8</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>9</td><td>Sample number 4</td><td>2</td></tr><tr class="seq-blank"><td>10</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>11</td><td>Sample number 5</td><td>2</td></tr><tr class="seq-blank"><td>12</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>13</td><td>Mix working standard solution</td><td>1</td></tr><tr class="seq-blank"><td>14</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>15</td><td>Sample number 6</td><td>2</td></tr><tr class="seq-blank"><td>16</td><td>Blank / Diluent</td><td>1</td></tr><tr class="seq-sst"><td>17</td><td>Mix working standard solution (for SST)</td><td>1</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 6</div>
-          <table class="table-official">
-            <tr><th>a)</th></tr><tr><td>b)</td></tr><tr><td>c)</td></tr>
-          </table>
+        <div class="table-card" id="table-6">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 6</span>
+            <span class="table-doc-code">PKKK/300/UP/021</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>a)</th></tr><tr ><td>b)</td></tr><tr ><td>c)</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 7</div>
-          <table class="table-official">
-            <tr><th>d)</th></tr><tr><td>e)</td></tr><tr><td>f)</td></tr>
-          </table>
+        <div class="table-card" id="table-7">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 7</span>
+            <span class="table-doc-code">PKKK/300/UP/021</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>d)</th></tr><tr ><td>e)</td></tr><tr ><td>f)</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 8</div>
-          <table class="table-official">
-            <tr><th>g)</th></tr><tr><td>h)</td></tr>
-          </table>
+        <div class="table-card" id="table-8">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 8</span>
+            <span class="table-doc-code">PKKK/300/UP/021</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>g)</th></tr><tr ><td>h)</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -189,6 +522,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/021');
+  });
+</script>
 </body>
 </html>

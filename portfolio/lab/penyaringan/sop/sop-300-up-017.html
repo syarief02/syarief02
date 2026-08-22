@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/017 — GCMS Agilent 8890_5977B | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/017 — GCMS Agilent 8890_5977B | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/017: GCMS Agilent 8890_5977B — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/017')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,38 +146,89 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/017 <span class="g">GCMS Agilent 8890_5977B</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: GC-MS</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 3 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: GCMS AGILENT 8890_5977B</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/017</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/077 kepada PKKK/300/UAT/018</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/018 kepada PKKK/300/UP/017</p><p class="sop-p">Kemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026</p><p class="sop-p">Kemaskini perenggan 3, dengan penambahan definisi TIC dan RTE.</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian dan penyelenggaraan alat Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) semasa pengujian produk tradisional, suplemen kesihatan dan kosmetik untuk tujuan penyaringan dijalankan dengan betul dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakapakai untuk mengendalikan alat GCMS (8890/5977B) bagi pengujian semua produk tradisional, suplemen kesihatan dan kosmetik.</p><p class="sop-p">DEFINISI</p><p class="sop-p">GCMS	- Gas Chromatography Mass Spectroscopy</p><p class="sop-p">TIC - Total Ion Current</p><p class="sop-p">RTE - RunTime Environment</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><div class="sop-substep"><strong>5.3      Penolong Pegawai Farmasi U7 / U6</strong></div><p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p><div class="sop-substep"><strong>5.4     Penolong Pegawai Farmasi</strong></div><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><div class="sop-substep"><strong>6.1 Tatacara Penggunaan</strong></div><p class="sop-p">Buka PC</p><p class="sop-p">Klik 2X ikon</p><p class="sop-p">Paparan di bawah akan muncul di skrin komputer.</p><p class="sop-p">Pilih Method yang ingin digunakan –</p><p class="sop-p">Untuk menghasilkan tatacara pengujian baru, ikut langkah-langkah berikut:</p><p class="sop-p">Pilih Method dan klik Load Method. Kemudian pilih method yang ingin diubah (contoh: default.m). Seterusnya klik Save Method As… dan masukkan nama tatacara yang baru dan fail tersebut akan disimpan.</p><p class="sop-p">Klik Method dan pilih Edit Entire Method</p><p class="sop-p">Pilih bahagian yang ingin diubah (method information, instrument/acquisition atau data analysis)</p><p class="sop-p">Pilih Method dan klik Save. tatacara baru akan disimpan dengan parameter baru yang telah ditetapkan (contoh: Testing Method Latest.m)</p><p class="sop-p">Untuk jalankan sampel:</p><p class="sop-p">Pastikan tuning dilakukan setiap hari sebelum sampel pertama hendak dijalankan pada hari tersebut dan pastikan laporan adalah lulus.</p><p class="sop-p">Pilih icon View &gt; Tune dan Vacuum Control.</p><p class="sop-p">Pilih Standard Spectra Tune (s.tune) atau Autotune (a.tune).</p><p class="sop-p">Setelah selesai Standard Spectra Tune (s.tune) atau Autotune (a.tune), teruskan dengan Tune Evaluation.</p><p class="sop-p">Tunggu seketika sehingga laporan dicetak.</p><p class="sop-p">Pastikan data s.tune atau a.tune yang terbaru telah disimpan.</p><p class="sop-p">.</p><p class="sop-p">Pilih icon View &gt; Instrument Control untuk jalankan analisis.</p><p class="sop-p">Sampel Single Run:</p><p class="sop-p">Pastikan sampel telah dilarutkan dengan pelarut sesuai dan telah ditapis menggunakan penapis 0.45µm ke dalam vial.</p><p class="sop-p">Letak vial di tempatnya dan pastikan nombor kedudukan vial di mana ia diletakkan.</p><p class="sop-p">Kemudian pilih Sequence dan klik New Sequence.</p><p class="sop-p">Masukkan data-data yang diperlukan seperti Sample Name, Vial No, Method Path, Method File, Data File dan Comment (sekiranya ada). Semak semula data yang telah dimasukkan dan klik Run Sequence  untuk mulakan injeksi sampel.</p><p class="sop-p">Sampel Batch Run:</p><p class="sop-p">Jika sampel yang ingin diuji adalah banyak, pengujian sampel boleh dijalankan secara batch sequence / sequence table:</p><p class="sop-p">Pilih Sequence dan klik Edit Sequence.</p><p class="sop-p">Isi maklumat sampel yang diperlukan dalam setiap ruangan column:</p><p class="sop-p">Vial – Nombor sampel di dalam tray vial (No. 1-150)</p><p class="sop-p">Name - Nama sampel seperti dalam worksheet</p><p class="sop-p">Method path - Folder tatacara pengujian yang dijalankan</p><p class="sop-p">Method file - Tatacara pengujian yang dijalankan</p><p class="sop-p">Data path - Folder penyimpanan data pengujian</p><p class="sop-p">Data file – Nama yang unik untuk setiap sample injection</p><p class="sop-p">Comment – Rumusan data bagi sample injection tersebut</p><p class="sop-p">Tambah barisan untuk setiap sample injection berlainan.</p><p class="sop-p">Setelah semua data sampel diisi, klik Run Sequence.</p><p class="sop-p">Isi maklumat pada Operator name dan pastikan maklumat data file directory dan data path dalam sequence table adalah sama.</p><p class="sop-p">Klik Run Sequnce sekiranya semua maklumat yang diisi telah disemak dan tepat.</p><p class="sop-p">Setelah sampel selesai analisis, kromatogram yang diperolehi perlu dianalisis untuk mendapatkan maklumat tertentu terutamanya mass spectrum dan identiti sampel tersebut. Data Analisis perlu dijalankan seperti di bawah:</p><p class="sop-p">Pilih ikon GCMS Data Analysis.</p><p class="sop-p">Pilih File &gt; klik Data File berdasarkan Data Path yang diisi semasa Single Run/ Batch File dijalankan.</p><p class="sop-p">Kemudian pilih Data File yang diingini. Klik OK.</p><p class="sop-p">Pilih peak yang ingin dianalisis (window TIC). Tukar skala jika ingin besar/kecilkan peak:</p><p class="sop-p">Pilih Chromatogram &gt; klik Chromatogram Scaling.</p><p class="sop-p">Pilih Total Ion Current dan klik OK.</p><p class="sop-p">Kemudian pilih Enter Absolute Y-axis value, klik OK.</p><p class="sop-p">Masukkan nilai paksi-Y yang diingini dan klik OK &gt; Done.</p><p class="sop-p">Pilih Select Integrator untuk chromatogram &gt; Chemstation Intergrator/ RTE Intergrator.</p><p class="sop-p">Klik Auto Integrate. Maklumat retention time akan terpapar pada setiap peak yang berjaya di integrasikan.</p><p class="sop-p">Klik Spectrum &gt; Library Search Report untuk menjana laporan sebatian (compound) bagi setiap integrated peak dalam kromatogram.</p><p class="sop-p">Kromatogram dan Library Search Report perlu dicetak dan disertakan dalam laporan sekiranya kromatogram tidak dikesan bahan terkawal atau larangan.</p><p class="sop-p">Untuk mencetak laporan Library Search Report, pilih File &gt; Print&gt; Selected Window.</p><p class="sop-p">Kromatogram bertanda sebatian yang dijumpai, Similariy Search dan Mass Spectrum perlu dicetak sekiranya sampel dikesan bahan kawalan atau larangan.</p><p class="sop-p">Untuk cetak Mass Spectrum:</p><p class="sop-p">Buatkan kotak dalam peak tersebut dengan klik kanan (tanpa lepas).</p><p class="sop-p">Klik kiri 2 kali pada window spektrum bawah spektrum untuk dapatkan jisim spektrum (mass spectrum) bagi peak tersebut yang sepadan dengan mass spectrum library.</p><p class="sop-p">Klik Print pada paparan di skrin.</p><p class="sop-p">Untuk cetak laporan Similarity Search:</p><p class="sop-p">Klik butang Statistik pada paparan di atas.</p><p class="sop-p">Paparan akan bertukar seperti di bawah pada skrin komputer.</p><p class="sop-p">Tekan butang Print untuk cetak laporan.</p><p class="sop-p">Untuk label peak dengan nama bahan sebatian:</p><p class="sop-p">Halakan kursor pada peak yang dipilih.</p><p class="sop-p">Klik kiri dan kanan serentak pada tetikus.</p><p class="sop-p">Isi nama sebatian dan peratusan persamaan (similarity percentage) pada ruangan Text.</p><p class="sop-p">Tekan add dan nama sebatian akan dipaparkan pada peak yang dipilih.</p><p class="sop-p">Untuk cetak kromatogram yang telah dilabel:</p><p class="sop-p">Klik File &gt; Print &gt; Selected Window (2: TIC).</p>
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/077 kepada PKKK/300/UAT/018</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/018 kepada PKKK/300/UP/017</p><p class="sop-p">Kemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026</p><p class="sop-p">Kemaskini perenggan 3, dengan penambahan definisi TIC dan RTE.</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian dan penyelenggaraan alat Gas Chromatography Mass Spectroscopy Agilent (8890/5977B) semasa pengujian produk tradisional, suplemen kesihatan dan kosmetik untuk tujuan penyaringan dijalankan dengan betul dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakapakai untuk mengendalikan alat GCMS (8890/5977B) bagi pengujian semua produk tradisional, suplemen kesihatan dan kosmetik.</p><p class="sop-p">DEFINISI</p><p class="sop-p">GCMS	- Gas Chromatography Mass Spectroscopy</p><p class="sop-p">TIC - Total Ion Current</p><p class="sop-p">RTE - RunTime Environment</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-017-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                    <label for="step-017-1" class="sop-step-label">
+                      <strong>5.3      Penolong Pegawai Farmasi U7 / U6</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-017-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                    <label for="step-017-2" class="sop-step-label">
+                      <strong>5.4     Penolong Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-017-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/017')">
+                    <label for="step-017-3" class="sop-step-label">
+                      <strong>6.1 Tatacara Penggunaan</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Buka PC</p><p class="sop-p">Klik 2X ikon</p><p class="sop-p">Paparan di bawah akan muncul di skrin komputer.</p><p class="sop-p">Pilih Method yang ingin digunakan –</p><p class="sop-p">Untuk menghasilkan tatacara pengujian baru, ikut langkah-langkah berikut:</p><p class="sop-p">Pilih Method dan klik Load Method. Kemudian pilih method yang ingin diubah (contoh: default.m). Seterusnya klik Save Method As… dan masukkan nama tatacara yang baru dan fail tersebut akan disimpan.</p><p class="sop-p">Klik Method dan pilih Edit Entire Method</p><p class="sop-p">Pilih bahagian yang ingin diubah (method information, instrument/acquisition atau data analysis)</p><p class="sop-p">Pilih Method dan klik Save. tatacara baru akan disimpan dengan parameter baru yang telah ditetapkan (contoh: Testing Method Latest.m)</p><p class="sop-p">Untuk jalankan sampel:</p><p class="sop-p">Pastikan tuning dilakukan setiap hari sebelum sampel pertama hendak dijalankan pada hari tersebut dan pastikan laporan adalah lulus.</p><p class="sop-p">Pilih icon View &gt; Tune dan Vacuum Control.</p><p class="sop-p">Pilih Standard Spectra Tune (s.tune) atau Autotune (a.tune).</p><p class="sop-p">Setelah selesai Standard Spectra Tune (s.tune) atau Autotune (a.tune), teruskan dengan Tune Evaluation.</p><p class="sop-p">Tunggu seketika sehingga laporan dicetak.</p><p class="sop-p">Pastikan data s.tune atau a.tune yang terbaru telah disimpan.</p><p class="sop-p">.</p><p class="sop-p">Pilih icon View &gt; Instrument Control untuk jalankan analisis.</p><p class="sop-p">Sampel Single Run:</p><p class="sop-p">Pastikan sampel telah dilarutkan dengan pelarut sesuai dan telah ditapis menggunakan penapis 0.45µm ke dalam vial.</p><p class="sop-p">Letak vial di tempatnya dan pastikan nombor kedudukan vial di mana ia diletakkan.</p><p class="sop-p">Kemudian pilih Sequence dan klik New Sequence.</p><p class="sop-p">Masukkan data-data yang diperlukan seperti Sample Name, Vial No, Method Path, Method File, Data File dan Comment (sekiranya ada). Semak semula data yang telah dimasukkan dan klik Run Sequence  untuk mulakan injeksi sampel.</p><p class="sop-p">Sampel Batch Run:</p><p class="sop-p">Jika sampel yang ingin diuji adalah banyak, pengujian sampel boleh dijalankan secara batch sequence / sequence table:</p><p class="sop-p">Pilih Sequence dan klik Edit Sequence.</p><p class="sop-p">Isi maklumat sampel yang diperlukan dalam setiap ruangan column:</p><p class="sop-p">Vial – Nombor sampel di dalam tray vial (No. 1-150)</p><p class="sop-p">Name - Nama sampel seperti dalam worksheet</p><p class="sop-p">Method path - Folder tatacara pengujian yang dijalankan</p><p class="sop-p">Method file - Tatacara pengujian yang dijalankan</p><p class="sop-p">Data path - Folder penyimpanan data pengujian</p><p class="sop-p">Data file – Nama yang unik untuk setiap sample injection</p><p class="sop-p">Comment – Rumusan data bagi sample injection tersebut</p><p class="sop-p">Tambah barisan untuk setiap sample injection berlainan.</p><p class="sop-p">Setelah semua data sampel diisi, klik Run Sequence.</p><p class="sop-p">Isi maklumat pada Operator name dan pastikan maklumat data file directory dan data path dalam sequence table adalah sama.</p><p class="sop-p">Klik Run Sequnce sekiranya semua maklumat yang diisi telah disemak dan tepat.</p><p class="sop-p">Setelah sampel selesai analisis, kromatogram yang diperolehi perlu dianalisis untuk mendapatkan maklumat tertentu terutamanya mass spectrum dan identiti sampel tersebut. Data Analisis perlu dijalankan seperti di bawah:</p><p class="sop-p">Pilih ikon GCMS Data Analysis.</p><p class="sop-p">Pilih File &gt; klik Data File berdasarkan Data Path yang diisi semasa Single Run/ Batch File dijalankan.</p><p class="sop-p">Kemudian pilih Data File yang diingini. Klik OK.</p><p class="sop-p">Pilih peak yang ingin dianalisis (window TIC). Tukar skala jika ingin besar/kecilkan peak:</p><p class="sop-p">Pilih Chromatogram &gt; klik Chromatogram Scaling.</p><p class="sop-p">Pilih Total Ion Current dan klik OK.</p><p class="sop-p">Kemudian pilih Enter Absolute Y-axis value, klik OK.</p><p class="sop-p">Masukkan nilai paksi-Y yang diingini dan klik OK &gt; Done.</p><p class="sop-p">Pilih Select Integrator untuk chromatogram &gt; Chemstation Intergrator/ RTE Intergrator.</p><p class="sop-p">Klik Auto Integrate. Maklumat retention time akan terpapar pada setiap peak yang berjaya di integrasikan.</p><p class="sop-p">Klik Spectrum &gt; Library Search Report untuk menjana laporan sebatian (compound) bagi setiap integrated peak dalam kromatogram.</p><p class="sop-p">Kromatogram dan Library Search Report perlu dicetak dan disertakan dalam laporan sekiranya kromatogram tidak dikesan bahan terkawal atau larangan.</p><p class="sop-p">Untuk mencetak laporan Library Search Report, pilih File &gt; Print&gt; Selected Window.</p><p class="sop-p">Kromatogram bertanda sebatian yang dijumpai, Similariy Search dan Mass Spectrum perlu dicetak sekiranya sampel dikesan bahan kawalan atau larangan.</p><p class="sop-p">Untuk cetak Mass Spectrum:</p><p class="sop-p">Buatkan kotak dalam peak tersebut dengan klik kanan (tanpa lepas).</p><p class="sop-p">Klik kiri 2 kali pada window spektrum bawah spektrum untuk dapatkan jisim spektrum (mass spectrum) bagi peak tersebut yang sepadan dengan mass spectrum library.</p><p class="sop-p">Klik Print pada paparan di skrin.</p><p class="sop-p">Untuk cetak laporan Similarity Search:</p><p class="sop-p">Klik butang Statistik pada paparan di atas.</p><p class="sop-p">Paparan akan bertukar seperti di bawah pada skrin komputer.</p><p class="sop-p">Tekan butang Print untuk cetak laporan.</p><p class="sop-p">Untuk label peak dengan nama bahan sebatian:</p><p class="sop-p">Halakan kursor pada peak yang dipilih.</p><p class="sop-p">Klik kiri dan kanan serentak pada tetikus.</p><p class="sop-p">Isi nama sebatian dan peratusan persamaan (similarity percentage) pada ruangan Text.</p><p class="sop-p">Tekan add dan nama sebatian akan dipaparkan pada peak yang dipilih.</p><p class="sop-p">Untuk cetak kromatogram yang telah dilabel:</p><p class="sop-p">Klik File &gt; Print &gt; Selected Window (2: TIC).</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.  REKOD KUALITI</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.  REKOD KUALITI
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">Rekod penyelenggaraan alat Gas Chromatography-Mass Spectroscopy Agilent (8890/5977B)</p>
           </div>
@@ -124,19 +236,29 @@
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr><td>2</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr><td>2</td><td>1</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/017</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>2</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>2</td><td>1</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td></td><td>GCMS-5977-2100cV5 Student Manual Volume 1</td></tr><tr><td></td><td>GCMS-5977-2100cV5 Student Manual Volume 2</td></tr><tr><td></td><td>GCMS-5977-2100cV5 Laboratory Manual</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/017</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td></td><td>GCMS-5977-2100cV5 Student Manual Volume 1</td></tr><tr ><td></td><td>GCMS-5977-2100cV5 Student Manual Volume 2</td></tr><tr ><td></td><td>GCMS-5977-2100cV5 Laboratory Manual</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -147,6 +269,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/017');
+  });
+</script>
 </body>
 </html>

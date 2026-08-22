@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/034 — Pindaan No. Dokumen pada arahan kerja PKKK/300/UAT/060 kepada PKKK/300/UP/034. | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/034 — Pindaan No. Dokumen pada arahan kerja PKKK/300/UAT/060 kepada PKKK/300/UP/034. | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/034: Pindaan No. Dokumen pada arahan kerja PKKK/300/UAT/060 kepada PKKK/300/UP/034. — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/034')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,114 +146,593 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/034 <span class="g">Pindaan No. Dokumen pada arahan kerja PKKK/300/UAT/060 kepada PKKK/300/UP/034.</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 43 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: PINDAAN NO. DOKUMEN PADA ARAHAN KERJA PKKK/300/UAT/060 KEPADA PKKK/300/UP/034.</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/034</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 1 Semakan 2</td>
       </tr>
       <tr>
-        <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Tarikh Kuatkuasa:</strong> 1 Julai 2026</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen pada arahan kerja PKKK/300/UAT/060 kepada PKKK/300/UP/034.</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 1 Julai 2025 kepada 10 April 2026.</p><p class="sop-p">Mengemaskini No. Dokumen di Rujukan.</p><p class="sop-p">Kemaskini para 6.3.1 PKKK/300/UAT/001 kepada PKKK/300/UP/001.</p><p class="sop-p">Kemaskini Table 2: GCMS system for identification and assay of ethylene glycol and diethylene glycol dengan penambahan column dimension 30 m x 0.25 mm x 0.25µm.</p><p class="sop-p">Kemaskini Table 7: Limits or specifications for the assay of ethylene glycol and diethylene glycol di para 6.4.6 B. iv dengan menggantikan unit “%” kepada “% v/v”.</p><p class="sop-p">Mengemaskini  Table 4:  SIM mode for identification and assay of ethylene glycol and diethylene glycol dengan penambahan “Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency”.</p><p class="sop-p">Terbitan 1, Semakan 2:</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 10 April 2026 kepada 1 Julai 2026.</p><p class="sop-p">Mengemaskini perenggan 6.1 vi Cas No:</p><p class="sop-p">Diethylene Glycol (Cas No.: 107-21-1) kepada Diethylene Glycol (Cas No.: 111-46-6)</p><p class="sop-p">Ethylene Glycol (Cas No.: 111-46-6) kepada Ethylene Glycol (Cas No.: 107-21-1)</p><p class="sop-p">Menambah perenggan 6.2.6 Qualitative Screening Test (Identification).</p><p class="sop-p">Mengemaskini perenggan 6.3.3 Sample Dilution dengan menambah “for quantitative assay purposes only”.</p><p class="sop-p">Mengemaskini 6.4.2 Sequence of Injection dengan menambah sequence injection untuk Sample 3 sehingga Sample 6.</p><p class="sop-p">Mengemaskini 6.4.2 Sequence of Injection dengan menambah catatan selepas Table 4 “Calibration curve solutions are not required in the sequence for qualitative screening (Identification).”</p><p class="sop-p">Mengemaskini perenggan 6.4.4 i dengan menambah “For the qualitative screening test (Identification), calibration curve acceptance criteria do not apply”.</p><p class="sop-p">Mengemaskini perenggan 6.4.6A iii dengan menambah “For discordant replicate sample analyses, the following approach shall be applied……The final reported result shall be based on the outcome of the repeat analysis in accordance with the laboratory’s validated reporting procedure.”</p><p class="sop-p">Mengemaskini perenggan 6.5 vii (a) dengan menambah “not applicable to the qualitative screening test (Identification)”.</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/009	Laporan Pengujian Identifikasi dan Kandungan DEG dan EG</p><p class="sop-p">Menggunakan GCMS</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Diethylene Glycol dan Ethylene Glycol dalam ubat cecair menggunakan Gas Chromatography-Mass Spectrometer (GCMS) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi dan kandungan Diethylene Glycol dan Ethylene Glycol dalam ubat cecair menggunakan Gas Chromatography-Mass Spectrometer (GCMS).</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1	GCMS	-	Gas Chromatography Mass Spectrometer</strong></div><div class="sop-substep"><strong>3.2	GC	-	Gas Chromatography</strong></div><div class="sop-substep"><strong>3.3	MS	-	Mass Spectrometer</strong></div><div class="sop-substep"><strong>3.4	DEG	-	Diethylene Glycol</strong></div><div class="sop-substep"><strong>3.5	EG	-	Ethylene Glycol</strong></div><div class="sop-substep"><strong>3.6	SIM	- Selected ion monitoring</strong></div><div class="sop-substep"><strong>3.7	RS	-	Reference standard</strong></div><div class="sop-substep"><strong>3.8	IS	-	Internal standard</strong></div><div class="sop-substep"><strong>3.9	EI	- Electron ionization</strong></div><div class="sop-substep"><strong>3.10	OOS	-	Out of specification</strong></div><div class="sop-substep"><strong>3.11	SST	- System suitability test</strong></div><div class="sop-substep"><strong>3.12	NMT	- Not more than</strong></div><div class="sop-substep"><strong>3.13	NLT	-	Not less than</strong></div><div class="sop-substep"><strong>3.14	UPA	- Unit Perkhidmatan Analisis</strong></div><div class="sop-substep"><strong>3.15	LOD	-	Limit of Detection</strong></div><div class="sop-substep"><strong>3.16	RSD	- Relative Standard Deviation</strong></div><div class="sop-substep"><strong>3.17	IQC	-	Internal Quality Control</strong></div><div class="sop-substep"><strong>3.17	ppm	-	parts per million</strong></div><div class="sop-substep"><strong>3.18 	Tf	-	Tailing factor</strong></div><div class="sop-substep"><strong>3.19	N	- Theoretical Plate</strong></div><div class="sop-substep"><strong>3.20	R2	-	Correlation coefficient</strong></div><div class="sop-substep"><strong>3.21	S/N	-	Signal-to-noise</strong></div><div class="sop-substep"><strong>3.22	m/z	-	mass-to-charge ratio</strong></div><div class="sop-substep"><strong>3.23	% v/v	-	percent volume over volume</strong></div><div class="sop-substep"><strong>3.24	USP	- United States Pharmacopeia</strong></div><div class="sop-substep"><strong>3.25	NF	-	National Formulary</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><div class="sop-substep"><strong>5.1	Ketua Seksyen</strong></div><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagih sampel kepada Pegawai Farmasi.</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><div class="sop-substep"><strong>5.3	Pegawai Farmasi</strong></div><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan.</p><div class="sop-substep"><strong>5.5	Penolong Pegawai Farmasi</strong></div><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Menyediakan laporan ujian.</p><p class="sop-p">PROSEDUR</p><div class="sop-substep"><strong>6.1	Material and Equipment</strong></div><p class="sop-p">Instrument: Gas Chromatography Mass Spectrometer (GCMS)</p><p class="sop-p">Column: BP-20 (Wax), with dimension of 30 m x 0.25 mm and particle size of 0.25 µm or equivalent.</p><p class="sop-p">Analytical balance and microbalance</p><p class="sop-p">Vortex Mixer</p><p class="sop-p">Sonicator</p><p class="sop-p">Reference standard: Primary or secondary RS of equivalent.</p><p class="sop-p">Diethylene Glycol (Cas No.: 111-46-6), Density: 1.118 g/mL</p><p class="sop-p">Ethylene Glycol (Cas No.: 107-21-1), Density: 1.113 g/mL</p><p class="sop-p">Chemical:</p><p class="sop-p">Methanol</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Conical flask</p><p class="sop-p">Amber volumetric flask</p><p class="sop-p">Disposable syringe without needle, 5 mL</p><p class="sop-p">Nylon solvent filter, 0.45µm</p><p class="sop-p">Amber glass screw cap vial, 2 mL</p><div class="sop-substep"><strong>6.2	Preparation of Reference Standard</strong></div><div class="sop-substep"><strong>6.2.1	Preparation of Mixed Standard Stock Solution (EG: 222.6 µg/mL, DEG 223.6 	µg/mL)</strong></div><p class="sop-p">Pipette 10 µL (equivalent to 11.13 mg) of Ethylene Glycol and 10 µL (equivalent to 11.18 mg) of Diethylene Glycol reference standard into a 50 mL amber volumetric flask.</p><p class="sop-p">Add about 10 mL of methanol and vortex/sonicate at ambient temperature to mix.</p><p class="sop-p">Make up to volume with methanol.</p><p class="sop-p">Filter the solution through a 0.45 µm nylon syringe filter into amber vials.</p><div class="sop-substep"><strong>6.2.2	Preparation for Calibration Curve</strong></div><p class="sop-p">Prepare 1 set of mix working standard solution for the calibration curve from the mixed standard stock solution. Dilute the solution to obtain five (5) concentrations levels of 6 µg/mL, 8 µg/mL, 10 µg/mL, 12 µg/mL and 14 µg/mL, into a 5mL volumetric flask.</p><p class="sop-p">Vortex for 30 seconds to mix.</p><p class="sop-p">Refer to the table below for preparation details:</p><p class="sop-p">Table 1: Preparation of working standard solution for calibration curve.</p><div class="sop-substep"><strong>6.2.3	System Suitability Solution</strong></div><p class="sop-p">For system suitability test (SST), use the Level 3 concentration (10 µg/mL of each compound) as the system suitability solution.</p><p class="sop-p">Preparation of Limit of Detection (LOD) solution (EG: 2.00 µg/mL, DEG: 2.01 µg/mL).</p><p class="sop-p">Pipette 45 µL of mixed standard stock solution into a 5 mL volumetric flask.</p><p class="sop-p">Make up to volume with methanol.</p><p class="sop-p">Vortex to mix.</p><p class="sop-p">Limit of quantitation (LOQ) solution (0.006 mg/mL or 6 µg/mL)</p><p class="sop-p">Use the Level 1 concentration (6 µg/mL of each compound) as the LOQ solution.</p><p class="sop-p">Qualitative Screening Test (Identification)</p><p class="sop-p">For the qualitative screening test (Identification), prepare only LOD, Level 1 (LOQ) and Level 3 (SST) concentration solutions.</p><div class="sop-substep"><strong>6.3	Preparation of Sample</strong></div><p class="sop-p">Sample processing is carried out according to document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Liquid / Syrup / Suspension</p><p class="sop-p">Lightly shake the sample bottle to mix sample thoroughly.</p><p class="sop-p">Accurately pipette 1 mL of sample and add about 50 mL of methanol into a 100 mL volumetric flask (duplicate preparation: Replicates A and B).</p><p class="sop-p">Sonicate the solution for 5 minutes.</p><p class="sop-p">Cool the solution to room temperature.</p><p class="sop-p">Make up to volume with methanol.</p><p class="sop-p">Filter the sample solution through a 0.45 µm filter into a 2 mL amber vial.</p><div class="sop-substep"><strong>6.3.3	Sample Dilution (for quantitative assay purposes only)</strong></div><p class="sop-p">Perform appropriate dilutions if the sample concentration exceeds the linear range of the calibration curve.</p><p class="sop-p">Document the step-by-step dilution preparation in the worksheet.</p><div class="sop-substep"><strong>6.4	Experimental method</strong></div><div class="sop-substep"><strong>6.4.1	Gas chromatographic and MS Condition</strong></div><p class="sop-p">The GCMS system used for detection of diethylene glycol and ethylene glycol in medicinal syrup are given in table 3 below.</p><p class="sop-p">Table 2:  GCMS system for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Table 3: Oven temperature program for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Table 4:  SIM mode for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">(*) Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency.</p><div class="sop-substep"><strong>6.4.2	Sequence of injection</strong></div><p class="sop-p">For each injection, a volume of 1.0 µL of the solution will be administered. The sequence of injection is shown in the table below.</p><p class="sop-p">Table 4: Sequence of injection for identification and assay of ethylene glycol and diethylene glycol.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>* After five samples are injected, the LOD solution will be injected before proceeding with the remaining samples.</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>**Calibration curve solutions are not required in the sequence for qualitative screening (Identification).</span></div><div class="sop-substep"><strong>6.4.3	SST and LOD and LOQ requirement</strong></div><p class="sop-p">The acceptance criteria for SST, LOD and LOQ are shown in the table below.</p><p class="sop-p">Table 5: Requirement for SST, LOD and LOQ of identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Standard injection and calibration curve</p><p class="sop-p">Inject calibration curve solution (Level 1 – 5) to generate linear calibration curve. For the qualitative screening test (Identification), calibration curve acceptance criteria do not apply.</p><p class="sop-p">Generate a calibration curve by plotting concentration against area, and determine the linearity equation along with the correlation coefficient (R2).</p><p class="sop-p">This step (ii) can be performed using the instrument’s software.</p><p class="sop-p">Ensure that the correlation coefficient (R²) is equal to or greater than 0.9950. If the correlation does not meet this requirement, re-inject the working standard solution until the desired criteria are met.</p><p class="sop-p">The typical retention time for EG is around 7.00-7.50 minutes and DEG is around 14.00-14.50 minutes.</p><div class="sop-substep"><strong>6.4.5	Internal Quality Control (IQC)</strong></div><p class="sop-p">Inject 1.0 µL of LOD solution after every 5 samples &amp; at the end of analysis.</p><p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p><div class="sop-substep"><strong>6.4.6	Interpretation of result</strong></div><p class="sop-p">Identification</p><p class="sop-p">The identification of the target compound is considered positive when the following criteria are met:</p><p class="sop-p">Retention time</p><p class="sop-p">The retention time of the target compound in the sample chromatogram corresponds to the retention time in the chromatogram of the working standard.</p><p class="sop-p">Mass Spectrum Confirmation</p><p class="sop-p">Confirmation is based on the detection of the target and reference ions.</p><p class="sop-p">Reference ions are monitored as relative ion intensity, with the maximum permissible tolerance defined in Table 6:</p><p class="sop-p">Table 6: Tolerance for reference ion intensity for identification of ethylene glycol and diethylene glycol</p><p class="sop-p">Reporting Results</p><p class="sop-p">NOT DETECTED: The compound is reported as NOT DETECTED when the peak area of the target compound in the sample solution is below the peak area of the standard solution at the limit of detection (LOD) level, 2 µg/mL (equivalent to 0.02% v/v in sample).</p><p class="sop-p">BELOW QUANTITATION LIMIT: The compound is reported as BELOW QUANTITATION LIMIT in the sample when the peak area of the target compound in the sample solution is below the peak area in standard solution at the limit of quantitation (LOQ) level, 6 µg/mL (equivalent to 0.06% v/v in sample).</p><p class="sop-p">For discordant replicate sample analyses, the following approach shall be applied:</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>i) BORDERLINE LOD RESULTS</span></div><p class="sop-p">Where one result of the peak area is below the LOD and the other is equal to or above the LOD, the arithmetic mean (average) of the replicate peak area shall be used for interpretation.</p><p class="sop-p">If the average result of the peak area is below the LOD, the sample shall be reported as &lt; LOD 0.02% v/v.</p><p class="sop-p">If the average result of the peak area is equal to or above the LOD but below the LOQ, the analyte shall be considered detected but &lt; LOQ 0.06% v/v. No repeat analysis is required.</p><p class="sop-p">ii) BORDERLINE LOQ RESULTS</p><p class="sop-p">Where one result of the peak area is below the LOQ and the other is equal to or above the LOQ, a repeat analysis using a freshly prepared test portion shall be performed with a calibration curve to confirm whether the analyte is present at a quantifiable concentration before reporting the final result.</p><p class="sop-p">The final reported result shall be based on the outcome of the repeat analysis in accordance with the laboratory’s validated reporting procedure.</p><p class="sop-p">Quantifiable Amounts: If the peak area of the compound in the sample solution exceeds the peak area of the standard solution at the LOQ level, the compound&#x27;s concentration must be calculated using the calibration curve extrapolation as outlined in section B. Assay.</p><p class="sop-p">Assay</p><p class="sop-p">The amounts of ethylene glycol and diethylene glycol are determined using the extrapolation of the calibration curve.</p><p class="sop-p">Therefore, the final amount of each compound in the sample is calculated and reported as percent volume / volume (% v/v).</p><p class="sop-p">This calculation in step (ii), is performed using the following formula:</p><p class="sop-p">Equation 1: Calculation for the amount of ethylene glycol and diethylene glycol</p><p class="sop-p">Limits or specifications</p><p class="sop-p">Ethylene glycol and diethylene glycol</p><p class="sop-p">The limits for ethylene glycol and diethylene glycol are referred to the USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753.</p><p class="sop-p">The limits are outlined in Table 7:</p><p class="sop-p">Table 7: Limits or specifications for the assay of ethylene glycol and diethylene glycol</p><div class="sop-substep"><strong>6.5	Analysis Report</strong></div><p class="sop-p">Each sample must have a dedicated analysis report, which includes the following details:</p><p class="sop-p">Sample Details</p><p class="sop-p">Sample name</p><p class="sop-p">Sample number</p><p class="sop-p">Batch number</p><p class="sop-p">Analysis Date</p><p class="sop-p">Equipment Parameters</p><p class="sop-p">Equipment name</p><p class="sop-p">Gas chromatographic (GC) conditions</p><p class="sop-p">Mass spectrometry (MS) conditions.</p><p class="sop-p">Reference Standard (RS)</p><p class="sop-p">List of RS used in the analysis</p><p class="sop-p">Preparation procedure for RS, including printed RS weight</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Sample preparation procedure</p><p class="sop-p">Interpretation of Results</p><p class="sop-p">Detailed interpretation based on criteria outlined in the SOP</p><p class="sop-p">Evidence of Analysis</p><p class="sop-p">Evidence must be attached to the analysis report, including:</p><p class="sop-p">Compilation of chromatograms for calibration curve solutions [not applicable to the qualitative screening test (Identification)].</p><p class="sop-p">Chromatogram for LOD and LOQ solutions</p><p class="sop-p">Chromatogram of working standard solution (first injection of SST)</p><p class="sop-p">Compilation of chromatograms for SST</p><p class="sop-p">Chromatogram for blank solution prior to and after the sample solution injection</p><p class="sop-p">Chromatograms for samples A and B</p><p class="sop-p">IQC Table</p><p class="sop-p">REKOD KUALITI</p><p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/009	Laporan Pengujian Identifikasi dan Kandungan DEG dan EG</p><p class="sop-p">Menggunakan GCMS</p>
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen pada arahan kerja PKKK/300/UAT/060 kepada PKKK/300/UP/034.</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 1 Julai 2025 kepada 10 April 2026.</p><p class="sop-p">Mengemaskini No. Dokumen di Rujukan.</p><p class="sop-p">Kemaskini para 6.3.1 PKKK/300/UAT/001 kepada PKKK/300/UP/001.</p><p class="sop-p">Kemaskini Table 2: GCMS system for identification and assay of ethylene glycol and diethylene glycol dengan penambahan column dimension 30 m x 0.25 mm x 0.25µm.</p><p class="sop-p">Kemaskini Table 7: Limits or specifications for the assay of ethylene glycol and diethylene glycol di para 6.4.6 B. iv dengan menggantikan unit “%” kepada “% v/v”.</p><p class="sop-p">Mengemaskini  Table 4:  SIM mode for identification and assay of ethylene glycol and diethylene glycol dengan penambahan “Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency”.</p><p class="sop-p">Terbitan 1, Semakan 2:</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 10 April 2026 kepada 1 Julai 2026.</p><p class="sop-p">Mengemaskini perenggan 6.1 vi Cas No:</p><p class="sop-p">Diethylene Glycol (Cas No.: 107-21-1) kepada Diethylene Glycol (Cas No.: 111-46-6)</p><p class="sop-p">Ethylene Glycol (Cas No.: 111-46-6) kepada Ethylene Glycol (Cas No.: 107-21-1)</p><p class="sop-p">Menambah perenggan 6.2.6 Qualitative Screening Test (Identification).</p><p class="sop-p">Mengemaskini perenggan 6.3.3 Sample Dilution dengan menambah “for quantitative assay purposes only”.</p><p class="sop-p">Mengemaskini 6.4.2 Sequence of Injection dengan menambah sequence injection untuk Sample 3 sehingga Sample 6.</p><p class="sop-p">Mengemaskini 6.4.2 Sequence of Injection dengan menambah catatan selepas Table 4 “Calibration curve solutions are not required in the sequence for qualitative screening (Identification).”</p><p class="sop-p">Mengemaskini perenggan 6.4.4 i dengan menambah “For the qualitative screening test (Identification), calibration curve acceptance criteria do not apply”.</p><p class="sop-p">Mengemaskini perenggan 6.4.6A iii dengan menambah “For discordant replicate sample analyses, the following approach shall be applied……The final reported result shall be based on the outcome of the repeat analysis in accordance with the laboratory’s validated reporting procedure.”</p><p class="sop-p">Mengemaskini perenggan 6.5 vii (a) dengan menambah “not applicable to the qualitative screening test (Identification)”.</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/009	Laporan Pengujian Identifikasi dan Kandungan DEG dan EG</p><p class="sop-p">Menggunakan GCMS</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Diethylene Glycol dan Ethylene Glycol dalam ubat cecair menggunakan Gas Chromatography-Mass Spectrometer (GCMS) dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi dan kandungan Diethylene Glycol dan Ethylene Glycol dalam ubat cecair menggunakan Gas Chromatography-Mass Spectrometer (GCMS).</p><p class="sop-p">DEFINISI</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-1" class="sop-step-label">
+                      <strong>3.1	GCMS	-	Gas Chromatography Mass Spectrometer</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-2" class="sop-step-label">
+                      <strong>3.2	GC	-	Gas Chromatography</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-3" class="sop-step-label">
+                      <strong>3.3	MS	-	Mass Spectrometer</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-4" class="sop-step-label">
+                      <strong>3.4	DEG	-	Diethylene Glycol</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-5" class="sop-step-label">
+                      <strong>3.5	EG	-	Ethylene Glycol</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-6" class="sop-step-label">
+                      <strong>3.6	SIM	- Selected ion monitoring</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-7" class="sop-step-label">
+                      <strong>3.7	RS	-	Reference standard</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-8" class="sop-step-label">
+                      <strong>3.8	IS	-	Internal standard</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-9" class="sop-step-label">
+                      <strong>3.9	EI	- Electron ionization</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-10" class="sop-step-label">
+                      <strong>3.10	OOS	-	Out of specification</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-11" class="sop-step-label">
+                      <strong>3.11	SST	- System suitability test</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-12" class="sop-step-label">
+                      <strong>3.12	NMT	- Not more than</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-13" class="sop-step-label">
+                      <strong>3.13	NLT	-	Not less than</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-14" class="sop-step-label">
+                      <strong>3.14	UPA	- Unit Perkhidmatan Analisis</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-15" class="sop-step-label">
+                      <strong>3.15	LOD	-	Limit of Detection</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-16" class="sop-step-label">
+                      <strong>3.16	RSD	- Relative Standard Deviation</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-17" class="sop-step-label">
+                      <strong>3.17	IQC	-	Internal Quality Control</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-18" class="sop-step-label">
+                      <strong>3.17	ppm	-	parts per million</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-19" class="sop-step-label">
+                      <strong>3.18 	Tf	-	Tailing factor</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-20" class="sop-step-label">
+                      <strong>3.19	N	- Theoretical Plate</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-21" class="sop-step-label">
+                      <strong>3.20	R2	-	Correlation coefficient</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-22" class="sop-step-label">
+                      <strong>3.21	S/N	-	Signal-to-noise</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-23" class="sop-step-label">
+                      <strong>3.22	m/z	-	mass-to-charge ratio</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-24" class="sop-step-label">
+                      <strong>3.23	% v/v	-	percent volume over volume</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-25" class="sop-step-label">
+                      <strong>3.24	USP	- United States Pharmacopeia</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-26" class="sop-step-label">
+                      <strong>3.25	NF	-	National Formulary</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-27" class="sop-step-label">
+                      <strong>5.1	Ketua Seksyen</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagih sampel kepada Pegawai Farmasi.</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-28" class="sop-step-label">
+                      <strong>5.3	Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-29" class="sop-step-label">
+                      <strong>5.5	Penolong Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Menyediakan laporan ujian.</p><p class="sop-p">PROSEDUR</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-30" class="sop-step-label">
+                      <strong>6.1	Material and Equipment</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Instrument: Gas Chromatography Mass Spectrometer (GCMS)</p><p class="sop-p">Column: BP-20 (Wax), with dimension of 30 m x 0.25 mm and particle size of 0.25 µm or equivalent.</p><p class="sop-p">Analytical balance and microbalance</p><p class="sop-p">Vortex Mixer</p><p class="sop-p">Sonicator</p><p class="sop-p">Reference standard: Primary or secondary RS of equivalent.</p><p class="sop-p">Diethylene Glycol (Cas No.: 111-46-6), Density: <span class="kw-wt">1.118 g</span>/mL</p><p class="sop-p">Ethylene Glycol (Cas No.: 107-21-1), Density: <span class="kw-wt">1.113 g</span>/mL</p><p class="sop-p">Chemical:</p><p class="sop-p">Methanol</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Conical flask</p><p class="sop-p">Amber volumetric flask</p><p class="sop-p">Disposable syringe without needle, <span class="kw-vol">5 mL</span></p><p class="sop-p">Nylon solvent filter, 0.45µm</p><p class="sop-p">Amber glass screw cap vial, <span class="kw-vol">2 mL</span></p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-31" class="sop-step-label">
+                      <strong>6.2	Preparation of Reference Standard</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-32" class="sop-step-label">
+                      <strong>6.2.1	Preparation of Mixed Standard Stock Solution (EG: 222.6 µg/mL, DEG 223.6 	µg/mL)</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Pipette <span class="kw-vol">10 µL</span> (equivalent to <span class="kw-wt">11.13 mg</span>) of Ethylene Glycol and <span class="kw-vol">10 µL</span> (equivalent to <span class="kw-wt">11.18 mg</span>) of Diethylene Glycol reference standard into a <span class="kw-vol">50 mL</span> amber volumetric flask.</p><p class="sop-p">Add about <span class="kw-vol">10 mL</span> of methanol and vortex/sonicate at ambient temperature to mix.</p><p class="sop-p">Make up to volume with methanol.</p><p class="sop-p">Filter the solution through a 0.45 µm nylon syringe filter into amber vials.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-33" class="sop-step-label">
+                      <strong>6.2.2	Preparation for Calibration Curve</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Prepare 1 set of mix working standard solution for the calibration curve from the mixed standard stock solution. Dilute the solution to obtain five (5) concentrations levels of <span class="kw-wt">6 µg</span>/mL, <span class="kw-wt">8 µg</span>/mL, <span class="kw-wt">10 µg</span>/mL, <span class="kw-wt">12 µg</span>/mL and <span class="kw-wt">14 µg</span>/mL, into a <span class="kw-vol">5mL</span> volumetric flask.</p><p class="sop-p">Vortex for <span class="kw-time">30 seconds</span> to mix.</p><p class="sop-p">Refer to the table below for preparation details:</p><p class="sop-p">Table 1: Preparation of working standard solution for calibration curve.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-34" class="sop-step-label">
+                      <strong>6.2.3	System Suitability Solution</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">For system suitability test (SST), use the Level 3 concentration (<span class="kw-wt">10 µg</span>/mL of each compound) as the system suitability solution.</p><p class="sop-p">Preparation of Limit of Detection (LOD) solution (EG: <span class="kw-wt">2.00 µg</span>/mL, DEG: <span class="kw-wt">2.01 µg</span>/mL).</p><p class="sop-p">Pipette <span class="kw-vol">45 µL</span> of mixed standard stock solution into a <span class="kw-vol">5 mL</span> volumetric flask.</p><p class="sop-p">Make up to volume with methanol.</p><p class="sop-p">Vortex to mix.</p><p class="sop-p">Limit of quantitation (LOQ) solution (<span class="kw-wt">0.006 mg</span>/mL or <span class="kw-wt">6 µg</span>/mL)</p><p class="sop-p">Use the Level 1 concentration (<span class="kw-wt">6 µg</span>/mL of each compound) as the LOQ solution.</p><p class="sop-p">Qualitative Screening Test (Identification)</p><p class="sop-p">For the qualitative screening test (Identification), prepare only LOD, Level 1 (LOQ) and Level 3 (SST) concentration solutions.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-35" class="sop-step-label">
+                      <strong>6.3	Preparation of Sample</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Sample processing is carried out according to document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Liquid / Syrup / Suspension</p><p class="sop-p">Lightly shake the sample bottle to mix sample thoroughly.</p><p class="sop-p">Accurately pipette <span class="kw-vol">1 mL</span> of sample and add about <span class="kw-vol">50 mL</span> of methanol into a <span class="kw-vol">100 mL</span> volumetric flask (duplicate preparation: Replicates A and B).</p><p class="sop-p">Sonicate the solution for <span class="kw-time">5 minutes</span>.</p><p class="sop-p">Cool the solution to room temperature.</p><p class="sop-p">Make up to volume with methanol.</p><p class="sop-p">Filter the sample solution through a 0.45 µm filter into a <span class="kw-vol">2 mL</span> amber vial.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-36" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-36" class="sop-step-label">
+                      <strong>6.3.3	Sample Dilution (for quantitative assay purposes only)</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Perform appropriate dilutions if the sample concentration exceeds the linear range of the calibration curve.</p><p class="sop-p">Document the step-by-step dilution preparation in the worksheet.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-37" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-37" class="sop-step-label">
+                      <strong>6.4	Experimental method</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-38" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-38" class="sop-step-label">
+                      <strong>6.4.1	Gas chromatographic and MS Condition</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">The GCMS system used for detection of diethylene glycol and ethylene glycol in medicinal syrup are given in table 3 below.</p><p class="sop-p">Table 2:  GCMS system for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Table 3: Oven temperature program for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Table 4:  SIM mode for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">(*) Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-39" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-39" class="sop-step-label">
+                      <strong>6.4.2	Sequence of injection</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">For each injection, a volume of <span class="kw-vol">1.0 µL</span> of the solution will be administered. The sequence of injection is shown in the table below.</p><p class="sop-p">Table 4: Sequence of injection for identification and assay of ethylene glycol and diethylene glycol.</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">* After five samples are injected, the LOD solution will be injected before proceeding with the remaining samples.</span>
+                </div>
+                
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">**Calibration curve solutions are not required in the sequence for qualitative screening (Identification).</span>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-40" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-40" class="sop-step-label">
+                      <strong>6.4.3	SST and LOD and LOQ requirement</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">The acceptance criteria for SST, LOD and LOQ are shown in the table below.</p><p class="sop-p">Table 5: Requirement for SST, LOD and LOQ of identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Standard injection and calibration curve</p><p class="sop-p">Inject calibration curve solution (Level 1 – 5) to generate linear calibration curve. For the qualitative screening test (Identification), calibration curve acceptance criteria do not apply.</p><p class="sop-p">Generate a calibration curve by plotting concentration against area, and determine the linearity equation along with the correlation coefficient (R2).</p><p class="sop-p">This step (ii) can be performed using the instrument’s software.</p><p class="sop-p">Ensure that the correlation coefficient (R²) is equal to or greater than 0.9950. If the correlation does not meet this requirement, re-inject the working standard solution until the desired criteria are met.</p><p class="sop-p">The typical retention time for EG is around 7.00-<span class="kw-time">7.50 minutes</span> and DEG is around 14.00-<span class="kw-time">14.50 minutes</span>.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-41" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-41" class="sop-step-label">
+                      <strong>6.4.5	Internal Quality Control (IQC)</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Inject <span class="kw-vol">1.0 µL</span> of LOD solution after every 5 samples &amp; at the end of analysis.</p><p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-42" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-42" class="sop-step-label">
+                      <strong>6.4.6	Interpretation of result</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Identification</p><p class="sop-p">The identification of the target compound is considered positive when the following criteria are met:</p><p class="sop-p">Retention time</p><p class="sop-p">The retention time of the target compound in the sample chromatogram corresponds to the retention time in the chromatogram of the working standard.</p><p class="sop-p">Mass Spectrum Confirmation</p><p class="sop-p">Confirmation is based on the detection of the target and reference ions.</p><p class="sop-p">Reference ions are monitored as relative ion intensity, with the maximum permissible tolerance defined in Table 6:</p><p class="sop-p">Table 6: Tolerance for reference ion intensity for identification of ethylene glycol and diethylene glycol</p><p class="sop-p">Reporting Results</p><p class="sop-p">NOT DETECTED: The compound is reported as NOT DETECTED when the peak area of the target compound in the sample solution is below the peak area of the standard solution at the limit of detection (LOD) level, <span class="kw-wt">2 µg</span>/mL (equivalent to 0.02% v/v in sample).</p><p class="sop-p">BELOW QUANTITATION LIMIT: The compound is reported as BELOW QUANTITATION LIMIT in the sample when the peak area of the target compound in the sample solution is below the peak area in standard solution at the limit of quantitation (LOQ) level, <span class="kw-wt">6 µg</span>/mL (equivalent to 0.06% v/v in sample).</p><p class="sop-p">For discordant replicate sample analyses, the following approach shall be applied:</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">i) BORDERLINE LOD RESULTS</span>
+                </div>
+                <p class="sop-p">Where one result of the peak area is below the LOD and the other is equal to or above the LOD, the arithmetic mean (average) of the replicate peak area shall be used for interpretation.</p><p class="sop-p">If the average result of the peak area is below the LOD, the sample shall be reported as &lt; LOD 0.02% v/v.</p><p class="sop-p">If the average result of the peak area is equal to or above the LOD but below the LOQ, the analyte shall be considered detected but &lt; LOQ 0.06% v/v. No repeat analysis is required.</p><p class="sop-p">ii) BORDERLINE LOQ RESULTS</p><p class="sop-p">Where one result of the peak area is below the LOQ and the other is equal to or above the LOQ, a repeat analysis using a freshly prepared test portion shall be performed with a calibration curve to confirm whether the analyte is present at a quantifiable concentration before reporting the final result.</p><p class="sop-p">The final reported result shall be based on the outcome of the repeat analysis in accordance with the laboratory’s validated reporting procedure.</p><p class="sop-p">Quantifiable Amounts: If the peak area of the compound in the sample solution exceeds the peak area of the standard solution at the LOQ level, the compound&#x27;s concentration must be calculated using the calibration curve extrapolation as outlined in section B. Assay.</p><p class="sop-p">Assay</p><p class="sop-p">The amounts of ethylene glycol and diethylene glycol are determined using the extrapolation of the calibration curve.</p><p class="sop-p">Therefore, the final amount of each compound in the sample is calculated and reported as percent volume / volume (% v/v).</p><p class="sop-p">This calculation in step (ii), is performed using the following formula:</p><p class="sop-p">Equation 1: Calculation for the amount of ethylene glycol and diethylene glycol</p><p class="sop-p">Limits or specifications</p><p class="sop-p">Ethylene glycol and diethylene glycol</p><p class="sop-p">The limits for ethylene glycol and diethylene glycol are referred to the USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753.</p><p class="sop-p">The limits are outlined in Table 7:</p><p class="sop-p">Table 7: Limits or specifications for the assay of ethylene glycol and diethylene glycol</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-034-43" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+                    <label for="step-034-43" class="sop-step-label">
+                      <strong>6.5	Analysis Report</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Each sample must have a dedicated analysis report, which includes the following details:</p><p class="sop-p">Sample Details</p><p class="sop-p">Sample name</p><p class="sop-p">Sample number</p><p class="sop-p">Batch number</p><p class="sop-p">Analysis Date</p><p class="sop-p">Equipment Parameters</p><p class="sop-p">Equipment name</p><p class="sop-p">Gas chromatographic (GC) conditions</p><p class="sop-p">Mass spectrometry (MS) conditions.</p><p class="sop-p">Reference Standard (RS)</p><p class="sop-p">List of RS used in the analysis</p><p class="sop-p">Preparation procedure for RS, including printed RS weight</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Sample preparation procedure</p><p class="sop-p">Interpretation of Results</p><p class="sop-p">Detailed interpretation based on criteria outlined in the SOP</p><p class="sop-p">Evidence of Analysis</p><p class="sop-p">Evidence must be attached to the analysis report, including:</p><p class="sop-p">Compilation of chromatograms for calibration curve solutions [not applicable to the qualitative screening test (Identification)].</p><p class="sop-p">Chromatogram for LOD and LOQ solutions</p><p class="sop-p">Chromatogram of working standard solution (first injection of SST)</p><p class="sop-p">Compilation of chromatograms for SST</p><p class="sop-p">Chromatogram for blank solution prior to and after the sample solution injection</p><p class="sop-p">Chromatograms for samples A and B</p><p class="sop-p">IQC Table</p><p class="sop-p">REKOD KUALITI</p><p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/009	Laporan Pengujian Identifikasi dan Kandungan DEG dan EG</p><p class="sop-p">Menggunakan GCMS</p>
           </div>
         </div>
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>1</td><td>1</td><td>Tan Lu Yi</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr><tr><td>1</td><td>2</td><td>Tan Lu Yi</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>1</td><td>1</td><td>Tan Lu Yi</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr><tr ><td>1</td><td>2</td><td>Tan Lu Yi</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td>PKKK/300/UP/001</td><td>Proses persampelan (Ujian Penyaringan)</td></tr><tr><td>PKKK/300/UP/010</td><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td></tr><tr><td>PKKK/300/UP/004</td><td>Gas Chromatography-Mass Spectroscopy Agilent (7890A/5975C)</td></tr><tr><td>PKKK/300/UP/017</td><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B)</td></tr><tr><td></td><td>USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td>PKKK/300/UP/001</td><td>Proses persampelan (Ujian Penyaringan)</td></tr><tr ><td>PKKK/300/UP/010</td><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td></tr><tr ><td>PKKK/300/UP/004</td><td>Gas Chromatography-Mass Spectroscopy Agilent (7890A/5975C)</td></tr><tr ><td>PKKK/300/UP/017</td><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B)</td></tr><tr ><td></td><td>USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>Level</th><th>Mixed Standard Stock (µL)</th><th>Make up to volume with Methanol, mL</th><th>Concentration of EG (µg/mL)</th><th>Concentration of DEG (µg/mL)</th></tr><tr><td>1 (LOQ)</td><td>135</td><td>5</td><td>6.01</td><td>6.04</td></tr><tr><td>2</td><td>180</td><td>5</td><td>8.01</td><td>8.05</td></tr><tr><td>3 (SST)</td><td>225</td><td>5</td><td>10.02</td><td>10.06</td></tr><tr><td>4</td><td>270</td><td>5</td><td>12.02</td><td>12.07</td></tr><tr><td>5</td><td>315</td><td>5</td><td>14.02</td><td>14.09</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Level</th><th>Mixed Standard Stock (µL)</th><th>Make up to volume with Methanol, mL</th><th>Concentration of EG (µg/mL)</th><th>Concentration of DEG (µg/mL)</th></tr><tr ><td>1 (LOQ)</td><td>135</td><td>5</td><td>6.01</td><td>6.04</td></tr><tr ><td>2</td><td>180</td><td>5</td><td>8.01</td><td>8.05</td></tr><tr class="seq-sst"><td>3 (SST)</td><td>225</td><td>5</td><td>10.02</td><td>10.06</td></tr><tr ><td>4</td><td>270</td><td>5</td><td>12.02</td><td>12.07</td></tr><tr ><td>5</td><td>315</td><td>5</td><td>14.02</td><td>14.09</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
-          <table class="table-official">
-            <tr><th>GC Parameters</th><th>GC Parameters</th></tr><tr><td>Column</td><td>BP20 (Wax)</td></tr><tr><td>Column Dimension</td><td>30 m x 0.25 mm x 0.25µm</td></tr><tr><td>Oven temperature</td><td>Refer table 2</td></tr><tr><td>Flow control mode</td><td>Linear Velocity (30.0 cm/sec)</td></tr><tr><td>Flow rate</td><td>0.65 mL/min</td></tr><tr><td>Gas</td><td>Helium (Purity: 99.999%)</td></tr><tr><td>Injection mode</td><td>Split (20:1)</td></tr><tr><td>Injector temperature</td><td>250°C</td></tr><tr><td>Injection volume</td><td>1.0 µL</td></tr><tr><td>MS Parameters</td><td>MS Parameters</td></tr><tr><td>Interface temperature</td><td>240°C</td></tr><tr><td>EI ion source / MS source temperature</td><td>230°C</td></tr><tr><td>EI ionization energy</td><td>70 eV</td></tr><tr><td>Solvent delay</td><td>Scan off: 0 to 4.00 minutes due to solvent peak (methanol)</td></tr><tr><td>Scan range</td><td>m/z 25 to m/z 200</td></tr><tr><td>SIM ions</td><td>Refer table 3</td></tr>
-          </table>
+        <div class="table-card" id="table-4">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 4</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>GC Parameters</th><th>GC Parameters</th></tr><tr ><td>Column</td><td>BP20 (Wax)</td></tr><tr ><td>Column Dimension</td><td>30 m x 0.25 mm x 0.25µm</td></tr><tr ><td>Oven temperature</td><td>Refer table 2</td></tr><tr ><td>Flow control mode</td><td>Linear Velocity (30.0 cm/sec)</td></tr><tr ><td>Flow rate</td><td><span class="kw-flow"><span class="kw-vol">0.65 mL</span>/min</span></td></tr><tr ><td>Gas</td><td>Helium (Purity: 99.999%)</td></tr><tr ><td>Injection mode</td><td>Split (20:1)</td></tr><tr ><td>Injector temperature</td><td><span class="kw-temp">250°C</span></td></tr><tr ><td>Injection volume</td><td><span class="kw-vol">1.0 µL</span></td></tr><tr ><td>MS Parameters</td><td>MS Parameters</td></tr><tr ><td>Interface temperature</td><td><span class="kw-temp">240°C</span></td></tr><tr ><td>EI ion source / MS source temperature</td><td><span class="kw-temp">230°C</span></td></tr><tr ><td>EI ionization energy</td><td>70 eV</td></tr><tr ><td>Solvent delay</td><td>Scan off: 0 to <span class="kw-time">4.00 minutes</span> due to solvent peak (methanol)</td></tr><tr ><td>Scan range</td><td>m/z 25 to m/z 200</td></tr><tr ><td>SIM ions</td><td>Refer table 3</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
-          <table class="table-official">
-            <tr><th>Oven Ramp</th><th>Rate  (°C / min)</th><th>Final Temperature (°C)</th><th>Hold Time (minute)</th><th>Run Time (minute)</th></tr><tr><td>Initial</td><td></td><td>100</td><td>1.00</td><td></td></tr><tr><td>Ramp 1</td><td>10.0</td><td>130</td><td>7.00</td><td></td></tr><tr><td>Ramp 2</td><td>20.0</td><td>240</td><td>3.00</td><td></td></tr><tr><td>Post run</td><td>20.0</td><td>250</td><td>3.00</td><td>23.0</td></tr>
-          </table>
+        <div class="table-card" id="table-5">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 5</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Oven Ramp</th><th>Rate  (°C / min)</th><th>Final Temperature (°C)</th><th>Hold Time (minute)</th><th>Run Time (minute)</th></tr><tr ><td>Initial</td><td></td><td>100</td><td>1.00</td><td></td></tr><tr ><td>Ramp 1</td><td>10.0</td><td>130</td><td>7.00</td><td></td></tr><tr ><td>Ramp 2</td><td>20.0</td><td>240</td><td>3.00</td><td></td></tr><tr ><td>Post run</td><td>20.0</td><td>250</td><td>3.00</td><td>23.0</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 6</div>
-          <table class="table-official">
-            <tr><th>Compound</th><th>Acquisition time (minute) (*)</th><th>SIM Ions</th><th>ID</th></tr><tr><td>Ethylene glycol (EG)</td><td>4.50 – 11.00</td><td>1. Target; m/z 31</td><td>Quantitation</td></tr><tr><td>Ethylene glycol (EG)</td><td>4.50 – 11.00</td><td>2. Reference 1: m/z 33 3. Reference 2: m/z 62</td><td>Qualification</td></tr><tr><td>Diethylene glycol  (DEG)</td><td>11.00 – 20.00</td><td>1. Target; m/z 45</td><td>Quantitation</td></tr><tr><td>Diethylene glycol  (DEG)</td><td>11.00 – 20.00</td><td>2. Reference 1: m/z 75 3. Reference 2: m/z 31</td><td>Qualification</td></tr>
-          </table>
+        <div class="table-card" id="table-6">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 6</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Compound</th><th>Acquisition time (minute) (*)</th><th>SIM Ions</th><th>ID</th></tr><tr ><td>Ethylene glycol (EG)</td><td>4.50 – 11.00</td><td>1. Target; m/z 31</td><td>Quantitation</td></tr><tr ><td>Ethylene glycol (EG)</td><td>4.50 – 11.00</td><td>2. Reference 1: m/z 33 3. Reference 2: m/z 62</td><td>Qualification</td></tr><tr ><td>Diethylene glycol  (DEG)</td><td>11.00 – 20.00</td><td>1. Target; m/z 45</td><td>Quantitation</td></tr><tr ><td>Diethylene glycol  (DEG)</td><td>11.00 – 20.00</td><td>2. Reference 1: m/z 75 3. Reference 2: m/z 31</td><td>Qualification</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 7</div>
-          <table class="table-official">
-            <tr><th>No. of sequence</th><th>Details</th><th>Total of injection</th></tr><tr><td>1</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>2 – 7</td><td>System suitability solution (6x)</td><td>6</td></tr><tr><td>8</td><td>LOD solution</td><td>1</td></tr><tr><td>9</td><td>LOQ solution (Calibration curve solution Level 1)</td><td>1</td></tr><tr><td>9 – 13</td><td>Calibration curve solution (Level 1 – 5)</td><td>1 (each level)</td></tr><tr><td>14</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>15</td><td>Sample 1 (Replicate A)</td><td>1</td></tr><tr><td>16</td><td>Sample 1 (Replicate B)</td><td>1</td></tr><tr><td>17</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>18</td><td>Sample 2 (Replicate A)</td><td>1</td></tr><tr><td>19</td><td>Sample 2 (Replicate B)</td><td>1</td></tr><tr><td>20</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>21</td><td>Sample 3 (Replicate A)</td><td>1</td></tr><tr><td>22</td><td>Sample 3 (Replicate B)</td><td>1</td></tr><tr><td>23</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>24</td><td>Sample 4 (Replicate A)</td><td>1</td></tr><tr><td>25</td><td>Sample 4 (Replicate B)</td><td>1</td></tr><tr><td>26</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>27</td><td>Sample 5 (Replicate A)</td><td>1</td></tr><tr><td>28</td><td>Sample 5 (Replicate B)</td><td>1</td></tr><tr><td>29</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>30</td><td>LOD solution</td><td>1</td></tr><tr><td>31</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>32</td><td>Sample 6 (Replicate A)</td><td>1</td></tr><tr><td>33</td><td>Sample 6 (Replicate B)</td><td>1</td></tr><tr><td>34</td><td>Blank solution (methanol)</td><td>1</td></tr><tr><td>35</td><td>LOD solution</td><td>1</td></tr>
-          </table>
+        <div class="table-card" id="table-7">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 7</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>No. of sequence</th><th>Details</th><th>Total of injection</th></tr><tr class="seq-blank"><td>1</td><td>Blank solution (methanol)</td><td>1</td></tr><tr class="seq-sst"><td>2 – 7</td><td>System suitability solution (6x)</td><td>6</td></tr><tr class="seq-iqc"><td>8</td><td>LOD solution</td><td>1</td></tr><tr ><td>9</td><td>LOQ solution (Calibration curve solution Level 1)</td><td>1</td></tr><tr ><td>9 – 13</td><td>Calibration curve solution (Level 1 – 5)</td><td>1 (each level)</td></tr><tr class="seq-blank"><td>14</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>15</td><td>Sample 1 (Replicate A)</td><td>1</td></tr><tr ><td>16</td><td>Sample 1 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>17</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>18</td><td>Sample 2 (Replicate A)</td><td>1</td></tr><tr ><td>19</td><td>Sample 2 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>20</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>21</td><td>Sample 3 (Replicate A)</td><td>1</td></tr><tr ><td>22</td><td>Sample 3 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>23</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>24</td><td>Sample 4 (Replicate A)</td><td>1</td></tr><tr ><td>25</td><td>Sample 4 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>26</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>27</td><td>Sample 5 (Replicate A)</td><td>1</td></tr><tr ><td>28</td><td>Sample 5 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>29</td><td>Blank solution (methanol)</td><td>1</td></tr><tr class="seq-iqc"><td>30</td><td>LOD solution</td><td>1</td></tr><tr class="seq-blank"><td>31</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>32</td><td>Sample 6 (Replicate A)</td><td>1</td></tr><tr ><td>33</td><td>Sample 6 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>34</td><td>Blank solution (methanol)</td><td>1</td></tr><tr class="seq-iqc"><td>35</td><td>LOD solution</td><td>1</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 8</div>
-          <table class="table-official">
-            <tr><th>Parameter</th><th>Acceptance criteria</th></tr><tr><td>Tailing factor, Tf</td><td>NMT 2.5</td></tr><tr><td>Theoretical plate, N</td><td>NLT 2000</td></tr><tr><td>% RSD (peak area) for 6 injections of working standard solution at Level 3.</td><td>NMT 10.0 %</td></tr><tr><td>S/N ratio of LOD solution (2 µg/mL)</td><td>NLT 3</td></tr><tr><td>S/N ratio of LOQ solution (6 µg/mL)</td><td>NLT 10</td></tr>
-          </table>
+        <div class="table-card" id="table-8">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 8</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Parameter</th><th>Acceptance criteria</th></tr><tr ><td>Tailing factor, Tf</td><td>NMT 2.5</td></tr><tr ><td>Theoretical plate, N</td><td>NLT 2000</td></tr><tr ><td>% RSD (peak area) for 6 injections of working standard solution at Level 3.</td><td>NMT 10.0 %</td></tr><tr class="seq-iqc"><td>S/N ratio of LOD solution (<span class="kw-wt">2 µg</span>/mL)</td><td>NLT 3</td></tr><tr ><td>S/N ratio of LOQ solution (<span class="kw-wt">6 µg</span>/mL)</td><td>NLT 10</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 9</div>
-          <table class="table-official">
-            <tr><th>Relative ion intensity  (% of base peak)</th><th>Tolerance (%)</th></tr><tr><td>&gt; 50</td><td>± 10</td></tr><tr><td>20 – 50</td><td>± 15</td></tr><tr><td>10 - 20</td><td>± 20</td></tr><tr><td>&lt; 10</td><td>± 50</td></tr>
-          </table>
+        <div class="table-card" id="table-9">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 9</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Relative ion intensity  (% of base peak)</th><th>Tolerance (%)</th></tr><tr ><td>&gt; 50</td><td>± 10</td></tr><tr ><td>20 – 50</td><td>± 15</td></tr><tr ><td>10 - 20</td><td>± 20</td></tr><tr ><td>&lt; 10</td><td>± 50</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 10</div>
-          <table class="table-official">
-            <tr><th>Amount of each compound</th><th>=</th><th>Measured Concentration from GCMS (µg/mL)</th><th>x</th><th>Total volume sample solution (mL)</th><th>x</th><th>Dilution Factor (if any)</th><th>x</th><th></th><th>x</th><th></th></tr><tr><td>(% v/v)</td><td>=</td><td>Measured Concentration from GCMS (µg/mL)</td><td>x</td><td>Volume of sample taken (mL)</td><td>x</td><td>Dilution Factor (if any)</td><td>x</td><td></td><td>x</td><td></td></tr>
-          </table>
+        <div class="table-card" id="table-10">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 10</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Amount of each compound</th><th>=</th><th>Measured Concentration from GCMS (µg/mL)</th><th>x</th><th>Total volume sample solution (mL)</th><th>x</th><th>Dilution Factor (if any)</th><th>x</th><th></th><th>x</th><th></th></tr><tr ><td>(% v/v)</td><td>=</td><td>Measured Concentration from GCMS (µg/mL)</td><td>x</td><td>Volume of sample taken (mL)</td><td>x</td><td>Dilution Factor (if any)</td><td>x</td><td></td><td>x</td><td></td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 11</div>
-          <table class="table-official">
-            <tr><th>Compound</th><th>Restricted Limit</th></tr><tr><td>Ethylene glycol</td><td>For medicinal syrups: NMT 0.10% v/v</td></tr><tr><td>Diethylene glycol</td><td>For medicinal syrups: NMT 0.10% v/v</td></tr>
-          </table>
+        <div class="table-card" id="table-11">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 11</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Compound</th><th>Restricted Limit</th></tr><tr ><td>Ethylene glycol</td><td>For medicinal syrups: NMT 0.10% v/v</td></tr><tr ><td>Diethylene glycol</td><td>For medicinal syrups: NMT 0.10% v/v</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -203,6 +743,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/034');
+  });
+</script>
 </body>
 </html>

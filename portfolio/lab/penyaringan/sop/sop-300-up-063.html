@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/063 — Pindaan tarikh kuatkuasa arahan kerja daripada 1 Ogos 2025 kepada 10 April 2026 | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/063 — Pindaan tarikh kuatkuasa arahan kerja daripada 1 Ogos 2025 kepada 10 April 2026 | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/063: Pindaan tarikh kuatkuasa arahan kerja daripada 1 Ogos 2025 kepada 10 April 2026 — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/063')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,38 +146,107 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/063 <span class="g">Pindaan tarikh kuatkuasa arahan kerja daripada 1 Ogos 2025 kepada 10 April 2026</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 5 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: PINDAAN TARIKH KUATKUASA ARAHAN KERJA DARIPADA 1 OGOS 2025 KEPADA 10 APRIL 2026</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/063</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1 Semakan 1 :</p><p class="sop-p">Kemaskini nombor dokumen dari PKKK/300/KOS/036 kepada PKKK/300/UP/063.</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 1 Ogos 2025 kepada 10 April 2026</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk menentukan bahawa alat ini digunakan dengan betul dan mengikut operasi yang ditetapkan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah hendaklah digunakan untuk alat Water Bath Memmert WNB 14.</p><p class="sop-p">DEFINISI</p><p class="sop-p">Tiada definisi untuk prosedur ini</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Yang Bertanggungjawab</p><p class="sop-p">Meluluskan dan memastikan arahan kerja ini diimplementasi di dalam makmal</p><div class="sop-substep"><strong>5.2    Pegawai Farmasi</strong></div><div class="sop-substep"><strong>5.2.1 	Menyemak arahan kerja yang disediakan</strong></div><div class="sop-substep"><strong>5.3    Penganalisis</strong></div><div class="sop-substep"><strong>5.3.1 Menjalankan ujian mengikut arahan kerja.</strong></div><p class="sop-p">PROSEDUR</p><div class="sop-substep"><strong>6.1 Tatacara Penggunaan</strong></div><p class="sop-p">Alat water bath dipasang.</p><p class="sop-p">Isikan deionised water sehingga paras di antara min-max seperti yang ditandakan pada dinding bahagian dalam. Cabut elektrik plug sebelum membuka penutup water bath.</p><p class="sop-p">Pasangkan elektrik plug dan hidupkan suis elektrik.</p><p class="sop-p">Hidupkan alat water bath dengan menekan tombol push/turn.</p><p class="sop-p">ON</p><p class="sop-p">Penepatan suhu water bath adalah seperti berikut:</p><p class="sop-p">Pusingkan tombol push/turn ke ℃ sehinggan ikon ℃ berkelip.</p><p class="sop-p">Tekan butang SET ke bawah dan pada masa yang sama putarkan tombol push/turn ke suhu yang diperlukan.</p><p class="sop-p">Lepaskan butang SET. Sasaran suhu ini akan disimpan.</p><p class="sop-p">Tunggu sehingga suhu mencapai sasaran yang ditetapkan.</p><p class="sop-p">Untuk mematikan alat water bath, tekan tombol push/turn ke dalam.</p><p class="sop-p">OFF</p><p class="sop-p">Matikan suis elektrik.</p><p class="sop-p">Pemantauan suhu dan perlindungan alat</p><p class="sop-p">Sekiranya paras air tidak mencukupi, symbol  akan menyala berterusan semasa water bath sedang beroperasi.</p><p class="sop-p">Pemanasan akan terhenti. Oleh itu, matikan alat water bath dan biarkan sejuk.</p><p class="sop-p">Isikan air yang secukupnya sehingga paras air yang bersesuaian.</p><p class="sop-p">Water bath hanya boleh beroperasi semula apabila selesai langkah ini.</p><p class="sop-p">Water bath ini dilengkapi dengan monitoring relay elektronik. Sekiranya terdapat kesalahan semasa operasi atau jika suhu sasaran yang dipilih melebihi 10°C, monitoring relay akan meneruskan kawalan pemanasan pada suhu semasa dalam operasi kecemasan. Simbol  akan menyala berkelip-kelip sebagai amaran.</p><p class="sop-p">Hubungi Radicare untuk mendapatkan bantuan.</p><p class="sop-p">Penyelenggaraan</p><p class="sop-p">Kebersihan water bath perlu dijaga dan air yang bersih perlu ditukar secara berkala.</p><p class="sop-p">Water bath boleh dikeringkan melalui drain valve. Suhu deionised water di dalam water bath perlu diturunkan ke suhu bilik terlebih dahulu.</p><p class="sop-p">Pastikan bahawa objek yang berkarat tidak bersentuhan dengan permukaan alat water bath.</p><p class="sop-p">Sekiranya kesan karat muncul pada permukaan alat water bath, tempat berkenaan perlu dibersihkan dengan segera.</p>
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1 Semakan 1 :</p><p class="sop-p">Kemaskini nombor dokumen dari PKKK/300/KOS/036 kepada PKKK/300/UP/063.</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 1 Ogos 2025 kepada 10 April 2026</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk menentukan bahawa alat ini digunakan dengan betul dan mengikut operasi yang ditetapkan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah hendaklah digunakan untuk alat Water Bath Memmert WNB 14.</p><p class="sop-p">DEFINISI</p><p class="sop-p">Tiada definisi untuk prosedur ini</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Yang Bertanggungjawab</p><p class="sop-p">Meluluskan dan memastikan arahan kerja ini diimplementasi di dalam makmal</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-063-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/063')">
+                    <label for="step-063-1" class="sop-step-label">
+                      <strong>5.2    Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-063-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/063')">
+                    <label for="step-063-2" class="sop-step-label">
+                      <strong>5.2.1 	Menyemak arahan kerja yang disediakan</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-063-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/063')">
+                    <label for="step-063-3" class="sop-step-label">
+                      <strong>5.3    Penganalisis</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-063-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/063')">
+                    <label for="step-063-4" class="sop-step-label">
+                      <strong>5.3.1 Menjalankan ujian mengikut arahan kerja.</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">PROSEDUR</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-063-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/063')">
+                    <label for="step-063-5" class="sop-step-label">
+                      <strong>6.1 Tatacara Penggunaan</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Alat water bath dipasang.</p><p class="sop-p">Isikan deionised water sehingga paras di antara min-max seperti yang ditandakan pada dinding bahagian dalam. Cabut elektrik plug sebelum membuka penutup water bath.</p><p class="sop-p">Pasangkan elektrik plug dan hidupkan suis elektrik.</p><p class="sop-p">Hidupkan alat water bath dengan menekan tombol push/turn.</p><p class="sop-p">ON</p><p class="sop-p">Penepatan suhu water bath adalah seperti berikut:</p><p class="sop-p">Pusingkan tombol push/turn ke ℃ sehinggan ikon ℃ berkelip.</p><p class="sop-p">Tekan butang SET ke bawah dan pada masa yang sama putarkan tombol push/turn ke suhu yang diperlukan.</p><p class="sop-p">Lepaskan butang SET. Sasaran suhu ini akan disimpan.</p><p class="sop-p">Tunggu sehingga suhu mencapai sasaran yang ditetapkan.</p><p class="sop-p">Untuk mematikan alat water bath, tekan tombol push/turn ke dalam.</p><p class="sop-p">OFF</p><p class="sop-p">Matikan suis elektrik.</p><p class="sop-p">Pemantauan suhu dan perlindungan alat</p><p class="sop-p">Sekiranya paras air tidak mencukupi, symbol  akan menyala berterusan semasa water bath sedang beroperasi.</p><p class="sop-p">Pemanasan akan terhenti. Oleh itu, matikan alat water bath dan biarkan sejuk.</p><p class="sop-p">Isikan air yang secukupnya sehingga paras air yang bersesuaian.</p><p class="sop-p">Water bath hanya boleh beroperasi semula apabila selesai langkah ini.</p><p class="sop-p">Water bath ini dilengkapi dengan monitoring relay elektronik. Sekiranya terdapat kesalahan semasa operasi atau jika suhu sasaran yang dipilih melebihi <span class="kw-temp">10°C</span>, monitoring relay akan meneruskan kawalan pemanasan pada suhu semasa dalam operasi kecemasan. Simbol  akan menyala berkelip-kelip sebagai amaran.</p><p class="sop-p">Hubungi Radicare untuk mendapatkan bantuan.</p><p class="sop-p">Penyelenggaraan</p><p class="sop-p">Kebersihan water bath perlu dijaga dan air yang bersih perlu ditukar secara berkala.</p><p class="sop-p">Water bath boleh dikeringkan melalui drain valve. Suhu deionised water di dalam water bath perlu diturunkan ke suhu bilik terlebih dahulu.</p><p class="sop-p">Pastikan bahawa objek yang berkarat tidak bersentuhan dengan permukaan alat water bath.</p><p class="sop-p">Sekiranya kesan karat muncul pada permukaan alat water bath, tempat berkenaan perlu dibersihkan dengan segera.</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.  REKOD KUALITI</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.  REKOD KUALITI
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">Rekod penyelenggaraan alat Water Bath Memmert WNB 14.</p><p class="sop-p">LAMPIRAN</p><p class="sop-p">Tiada</p>
           </div>
@@ -124,19 +254,29 @@
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Leong Lip Wai</td><td>Nor Syazana Ahmad Nordin</td><td>Nor Izyani Hanafi</td><td>1 Ogos 2025</td></tr><tr><td>1</td><td>1</td><td>Nurfatihah Omar</td><td>Gopinatha Ganesh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/063</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Leong Lip Wai</td><td>Nor Syazana Ahmad Nordin</td><td>Nor Izyani Hanafi</td><td>1 Ogos 2025</td></tr><tr ><td>1</td><td>1</td><td>Nurfatihah Omar</td><td>Gopinatha Ganesh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td></td><td>Manual Operasi Alat</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/063</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td></td><td>Manual Operasi Alat</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -147,6 +287,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/063');
+  });
+</script>
 </body>
 </html>

@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/060 — Screening of Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) in Cosmetic Products Using HPLC | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/060 — Screening of Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) in Cosmetic Products Using HPLC | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/060: Screening of Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) in Cosmetic Products Using HPLC — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/060')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,73 +146,175 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/060 <span class="g">Screening of Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) in Cosmetic Products Using HPLC</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 7 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: SCREENING OF NON-STEROIDAL ANTI-INFLAMMATORY DRUGS (NSAIDS) IN COSMETIC PRODUCTS USING HPLC</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/060</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">1.0	Objective</a><a href="#sec-3" class="toc-pill">2.0	Scope</a><a href="#sec-4" class="toc-pill">4.0	Flow Chart</a><a href="#sec-5" class="toc-pill">6.0	Procedure</a><a href="#sec-6" class="toc-pill">7.0	Quality Records</a><a href="#sec-7" class="toc-pill">8.0	Attachments</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">Update document number from PKKK/300/HMS/086 to PKKK/300/KOS/032</p><p class="sop-p">Update paragraph 5.0 Responsibilities</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 2 Revision 1 :</p><p class="sop-p">Update paragraph 6.3.4</p><p class="sop-p">Update paragraph 6.4.3</p><p class="sop-p">Issue 3 Revision 0:</p><p class="sop-p">Update document number from PKKK/300/KOS/032 to PKKK/300/UP/060.</p><p class="sop-p">Update effective date from  1 Ogos 2024 to 10 April 2026.</p><p class="sop-p">Update	 paragraph 7.0 Quality Records :</p><p class="sop-p">KOS/X004 to UP/X010</p><p class="sop-p">KOS/X003 to UP/X009</p><p class="sop-p">KOS/002A to UP/002B</p><p class="sop-p">KOS/X009 to UP/X013</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0	Objective</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0	Objective
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">◼	The test is performed to screen the presence of Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) in cosmetic products by using HPLC.</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">2.0	Scope</div>
+        <div class="sop-section-block" id="sec-3">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 2.0	Scope
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">◼	The screening method is used to identify NSAIDs in cosmetic products received from customers such as Surveillance &amp; Complaint Section, Pharmacy Enforcement and others.</p><div class="sop-substep"><strong>3.0	Definition</strong></div><p class="sop-p">NA</p>
+            <p class="sop-p">◼	The screening method is used to identify NSAIDs in cosmetic products received from customers such as Surveillance &amp; Complaint Section, Pharmacy Enforcement and others.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-060-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/060')">
+                    <label for="step-060-1" class="sop-step-label">
+                      <strong>3.0	Definition</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">NA</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">4.0	Flow Chart</div>
+        <div class="sop-section-block" id="sec-4">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 4.0	Flow Chart
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">NA</p><p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p><p class="sop-p">Check and approve investigational reports, test reports and results of sample that does not comply with the specification.</p><p class="sop-p">Head of Unit / Pharmacist in charge</p><p class="sop-p">Distribute a list of samples to be tested to pharmacists through the online QUEST system.</p><p class="sop-p">Check and approve test reports and results of samples that comply with the specification.</p><p class="sop-p">Check the investigational report for sample that does not comply with the specification.</p><p class="sop-p">Pharmacist</p><p class="sop-p">Check test reports and results of samples that has been tested in the laboratory.</p><p class="sop-p">Prepare the investigational report for sample that does not comply with the specification.</p><p class="sop-p">Analysts</p><p class="sop-p">Perform sample testing according to the approved procedure</p><p class="sop-p">Prepare test reports</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">6.0	Procedure</div>
+        <div class="sop-section-block" id="sec-5">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 6.0	Procedure
+          </div>
           <div class="sop-sec-content">
-            <div class="sop-substep"><strong>6.1	Equipment/ Materials</strong></div><p class="sop-p">High Pressure Liquid Chromatograph with photo diode array detector</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Zorbax Eclipse Plus C18;150 mm x 4.6 mm i.d., 5 µm</p><p class="sop-p">Micropipette</p><p class="sop-p">Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p">10 mL, 50 mL Volumetric flasks</p><p class="sop-p">50 mL glass stoppered conical flask</p><p class="sop-p">Acetonitrile (HPLC grade)</p><p class="sop-p">Methanol (HPLC grade)</p><p class="sop-p">Sodium Dihydrogen Phosphate Dihydrate (NaH2PO4.2H2O)</p><p class="sop-p">Water (Ultrapure water, 18 mega ohm)</p><p class="sop-p">Orthophosphoric acid 85% (H3PO4)</p><p class="sop-p">Reference material: Aspirin, Ibuprofen, Diclofenac Sodium, Mefenamic Acid, Naproxen, Paracetamol, Piroxicam, Sulindac, Ketoprofen, Indomethacin, Phenylbutazone</p><p class="sop-p">Chromatographic Parameters</p><p class="sop-p">Test Method</p><p class="sop-p">Mobile Phase Preparation</p><div class="sop-substep"><strong>6.3.1.1Mobile Phase A (Sodium Dihydrogen Phosphate Buffer): Dissolve 3.9 g NaH2PO4.2H2O in 1000 mL of water. Mix well and adjust to pH 3.2 with Orthophosphoric acid. Filter and degassed before use.</strong></div><div class="sop-substep"><strong>6.3.1.2 Mobile Phase B: Filter and degassed 1000 mL Acetonitrile.</strong></div><p class="sop-p">Reference Standard Stock Solution Preparation</p><div class="sop-substep"><strong>6.3.2.1	Weigh separately 2 mg of Aspirin, Ibuprofen, Diclofenac Sodium, Mefenamic Acid, Naproxen, Paracetamol, Piroxicam, Sulindac, Ketoprofen, Indomethacin, Phenylbutazone Reference Standard into 10 mL volumetric flask. Add 5 mL of Methanol and sonicate for 20 minutes. Make up to volume with Methanol (0.2 mg/mL / 200 ppm).</strong></div><p class="sop-p">Mix Reference Standard Solution Preparation</p><p class="sop-p">Mix Reference Standard Solution Preparation (Mix Standard A1)</p><p class="sop-p">Pipette 3.75mL of Indomethacin standard stock solution and Naproxen standard stock solution into a 50 mL volumetric flask and make up to volume with Methanol. (0.015 mg/mL / 15 ppm).</p><p class="sop-p">Mix Reference Standard Solution Preparation (Mix Standard B1)</p><p class="sop-p">Pipette 3.75 mL of the remaining Reference Standard Stock Solution (except for Indomethacin and Naproxen) into a 50 mL flask and make up to volume with Methanol (0.015 mg/mL / 15 ppm).</p><p class="sop-p">Limit of Detection (LOD) Solution Preparation</p><p class="sop-p">Limit of Detection (LOD) Solution Preparation (LOD-Mix Standard A2)</p><p class="sop-p">Pipette 300 µL of Mix Standard A1 solution into a vial and add 1200 µL of Methanol (0.003 mg/mL / 3 ppm).</p><div class="sop-substep"><strong>6.3.4.2 Limit of Detection (LOD) Solution Preparation (LOD-Mix Standard B2)</strong></div><p class="sop-p">Pipette 300 µL of Mix Standard B1 Solution into a vial and add 1200 µL of Methanol. (0.003mg/mL / 3ppm).</p><p class="sop-p">Note:</p><p class="sop-p">Filter all solution with a 0.45 µm Nylon filter prior to injecting into the HPLC.</p><p class="sop-p">The weight of the reference standard can be modified to minimize the usage of the reference standard.</p><p class="sop-p">Sample Preparation</p><div class="sop-substep"><strong>6.3.5.1	Weigh approximately 0.5 g of sample into a 50 mL glass stoppered conical flask. Add 20 mL of Methanol. Sonicate for 10 minutes.  Filter the solution with a 0.45 µm nylon filter prior to injecting into the HPLC.</strong></div><p class="sop-p">Note: The weight of the sample can be modified due to the availability and amount of the sample received.</p><p class="sop-p">System Suitability Test (SST)</p><p class="sop-p">Inject 10 μL of Mix Reference Standard Solution A1 &amp; B1 (6 replicates) and check for:</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>i) Tailing factor NMT 2.0</span></div><p class="sop-p">ii) Theoretical plates NLT 1500</p><p class="sop-p">iii) Resolution NLT 1.5</p><p class="sop-p">Injection Sequence</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Aspirin, Ibuprofen, Diclofenac Sodium, Mefenamic Acid &amp; Naproxen are analysed and interpreted at 220 nm.</p><p class="sop-p">Paracetamol, Piroxicam, Sulindac, Ketoprofen, Indomethacin and Phenylbutazone are analysed and interpreted at 254 nm.</p><p class="sop-p">Compare the Retention Time, Area and Spectrum obtained from the sample chromatogram against the LOD-Mix Standard Solution (A2/B2) chromatogram. A compound is reported as detected in the sample if:</p><p class="sop-p">Retention time corresponds to standard with difference less than +/- 1%</p><p class="sop-p">The sample peak area is more than LOD-Mix Standard (A2/B2)</p><p class="sop-p">The spectrum of the sample with a similarity of more than 0.999 to the spectrum of standard</p><p class="sop-p">The analysis shall be repeated by a second analyst using the same method when the sample was detected with NSAIDs in the first analysis.</p><p class="sop-p">Result documented in Certificate of Analysis:</p><p class="sop-p">If NSAIDs not detected : ‘Tidak dikesan’</p><p class="sop-p">If NSAIDs detected       :  ‘Dikesan’</p>
+            
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-060-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/060')">
+                    <label for="step-060-2" class="sop-step-label">
+                      <strong>6.1	Equipment/ Materials</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">High Pressure Liquid Chromatograph with photo diode array detector</p><p class="sop-p">Ultrasonic bath</p><p class="sop-p">Zorbax Eclipse Plus C18;150 mm x 4.6 mm i.d., 5 µm</p><p class="sop-p">Micropipette</p><p class="sop-p">Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p"><span class="kw-vol">10 mL</span>, <span class="kw-vol">50 mL</span> Volumetric flasks</p><p class="sop-p"><span class="kw-vol">50 mL</span> glass stoppered conical flask</p><p class="sop-p">Acetonitrile (HPLC grade)</p><p class="sop-p">Methanol (HPLC grade)</p><p class="sop-p">Sodium Dihydrogen Phosphate Dihydrate (NaH2PO4.2H2O)</p><p class="sop-p">Water (Ultrapure water, 18 mega ohm)</p><p class="sop-p">Orthophosphoric acid 85% (H3PO4)</p><p class="sop-p">Reference material: Aspirin, Ibuprofen, Diclofenac Sodium, Mefenamic Acid, Naproxen, Paracetamol, Piroxicam, Sulindac, Ketoprofen, Indomethacin, Phenylbutazone</p><p class="sop-p">Chromatographic Parameters</p><p class="sop-p">Test Method</p><p class="sop-p">Mobile Phase Preparation</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-060-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/060')">
+                    <label for="step-060-3" class="sop-step-label">
+                      <strong>6.3.1.1Mobile Phase A (Sodium Dihydrogen Phosphate Buffer): Dissolve 3.9 g NaH2PO4.2H2O in 1000 mL of water. Mix well and adjust to pH 3.2 with Orthophosphoric acid. Filter and degassed before use.</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-060-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/060')">
+                    <label for="step-060-4" class="sop-step-label">
+                      <strong>6.3.1.2 Mobile Phase B: Filter and degassed 1000 mL Acetonitrile.</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Reference Standard Stock Solution Preparation</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-060-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/060')">
+                    <label for="step-060-5" class="sop-step-label">
+                      <strong>6.3.2.1	Weigh separately 2 mg of Aspirin, Ibuprofen, Diclofenac Sodium, Mefenamic Acid, Naproxen, Paracetamol, Piroxicam, Sulindac, Ketoprofen, Indomethacin, Phenylbutazone Reference Standard into 10 mL volumetric flask. Add 5 mL of Methanol and sonicate for 20 minutes. Make up to volume with Methanol (0.2 mg/mL / 200 ppm).</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Mix Reference Standard Solution Preparation</p><p class="sop-p">Mix Reference Standard Solution Preparation (Mix Standard A1)</p><p class="sop-p">Pipette <span class="kw-vol">3.75mL</span> of Indomethacin standard stock solution and Naproxen standard stock solution into a <span class="kw-vol">50 mL</span> volumetric flask and make up to volume with Methanol. (<span class="kw-wt">0.015 mg</span>/mL / 15 ppm).</p><p class="sop-p">Mix Reference Standard Solution Preparation (Mix Standard B1)</p><p class="sop-p">Pipette <span class="kw-vol">3.75 mL</span> of the remaining Reference Standard Stock Solution (except for Indomethacin and Naproxen) into a <span class="kw-vol">50 mL</span> flask and make up to volume with Methanol (<span class="kw-wt">0.015 mg</span>/mL / 15 ppm).</p><p class="sop-p">Limit of Detection (LOD) Solution Preparation</p><p class="sop-p">Limit of Detection (LOD) Solution Preparation (LOD-Mix Standard A2)</p><p class="sop-p">Pipette <span class="kw-vol">300 µL</span> of Mix Standard A1 solution into a vial and add <span class="kw-vol">1200 µL</span> of Methanol (<span class="kw-wt">0.003 mg</span>/mL / 3 ppm).</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-060-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/060')">
+                    <label for="step-060-6" class="sop-step-label">
+                      <strong>6.3.4.2 Limit of Detection (LOD) Solution Preparation (LOD-Mix Standard B2)</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Pipette <span class="kw-vol">300 µL</span> of Mix Standard B1 Solution into a vial and add <span class="kw-vol">1200 µL</span> of Methanol. (<span class="kw-wt">0.003mg</span>/mL / 3ppm).</p><p class="sop-p">Note:</p><p class="sop-p">Filter all solution with a 0.45 µm Nylon filter prior to injecting into the HPLC.</p><p class="sop-p">The weight of the reference standard can be modified to minimize the usage of the reference standard.</p><p class="sop-p">Sample Preparation</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-060-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/060')">
+                    <label for="step-060-7" class="sop-step-label">
+                      <strong>6.3.5.1	Weigh approximately 0.5 g of sample into a 50 mL glass stoppered conical flask. Add 20 mL of Methanol. Sonicate for 10 minutes.  Filter the solution with a 0.45 µm nylon filter prior to injecting into the HPLC.</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Note: The weight of the sample can be modified due to the availability and amount of the sample received.</p><p class="sop-p">System Suitability Test (SST)</p><p class="sop-p">Inject 10 μL of Mix Reference Standard Solution A1 &amp; B1 (6 replicates) and check for:</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">i) Tailing factor NMT 2.0</span>
+                </div>
+                <p class="sop-p">ii) Theoretical plates NLT 1500</p><p class="sop-p">iii) Resolution NLT 1.5</p><p class="sop-p">Injection Sequence</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Aspirin, Ibuprofen, Diclofenac Sodium, Mefenamic Acid &amp; Naproxen are analysed and interpreted at <span class="kw-wave">220 nm</span>.</p><p class="sop-p">Paracetamol, Piroxicam, Sulindac, Ketoprofen, Indomethacin and Phenylbutazone are analysed and interpreted at <span class="kw-wave">254 nm</span>.</p><p class="sop-p">Compare the Retention Time, Area and Spectrum obtained from the sample chromatogram against the LOD-Mix Standard Solution (A2/B2) chromatogram. A compound is reported as detected in the sample if:</p><p class="sop-p">Retention time corresponds to standard with difference less than +/- 1%</p><p class="sop-p">The sample peak area is more than LOD-Mix Standard (A2/B2)</p><p class="sop-p">The spectrum of the sample with a similarity of more than 0.999 to the spectrum of standard</p><p class="sop-p">The analysis shall be repeated by a second analyst using the same method when the sample was detected with NSAIDs in the first analysis.</p><p class="sop-p">Result documented in Certificate of Analysis:</p><p class="sop-p">If NSAIDs not detected : ‘Tidak dikesan’</p><p class="sop-p">If NSAIDs detected       :  ‘Dikesan’</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.0	Quality Records</div>
+        <div class="sop-section-block" id="sec-6">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.0	Quality Records
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah HPLC	: UP/X010</p><p class="sop-p">Rumusan Laporan Pengujian	 Kromatografi			: UP/X009</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p><p class="sop-p">Borang Keputusan Ujian Kosmetik				: UP/X013</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">8.0	Attachments</div>
+        <div class="sop-section-block" id="sec-7">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 8.0	Attachments
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">Chromatogram of Mix Reference Standard Solutions</p><p class="sop-p">Spectrum of Standards</p><p class="sop-p">Chromatogram of LOD-Mix Standard (A2/B2), Diluent &amp; Sample</p><p class="sop-p">Chromatogram of Mix Reference Standard Solutions</p><p class="sop-p">Spectrum of Standards</p><p class="sop-p">Naproxen</p><p class="sop-p">Indomethacin</p><p class="sop-p">Aspirin</p><p class="sop-p">Ibuprofen</p><p class="sop-p">Diclofenac Sodium</p><p class="sop-p">Mefenamic Acid</p><p class="sop-p">Paracetamol</p><p class="sop-p">Sulindac</p><p class="sop-p">Piroxicam</p><p class="sop-p">Ketoprofen</p><p class="sop-p">Phenylbutazone</p><p class="sop-p">Chromatogram of LOD-Mix Standard (A2/B2), Diluent &amp; Sample</p>
           </div>
@@ -159,33 +322,53 @@
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th></tr><tr><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective date</td></tr><tr><td>1</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 April 2023</td></tr><tr><td>2</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr><td>2</td><td>1</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 Ogos 2024</td></tr><tr><td>3</td><td>0</td><td>Gopinatha Ganesh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/060</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th></tr><tr ><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective date</td></tr><tr ><td>1</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 April 2023</td></tr><tr ><td>2</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr ><td>2</td><td>1</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 Ogos 2024</td></tr><tr ><td>3</td><td>0</td><td>Gopinatha Ganesh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>REFERENCES</th><th>REFERENCES</th></tr><tr><td>Document No.</td><td>Title</td></tr><tr><td></td><td>Standard Operating Procedure for HPLC</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/060</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>REFERENCES</th><th>REFERENCES</th></tr><tr ><td>Document No.</td><td>Title</td></tr><tr ><td></td><td>Standard Operating Procedure for HPLC</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>◼  Column</th><th>:</th><th>Zorbax Eclipse Plus C18;150 mm x 4.6 mm i.d., 5 µm</th></tr><tr><td>◼  System</td><td>:</td><td>Gradient</td></tr><tr><td>◼  Mobile phase</td><td>:</td><td>Mobile Phase A (Buffer):Mobile Phase B (Acetonitrile)</td></tr><tr><td></td><td></td><td></td></tr><tr><td>◼  Temperature</td><td>:</td><td>40 oC</td></tr><tr><td>◼  Flow rate</td><td>:</td><td>1.0 mL/min</td></tr><tr><td>◼  Detection</td><td>:</td><td>UV, 220 nm &amp; 254 nm</td></tr><tr><td>◼  Injection volume</td><td>:</td><td>μL</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/060</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>◼  Column</th><th>:</th><th>Zorbax Eclipse Plus C18;150 mm x 4.6 mm i.d., 5 µm</th></tr><tr ><td>◼  System</td><td>:</td><td>Gradient</td></tr><tr ><td>◼  Mobile phase</td><td>:</td><td>Mobile Phase A (Buffer):Mobile Phase B (Acetonitrile)</td></tr><tr ><td></td><td></td><td></td></tr><tr ><td>◼  Temperature</td><td>:</td><td>40 oC</td></tr><tr ><td>◼  Flow rate</td><td>:</td><td><span class="kw-flow"><span class="kw-vol">1.0 mL</span>/min</span></td></tr><tr ><td>◼  Detection</td><td>:</td><td>UV, <span class="kw-wave">220 nm</span> &amp; <span class="kw-wave">254 nm</span></td></tr><tr ><td>◼  Injection volume</td><td>:</td><td>μL</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
-          <table class="table-official">
-            <tr><th>Injection sequence</th><th>Injection ID</th><th>No. of injection</th><th>Run time (min)</th></tr><tr><td>1</td><td>Diluent</td><td>1</td><td>20</td></tr><tr><td>2</td><td>LOD-Mix Standard A2</td><td>1</td><td>20</td></tr><tr><td>3</td><td>LOD-Mix Standard B2</td><td>1</td><td>20</td></tr><tr><td>4</td><td>Mix reference standard solution A1 (Check for SST)</td><td>6</td><td>120</td></tr><tr><td>5</td><td>Mix reference standard solution B1  (Check for SST)</td><td>6</td><td>120</td></tr><tr><td>6</td><td>Sample Solution</td><td>1</td><td>20</td></tr><tr><td>7</td><td>Sample Solution (Final)</td><td>1</td><td>20</td></tr><tr><td>8</td><td>Mix reference standard solution A1</td><td>1</td><td>20</td></tr><tr><td>9</td><td>Mix reference standard solution B1</td><td>1</td><td>20</td></tr>
-          </table>
+        <div class="table-card" id="table-4">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 4</span>
+            <span class="table-doc-code">PKKK/300/UP/060</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Injection sequence</th><th>Injection ID</th><th>No. of injection</th><th>Run time (min)</th></tr><tr class="seq-blank"><td>1</td><td>Diluent</td><td>1</td><td>20</td></tr><tr class="seq-iqc"><td>2</td><td>LOD-Mix Standard A2</td><td>1</td><td>20</td></tr><tr class="seq-iqc"><td>3</td><td>LOD-Mix Standard B2</td><td>1</td><td>20</td></tr><tr class="seq-sst"><td>4</td><td>Mix reference standard solution A1 (Check for SST)</td><td>6</td><td>120</td></tr><tr class="seq-sst"><td>5</td><td>Mix reference standard solution B1  (Check for SST)</td><td>6</td><td>120</td></tr><tr ><td>6</td><td>Sample Solution</td><td>1</td><td>20</td></tr><tr ><td>7</td><td>Sample Solution (Final)</td><td>1</td><td>20</td></tr><tr ><td>8</td><td>Mix reference standard solution A1</td><td>1</td><td>20</td></tr><tr ><td>9</td><td>Mix reference standard solution B1</td><td>1</td><td>20</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -196,6 +379,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/060');
+  });
+</script>
 </body>
 </html>

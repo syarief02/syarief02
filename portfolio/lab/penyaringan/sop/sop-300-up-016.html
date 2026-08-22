@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/016 — HPLC Flexar Perkin Elmer | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/016 — HPLC Flexar Perkin Elmer | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/016: HPLC Flexar Perkin Elmer — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/016')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,38 +146,62 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/016 <span class="g">HPLC Flexar Perkin Elmer</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 0 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: HPLC FLEXAR PERKIN ELMER</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/016</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.	REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/077 kepada PKKK/300/HMS/077</p><p class="sop-p">Pindaan pada senarai Tanggungjawab kepada yang terkini</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/077 kepada PKKK/300/UAT/017</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Terbitan 2, Semakan 2:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/017 kepada PKKK/300/UP/016</p><p class="sop-p">Kemas kini tarikh kuat kuasa dari 1 Julai 2025 kepada 10 Apr 2026.</p><p class="sop-p">Pinda Laporan Penyelenggaraan, Servis dan Kalibrasi di dalam fail alat berkenaan kepada Rekod penyelenggaraan alat Shimadzu High Performance Liquid Chromatography Flexar (Perkin Elmer)</p><p class="sop-p">TUJUAN</p><p class="sop-p">Tujuan prosedur ini adalah untuk menerangkan cara-cara menggunakan alat Perkin Elmer Flexar High Performance Liquid Chromatography.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunapakai semasa menjalankan ujian analitikal dengan menggunakan High Performance Liquid Chromatography.</p><p class="sop-p">DEFINISI</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p><p class="sop-p">Penolong Pegawai Farmasi</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Pengenalan alat</p><p class="sop-p">This instrument consists of the following components:</p><p class="sop-p">FLEXAR LC Pumps</p><p class="sop-p">FLEXAR PDA Plus LC Detector</p><p class="sop-p">FLEXAR LC Column Ovens</p><p class="sop-p">FLEXAR Autosamplers</p><p class="sop-p">Computer</p><p class="sop-p">Printer</p><p class="sop-p">Operasi alat</p><p class="sop-p">Switch ON the battery</p><p class="sop-p">Turn on PC, enter Windows 10</p><p class="sop-p">Turn on HPLC devices</p><p class="sop-p">Double click &lt;TC Navigator&gt; to enter Total Chrom</p><p class="sop-p">Click Run &gt; Take Control</p><p class="sop-p">At this moment, “Hands-on” button grey-out</p><p class="sop-p">Starting the Total Chrom Navigator</p><p class="sop-p">Click Run 🡪 Take Control</p><p class="sop-p">Seizing – establishing software &amp; HPLC communication</p><p class="sop-p">Seizing – Communicating (L) and Communication established. Hands on available (R)</p><p class="sop-p">Preparation</p><p class="sop-p">Start pump &amp; purge lines</p><p class="sop-p">To Start Pump – Click instrument setup</p><p class="sop-p">Browse &amp; Choose a sequence to trigger pump</p><p class="sop-p">Browse sequence</p><p class="sop-p">Select a sequence to trigger pump start</p><p class="sop-p">Select sequence named “StartPump” or “Preparation” 🡪 Click Select</p><p class="sop-p">A sequence displayed 🡪 Action 🡪 Setup</p><p class="sop-p">Set the following</p><p class="sop-p">Status: Setting up</p><p class="sop-p">Status: HPLC Ready / Pump Off 🡪 Click Hands On</p><p class="sop-p">Hands-On 🡪 Pump (or Purge)</p><p class="sop-p">Remove cover of Flexar Pump. Loosen purge valve (Anti Clockwise)</p><p class="sop-p">Pump – Adjust the composition 100% of mobile phase.</p><p class="sop-p">Key in flow rate 3-5mL/min</p><p class="sop-p">Click Set Value</p><p class="sop-p">Click Start Pump</p><p class="sop-p">Purge for 15 – 30 mL of mobile phase</p><p class="sop-p">Repeat 1 – 6 for other line if necessary</p><p class="sop-p">Tighten purge valve and remove</p><p class="sop-p">Syringe after completed.</p><p class="sop-p">Start the pump for equilibrium</p><p class="sop-p">Connect the column to the inlet and outlet tubing (could be not connected)</p><p class="sop-p">Set the pump at low flow rate for example 0.5mL/min initially.</p><p class="sop-p">The flow rate and % composition of mobile phases could be change</p><p class="sop-p">Equilibrate the column from by slowly increasing flow rate to 1mL/min or as required by method</p><p class="sop-p">Flush the column for 20 - 50mL of its volume, or follow the regular in-house practice.</p><p class="sop-p">Benchmark of column C18 (150mm x 4.6mm x 5µm)</p><p class="sop-p">At 1mL of 75% MeOH 25% UPW, pressure redback is 2250psi</p><p class="sop-p">Prepare detector</p><p class="sop-p">Turn on the lamps to set wavelength</p><p class="sop-p">Flush syringe</p><p class="sop-p">Hands On 🡪 Autosampler 🡪 Flush Autosampler (perform a few times to get rid of air bubbles in syringe)</p><p class="sop-p">Set temperature of Autosampler as preparation</p><p class="sop-p">Set oven temperature</p><p class="sop-p">Double click Oven.exe</p><p class="sop-p">Select “Flexar Oven #2”</p><p class="sop-p">Key-in temperature 🡪 Enter</p><p class="sop-p">Set oven temperature</p><p class="sop-p">End of preparation: Run 🡪 Clear Setup</p><p class="sop-p">End of preparation: Run 🡪 Clear Setup 🡪 Status</p><p class="sop-p">Status: No Method – ready for use</p><p class="sop-p">Flush column</p><p class="sop-p">Sequence</p><p class="sop-p">Running sample – Click “Sequence”</p><p class="sop-p">Browse or select sequence / Create New</p><p class="sop-p">Specify the Sample Type, Vial Number, Instrument Method</p><p class="sop-p">Double click the Data column to browse the directory (folder to save raw file) and name the raw file.</p><p class="sop-p">Example of directory and raw files (xxx.raw)</p><p class="sop-p">Highlight rows to run, or just click Actions 🡪 Set Up</p><p class="sop-p">Set accordingly – Check the sample rows</p><p class="sop-p">HPLC Status: Setting Up – Method parameters being send to HPLC (wait a while)</p><p class="sop-p">Status of pre-injection &amp; injection</p><p class="sop-p">Ready – Equilibrium (green) (L) and Pump start / equilibrating flow rates (R)</p><p class="sop-p">Status – Flushing &amp; Running</p><p class="sop-p">Flushing loop, syringe, injecting &amp; running (blue)</p><p class="sop-p">Click Real-Time Plot to view chromatogram progress</p><p class="sop-p">Details – view current run sample</p><p class="sop-p">Method</p><p class="sop-p">Overview of Method Editor (Only run instrument)</p><p class="sop-p">Overview of Method Editor (with calibration &amp; processing Method)</p><p class="sop-p">Click Instrument Control Icon or Instrument 🡪 Instrument Control 🡪 Autosampler</p><p class="sop-p">Autosampler – Set Injection volume &amp; temperature</p><p class="sop-p">Pump configuration</p><p class="sop-p">Pump Program (Isocratic)</p><p class="sop-p">Pump Program (Gradient)</p><p class="sop-p">Summary of Gradient Mode</p><p class="sop-p">Instrument Timed Events – Leave blank 🡪 OK. Save the Method Editor</p><p class="sop-p">Processing Method Integration &amp; Method</p><p class="sop-p">External Calibration</p><p class="sop-p">Click Graphic Edit</p><p class="sop-p">Select and open one of your standard file (raw file). Example here is Data001.raw</p><p class="sop-p">Chromatogram of Data001 will be displayed. Notice that this data file is linked to this method (eg. Test1)</p><p class="sop-p">To optimize the processing method, click &lt;Process&gt;&lt;Noise/Area Threshold&gt;</p><p class="sop-p">Click &amp; drag the background. Click OK to accept the suggested NT &amp; AT. Manually you can increase these number if you want higher thresholds.</p><p class="sop-p">You will notice that most of the noises will not be integrated</p><p class="sop-p">Go to &lt;Edit Components…&gt; to name the components.</p><p class="sop-p">Move the box to the first peak of your interest and type the name of the compound in &lt;Name&gt; field. Click Next. Continue naming the peaks in similar manner.</p><p class="sop-p">Click &lt;Return&gt;</p><p class="sop-p">Click &lt;Save&gt;. You are now saving the method file (eg. Test1)</p><p class="sop-p">To open the method file, click &lt;Other&gt;&lt;Method&gt;</p><p class="sop-p">The method file is opened. Now you can see your component name and retention time appeared in the component list.</p><p class="sop-p">Go to &lt;Component&gt;&lt;Edit Component&gt;</p><p class="sop-p">Click Calibration Page</p><p class="sop-p">Select &lt;Ave calibration factor&gt; if you only have one standard with repeatable runs, or select &lt;Use curve&gt; if more than 2 standards are use.</p><p class="sop-p">Select 1st order for the curve fit type. Choose force the origin if you want the curve to pass through origin without intercepting. Give the name for level field and amount (concentration) in amt field.</p><p class="sop-p">Select second component and do the same setting for all accept the amount</p><p class="sop-p">Click OK</p><p class="sop-p">Go to &lt;Component&gt;&lt;Calibrate…&gt;</p><p class="sop-p">Click the folder icon on the upper right corner and select all the date files for calibration</p><p class="sop-p">Highlight the data file and select the appropriate level. Click Add.</p><p class="sop-p">Click OK</p><p class="sop-p">You can see other’s calibration by highlighting the next component.</p><p class="sop-p">Save the method by clicking the save icon</p><p class="sop-p">Totalchrom – Format Report Editor</p><p class="sop-p">Open the method from Method Editor. Go to &lt;Other&gt;&lt;Report Format Editor&gt;</p><p class="sop-p">A report format is opened with same name as method file name (.rpt)</p><p class="sop-p">Click Default Report title and change the name of the report title accordingly</p><p class="sop-p">Click and delete whichever column you want to delete</p><p class="sop-p">Go to Report and select whichever column you like to include as well as the column number</p><p class="sop-p">Example here showed how to insert column 2 with Component Name</p><p class="sop-p">You must insert Raw Amount column if you have done your calibration. This column is indicating the amount / concentration directly calculated from the calibration curve.</p><p class="sop-p">Go to Option</p><p class="sop-p">To insert the chromatography plot between header and report body, tick &lt;Print replot with reports&gt;</p><p class="sop-p">Click Save icon</p><p class="sop-p">Build a sequence to reprocess stored data</p><p class="sop-p">To build a sequence using a template</p><p class="sop-p">Method Editor 🡪 Other 🡪 Sequence Editor</p><p class="sop-p">Sequence Editor 🡪 File 🡪 New</p><p class="sop-p">Sequence Editor 🡪 File 🡪 New 🡪 Global Parameters</p><p class="sop-p">Set accordingly</p><p class="sop-p">A sequence displayed 🡪 Double click “Data” to input .raw files for each row 🡪 Browse &amp; load the correct raw files for each calibration level &amp; samples.</p><p class="sop-p">Sequence Editor 🡪 Action 🡪 Batch</p><p class="sop-p">Ensure starting &amp; ending row no. set correctly 🡪 Set the rest as following</p><p class="sop-p">Batch reprocessing 🡪 Automatically proceed or click the button as showed in the picture</p><p class="sop-p">Click “Reprocess Results” to view the results files</p><p class="sop-p">Browse the result file one by one (.rst file)</p><p class="sop-p">File 🡪 Print Preview Report</p><p class="sop-p">Print Preview Report</p><p class="sop-p">System Suitability</p><p class="sop-p">TotalChrom Navigator 🡪 Apps 🡪 Suitability</p><p class="sop-p">Option 🡪 Suitability Option</p><p class="sop-p">Signal to Noise (Peak Height vs. baseline)</p><p class="sop-p">Choose the SST criteria 🡪 Input the limits 🡪 OK</p><p class="sop-p">File 🡪 Save As 🡪 OK 🡪 Enter File Name (*.sui)</p><p class="sop-p">Click Data icon</p><p class="sop-p">Results Files Selection 🡪 Choose a Result File (.rst file)</p><p class="sop-p">Click “Print Preview” icon 🡪 Print Option 🡪 OK</p><p class="sop-p">The report displayed the criteria that user has chosen</p><p class="sop-p">Print report as usual</p><p class="sop-p">View / Print Chromatogram</p><p class="sop-p">Click Chromatogram tab</p><p class="sop-p">Select one or more raw files</p><p class="sop-p">View chromatograms 🡪 Click Overlay icon</p><p class="sop-p">Overlay Chromatograms 🡪 2D</p><p class="sop-p">Options 🡪 3-D Preview</p><p class="sop-p">Adjust X and Y axis 🡪 OK</p><p class="sop-p">3-D Chromatogram 🡪 File 🡪 Print 🡪 Check criteria to print</p><p class="sop-p">Summary: Repeatability of multiple injections</p><p class="sop-p">Double click on the summary button</p><p class="sop-p">Click the Add Files icon</p><p class="sop-p">File List 🡪 Select one or more result files (.rst) 🡪 Add</p><p class="sop-p">Files to summarize – displayed the selected .rsst files 🡪 OK</p><p class="sop-p">Load from Result File (or Method)</p><p class="sop-p">Select one of the .rst file added just now (as reference of integration method)</p><p class="sop-p">File 🡪 Open Format 🡪 Select a Summary template (.sum file)</p><p class="sop-p">Summary interface – grey turned to white</p><p class="sop-p">Check data or prints 🡪 Close</p><p class="sop-p">IRIS – Processing software</p><p class="sop-p">Click No if the below appears</p><p class="sop-p">Click File 🡪 Open result file or shortcut</p><p class="sop-p">Browse the first .rst file for viewing spectra</p><p class="sop-p">Main View : Chromatogram, contour, spectra &amp; 3d view</p><p class="sop-p">Use Compare Tab</p><p class="sop-p">Browse and open the 2nd .rst file for comparison</p><p class="sop-p">Compare 2 Chromatogram side by side</p><p class="sop-p">Select different chromatogram at Data Tree at left &amp; right bar</p><p class="sop-p">Overlay chromatogram</p><p class="sop-p">Right click on one of the chromatogram, select ”Overlay Chromatogram”</p><p class="sop-p">Stack View of Chromatogram &amp; Overlay Spectras</p><p class="sop-p">Wavelength Maximum</p><p class="sop-p">Click “Chrom / Spectra” tab</p><p class="sop-p">Click on the peaks of each chromatogram. The RT will appeared under respective data trees.</p><p class="sop-p">Check the same RT of each chromatograms in data trees to compare the spectra.</p><p class="sop-p">Move the cursor on spectra to read and label the optimum wavelengths.</p><p class="sop-p">Click Tools 🡪 Annotation 🡪 Add 🡪 Key-in the compound name for the spectra 🡪 point to the spectra to drop the annotation of spectra.</p><p class="sop-p">Print chromatogram &amp; overlay spectras</p><p class="sop-p">File 🡪 Print 🡪 Choose printer (or PDF) 🡪 Choose All Panels in view</p><p class="sop-p">File 🡪 Save Results</p><p class="sop-p">File 🡪 Print 🡪 All Pane 🡪 OK</p>
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/077 kepada PKKK/300/HMS/077</p><p class="sop-p">Pindaan pada senarai Tanggungjawab kepada yang terkini</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/077 kepada PKKK/300/UAT/017</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Terbitan 2, Semakan 2:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/UAT/017 kepada PKKK/300/UP/016</p><p class="sop-p">Kemas kini tarikh kuat kuasa dari 1 Julai 2025 kepada 10 Apr 2026.</p><p class="sop-p">Pinda Laporan Penyelenggaraan, Servis dan Kalibrasi di dalam fail alat berkenaan kepada Rekod penyelenggaraan alat Shimadzu High Performance Liquid Chromatography Flexar (Perkin Elmer)</p><p class="sop-p">TUJUAN</p><p class="sop-p">Tujuan prosedur ini adalah untuk menerangkan cara-cara menggunakan alat Perkin Elmer Flexar High Performance Liquid Chromatography.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunapakai semasa menjalankan ujian analitikal dengan menggunakan High Performance Liquid Chromatography.</p><p class="sop-p">DEFINISI</p><p class="sop-p">HPLC – High Performance Liquid Chromatography</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p><p class="sop-p">Penolong Pegawai Farmasi</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Pengenalan alat</p><p class="sop-p">This instrument consists of the following components:</p><p class="sop-p">FLEXAR LC Pumps</p><p class="sop-p">FLEXAR PDA Plus LC Detector</p><p class="sop-p">FLEXAR LC Column Ovens</p><p class="sop-p">FLEXAR Autosamplers</p><p class="sop-p">Computer</p><p class="sop-p">Printer</p><p class="sop-p">Operasi alat</p><p class="sop-p">Switch ON the battery</p><p class="sop-p">Turn on PC, enter Windows 10</p><p class="sop-p">Turn on HPLC devices</p><p class="sop-p">Double click &lt;TC Navigator&gt; to enter Total Chrom</p><p class="sop-p">Click Run &gt; Take Control</p><p class="sop-p">At this moment, “Hands-on” button grey-out</p><p class="sop-p">Starting the Total Chrom Navigator</p><p class="sop-p">Click Run 🡪 Take Control</p><p class="sop-p">Seizing – establishing software &amp; HPLC communication</p><p class="sop-p">Seizing – Communicating (L) and Communication established. Hands on available (R)</p><p class="sop-p">Preparation</p><p class="sop-p">Start pump &amp; purge lines</p><p class="sop-p">To Start Pump – Click instrument setup</p><p class="sop-p">Browse &amp; Choose a sequence to trigger pump</p><p class="sop-p">Browse sequence</p><p class="sop-p">Select a sequence to trigger pump start</p><p class="sop-p">Select sequence named “StartPump” or “Preparation” 🡪 Click Select</p><p class="sop-p">A sequence displayed 🡪 Action 🡪 Setup</p><p class="sop-p">Set the following</p><p class="sop-p">Status: Setting up</p><p class="sop-p">Status: HPLC Ready / Pump Off 🡪 Click Hands On</p><p class="sop-p">Hands-On 🡪 Pump (or Purge)</p><p class="sop-p">Remove cover of Flexar Pump. Loosen purge valve (Anti Clockwise)</p><p class="sop-p">Pump – Adjust the composition 100% of mobile phase.</p><p class="sop-p">Key in flow rate 3-<span class="kw-flow"><span class="kw-vol">5mL</span>/min</span></p><p class="sop-p">Click Set Value</p><p class="sop-p">Click Start Pump</p><p class="sop-p">Purge for 15 – <span class="kw-vol">30 mL</span> of mobile phase</p><p class="sop-p">Repeat 1 – 6 for other line if necessary</p><p class="sop-p">Tighten purge valve and remove</p><p class="sop-p">Syringe after completed.</p><p class="sop-p">Start the pump for equilibrium</p><p class="sop-p">Connect the column to the inlet and outlet tubing (could be not connected)</p><p class="sop-p">Set the pump at low flow rate for example <span class="kw-flow"><span class="kw-vol">0.5mL</span>/min</span> initially.</p><p class="sop-p">The flow rate and % composition of mobile phases could be change</p><p class="sop-p">Equilibrate the column from by slowly increasing flow rate to <span class="kw-flow"><span class="kw-vol">1mL</span>/min</span> or as required by method</p><p class="sop-p">Flush the column for 20 - <span class="kw-vol">50mL</span> of its volume, or follow the regular in-house practice.</p><p class="sop-p">Benchmark of column C18 (150mm x 4.6mm x 5µm)</p><p class="sop-p">At <span class="kw-vol">1mL</span> of 75% MeOH 25% UPW, pressure redback is 2250psi</p><p class="sop-p">Prepare detector</p><p class="sop-p">Turn on the lamps to set wavelength</p><p class="sop-p">Flush syringe</p><p class="sop-p">Hands On 🡪 Autosampler 🡪 Flush Autosampler (perform a few times to get rid of air bubbles in syringe)</p><p class="sop-p">Set temperature of Autosampler as preparation</p><p class="sop-p">Set oven temperature</p><p class="sop-p">Double click Oven.exe</p><p class="sop-p">Select “Flexar Oven #2”</p><p class="sop-p">Key-in temperature 🡪 Enter</p><p class="sop-p">Set oven temperature</p><p class="sop-p">End of preparation: Run 🡪 Clear Setup</p><p class="sop-p">End of preparation: Run 🡪 Clear Setup 🡪 Status</p><p class="sop-p">Status: No Method – ready for use</p><p class="sop-p">Flush column</p><p class="sop-p">Sequence</p><p class="sop-p">Running sample – Click “Sequence”</p><p class="sop-p">Browse or select sequence / Create New</p><p class="sop-p">Specify the Sample Type, Vial Number, Instrument Method</p><p class="sop-p">Double click the Data column to browse the directory (folder to save raw file) and name the raw file.</p><p class="sop-p">Example of directory and raw files (xxx.raw)</p><p class="sop-p">Highlight rows to run, or just click Actions 🡪 Set Up</p><p class="sop-p">Set accordingly – Check the sample rows</p><p class="sop-p">HPLC Status: Setting Up – Method parameters being send to HPLC (wait a while)</p><p class="sop-p">Status of pre-injection &amp; injection</p><p class="sop-p">Ready – Equilibrium (green) (L) and Pump start / equilibrating flow rates (R)</p><p class="sop-p">Status – Flushing &amp; Running</p><p class="sop-p">Flushing loop, syringe, injecting &amp; running (blue)</p><p class="sop-p">Click Real-Time Plot to view chromatogram progress</p><p class="sop-p">Details – view current run sample</p><p class="sop-p">Method</p><p class="sop-p">Overview of Method Editor (Only run instrument)</p><p class="sop-p">Overview of Method Editor (with calibration &amp; processing Method)</p><p class="sop-p">Click Instrument Control Icon or Instrument 🡪 Instrument Control 🡪 Autosampler</p><p class="sop-p">Autosampler – Set Injection volume &amp; temperature</p><p class="sop-p">Pump configuration</p><p class="sop-p">Pump Program (Isocratic)</p><p class="sop-p">Pump Program (Gradient)</p><p class="sop-p">Summary of Gradient Mode</p><p class="sop-p">Instrument Timed Events – Leave blank 🡪 OK. Save the Method Editor</p><p class="sop-p">Processing Method Integration &amp; Method</p><p class="sop-p">External Calibration</p><p class="sop-p">Click Graphic Edit</p><p class="sop-p">Select and open one of your standard file (raw file). Example here is Data001.raw</p><p class="sop-p">Chromatogram of Data001 will be displayed. Notice that this data file is linked to this method (eg. Test1)</p><p class="sop-p">To optimize the processing method, click &lt;Process&gt;&lt;Noise/Area Threshold&gt;</p><p class="sop-p">Click &amp; drag the background. Click OK to accept the suggested NT &amp; AT. Manually you can increase these number if you want higher thresholds.</p><p class="sop-p">You will notice that most of the noises will not be integrated</p><p class="sop-p">Go to &lt;Edit Components…&gt; to name the components.</p><p class="sop-p">Move the box to the first peak of your interest and type the name of the compound in &lt;Name&gt; field. Click Next. Continue naming the peaks in similar manner.</p><p class="sop-p">Click &lt;Return&gt;</p><p class="sop-p">Click &lt;Save&gt;. You are now saving the method file (eg. Test1)</p><p class="sop-p">To open the method file, click &lt;Other&gt;&lt;Method&gt;</p><p class="sop-p">The method file is opened. Now you can see your component name and retention time appeared in the component list.</p><p class="sop-p">Go to &lt;Component&gt;&lt;Edit Component&gt;</p><p class="sop-p">Click Calibration Page</p><p class="sop-p">Select &lt;Ave calibration factor&gt; if you only have one standard with repeatable runs, or select &lt;Use curve&gt; if more than 2 standards are use.</p><p class="sop-p">Select 1st order for the curve fit type. Choose force the origin if you want the curve to pass through origin without intercepting. Give the name for level field and amount (concentration) in amt field.</p><p class="sop-p">Select second component and do the same setting for all accept the amount</p><p class="sop-p">Click OK</p><p class="sop-p">Go to &lt;Component&gt;&lt;Calibrate…&gt;</p><p class="sop-p">Click the folder icon on the upper right corner and select all the date files for calibration</p><p class="sop-p">Highlight the data file and select the appropriate level. Click Add.</p><p class="sop-p">Click OK</p><p class="sop-p">You can see other’s calibration by highlighting the next component.</p><p class="sop-p">Save the method by clicking the save icon</p><p class="sop-p">Totalchrom – Format Report Editor</p><p class="sop-p">Open the method from Method Editor. Go to &lt;Other&gt;&lt;Report Format Editor&gt;</p><p class="sop-p">A report format is opened with same name as method file name (.rpt)</p><p class="sop-p">Click Default Report title and change the name of the report title accordingly</p><p class="sop-p">Click and delete whichever column you want to delete</p><p class="sop-p">Go to Report and select whichever column you like to include as well as the column number</p><p class="sop-p">Example here showed how to insert column 2 with Component Name</p><p class="sop-p">You must insert Raw Amount column if you have done your calibration. This column is indicating the amount / concentration directly calculated from the calibration curve.</p><p class="sop-p">Go to Option</p><p class="sop-p">To insert the chromatography plot between header and report body, tick &lt;Print replot with reports&gt;</p><p class="sop-p">Click Save icon</p><p class="sop-p">Build a sequence to reprocess stored data</p><p class="sop-p">To build a sequence using a template</p><p class="sop-p">Method Editor 🡪 Other 🡪 Sequence Editor</p><p class="sop-p">Sequence Editor 🡪 File 🡪 New</p><p class="sop-p">Sequence Editor 🡪 File 🡪 New 🡪 Global Parameters</p><p class="sop-p">Set accordingly</p><p class="sop-p">A sequence displayed 🡪 Double click “Data” to input .raw files for each row 🡪 Browse &amp; load the correct raw files for each calibration level &amp; samples.</p><p class="sop-p">Sequence Editor 🡪 Action 🡪 Batch</p><p class="sop-p">Ensure starting &amp; ending row no. set correctly 🡪 Set the rest as following</p><p class="sop-p">Batch reprocessing 🡪 Automatically proceed or click the button as showed in the picture</p><p class="sop-p">Click “Reprocess Results” to view the results files</p><p class="sop-p">Browse the result file one by one (.rst file)</p><p class="sop-p">File 🡪 Print Preview Report</p><p class="sop-p">Print Preview Report</p><p class="sop-p">System Suitability</p><p class="sop-p">TotalChrom Navigator 🡪 Apps 🡪 Suitability</p><p class="sop-p">Option 🡪 Suitability Option</p><p class="sop-p">Signal to Noise (Peak Height vs. baseline)</p><p class="sop-p">Choose the SST criteria 🡪 Input the limits 🡪 OK</p><p class="sop-p">File 🡪 Save As 🡪 OK 🡪 Enter File Name (*.sui)</p><p class="sop-p">Click Data icon</p><p class="sop-p">Results Files Selection 🡪 Choose a Result File (.rst file)</p><p class="sop-p">Click “Print Preview” icon 🡪 Print Option 🡪 OK</p><p class="sop-p">The report displayed the criteria that user has chosen</p><p class="sop-p">Print report as usual</p><p class="sop-p">View / Print Chromatogram</p><p class="sop-p">Click Chromatogram tab</p><p class="sop-p">Select one or more raw files</p><p class="sop-p">View chromatograms 🡪 Click Overlay icon</p><p class="sop-p">Overlay Chromatograms 🡪 2D</p><p class="sop-p">Options 🡪 3-D Preview</p><p class="sop-p">Adjust X and Y axis 🡪 OK</p><p class="sop-p">3-D Chromatogram 🡪 File 🡪 Print 🡪 Check criteria to print</p><p class="sop-p">Summary: Repeatability of multiple injections</p><p class="sop-p">Double click on the summary button</p><p class="sop-p">Click the Add Files icon</p><p class="sop-p">File List 🡪 Select one or more result files (.rst) 🡪 Add</p><p class="sop-p">Files to summarize – displayed the selected .rsst files 🡪 OK</p><p class="sop-p">Load from Result File (or Method)</p><p class="sop-p">Select one of the .rst file added just now (as reference of integration method)</p><p class="sop-p">File 🡪 Open Format 🡪 Select a Summary template (.sum file)</p><p class="sop-p">Summary interface – grey turned to white</p><p class="sop-p">Check data or prints 🡪 Close</p><p class="sop-p">IRIS – Processing software</p><p class="sop-p">Click No if the below appears</p><p class="sop-p">Click File 🡪 Open result file or shortcut</p><p class="sop-p">Browse the first .rst file for viewing spectra</p><p class="sop-p">Main View : Chromatogram, contour, spectra &amp; 3d view</p><p class="sop-p">Use Compare Tab</p><p class="sop-p">Browse and open the 2nd .rst file for comparison</p><p class="sop-p">Compare 2 Chromatogram side by side</p><p class="sop-p">Select different chromatogram at Data Tree at left &amp; right bar</p><p class="sop-p">Overlay chromatogram</p><p class="sop-p">Right click on one of the chromatogram, select ”Overlay Chromatogram”</p><p class="sop-p">Stack View of Chromatogram &amp; Overlay Spectras</p><p class="sop-p">Wavelength Maximum</p><p class="sop-p">Click “Chrom / Spectra” tab</p><p class="sop-p">Click on the peaks of each chromatogram. The RT will appeared under respective data trees.</p><p class="sop-p">Check the same RT of each chromatograms in data trees to compare the spectra.</p><p class="sop-p">Move the cursor on spectra to read and label the optimum wavelengths.</p><p class="sop-p">Click Tools 🡪 Annotation 🡪 Add 🡪 Key-in the compound name for the spectra 🡪 point to the spectra to drop the annotation of spectra.</p><p class="sop-p">Print chromatogram &amp; overlay spectras</p><p class="sop-p">File 🡪 Print 🡪 Choose printer (or PDF) 🡪 Choose All Panels in view</p><p class="sop-p">File 🡪 Save Results</p><p class="sop-p">File 🡪 Print 🡪 All Pane 🡪 OK</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.	REKOD KUALITI</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.	REKOD KUALITI
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">Rekod penyelenggaraan alat Shimadzu High Performance Liquid Chromatography</p><p class="sop-p">Flexar (Perkin Elmer)</p>
           </div>
@@ -124,26 +209,41 @@
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Dilulus oleh</td><td>Tarikh Kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Lim Wen Jun</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>1 Jan 2021</td></tr><tr><td>2</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr><td>2</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr><td>2</td><td>2</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 Apr 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/016</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Dilulus oleh</td><td>Tarikh Kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Lim Wen Jun</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>1 Jan 2021</td></tr><tr ><td>2</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>2</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>2</td><td>2</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>3</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 Apr 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td></td><td>Manual Operasi Alat</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/016</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td></td><td>Manual Operasi Alat</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>Flow rate (mL/min)</th><th>Mobile Phases</th><th>Pressure (psi)</th></tr><tr><td>1</td><td>75% MeOH 25% UPW</td><td>2250</td></tr><tr><td>2</td><td>75% MeOH 25% UPW</td><td>4320</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/016</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Flow rate (mL/min)</th><th>Mobile Phases</th><th>Pressure (psi)</th></tr><tr ><td>1</td><td>75% MeOH 25% UPW</td><td>2250</td></tr><tr ><td>2</td><td>75% MeOH 25% UPW</td><td>4320</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -154,6 +254,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/016');
+  });
+</script>
 </body>
 </html>

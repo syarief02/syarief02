@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/053 — Identification and Quantitation of Tretinoin (Retinoic Acid) in Cosmetic Products by HPLC | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/053 — Identification and Quantitation of Tretinoin (Retinoic Acid) in Cosmetic Products by HPLC | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/053: Identification and Quantitation of Tretinoin (Retinoic Acid) in Cosmetic Products by HPLC — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/053')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,114 +146,345 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/053 <span class="g">Identification and Quantitation of Tretinoin (Retinoic Acid) in Cosmetic Products by HPLC</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 18 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: IDENTIFICATION AND QUANTITATION OF TRETINOIN (RETINOIC ACID) IN COSMETIC PRODUCTS BY HPLC</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/053</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">1.0	Objective</a><a href="#sec-3" class="toc-pill">2.0	Scope</a><a href="#sec-4" class="toc-pill">4.0	Flow Chart</a><a href="#sec-5" class="toc-pill">6.0	Procedure</a><a href="#sec-6" class="toc-pill">7.0	Quality Records</a><a href="#sec-7" class="toc-pill">8.0	Attachments</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">HISTORY OF REVISION:</p><p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">Update on document number from PKK/200/KOS/024 to PKK/200/HMS/011</p><p class="sop-p">Update on effective date from 15 November 2016 to 10 February 2020</p><p class="sop-p">Update on responsibility.</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">Document change from testing procedure PKK/200/HMS/011 to work instruction PKK/300/HMS/066</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">Update document number from PKK/300/HMS/066 to PKKK/300/HMS/066</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 4 Revision 1 :</p><p class="sop-p">Update paragraph 6.3.1 and 6.5.2</p><p class="sop-p">Issue 5 Revision 0 :</p><p class="sop-p">i.	Update document number from PKKK/300/HMS/066 to PKKK/300/KOS/023</p><p class="sop-p">ii.	Update paragraph 5.0 Responsibility</p><p class="sop-p">iii.	Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 5 Revision 1 :</p><p class="sop-p">Update paragraph 6.3.6.3, 6.3.6.4 and 6.4.3</p><p class="sop-p">Omit paragraph 6.4.5</p><p class="sop-p">Issue 5 Revision 2:</p><p class="sop-p">Update paragraph 6.3.1 and 6.3.6.1</p><p class="sop-p">Issue 6 Revision 0:</p><p class="sop-p">Update document number from PKKK/300/KOS/023 to PKKK/300/UP/053</p><p class="sop-p">Update Document Effective date from 1 April 2024 to 10 April 2026.</p><p class="sop-p">Update para 7.0 Quality Records :</p><p class="sop-p">KOS/X004 to UP/X010</p><p class="sop-p">KOS/X006 to UP/X011</p><p class="sop-p">KOS/X003 to UP/X009</p><p class="sop-p">KOS/002A to UP/002B</p><p class="sop-p">KOS/X009 to UP/X013</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0	Objective</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0	Objective
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">To identify and quantitate the presence of tretinoin in cosmetic products</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">2.0	Scope</div>
+        <div class="sop-section-block" id="sec-3">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 2.0	Scope
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">This method specifies a procedure for the identification and quantitation of tretinoin in cosmetic products.</p><div class="sop-substep"><strong>3.0	Definition</strong></div><div class="sop-substep"><strong>3.1 HPLC	: High Performance Liquid Chromatography</strong></div><div class="sop-substep"><strong>3.2 UV		: Ultraviolet</strong></div><div class="sop-substep"><strong>3.3 Analyst	: Pharmacist/Pharmacy assistant/Science Officer</strong></div>
+            <p class="sop-p">This method specifies a procedure for the identification and quantitation of tretinoin in cosmetic products.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-1" class="sop-step-label">
+                      <strong>3.0	Definition</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-2" class="sop-step-label">
+                      <strong>3.1 HPLC	: High Performance Liquid Chromatography</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-3" class="sop-step-label">
+                      <strong>3.2 UV		: Ultraviolet</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-4" class="sop-step-label">
+                      <strong>3.3 Analyst	: Pharmacist/Pharmacy assistant/Science Officer</strong>
+                    </label>
+                  </div>
+                </div>
+                
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">4.0	Flow Chart</div>
+        <div class="sop-section-block" id="sec-4">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 4.0	Flow Chart
+          </div>
           <div class="sop-sec-content">
-            <div class="sop-list-item"><span class="sop-bullet">▹</span> <span>- None -</span></div><p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p><div class="sop-substep"><strong>5.1.1	Validate analysis report of failed sample and approve on QUEST System</strong></div><p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis result on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and enter results into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Analyst</p><p class="sop-p">Perform sample analysis and prepare the report</p>
+            
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">- None -</span>
+                </div>
+                <p class="sop-p">Responsibility</p><p class="sop-p">Head of Section</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-5" class="sop-step-label">
+                      <strong>5.1.1	Validate analysis report of failed sample and approve on QUEST System</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Head of Unit / Pharmacist in Charge</p><p class="sop-p">Distribute samples for testing to Pharmacist through QUEST system</p><p class="sop-p">Validate and approve analysis result on QUEST system</p><p class="sop-p">Review investigation report of failed samples</p><p class="sop-p">Pharmacist</p><p class="sop-p">Distribute samples for testing among analysts</p><p class="sop-p">Ensure tests are conducted according to laboratory protocols</p><p class="sop-p">Review analysis reports and enter results into the QUEST system</p><p class="sop-p">Investigate and report failed samples</p><p class="sop-p">Analyst</p><p class="sop-p">Perform sample analysis and prepare the report</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">6.0	Procedure</div>
+        <div class="sop-section-block" id="sec-5">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 6.0	Procedure
+          </div>
           <div class="sop-sec-content">
-            <div class="sop-substep"><strong>6.1	Reagents</strong></div><p class="sop-p">All reagents must be of analytical quality or HPLC grade.</p><p class="sop-p">Water used must be Ultrapure water, 18 mega ohm</p><p class="sop-p">Methanol (HPLC) Grade</p><p class="sop-p">Glacial acetic acid</p><p class="sop-p">Mobile phase : mixture of methanol,water and acetic acid 85:15:0.5 (v/v/v)</p><p class="sop-p">Reference material: Tretinoin, secondary or primary standard. Protect it from light</p><div class="sop-substep"><strong>6.2	Apparatus</strong></div><p class="sop-p">Light Resistant glassware</p><p class="sop-p">Erlenmeyer flask</p><p class="sop-p">Amber coloured volumetric flasks</p><p class="sop-p">Amber coloured autosampler vials</p><p class="sop-p">High Pressure Liquid Chromatography</p><p class="sop-p">Analytical column: Hypersil Gold C18, 5 µm, 250mm x 4.6mm or equivalent</p><p class="sop-p">UV Detector, with detection capability at 353nm</p><div class="sop-substep"><strong>0.45 µm syringe membrane filter</strong></div><div class="sop-substep"><strong>6.3	Test Method (Identification)</strong></div><div class="sop-substep"><strong>6.3.1	Standard preparation</strong></div><p class="sop-p">Standard stock solution: (0.1 mg/mL) of tretinoin in methanol.</p><p class="sop-p">Accurately weigh 2.00 mg of tretinoin into a 20 mL amber volumetric flask. Dissolve in 10 mL methanol, and if necessary sonicate for 1-2 minutes. Make up to volume with methanol.</p><p class="sop-p">Standard working solution: (0.005 mg/mL) of tretinoin in methanol.</p><p class="sop-p">Pipette 1mL of standard stock solution into a 20 mL amber volumetric flask. Make up to volume with methanol. Filter through a 0.45 µm syringe filter into an amber autosampler vial.</p><p class="sop-p">Note : The standard stock &amp; working solution is stable for 2 months when kept in temperature between 2-8 °C</p><div class="sop-substep"><strong>6.3.2	Sample preparation</strong></div><p class="sop-p">Weigh about 0.5 g of sample into a 50 mL Erlenmeyer flask. Add 20 mL of methanol to the flask and sonicate for about 30 minutes. Filter through a 0.45 µm syringe filter into an autosampler vial, discarding the first few mL. Use the filtrate for HPLC injection.</p><div class="sop-substep"><strong>6.3.3	LOD solution preparation</strong></div><p class="sop-p">Weigh about 0.5 g of blank sample into a 20 mL amber volumetric flask. Pipette 0.4 mL of standard stock solution into the volumetric flask. Add in 10 mL of methanol and sonicate for about 30 minutes. Make up to volume with methanol. Filter through a 0.45 µm syringe filter into an amber autosampler vial, discarding the first few mL. Use the filtrate for HPLC injection.</p><div class="sop-substep"><strong>6.3.4	High performance liquid chromatography</strong></div><div class="sop-substep"><strong>6.3.4.1 Conditions:</strong></div><p class="sop-p">Column oven temperature	: 30oC</p><p class="sop-p">Flow rate			: 1.4 mL/min</p><p class="sop-p">UV detector wavelength	: 353 nm</p><p class="sop-p">Injection volume		: 20 µL</p><p class="sop-p">Instrument run time		: 20 min</p><div class="sop-substep"><strong>6.3.4.2	 Inject blank/diluent, standard and sample solutions into the HPLC</strong></div><div class="sop-substep"><strong>6.3.4.3 Compare the retention time and spectrum obtained for the sample solution with that of the tretinoin standard solution.</strong></div><div class="sop-substep"><strong>6.3.5   System Suitability Test (SST)</strong></div><p class="sop-p">Inject 20μL of Standard Solution and check for:</p><p class="sop-p">Tailing factor should be NMT 2.0</p><p class="sop-p">Theoretical plates should be NLT 1500</p><p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">LOD solution prepared in 6.3.3 will be injected for every 5 sample injection. The sequences for IQC are as follows:</p><p class="sop-p">LOD solution will be injected for each matrix (maximum five samples per matrix) in a single run.</p><p class="sop-p">Calculate the % difference of retention time for LOD solutions injected for every batch of 5 samples.</p><p class="sop-p">% difference of retention time for LOD solution injection should not be more than 2.0%.</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Compare the retention time, peak purity and spectrum obtained from the sample chromatogram with that of tretinoin standard solution chromatogram.</p><p class="sop-p">The identity of tretinoin is positive if the retention time and the UV spectrum of sample is similar to that obtained from the standard solution and the peak area of sample is more than the peak area of LOD solution.</p><p class="sop-p">The acceptance criteria for peak purity :  Impurity in the sample solution is not detected when peak purity index is close to 1.0.</p><p class="sop-p">Test Method (Quantitation)</p><p class="sop-p">The reagents and HPLC condition are the same as in identification procedure</p><p class="sop-p">Standard preparation</p><p class="sop-p">Standard stock solution: Accurately weigh 2.5 mg of tretinoin in a 25 mL amber volumetric flask. Dissolve in 10 mL methanol, and if necessary sonicate for 1-2 minutes. Make up to volume with methanol (0.10 mg/mL of tretinoin).</p><p class="sop-p">Standard solution: Pipette separately, 1 mL, 2 mL, 3 mL, 4 mL and 5 mL of standard stock solution into a 20 mL amber volumetric flask and make up to volume with methanol. Filter each of the solution into an amber autosampler vial before injecting into the HPLC column. (5 mcg/mL, 10 mcg/mL, 15 mcg/mL, 20 mcg/mL and 25 mcg/mL of Tretinoin respectively).</p><p class="sop-p">Sample preparation</p><p class="sop-p">Weigh about 0.5 g of sample into a 20 mL amber volumetric flask. Add 10 mL of methanol to the flask and sonicate for about 30 minutes. Make up to volume with methanol. Filter through a 0.45 um syringe filter into an amber autosampler vial, discarding the first few mL. Use the filtrate for HPLC injection. Repeat this procedure to prepare duplicate sample solution. Protect the sample from light during preparation as tretinoin is sensitive to light.</p><p class="sop-p">Note:	The amount of sample used can be adjusted depending on the availability and condition of sample received.</p><p class="sop-p">Procedure</p><p class="sop-p">System suitability test (SST)</p><p class="sop-p">Inject six replicates of standard solution of concentration 25 mcg/mL. Determine the percentage of relative standard deviation (% RSD) of peak areas. The value of RSD should not be more than 2%.</p><p class="sop-p">Sequence of injection</p><p class="sop-p">Inject 20 µL of each reference standard solutions from part 8.2 and sample solution into the HPLC. The sequence of injections is shown in table below. Construct a calibration curve to determine tretinoin concentration in the sample. Check the coefficient correlation of the graph. The r2 should be &gt;0.995.</p><div class="sop-substep"><strong>6.7 	Calculation</strong></div><p class="sop-p">Determine the amount of tretinoin in the portion of sample taken by using the following formula. The amount of tretinoin present in the sample will be reported as percentage of weight per sample weight (% w/w).</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Five different peak areas from chromatogram of standard solutions representing five different concentration levels of standard solutions.  The peak area of the sample solution obtained from the standard calibration curve is directly proportional to the concentration of tretinoin in the sample.</p><p class="sop-p">The peak area of sample solutions must fall within the standard calibration range. Therefore, a dilution process shall be carried out if the peak area of sample solutions is more than the peak area of the highest standard solution concentration (25 mcg/mL).</p>
+            
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-6" class="sop-step-label">
+                      <strong>6.1	Reagents</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">All reagents must be of analytical quality or HPLC grade.</p><p class="sop-p">Water used must be Ultrapure water, 18 mega ohm</p><p class="sop-p">Methanol (HPLC) Grade</p><p class="sop-p">Glacial acetic acid</p><p class="sop-p">Mobile phase : mixture of methanol,water and acetic acid 85:15:0.5 (v/v/v)</p><p class="sop-p">Reference material: Tretinoin, secondary or primary standard. Protect it from light</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-7" class="sop-step-label">
+                      <strong>6.2	Apparatus</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Light Resistant glassware</p><p class="sop-p">Erlenmeyer flask</p><p class="sop-p">Amber coloured volumetric flasks</p><p class="sop-p">Amber coloured autosampler vials</p><p class="sop-p">High Pressure Liquid Chromatography</p><p class="sop-p">Analytical column: Hypersil Gold C18, 5 µm, 250mm x 4.6mm or equivalent</p><p class="sop-p">UV Detector, with detection capability at <span class="kw-wave">353nm</span></p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-8" class="sop-step-label">
+                      <strong>0.45 µm syringe membrane filter</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-9" class="sop-step-label">
+                      <strong>6.3	Test Method (Identification)</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-10" class="sop-step-label">
+                      <strong>6.3.1	Standard preparation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Standard stock solution: (<span class="kw-wt">0.1 mg</span>/mL) of tretinoin in methanol.</p><p class="sop-p">Accurately weigh <span class="kw-wt">2.00 mg</span> of tretinoin into a <span class="kw-vol">20 mL</span> amber volumetric flask. Dissolve in <span class="kw-vol">10 mL</span> methanol, and if necessary sonicate for 1-<span class="kw-time">2 minutes</span>. Make up to volume with methanol.</p><p class="sop-p">Standard working solution: (<span class="kw-wt">0.005 mg</span>/mL) of tretinoin in methanol.</p><p class="sop-p">Pipette <span class="kw-vol">1mL</span> of standard stock solution into a <span class="kw-vol">20 mL</span> amber volumetric flask. Make up to volume with methanol. Filter through a 0.45 µm syringe filter into an amber autosampler vial.</p><p class="sop-p">Note : The standard stock &amp; working solution is stable for 2 months when kept in temperature between 2-<span class="kw-temp">8 °C</span></p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-11" class="sop-step-label">
+                      <strong>6.3.2	Sample preparation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Weigh about <span class="kw-wt">0.5 g</span> of sample into a <span class="kw-vol">50 mL</span> Erlenmeyer flask. Add <span class="kw-vol">20 mL</span> of methanol to the flask and sonicate for about <span class="kw-time">30 minutes</span>. Filter through a 0.45 µm syringe filter into an autosampler vial, discarding the first few mL. Use the filtrate for HPLC injection.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-12" class="sop-step-label">
+                      <strong>6.3.3	LOD solution preparation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Weigh about <span class="kw-wt">0.5 g</span> of blank sample into a <span class="kw-vol">20 mL</span> amber volumetric flask. Pipette <span class="kw-vol">0.4 mL</span> of standard stock solution into the volumetric flask. Add in <span class="kw-vol">10 mL</span> of methanol and sonicate for about <span class="kw-time">30 minutes</span>. Make up to volume with methanol. Filter through a 0.45 µm syringe filter into an amber autosampler vial, discarding the first few mL. Use the filtrate for HPLC injection.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-13" class="sop-step-label">
+                      <strong>6.3.4	High performance liquid chromatography</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-14" class="sop-step-label">
+                      <strong>6.3.4.1 Conditions:</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Column oven temperature	: 30oC</p><p class="sop-p">Flow rate			: <span class="kw-flow"><span class="kw-vol">1.4 mL</span>/min</span></p><p class="sop-p">UV detector wavelength	: <span class="kw-wave">353 nm</span></p><p class="sop-p">Injection volume		: <span class="kw-vol">20 µL</span></p><p class="sop-p">Instrument run time		: <span class="kw-time">20 min</span></p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-15" class="sop-step-label">
+                      <strong>6.3.4.2	 Inject blank/diluent, standard and sample solutions into the HPLC</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-16" class="sop-step-label">
+                      <strong>6.3.4.3 Compare the retention time and spectrum obtained for the sample solution with that of the tretinoin standard solution.</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-17" class="sop-step-label">
+                      <strong>6.3.5   System Suitability Test (SST)</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Inject 20μL of Standard Solution and check for:</p><p class="sop-p">Tailing factor should be NMT 2.0</p><p class="sop-p">Theoretical plates should be NLT 1500</p><p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">LOD solution prepared in 6.3.3 will be injected for every 5 sample injection. The sequences for IQC are as follows:</p><p class="sop-p">LOD solution will be injected for each matrix (maximum five samples per matrix) in a single run.</p><p class="sop-p">Calculate the % difference of retention time for LOD solutions injected for every batch of 5 samples.</p><p class="sop-p">% difference of retention time for LOD solution injection should not be more than 2.0%.</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Compare the retention time, peak purity and spectrum obtained from the sample chromatogram with that of tretinoin standard solution chromatogram.</p><p class="sop-p">The identity of tretinoin is positive if the retention time and the UV spectrum of sample is similar to that obtained from the standard solution and the peak area of sample is more than the peak area of LOD solution.</p><p class="sop-p">The acceptance criteria for peak purity :  Impurity in the sample solution is not detected when peak purity index is close to 1.0.</p><p class="sop-p">Test Method (Quantitation)</p><p class="sop-p">The reagents and HPLC condition are the same as in identification procedure</p><p class="sop-p">Standard preparation</p><p class="sop-p">Standard stock solution: Accurately weigh <span class="kw-wt">2.5 mg</span> of tretinoin in a <span class="kw-vol">25 mL</span> amber volumetric flask. Dissolve in <span class="kw-vol">10 mL</span> methanol, and if necessary sonicate for 1-<span class="kw-time">2 minutes</span>. Make up to volume with methanol (<span class="kw-wt">0.10 mg</span>/mL of tretinoin).</p><p class="sop-p">Standard solution: Pipette separately, <span class="kw-vol">1 mL</span>, <span class="kw-vol">2 mL</span>, <span class="kw-vol">3 mL</span>, <span class="kw-vol">4 mL</span> and <span class="kw-vol">5 mL</span> of standard stock solution into a <span class="kw-vol">20 mL</span> amber volumetric flask and make up to volume with methanol. Filter each of the solution into an amber autosampler vial before injecting into the HPLC column. (5 mcg/mL, 10 mcg/mL, 15 mcg/mL, 20 mcg/mL and 25 mcg/mL of Tretinoin respectively).</p><p class="sop-p">Sample preparation</p><p class="sop-p">Weigh about <span class="kw-wt">0.5 g</span> of sample into a <span class="kw-vol">20 mL</span> amber volumetric flask. Add <span class="kw-vol">10 mL</span> of methanol to the flask and sonicate for about <span class="kw-time">30 minutes</span>. Make up to volume with methanol. Filter through a 0.45 um syringe filter into an amber autosampler vial, discarding the first few mL. Use the filtrate for HPLC injection. Repeat this procedure to prepare duplicate sample solution. Protect the sample from light during preparation as tretinoin is sensitive to light.</p><p class="sop-p">Note:	The amount of sample used can be adjusted depending on the availability and condition of sample received.</p><p class="sop-p">Procedure</p><p class="sop-p">System suitability test (SST)</p><p class="sop-p">Inject six replicates of standard solution of concentration 25 mcg/mL. Determine the percentage of relative standard deviation (% RSD) of peak areas. The value of RSD should not be more than 2%.</p><p class="sop-p">Sequence of injection</p><p class="sop-p">Inject <span class="kw-vol">20 µL</span> of each reference standard solutions from part 8.2 and sample solution into the HPLC. The sequence of injections is shown in table below. Construct a calibration curve to determine tretinoin concentration in the sample. Check the coefficient correlation of the graph. The r2 should be &gt;0.995.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-053-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/053')">
+                    <label for="step-053-18" class="sop-step-label">
+                      <strong>6.7 	Calculation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Determine the amount of tretinoin in the portion of sample taken by using the following formula. The amount of tretinoin present in the sample will be reported as percentage of weight per sample weight (% w/w).</p><p class="sop-p">Results Interpretation</p><p class="sop-p">Five different peak areas from chromatogram of standard solutions representing five different concentration levels of standard solutions.  The peak area of the sample solution obtained from the standard calibration curve is directly proportional to the concentration of tretinoin in the sample.</p><p class="sop-p">The peak area of sample solutions must fall within the standard calibration range. Therefore, a dilution process shall be carried out if the peak area of sample solutions is more than the peak area of the highest standard solution concentration (25 mcg/mL).</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.0	Quality Records</div>
+        <div class="sop-section-block" id="sec-6">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.0	Quality Records
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah HPLC	: UP/X010</p><p class="sop-p">Borang Pengiraan Ujian Kuantifikasi Teknik Kromatografi	: UP/X011</p><p class="sop-p">Rumusan Laporan Pengujian	Kromatografi			: UP/X009</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi	: UP/002B</p><p class="sop-p">Borang Keputusan Ujian Kosmetik				: UP/X013</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">8.0	Attachments</div>
+        <div class="sop-section-block" id="sec-7">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 8.0	Attachments
+          </div>
           <div class="sop-sec-content">
-            <div class="sop-list-item"><span class="sop-bullet">▹</span> <span>i) Chromatogram of Standard Solution, LOD Solution, Sample Solution and diluents/blank</span></div><p class="sop-p">ii) Peak purity &amp; spectrum of sample solution</p><p class="sop-p">iii) Calibration Curve of Reference Standard</p><p class="sop-p">Chromatogram of Standard solution, LOD solution, Sample solution and diluent/blank</p><p class="sop-p">Peak purity &amp; spectrum of sample solution</p><p class="sop-p">iii) Calibration Curve of Reference Standard</p>
+            
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">i) Chromatogram of Standard Solution, LOD Solution, Sample Solution and diluents/blank</span>
+                </div>
+                <p class="sop-p">ii) Peak purity &amp; spectrum of sample solution</p><p class="sop-p">iii) Calibration Curve of Reference Standard</p><p class="sop-p">Chromatogram of Standard solution, LOD solution, Sample solution and diluent/blank</p><p class="sop-p">Peak purity &amp; spectrum of sample solution</p><p class="sop-p">iii) Calibration Curve of Reference Standard</p>
           </div>
         </div>
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th></tr><tr><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective date</td></tr><tr><td>1</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Nik Juzaimah Juhari</td><td>5 February 2018</td></tr><tr><td>2</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 February 2020</td></tr><tr><td>3</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 July 2020</td></tr><tr><td>4</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr><tr><td>4</td><td>1</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 April 2023</td></tr><tr><td>5</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr><td>5</td><td>1</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 Julai 2024</td></tr><tr><td>5</td><td>2</td><td>Nur Syazana Ahmad Nordin</td><td>Leong Lip Wai</td><td>Nor Izyani Hanafi</td><td>23 Jun 2025</td></tr><tr><td>6</td><td>0</td><td>Gopinatha Ganesh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/053</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th><th>HISTORY OF REVISION</th></tr><tr ><td>Issue</td><td>Revision</td><td>Written by</td><td>Reviewed by</td><td>Approved by</td><td>Effective date</td></tr><tr ><td>1</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Nik Juzaimah Juhari</td><td>5 February 2018</td></tr><tr ><td>2</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 February 2020</td></tr><tr ><td>3</td><td>0</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 July 2020</td></tr><tr ><td>4</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr><tr ><td>4</td><td>1</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 April 2023</td></tr><tr ><td>5</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr><tr ><td>5</td><td>1</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 Julai 2024</td></tr><tr ><td>5</td><td>2</td><td>Nur Syazana Ahmad Nordin</td><td>Leong Lip Wai</td><td>Nor Izyani Hanafi</td><td>23 Jun 2025</td></tr><tr ><td>6</td><td>0</td><td>Gopinatha Ganesh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>REFERENCE</th><th>REFERENCE</th></tr><tr><td>Document No.</td><td>Title</td></tr><tr><td>ACM SIN 01</td><td>Identification of retinoic acid (tretinoin) in cosmetic products by TLC and HPLC</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/053</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>REFERENCE</th><th>REFERENCE</th></tr><tr ><td>Document No.</td><td>Title</td></tr><tr ><td>ACM SIN 01</td><td>Identification of retinoic acid (tretinoin) in cosmetic products by TLC and HPLC</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>Sequence of Injection</th><th>Injection ID</th><th>Run time (min)</th></tr><tr><td>1</td><td>Blank/ diluent</td><td>20</td></tr><tr><td>2</td><td>LOD solution (IQC)</td><td>20</td></tr><tr><td>3</td><td>Standard solution (Check for SST)</td><td>20</td></tr><tr><td>4</td><td>LOD solution (IQC)</td><td>20</td></tr><tr><td>5</td><td>Sample solution</td><td>20</td></tr><tr><td>9</td><td>Sample solution</td><td>20</td></tr><tr><td>10</td><td>LOD Solution (IQC)</td><td>20</td></tr><tr><td>11</td><td>Sample solution</td><td>20</td></tr><tr><td>15</td><td>Sample solution</td><td>20</td></tr><tr><td>16</td><td>LOD Solution (IQC)</td><td>20</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/053</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Sequence of Injection</th><th>Injection ID</th><th>Run time (min)</th></tr><tr class="seq-blank"><td>1</td><td>Blank/ diluent</td><td>20</td></tr><tr class="seq-iqc"><td>2</td><td>LOD solution (IQC)</td><td>20</td></tr><tr class="seq-sst"><td>3</td><td>Standard solution (Check for SST)</td><td>20</td></tr><tr class="seq-iqc"><td>4</td><td>LOD solution (IQC)</td><td>20</td></tr><tr ><td>5</td><td>Sample solution</td><td>20</td></tr><tr ><td>9</td><td>Sample solution</td><td>20</td></tr><tr class="seq-iqc"><td>10</td><td>LOD Solution (IQC)</td><td>20</td></tr><tr ><td>11</td><td>Sample solution</td><td>20</td></tr><tr ><td>15</td><td>Sample solution</td><td>20</td></tr><tr class="seq-iqc"><td>16</td><td>LOD Solution (IQC)</td><td>20</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
-          <table class="table-official">
-            <tr><th>Sequence of Injection</th><th>Injection ID</th><th>Run time (min)</th></tr><tr><td>1</td><td>Diluent/Blank</td><td>20</td></tr><tr><td>2</td><td>SST solution (6x)</td><td>20</td></tr><tr><td>3</td><td>Standard solution 1 (5 mcg/mL)</td><td>20</td></tr><tr><td>4</td><td>Standard solution 2 (10 mcg/mL)</td><td>20</td></tr><tr><td>5</td><td>Standard solution 3 (15 mcg/mL)</td><td>20</td></tr><tr><td>6</td><td>Standard solution 4 (20 mcg/mL)</td><td>20</td></tr><tr><td>7</td><td>Standard solution 5 (25 mcg/mL)</td><td>20</td></tr><tr><td>8</td><td>Sample A</td><td>20</td></tr><tr><td>9</td><td>Sample B</td><td>20</td></tr>
-          </table>
+        <div class="table-card" id="table-4">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 4</span>
+            <span class="table-doc-code">PKKK/300/UP/053</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Sequence of Injection</th><th>Injection ID</th><th>Run time (min)</th></tr><tr class="seq-blank"><td>1</td><td>Diluent/Blank</td><td>20</td></tr><tr class="seq-sst"><td>2</td><td>SST solution (6x)</td><td>20</td></tr><tr ><td>3</td><td>Standard solution 1 (5 mcg/mL)</td><td>20</td></tr><tr ><td>4</td><td>Standard solution 2 (10 mcg/mL)</td><td>20</td></tr><tr ><td>5</td><td>Standard solution 3 (15 mcg/mL)</td><td>20</td></tr><tr ><td>6</td><td>Standard solution 4 (20 mcg/mL)</td><td>20</td></tr><tr ><td>7</td><td>Standard solution 5 (25 mcg/mL)</td><td>20</td></tr><tr ><td>8</td><td>Sample A</td><td>20</td></tr><tr ><td>9</td><td>Sample B</td><td>20</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
-          <table class="table-official">
-            <tr><th>Tretinoin content (%w/w)</th><th>=</th><th>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</th><th>x</th><th>Volume (mL)</th><th>Volume (mL)</th><th>x  Dilution</th><th>x  1</th><th>x</th><th>1</th><th>x</th><th>100</th></tr><tr><td>Tretinoin content (%w/w)</td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td>Weight of sample (g)</td><td>Weight of sample (g)</td><td>factor</td><td>1000</td><td></td><td>1000</td><td></td><td></td></tr><tr><td>Tretinoin content (%w/w)</td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td>Weight of sample (g)</td><td>Weight of sample (g)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-          </table>
+        <div class="table-card" id="table-5">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 5</span>
+            <span class="table-doc-code">PKKK/300/UP/053</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Tretinoin content (%w/w)</th><th>=</th><th>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</th><th>x</th><th>Volume (mL)</th><th>Volume (mL)</th><th>x  Dilution</th><th>x  1</th><th>x</th><th>1</th><th>x</th><th>100</th></tr><tr ><td>Tretinoin content (%w/w)</td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td>Weight of sample (g)</td><td>Weight of sample (g)</td><td>factor</td><td>1000</td><td></td><td>1000</td><td></td><td></td></tr><tr ><td>Tretinoin content (%w/w)</td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td>Weight of sample (g)</td><td>Weight of sample (g)</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr ><td></td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr ><td></td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr ><td></td><td></td><td>Concentration of tretinoin in sample obtained from calibration curve (mcg/mL)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -203,6 +495,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/053');
+  });
+</script>
 </body>
 </html>

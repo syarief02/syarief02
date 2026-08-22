@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/023 — Identifikasi Antifungal dalam produk tradisional menggunakan LCMS | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/023 — Identifikasi Antifungal dalam produk tradisional menggunakan LCMS | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/023: Identifikasi Antifungal dalam produk tradisional menggunakan LCMS — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/023')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,38 +146,260 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/023 <span class="g">Identifikasi Antifungal dalam produk tradisional menggunakan LCMS</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: LC-MS/MS</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 22 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: IDENTIFIKASI ANTIFUNGAL DALAM PRODUK TRADISIONAL MENGGUNAKAN LCMS</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/023</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">7.  REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Menambah perenggan 6.5.7 Internal Quality Control</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Menambah perenggan 6.3.6 Single Standard Stock Solution</p><p class="sop-p">Mengemaskini perenggan 6.5.5 Sequence of Injection</p><p class="sop-p">Mengemaskini perenggan 6.6g dengan menambah “IQC table”</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindakan nombor dokumen PKKK/300/UAT/049 kepada PKKK/300/UP/023.</p><p class="sop-p">Pindaan nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/013 kepada PKKK/300/UP/012</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/006	Laporan Pengujian LCMS</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian pengesanan anti-fungal dalam produk tradisional menggunakan alat High Performance Liquid Chromatography Mass Spectrometer dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian pengesanan anti-fungal dalam produk tradisional High Performance Liquid Chromatography Mass Spectrometer.</p><p class="sop-p">DEFINISI</p><div class="sop-substep"><strong>3.1	LCMS		- Liquid Chromatography Mass Spectrometry</strong></div><div class="sop-substep"><strong>3.2	RS		- Reference standard</strong></div><div class="sop-substep"><strong>3.3	OOS		- Out of specification</strong></div><div class="sop-substep"><strong>3.4	SST		- System Suitability Test</strong></div><div class="sop-substep"><strong>3.5	IQC		- Internal Quality Control</strong></div><div class="sop-substep"><strong>3.6	RSD		- Relative Standard Deviation</strong></div><div class="sop-substep"><strong>3.7	MRM 		- Multiple Reaction Monitoring</strong></div><div class="sop-substep"><strong>3.8	CID		- Collision-induced Dissociation</strong></div><div class="sop-substep"><strong>3.9	V		- volt</strong></div><div class="sop-substep"><strong>3.10	DL		- Desolvation line</strong></div><div class="sop-substep"><strong>3.11	RT		- Retention time</strong></div><div class="sop-substep"><strong>3.12	CE		- Collision energy</strong></div><div class="sop-substep"><strong>3.13	m/z		- Mass-to-charge ratio</strong></div><div class="sop-substep"><strong>3.14	ESI		- Electrospray ionization</strong></div><div class="sop-substep"><strong>3.15	WS		- Working standard</strong></div><div class="sop-substep"><strong>3.16	LOD		- Limit of detection</strong></div><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><div class="sop-substep"><strong>5.3      Pegawai Farmasi</strong></div><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalakan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><div class="sop-substep"><strong>5.4    Penolong Pegawai Farmasi U7 / U6</strong></div><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan.</p><div class="sop-substep"><strong>5.5    Penolong Pegawai Farmasi</strong></div><p class="sop-p">Menjalankan aktiviti pengujian sample mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Material and Equipment</p><p class="sop-p">Instrument:</p><p class="sop-p">Triple Quadrupole LCMS – 8045 (High Performance Liquid Chromatography Mass Spectrometer Liquid Chromatography with mass spectrometry) and heated ESI as interface.</p><p class="sop-p">Analytical balance &amp; microbalance</p><p class="sop-p">Column: Phenomenex Kinetex XB-C18 1.7µm, 100 x 2.1 mm or equivalent</p><p class="sop-p">Reference standards:</p><p class="sop-p">Fluconazole</p><p class="sop-p">Ketonazole</p><p class="sop-p">Clotrimazole</p><p class="sop-p">Nystatin</p><p class="sop-p">Griseofulvin</p><p class="sop-p">Econazole</p><p class="sop-p">Miconazole</p><p class="sop-p">Itraconazole</p><p class="sop-p">Chemicals:</p><p class="sop-p">Methanol (LCMS grade)</p><p class="sop-p">Acetonitrile with 0.1% Formic Acid (LCMS grade)</p><p class="sop-p">Deionised water with 0.1% Formic Acid (LCMS Grade)</p><p class="sop-p">Deionized water</p><p class="sop-p">Formic acid</p><p class="sop-p">Glasswares and consumables:</p><p class="sop-p">Beakers (50 ml)</p><p class="sop-p">Solvent filter system</p><p class="sop-p">Nylon solvent filter 0.45 µm</p><p class="sop-p">Solvent bottle (1 L)</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (5 ml)</p><p class="sop-p">2 ml glass screw cap vial</p><p class="sop-p">Preparation of Mobile Phase</p><p class="sop-p">Measure 900 ml of acetonitrile and transfer in solvent bottle.</p><p class="sop-p">Add 1 ml of formic acid. Top up to 1000 ml with acetonitrile.</p><p class="sop-p">Repeat step 6.2(i) and 6.2(ii) for deionized water.</p><p class="sop-p">Filter 0.1% formic acid in water and 0.1% formic acid in acetonitrile using nylon solvent filter 0.45 µm by using solvent filter system.</p><p class="sop-p">Degassed filtered mobile phase at least for 30 minutes to ensure no bubble is present.</p><p class="sop-p">Or used ready-made mobile phase of deionised water with 0.1% Formic Acid and acetonitrile with 0.1% Formic Acid, transfer into solvent bottle and proceed to step v.</p><p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Individual Stock Standard (250 µg/ml)</p><p class="sop-p">Weigh 5 mg of individual RS in 20 ml amber volumetric flask. Add about 10 ml of methanol and sonicate for 2 minutes to dissolve. Make up to volume with methanol. This individual stock solution is stable for up to 6 months when stored at -20°C. Final concentration of individual solution is 250 µg/ml.</p><p class="sop-p">Mixed Stock A (10 µg/ml)</p><p class="sop-p">Pipette 200 µl of each stock standard into 5 ml amber volumetric flask. Make up to mark with methanol and vortex to dissolve. Final concentration for mix stock A is 10 µg/ml.</p><p class="sop-p">Mixed Stock B (1.0 µg/ml)</p><p class="sop-p">Pipette 500 µl of mixed stock A into 5 ml amber volumetric flask. Make up to mark with methanol and vortex to dissolve. Final concentration for mix stock B is 1.0 µg/ml.</p><p class="sop-p">Mixed Working Standard (WS, 100 ng/ml)</p><p class="sop-p">Pipette 150 µl of mixed stock B and 1350 µl of methanol into a 2 ml amber vial. Vortex to dissolve. Final concentration of mixed working standard is 100 ng/ml.</p><p class="sop-p">Limit of detection (LOD, 50 ng/ml)</p><p class="sop-p">Pipette 75 µl of mixed stock B and 1425 µl of methanol into a 2 ml amber vial. Vortex to dissolve. Final concentration of LOD is 50 ng/ml.</p><p class="sop-p">Single Standard Stock Solution</p><p class="sop-p">Prepare a single standard stock solution following the same procedure outlined in 6.3.1 to 6.3.5, but using a single standard instead of multiple standards.</p><p class="sop-p">This procedure is applicable for screening selected compounds only.</p><p class="sop-p">Preparation of sample</p><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling process differ between different type of dosage form. Please refer to document PKKK/300/UP/001 (Proses Persampelan Ujian Penyaringan).</p><p class="sop-p">Sample preparation for capsule</p><p class="sop-p">Weigh 1.0 g of sample (including capsule shells) into 100 mL conical flask and accurately add 20 ml of methanol. (*Note: Ensure sample solution is protected from light)</p><p class="sop-p">Sonicate for 15 minutes and transfer the sample solution into centrifuge tube.</p><p class="sop-p">Centrifuge the sample solution at 4000 rpm for 5 minutes.</p><p class="sop-p">By using disposable pipette, withdraw about 5 – 10 ml of clear supernatant layer to a syringe fitted with a 0.22 µm Nylon filter.</p><p class="sop-p">Filter the sample solution into a 20 ml amber vial.</p><p class="sop-p">Pipette 0.1 ml of the above solution into 2 ml amber vial and dilute to 1 ml with methanol. Vortex to dissolve.</p><div class="sop-substep"><strong>6.4.3	Sample preparation for cream</strong></div><p class="sop-p">Weigh 200 mg of sample into a 100 ml conical flask and add accurately 20 ml of methanol.</p><p class="sop-p">Warm it until the sample disperses in a 60°C water bath for 10 minutes.</p><p class="sop-p">Remove from the water bath, shake vigorously and cool it to room temperature.</p><p class="sop-p">By using a disposable pipette, withdraw about 5-10 ml of the sample solution to a syringe fitted with a 0.22 µm Nylon filter.</p><p class="sop-p">Filter the sample solution into a 20 ml amber vial.</p><p class="sop-p">Pipette 0.5 ml of the above solution into a 2 ml amber vial and dilute to 1 ml with methanol. Vortex to dissolve.</p><p class="sop-p">Experimental Method</p><div class="sop-substep"><strong>6.5.1 	Liquid chromatography (LC) parameter used for identification of anti-fungal in traditional products are given in table below.</strong></div><p class="sop-p">Table 1: Liquid chromatography (LC) parameters used for detection of Anti-fungal</p><p class="sop-p">Mobile Phase Method</p><p class="sop-p">Gradient program for mobile phase use for identification of anti-fungal in traditional products shown as below:</p><p class="sop-p">Table 2: Gradient program for mobile phase used for identification of anti-fungal in traditional products.</p><p class="sop-p">Mass spectrometry (MS) parameter used for identification of anti-fungal in traditional product are given in table below</p><p class="sop-p">Table 3: Mass spectrometry (MS) parameter used for identification of anti-fungal.</p><p class="sop-p">MRM parameter used for detection of anti-fungal in traditional product are given in table below.</p><p class="sop-p">Table 4: MRM parameter for identification of anti-fungal.</p><p class="sop-p">Sequence of Injection</p><p class="sop-p">Inject 5 µl of blank, working standard solution and sample solution. The sequence of injection is shown in the table below.</p><p class="sop-p">Table 5: Sequence of injection for identification of anti-fungal.</p><p class="sop-p">System Suitability Test (SST) Requirement</p><div class="sop-substep"><strong>6.5.6.1	System suitability test need to be performed for each batch run to ensure the entire system is working properly. Perform at least 6 replicate injection of working standard solution (100 ng/ml).</strong></div><p class="sop-p">Acceptance criteria:</p><p class="sop-p">Tailing factor: Not more than, NMT 2.0.</p><p class="sop-p">Theoretical plate (N): Not less than, NLT 2000.</p><p class="sop-p">%RSD (retention time) for 6 injections of mix working standard solution: %RSD NMT 1.0%</p><p class="sop-p">S/N ratio of LOD solution: S/N &gt; 3</p><p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">Inject 5 µl of LOD solution after every 5 samples &amp; at the end of analysis.</p><p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p><p class="sop-p">Result Interpretation</p><p class="sop-p">Identification of target analyte is positive when.</p><p class="sop-p">The retention time of target compound(s) in the sample is similar to the working standard solution.</p><p class="sop-p">Confirmation of mass spectrum based on detection of the target (MRM 1) and reference ions (MRM 2). Reference ions are monitored as relative intensity is as the following:</p><p class="sop-p">Relative Ion Intensity (% of base peak) &gt; 50: Tolerance ± 20%.</p><p class="sop-p">Relative Ion Intensity (% of base peak) 20 - 50: Tolerance ± 25%.</p><p class="sop-p">Testing result for each analyte is reported as NOT DETECTED in the sample when the peak area of a specific analyte in a sample solution is below the peak area of the standard solution at LOD level, 50 ng/ml (equivalent to 10 ppm in sample).</p><p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number)</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameter including equipment name, mobile phase program and LCMS system.</p><p class="sop-p">List and preparation procedures of RS use in analysis.</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only)</p><p class="sop-p">Interpretation of result (Result: Detected/Not Detected)</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Chromatogram of System Suitability (SST) on each compound and results.</p><p class="sop-p">Chromatogram of LOD on each compound and results.</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of sample name, sample number, analysis method, date and time of analysis, confirmation of target ion (MRM1) and reference ion (MRM2).</p><p class="sop-p">IQC table</p>
+            <p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 1, Semakan 1:</p><p class="sop-p">Menambah perenggan 6.5.7 Internal Quality Control</p><p class="sop-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-p">Menambah perenggan 6.3.6 Single Standard Stock Solution</p><p class="sop-p">Mengemaskini perenggan 6.5.5 Sequence of Injection</p><p class="sop-p">Mengemaskini perenggan <span class="kw-wt">6.6g</span> dengan menambah “IQC table”</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Pindakan nombor dokumen PKKK/300/UAT/049 kepada PKKK/300/UP/023.</p><p class="sop-p">Pindaan nombor rujukan dalam ruangan Rujukan iaitu:</p><p class="sop-p">PKKK/300/UAT/013 kepada PKKK/300/UP/012</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001</p><p class="sop-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/006	Laporan Pengujian LCMS</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan ujian pengesanan anti-fungal dalam produk tradisional menggunakan alat High Performance Liquid Chromatography Mass Spectrometer dilaksanakan dengan cekap dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini hendaklah digunakan untuk menjalankan ujian pengesanan anti-fungal dalam produk tradisional High Performance Liquid Chromatography Mass Spectrometer.</p><p class="sop-p">DEFINISI</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-1" class="sop-step-label">
+                      <strong>3.1	LCMS		- Liquid Chromatography Mass Spectrometry</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-2" class="sop-step-label">
+                      <strong>3.2	RS		- Reference standard</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-3" class="sop-step-label">
+                      <strong>3.3	OOS		- Out of specification</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-4" class="sop-step-label">
+                      <strong>3.4	SST		- System Suitability Test</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-5" class="sop-step-label">
+                      <strong>3.5	IQC		- Internal Quality Control</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-6" class="sop-step-label">
+                      <strong>3.6	RSD		- Relative Standard Deviation</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-7" class="sop-step-label">
+                      <strong>3.7	MRM 		- Multiple Reaction Monitoring</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-8" class="sop-step-label">
+                      <strong>3.8	CID		- Collision-induced Dissociation</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-9" class="sop-step-label">
+                      <strong>3.9	V		- volt</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-10" class="sop-step-label">
+                      <strong>3.10	DL		- Desolvation line</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-11" class="sop-step-label">
+                      <strong>3.11	RT		- Retention time</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-12" class="sop-step-label">
+                      <strong>3.12	CE		- Collision energy</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-13" class="sop-step-label">
+                      <strong>3.13	m/z		- Mass-to-charge ratio</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-14" class="sop-step-label">
+                      <strong>3.14	ESI		- Electrospray ionization</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-15" class="sop-step-label">
+                      <strong>3.15	WS		- Working standard</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-16" class="sop-step-label">
+                      <strong>3.16	LOD		- Limit of detection</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-17" class="sop-step-label">
+                      <strong>5.3      Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalakan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-18" class="sop-step-label">
+                      <strong>5.4    Penolong Pegawai Farmasi U7 / U6</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-19" class="sop-step-label">
+                      <strong>5.5    Penolong Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Menjalankan aktiviti pengujian sample mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><p class="sop-p">Material and Equipment</p><p class="sop-p">Instrument:</p><p class="sop-p">Triple Quadrupole LCMS – 8045 (High Performance Liquid Chromatography Mass Spectrometer Liquid Chromatography with mass spectrometry) and heated ESI as interface.</p><p class="sop-p">Analytical balance &amp; microbalance</p><p class="sop-p">Column: Phenomenex Kinetex XB-C18 1.7µm, 100 x 2.1 mm or equivalent</p><p class="sop-p">Reference standards:</p><p class="sop-p">Fluconazole</p><p class="sop-p">Ketonazole</p><p class="sop-p">Clotrimazole</p><p class="sop-p">Nystatin</p><p class="sop-p">Griseofulvin</p><p class="sop-p">Econazole</p><p class="sop-p">Miconazole</p><p class="sop-p">Itraconazole</p><p class="sop-p">Chemicals:</p><p class="sop-p">Methanol (LCMS grade)</p><p class="sop-p">Acetonitrile with 0.1% Formic Acid (LCMS grade)</p><p class="sop-p">Deionised water with 0.1% Formic Acid (LCMS Grade)</p><p class="sop-p">Deionized water</p><p class="sop-p">Formic acid</p><p class="sop-p">Glasswares and consumables:</p><p class="sop-p">Beakers (50 ml)</p><p class="sop-p">Solvent filter system</p><p class="sop-p">Nylon solvent filter 0.45 µm</p><p class="sop-p">Solvent bottle (<span class="kw-vol">1 L</span>)</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (5 ml)</p><p class="sop-p">2 ml glass screw cap vial</p><p class="sop-p">Preparation of Mobile Phase</p><p class="sop-p">Measure 900 ml of acetonitrile and transfer in solvent bottle.</p><p class="sop-p">Add 1 ml of formic acid. Top up to 1000 ml with acetonitrile.</p><p class="sop-p">Repeat step 6.2(i) and 6.2(ii) for deionized water.</p><p class="sop-p">Filter 0.1% formic acid in water and 0.1% formic acid in acetonitrile using nylon solvent filter 0.45 µm by using solvent filter system.</p><p class="sop-p">Degassed filtered mobile phase at least for <span class="kw-time">30 minutes</span> to ensure no bubble is present.</p><p class="sop-p">Or used ready-made mobile phase of deionised water with 0.1% Formic Acid and acetonitrile with 0.1% Formic Acid, transfer into solvent bottle and proceed to step v.</p><p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Individual Stock Standard (<span class="kw-wt">250 µg</span>/ml)</p><p class="sop-p">Weigh <span class="kw-wt">5 mg</span> of individual RS in 20 ml amber volumetric flask. Add about 10 ml of methanol and sonicate for <span class="kw-time">2 minutes</span> to dissolve. Make up to volume with methanol. This individual stock solution is stable for up to 6 months when stored at -<span class="kw-temp">20°C</span>. Final concentration of individual solution is <span class="kw-wt">250 µg</span>/ml.</p><p class="sop-p">Mixed Stock A (<span class="kw-wt">10 µg</span>/ml)</p><p class="sop-p">Pipette 200 µl of each stock standard into 5 ml amber volumetric flask. Make up to mark with methanol and vortex to dissolve. Final concentration for mix stock A is <span class="kw-wt">10 µg</span>/ml.</p><p class="sop-p">Mixed Stock B (<span class="kw-wt">1.0 µg</span>/ml)</p><p class="sop-p">Pipette 500 µl of mixed stock A into 5 ml amber volumetric flask. Make up to mark with methanol and vortex to dissolve. Final concentration for mix stock B is <span class="kw-wt">1.0 µg</span>/ml.</p><p class="sop-p">Mixed Working Standard (WS, 100 ng/ml)</p><p class="sop-p">Pipette 150 µl of mixed stock B and 1350 µl of methanol into a 2 ml amber vial. Vortex to dissolve. Final concentration of mixed working standard is 100 ng/ml.</p><p class="sop-p">Limit of detection (LOD, 50 ng/ml)</p><p class="sop-p">Pipette 75 µl of mixed stock B and 1425 µl of methanol into a 2 ml amber vial. Vortex to dissolve. Final concentration of LOD is 50 ng/ml.</p><p class="sop-p">Single Standard Stock Solution</p><p class="sop-p">Prepare a single standard stock solution following the same procedure outlined in 6.3.1 to 6.3.5, but using a single standard instead of multiple standards.</p><p class="sop-p">This procedure is applicable for screening selected compounds only.</p><p class="sop-p">Preparation of sample</p><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling process differ between different type of dosage form. Please refer to document PKKK/300/UP/001 (Proses Persampelan Ujian Penyaringan).</p><p class="sop-p">Sample preparation for capsule</p><p class="sop-p">Weigh <span class="kw-wt">1.0 g</span> of sample (including capsule shells) into <span class="kw-vol">100 mL</span> conical flask and accurately add 20 ml of methanol. (*Note: Ensure sample solution is protected from light)</p><p class="sop-p">Sonicate for <span class="kw-time">15 minutes</span> and transfer the sample solution into centrifuge tube.</p><p class="sop-p">Centrifuge the sample solution at 4000 rpm for <span class="kw-time">5 minutes</span>.</p><p class="sop-p">By using disposable pipette, withdraw about 5 – 10 ml of clear supernatant layer to a syringe fitted with a 0.22 µm Nylon filter.</p><p class="sop-p">Filter the sample solution into a 20 ml amber vial.</p><p class="sop-p">Pipette 0.1 ml of the above solution into 2 ml amber vial and dilute to 1 ml with methanol. Vortex to dissolve.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-20" class="sop-step-label">
+                      <strong>6.4.3	Sample preparation for cream</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Weigh <span class="kw-wt">200 mg</span> of sample into a 100 ml conical flask and add accurately 20 ml of methanol.</p><p class="sop-p">Warm it until the sample disperses in a <span class="kw-temp">60°C</span> water bath for <span class="kw-time">10 minutes</span>.</p><p class="sop-p">Remove from the water bath, shake vigorously and cool it to room temperature.</p><p class="sop-p">By using a disposable pipette, withdraw about 5-10 ml of the sample solution to a syringe fitted with a 0.22 µm Nylon filter.</p><p class="sop-p">Filter the sample solution into a 20 ml amber vial.</p><p class="sop-p">Pipette 0.5 ml of the above solution into a 2 ml amber vial and dilute to 1 ml with methanol. Vortex to dissolve.</p><p class="sop-p">Experimental Method</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-21" class="sop-step-label">
+                      <strong>6.5.1 	Liquid chromatography (LC) parameter used for identification of anti-fungal in traditional products are given in table below.</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Table 1: Liquid chromatography (LC) parameters used for detection of Anti-fungal</p><p class="sop-p">Mobile Phase Method</p><p class="sop-p">Gradient program for mobile phase use for identification of anti-fungal in traditional products shown as below:</p><p class="sop-p">Table 2: Gradient program for mobile phase used for identification of anti-fungal in traditional products.</p><p class="sop-p">Mass spectrometry (MS) parameter used for identification of anti-fungal in traditional product are given in table below</p><p class="sop-p">Table 3: Mass spectrometry (MS) parameter used for identification of anti-fungal.</p><p class="sop-p">MRM parameter used for detection of anti-fungal in traditional product are given in table below.</p><p class="sop-p">Table 4: MRM parameter for identification of anti-fungal.</p><p class="sop-p">Sequence of Injection</p><p class="sop-p">Inject 5 µl of blank, working standard solution and sample solution. The sequence of injection is shown in the table below.</p><p class="sop-p">Table 5: Sequence of injection for identification of anti-fungal.</p><p class="sop-p">System Suitability Test (SST) Requirement</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-023-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/023')">
+                    <label for="step-023-22" class="sop-step-label">
+                      <strong>6.5.6.1	System suitability test need to be performed for each batch run to ensure the entire system is working properly. Perform at least 6 replicate injection of working standard solution (100 ng/ml).</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Acceptance criteria:</p><p class="sop-p">Tailing factor: Not more than, NMT 2.0.</p><p class="sop-p">Theoretical plate (N): Not less than, NLT 2000.</p><p class="sop-p">%RSD (retention time) for 6 injections of mix working standard solution: %<span class="kw-limit">RSD NMT 1.0%</span></p><p class="sop-p">S/N ratio of LOD solution: S/N &gt; 3</p><p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">Inject 5 µl of LOD solution after every 5 samples &amp; at the end of analysis.</p><p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p><p class="sop-p">Result Interpretation</p><p class="sop-p">Identification of target analyte is positive when.</p><p class="sop-p">The retention time of target compound(s) in the sample is similar to the working standard solution.</p><p class="sop-p">Confirmation of mass spectrum based on detection of the target (MRM 1) and reference ions (MRM 2). Reference ions are monitored as relative intensity is as the following:</p><p class="sop-p">Relative Ion Intensity (% of base peak) &gt; 50: Tolerance ± 20%.</p><p class="sop-p">Relative Ion Intensity (% of base peak) 20 - 50: Tolerance ± 25%.</p><p class="sop-p">Testing result for each analyte is reported as NOT DETECTED in the sample when the peak area of a specific analyte in a sample solution is below the peak area of the standard solution at LOD level, 50 ng/ml (equivalent to 10 ppm in sample).</p><p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number)</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameter including equipment name, mobile phase program and LCMS system.</p><p class="sop-p">List and preparation procedures of RS use in analysis.</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only)</p><p class="sop-p">Interpretation of result (Result: Detected/Not Detected)</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Chromatogram of System Suitability (SST) on each compound and results.</p><p class="sop-p">Chromatogram of LOD on each compound and results.</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of sample name, sample number, analysis method, date and time of analysis, confirmation of target ion (MRM1) and reference ion (MRM2).</p><p class="sop-p">IQC table</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.  REKOD KUALITI</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.  REKOD KUALITI
+          </div>
           <div class="sop-sec-content">
             <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/006	Laporan Pengujian LCMS</p>
           </div>
@@ -124,54 +407,89 @@
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 November 2024</td></tr><tr><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Nurul Nadiah Noh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/023</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 November 2024</td></tr><tr ><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Nurul Nadiah Noh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td>PKKK/300/UP/012</td><td>Shimadzu High Performance Liquid Chromatography Mass Spectrometer LCMS-8045</td></tr><tr><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/023</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td>PKKK/300/UP/012</td><td>Shimadzu High Performance Liquid Chromatography Mass Spectrometer LCMS-8045</td></tr><tr ><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 3</div>
-          <table class="table-official">
-            <tr><th>LC Parameters</th><th>LC Parameters</th></tr><tr><td>Column</td><td>Kinetex C18 XB</td></tr><tr><td>Dimensions and particle size</td><td>100 x 2.1 mm, 1.7µm</td></tr><tr><td>Column Temperature</td><td>40°C</td></tr><tr><td>Flow rate</td><td>0.4 mL/min</td></tr><tr><td>Pressure</td><td>440 bar</td></tr><tr><td>Injection volume</td><td>5 µl</td></tr><tr><td>Mobile phase</td><td>Deinonised water with 0.1% Formic Acid Acetonitrile with 0.1% Formic Acid</td></tr><tr><td>Mobile phase method</td><td>Gradient program</td></tr><tr><td>Total run time (minutes)</td><td>15.5 minutes</td></tr>
-          </table>
+        <div class="table-card" id="table-3">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 3</span>
+            <span class="table-doc-code">PKKK/300/UP/023</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>LC Parameters</th><th>LC Parameters</th></tr><tr ><td>Column</td><td>Kinetex C18 XB</td></tr><tr ><td>Dimensions and particle size</td><td>100 x 2.1 mm, 1.7µm</td></tr><tr ><td>Column Temperature</td><td><span class="kw-temp">40°C</span></td></tr><tr ><td>Flow rate</td><td><span class="kw-flow"><span class="kw-vol">0.4 mL</span>/min</span></td></tr><tr ><td>Pressure</td><td>440 bar</td></tr><tr ><td>Injection volume</td><td>5 µl</td></tr><tr ><td>Mobile phase</td><td>Deinonised water with 0.1% Formic Acid Acetonitrile with 0.1% Formic Acid</td></tr><tr ><td>Mobile phase method</td><td>Gradient program</td></tr><tr ><td>Total run time (minutes)</td><td><span class="kw-time">15.5 minutes</span></td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 4</div>
-          <table class="table-official">
-            <tr><th>Time (minute)</th><th>Mobile phase (A)</th><th>Mobile phase (B)</th></tr><tr><td>0.01</td><td>90</td><td>10</td></tr><tr><td>0.50</td><td>70</td><td>30</td></tr><tr><td>3.50</td><td>70</td><td>30</td></tr><tr><td>9.50</td><td>10</td><td>90</td></tr><tr><td>12.5</td><td>10</td><td>90</td></tr><tr><td>12.6</td><td>90</td><td>10</td></tr><tr><td>15.5</td><td>90</td><td>10</td></tr>
-          </table>
+        <div class="table-card" id="table-4">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 4</span>
+            <span class="table-doc-code">PKKK/300/UP/023</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Time (minute)</th><th>Mobile phase (A)</th><th>Mobile phase (B)</th></tr><tr ><td>0.01</td><td>90</td><td>10</td></tr><tr ><td>0.50</td><td>70</td><td>30</td></tr><tr ><td>3.50</td><td>70</td><td>30</td></tr><tr ><td>9.50</td><td>10</td><td>90</td></tr><tr ><td>12.5</td><td>10</td><td>90</td></tr><tr ><td>12.6</td><td>90</td><td>10</td></tr><tr ><td>15.5</td><td>90</td><td>10</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 5</div>
-          <table class="table-official">
-            <tr><th>MS Parameters</th><th>MS Parameters</th></tr><tr><td>Interface</td><td>ESI, 300oC</td></tr><tr><td>MS mode</td><td>Positive, MRM</td></tr><tr><td>CID Gas</td><td>Argon</td></tr><tr><td>Nebulizing Gas Flow</td><td>3 L/min</td></tr><tr><td>Heating Gas Flow</td><td>10 L/min</td></tr><tr><td>DL temperature</td><td>250oC</td></tr><tr><td>Heat block temperature</td><td>400oC</td></tr><tr><td>Drying gas flow</td><td>10 L/min</td></tr><tr><td>MRM parameter</td><td>*refer table 4</td></tr>
-          </table>
+        <div class="table-card" id="table-5">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 5</span>
+            <span class="table-doc-code">PKKK/300/UP/023</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>MS Parameters</th><th>MS Parameters</th></tr><tr ><td>Interface</td><td>ESI, 300oC</td></tr><tr ><td>MS mode</td><td>Positive, MRM</td></tr><tr ><td>CID Gas</td><td>Argon</td></tr><tr ><td>Nebulizing Gas Flow</td><td><span class="kw-vol">3 L</span>/min</td></tr><tr ><td>Heating Gas Flow</td><td><span class="kw-vol">10 L</span>/min</td></tr><tr ><td>DL temperature</td><td>250oC</td></tr><tr ><td>Heat block temperature</td><td>400oC</td></tr><tr ><td>Drying gas flow</td><td><span class="kw-vol">10 L</span>/min</td></tr><tr ><td>MRM parameter</td><td>*refer table 4</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 6</div>
-          <table class="table-official">
-            <tr><th>Analyte</th><th>Typical RT (min)</th><th>Acquisition Time (min)</th><th>MRM Transition (m/z)a</th><th>CE (V)</th></tr><tr><td>1. Fluconazole</td><td>3.277</td><td>0 - 6</td><td>MRM1: 307.20 &gt; 220.10</td><td>19</td></tr><tr><td>1. Fluconazole</td><td>3.277</td><td>0 - 6</td><td>MRM2: 307.20 &gt; 139.00</td><td>39</td></tr><tr><td>2. Ketoconazole</td><td>4.994</td><td>0 - 6</td><td>MRM1: 531.25 &gt; 82.050</td><td>50</td></tr><tr><td>2. Ketoconazole</td><td>4.994</td><td>0 - 6</td><td>MRM2: 531.25 &gt; 112.10</td><td>45</td></tr><tr><td>3. Clotrimazole</td><td>6.376</td><td>5 - 10</td><td>MRM1: 277.10 &gt; 165.05</td><td>23</td></tr><tr><td>3. Clotrimazole</td><td>6.376</td><td>5 - 10</td><td>MRM2: 277.10 &gt; 241.10</td><td>28</td></tr><tr><td>4. Nystatin</td><td>6.67</td><td>5 -10</td><td>MRM1: 926.55 &gt; 297.15</td><td>34</td></tr><tr><td>4. Nystatin</td><td>6.67</td><td>5 -10</td><td>MRM2: 926.55 &gt; 107.00</td><td>52</td></tr><tr><td>5. Griseofulvin</td><td>7.203</td><td>5 - 10</td><td>MRM1: 353.20 &gt; 165.00</td><td>22</td></tr><tr><td>5. Griseofulvin</td><td>7.203</td><td>5 - 10</td><td>MRM2: 353.20 &gt; 285.05</td><td>19</td></tr><tr><td>6. Econazole</td><td>7.387</td><td>5 - 10</td><td>MRM1: 381.15 &gt; 125.00</td><td>32</td></tr><tr><td>6. Econazole</td><td>7.387</td><td>5 - 10</td><td>MRM2: 383.10 &gt; 125.00</td><td>29</td></tr><tr><td>7. Miconazole</td><td>7.815</td><td>5 - 10</td><td>MRM1: 415.05 &gt; 159.00</td><td>32</td></tr><tr><td>7. Miconazole</td><td>7.815</td><td>5 - 10</td><td>MRM2: 417.05 &gt; 159.00</td><td>31</td></tr><tr><td>8. Itraconazole</td><td>9.541</td><td>8 - 12</td><td>MRM1: 705.40 &gt; 392.15</td><td>36</td></tr><tr><td>8. Itraconazole</td><td>9.541</td><td>8 - 12</td><td>MRM2: 705.40 &gt; 432.25</td><td>34</td></tr>
-          </table>
+        <div class="table-card" id="table-6">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 6</span>
+            <span class="table-doc-code">PKKK/300/UP/023</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>Analyte</th><th>Typical RT (min)</th><th>Acquisition Time (min)</th><th>MRM Transition (m/z)a</th><th>CE (V)</th></tr><tr ><td>1. Fluconazole</td><td>3.277</td><td>0 - 6</td><td>MRM1: 307.20 &gt; 220.10</td><td>19</td></tr><tr ><td>1. Fluconazole</td><td>3.277</td><td>0 - 6</td><td>MRM2: 307.20 &gt; 139.00</td><td>39</td></tr><tr ><td>2. Ketoconazole</td><td>4.994</td><td>0 - 6</td><td>MRM1: 531.25 &gt; 82.050</td><td>50</td></tr><tr ><td>2. Ketoconazole</td><td>4.994</td><td>0 - 6</td><td>MRM2: 531.25 &gt; 112.10</td><td>45</td></tr><tr ><td>3. Clotrimazole</td><td>6.376</td><td>5 - 10</td><td>MRM1: 277.10 &gt; 165.05</td><td>23</td></tr><tr ><td>3. Clotrimazole</td><td>6.376</td><td>5 - 10</td><td>MRM2: 277.10 &gt; 241.10</td><td>28</td></tr><tr ><td>4. Nystatin</td><td>6.67</td><td>5 -10</td><td>MRM1: 926.55 &gt; 297.15</td><td>34</td></tr><tr ><td>4. Nystatin</td><td>6.67</td><td>5 -10</td><td>MRM2: 926.55 &gt; 107.00</td><td>52</td></tr><tr ><td>5. Griseofulvin</td><td>7.203</td><td>5 - 10</td><td>MRM1: 353.20 &gt; 165.00</td><td>22</td></tr><tr ><td>5. Griseofulvin</td><td>7.203</td><td>5 - 10</td><td>MRM2: 353.20 &gt; 285.05</td><td>19</td></tr><tr ><td>6. Econazole</td><td>7.387</td><td>5 - 10</td><td>MRM1: 381.15 &gt; 125.00</td><td>32</td></tr><tr ><td>6. Econazole</td><td>7.387</td><td>5 - 10</td><td>MRM2: 383.10 &gt; 125.00</td><td>29</td></tr><tr ><td>7. Miconazole</td><td>7.815</td><td>5 - 10</td><td>MRM1: 415.05 &gt; 159.00</td><td>32</td></tr><tr ><td>7. Miconazole</td><td>7.815</td><td>5 - 10</td><td>MRM2: 417.05 &gt; 159.00</td><td>31</td></tr><tr ><td>8. Itraconazole</td><td>9.541</td><td>8 - 12</td><td>MRM1: 705.40 &gt; 392.15</td><td>36</td></tr><tr ><td>8. Itraconazole</td><td>9.541</td><td>8 - 12</td><td>MRM2: 705.40 &gt; 432.25</td><td>34</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 7</div>
-          <table class="table-official">
-            <tr><th>No. of injection</th><th>Detail</th></tr><tr><td>1</td><td>Blank solution</td></tr><tr><td>2</td><td>LOD solution (single injection)</td></tr><tr><td>3 🡪 8</td><td>Mixed WS (6 replicates injection)</td></tr><tr><td>9</td><td>Blank solution</td></tr><tr><td>10 🡪 11</td><td>Sample 1 (duplicate injection)</td></tr><tr><td>12</td><td>Blank solution</td></tr><tr><td>13 🡪 14</td><td>Sample 2 (duplicate injection)</td></tr><tr><td>15</td><td>Blank solution</td></tr><tr><td>16</td><td>LOD solution</td></tr>
-          </table>
+        <div class="table-card" id="table-7">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 7</span>
+            <span class="table-doc-code">PKKK/300/UP/023</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>No. of injection</th><th>Detail</th></tr><tr class="seq-blank"><td>1</td><td>Blank solution</td></tr><tr class="seq-iqc"><td>2</td><td>LOD solution (single injection)</td></tr><tr ><td>3 🡪 8</td><td>Mixed WS (6 replicates injection)</td></tr><tr class="seq-blank"><td>9</td><td>Blank solution</td></tr><tr ><td>10 🡪 11</td><td>Sample 1 (duplicate injection)</td></tr><tr class="seq-blank"><td>12</td><td>Blank solution</td></tr><tr ><td>13 🡪 14</td><td>Sample 2 (duplicate injection)</td></tr><tr class="seq-blank"><td>15</td><td>Blank solution</td></tr><tr class="seq-iqc"><td>16</td><td>LOD solution</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -182,6 +500,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/023');
+  });
+</script>
 </body>
 </html>

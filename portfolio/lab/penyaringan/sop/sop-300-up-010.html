@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/010 — Pindaan tarikh kuatkuasa arahan kerja daripada 10 Februari 2020 kepada 15 Disember 2020. | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/010 — Pindaan tarikh kuatkuasa arahan kerja daripada 10 Februari 2020 kepada 15 Disember 2020. | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/010: Pindaan tarikh kuatkuasa arahan kerja daripada 10 Februari 2020 kepada 15 Disember 2020. — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/010')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,51 +146,110 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/010 <span class="g">Pindaan tarikh kuatkuasa arahan kerja daripada 10 Februari 2020 kepada 15 Disember 2020.</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 3 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: PINDAAN TARIKH KUATKUASA ARAHAN KERJA DARIPADA 10 FEBRUARI 2020 KEPADA 15 DISEMBER 2020.</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/010</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual & Data</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">PINDAAN:</p><p class="sop-p">Prosedur ini merupakan dokumen baru selaras dengan usaha menaiktaraf pensijilan institusi ke versi ISO 9001:2015 dan juga penamaan semula nama institusi dari Biro Pengawalan Farmaseutikal Kebangsaan (BPFK) kepada Bahagian Regulatori Farmasi Negara (NPRA). Sehubungan itu, dokumen asal adalah terbatal dan dokumen ini dimulakan semula sebagai Terbitan 1.</p><p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen, tajuk dokumen dan tarikh kuatkuasa.</p><p class="sop-p">Meminda Ketua Unit kepada Ketua Subunit</p><p class="sop-p">Batal Unit Penyaringan Tradisional dan Suplemen Kesihatan</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Meminda perkataan Agensi kepada Bahagian di dalam Perenggan Pindaan.</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 10 Februari 2020 kepada 15 Disember 2020.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/031 kepada PKKK/300/HMS/031</p><p class="sop-p">Pindaan peranan Ketua Subunit pada ruangan Tanggungjawab kepada Ketua Subunit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan peranan Penolong Pegawai Farmasi U32 pada ruangan Tanggungjawab kepada Penolong Pegawai Farmasi U36 / U32</p><p class="sop-p">Terbitan 3, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/031 kepada PKKK/300/UAT/011</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan ‘pengujian produk tradisional, suplemen kesihatan dan kosmetik’ kepada ujian penyaringan campurpalsu pada ruangan Tujuan dan Skop.</p><p class="sop-p">Terbitan 3, Semakan 2:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 4, Semakan 0:</p><p class="sop-p">Pindaan nombor dokumen daripada PKKK/300/UAT/011 kepada PKKK/300/UP/010 selaras dengan penstrukturan semula Unit Penyaringan (UP).</p><p class="sop-p">Kemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026.</p><p class="sop-p">Kemaskini Perenggan 1.0 dengan menyatakan untuk ujian penyaringan (kualitatif) dan analisis penentuan kandungan (kuantitatif) secara sistematik bagi memastikan keputusan ujian yang tepat dan berkesan.</p><p class="sop-p">Kemaskini Perenggan 2.0 dengan menyatakan skop arahan kerja terpakai untuk ujian kuantitatif.</p><p class="sop-p">Kemaskini definisi dengan menambah maksud TIC dan SIM.</p><p class="sop-p">Kemaskini perenggan 6.1.4 dengan menambah mod SIM dan penyataan parameter untuk ujian kuantitatif.</p><p class="sop-p">Kemaskini perenggan 6.1.7 sebagai sub perenggan analisis kualitatif (penyaringan dan identifikasi).</p><p class="sop-p">Menambah perenggan 6.1.8 sebagai sub perenggan analisis kuantitatif (penentuan kandungan / assay)</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian alat Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra) untuk ujian penyaringan campurpalsu untuk ujian penyaringan (kualitatif) dan analisis penentuan kandungan (kuantitatif) secara sistematik bagi memastikan keputusan ujian yang tepat dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini merangkumi pengendalian alat Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra) untuk ujian penyaringan (kualitatif) dan analisis penentuan kandungan (kuantitatif) melibatkan produk farmaseutikal, ubat tradisional, kosmetik, serta sediaan lain yang berkaitan mengikut arahan kerja yang ditetapkan.</p><p class="sop-p">DEFINISI</p><p class="sop-p">GCMS	- Gas Chromatography Mass Spectrometry</p><p class="sop-p">GC - Gas Chromatography</p><p class="sop-p">MS - Mass Spectrometry</p><p class="sop-p">TIC - Total Ion Chromatogram</p><p class="sop-p">SIM - Selected Ion Monitoring</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><div class="sop-substep"><strong>5.3      Penolong Pegawai Farmasi U7 / U6</strong></div><p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p><div class="sop-substep"><strong>5.4     Penolong Pegawai Farmasi</strong></div><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p><div class="sop-substep"><strong>6.1 Tatacara Penggunaan</strong></div><p class="sop-p">Hidupkan GC, MS, komputer dan mesin pencetak.</p><p class="sop-p">Masukkan password dan klik [OK] di skrin komputer.</p><p class="sop-p">Klik 2x ikon [GCMS Real Time Analysis] dan klik [OK].</p><p class="sop-p">Pilih Method yang ingin digunakan</p><p class="sop-p">Klik [Data Acquisition] di [Real Time] assistant bar.</p><p class="sop-p">Untuk menggunakan method yang sedia ada:</p><p class="sop-p">Pilih [Open Method File] di menu [File] dan klik [Download].</p><p class="sop-p">Untuk menghasilkan method yang baru:</p><p class="sop-p">Pilih [New Method File] di menu [File]. Tentukan semua parameter di tab [Sampler], [GC] dan [MS].</p><p class="sop-p">Tentukan parameter instrumen di tab [Sampler], [GC] dan [MS]</p><p class="sop-p">Di bawah tab [MS], tentukan mod analisis berdasarkan objektif pengujian seperti yang ditetapkan di dalam SOP analisis spesifik:</p><p class="sop-p">Bagi Analisis Kuantitatif (Assay), pastikan parameter tambahan (seperti target ion dan quantitation table) diisi mengikut kaedah analisis spesifik yang dijalankan.</p><p class="sop-p">Untuk mengubah method yang sedia ada:</p><p class="sop-p">Pilih [Open Method File] di menu [File]. Ubahkan parameter di tab [Sampler], [GC] dan [MS]. Seterusnya pilih [Save Method File As] di menu [File] dan masukkan nama method yang baru dan klik [Save].</p><p class="sop-p">Untuk jalankan sampel:</p><p class="sop-p">Pastikan tuning dilakukan setiap hari sebelum sampel pertama hendak dijalankan pada hari tersebut dan pastikan laporan adalah lulus.</p><p class="sop-p">Klik [Data Acquisition] di [Real Time] assistant bar.</p><p class="sop-p">Pilih [Open Method File] di menu [File] dan pilih method yang ingin digunakan.</p><p class="sop-p">Pilih [Download Initial Parameters] di menu [Acquisition].</p><p class="sop-p">Klik ikon [Tuning] di [Real Time] assistant bar.</p><p class="sop-p">Klik ikon [Peak Monitor View] di [Tuning] assistant bar.</p><p class="sop-p">Klik ikon [Start Auto Tuning] di [Tuning] assistant bar.</p><p class="sop-p">Setelah autotuning selesai, pilih [Save Tuning File As] di menu [File] dan masukkan nama tuning file yang baru dan klik [Save].</p><p class="sop-p">Pastikan sampel telah dilarutkan dengan pelarut yang sesuai dan telah ditapis menggunakan penapis 0.45µm kedalam vial.</p><p class="sop-p">Letak vial di tempatnya, pastikan nombor kedudukan vial di mana ia diletakkan.</p><p class="sop-p">Kemudian klik ikon [Sample Login] di [Acquisition] assistant bar. Masukkan butiran sampel seperti Vial#, Sample Name, Sample ID, Method File, Data File dan maklumat lain. Klik [OK] untuk memulakan injeksi sampel.</p><p class="sop-p">Jika sampel yang ingin dijalankan banyak, sampel tersebut boleh dijalankan secara batch. Untuk jalankan sampel-sampel tersebut secara batch adalah seperti berikut:</p><p class="sop-p">Klik ikon [Batch Processing] di [Real Time] assistant bar.</p><p class="sop-p">Masukkan butiran sampel seperti Vial#, Sample Name, Sample ID, Method File, Data File dan maklumat lain ke dalam Batch Table.</p><p class="sop-p">Pilih [Save Batch File As] di menu [File] dan masukkan nama batch file yang baru dan klik [Save].</p><p class="sop-p">Klik ikon [Start] di [Batch] assistant bar. Klik [OK] untuk mesej “Do you want to go into the ecology mode after batch processing ends?”.</p><p class="sop-p">Analisis Kualitatif (Penyaringan dan Identifikasi)</p><p class="sop-p">Setelah sampel selesai analisis, kromatogram yang diperolehi perlu dianalisis untuk mendapatkan maklumat tertentu terutamanya mass spectrum dan identiti sampel tersebut. Data Analisis perlu dijalankan seperti di bawah :</p><p class="sop-p">Klik 2x ikon [GCMS Real Time Analysis].</p><p class="sop-p">Klik [Qualitative] di [Postrun] assistant bar.</p><p class="sop-p">Klik 2x pada Data File yang diingini.</p><p class="sop-p">Klik [Peak Integration for All TICs] di [Qualitative] assistant bar. Tentukan parameter untuk integration dan klik [OK].</p><p class="sop-p">Klik [Qualitative Table] di [Qualitative] assistant bar. Highlight semua baris di tab [TIC], pilih [Register to Spectrum Process Table] di menu [Edit].</p><p class="sop-p">Klik tab [Spectrum Process], pilih [Search All Table] di menu [Similarity Search].</p><p class="sop-p">Klik 2x [Done] pada baris pertama di Spectrum Process Table.</p><p class="sop-p">Periksa Similarity Search Results untuk setiap baris.</p><p class="sop-p">Untuk menyimpan Data Files, klik ikon [Save Data File] menu [File].</p><p class="sop-p">Analisis Kuantitatif (Penentuan Kandungan / Assay)</p><p class="sop-p">Gunakan prosedur ini untuk pengujian kuantitatif yang memerlukan pengiraan kepekatan.</p><p class="sop-p">Klik [Quantitative] di [Postrun] assistant bar.</p><p class="sop-p">Klik 2x pada Data File (Standard atau Sampel) yang ingin diproses.</p><p class="sop-p">Pastikan Method File yang digunakan mengandungi Quantitation Table yang lengkap (termasuk Target Ion, Reference Ion, dan kepekatan standard).</p><p class="sop-p">Klik ikon [Peak Integration]. Semak integrasi puncak bagi setiap analit sasaran mengikut (retention time) yang ditetapkan dalam SOP analisis spesifik.</p><p class="sop-p">Bagi penghasilan (Calibration Curve):</p><p class="sop-p">Masukkan kepekatan standard ke dalam jadual kuantitasi.</p><p class="sop-p">Semak nilai kelinearan (R2). Kriteria penerimaan umum adalah R2 ±0.995 atau mengikut SOP analisis spesifik.</p><p class="sop-p">Perisian akan mengira kepekatan sampel secara automatik berdasarkan luas puncak (peak area) atau nisbah luas (area ratio).</p><p class="sop-p">Semak Ion Ratio (perbandingan antara Target Ion dan Reference Ion) untuk mengesahkan ketulenan puncak kuantitatif.</p><p class="sop-p">Klik ikon [Save Data File] untuk menyimpan keputusan analisis.</p><p class="sop-p">REKOD KUALITI</p><p class="sop-p">Rekod penyelenggaraan alat Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra).</p>
+            <p class="sop-p">PINDAAN:</p><p class="sop-p">Prosedur ini merupakan dokumen baru selaras dengan usaha menaiktaraf pensijilan institusi ke versi ISO 9001:2015 dan juga penamaan semula nama institusi dari Biro Pengawalan Farmaseutikal Kebangsaan (BPFK) kepada Bahagian Regulatori Farmasi Negara (NPRA). Sehubungan itu, dokumen asal adalah terbatal dan dokumen ini dimulakan semula sebagai Terbitan 1.</p><p class="sop-p">SEJARAH SEMAKAN</p><p class="sop-p">Terbitan 2, Semakan 0:</p><p class="sop-p">Kemaskini nombor dokumen, tajuk dokumen dan tarikh kuatkuasa.</p><p class="sop-p">Meminda Ketua Unit kepada Ketua Subunit</p><p class="sop-p">Batal Unit Penyaringan Tradisional dan Suplemen Kesihatan</p><p class="sop-p">Terbitan 2, Semakan 1:</p><p class="sop-p">Meminda perkataan Agensi kepada Bahagian di dalam Perenggan Pindaan.</p><p class="sop-p">Pindaan tarikh kuatkuasa arahan kerja daripada 10 Februari 2020 kepada 15 Disember 2020.</p><p class="sop-p">Terbitan 3, Semakan 0:</p><p class="sop-p">Pindaan No. Dokumen PKK/300/HMS/031 kepada PKKK/300/HMS/031</p><p class="sop-p">Pindaan peranan Ketua Subunit pada ruangan Tanggungjawab kepada Ketua Subunit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan peranan Penolong Pegawai Farmasi U32 pada ruangan Tanggungjawab kepada Penolong Pegawai Farmasi U36 / U32</p><p class="sop-p">Terbitan 3, Semakan 1:</p><p class="sop-p">Pindaan No. Dokumen PKKK/300/HMS/031 kepada PKKK/300/UAT/011</p><p class="sop-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab</p><p class="sop-p">Pindaan ‘pengujian produk tradisional, suplemen kesihatan dan kosmetik’ kepada ujian penyaringan campurpalsu pada ruangan Tujuan dan Skop.</p><p class="sop-p">Terbitan 3, Semakan 2:</p><p class="sop-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-p">Terbitan 4, Semakan 0:</p><p class="sop-p">Pindaan nombor dokumen daripada PKKK/300/UAT/011 kepada PKKK/300/UP/010 selaras dengan penstrukturan semula Unit Penyaringan (UP).</p><p class="sop-p">Kemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026.</p><p class="sop-p">Kemaskini Perenggan 1.0 dengan menyatakan untuk ujian penyaringan (kualitatif) dan analisis penentuan kandungan (kuantitatif) secara sistematik bagi memastikan keputusan ujian yang tepat dan berkesan.</p><p class="sop-p">Kemaskini Perenggan 2.0 dengan menyatakan skop arahan kerja terpakai untuk ujian kuantitatif.</p><p class="sop-p">Kemaskini definisi dengan menambah maksud TIC dan SIM.</p><p class="sop-p">Kemaskini perenggan 6.1.4 dengan menambah mod SIM dan penyataan parameter untuk ujian kuantitatif.</p><p class="sop-p">Kemaskini perenggan 6.1.7 sebagai sub perenggan analisis kualitatif (penyaringan dan identifikasi).</p><p class="sop-p">Menambah perenggan 6.1.8 sebagai sub perenggan analisis kuantitatif (penentuan kandungan / assay)</p><p class="sop-p">TUJUAN</p><p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian alat Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra) untuk ujian penyaringan campurpalsu untuk ujian penyaringan (kualitatif) dan analisis penentuan kandungan (kuantitatif) secara sistematik bagi memastikan keputusan ujian yang tepat dan berkesan.</p><p class="sop-p">SKOP</p><p class="sop-p">Prosedur ini merangkumi pengendalian alat Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra) untuk ujian penyaringan (kualitatif) dan analisis penentuan kandungan (kuantitatif) melibatkan produk farmaseutikal, ubat tradisional, kosmetik, serta sediaan lain yang berkaitan mengikut arahan kerja yang ditetapkan.</p><p class="sop-p">DEFINISI</p><p class="sop-p">GCMS	- Gas Chromatography Mass Spectrometry</p><p class="sop-p">GC - Gas Chromatography</p><p class="sop-p">MS - Mass Spectrometry</p><p class="sop-p">TIC - Total Ion Chromatogram</p><p class="sop-p">SIM - Selected Ion Monitoring</p><p class="sop-p">CARTA ALIRAN</p><p class="sop-p">Tiada carta aliran untuk prosedur ini.</p><p class="sop-p">TANGGUNGJAWAB</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-010-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/010')">
+                    <label for="step-010-1" class="sop-step-label">
+                      <strong>5.3      Penolong Pegawai Farmasi U7 / U6</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-010-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/010')">
+                    <label for="step-010-2" class="sop-step-label">
+                      <strong>5.4     Penolong Pegawai Farmasi</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p><p class="sop-p">PROSEDUR</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-010-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/010')">
+                    <label for="step-010-3" class="sop-step-label">
+                      <strong>6.1 Tatacara Penggunaan</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Hidupkan GC, MS, komputer dan mesin pencetak.</p><p class="sop-p">Masukkan password dan klik [OK] di skrin komputer.</p><p class="sop-p">Klik 2x ikon [GCMS Real Time Analysis] dan klik [OK].</p><p class="sop-p">Pilih Method yang ingin digunakan</p><p class="sop-p">Klik [Data Acquisition] di [Real Time] assistant bar.</p><p class="sop-p">Untuk menggunakan method yang sedia ada:</p><p class="sop-p">Pilih [Open Method File] di menu [File] dan klik [Download].</p><p class="sop-p">Untuk menghasilkan method yang baru:</p><p class="sop-p">Pilih [New Method File] di menu [File]. Tentukan semua parameter di tab [Sampler], [GC] dan [MS].</p><p class="sop-p">Tentukan parameter instrumen di tab [Sampler], [GC] dan [MS]</p><p class="sop-p">Di bawah tab [MS], tentukan mod analisis berdasarkan objektif pengujian seperti yang ditetapkan di dalam SOP analisis spesifik:</p><p class="sop-p">Bagi Analisis Kuantitatif (Assay), pastikan parameter tambahan (seperti target ion dan quantitation table) diisi mengikut kaedah analisis spesifik yang dijalankan.</p><p class="sop-p">Untuk mengubah method yang sedia ada:</p><p class="sop-p">Pilih [Open Method File] di menu [File]. Ubahkan parameter di tab [Sampler], [GC] dan [MS]. Seterusnya pilih [Save Method File As] di menu [File] dan masukkan nama method yang baru dan klik [Save].</p><p class="sop-p">Untuk jalankan sampel:</p><p class="sop-p">Pastikan tuning dilakukan setiap hari sebelum sampel pertama hendak dijalankan pada hari tersebut dan pastikan laporan adalah lulus.</p><p class="sop-p">Klik [Data Acquisition] di [Real Time] assistant bar.</p><p class="sop-p">Pilih [Open Method File] di menu [File] dan pilih method yang ingin digunakan.</p><p class="sop-p">Pilih [Download Initial Parameters] di menu [Acquisition].</p><p class="sop-p">Klik ikon [Tuning] di [Real Time] assistant bar.</p><p class="sop-p">Klik ikon [Peak Monitor View] di [Tuning] assistant bar.</p><p class="sop-p">Klik ikon [Start Auto Tuning] di [Tuning] assistant bar.</p><p class="sop-p">Setelah autotuning selesai, pilih [Save Tuning File As] di menu [File] dan masukkan nama tuning file yang baru dan klik [Save].</p><p class="sop-p">Pastikan sampel telah dilarutkan dengan pelarut yang sesuai dan telah ditapis menggunakan penapis 0.45µm kedalam vial.</p><p class="sop-p">Letak vial di tempatnya, pastikan nombor kedudukan vial di mana ia diletakkan.</p><p class="sop-p">Kemudian klik ikon [Sample Login] di [Acquisition] assistant bar. Masukkan butiran sampel seperti Vial#, Sample Name, Sample ID, Method File, Data File dan maklumat lain. Klik [OK] untuk memulakan injeksi sampel.</p><p class="sop-p">Jika sampel yang ingin dijalankan banyak, sampel tersebut boleh dijalankan secara batch. Untuk jalankan sampel-sampel tersebut secara batch adalah seperti berikut:</p><p class="sop-p">Klik ikon [Batch Processing] di [Real Time] assistant bar.</p><p class="sop-p">Masukkan butiran sampel seperti Vial#, Sample Name, Sample ID, Method File, Data File dan maklumat lain ke dalam Batch Table.</p><p class="sop-p">Pilih [Save Batch File As] di menu [File] dan masukkan nama batch file yang baru dan klik [Save].</p><p class="sop-p">Klik ikon [Start] di [Batch] assistant bar. Klik [OK] untuk mesej “Do you want to go into the ecology mode after batch processing ends?”.</p><p class="sop-p">Analisis Kualitatif (Penyaringan dan Identifikasi)</p><p class="sop-p">Setelah sampel selesai analisis, kromatogram yang diperolehi perlu dianalisis untuk mendapatkan maklumat tertentu terutamanya mass spectrum dan identiti sampel tersebut. Data Analisis perlu dijalankan seperti di bawah :</p><p class="sop-p">Klik 2x ikon [GCMS Real Time Analysis].</p><p class="sop-p">Klik [Qualitative] di [Postrun] assistant bar.</p><p class="sop-p">Klik 2x pada Data File yang diingini.</p><p class="sop-p">Klik [Peak Integration for All TICs] di [Qualitative] assistant bar. Tentukan parameter untuk integration dan klik [OK].</p><p class="sop-p">Klik [Qualitative Table] di [Qualitative] assistant bar. Highlight semua baris di tab [TIC], pilih [Register to Spectrum Process Table] di menu [Edit].</p><p class="sop-p">Klik tab [Spectrum Process], pilih [Search All Table] di menu [Similarity Search].</p><p class="sop-p">Klik 2x [Done] pada baris pertama di Spectrum Process Table.</p><p class="sop-p">Periksa Similarity Search Results untuk setiap baris.</p><p class="sop-p">Untuk menyimpan Data Files, klik ikon [Save Data File] menu [File].</p><p class="sop-p">Analisis Kuantitatif (Penentuan Kandungan / Assay)</p><p class="sop-p">Gunakan prosedur ini untuk pengujian kuantitatif yang memerlukan pengiraan kepekatan.</p><p class="sop-p">Klik [Quantitative] di [Postrun] assistant bar.</p><p class="sop-p">Klik 2x pada Data File (Standard atau Sampel) yang ingin diproses.</p><p class="sop-p">Pastikan Method File yang digunakan mengandungi Quantitation Table yang lengkap (termasuk Target Ion, Reference Ion, dan kepekatan standard).</p><p class="sop-p">Klik ikon [Peak Integration]. Semak integrasi puncak bagi setiap analit sasaran mengikut (retention time) yang ditetapkan dalam SOP analisis spesifik.</p><p class="sop-p">Bagi penghasilan (Calibration Curve):</p><p class="sop-p">Masukkan kepekatan standard ke dalam jadual kuantitasi.</p><p class="sop-p">Semak nilai kelinearan (R2). Kriteria penerimaan umum adalah R2 ±0.995 atau mengikut SOP analisis spesifik.</p><p class="sop-p">Perisian akan mengira kepekatan sampel secara automatik berdasarkan luas puncak (peak area) atau nisbah luas (area ratio).</p><p class="sop-p">Semak Ion Ratio (perbandingan antara Target Ion dan Reference Ion) untuk mengesahkan ketulenan puncak kuantitatif.</p><p class="sop-p">Klik ikon [Save Data File] untuk menyimpan keputusan analisis.</p><p class="sop-p">REKOD KUALITI</p><p class="sop-p">Rekod penyelenggaraan alat Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra).</p>
           </div>
         </div>
         
 
     <!-- Tables -->
-    
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 1</div>
-          <table class="table-official">
-            <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr><td>1</td><td>0</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Lim Wen Jun</td><td>Wan Nurul Aina Mior Abdullah</td><td>2 Jan 2019</td></tr><tr><td>2</td><td>0</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 Feb 2020</td></tr><tr><td>2</td><td>1</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Dis 2020</td></tr><tr><td>3</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr><td>3</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr><td>3</td><td>2</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr><td>4</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
-          </table>
+    <div class="sop-sec-title" id="sec-tables"><span class="sec-anchor-dot">◈</span> Jadual Kromatografi &amp; Rujukan Data</div>
+        <div class="table-card" id="table-1">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 1</span>
+            <span class="table-doc-code">PKKK/300/UP/010</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th><th>SEJARAH SEMAKAN</th></tr><tr ><td>Terbitan</td><td>Semakan</td><td>Ditulis oleh</td><td>Disemak oleh</td><td>Diluluskan oleh</td><td>Tarikh kuatkuasa</td></tr><tr ><td>1</td><td>0</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Lim Wen Jun</td><td>Wan Nurul Aina Mior Abdullah</td><td>2 Jan 2019</td></tr><tr ><td>2</td><td>0</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 Feb 2020</td></tr><tr ><td>2</td><td>1</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Dis 2020</td></tr><tr ><td>3</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>3</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>3</td><td>2</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>4</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+            </table>
+          </div>
         </div>
         
-        <div class="table-wrap" style="margin:1.5rem 0">
-          <div class="table-caption">Jadual Kromatografi / Rujukan 2</div>
-          <table class="table-official">
-            <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr><td>No. Dokumen</td><td>Tajuk</td></tr><tr><td></td><td>Gas Chromatography Mass Spectrometer GCMS-QP2010 Series For GCMSsolution Ver.4.20 (Operation Guide)</td></tr>
-          </table>
+        <div class="table-card" id="table-2">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2</span>
+            <span class="table-doc-code">PKKK/300/UP/010</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td></td><td>Gas Chromatography Mass Spectrometer GCMS-QP2010 Series For GCMSsolution Ver.4.20 (Operation Guide)</td></tr>
+            </table>
+          </div>
         </div>
         
 
@@ -140,6 +260,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/010');
+  });
+</script>
 </body>
 </html>

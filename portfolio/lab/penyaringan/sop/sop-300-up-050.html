@@ -3,55 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/050 — Screening for Identification of | NPRA Arahan Kerja 300</title>
+<title>PKKK/300/UP/050 — Screening for Identification of | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/050: Screening for Identification of — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
+  /* Enhanced SOP Interactive Styling */
   .sop-doc-container {
     background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+    border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem; position: relative;
   }
   .sop-header-table {
-    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+    width: 100%; border-collapse: collapse; margin-bottom: 1.8rem; font-family: var(--font-mono); font-size: 0.85rem;
+    background: var(--glass); border-radius: 12px; overflow: hidden;
   }
   .sop-header-table td {
-    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+    border: 1px solid var(--glass-border); padding: 0.75rem 1rem; vertical-align: middle;
   }
   .sop-sec-title {
-    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 1.8rem 0 0.8rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center;
+    font-size: 1.3rem; font-weight: 800; color: var(--text-bright); margin: 2.2rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 2px solid var(--cyan-dim); display: flex; align-items: center; gap: 0.5rem;
   }
+  .sec-anchor-dot { color: var(--cyan); font-size: 0.9rem; }
   .sop-p {
-    font-size: 0.92rem; line-height: 1.75; color: var(--text-main); margin-bottom: 0.8rem;
+    font-size: 0.94rem; line-height: 1.8; color: var(--text-main); margin-bottom: 0.9rem;
   }
-  .sop-substep {
-    background: var(--glass); border-left: 3px solid var(--cyan); padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0; margin: 1rem 0 0.5rem; font-size: 0.92rem; color: var(--text-bright);
+  .sop-step-box {
+    background: var(--glass); border: 1px solid var(--glass-border); border-left: 4px solid var(--cyan);
+    padding: 1rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.2rem 0 0.8rem; transition: all 0.2s ease;
   }
+  .sop-step-box:hover { background: var(--card-hover); border-left-color: var(--purple); }
+  .step-check-wrap { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .sop-task-check {
+    width: 20px; height: 20px; margin-top: 0.2rem; cursor: pointer; accent-color: var(--cyan); flex-shrink: 0;
+  }
+  .sop-step-label { cursor: pointer; font-size: 0.95rem; line-height: 1.5; color: var(--text-bright); }
   .sop-list-item {
-    display: flex; gap: 0.5rem; align-items: flex-start; margin-left: 1.2rem; font-size: 0.9rem;
-    line-height: 1.65; color: var(--text-main); margin-bottom: 0.4rem;
+    display: flex; gap: 0.6rem; align-items: flex-start; margin-left: 1.4rem; font-size: 0.92rem;
+    line-height: 1.7; color: var(--text-main); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
+  .sop-list-text { flex: 1; }
+
+  /* Keyword Highlights */
+  .kw-temp { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-flow { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wave { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+  .kw-wt { color: var(--mint); font-weight: 700; font-family: var(--font-mono); }
+  .kw-vol { color: var(--cyan); font-weight: 700; font-family: var(--font-mono); }
+  .kw-time { color: var(--amber); font-weight: 700; font-family: var(--font-mono); }
+  .kw-limit { color: var(--red); font-weight: 700; font-family: var(--font-mono); }
+  .kw-ph { color: var(--purple); font-weight: 700; font-family: var(--font-mono); }
+
+  /* Progress Tracker */
+  .progress-card {
+    background: linear-gradient(135deg, var(--cyan-dim), var(--purple-dim));
+    border: 1px solid var(--cyan); border-radius: 14px; padding: 1rem 1.4rem;
+    margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .progress-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .progress-title { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
+  .progress-bar-bg { width: 260px; max-width: 100%; height: 8px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
+  .progress-stat { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-bright); }
+
+  /* TOC Pills */
+  .toc-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+  .toc-pill {
+    padding: 0.4rem 0.8rem; background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-main);
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); background: var(--card-hover); }
+  .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px;
+    padding: 1.2rem; margin: 1.5rem 0; overflow: hidden;
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 0.4rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim); }
+  .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.82rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
-    border: 1px solid var(--glass-border); padding: 0.55rem 0.75rem; text-align: left;
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.85rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-dim); font-weight: 700; }
-  .table-caption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 0.3rem; }
-  
+  .table-official th { background: var(--card-bg); color: var(--text-dim); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); }
+  .seq-iqc { background: var(--cyan-dim); }
+  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-dim); }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
+    .sop-step-box { border-left: 2px solid #000 !important; background: none !important; }
   }
 </style>
 </head>
@@ -67,16 +125,19 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan Hub
+        Unit Penyaringan
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Master SOP Matrix
+        SOP Matrix (64)
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print SOP
+      </button>
+      <button class="ctrl-btn" onclick="resetChecklist('PKKK/300/UP/050')">
+        🔄 Reset Progress
       </button>
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -85,54 +146,432 @@
     </div>
   </div>
 
+  <!-- Hero Ribbon -->
+  <div class="hero" style="margin-bottom:1.2rem">
+    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.2rem">PKKK/300/UP/050 <span class="g">Screening for Identification of</span></h1>
+    <div class="hero-sub">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Kaedah Pengujian</div>
+  </div>
+
+  <!-- Progress Tracker Card -->
+  <div class="progress-card">
+    <div class="progress-left">
+      <span class="progress-title">Analyst Benchtop Checklist Progress</span>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
+    </div>
+    <div class="progress-stat" id="pBarText">0 / 35 Langkah Selesai (0%)</div>
+  </div>
+
   <!-- Document Container -->
   <div class="sop-doc-container">
 
     <!-- Official Header Table -->
     <table class="sop-header-table">
       <tr>
-        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.1rem;color:var(--cyan)">
-          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim)">PUSAT KAWALAN KUALITI</span>
+        <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.15rem;color:var(--cyan)">
+          NPRA<br><span style="font-size:0.7rem;color:var(--text-dim);font-weight:500">PUSAT KAWALAN KUALITI</span>
         </td>
         <td colspan="2"><strong>ARAHAN KERJA: SCREENING FOR IDENTIFICATION OF</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/050</td>
-        <td><strong>Terbitan / Semakan:</strong> Kuatkuasa 2026</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
-        <td><strong>Bahagian / Seksyen:</strong> SPPK · Unit Penyaringan</td>
+        <td><strong>Bahagian / Unit:</strong> SPPK · Unit Penyaringan</td>
       </tr>
     </table>
 
+    <!-- Quick Navigation TOC Pills -->
+    <div class="toc-pills"><a href="#sec-1" class="toc-pill">1.0 PENGENALAN DOKUMEN</a><a href="#sec-2" class="toc-pill">6.0 Procedure</a><a href="#sec-3" class="toc-pill">7.0 Quality Record</a><a href="#sec-4" class="toc-pill">8.0 Attachments</a></div>
+
     <!-- Sections -->
     
-        <div class="sop-section-block">
-          <div class="sop-sec-title">1.0 PENGENALAN / MAKLUMAT DOKUMEN</div>
+        <div class="sop-section-block" id="sec-1">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 1.0 PENGENALAN DOKUMEN
+          </div>
           <div class="sop-sec-content">
-            <p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">1  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">HISTORY OF REVISION</p><p class="sop-p">Issue</p><p class="sop-p">Revision</p><p class="sop-p">Written by</p><p class="sop-p">Reviewed by</p><p class="sop-p">Approved by</p><p class="sop-p">Effective date</p><p class="sop-p">1</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Dr Noraida Mohd</p><p class="sop-p">Zainoor</p><p class="sop-p">15 November</p><p class="sop-p">2016</p><p class="sop-p">2</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">10 February</p><p class="sop-p">2020</p><p class="sop-p">3</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">15 July 2020</p><p class="sop-p">3</p><p class="sop-p">1</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">15 Disember</p><p class="sop-p">2020</p><p class="sop-p">4</p><p class="sop-p">0</p><p class="sop-p">Gopinatha</p><p class="sop-p">Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">1 November</p><p class="sop-p">2022</p><p class="sop-p">5</p><p class="sop-p">0</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">1 April 2024</p><p class="sop-p">5</p><p class="sop-p">1</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">1 Julai 2024</p><p class="sop-p">5</p><p class="sop-p">2</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">2 Januari 2025</p><p class="sop-p">5</p><p class="sop-p">3</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">23 Jun 2025</p><p class="sop-p">5</p><p class="sop-p">4</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">13 Ogos 2025</p><p class="sop-p">6</p><p class="sop-p">0</p><p class="sop-p">Nurul Nadiah Noh</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Ida Syazrina</p><p class="sop-p">Ibrahim</p><p class="sop-p">10 April 2026</p><p class="sop-p">REFERENCE</p><p class="sop-p">Document No.</p><p class="sop-p">Title</p><p class="sop-p">Standard Operating Procedure for HPLC Agilent</p><p class="sop-p">PKKK/300/KOS/013</p><p class="sop-p">Standard Operating Procedure for HPLC Shimadzu Series LC-</p><p class="sop-p">20AT</p><p class="sop-p">Journal of Food and Drug Analysis, Vol.12,No.1,2004</p><p class="sop-p">AMENDMENT:</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to ISO</p><p class="sop-p">9001:2015 version and renaming of the institution from National Pharmaceutical Control</p><p class="sop-p">Bureau (NPCB) to National Pharmaceutical Regulatory Agency (NPRA). Therefore, the</p><p class="sop-p">original document is obsolete and this document is published as Issue 1.</p><p class="sop-p">HISTORY OF REVISION :</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">2  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update on document number from PKK/200/KOS/019 to PKK/200/HMS/007</p><p class="sop-p">ii.</p><p class="sop-p">Update on effective date from 15 November 2016 to 10 February 2020</p><p class="sop-p">iii.</p><p class="sop-p">Update on responsibility.</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Document change from testing procedure PKK/200/HMS/007 to work instruction</p><p class="sop-p">PKK/300/HMS/062</p><p class="sop-p">Issue 3 Revision 1 :</p><p class="sop-p">i.</p><p class="sop-p">Update on name of agency from National Pharmaceutical Regulatory Agency</p><p class="sop-p">(NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update title of document to Screening for Identification of Hydroquinone in Cosmetic</p><p class="sop-p">Products using HPLC technique</p><p class="sop-p">ii.</p><p class="sop-p">Update document number from PKK/300/HMS/062 to PKKK/300/HMS/062</p><p class="sop-p">iii.</p><p class="sop-p">Update paragraph 1.0 Objective</p><p class="sop-p">iv.</p><p class="sop-p">Update paragraph 2.0 Scope</p><p class="sop-p">v.</p><p class="sop-p">Update paragraph 3.0 Definition</p><p class="sop-p">vi.</p><p class="sop-p">Update paragraph 4.0 Flow Chart</p><p class="sop-p">vii.</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">viii.</p><p class="sop-p">Update paragraph 6.0 Procedure</p><p class="sop-p">ix.</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">x.</p><p class="sop-p">Update paragraph 8.0 Attachments</p><p class="sop-p">Issue 5 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update document number from PKKK/300/HMS/062 to PKKK/300/KOS/019</p><p class="sop-p">ii.</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">iii.</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 5 Revision 1 :</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.4.2</p><p class="sop-p">ii.</p><p class="sop-p">Update paragraph 6.5.2 (a)</p><p class="sop-p">Issue 5 Revision 2:</p><p class="sop-p">i.</p><p class="sop-p">Amend document number from PKKK/300/HMS/053 to PKKK/300/KOS/013 and add</p><p class="sop-p">information in reference</p><p class="sop-p">ii.</p><p class="sop-p">Amend paragraph 5.0 Responsibility</p><p class="sop-p">iii.</p><p class="sop-p">Amend paragraph 6.0 Procedure</p><p class="sop-p">iv.</p><p class="sop-p">Omit flow chart in title Summary</p><p class="sop-p">Issue 5 Revision 3:</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.3.2 and 6.3.3</p><p class="sop-p">Issue 5 Revision 4:</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.5</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">3  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">Issue 5 Revision 4:</p><p class="sop-p">i.</p><p class="sop-p">Update effective date from 13 August 2025 to 10 April 2026</p><p class="sop-p">ii. Amend document number from PKKK/300/KOS/013 to PKKK/300/UP/050</p><div class="sop-substep"><strong>1.0</strong></div><p class="sop-p">Objective</p><p class="sop-p"> The test is performed to identify the presence of Hydroquinone in cosmetic cream</p><p class="sop-p">products by using HPLC.</p><div class="sop-substep"><strong>2.0</strong></div><p class="sop-p">Scope</p><p class="sop-p"> The screening method is used for identification of Hydroquinone in cosmetic</p><p class="sop-p">cream products received from customers such as Surveillance &amp; Complaint</p><p class="sop-p">Section, Pharmacy Enforcement and others.</p><div class="sop-substep"><strong>3.0      Definition</strong></div><p class="sop-p">IQC – Internal Quality Control</p><p class="sop-p">LOD – Limit of Detection</p><p class="sop-p">OOS – Out of Specification</p><p class="sop-p">Blank sample - Sample which has been tested before and does not contain</p><p class="sop-p">Hydroquinone</p><div class="sop-substep"><strong>4.0</strong></div><p class="sop-p">Flow Chart</p><p class="sop-p">None</p><div class="sop-substep"><strong>5.0</strong></div><p class="sop-p">Responsibility</p><div class="sop-substep"><strong>5.1</strong></div><p class="sop-p">Head of Section</p><div class="sop-substep"><strong>5.1.1 Check and approve investigational reports and test results that fail to</strong></div><p class="sop-p">comply with specification.</p><div class="sop-substep"><strong>5.2</strong></div><p class="sop-p">Pharmacist in charge</p><div class="sop-substep"><strong>5.2.1 Ensure the testing for identification of Hydroquinone conforms to the</strong></div><p class="sop-p">procedure.</p><div class="sop-substep"><strong>5.2.2 Check and approve test results that comply with specification.</strong></div><div class="sop-substep"><strong>5.2.3 Check investigational report for sample that does not comply with the</strong></div><p class="sop-p">specification.</p><div class="sop-substep"><strong>5.3</strong></div><p class="sop-p">Pharmacist</p><div class="sop-substep"><strong>5.3.1</strong></div><p class="sop-p">Supervise testing conducted by the analysts.</p><div class="sop-substep"><strong>5.3.2</strong></div><p class="sop-p">Check test results and key in testing results in QUEST system.</p><div class="sop-substep"><strong>5.3.3 Conduct OOS investigation and prepare OOS report for sample that</strong></div><p class="sop-p">does not comply with the specification.</p><div class="sop-substep"><strong>5.4</strong></div><p class="sop-p">Analysts</p><div class="sop-substep"><strong>5.4.1</strong></div><p class="sop-p">Perform sample testing according to the approved procedure</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">4  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><div class="sop-substep"><strong>5.4.2</strong></div><p class="sop-p">Prepare test reports</p>
+            <p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">1  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">HISTORY OF REVISION</p><p class="sop-p">Issue</p><p class="sop-p">Revision</p><p class="sop-p">Written by</p><p class="sop-p">Reviewed by</p><p class="sop-p">Approved by</p><p class="sop-p">Effective date</p><p class="sop-p">1</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Dr Noraida Mohd</p><p class="sop-p">Zainoor</p><p class="sop-p">15 November</p><p class="sop-p">2016</p><p class="sop-p">2</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">10 February</p><p class="sop-p">2020</p><p class="sop-p">3</p><p class="sop-p">0</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">15 July 2020</p><p class="sop-p">3</p><p class="sop-p">1</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Ooi Suat Hong</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">15 Disember</p><p class="sop-p">2020</p><p class="sop-p">4</p><p class="sop-p">0</p><p class="sop-p">Gopinatha</p><p class="sop-p">Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">Wan Nurul Aina</p><p class="sop-p">Mior Abdullah</p><p class="sop-p">1 November</p><p class="sop-p">2022</p><p class="sop-p">5</p><p class="sop-p">0</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">1 April 2024</p><p class="sop-p">5</p><p class="sop-p">1</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">1 Julai 2024</p><p class="sop-p">5</p><p class="sop-p">2</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">2 Januari 2025</p><p class="sop-p">5</p><p class="sop-p">3</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">23 Jun 2025</p><p class="sop-p">5</p><p class="sop-p">4</p><p class="sop-p">Leong Lip Wai</p><p class="sop-p">Nur Syazana</p><p class="sop-p">Ahmad Nordin</p><p class="sop-p">Nor Izyani Hanafi</p><p class="sop-p">13 Ogos 2025</p><p class="sop-p">6</p><p class="sop-p">0</p><p class="sop-p">Nurul Nadiah Noh</p><p class="sop-p">Gopinatha Ganesh</p><p class="sop-p">Ida Syazrina</p><p class="sop-p">Ibrahim</p><p class="sop-p">10 April 2026</p><p class="sop-p">REFERENCE</p><p class="sop-p">Document No.</p><p class="sop-p">Title</p><p class="sop-p">Standard Operating Procedure for HPLC Agilent</p><p class="sop-p">PKKK/300/KOS/013</p><p class="sop-p">Standard Operating Procedure for HPLC Shimadzu Series LC-</p><p class="sop-p">20AT</p><p class="sop-p">Journal of Food and Drug Analysis, Vol.12,No.1,2004</p><p class="sop-p">AMENDMENT:</p><p class="sop-p">This procedure is a new document in line with upgrading the institution’s certification to ISO</p><p class="sop-p">9001:2015 version and renaming of the institution from National Pharmaceutical Control</p><p class="sop-p">Bureau (NPCB) to National Pharmaceutical Regulatory Agency (NPRA). Therefore, the</p><p class="sop-p">original document is obsolete and this document is published as Issue 1.</p><p class="sop-p">HISTORY OF REVISION :</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">2  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">Issue 2 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update on document number from PKK/200/KOS/019 to PKK/200/HMS/007</p><p class="sop-p">ii.</p><p class="sop-p">Update on effective date from 15 November 2016 to 10 February 2020</p><p class="sop-p">iii.</p><p class="sop-p">Update on responsibility.</p><p class="sop-p">Issue 3 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Document change from testing procedure PKK/200/HMS/007 to work instruction</p><p class="sop-p">PKK/300/HMS/062</p><p class="sop-p">Issue 3 Revision 1 :</p><p class="sop-p">i.</p><p class="sop-p">Update on name of agency from National Pharmaceutical Regulatory Agency</p><p class="sop-p">(NPRA) to Bahagian Regulatori Farmasi Negara (NPRA)</p><p class="sop-p">Issue 4 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update title of document to Screening for Identification of Hydroquinone in Cosmetic</p><p class="sop-p">Products using HPLC technique</p><p class="sop-p">ii.</p><p class="sop-p">Update document number from PKK/300/HMS/062 to PKKK/300/HMS/062</p><p class="sop-p">iii.</p><p class="sop-p">Update paragraph 1.0 Objective</p><p class="sop-p">iv.</p><p class="sop-p">Update paragraph 2.0 Scope</p><p class="sop-p">v.</p><p class="sop-p">Update paragraph 3.0 Definition</p><p class="sop-p">vi.</p><p class="sop-p">Update paragraph 4.0 Flow Chart</p><p class="sop-p">vii.</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">viii.</p><p class="sop-p">Update paragraph 6.0 Procedure</p><p class="sop-p">ix.</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">x.</p><p class="sop-p">Update paragraph 8.0 Attachments</p><p class="sop-p">Issue 5 Revision 0 :</p><p class="sop-p">i.</p><p class="sop-p">Update document number from PKKK/300/HMS/062 to PKKK/300/KOS/019</p><p class="sop-p">ii.</p><p class="sop-p">Update paragraph 5.0 Responsibility</p><p class="sop-p">iii.</p><p class="sop-p">Update paragraph 7.0 Quality Records</p><p class="sop-p">Issue 5 Revision 1 :</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.4.2</p><p class="sop-p">ii.</p><p class="sop-p">Update paragraph 6.5.2 (a)</p><p class="sop-p">Issue 5 Revision 2:</p><p class="sop-p">i.</p><p class="sop-p">Amend document number from PKKK/300/HMS/053 to PKKK/300/KOS/013 and add</p><p class="sop-p">information in reference</p><p class="sop-p">ii.</p><p class="sop-p">Amend paragraph 5.0 Responsibility</p><p class="sop-p">iii.</p><p class="sop-p">Amend paragraph 6.0 Procedure</p><p class="sop-p">iv.</p><p class="sop-p">Omit flow chart in title Summary</p><p class="sop-p">Issue 5 Revision 3:</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.3.2 and 6.3.3</p><p class="sop-p">Issue 5 Revision 4:</p><p class="sop-p">i.</p><p class="sop-p">Update paragraph 6.5</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">3  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">Issue 5 Revision 4:</p><p class="sop-p">i.</p><p class="sop-p">Update effective date from 13 August 2025 to 10 April 2026</p><p class="sop-p">ii. Amend document number from PKKK/300/KOS/013 to PKKK/300/UP/050</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-1" class="sop-step-label">
+                      <strong>1.0</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Objective</p><p class="sop-p"> The test is performed to identify the presence of Hydroquinone in cosmetic cream</p><p class="sop-p">products by using HPLC.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-2" class="sop-step-label">
+                      <strong>2.0</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Scope</p><p class="sop-p"> The screening method is used for identification of Hydroquinone in cosmetic</p><p class="sop-p">cream products received from customers such as Surveillance &amp; Complaint</p><p class="sop-p">Section, Pharmacy Enforcement and others.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-3" class="sop-step-label">
+                      <strong>3.0      Definition</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">IQC – Internal Quality Control</p><p class="sop-p">LOD – Limit of Detection</p><p class="sop-p">OOS – Out of Specification</p><p class="sop-p">Blank sample - Sample which has been tested before and does not contain</p><p class="sop-p">Hydroquinone</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-4" class="sop-step-label">
+                      <strong>4.0</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Flow Chart</p><p class="sop-p">None</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-5" class="sop-step-label">
+                      <strong>5.0</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Responsibility</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-6" class="sop-step-label">
+                      <strong>5.1</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Head of Section</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-7" class="sop-step-label">
+                      <strong>5.1.1 Check and approve investigational reports and test results that fail to</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">comply with specification.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-8" class="sop-step-label">
+                      <strong>5.2</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Pharmacist in charge</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-9" class="sop-step-label">
+                      <strong>5.2.1 Ensure the testing for identification of Hydroquinone conforms to the</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">procedure.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-10" class="sop-step-label">
+                      <strong>5.2.2 Check and approve test results that comply with specification.</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-11" class="sop-step-label">
+                      <strong>5.2.3 Check investigational report for sample that does not comply with the</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">specification.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-12" class="sop-step-label">
+                      <strong>5.3</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Pharmacist</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-13" class="sop-step-label">
+                      <strong>5.3.1</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Supervise testing conducted by the analysts.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-14" class="sop-step-label">
+                      <strong>5.3.2</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Check test results and key in testing results in QUEST system.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-15" class="sop-step-label">
+                      <strong>5.3.3 Conduct OOS investigation and prepare OOS report for sample that</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">does not comply with the specification.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-16" class="sop-step-label">
+                      <strong>5.4</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Analysts</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-17" class="sop-step-label">
+                      <strong>5.4.1</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Perform sample testing according to the approved procedure</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">4  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-18" class="sop-step-label">
+                      <strong>5.4.2</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Prepare test reports</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">6.0 Procedure</div>
+        <div class="sop-section-block" id="sec-2">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 6.0 Procedure
+          </div>
           <div class="sop-sec-content">
-            <div class="sop-substep"><strong>6.1 Equipment / Material</strong></div><p class="sop-p"> High Pressure Liquid Chromatograph with photo diode array detector</p><p class="sop-p"> Ultrasonic bath</p><p class="sop-p"> 20 mL Volumetric flasks</p><p class="sop-p"> 50 mL capped Erlenmeyer flasks</p><p class="sop-p"> Measuring cylinder</p><p class="sop-p"> Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p"> Methanol (HPLC grade)</p><p class="sop-p"> Potassium Dihydrogen Phosphate (KH2PO4)</p><p class="sop-p"> Water (Ultrapure water, 18 mega ohm)</p><p class="sop-p"> Orthophosphoric acid 85% (H3PO4)</p><p class="sop-p"> Diluent: 0.05 M Phosphate Buffer Solution pH 2.5</p><p class="sop-p"> Reference material: Hydroquinone Reference Standard</p><div class="sop-substep"><strong>6.2 Chromatographic Parameters</strong></div><p class="sop-p">  Column</p><p class="sop-p">: C18 (Cosmosil 5 C18 AR-II), 250 mm x 4.6 mm i.d., 5 µm</p><p class="sop-p">  System                 :  Isocratic</p><p class="sop-p">  Mobile phase</p><p class="sop-p">:  0.05M Phosphate buffer solution pH 2.5/ methanol with</p><p class="sop-p">99:1 (v/v)</p><p class="sop-p">  Temperature</p><p class="sop-p">:  30 oC</p><p class="sop-p">  Flow rate</p><p class="sop-p">:  0.9 mL/min</p><p class="sop-p">  Detection</p><p class="sop-p">: UV, 280 nm</p><p class="sop-p">  Injection volume</p><p class="sop-p">: 20 L</p><div class="sop-substep"><strong>6.3 Preparation of Mobile Phase &amp; Standard Solution</strong></div><div class="sop-substep"><strong>6.31</strong></div><div class="sop-substep"><strong>0.05 M Phosphate Buffer Solution pH 2.5 Preparation</strong></div><p class="sop-p">Weigh 13.685 g Potassium Dihydrogen Phosphate (KH2PO4) into a 500 mL</p><p class="sop-p">beaker and dissolve it with 300 mL of water.  Transfer the solution into a 2 L</p><p class="sop-p">beaker. Make up to volume with water. Adjust the pH to 2.5 with</p><p class="sop-p">Orthophosphoric acid.</p><div class="sop-substep"><strong>6.3.2 Reference Standard Stock Solution Preparation</strong></div><p class="sop-p">Weigh approximately 2.5 mg of the Hydroquinone Reference Standard and</p><p class="sop-p">make up to volume 50 mL with diluent. (0.05 mg/mL of Hydroquinone).</p><p class="sop-p">Sonicate until it dissolves in diluent before injecting it into the HPLC.</p><p class="sop-p">Note : The reference standard stock solution is stable for 2 months when kept</p><p class="sop-p">in temperature between 2-8 °C</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">5  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><div class="sop-substep"><strong>6.3.3 Reference Standard Working Solution Preparation</strong></div><p class="sop-p">Pipette 10 mL of Hydroquinone stock solution, make up to volume 20 mL with</p><p class="sop-p">diluent. (0.025 mg/mL of Hydroquinone). Filter the solution before injecting</p><p class="sop-p">into the HPLC.</p><p class="sop-p">Note : The reference standard working solution is stable for 2 months when</p><p class="sop-p">kept in temperature between 2-8 °C</p><div class="sop-substep"><strong>6.4 Preparation of Limit of Detection (LOD) Solution &amp; Sample</strong></div><div class="sop-substep"><strong>6.4.1 LOD Solution Preparation</strong></div><p class="sop-p">Pipette 200 µL of Hydroquinone stock solution to 0.5 g of blank sample and</p><p class="sop-p">make up to volume 20 mL with diluent. (0.0005 mg/mL or 0.002 %w/w).</p><p class="sop-p">Sonicate for 30 minutes.  Filter the solution before injecting into the HPLC.</p><p class="sop-p">Note: The weight of reference standard can be modified to minimize the usage of the</p><p class="sop-p">reference standard.</p><div class="sop-substep"><strong>6.4.2 Sample Preparation</strong></div><p class="sop-p">Weigh approximately 0.5 g of the sample into a 50 mL capped Erlenmeyer</p><p class="sop-p">flask. Measure 20 mL of diluent using measuring cylinder and pour into</p><p class="sop-p">Erlenmeyer flask. Sonicate for 30 minutes.  Filter the solution before injecting</p><p class="sop-p">into the HPLC.</p><div class="sop-substep"><strong>6.5 Injection Sequence</strong></div><p class="sop-p">No. of</p><p class="sop-p">Injection</p><p class="sop-p">Injection ID</p><p class="sop-p">Run time (min)</p><p class="sop-p">1</p><p class="sop-p">Blank / diluent</p><p class="sop-p">20</p><p class="sop-p">2</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">3</p><p class="sop-p">Reference standard</p><p class="sop-p">working solution</p><p class="sop-p">(Check for SST)</p><p class="sop-p">20</p><p class="sop-p">4</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">9</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">10</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">11</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">15</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">16</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">6  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><div class="sop-substep"><strong>6.6 Acceptance Criteria</strong></div><div class="sop-substep"><strong>6.6.1 System Suitability Test (SST) using reference working solution (6.3.3)</strong></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>i) Tailing factor should be NMT 2.0</span></div><p class="sop-p">ii) Theoretical plates should be NLT 1500</p><div class="sop-substep"><strong>6.6.2 Internal Quality Control (IQC) Check</strong></div><p class="sop-p">LOD solution (6.4.1) is injected in every 5 samples and at the end of analysis</p><p class="sop-p">according to its respective dosage form. Percentage difference of retention</p><p class="sop-p">time for LOD Solution is calculated by taking the retention time of before and</p><p class="sop-p">end of LOD Solution injected in every batch of 5 samples/end of analysis. The</p><p class="sop-p">percentage difference of retention time for LOD Solution should not be more</p><p class="sop-p">than 3 %.</p><div class="sop-substep"><strong>6.7 Results Interpretation</strong></div><div class="sop-substep"><strong>6.7.1 Compare the retention time, peak purity and spectrum obtained from the</strong></div><p class="sop-p">sample chromatogram with that of Hydroquinone working standards</p><p class="sop-p">chromatogram.</p><div class="sop-substep"><strong>6.7.2 The sample is positive for Hydroquinone when:</strong></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>a) The retention time for sample is similar to Hydroquinone working standard</span></div><p class="sop-p">solution.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>b) The peak area of sample is more than the peak area of LOD solution.</span></div><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>c) The spectrum is identical to the spectrum of Hydroquinone working</span></div><p class="sop-p">standard.</p><div class="sop-list-item"><span class="sop-bullet">▹</span> <span>d) Peak purity index close to 1.0</span></div>
+            
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-19" class="sop-step-label">
+                      <strong>6.1 Equipment / Material</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p"> High Pressure Liquid Chromatograph with photo diode array detector</p><p class="sop-p"> Ultrasonic bath</p><p class="sop-p"> <span class="kw-vol">20 mL</span> Volumetric flasks</p><p class="sop-p"> <span class="kw-vol">50 mL</span> capped Erlenmeyer flasks</p><p class="sop-p"> Measuring cylinder</p><p class="sop-p"> Nylon filter, 47 mm diameter, 0.45 µm pore size or equivalent</p><p class="sop-p"> Methanol (HPLC grade)</p><p class="sop-p"> Potassium Dihydrogen Phosphate (KH2PO4)</p><p class="sop-p"> Water (Ultrapure water, 18 mega ohm)</p><p class="sop-p"> Orthophosphoric acid 85% (H3PO4)</p><p class="sop-p"> Diluent: 0.05 M Phosphate Buffer Solution <span class="kw-ph">pH 2.5</span></p><p class="sop-p"> Reference material: Hydroquinone Reference Standard</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-20" class="sop-step-label">
+                      <strong>6.2 Chromatographic Parameters</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">  Column</p><p class="sop-p">: C18 (Cosmosil 5 C18 AR-II), 250 mm x 4.6 mm i.d., 5 µm</p><p class="sop-p">  System                 :  Isocratic</p><p class="sop-p">  Mobile phase</p><p class="sop-p">:  0.05M Phosphate buffer solution <span class="kw-ph">pH 2.5</span>/ methanol with</p><p class="sop-p">99:1 (v/v)</p><p class="sop-p">  Temperature</p><p class="sop-p">:  30 oC</p><p class="sop-p">  Flow rate</p><p class="sop-p">:  <span class="kw-flow"><span class="kw-vol">0.9 mL</span>/min</span></p><p class="sop-p">  Detection</p><p class="sop-p">: UV, <span class="kw-wave">280 nm</span></p><p class="sop-p">  Injection volume</p><p class="sop-p">: 20 L</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-21" class="sop-step-label">
+                      <strong>6.3 Preparation of Mobile Phase &amp; Standard Solution</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-22" class="sop-step-label">
+                      <strong>6.31</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-23" class="sop-step-label">
+                      <strong>0.05 M Phosphate Buffer Solution pH 2.5 Preparation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Weigh <span class="kw-wt">13.685 g</span> Potassium Dihydrogen Phosphate (KH2PO4) into a <span class="kw-vol">500 mL</span></p><p class="sop-p">beaker and dissolve it with <span class="kw-vol">300 mL</span> of water.  Transfer the solution into a <span class="kw-vol">2 L</span></p><p class="sop-p">beaker. Make up to volume with water. Adjust the pH to 2.5 with</p><p class="sop-p">Orthophosphoric acid.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-24" class="sop-step-label">
+                      <strong>6.3.2 Reference Standard Stock Solution Preparation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Weigh approximately <span class="kw-wt">2.5 mg</span> of the Hydroquinone Reference Standard and</p><p class="sop-p">make up to volume <span class="kw-vol">50 mL</span> with diluent. (<span class="kw-wt">0.05 mg</span>/mL of Hydroquinone).</p><p class="sop-p">Sonicate until it dissolves in diluent before injecting it into the HPLC.</p><p class="sop-p">Note : The reference standard stock solution is stable for 2 months when kept</p><p class="sop-p">in temperature between 2-<span class="kw-temp">8 °C</span></p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">5  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-25" class="sop-step-label">
+                      <strong>6.3.3 Reference Standard Working Solution Preparation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Pipette <span class="kw-vol">10 mL</span> of Hydroquinone stock solution, make up to volume <span class="kw-vol">20 mL</span> with</p><p class="sop-p">diluent. (<span class="kw-wt">0.025 mg</span>/mL of Hydroquinone). Filter the solution before injecting</p><p class="sop-p">into the HPLC.</p><p class="sop-p">Note : The reference standard working solution is stable for 2 months when</p><p class="sop-p">kept in temperature between 2-<span class="kw-temp">8 °C</span></p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-26" class="sop-step-label">
+                      <strong>6.4 Preparation of Limit of Detection (LOD) Solution &amp; Sample</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-27" class="sop-step-label">
+                      <strong>6.4.1 LOD Solution Preparation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Pipette <span class="kw-vol">200 µL</span> of Hydroquinone stock solution to <span class="kw-wt">0.5 g</span> of blank sample and</p><p class="sop-p">make up to volume <span class="kw-vol">20 mL</span> with diluent. (<span class="kw-wt">0.0005 mg</span>/mL or 0.002 %w/w).</p><p class="sop-p">Sonicate for <span class="kw-time">30 minutes</span>.  Filter the solution before injecting into the HPLC.</p><p class="sop-p">Note: The weight of reference standard can be modified to minimize the usage of the</p><p class="sop-p">reference standard.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-28" class="sop-step-label">
+                      <strong>6.4.2 Sample Preparation</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">Weigh approximately <span class="kw-wt">0.5 g</span> of the sample into a <span class="kw-vol">50 mL</span> capped Erlenmeyer</p><p class="sop-p">flask. Measure <span class="kw-vol">20 mL</span> of diluent using measuring cylinder and pour into</p><p class="sop-p">Erlenmeyer flask. Sonicate for <span class="kw-time">30 minutes</span>.  Filter the solution before injecting</p><p class="sop-p">into the HPLC.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-29" class="sop-step-label">
+                      <strong>6.5 Injection Sequence</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">No. of</p><p class="sop-p">Injection</p><p class="sop-p">Injection ID</p><p class="sop-p">Run time (min)</p><p class="sop-p">1</p><p class="sop-p">Blank / diluent</p><p class="sop-p">20</p><p class="sop-p">2</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">3</p><p class="sop-p">Reference standard</p><p class="sop-p">working solution</p><p class="sop-p">(Check for SST)</p><p class="sop-p">20</p><p class="sop-p">4</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">9</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">10</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">11</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">15</p><p class="sop-p">Sample solution</p><p class="sop-p">20</p><p class="sop-p">16</p><p class="sop-p">LOD solution</p><p class="sop-p">20</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">6  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-30" class="sop-step-label">
+                      <strong>6.6 Acceptance Criteria</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-31" class="sop-step-label">
+                      <strong>6.6.1 System Suitability Test (SST) using reference working solution (6.3.3)</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">i) Tailing factor should be NMT 2.0</span>
+                </div>
+                <p class="sop-p">ii) Theoretical plates should be NLT 1500</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-32" class="sop-step-label">
+                      <strong>6.6.2 Internal Quality Control (IQC) Check</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">LOD solution (6.4.1) is injected in every 5 samples and at the end of analysis</p><p class="sop-p">according to its respective dosage form. Percentage difference of retention</p><p class="sop-p">time for LOD Solution is calculated by taking the retention time of before and</p><p class="sop-p">end of LOD Solution injected in every batch of 5 samples/end of analysis. The</p><p class="sop-p">percentage difference of retention time for LOD Solution should not be more</p><p class="sop-p">than 3 %.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-33" class="sop-step-label">
+                      <strong>6.7 Results Interpretation</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-34" class="sop-step-label">
+                      <strong>6.7.1 Compare the retention time, peak purity and spectrum obtained from the</strong>
+                    </label>
+                  </div>
+                </div>
+                <p class="sop-p">sample chromatogram with that of Hydroquinone working standards</p><p class="sop-p">chromatogram.</p>
+                <div class="sop-step-box">
+                  <div class="step-check-wrap">
+                    <input type="checkbox" id="step-050-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/050')">
+                    <label for="step-050-35" class="sop-step-label">
+                      <strong>6.7.2 The sample is positive for Hydroquinone when:</strong>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">a) The retention time for sample is similar to Hydroquinone working standard</span>
+                </div>
+                <p class="sop-p">solution.</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">b) The peak area of sample is more than the peak area of LOD solution.</span>
+                </div>
+                
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">c) The spectrum is identical to the spectrum of Hydroquinone working</span>
+                </div>
+                <p class="sop-p">standard.</p>
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">d) Peak purity index close to 1.0</span>
+                </div>
+                
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">7.0 Quality Record</div>
+        <div class="sop-section-block" id="sec-3">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 7.0 Quality Record
+          </div>
           <div class="sop-sec-content">
-            <div class="sop-list-item"><span class="sop-bullet">▹</span> <span>i)</span></div><p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah HPLC : KOS/X004</p><p class="sop-p">ii)</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi : KOS/002A</p><p class="sop-p">iii)</p><p class="sop-p">Borang Keputusan Ujian Sampel Kosmetik</p><p class="sop-p">: KOS/X009</p><p class="sop-p">% Difference =         Difference in retention time of 2 LOD Solution               x 100</p><p class="sop-p">Average of retention time of the respective 2 LOD Solution</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">7  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
+            
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">i)</span>
+                </div>
+                <p class="sop-p">Borang Tatacara Pengujian menggunakan kaedah HPLC : KOS/X004</p><p class="sop-p">ii)</p><p class="sop-p">Laporan Siasatan Sampel Tidak Lulus Ujian Kromatografi : KOS/002A</p><p class="sop-p">iii)</p><p class="sop-p">Borang Keputusan Ujian Sampel Kosmetik</p><p class="sop-p">: KOS/X009</p><p class="sop-p">% Difference =         Difference in retention time of 2 LOD Solution               x 100</p><p class="sop-p">Average of retention time of the respective 2 LOD Solution</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">7  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
           </div>
         </div>
         
-        <div class="sop-section-block">
-          <div class="sop-sec-title">8.0 Attachments</div>
+        <div class="sop-section-block" id="sec-4">
+          <div class="sop-sec-title">
+            <span class="sec-anchor-dot">◈</span> 8.0 Attachments
+          </div>
           <div class="sop-sec-content">
-            <div class="sop-list-item"><span class="sop-bullet">▹</span> <span>i) Example of system suitability test for Hydroquinone working standard</span></div><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">8  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">ii)</p><p class="sop-p">Example of chromatogram for diluent, LOD solution, Hydroquinone working</p><p class="sop-p">standard &amp; sample solution</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">9  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">iii)</p><p class="sop-p">Example of peak purity &amp; spectrum  for Hydroquinone working standard</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">10  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">11  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">iv)</p><p class="sop-p">Example of peak purity &amp; spectrum for Hydroquinone positive sample</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">12  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
+            
+                <div class="sop-list-item">
+                  <span class="sop-bullet">▹</span>
+                  <span class="sop-list-text">i) Example of system suitability test for Hydroquinone working standard</span>
+                </div>
+                <p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">8  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">ii)</p><p class="sop-p">Example of chromatogram for diluent, LOD solution, Hydroquinone working</p><p class="sop-p">standard &amp; sample solution</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">9  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">iii)</p><p class="sop-p">Example of peak purity &amp; spectrum  for Hydroquinone working standard</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">10  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">11  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p><p class="sop-p">iv)</p><p class="sop-p">Example of peak purity &amp; spectrum for Hydroquinone positive sample</p><p class="sop-p">NPRA</p><p class="sop-p">Document No:</p><p class="sop-p">PKKK/300/UP/050</p><p class="sop-p">Screening for Identification of</p><p class="sop-p">Hydroquinone in Cosmetic Products</p><p class="sop-p">using HPLC Technique</p><p class="sop-p">12  / 12</p><p class="sop-p">__________________________________________________________________________________________________________</p><p class="sop-p">CHECK ‘MASTER LIST’</p><p class="sop-p">ENSURE THAT THIS DOCUMENT IS THE CORRECT VERSION PRIOR TO USE</p>
           </div>
         </div>
         
@@ -147,6 +586,58 @@
   </div>
 </div>
 
-<script src="../steroid-hplc.js"></script>
+<script>
+  function initTheme() {
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = saved === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    const txt = document.getElementById('themeTxt');
+    if (txt) txt.textContent = next === 'light' ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function onStepCheckChange(docCode) {
+    const checks = document.querySelectorAll('.sop-task-check');
+    const checked = Array.from(checks).filter(c => c.checked).length;
+    const total = checks.length;
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    
+    document.getElementById('pBarFill').style.width = pct + '%';
+    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    
+    const state = Array.from(checks).map(c => c.checked);
+    localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
+  }
+
+  function loadChecklist(docCode) {
+    const saved = localStorage.getItem('sop_check_' + docCode);
+    if (!saved) return;
+    try {
+      const state = JSON.parse(saved);
+      const checks = document.querySelectorAll('.sop-task-check');
+      checks.forEach((c, idx) => {
+        if (state[idx]) c.checked = true;
+      });
+      onStepCheckChange(docCode);
+    } catch (e) {}
+  }
+
+  function resetChecklist(docCode) {
+    localStorage.removeItem('sop_check_' + docCode);
+    document.querySelectorAll('.sop-task-check').forEach(c => c.checked = false);
+    onStepCheckChange(docCode);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    loadChecklist('PKKK/300/UP/050');
+  });
+</script>
 </body>
 </html>
