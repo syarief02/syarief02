@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adulteration Screening Method Guides — Unit Penyaringan | NPRA</title>
-<meta name="description" content="Step-by-step analysis SOP guides for PPI (Omeprazole/Lansoprazole), Domperidone HPLC, EG/DEG GCMS, and Steroids per PKKK/300/UP/021, 025, 027, 034.">
+<meta name="description" content="Step-by-step analysis SOP guides for PPI (Omeprazole/Lansoprazole), Domperidone HPLC, EG/DEG GCMS, Steroids, Hydroquinone, and Lovastatin per PKKK/300/UP and PKKK/200/UP.">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +33,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         Lovastatin Suite
       </a>
+      <a href="qc-balance.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        QC Balance Chart
+      </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
       <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
@@ -47,7 +51,7 @@
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti (PKKK)</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
     <h1>Adulteration Screening <span class="g">Analysis Guides</span></h1>
-    <div class="hero-sub">Complete Step-by-Step SOP Workflows: PPI · Domperidone · EG/DEG GCMS · Steroids</div>
+    <div class="hero-sub">Complete Step-by-Step SOP Workflows: PPI · Domperidone · EG/DEG GCMS · Steroids · Hydroquinone · Lovastatin</div>
     <p class="hero-desc">
       Execution-ready operating procedures covering sample preparation, extraction protocols, chromatographic & spectrometric methods, SST verification criteria, batch sequences, and official reporting.
     </p>
@@ -59,6 +63,8 @@
     <button class="m-pill-btn" onclick="switchMethod('domp')" id="mBtn-domp">🧪 Domperidone (PKKK/300/UP/027)</button>
     <button class="m-pill-btn" onclick="switchMethod('egdeg')" id="mBtn-egdeg">🧬 EG & DEG in Syrups (PKKK/300/UP/034)</button>
     <button class="m-pill-btn" onclick="switchMethod('steroid')" id="mBtn-steroid">🔬 Steroids 8-Mix (PKKK/300/UP/021)</button>
+    <button class="m-pill-btn" onclick="switchMethod('hq')" id="mBtn-hq">🧴 Hydroquinone Cosmetics (PKKK/200/UP/001)</button>
+    <button class="m-pill-btn" onclick="switchMethod('lova')" id="mBtn-lova">🌾 Lovastatin Assay (PKKK/200/UP/002)</button>
   </div>
 
   <!-- METHOD 1: PROTON PUMP INHIBITORS (UP/025) -->
@@ -88,22 +94,22 @@
           <strong>Panduan Pengendalian Alat &amp; Radas (Instrument References):</strong>
         </div>
         <div class="cross-grid">
-          <a href="hplc-guide.html" class="inst-link-card" target="_blank">
+          <a href="hplc-guide.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/011 · HPLC 3 &amp; 4</div>
             <div class="inst-name">Shimadzu Prominence-i Operating Guide</div>
             <span class="inst-badge">Buka Panduan Alat →</span>
           </a>
-          <a href="rrlc-guide.html" class="inst-link-card" target="_blank">
+          <a href="rrlc-guide.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/003 · RRLC HP1200</div>
             <div class="inst-name">Agilent 1200 Series RRLC Guide</div>
             <span class="inst-badge">Buka Panduan Alat →</span>
           </a>
-          <a href="sop/sop-300-up-008.html" class="inst-link-card" target="_blank">
+          <a href="sop/sop-300-up-008.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/008 · Buffer pH 7.6</div>
             <div class="inst-name">pH Meter Model FiveEasy Plus</div>
             <span class="inst-badge">Buka SOP pH Meter →</span>
           </a>
-          <a href="sop/sop-300-up-005.html" class="inst-link-card" target="_blank">
+          <a href="sop/sop-300-up-005.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/005 · Neraca Analitikal</div>
             <div class="inst-name">Alat Timbang Precisa XT 120A</div>
             <span class="inst-badge">Buka SOP Alat Timbang →</span>
@@ -146,7 +152,7 @@
           <div class="acc-body">
             <p>• <strong>SST</strong>: Retention Time %RSD ≤ 2.0%, Tailing Factor T ≤ 2.0, Theoretical Plates N ≥ 2000.</p>
             <p>• <strong>Identification</strong>: Positive if Sample RT matches Standard RT (±2%) AND PDA UV spectrum (190–400 nm) similarity index > 0.999.</p>
-            <p>• <strong>Confirmation</strong>: Fresh re-extraction by Second Analyst on separate date + GCMS confirmation (`PKKK/300/UP/004` or `017`).</p>
+            <p>• <strong>Confirmation</strong>: Fresh re-extraction by Second Analyst on separate date + GCMS confirmation (<code>PKKK/300/UP/004</code> or <code>017</code>).</p>
           </div>
         </div>
       </div>
@@ -180,22 +186,22 @@
           <strong>Panduan Pengendalian Alat &amp; Radas (Instrument References):</strong>
         </div>
         <div class="cross-grid">
-          <a href="hplc-guide.html" class="inst-link-card" target="_blank">
+          <a href="hplc-guide.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/011 · HPLC 3 &amp; 4</div>
             <div class="inst-name">Shimadzu Prominence-i Operating Guide</div>
             <span class="inst-badge">Buka Panduan Alat →</span>
           </a>
-          <a href="rrlc-guide.html" class="inst-link-card" target="_blank">
+          <a href="rrlc-guide.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/003 · RRLC HP1200</div>
             <div class="inst-name">Agilent 1200 Series RRLC Guide</div>
             <span class="inst-badge">Buka Panduan Alat →</span>
           </a>
-          <a href="sop/sop-300-up-008.html" class="inst-link-card" target="_blank">
+          <a href="sop/sop-300-up-008.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/008 · Buffer pH 3.0</div>
             <div class="inst-name">pH Meter Model FiveEasy Plus</div>
             <span class="inst-badge">Buka SOP pH Meter →</span>
           </a>
-          <a href="sop/sop-300-up-005.html" class="inst-link-card" target="_blank">
+          <a href="sop/sop-300-up-005.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/005 · Neraca Analitikal</div>
             <div class="inst-name">Alat Timbang Precisa XT 120A</div>
             <span class="inst-badge">Buka SOP Alat Timbang →</span>
@@ -281,22 +287,22 @@
           <strong>Panduan Pengendalian Alat GC-MS &amp; Radas (Instrument References):</strong>
         </div>
         <div class="cross-grid">
-          <a href="sop/sop-300-up-040.html" class="inst-link-card" target="_blank">
+          <a href="sop/sop-300-up-040.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/040 · GC-MS 1</div>
             <div class="inst-name">Shimadzu QP2010 Ultra Manual (COAST SIM)</div>
             <span class="inst-badge">Buka Manual QP2010 →</span>
           </a>
-          <a href="gcms.html" class="inst-link-card" target="_blank">
+          <a href="gcms.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/017 · GC-MS 3</div>
             <div class="inst-name">Agilent 8890 GC-MS Operation Guide</div>
             <span class="inst-badge">Buka Panduan Agilent →</span>
           </a>
-          <a href="gcms-analysis.html" class="inst-link-card" target="_blank">
+          <a href="gcms-analysis.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/018 · Pemprosesan Data</div>
             <div class="inst-name">GC-MS Data Analysis &amp; RTE Integration</div>
             <span class="inst-badge">Buka Panduan Analisis →</span>
           </a>
-          <a href="sop/sop-300-up-058.html" class="inst-link-card" target="_blank">
+          <a href="sop/sop-300-up-058.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/058 · Sonikasi Sirap</div>
             <div class="inst-name">Ultrasonic Bath Branson 8210 (5 min)</div>
             <span class="inst-badge">Buka SOP Sonikator →</span>
@@ -348,10 +354,15 @@
         <div class="acc-item">
           <div class="acc-title">4. System Suitability & Assay Calculation Formula</div>
           <div class="acc-body">
-            <p>• <strong>SST (6 Injections of Level 3 Standard)</strong>: Peak Area %RSD ≤ 10.0%, Tailing Factor $T_f ≤ 2.5$, Theoretical Plates N ≥ 2000. LOD $S/N ≥ 3$, LOQ $S/N ≥ 10$.</p>
-            <p>• <strong>Assay Formula (% v/v)</strong>:</p>
-            Amount  (%v/v) = \frac{Concentration from GCMS  (µg/mL) × 10mL}{100 µL × 10^4 × Density of compound}
-            <p>• <strong>Compliance Limit</strong>: EG $≤ 0.10% v/v and DEG ≤ 0.10% v/v. If > 0.10% v/v ➔$ <strong>FAIL / OOS</strong>.</p>
+            <p>• <strong>SST (6 Injections of Level 3 Standard)</strong>: Peak Area %RSD ≤ 10.0%, Tailing Factor Tf ≤ 2.5, Theoretical Plates N ≥ 2000. LOD S/N ≥ 3, LOQ S/N ≥ 10.</p>
+            <div class="formula-box">
+              <span>Amount (%v/v) = </span>
+              <span class="math-fraction">
+                <span class="fraction-top">Concentration from GCMS (µg/mL) × 10 mL</span>
+                <span class="fraction-bot">100 µL × 10⁴ × Density of Compound (g/mL)</span>
+              </span>
+            </div>
+            <p>• <strong>Compliance Limit</strong>: EG ≤ 0.10% v/v and DEG ≤ 0.10% v/v. If > 0.10% v/v ➔ <strong>FAIL / OOS</strong>.</p>
           </div>
         </div>
       </div>
@@ -385,22 +396,22 @@
           <strong>Panduan Pengendalian Alat HPLC &amp; Radas (Instrument References):</strong>
         </div>
         <div class="cross-grid">
-          <a href="hplc-guide.html" class="inst-link-card" target="_blank">
+          <a href="hplc-guide.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/011 · HPLC 3 &amp; 4</div>
             <div class="inst-name">Shimadzu Prominence-i Operating Guide</div>
             <span class="inst-badge">Buka Panduan Alat →</span>
           </a>
-          <a href="rrlc-guide.html" class="inst-link-card" target="_blank">
+          <a href="rrlc-guide.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/003 · RRLC HP1200</div>
             <div class="inst-name">Agilent 1200 Series RRLC Guide</div>
             <span class="inst-badge">Buka Panduan Alat →</span>
           </a>
-          <a href="sop/sop-300-up-014.html" class="inst-link-card" target="_blank">
+          <a href="sop/sop-300-up-014.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/014 · Ekstraksi</div>
             <div class="inst-name">Pengekstrakan Cecair-Cecair (LLE pH 7.0)</div>
             <span class="inst-badge">Buka SOP Pengekstrakan →</span>
           </a>
-          <a href="sop/sop-300-up-019.html" class="inst-link-card" target="_blank">
+          <a href="sop/sop-300-up-019.html" class="inst-link-card">
             <div class="inst-code">PKKK/300/UP/019 · Penyejatan</div>
             <div class="inst-name">Water bath Memmert WB 45</div>
             <span class="inst-badge">Buka SOP Waterbath →</span>
@@ -429,7 +440,156 @@
           <div class="acc-title">3. Positive Result Confirmation Protocol</div>
           <div class="acc-body">
             <p>• Positive match: Sample RT within ±2% of RS AND UV spectrum overlay similarity > 0.999.</p>
-            <p>• <strong>Mandatory 2nd Analyst Protocol</strong>: Second analyst extracts new sample on different date at pH 7.0 ➔ Confirmation on GCMS (`PKKK/300/UP/004` / `017`).</p>
+            <p>• <strong>Mandatory 2nd Analyst Protocol</strong>: Second analyst extracts new sample on different date at pH 7.0 ➔ Confirmation on GCMS (<code>PKKK/300/UP/004</code> / <code>017</code>).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHOD 5: HYDROQUINONE IN COSMETICS (UP/001 & UP/050) -->
+  <div id="method-hq" class="method-content">
+    <div class="guide-card">
+      <div class="card-top-bar">
+        <div>
+          <span class="badge badge-rose">HPLC · Isocratic ACM</span>
+          <h2>Hydroquinone in Cosmetic Creams &amp; Lotions Identification</h2>
+          <div class="code-ref">PKKK/200/UP/001 · PKKK/300/UP/050 · Borang UP/001B &amp; UP/X009</div>
+        </div>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-box"><span class="lbl">Column</span><strong>Cosmosil 5 C18 AR-II (250 × 4.6 mm, 5 µm)</strong></div>
+        <div class="spec-box"><span class="lbl">Mobile Phase</span><strong>Isocratic: 99% Phosphate Buffer pH 2.5 : 1% MeOH</strong></div>
+        <div class="spec-box"><span class="lbl">Flow & Temp</span><strong>0.9 mL/min @ 30 °C (Inj Vol: 20 µL)</strong></div>
+        <div class="spec-box"><span class="lbl">Detector</span><strong>PDA @ 280 nm (Scan 190–400 nm)</strong></div>
+        <div class="spec-box"><span class="lbl">Buffer Recipe</span><strong>0.05 M Phosphate Buffer: 6.8 g KH₂PO₄ in 1000 mL, pH 2.5 with H₃PO₄</strong></div>
+        <div class="spec-box"><span class="lbl">LOD & Limit</span><strong>LOD: 0.0005 mg/mL (0.002% w/w) · Banned in Cosmetics</strong></div>
+      </div>
+
+      <!-- Instrument Cross-Links -->
+      <div class="cross-link-container">
+        <div class="cross-header">
+          <span style="font-size:1.1rem">⚙️</span>
+          <strong>Panduan Pengendalian Alat &amp; Radas (Instrument References):</strong>
+        </div>
+        <div class="cross-grid">
+          <a href="hplc-guide.html" class="inst-link-card">
+            <div class="inst-code">PKKK/300/UP/011 · HPLC 3 &amp; 4</div>
+            <div class="inst-name">Shimadzu Prominence-i Operating Guide</div>
+            <span class="inst-badge">Buka Panduan Alat →</span>
+          </a>
+          <a href="hydroquinone-hplc.html" class="inst-link-card">
+            <div class="inst-code">PKKK/200/UP/001 · Kosmetik</div>
+            <div class="inst-name">Hydroquinone Standalone Guide</div>
+            <span class="inst-badge">Buka Panduan Penuh →</span>
+          </a>
+          <a href="sop/sop-300-up-008.html" class="inst-link-card">
+            <div class="inst-code">PKKK/300/UP/008 · Buffer pH 2.5</div>
+            <div class="inst-name">pH Meter Model FiveEasy Plus</div>
+            <span class="inst-badge">Buka SOP pH Meter →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="section-divider">STEP-BY-STEP PROCEDURE</div>
+
+      <div class="step-accordion">
+        <div class="acc-item">
+          <div class="acc-title">1. Cosmetic Extraction Protocol</div>
+          <div class="acc-body">
+            <p>• Accurately weigh <strong>1.0 g of cosmetic cream</strong> into a 50 mL centrifuge tube.</p>
+            <p>• Add <strong>20.0 mL of Methanol</strong>. Sonicate at 40 °C for 15 minutes to melt cream matrices. Cool to room temperature.</p>
+            <p>• Centrifuge at 3500 rpm for 10 minutes. Filter supernatant through 0.45 µm PTFE syringe filter into HPLC vial.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">2. SST & Identification Acceptance Criteria</div>
+          <div class="acc-body">
+            <p>• <strong>Retention Time</strong>: Hydroquinone elutes at ~5.5 – 6.5 minutes.</p>
+            <p>• <strong>SST</strong>: %RSD of 6 standard injections ≤ 2.0%, Tailing factor T ≤ 1.8.</p>
+            <p>• <strong>Identification</strong>: Sample RT matches Hydroquinone RS (±2%) with UV spectral purity similarity > 0.999.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHOD 6: LOVASTATIN ASSAY (UP/002) -->
+  <div id="method-lova" class="method-content">
+    <div class="guide-card">
+      <div class="card-top-bar">
+        <div>
+          <span class="badge badge-amber">HPLC · Quantitative Assay</span>
+          <h2>Determination of Lovastatin in Traditional Products</h2>
+          <div class="code-ref">PKKK/200/UP/002 · Fail Arahan Kerja F03 · Borang UP/008A–G</div>
+        </div>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-box"><span class="lbl">Column</span><strong>Thermo ODS Hypersil (200 × 4.6 mm, 5 µm)</strong></div>
+        <div class="spec-box"><span class="lbl">Mobile Phase</span><strong>Isocratic: 60% Acetonitrile : 40% 0.05% H₃PO₄ in Water</strong></div>
+        <div class="spec-box"><span class="lbl">Flow & Temp</span><strong>1.8 mL/min @ 45 °C (Inj Vol: 10 µL)</strong></div>
+        <div class="spec-box"><span class="lbl">Detector</span><strong>PDA / UV @ 238 nm (Run Time: 6.0 min)</strong></div>
+        <div class="spec-box"><span class="lbl">NPRA Limit</span><strong>≤ 1.00 % w/w AND ≤ 10.00 mg/day Daily Dose</strong></div>
+        <div class="spec-box"><span class="lbl">SST Precision</span><strong>%RSD ≤ 2.0% (6 replicate injections) · R² ≥ 0.999</strong></div>
+      </div>
+
+      <!-- Instrument Cross-Links -->
+      <div class="cross-link-container">
+        <div class="cross-header">
+          <span style="font-size:1.1rem">⚙️</span>
+          <strong>Panduan Pengendalian Alat &amp; Enjin Pengiraan:</strong>
+        </div>
+        <div class="cross-grid">
+          <a href="lovastatin.html" class="inst-link-card">
+            <div class="inst-code">Enjin Interaktif · UP/008A–G</div>
+            <div class="inst-name">Lovastatin Assay Suite &amp; Calculator</div>
+            <span class="inst-badge">Buka Enjin Pengiraan →</span>
+          </a>
+          <a href="hplc-guide.html" class="inst-link-card">
+            <div class="inst-code">PKKK/300/UP/011 · HPLC 3 &amp; 4</div>
+            <div class="inst-name">Shimadzu Prominence-i Operating Guide</div>
+            <span class="inst-badge">Buka Panduan Alat →</span>
+          </a>
+          <a href="sop/sop-300-up-005.html" class="inst-link-card">
+            <div class="inst-code">PKKK/300/UP/005 · Neraca Analitikal</div>
+            <div class="inst-name">Alat Timbang Precisa XT 120A</div>
+            <span class="inst-badge">Buka SOP Alat Timbang →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="section-divider">STEP-BY-STEP PROCEDURE</div>
+
+      <div class="step-accordion">
+        <div class="acc-item">
+          <div class="acc-title">1. Standard & Sample Preparation</div>
+          <div class="acc-body">
+            <p>• <strong>Stock Standard (100 µg/mL)</strong>: Accurately weigh 10.0 mg Lovastatin RS in 100 mL volumetric flask with ACN.</p>
+            <p>• <strong>Working Standard (20 µg/mL)</strong>: Dilute 5.0 mL stock to 25 mL with Acetonitrile.</p>
+            <p>• <strong>Sample Prep</strong>: Weigh accurately 20 pulverized tablets/capsules. Weigh portion equivalent to ~20 mg Lovastatin into 100 mL flask. Sonicate 20 min in ACN, filter 0.45 µm.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-title">2. Quantitative Calculation Formula</div>
+          <div class="acc-body">
+            <div class="formula-box">
+              <span>%w/w Lovastatin = </span>
+              <span class="math-fraction">
+                <span class="fraction-top">Sample Area × Std Conc (µg/mL) × Dilution (mL) × Purity (%)</span>
+                <span class="fraction-bot">Std Area × Sample Weight (mg) × 1000</span>
+              </span>
+            </div>
+            <div class="formula-box" style="margin-top:0.4rem">
+              <span>Daily Dose (mg/day) = </span>
+              <span class="math-fraction">
+                <span class="fraction-top">%w/w × Average Unit Weight (mg) × Daily Recommended Units</span>
+                <span class="fraction-bot">100</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -437,7 +597,7 @@
   </div>
 
   <div class="footer">
-    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+    Unit Penyaringan ◈ Seksyen Pengujian Produk &amp; Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
   </div>
 </div>
 

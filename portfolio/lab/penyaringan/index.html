@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unit Penyaringan — Digital Laboratory Hub | NPRA</title>
-<meta name="description" content="Pusat Rujukan Digital Unit Penyaringan, Pusat Kawalan Kualiti (PKKK), NPRA. Arahan Kerja 300, Panduan Pengendalian Alat, Kaedah Pengujian Adulterasi & Kalkulator Kualiti ISO/IEC 17025.">
+<meta name="description" content="Pusat Rujukan Digital Bersepadu Unit Penyaringan, Pusat Kawalan Kualiti (PKKK), NPRA. Merangkumi 64 Arahan Kerja 300, Panduan Pengendalian Alat Kromatografi & Spektrometri, Kaedah Pengujian Adulterasi, Enjin Pengiraan Kuantitatif, dan Kawalan Kualiti ISO/IEC 17025.">
 <link rel="icon" type="image/png" href="../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         SOP Matrix (64)
       </a>
+      <a href="screening-methods.html" class="ctrl-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        Kaedah Pengujian
+      </a>
       <a href="lovastatin.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         Lovastatin HPLC
@@ -46,7 +50,7 @@
       <button class="ctrl-btn" onclick="window.print()">
         🖨️ Cetak / Print
       </button>
-      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">
+      <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn" title="Tukar Tema (Alt+T)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <span id="themeTxt">Dark Mode</span>
       </button>
@@ -55,12 +59,15 @@
 
   <!-- Hero Header -->
   <div class="hero">
-    <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
-    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+    <div class="hero-badges">
+      <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti (PKKK)</div>
+      <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
+      <div class="hero-samm">🏆 SAMM ISO/IEC 17025 Accredited</div>
+    </div>
     <h1>Unit <span class="g">Penyaringan</span> Hub</h1>
     <div class="hero-sub">Pusat Rujukan Bersepadu: SOP 300, Panduan Alat, Pengujian Adulterasi & Kalkulator Kualiti</div>
     <p class="hero-desc">
-      Platform digital rasmi bagi operasi makmal penyaringan bahan terlarang. Merangkumi 64 Arahan Kerja (Level 300), panduan diagnostik alat (HPLC, GC-MS, LC-MS/MS), enjin pengiraan kuantitatif berautomasi, serta verifikasi kawalan kualiti Shewhart.
+      Platform digital rasmi bagi operasi makmal penyaringan bahan terlarang & kawalan kualiti farmaseutikal. Merangkumi 64 Arahan Kerja (Level 300), 2 Prosedur Kualiti Level 200, 61 Rekod Kualiti, manual diagnostik instrumen (HPLC, GC-MS, LC-MS/MS, Neraca), enjin pengiraan kuantitatif berautomasi, serta verifikasi kawalan kualiti Shewhart.
     </p>
 
     <!-- Quick Stats Bar -->
@@ -74,32 +81,537 @@
         <div class="stat-lbl">Rekod Kualiti</div>
       </div>
       <div class="stat-pill">
+        <div class="stat-val">2</div>
+        <div class="stat-lbl">Prosedur Level 200</div>
+      </div>
+      <div class="stat-pill">
         <div class="stat-val">8</div>
         <div class="stat-lbl">Kelas Adulterasi</div>
+      </div>
+      <div class="stat-pill">
+        <div class="stat-val">6</div>
+        <div class="stat-lbl">Instrumen Utama</div>
       </div>
       <div class="stat-pill">
         <div class="stat-val">100%</div>
         <div class="stat-lbl">ISO 17025 Ready</div>
       </div>
     </div>
+
+    <!-- Quick Action Shortcuts Bar -->
+    <div class="quick-action-bar">
+      <a href="#sop-jumper" class="qa-chip">⚡ Pintasan SOP (1–64)</a>
+      <a href="#hub-utilities" class="qa-chip" onclick="switchHubTool('calc', document.getElementById('btn-tool-calc'))">🧮 Enjin Pencairan &amp; Penimbal</a>
+      <a href="#hub-utilities" class="qa-chip" onclick="switchHubTool('adulterants', document.getElementById('btn-tool-adulterants'))">🔬 Matriks Sebatian Adulteran</a>
+      <a href="#hub-utilities" class="qa-chip" onclick="switchHubTool('fleet', document.getElementById('btn-tool-fleet'))">🏢 Status Alat Makmal</a>
+      <a href="#hub-utilities" class="qa-chip" onclick="switchHubTool('diag', document.getElementById('btn-tool-diag'))">🛠️ Diagnostik &amp; Troubleshooting</a>
+      <a href="#hub-utilities" class="qa-chip" onclick="switchHubTool('iso', document.getElementById('btn-tool-iso'))">📊 Piawaian ISO 17025</a>
+      <a href="#hub-utilities" class="qa-chip" onclick="switchHubTool('safety', document.getElementById('btn-tool-safety'))">🧪 Keselamatan &amp; Sisa Kimia</a>
+    </div>
+  </div>
+
+  <!-- Quick SOP Jumper Dropdown -->
+  <div class="sop-jumper-card" id="sop-jumper">
+    <div class="sop-jumper-label">
+      <span>⚡</span>
+      <span>Pintasan Pantas Arahan Kerja (AK 300 / SOP 200):</span>
+    </div>
+    <select id="sopSelect" class="sop-jumper-select">
+      <optgroup label="Prosedur Kualiti Level 200">
+        <option value="hydroquinone-hplc.html">PKKK/200/UP/001 — Hydroquinone in Cosmetics (HPLC)</option>
+        <option value="lovastatin.html">PKKK/200/UP/002 — Lovastatin in Traditional Products (HPLC)</option>
+      </optgroup>
+      <optgroup label="SOP Pengendalian Alat Utama (Level 300)">
+        <option value="sop/sop-300-up-011.html">PKKK/300/UP/011 — HPLC Shimadzu Prominence-i (LC-2030C)</option>
+        <option value="sop/sop-300-up-003.html">PKKK/300/UP/003 — RRLC Agilent 1200 Series</option>
+        <option value="sop/sop-300-up-040.html">PKKK/300/UP/040 — GCMS Shimadzu QP2010 Ultra</option>
+        <option value="sop/sop-300-up-017.html">PKKK/300/UP/017 — GCMS Agilent 8890 / 5977B MSD</option>
+        <option value="sop/sop-300-up-012.html">PKKK/300/UP/012 — LCMS-8045 Triple Quadrupole</option>
+        <option value="sop/sop-300-up-005.html">PKKK/300/UP/005 — Neraca Precisa XT 120A (4 Perpuluhan)</option>
+        <option value="sop/sop-300-up-006.html">PKKK/300/UP/006 — Neraca Precisa XT 120A (5 Perpuluhan)</option>
+        <option value="sop/sop-300-up-020.html">PKKK/300/UP/020 — Neraca Sartorius MSE225S (5 Perpuluhan)</option>
+      </optgroup>
+      <optgroup label="SOP Kaedah Pengujian Adulterasi (Level 300)">
+        <option value="sop/sop-300-up-021.html">PKKK/300/UP/021 — Steroids (8-Compound Mix) HPLC</option>
+        <option value="sop/sop-300-up-022.html">PKKK/300/UP/022 — Antidiabetic Drugs HPLC</option>
+        <option value="sop/sop-300-up-023.html">PKKK/300/UP/023 — Antihypertensive & Diuretics HPLC</option>
+        <option value="sop/sop-300-up-024.html">PKKK/300/UP/024 — Antihistamines HPLC</option>
+        <option value="sop/sop-300-up-025.html">PKKK/300/UP/025 — Proton Pump Inhibitors (PPI) HPLC</option>
+        <option value="sop/sop-300-up-026.html">PKKK/300/UP/026 — Analgesic & NSAIDs HPLC</option>
+        <option value="sop/sop-300-up-027.html">PKKK/300/UP/027 — Domperidone HPLC</option>
+        <option value="sop/sop-300-up-028.html">PKKK/300/UP/028 — Erectile Dysfunction Drugs (EDD) HPLC</option>
+        <option value="sop/sop-300-up-029.html">PKKK/300/UP/029 — Antidiabetic (Metformin & Phenformin) HPLC</option>
+        <option value="sop/sop-300-up-030.html">PKKK/300/UP/030 — Slimming Agents (Sibutramine) HPLC</option>
+        <option value="sop/sop-300-up-034.html">PKKK/300/UP/034 — EG & DEG in Medicinal Syrups GC-MS</option>
+        <option value="sop/sop-300-up-050.html">PKKK/300/UP/050 — Hydroquinone in Cosmetics (ACM 003)</option>
+      </optgroup>
+      <optgroup label="SOP Pengekstrakan & Radas Makmal">
+        <option value="sop/sop-300-up-013.html">PKKK/300/UP/013 — Pengekstrakan Fasa Pepejal (SPE C18/Florisil)</option>
+        <option value="sop/sop-300-up-014.html">PKKK/300/UP/014 — Pengekstrakan Cecair-Cecair (LLE pH 7.0)</option>
+        <option value="sop/sop-300-up-008.html">PKKK/300/UP/008 — pH Meter Mettler Toledo FiveEasy Plus</option>
+        <option value="sop/sop-300-up-019.html">PKKK/300/UP/019 — Waterbath Memmert WB 45</option>
+        <option value="sop/sop-300-up-036.html">PKKK/300/UP/036 — Vortex Mixer Genie 2</option>
+        <option value="sop/sop-300-up-058.html">PKKK/300/UP/058 — Ultrasonic Bath Branson 8210</option>
+        <option value="sop/sop-300-up-064.html">PKKK/300/UP/064 — Carta Kawalan Kualiti Neraca Shewhart</option>
+      </optgroup>
+    </select>
+    <button class="sop-jumper-btn" onclick="jumpToSop()">Buka SOP ➔</button>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- INTERACTIVE LAB UTILITIES HUB PANEL -->
+  <!-- ========================================== -->
+  <div class="interactive-hub-section" id="hub-utilities">
+    <div class="hub-tool-nav">
+      <button class="tool-nav-btn active" id="btn-tool-calc" onclick="switchHubTool('calc', this)">🧮 Enjin Pencairan &amp; Penimbal</button>
+      <button class="tool-nav-btn" id="btn-tool-adulterants" onclick="switchHubTool('adulterants', this)">🔬 Matriks Sebatian Adulteran</button>
+      <button class="tool-nav-btn" id="btn-tool-fleet" onclick="switchHubTool('fleet', this)">🏢 Status Fleet Alat</button>
+      <button class="tool-nav-btn" id="btn-tool-diag" onclick="switchHubTool('diag', this)">🛠️ Troubleshooting &amp; Diagnostik</button>
+      <button class="tool-nav-btn" id="btn-tool-iso" onclick="switchHubTool('iso', this)">📊 Kawalan Kualiti ISO 17025</button>
+      <button class="tool-nav-btn" id="btn-tool-safety" onclick="switchHubTool('safety', this)">🧪 Keselamatan &amp; Sisa Kimia</button>
+    </div>
+
+    <!-- TOOL 1: DILUTION & BUFFER MASS CALCULATOR -->
+    <div class="hub-tool-content active" id="tool-calc">
+      <div class="tool-header">
+        <div>
+          <div class="tool-title">🧮 Enjin Pengiraan Makmal: Formula Pencairan (C₁V₁ = C₂V₂) &amp; Jisim Penimbal</div>
+          <div class="tool-desc">Alat pengiraan interaktif bagi penyediaan larutan piawai kerja, larutan LOD/LOQ, dan timbangan garam penimbal fasa bergerak mengikut keperluan ISO/IEC 17025.</div>
+        </div>
+      </div>
+
+      <div class="calc-grid">
+        <!-- Sub-Calc A: Dilution Formula -->
+        <div class="calc-card">
+          <div class="calc-card-title">⚗️ Formula Pencairan Piawai (C₁V₁ = C₂V₂)</div>
+          <div class="calc-input-group">
+            <label>Kepekatan Stok Piawai (C₁) [mg/mL atau µg/mL]:</label>
+            <input type="number" id="c1_val" class="calc-input" value="1.0" step="any" oninput="calculateDilution()">
+          </div>
+          <div class="calc-input-group">
+            <label>Kepekatan Kerja Sasaran (C₂) [mg/mL atau µg/mL]:</label>
+            <input type="number" id="c2_val" class="calc-input" value="0.05" step="any" oninput="calculateDilution()">
+          </div>
+          <div class="calc-input-group">
+            <label>Isipadu Akhir Kelalang Volumetrik (V₂) [mL]:</label>
+            <input type="number" id="v2_val" class="calc-input" value="10.0" step="any" oninput="calculateDilution()">
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-res-lbl">Isipadu Stok Yang Perlu Dipipet (V₁):</div>
+            <div class="calc-res-val" id="v1_res">0.500 mL</div>
+            <div class="calc-res-formula" id="v1_formula">V₁ = (0.05 × 10.0) / 1.0 = 0.500 mL</div>
+          </div>
+        </div>
+
+        <!-- Sub-Calc B: Mobile Phase Buffer Salt Mass -->
+        <div class="calc-card">
+          <div class="calc-card-title">⚖️ Timbangan Garam Penimbal (Buffer Recipe)</div>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.4rem">
+            <button class="ctrl-btn" style="font-size:0.62rem;padding:0.25rem 0.5rem" onclick="setBufferPreset('na2hpo4')">25mM Na₂HPO₄ (PPI)</button>
+            <button class="ctrl-btn" style="font-size:0.62rem;padding:0.25rem 0.5rem" onclick="setBufferPreset('kh2po4')">20mM KH₂PO₄ (Domp)</button>
+            <button class="ctrl-btn" style="font-size:0.62rem;padding:0.25rem 0.5rem" onclick="setBufferPreset('phosphate005')">0.05M Phosphate (HQ)</button>
+            <button class="ctrl-btn" style="font-size:0.62rem;padding:0.25rem 0.5rem" onclick="setBufferPreset('amm_formate')">10mM Amm Formate</button>
+          </div>
+          <div class="calc-input-group">
+            <label>Kepekatan Molar [mM]:</label>
+            <input type="number" id="buf_molarity" class="calc-input" value="25" step="any" oninput="calculateBufferMass()">
+          </div>
+          <div class="calc-input-group">
+            <label>Jisim Molekul / MW [g/mol]:</label>
+            <input type="number" id="buf_mw" class="calc-input" value="141.96" step="any" oninput="calculateBufferMass()">
+          </div>
+          <div class="calc-input-group">
+            <label>Isipadu Larutan [mL]:</label>
+            <input type="number" id="buf_vol" class="calc-input" value="1000" step="any" oninput="calculateBufferMass()">
+          </div>
+          <div class="calc-result-box">
+            <div class="calc-res-lbl">Jisim Garam Diperlukan (g):</div>
+            <div class="calc-res-val" id="buf_mass_res" style="color:var(--mint)">3.5490 g</div>
+            <div class="calc-res-formula" id="buf_formula">Jisim = (25/1000 M) × 141.96 g/mol × 1.0 L = 3.5490 g</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 2: TARGET ADULTERANTS MATRIX -->
+    <div class="hub-tool-content" id="tool-adulterants">
+      <div class="tool-header">
+        <div>
+          <div class="tool-title">🔬 Matriks Sebatian Adulteran &amp; Parameter Kromatografi Rasmi NPRA</div>
+          <div class="tool-desc">Ringkasan parameter kromatografi bagi kesemua kelas sebatian adulteran aktif yang diuji di bawah Arahan Kerja 300 Unit Penyaringan.</div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Kelas Adulterasi</th>
+              <th>SOP Rujukan</th>
+              <th>Sebatian Sasaran Utama</th>
+              <th>Kolum &amp; Fasa Pegun</th>
+              <th>Fasa Bergerak &amp; Mod</th>
+              <th>Pengesanan / Ion SIM</th>
+              <th>Had Penerimaan NPRA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Kortikosteroid (8-Mix)</strong></td>
+              <td><code>PKKK/300/UP/021</code></td>
+              <td>Dexamethasone, Betamethasone, Prednisone, Prednisolone, Triamcinolone, Hydrocortisone acetate, Cortisone acetate, Betamethasone-17-valerate</td>
+              <td>Kinetex Phenyl-Hexyl (150 × 4.6 mm, 2.6 µm)</td>
+              <td>Kecerunan: Air Ultratulen : ACN @ 0.7 mL/min (40 °C)</td>
+              <td>PDA @ 240 nm (Scan 190–400 nm)</td>
+              <td>Negatif (Kualitatif: RT ±2%, UV match &gt;0.999 + Pengesahan Penganalisis Ke-2)</td>
+            </tr>
+            <tr>
+              <td><strong>Proton Pump Inhibitor (PPI)</strong></td>
+              <td><code>PKKK/300/UP/025</code></td>
+              <td>Omeprazole, Lansoprazole</td>
+              <td>Zorbax SB C18 (250 × 4.6 mm, 5 µm)</td>
+              <td>Isokratik: 25 mM Na₂HPO₄ pH 7.6 : ACN (65:35) @ 1.0 mL/min</td>
+              <td>PDA @ 280 nm (Scan 190–400 nm)</td>
+              <td>Negatif (Kualitatif: RT ±2%, UV match &gt;0.999)</td>
+            </tr>
+            <tr>
+              <td><strong>Domperidone</strong></td>
+              <td><code>PKKK/300/UP/027</code></td>
+              <td>Domperidone (Gastroprokinetik)</td>
+              <td>Zorbax Eclipse Plus C18 (150 × 4.6 mm, 5 µm)</td>
+              <td>Kecerunan: 20 mM KH₂PO₄ pH 3.0 : ACN @ 1.0 mL/min (40 °C)</td>
+              <td>PDA @ 284 nm (Scan 190–400 nm)</td>
+              <td>Negatif (Kualitatif: RT ±2%, UV match &gt;0.999)</td>
+            </tr>
+            <tr>
+              <td><strong>Ubat Syaraf / EDD (PDE-5)</strong></td>
+              <td><code>PKKK/300/UP/028</code></td>
+              <td>Sildenafil, Tadalafil, Vardenafil, Thiosildenafil, Aminotadalafil, Homosildenafil</td>
+              <td>Zorbax SB C18 (150 × 4.6 mm, 5 µm)</td>
+              <td>Kecerunan: 20 mM KH₂PO₄ pH 3.0 : ACN @ 1.0 mL/min</td>
+              <td>PDA @ 292 nm / LC-MS MRM</td>
+              <td>Negatif (Bahan Racun Berjadual Akta Racun 1952)</td>
+            </tr>
+            <tr>
+              <td><strong>Pencemar Toksik Sirap (Glycols)</strong></td>
+              <td><code>PKKK/300/UP/034</code></td>
+              <td>Ethylene Glycol (EG) &amp; Diethylene Glycol (DEG)</td>
+              <td>BP20 (Wax) 30 m × 0.25 mm × 0.25 µm (GC-MS)</td>
+              <td>Gas Pembawa Helium (30 cm/s) · Split 20:1 @ 250 °C</td>
+              <td>EI @ 70 eV · SIM: EG (m/z 31, 33, 62), DEG (m/z 45, 75, 31)</td>
+              <td><strong>&le; 0.10% v/v (USP Monograf)</strong> · LOD: 0.005% v/v</td>
+            </tr>
+            <tr>
+              <td><strong>Antidiabetik</strong></td>
+              <td><code>PKKK/300/UP/022 &amp; 029</code></td>
+              <td>Glibenclamide, Glimepiride, Gliclazide, Metformin, Phenformin</td>
+              <td>C18 Reverse Phase (250 × 4.6 mm, 5 µm)</td>
+              <td>Buffer Fosfat pH 2.5 : ACN @ 1.0 mL/min</td>
+              <td>PDA @ 230 nm &amp; 254 nm</td>
+              <td>Negatif (Kualitatif)</td>
+            </tr>
+            <tr>
+              <td><strong>Kosmetik (Hydroquinone)</strong></td>
+              <td><code>PKKK/200/UP/001 &amp; 300/050</code></td>
+              <td>Hydroquinone (Agen Pemutih Kulit)</td>
+              <td>Cosmosil 5 C18 AR-II (250 × 4.6 mm, 5 µm)</td>
+              <td>Isokratik: 0.05 M Buffer pH 2.5 : MeOH (99:1) @ 0.9 mL/min</td>
+              <td>PDA @ 280 nm</td>
+              <td>Negatif (&le; 0.002% w/w) mengikut ASEAN Cosmetic Directive</td>
+            </tr>
+            <tr>
+              <td><strong>Tradisional (Lovastatin)</strong></td>
+              <td><code>PKKK/200/UP/002</code></td>
+              <td>Lovastatin / Monacolin K (Red Yeast Rice)</td>
+              <td>Thermo ODS Hypersil (200 × 4.6 mm, 5 µm)</td>
+              <td>Isokratik: ACN : 0.05% H₃PO₄ (60:40) @ 1.8 mL/min (45 °C)</td>
+              <td>PDA / UV @ 238 nm</td>
+              <td><strong>&le; 1.00% w/w DAN &le; 10.00 mg/hari</strong> dos harian</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TOOL 3: INSTRUMENT FLEET DIRECTORY -->
+    <div class="hub-tool-content" id="tool-fleet">
+      <div class="tool-header">
+        <div>
+          <div class="tool-title">🏢 Direktori &amp; Status Fleet Instrumen Analitikal Makmal</div>
+          <div class="tool-desc">Inventori perkakasan analitikal utama Unit Penyaringan dengan spesifikasi modul, perisian kawalan, dan pautan ke SOP operasi rasmi.</div>
+        </div>
+      </div>
+
+      <div class="fleet-grid">
+        <!-- Fleet 1 -->
+        <div class="fleet-card">
+          <div class="fleet-top">
+            <span class="fleet-id">HPLC 3 &amp; 4 · PKKK/300/UP/011</span>
+            <span class="fleet-status"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block"></span> OPERASI</span>
+          </div>
+          <div class="fleet-name">Shimadzu Prominence-i LC-2030C 3D</div>
+          <div class="fleet-details">
+            • Detektor: Photo Diode Array (PDA 190–800 nm)<br>
+            • Julat Aliran: 0.001 – 10.0 mL/min (Pmax: 44 MPa)<br>
+            • Autosampler: 4 °C – 40 °C (Kapasiti: 216 vial 1.5 mL)<br>
+            • Perisian: LabSolutions DB/CS v5.96
+          </div>
+          <a href="hplc-guide.html" class="fleet-link">Buka Manual Operasi LC-2030C →</a>
+        </div>
+
+        <!-- Fleet 2 -->
+        <div class="fleet-card">
+          <div class="fleet-top">
+            <span class="fleet-id">RRLC 1 &amp; 2 · PKKK/300/UP/003</span>
+            <span class="fleet-status"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block"></span> OPERASI</span>
+          </div>
+          <div class="fleet-name">Agilent 1200 Series RRLC System</div>
+          <div class="fleet-details">
+            • Detektor: Diode Array Detector (DAD SL 190–950 nm)<br>
+            • Pam: Binary / Quaternary Pump (Pmax: 600 bar)<br>
+            • Modul: TCC Column Oven (4 °C – 80 °C)<br>
+            • Perisian: ChemStation OpenLab Edition B.04.03
+          </div>
+          <a href="rrlc-guide.html" class="fleet-link">Buka Manual Operasi Agilent 1200 →</a>
+        </div>
+
+        <!-- Fleet 3 -->
+        <div class="fleet-card">
+          <div class="fleet-top">
+            <span class="fleet-id">GCMS 2 · PKKK/300/UP/040</span>
+            <span class="fleet-status"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block"></span> OPERASI</span>
+          </div>
+          <div class="fleet-name">Shimadzu GCMS-QP2010 Ultra</div>
+          <div class="fleet-details">
+            • Pengionan: Electron Ionization (EI 70 eV)<br>
+            • Penganalisis Jisim: Quadrupole (m/z 1.5 – 1090)<br>
+            • Ciri: Advanced Scanning Speed Protocol (ASSP 20,000 u/sec)<br>
+            • Perisian: GCMSsolution v4.45 &amp; COAST SIM
+          </div>
+          <a href="sop/sop-300-up-040.html" class="fleet-link">Buka Manual Operasi QP2010 →</a>
+        </div>
+
+        <!-- Fleet 4 -->
+        <div class="fleet-card">
+          <div class="fleet-top">
+            <span class="fleet-id">GCMS 1 · PKKK/300/UP/017</span>
+            <span class="fleet-status"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block"></span> OPERASI</span>
+          </div>
+          <div class="fleet-name">Agilent 8890 GC / 5977B MSD</div>
+          <div class="fleet-details">
+            • Pengionan: High Efficiency Source (HES EI 70 eV)<br>
+            • Gas Pembawa: Helium Ultra High Purity (99.999%)<br>
+            • Autosampler: 7693A Automatic Liquid Sampler (150 vials)<br>
+            • Perisian: Agilent MassHunter GC/MS &amp; NIST 20
+          </div>
+          <a href="gcms.html" class="fleet-link">Buka Manual Operasi Agilent GCMS →</a>
+        </div>
+
+        <!-- Fleet 5 -->
+        <div class="fleet-card">
+          <div class="fleet-top">
+            <span class="fleet-id">LCMS 1 · PKKK/300/UP/012</span>
+            <span class="fleet-status"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block"></span> OPERASI</span>
+          </div>
+          <div class="fleet-name">Shimadzu LCMS-8045 Triple Quadrupole</div>
+          <div class="fleet-details">
+            • Sumber Ion: Heated Electrospray Ionization (ESI+ / ESI-)<br>
+            • Mod Imbasan: MRM (Multiple Reaction Monitoring), Scan, SIM<br>
+            • Kelajuan: Polarity switching 5 ms, scan speed 30,000 u/s<br>
+            • Perisian: LabSolutions LCMS Ver 5.9
+          </div>
+          <a href="sop/sop-300-up-012.html" class="fleet-link">Buka Manual Operasi LCMS-8045 →</a>
+        </div>
+
+        <!-- Fleet 6 -->
+        <div class="fleet-card">
+          <div class="fleet-top">
+            <span class="fleet-id">BAL 1–3 · PKKK/300/UP/005, 006, 020</span>
+            <span class="fleet-status"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--mint);display:inline-block"></span> OPERASI</span>
+          </div>
+          <div class="fleet-name">Neraca Precisa XT120A &amp; Sartorius MSE225S</div>
+          <div class="fleet-details">
+            • Ketepatan: 4 perpuluhan (d = 0.1 mg) &amp; 5 perpuluhan (d = 0.01 mg)<br>
+            • Verifikasi: Harian (UP/014), Kepekaan Bulanan (UP/015), Kebolehulangan (UP/016)<br>
+            • Batu Timbang Piawai: Kelas E2 / F1 tertentukur SIRIM<br>
+            • Kawalan: Carta Kawalan Kualiti Shewhart (UP/064)
+          </div>
+          <a href="qc-balance.html" class="fleet-link">Buka Enjin Verifikasi Neraca &amp; Shewhart →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 4: DIAGNOSTICS & TROUBLESHOOTING -->
+    <div class="hub-tool-content" id="tool-diag">
+      <div class="tool-header">
+        <div>
+          <div class="tool-title">🛠️ Panduan Diagnostik &amp; Penyelesaian Masalah (Troubleshooting Guide)</div>
+          <div class="tool-desc">Panduan segera menangani kegagalan kromatografi, ralat sistem vakum, drift garisan dasar, dan ketidaksesuaian SST mengikut piawaian ISO 17025.</div>
+        </div>
+      </div>
+
+      <div class="diag-grid">
+        <!-- Diag 1: HPLC Pressure -->
+        <div class="diag-card">
+          <div class="diag-title">⚠️ HPLC: Tekanan Terlalu Tinggi / Turun Naik (Ripple &gt; 2%)</div>
+          <div class="diag-item">
+            <strong>Gejala: Tekanan melepasi had keselamatan kolum (&gt; 25 MPa).</strong>
+            <p>Tindakan: Periksa sekatan pada penuras dalaman (in-line filter), jarum autosampler, atau penyumbatan inlet kolum. Lakukan aliran songsang (reverse flushing) kolum tanpa detektor dengan 100% Isopropanol / Acetonitrile panas pada 0.2 mL/min.</p>
+          </div>
+          <div class="diag-item">
+            <strong>Gejala: Tekanan turun naik (pressure ripple &gt; 2.0%).</strong>
+            <p>Tindakan: Terdapat gelembung udara dalam kepala pam. Jalankan rutin <em>Auto Purge</em> (5.0 mL/min selama 3 minit) pada pelarut fasa bergerak terdegas. Jika berterusan, periksa injap sehala (check valve) inlet/outlet dan sonikasi dalam 20% Asid Nitrik / Metanol.</p>
+          </div>
+        </div>
+
+        <!-- Diag 2: HPLC Peak Shape -->
+        <div class="diag-card">
+          <div class="diag-title">📉 HPLC: Puncak Terbelah (Split Peak) &amp; Tailing (&gt; 2.0)</div>
+          <div class="diag-item">
+            <strong>Gejala: Puncak kromatogram terbelah dua (double peak) atau herot.</strong>
+            <p>Tindakan: (1) Pelarut sampel terlalu kuat berbanding fasa bergerak awal — larutkan sampel dalam fasa bergerak awal. (2) Saluran kolum berongga di bahagian atas — pasang kolum perlindungan (guard column) baharu. (3) Sampel terlebih muatan (overloading) — kurangkan isipadu suntikan.</p>
+          </div>
+          <div class="diag-item">
+            <strong>Gejala: Faktor pembuntutan (Tailing factor) T &gt; 2.0.</strong>
+            <p>Tindakan: Sebatian bes berinteraksi dengan silanol bebas fasa pegun. Laraskan pH fasa bergerak atau tambah agen pemati silanol (cth. Triethylamine / Formate buffer). Pastikan kolum tidak rosak akibat pH ekstrem (&lt; 2.0 atau &gt; 8.0).</p>
+          </div>
+        </div>
+
+        <!-- Diag 3: GC-MS Leak Check -->
+        <div class="diag-card">
+          <div class="diag-title">🧪 GC-MS: Kebocoran Udara / Air (Air &amp; Water Check)</div>
+          <div class="diag-item">
+            <strong>Gejala: Puncak m/z 28 (N₂) &gt; 10% atau m/z 18 (H₂O) tinggi berterusan.</strong>
+            <p>Tindakan: (1) Ketatkan nat ferrule penyambung kolum di port suntikan dan antara muka MS (MS interface). (2) Gantikan septum port suntikan yang telah bocor akibat cucukan autosampler berkali-kali. (3) Periksa gelang O (O-ring) pada liner kaca port suntikan. (4) Pastikan baki gas Helium melepasi tekanan minimum 500 psi.</p>
+          </div>
+        </div>
+
+        <!-- Diag 4: Balance IQC Drift -->
+        <div class="diag-card">
+          <div class="diag-title">⚖️ Neraca: Hanyutan (Drift) &amp; Kegagalan Ujian Kepekaan</div>
+          <div class="diag-item">
+            <strong>Gejala: Bacaan tidak stabil atau ralat kepekaan &Delta;E &gt; 0.1 mg.</strong>
+            <p>Tindakan: (1) Periksa aras gelembung udara (spirit level) — pastikan berada tepat di tengah bulatan. (2) Bersihkan kuali timbang daripada tumpahan serbuk kimia menggunakan berus antistatik. (3) Lakukan penentukuran dalaman automatik (isoCAL / ProFACT). (4) Pastikan pintu kaca draf tertutup rapat dan tiada aliran angin penghawa dingin terus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 5: ISO 17025 QUALITY STANDARDS -->
+    <div class="hub-tool-content" id="tool-iso">
+      <div class="tool-header">
+        <div>
+          <div class="tool-title">📊 Kriteria Kawalan Mutu &amp; Kesesuaian Sistem (SST) ISO/IEC 17025</div>
+          <div class="tool-desc">Ambang kualiti mandatori yang mesti dipenuhi bagi setiap kelompok analisis sebelum keputusan ujian boleh disahkan dan dilaporkan secara rasmi.</div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Parameter Mutu</th>
+              <th>Piawaian / Kriteria Penerimaan</th>
+              <th>Tindakan Jika Gagal (OOC / OOS)</th>
+              <th>Borang Berkaitan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Kesesuaian Sistem (SST %RSD)</strong></td>
+              <td>%RSD luas puncak bagi 5 atau 6 suntikan piawai kerja <strong>&le; 2.0%</strong> (&le; 10.0% bagi SIM GC-MS EG/DEG)</td>
+              <td>Kelompok terbatal serta-merta. Periksa kestabilan sistem, aliran pam, dan suntik semula 6 piawai.</td>
+              <td><code>UP/005</code>, <code>UP/008C</code></td>
+            </tr>
+            <tr>
+              <td><strong>Lineariti Kalibrasi (R²)</strong></td>
+              <td>Pekali korelasi $R^2 \ge 0.9950$ (Bagi ujian kuantitatif Lovastatin: $R^2 \ge 0.9990$)</td>
+              <td>Sediakan semula larutan piawai 5-tahap daripada stok primer yang baru dibuka.</td>
+              <td><code>UP/008G</code>, <code>UP/009</code></td>
+            </tr>
+            <tr>
+              <td><strong>Faktor Pembuntutan (Tailing, T)</strong></td>
+              <td><strong>0.8 &le; T &le; 1.8</strong> (Maksimum &le; 2.0 bagi sebatian sukar)</td>
+              <td>Gantikan kolum kromatografi atau laraskan fasa bergerak.</td>
+              <td><code>UP/005</code>, <code>UP/008C</code></td>
+            </tr>
+            <tr>
+              <td><strong>Bilangan Plat Teori (N)</strong></td>
+              <td><strong>N &ge; 2000</strong> plat teori bagi puncak utama</td>
+              <td>Cuci kolum dengan pelarut organik kuat atau potong 5 cm kolum GC.</td>
+              <td><code>UP/005</code></td>
+            </tr>
+            <tr>
+              <td><strong>Perbezaan Peratus Relatif (RPD Duplikat)</strong></td>
+              <td>RPD antara dua replikat sampel <strong>&le; 5.0%</strong></td>
+              <td>Lakukan pengekstrakan semula sampel daripada serbuk asal yang telah dihomogenkan semula.</td>
+              <td><code>UP/008A</code>, <code>UP/009</code></td>
+            </tr>
+            <tr>
+              <td><strong>Carta Kawalan Mutu Shewhart IQC</strong></td>
+              <td>Titik di dalam had amaran (&plusmn;2s) dan had tindakan (&plusmn;3s). Tiada 7 titik berturut-turut pada satu sisi min.</td>
+              <td>Buka borang Siasatan Ketakakuran (OOS / OOC) mengikut Prosedur Kualiti PKKK/200/UP/002A.</td>
+              <td><code>UP/016</code>, <code>UP/064</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TOOL 6: SAFETY & WASTE DISPOSAL -->
+    <div class="hub-tool-content" id="tool-safety">
+      <div class="tool-header">
+        <div>
+          <div class="tool-title">🧪 Protokol Keselamatan Bahan Kimia, PPE &amp; Pelupusan Sisa Berjadual</div>
+          <div class="tool-desc">Panduan pengendalian selamat bahan toksik, pelarut organik mudah meruap, dan pengasingan sisa cecair makmal mengikut Akta Kualiti Alam Sekeliling 1974.</div>
+        </div>
+      </div>
+
+      <div class="diag-grid">
+        <div class="diag-card">
+          <div class="diag-title" style="color:var(--rose)">☣️ Pengasingan Sisa Cecair Berjadual (Waste Segregation)</div>
+          <div class="diag-item" style="border-left-color:var(--rose)">
+            <strong>Sisa Organik Terhalogen (SW 322):</strong>
+            <p>Mengandungi kloroform ($CHCl_3$), diklorometana ($CH_2Cl_2$), atau pelarut berklorin daripada pengekstrakan LLE/SPE. Mesti dilupuskan ke dalam botol sisa bertanda <em>"HALOGENATED ORGANIC WASTE"</em>.</p>
+          </div>
+          <div class="diag-item" style="border-left-color:var(--amber)">
+            <strong>Sisa Organik Bukan Terhalogen (SW 323):</strong>
+            <p>Efluen fasa bergerak kromatografi yang mengandungi Acetonitrile, Metanol, Etanol, dan Asid Fosfat cair. Mesti dilupuskan ke dalam botol sisa bertanda <em>"NON-HALOGENATED ORGANIC WASTE"</em>.</p>
+          </div>
+        </div>
+
+        <div class="diag-card">
+          <div class="diag-title" style="color:var(--cyan)">🛡️ Kelengkapan Perlindungan Diri (PPE) &amp; Kebuk Wasap</div>
+          <div class="diag-item" style="border-left-color:var(--cyan)">
+            <strong>Pengekstrakan LLE &amp; Sampel Toksik:</strong>
+            <p>Semua aktiviti pengekstrakan menggunakan Kloroform, penyediaan EG/DEG, dan pengewapan pelarut di atas waterbath MESTI dilakukan di dalam <strong>Kebuk Wasap (Fumehood)</strong> yang telah disahkan kelajuan aliran udara (face velocity &ge; 0.5 m/s).</p>
+          </div>
+          <div class="diag-item" style="border-left-color:var(--mint)">
+            <strong>PPE Mandatori:</strong>
+            <p>Kot makmal kalis kimia, sarung tangan Nitrile (gantikan segera jika terdedah kepada Kloroform), gogal keselamatan UV/kimia semasa mengisi eluen, dan kasut bertutup penuh.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Interactive Controls: Search & Category Tabs -->
   <div class="controls-container">
     <div class="search-wrapper">
       <span class="search-icon">🔍</span>
-      <input type="text" id="hubSearch" class="search-input" placeholder="Cari SOP, kaedah pengujian, nombor alat, sebatian (contoh: EG/DEG, Lovastatin, Steroid, QP2010)...">
+      <input type="text" id="hubSearch" class="search-input" placeholder="Cari SOP, kaedah pengujian, nombor alat, sebatian (contoh: EG/DEG, Lovastatin, Steroid, QP2010, SPE)... (Tekan '/' atau 'Ctrl+K')">
       <button id="clearSearchBtn" class="search-clear" onclick="clearSearch()" title="Padam Carian">✕</button>
     </div>
 
     <!-- Category Filter Tabs -->
     <div class="cat-filter-tabs">
       <button class="cat-tab-btn active" onclick="filterCategory('all', this)">✨ Semua Modul</button>
-      <button class="cat-tab-btn" onclick="filterCategory('calc', this)">⚙️ Kalkulator & QA</button>
+      <button class="cat-tab-btn" onclick="filterCategory('calc', this)">⚙️ Kalkulator &amp; QA</button>
       <button class="cat-tab-btn" onclick="filterCategory('method', this)">🧪 Kaedah Pengujian</button>
       <button class="cat-tab-btn" onclick="filterCategory('instrument', this)">🔬 Pengendalian Alat</button>
-      <button class="cat-tab-btn" onclick="filterCategory('prep', this)">🧬 Penyediaan & Pengekstrakan</button>
-      <button class="cat-tab-btn" onclick="filterCategory('mgmt', this)">📋 Pengurusan & Portfolio</button>
+      <button class="cat-tab-btn" onclick="filterCategory('prep', this)">🧬 Penyediaan &amp; Pengekstrakan</button>
+      <button class="cat-tab-btn" onclick="filterCategory('mgmt', this)">📋 Pengurusan &amp; Portfolio</button>
     </div>
   </div>
 
@@ -116,7 +628,7 @@
   <div class="category-group" id="group-calc">
     <div class="category-header">
       <div class="cat-icon-badge badge-cyan">⚙️</div>
-      <h2 class="category-title">Enjin Pengiraan Kuantitatif & Kawalan Kualiti (QA)</h2>
+      <h2 class="category-title">Enjin Pengiraan Kuantitatif &amp; Kawalan Kualiti (QA)</h2>
       <span class="category-count badge-cyan">3 Modul</span>
     </div>
 
@@ -129,7 +641,7 @@
           <span class="card-code-badge">PKKK/200/UP/002</span>
         </div>
         <div class="card-content">
-          <div class="card-eyebrow">Enjin Kuantitasi & Borang UP/008A–G</div>
+          <div class="card-eyebrow">Enjin Kuantitasi &amp; Borang UP/008A–G</div>
           <div class="card-title">Lovastatin HPLC Assay Suite</div>
           <div class="card-desc">Pengiraan automatik Kesesuaian Sistem (%RSD SST &le; 2.0%), regresi kalibrasi linear (R² &ge; 0.9950), peratus kandungan %w/w, semakan had dos harian (&le; 10 mg/hari), serta penjanaan draf laporan pengujian siap cetak.</div>
           <div class="card-tags">
@@ -153,7 +665,7 @@
         </div>
         <div class="card-content">
           <div class="card-eyebrow">Borang UP/014–016 · Shewhart IQC</div>
-          <div class="card-title">Verifikasi Alat Timbang & Carta Kawalan QC</div>
+          <div class="card-title">Verifikasi Alat Timbang &amp; Carta Kawalan QC</div>
           <div class="card-desc">Sistem verifikasi gravimetrik harian alat timbang Sartorius, Precisa, dan Mettler. Termasuk ujian kepekaan (&Delta;E), kebolehulangan 10-titik (s, 2s), serta plot dinamik carta kawalan mutu Shewhart (UP/064).</div>
           <div class="card-tags">
             <span class="card-tag t-cyan">Harian UP/014</span>
@@ -176,7 +688,7 @@
         </div>
         <div class="card-content">
           <div class="card-eyebrow">Katalog Induk · Matriks Dokumen Rasmi</div>
-          <div class="card-title">Master SOP & Quality Record Matrix</div>
+          <div class="card-title">Master SOP &amp; Quality Record Matrix</div>
           <div class="card-desc">Pengkalan data interaktif bagi kesemua Prosedur Level 200, 64 Arahan Kerja Level 300 (HPLC, GCMS, LCMS, Alat Timbang, Radas), dan 61 Rekod Kualiti dengan carian pantas, parameter instrumen, dan modal pembaca rasmi.</div>
           <div class="card-tags">
             <span class="card-tag t-indigo">Level 200</span>
@@ -214,10 +726,10 @@
         </div>
         <div class="card-content">
           <div class="card-eyebrow">Toksikologi Sirap Ubat · GC-MS SIM</div>
-          <div class="card-title">Identifikasi & Kandungan EG & DEG GC-MS</div>
-          <div class="card-desc">Panduan komprehensif penentuan Diethylene Glycol dan Ethylene Glycol dalam produk ubat cecair mengikut monograf USP (&lt; 0.10% v/v). Meliputi penalaan autotune, kolum BP20-Wax, ion SIM m/z 31 & 45, dan kalibrasi 5-tahap.</div>
+          <div class="card-title">Identifikasi &amp; Kandungan EG &amp; DEG GC-MS</div>
+          <div class="card-desc">Panduan komprehensif penentuan Diethylene Glycol dan Ethylene Glycol dalam produk ubat cecair mengikut monograf USP (&lt; 0.10% v/v). Meliputi penalaan autotune, kolum BP20-Wax, ion SIM m/z 31 &amp; 45, dan kalibrasi 5-tahap.</div>
           <div class="card-tags">
-            <span class="card-tag t-amber">EG & DEG GCMS</span>
+            <span class="card-tag t-amber">EG &amp; DEG GCMS</span>
             <span class="card-tag t-purple">SIM Quant</span>
             <span class="card-tag t-cyan">Monograf USP</span>
             <span class="card-tag t-mint">Ubat Cecair</span>
@@ -259,7 +771,7 @@
           <span class="card-code-badge">PKKK/300/UP/025</span>
         </div>
         <div class="card-content">
-          <div class="card-eyebrow">Omeprazole & Lansoprazole · Isokratik</div>
+          <div class="card-eyebrow">Omeprazole &amp; Lansoprazole · Isokratik</div>
           <div class="card-title">Identifikasi Proton Pump Inhibitor (PPI) HPLC</div>
           <div class="card-desc">Tatacara pengesanan adulteran PPI dalam produk tradisional menggunakan fasa bergerak isokratik Buffer Fosfat 25 mM pH 7.6 : Acetonitrile (65:35), turas 0.45 µm, dan pengesanan PDA pada 280 nm.</div>
           <div class="card-tags">
@@ -302,17 +814,17 @@
       <a href="hydroquinone-hplc.html" class="res-card theme-rose" data-category="method">
         <div class="card-top">
           <div class="card-icon">🧴</div>
-          <span class="card-code-badge">PKKK/300/UP/050</span>
+          <span class="card-code-badge">PKKK/200/UP/001</span>
         </div>
         <div class="card-content">
           <div class="card-eyebrow">Kosmetik Berjadual · ACM 003</div>
-          <div class="card-title">Penyaringan & Penentuan Hydroquinone Kosmetik</div>
-          <div class="card-desc">SOP rasmi penentuan bahan terlarang Hydroquinone dalam sediaan krim dan losyen kosmetik menggunakan sistem HPLC Fasa Terbalik mengikut standard ASEAN Cosmetic Method (ACM).</div>
+          <div class="card-title">Penyaringan &amp; Penentuan Hydroquinone Kosmetik</div>
+          <div class="card-desc">SOP rasmi penentuan bahan terlarang Hydroquinone dalam sediaan krim dan losyen kosmetik menggunakan sistem HPLC Fasa Terbalik mengikut standard ASEAN Cosmetic Method (ACM) dan monograf ACD.</div>
           <div class="card-tags">
             <span class="card-tag t-rose">Hydroquinone</span>
             <span class="card-tag t-cyan">Kosmetik ACM</span>
-            <span class="card-tag t-mint">Krim & Losyen</span>
-            <span class="card-tag t-purple">PDA 290 nm</span>
+            <span class="card-tag t-mint">Krim &amp; Losyen</span>
+            <span class="card-tag t-purple">PDA 280 nm</span>
           </div>
         </div>
         <div class="card-footer">
@@ -330,10 +842,10 @@
         <div class="card-content">
           <div class="card-eyebrow">Kompilasi Kaedah Pengujian Makmal</div>
           <div class="card-title">Adulteration Screening Method Guides Hub</div>
-          <div class="card-desc">Direktori berpusat berformat tab interaktif yang menghimpunkan semua kaedah pengujian adulteran aktif (PPI, Domperidone, EG/DEG GCMS, dan Steroid) dengan jadual spesifikasi dan langkah kerja.</div>
+          <div class="card-desc">Direktori berpusat berformat tab interaktif yang menghimpunkan semua kaedah pengujian adulteran aktif (PPI, Domperidone, EG/DEG GCMS, Steroid, Hydroquinone, dan Lovastatin) dengan jadual spesifikasi dan langkah kerja lengkap.</div>
           <div class="card-tags">
             <span class="card-tag t-indigo">Multi-Tab</span>
-            <span class="card-tag t-cyan">4 Kaedah Utama</span>
+            <span class="card-tag t-cyan">6 Kaedah Utama</span>
             <span class="card-tag t-amber">Spesifikasi Kolum</span>
             <span class="card-tag t-mint">Jadual Reagen</span>
           </div>
@@ -353,7 +865,7 @@
   <div class="category-group" id="group-instrument">
     <div class="category-header">
       <div class="cat-icon-badge badge-purple">🔬</div>
-      <h2 class="category-title">Panduan Pengendalian & Diagnostik Alat (Instruments)</h2>
+      <h2 class="category-title">Panduan Pengendalian &amp; Diagnostik Alat (Instruments)</h2>
       <span class="category-count badge-purple">6 Modul</span>
     </div>
 
@@ -366,7 +878,7 @@
           <span class="card-code-badge">PKKK/300/UP/040</span>
         </div>
         <div class="card-content">
-          <div class="card-eyebrow">5-Modul Operasi · COAST SIM & Autotune</div>
+          <div class="card-eyebrow">5-Modul Operasi · COAST SIM &amp; Autotune</div>
           <div class="card-title">GCMS Shimadzu QP2010 Ultra Guide</div>
           <div class="card-desc">Manual pengendalian ultra terperinci: Startup vakum, semakan kebocoran udara/air (m/z 18 vs 28), jadual kriteria autotuning harian, wizard COAST SIM automatik, carian pustaka NIST/Wiley, dan urutan penutupan selamat.</div>
           <div class="card-tags">
@@ -436,7 +948,7 @@
         </div>
         <div class="card-content">
           <div class="card-eyebrow">Agilent 8890 / 5977B MSD · MassHunter</div>
-          <div class="card-title">Agilent 8890 GC-MS & RTE Analysis Guide</div>
+          <div class="card-title">Agilent 8890 GC-MS &amp; RTE Analysis Guide</div>
           <div class="card-desc">Panduan operasi sistem GC-MS Agilent 8890. Meliputi pemeriksaan tekanan gas Helium, Autotuning (s.tune / a.tune), MassHunter Sequence Wizard, integrasi RTE kromatogram, dan carian spektrum NIST.</div>
           <div class="card-tags">
             <span class="card-tag t-indigo">Agilent 8890</span>
@@ -481,8 +993,8 @@
           <span class="card-code-badge">PKKK/300/UP/005, 006, 020</span>
         </div>
         <div class="card-content">
-          <div class="card-eyebrow">Ketepatan 4 & 5 Perpuluhan · Borang UP/014</div>
-          <div class="card-title">Pengendalian Alat Timbang Analitikal Precisa & Sartorius</div>
+          <div class="card-eyebrow">Ketepatan 4 &amp; 5 Perpuluhan · Borang UP/014</div>
+          <div class="card-title">Pengendalian Alat Timbang Analitikal Precisa &amp; Sartorius</div>
           <div class="card-desc">SOP pengendalian neraca analitikal mikro dan analitikal. Semakan aras gelembung (spirit level), tatacara tara (tare/rezero), penjagaan batu timbang piawai berkelas E2/F1, dan prosedur cetakan berat.</div>
           <div class="card-tags">
             <span class="card-tag t-mint">Precisa XT120A</span>
@@ -506,7 +1018,7 @@
   <div class="category-group" id="group-prep">
     <div class="category-header">
       <div class="cat-icon-badge badge-mint">🧬</div>
-      <h2 class="category-title">Penyediaan Sampel, Pengekstrakan & Radas Makmal</h2>
+      <h2 class="category-title">Penyediaan Sampel, Pengekstrakan &amp; Radas Makmal</h2>
       <span class="category-count badge-mint">4 Modul</span>
     </div>
 
@@ -559,7 +1071,7 @@
       </a>
 
       <!-- Sample Prep across 7 Classes -->
-      <a href="https://syariefazman.com/sampleprep" class="res-card theme-purple" data-category="prep">
+      <a href="screening-methods.html" class="res-card theme-purple" data-category="prep">
         <div class="card-top">
           <div class="card-icon">🧬</div>
           <span class="card-code-badge">PKKK/300/UP/021–028</span>
@@ -576,7 +1088,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <div class="card-status"><span class="dot"></span> Rujukan Luar</div>
+          <div class="card-status"><span class="dot"></span> Panduan Komprehensif</div>
           <span class="card-arrow">Buka Panduan →</span>
         </div>
       </a>
@@ -613,7 +1125,7 @@
   <div class="category-group" id="group-mgmt">
     <div class="category-header">
       <div class="cat-icon-badge badge-indigo">📋</div>
-      <h2 class="category-title">Pengurusan Kualiti, Pembentangan & myPortfolio</h2>
+      <h2 class="category-title">Pengurusan Kualiti, Pembentangan &amp; myPortfolio</h2>
       <span class="category-count badge-indigo">3 Modul</span>
     </div>
 
@@ -643,14 +1155,14 @@
       </a>
 
       <!-- Sasaran & Hala Tuju Slides -->
-      <a href="https://syariefazman.com/uptslide1" class="res-card theme-cyan" data-category="mgmt">
+      <a href="https://syariefazman.com/uptslide1" class="res-card theme-cyan" data-category="mgmt" target="_blank">
         <div class="card-top">
           <div class="card-icon">📊</div>
           <span class="card-code-badge">16 Slaid Interaktif</span>
         </div>
         <div class="card-content">
           <div class="card-eyebrow">Pembentangan Rasmi · Unit Penyaringan</div>
-          <div class="card-title">Sasaran & Hala Tuju Unit Penyaringan 2026</div>
+          <div class="card-title">Sasaran &amp; Hala Tuju Unit Penyaringan 2026</div>
           <div class="card-desc">Slaid pembentangan berasaskan web yang membentangkan statistik pencapaian beban kerja pengujian 2025, sasaran strategik KPI 2026, serta inisiatif transformasi digital makmal di Pusat Kawalan Kualiti (PKKK).</div>
           <div class="card-tags">
             <span class="card-tag t-cyan">Slaid Web</span>
@@ -673,7 +1185,7 @@
         </div>
         <div class="card-content">
           <div class="card-eyebrow">Fail Rekod Kualiti F01–F08 · Borang Rasmi</div>
-          <div class="card-title">Indeks Rekod Kualiti & Borang Makmal (UP/001–064)</div>
+          <div class="card-title">Indeks Rekod Kualiti &amp; Borang Makmal (UP/001–064)</div>
           <div class="card-desc">Pusat kawalan borang lembaran kerja (worksheets), logbook penyelenggaraan alat, borang semakan prestasi neraca (UP/014–016), dan format laporan analisis bagi pematuhan audit ISO/IEC 17025.</div>
           <div class="card-tags">
             <span class="card-tag t-purple">Borang UP/001-064</span>
@@ -697,15 +1209,15 @@
   <div class="category-group" style="margin-top: 1rem;">
     <div class="category-header">
       <div class="cat-icon-badge badge-mint">🏆</div>
-      <h2 class="category-title">Matriks Latihan & Pengiktirafan Kompetensi (ISO/IEC 17025)</h2>
+      <h2 class="category-title">Matriks Latihan &amp; Pengiktirafan Kompetensi (ISO/IEC 17025)</h2>
       <span class="category-count badge-mint">7 Kompetensi</span>
     </div>
 
     <div class="comp-grid">
       <div class="comp-card">
         <div class="comp-icon">🔬</div>
-        <div class="comp-name">SPE & LLE</div>
-        <div class="comp-detail">Teori & Praktikal</div>
+        <div class="comp-name">SPE &amp; LLE</div>
+        <div class="comp-detail">Teori &amp; Praktikal</div>
         <div class="comp-badge" style="background:var(--mint-dim);border:1px solid rgba(5,150,105,0.3);color:var(--mint)">Diperakui ✓</div>
       </div>
       <div class="comp-card">
@@ -717,7 +1229,7 @@
       <div class="comp-card">
         <div class="comp-icon">🧬</div>
         <div class="comp-name">GC-MS Analysis</div>
-        <div class="comp-detail">Agilent & Shimadzu</div>
+        <div class="comp-detail">Agilent &amp; Shimadzu</div>
         <div class="comp-badge" style="background:var(--cyan-dim);border:1px solid rgba(2,132,199,0.3);color:var(--cyan)">Diperakui ✓</div>
       </div>
       <div class="comp-card">
@@ -729,7 +1241,7 @@
       <div class="comp-card">
         <div class="comp-icon">🔧</div>
         <div class="comp-name">Mikropipet</div>
-        <div class="comp-detail">Kalibrasi & Verifikasi</div>
+        <div class="comp-detail">Kalibrasi &amp; Verifikasi</div>
         <div class="comp-badge" style="background:var(--mint-dim);border:1px solid rgba(5,150,105,0.3);color:var(--mint)">LULUS ✓</div>
       </div>
       <div class="comp-card">
@@ -749,8 +1261,8 @@
 
   <!-- Footer -->
   <div class="footer">
-    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia<br>
-    <span style="font-size:0.6rem;opacity:0.75">Sistem Arahan Kerja & Enjin Pengiraan Terakreditasi ISO/IEC 17025</span>
+    Unit Penyaringan ◈ Seksyen Pengujian Produk &amp; Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia<br>
+    <span style="font-size:0.65rem;opacity:0.8">Pusat Rujukan Makmal Bersepadu &amp; Enjin Pengiraan Terakreditasi ISO/IEC 17025</span>
   </div>
 
 </div>
