@@ -1216,21 +1216,41 @@
             <div class="formula-card">
               <div class="formula-title">📐 PERSAMAAN 1: PENGIRAAN KANDUNGAN ETHYLENE GLYCOL &amp; DIETHYLENE GLYCOL (% v/v)</div>
               <div class="formula-box">
-                $$\text{Amount of each compound } (\% \text{ v/v}) = \frac{C_{\text{GCMS}} \times V_{\text{final}} \times DF}{\rho \times 10^6 \times V_{\text{sample}}} \times 100\%$$
-                <div style="margin-top:0.6rem;font-size:0.88rem;color:var(--cyan)">
-                  $$\% \text{ v/v} = \frac{C_{\text{GCMS}}\ (\mu\text{g/mL}) \times 100\text{ mL} \times DF}{\rho\ (\text{g/mL}) \times 1\,000\,000 \times 1.0\text{ mL}} \times 100\% = \frac{C_{\text{GCMS}} \times DF}{\rho \times 100}$$
+                <div style="display:flex;align-items:center;justify-content:center;gap:0.8rem;flex-wrap:wrap;font-size:0.96rem;padding:0.4rem 0">
+                  <div style="font-weight:700">Kandungan Sebatian (% v/v) =</div>
+                  <div style="display:inline-flex;flex-direction:column;align-items:center;text-align:center">
+                    <div style="border-bottom:2px solid var(--text-heading);padding:0 0.6rem 0.25rem">
+                      Kepekatan GCMS (µg/mL) × Isipadu Akhir Sampel (100 mL) × Faktor Pencairan (DF)
+                    </div>
+                    <div style="padding-top:0.25rem">
+                      Ketumpatan Sebatian (g/mL) × 1,000,000 × Isipadu Sampel Diambil (1.0 mL)
+                    </div>
+                  </div>
+                  <div style="font-weight:700">× 100%</div>
+                </div>
+
+                <div style="margin-top:1rem;padding-top:0.8rem;border-top:1px dashed var(--card-border-subtle);display:flex;align-items:center;justify-content:center;gap:0.8rem;flex-wrap:wrap;font-size:0.95rem;color:var(--cyan)">
+                  <div style="font-weight:800">% v/v =</div>
+                  <div style="display:inline-flex;flex-direction:column;align-items:center;text-align:center">
+                    <div style="border-bottom:2px solid var(--cyan);padding:0 0.6rem 0.2rem;font-weight:700">
+                      C<sub>GCMS</sub> (µg/mL) × DF
+                    </div>
+                    <div style="padding-top:0.2rem;font-weight:700">
+                      ρ (g/mL) × 100
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="formula-desc">
                 <strong>Di mana:</strong><br>
-                • $C_{\text{GCMS}}$ = Kepekatan sebatian yang diukur daripada kromatogram GCMS ($\mu\text{g/mL}$)<br>
-                • $V_{\text{final}}$ = Isipadu akhir larutan sampel ($100\text{ mL}$)<br>
-                • $V_{\text{sample}}$ = Isipadu sampel ubat cecair yang dipipet ($1.0\text{ mL}$)<br>
-                • $DF$ = Faktor Pencairan (Dilution Factor, jika ada; $DF = 1$ jika tiada pencairan)<br>
-                • $\rho$ = Ketumpatan piawai analit:<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;▸ <strong>Ethylene Glycol (EG):</strong> $\rho = \mathbf{1.113\text{ g/mL}}$ (CAS: 107-21-1)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;▸ <strong>Diethylene Glycol (DEG):</strong> $\rho = \mathbf{1.118\text{ g/mL}}$ (CAS: 111-46-6)<br>
-                • $10^6$ = Faktor pertukaran unit ($\mu\text{g}$ ke $\text{g}$)
+                • <strong>C<sub>GCMS</sub></strong> = Kepekatan sebatian yang diukur daripada kromatogram GCMS (µg/mL)<br>
+                • <strong>V<sub>final</sub></strong> = Isipadu akhir larutan sampel (100 mL)<br>
+                • <strong>V<sub>sample</sub></strong> = Isipadu sampel ubat cecair yang dipipet (1.0 mL)<br>
+                • <strong>DF</strong> = Faktor Pencairan (Dilution Factor, jika ada; DF = 1 jika tiada pencairan)<br>
+                • <strong>ρ (Ketumpatan Sebatian Piawai):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;▸ <strong>Ethylene Glycol (EG):</strong> ρ = <strong>1.113 g/mL</strong> (CAS: 107-21-1)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;▸ <strong>Diethylene Glycol (DEG):</strong> ρ = <strong>1.118 g/mL</strong> (CAS: 111-46-6)<br>
+                • <strong>10<sup>6</sup> (1,000,000)</strong> = Faktor pertukaran unit (µg ke g)
               </div>
             </div>
 
