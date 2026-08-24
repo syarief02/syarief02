@@ -86,8 +86,8 @@
 
     <ul class="step-list">
       <li>Calculate the true temperature ($y_i$) for each of the 5 Master readings ($x_1 \dots x_5$).</li>
-      <li>Calculate the absolute difference $\Delta T = |T_{Test} - y|$ for each paired reading.</li>
-      <li>Verify that the maximum $\Delta T$ does not exceed the accepted tolerance level.</li>
+      <li>Calculate the absolute difference &Delta;<i>T</i> = |<i>T</i><sub>Test</sub> &minus; <i>y</i>| for each paired reading.</li>
+      <li>Verify that the maximum &Delta;<i>T</i> does not exceed the accepted tolerance level.</li>
     </ul>
   </div>
 
@@ -98,15 +98,15 @@
     <div>
       <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--mint);text-transform:uppercase;margin-bottom:0.5rem">✅ Acceptance Criteria</div>
       <p style="font-size:0.85rem;line-height:1.6;padding-left:1rem;border-left:2px solid var(--mint)">
-        The maximum temperature difference between the derived Master true value ($y$) and the Test thermometer reading ($T_{Test}$) shall not exceed <strong>$1.0^{\circ}\text{C}$</strong> for all 5 readings.<br>
-        Tolerance limit: $\le 1.0^{\circ}\text{C}$.
+        The maximum temperature difference between the derived Master true value ($y$) and the Test thermometer reading ($T_{Test}$) shall not exceed <strong>1.0 °C</strong> for all 5 readings.<br>
+        Tolerance limit: &le; 1.0 °C.
       </p>
     </div>
 
     <div>
       <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--red);text-transform:uppercase;margin-bottom:0.5rem">⚠️ Actions on Failure</div>
       <p style="font-size:0.85rem;line-height:1.6;padding-left:1rem;border-left:2px solid var(--red)">
-        If the Test thermometer fails to meet the $\le 1.0^{\circ}\text{C}$ specification:<br>
+        If the Test thermometer fails to meet the &le; 1.0 °C specification:<br>
         1. <strong>Do not</strong> immediately discard the thermometer.<br>
         2. Repeat the entire verification process by a <strong>different analyst</strong> (Second checking).<br>
         3. If the second verification also fails, the test thermometer is deemed 'Out of Tolerance' and must be removed from use or sent for official recalibration/repair.

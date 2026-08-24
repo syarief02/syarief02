@@ -63,9 +63,9 @@
     <table class="eq-table">
       <thead><tr><th>Selected Volume ($V$)</th><th>Resolution (mg)</th><th>Repeatability & Linearity (mg)</th><th>Standard Uncertainty (mg)</th></tr></thead>
       <tbody>
-        <tr><td>$10 \, \mu\text{L} \le V \le 100 \, \mu\text{L}$</td><td class="highlight">0.01</td><td>0.025</td><td>0.05</td></tr>
-        <tr><td>$100 \, \mu\text{L} < V \le 1000 \, \mu\text{L}$</td><td class="highlight">0.1</td><td>0.2</td><td>0.4</td></tr>
-        <tr><td>$1 \, \text{mL} < V \le 10 \, \text{mL}$</td><td class="highlight">1.0</td><td>2.0</td><td>4.0</td></tr>
+        <tr><td>10 &micro;L &le; <i>V</i> &le; 100 &micro;L</td><td class="highlight">0.01</td><td>0.025</td><td>0.05</td></tr>
+        <tr><td>100 &micro;L &lt; <i>V</i> &le; 1000 &micro;L</td><td class="highlight">0.1</td><td>0.2</td><td>0.4</td></tr>
+        <tr><td>1 mL &lt; <i>V</i> &le; 10 mL</td><td class="highlight">1.0</td><td>2.0</td><td>4.0</td></tr>
       </tbody>
     </table>
   </div>
@@ -74,12 +74,12 @@
   <div class="section-label">◈ 2. Immersion Depth & Wait Times</div>
   <div class="card reveal" style="overflow-x:auto">
     <table class="eq-table">
-      <thead><tr><th>Volume Range ($\mu\text{L}$)</th><th>Immersion Depth (mm)</th><th>Wait Time (seconds)</th></tr></thead>
+      <thead><tr><th>Volume Range (&micro;L)</th><th>Immersion Depth (mm)</th><th>Wait Time (seconds)</th></tr></thead>
       <tbody>
-        <tr><td>$1$ to $2$</td><td class="highlight">1</td><td>1</td></tr>
-        <tr><td>$> 1$ to $100$</td><td class="highlight">2 to 3</td><td>1</td></tr>
-        <tr><td>$> 100$ to $1000$</td><td class="highlight">2 to 4</td><td>1</td></tr>
-        <tr><td>$> 1000$ to $20000$</td><td class="highlight">3 to 6</td><td>3</td></tr>
+        <tr><td>1 to 2</td><td class="highlight">1</td><td>1</td></tr>
+        <tr><td>&gt; 1 to 100</td><td class="highlight">2 to 3</td><td>1</td></tr>
+        <tr><td>&gt; 100 to 1000</td><td class="highlight">2 to 4</td><td>1</td></tr>
+        <tr><td>&gt; 1000 to 20000</td><td class="highlight">3 to 6</td><td>3</td></tr>
       </tbody>
     </table>
     <div class="tag-row" style="margin-top:0.5rem">
@@ -93,15 +93,15 @@
   <div class="section-label">◈ 3. Gravimetric Procedure</div>
   <div class="card reveal">
     <ol class="step-list">
-      <li>Record room conditions from calibrated thermohygrometer. Must be $T = 20 \pm 3^{\circ}\text{C}$ (max variation $\pm 0.5^{\circ}\text{C}$), $RH = 45–80\%$.</li>
-      <li>Record deionized water temperature ($T_w$). It must be within $\pm 0.5^{\circ}\text{C}$ of room temperature.</li>
-      <li>Determine Z-factor corresponding to the water temperature (assumes air pressure approx. $1013 \, \text{hPa}$).</li>
+      <li>Record room conditions from calibrated thermohygrometer. Must be <i>T</i> = 20 &plusmn; 3 °C (max variation &plusmn; 0.5 °C), <i>RH</i> = 45–80%.</li>
+      <li>Record deionized water temperature (<i>T<sub>w</sub></i>). It must be within &plusmn; 0.5 °C of room temperature.</li>
+      <li>Determine Z-factor corresponding to the water temperature (assumes air pressure approx. 1013 hPa).</li>
       <li>Select appropriate balance (Tare a suitable receiving vessel with a small amount of water to humidify the vessel).</li>
       <li>Attach a new tip and <strong>pre-wet the tip</strong> by aspirating and dispensing the nominal volume multiple times to saturate the dead air volume.</li>
       <li>Hold micropipette vertically. Immerse tip to correct depth. Aspirate steadily. Wait the required time (1–3s).</li>
       <li>Withdraw tip and dispense into vessel at a 30°–45° angle against the inner wall. Drag the tip upwards slightly along the wall to remove any remaining droplet.</li>
-      <li>Record the mass ($M$). Tare the balance.</li>
-      <li>Repeat for a total of <strong>10 consecutive measurements</strong> ($M_1$ to $M_{10}$).</li>
+      <li>Record the mass (<i>M</i>). Tare the balance.</li>
+      <li>Repeat for a total of <strong>10 consecutive measurements</strong> (<i>M</i><sub>1</sub> to <i>M</i><sub>10</sub>).</li>
     </ol>
   </div>
 
@@ -109,15 +109,15 @@
   <div class="section-label">◈ 4. Mass Loss (Evaporation Correction)</div>
   <div class="card reveal" style="border-left:4px solid var(--red)">
     <p style="font-size:0.85rem;margin-bottom:1rem;line-height:1.6;color:var(--text)">
-      For test volumes <strong>$&lt; 50 \, \mu\text{L}$</strong>, evaporation during the weighing cycle significantly affects accuracy. A Mass Loss ($ML$) correction must be applied.
+      For test volumes <strong>&lt; 50 &micro;L</strong>, evaporation during the weighing cycle significantly affects accuracy. A Mass Loss (<i>ML</i>) correction must be applied.
     </p>
     <ol class="step-list">
-      <li>Start a timer at the beginning of the 10 weighings. Record the total time $T_{cycle}$ (in seconds) taken to complete all 10 weighings.</li>
-      <li>After the 10th reading ($M_{10}$) is recorded, leave the vessel on the balance and wait for exactly $T_{cycle}$ seconds.</li>
-      <li>Record the new balance reading ($M_{11}$).</li>
-      <li>Calculate Total Mass Loss during the cycle: $\Delta M = M_{10} - M_{11}$.</li>
-      <li>Calculate average Mass Loss per measurement: <span style="font-family:'DM Mono',monospace;color:var(--red);font-weight:bold">$ML = (M_{10} - M_{11}) / 10$</span>.</li>
-      <li>Add $ML$ to each recorded mass ($M_i$) before applying the Z-factor.</li>
+      <li>Start a timer at the beginning of the 10 weighings. Record the total time <i>T</i><sub>cycle</sub> (in seconds) taken to complete all 10 weighings.</li>
+      <li>After the 10th reading (<i>M</i><sub>10</sub>) is recorded, leave the vessel on the balance and wait for exactly <i>T</i><sub>cycle</sub> seconds.</li>
+      <li>Record the new balance reading (<i>M</i><sub>11</sub>).</li>
+      <li>Calculate Total Mass Loss during the cycle: &Delta;<i>M</i> = <i>M</i><sub>10</sub> &minus; <i>M</i><sub>11</sub>.</li>
+      <li>Calculate average Mass Loss per measurement: <span style="font-family:'DM Mono',monospace;color:var(--red);font-weight:bold"><i>ML</i> = (<i>M</i><sub>10</sub> &minus; <i>M</i><sub>11</sub>) / 10</span>.</li>
+      <li>Add <i>ML</i> to each recorded mass (<i>M<sub>i</sub></i>) before applying the Z-factor.</li>
     </ol>
   </div>
 
@@ -125,16 +125,16 @@
   <div class="section-label">◈ 5. Final Calculations</div>
   <div class="card reveal">
     <div class="formula">
-      Corrected Mass ($M_i^*$) = $M_i + ML$<br>
-      Volume ($V_i$) = $M_i^* \times Z$<br>
-      Mean Volume ($\overline{V}$) = $\frac{1}{10} \sum_{i=1}^{10} V_i$<br>
-      Accuracy ($A$) = $100 \times \frac{\overline{V} - V_s}{V_s}$ %<br>
-      CV = $100 \times \frac{S_r}{\overline{V}}$ %
+      Corrected Mass (<i>M<sub>i</sub>*</i>) = <i>M<sub>i</sub></i> + <i>ML</i><br>
+      Volume (<i>V<sub>i</sub></i>) = <i>M<sub>i</sub>*</i> &times; <i>Z</i><br>
+      Mean Volume (<i>V&#772;</i>) = (1/10) &Sigma; <i>V<sub>i</sub></i><br>
+      Accuracy (<i>A</i>) = 100 &times; [(<i>V&#772;</i> &minus; <i>V<sub>s</sub></i>) / <i>V<sub>s</sub></i>] %<br>
+      CV = 100 &times; (<i>S<sub>r</sub></i> / <i>V&#772;</i>) %
     </div>
     <ul style="list-style:none;font-size:0.8rem;color:var(--text-dim);margin-top:1rem;line-height:2">
-      <li>$V_s$: Selected Test Volume</li>
-      <li>$S_r$: Standard Deviation of the 10 calculated volumes ($V_i$)</li>
-      <li><strong>PASS Criterion:</strong> $A_{found} \le A_{max}$ AND $CV_{found} \le CV_{max}$</li>
+      <li><i>V<sub>s</sub></i>: Selected Test Volume</li>
+      <li><i>S<sub>r</sub></i>: Standard Deviation of the 10 calculated volumes (<i>V<sub>i</sub></i>)</li>
+      <li><strong>PASS Criterion:</strong> <i>A</i><sub>found</sub> &le; <i>A</i><sub>max</sub> AND <i>CV</i><sub>found</sub> &le; <i>CV</i><sub>max</sub></li>
     </ul>
   </div>
 

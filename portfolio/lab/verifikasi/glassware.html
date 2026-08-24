@@ -62,11 +62,11 @@
   <div class="card reveal" style="overflow-x:auto;margin-bottom:2rem">
     <p style="font-size:0.85rem;margin-bottom:0.8rem;color:var(--text-dim)">The analytical balance used must meet minimum resolution requirements strictly based on the nominal volume of the glassware (flask, pipette, or burette) under test.</p>
     <table class="eq-table">
-      <thead><tr><th>Nominal Volume ($V$)</th><th>Min. Resolution (mg)</th><th>Balance Type</th></tr></thead>
+      <thead><tr><th>Nominal Volume (<i>V</i>)</th><th>Min. Resolution (mg)</th><th>Balance Type</th></tr></thead>
       <tbody>
-        <tr><td>$V \le 10 \, \text{mL}$</td><td class="highlight">0.01</td><td>Semi-micro analytical balance</td></tr>
-        <tr><td>$10 \, \text{mL} < V \le 1000 \, \text{mL}$</td><td class="highlight">0.1</td><td>Analytical balance</td></tr>
-        <tr><td>$V > 1000 \, \text{mL}$</td><td class="highlight">10.0</td><td>Precision top-loading balance</td></tr>
+        <tr><td><i>V</i> &le; 10 mL</td><td class="highlight">0.01</td><td>Semi-micro analytical balance</td></tr>
+        <tr><td>10 mL &lt; <i>V</i> &le; 1000 mL</td><td class="highlight">0.1</td><td>Analytical balance</td></tr>
+        <tr><td><i>V</i> &gt; 1000 mL</td><td class="highlight">10.0</td><td>Precision top-loading balance</td></tr>
       </tbody>
     </table>
   </div>
@@ -79,14 +79,14 @@
     <ol class="step-list">
       <li><strong>Visual inspection:</strong> Verify cleanliness, inner surface condition (no frosting, scratches or chemical etching), and inscription legibility.</li>
       <li>Ensure the flask is completely dry internally. <em>Wear lint-free gloves to prevent transferring oils and heat from hands.</em></li>
-      <li>Place the empty, dry flask on the calibrated balance. Record the empty weight ($M_{E}$).</li>
-      <li>Fill the flask carefully with deionized water (equilibrated to room temperature) until about $1 \text{cm}$ below the graduation mark.</li>
+      <li>Place the empty, dry flask on the calibrated balance. Record the empty weight (<i>M<sub>E</sub></i>).</li>
+      <li>Fill the flask carefully with deionized water (equilibrated to room temperature) until about 1 cm below the graduation mark.</li>
       <li>Use a dropper to add water drop-by-drop until the lowest point of the meniscus exactly touches the top edge of the graduation line (read at eye level).</li>
       <li>Ensure no water droplets adhere to the inside of the neck above the meniscus line. Wipe with lint-free paper if necessary.</li>
-      <li>Record the water temperature ($T_{W1}$) in the dispensing container before testing.</li>
-      <li>Place the filled flask on the balance and record the filled weight ($M_{F1}$).</li>
-      <li>Empty the flask, wash, and dry it completely. Repeat steps 3–8 for <strong>readings 2 and 3</strong> ($M_{F2}, M_{F3}$).</li>
-      <li>Record the final water temperature ($T_{W2}$) after testing is complete. The temperature drift must be <strong>$\le 0.5^{\circ}\text{C}$</strong>.</li>
+      <li>Record the water temperature (<i>T<sub>W1</sub></i>) in the dispensing container before testing.</li>
+      <li>Place the filled flask on the balance and record the filled weight (<i>M<sub>F1</sub></i>).</li>
+      <li>Empty the flask, wash, and dry it completely. Repeat steps 3–8 for <strong>readings 2 and 3</strong> (<i>M<sub>F2</sub>, M<sub>F3</sub></i>).</li>
+      <li>Record the final water temperature (<i>T<sub>W2</sub></i>) after testing is complete. The temperature drift must be <strong>&le; 0.5 °C</strong>.</li>
     </ol>
   </div>
 
@@ -113,34 +113,34 @@
       <li>Open the stopcock to fill the tip completely (ensure no air bubbles are trapped).</li>
       <li>Adjust the meniscus exactly to the zero mark. Remove any hanging drop at the tip.</li>
       <li>Place the tared receiving vessel under the burette.</li>
-      <li>Fully open the stopcock and dispense water into the vessel until the meniscus is approximately $5 \text{mm}$ above the target test volume graduation.</li>
+      <li>Fully open the stopcock and dispense water into the vessel until the meniscus is approximately 5 mm above the target test volume graduation.</li>
       <li>Wait for exactly <strong>30 seconds</strong> for drainage from the burette walls.</li>
       <li>Carefully adjust the meniscus to exactly touch the target graduation mark. Touch the tip to the vessel wall to remove any hanging drop.</li>
       <li>Record the dispensed mass.</li>
-      <li>Repeat steps 1-8 for a total of <strong>5 measurements</strong> at the required points (e.g., $10 \text{mL}$, $25 \text{mL}$, $50 \text{mL}$).</li>
+      <li>Repeat steps 1-8 for a total of <strong>5 measurements</strong> at the required points (e.g., 10 mL, 25 mL, 50 mL).</li>
     </ol>
   </div>
 
   <!-- Calculations -->
   <div class="section-label">◈ 3. Calculations & Temperature Correction</div>
   <div class="card reveal">
-    <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">The apparent mass of the water must be converted into volume at the reference temperature (usually $20^{\circ}\text{C}$) using the $Z$-factor.</p>
+    <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">The apparent mass of the water must be converted into volume at the reference temperature (usually 20 °C) using the <i>Z</i>-factor.</p>
     
     <div style="background:var(--bg2);padding:1.5rem;border-radius:12px;font-family:'DM Mono',monospace;font-size:0.9rem;margin-bottom:1rem;color:var(--mint);text-align:center;border:1px solid var(--glass-border)">
-      $M_{Water} = M_{Filled} - M_{Empty}$<br><br>
-      $V_{20} = M_{Water} \times Z$<br><br>
-      Absolute Error ($E$) = $|V_{20} - V_{Nominal}|$
+      <i>M</i><sub>Water</sub> = <i>M</i><sub>Filled</sub> &minus; <i>M</i><sub>Empty</sub><br><br>
+      <i>V</i><sub>20</sub> = <i>M</i><sub>Water</sub> &times; <i>Z</i><br><br>
+      Absolute Error (<i>E</i>) = |<i>V</i><sub>20</sub> &minus; <i>V</i><sub>Nominal</sub>|
     </div>
 
     <ul style="list-style:none;font-size:0.85rem;line-height:1.7;color:var(--text-dim)">
-      <li>• $M_{Water}$: True mass of water (for Ex methods, this is simply the dispensed mass)</li>
-      <li>• $Z$-factor: Correction factor accounting for the density of water at the measured temperature and air buoyancy (sourced from ISO 4787 standard tables).</li>
-      <li>• $V_{20}$: Calculated true volume at reference temperature ($20^{\circ}\text{C}$).</li>
+      <li>• <i>M</i><sub>Water</sub>: True mass of water (for Ex methods, this is simply the dispensed mass)</li>
+      <li>• <i>Z</i>-factor: Correction factor accounting for the density of water at the measured temperature and air buoyancy (sourced from ISO 4787 standard tables).</li>
+      <li>• <i>V</i><sub>20</sub>: Calculated true volume at reference temperature (20 °C).</li>
     </ul>
     
     <div style="margin-top:1.5rem;padding-left:1rem;border-left:2px solid var(--amber)">
       <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--amber);text-transform:uppercase;margin-bottom:0.5rem">✅ Acceptance Criteria</div>
-      <p style="font-size:0.85rem;color:var(--text)">The Absolute Error ($E$) for all recorded measurements must be <strong>$\le$ Maximum Permissible Error (MPE)</strong> stated by the manufacturer for the specific Class A/B glassware.</p>
+      <p style="font-size:0.85rem;color:var(--text)">The Absolute Error (<i>E</i>) for all recorded measurements must be <strong>&le; Maximum Permissible Error (MPE)</strong> stated by the manufacturer for the specific Class A/B glassware.</p>
     </div>
   </div>
 

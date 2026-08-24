@@ -77,12 +77,12 @@
   <div class="card reveal">
     <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">To ensure the balance provides consistent readings regardless of where the load is placed on the measuring pan. Conducted using a standard weight equivalent to approx. 30% to 50% of the balance capacity.</p>
     <ol class="step-list">
-      <li>Place the selected standard weight exactly in the <strong>center</strong> of the pan. Record the reading ($C$). Tare the balance.</li>
-      <li>Move the same weight to the <strong>front-left</strong> quadrant. Record the reading ($FL$).</li>
-      <li>Move the weight to the <strong>back-left</strong> quadrant. Record the reading ($BL$).</li>
-      <li>Move the weight to the <strong>back-right</strong> quadrant. Record the reading ($BR$).</li>
-      <li>Move the weight to the <strong>front-right</strong> quadrant. Record the reading ($FR$).</li>
-      <li>Calculate the maximum eccentric error: $\Delta E_{max} = \max(|C - FL|, |C - BL|, |C - BR|, |C - FR|)$</li>
+      <li>Place the selected standard weight exactly in the <strong>center</strong> of the pan. Record the reading (<i>C</i>). Tare the balance.</li>
+      <li>Move the same weight to the <strong>front-left</strong> quadrant. Record the reading (<i>FL</i>).</li>
+      <li>Move the weight to the <strong>back-left</strong> quadrant. Record the reading (<i>BL</i>).</li>
+      <li>Move the weight to the <strong>back-right</strong> quadrant. Record the reading (<i>BR</i>).</li>
+      <li>Move the weight to the <strong>front-right</strong> quadrant. Record the reading (<i>FR</i>).</li>
+      <li>Calculate the maximum eccentric error: <strong>&Delta;E<sub>max</sub> = max(|C &minus; FL|, |C &minus; BL|, |C &minus; BR|, |C &minus; FR|)</strong></li>
     </ol>
   </div>
 
@@ -90,12 +90,12 @@
   <div class="card reveal">
     <p style="font-size:0.85rem;margin-bottom:1rem;color:var(--text-dim)">To determine the ability of the balance to provide the same result for repeated weighings of the same load under identical conditions. Conducted using a standard weight close to the typical working load.</p>
     <ol class="step-list">
-      <li>Zero the balance. Ensure display reads exactly $0.0000 \text{ g}$.</li>
+      <li>Zero the balance. Ensure display reads exactly 0.0000 g.</li>
       <li>Place the selected standard weight on the center of the pan. Close the draft shield.</li>
       <li>Wait for the reading to stabilize (stability indicator appears). Record reading $x_1$.</li>
-      <li>Remove the weight. Zero/Tare the balance if it does not return to exactly $0.0000 \text{ g}$.</li>
+      <li>Remove the weight. Zero/Tare the balance if it does not return to exactly 0.0000 g.</li>
       <li>Repeat Steps 2–4 for a total of <strong>10 consecutive times</strong> ($x_1, x_2, ..., x_{10}$).</li>
-      <li>Calculate the Standard Deviation ($S_r$) using the formula:</li>
+      <li>Calculate the Standard Deviation (<i>S<sub>r</sub></i>) using the formula:</li>
     </ol>
     <div style="background:var(--bg2);padding:1rem;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.85rem;text-align:center;margin-top:1rem;color:var(--cyan)">
       S<sub>r</sub> = &radic;&Sigma;(x<sub>i</sub> - x&#772;)&sup2; / (n - 1)
@@ -110,7 +110,7 @@
       <li>Zero the balance.</li>
       <li>Place the first weight on the pan, let it stabilize, and record the displayed value.</li>
       <li>Repeat for all test points up to Maximum Capacity.</li>
-      <li>Calculate the Error of Indication ($E$) for each point:</li>
+      <li>Calculate the Error of Indication (<i>E</i>) for each point:</li>
     </ol>
     <div style="background:var(--bg2);padding:1rem;border-radius:8px;font-family:'DM Mono',monospace;font-size:0.85rem;text-align:center;margin-top:1rem;color:var(--mint)">
       Error (E) = Displayed Value(x) - True Mass of Standard Weight(m<sub>ref</sub>)
@@ -138,9 +138,9 @@
   <div class="section-label">◈ Acceptance Criteria & Corrective Actions</div>
   <div class="card reveal">
     <ul style="list-style:none;font-size:0.85rem;color:var(--text);line-height:2;margin-bottom:1.5rem">
-      <li>✅ <strong>Eccentricity:</strong> $\Delta E_{max}$ must be $\le$ Maximum Permissible Error (MPE) for the specific load.</li>
-      <li>✅ <strong>Repeatability:</strong> Standard deviation ($S_r$) must be $\le$ Manufacturer's specification for repeatability limitation.</li>
-      <li>✅ <strong>Linearity:</strong> Error ($E$) at each point must be $\le$ Maximum Permissible Error (MPE) specified by OIML R76 guidelines.</li>
+      <li>✅ <strong>Eccentricity:</strong> &Delta;E<sub>max</sub> must be &le; Maximum Permissible Error (MPE) for the specific load.</li>
+      <li>✅ <strong>Repeatability:</strong> Standard deviation (<i>S<sub>r</sub></i>) must be &le; Manufacturer's specification for repeatability limitation.</li>
+      <li>✅ <strong>Linearity:</strong> Error (<i>E</i>) at each point must be &le; Maximum Permissible Error (MPE) specified by OIML R76 guidelines.</li>
     </ul>
     
     <div style="border-left:3px solid var(--red);padding-left:1rem">
