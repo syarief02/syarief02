@@ -299,6 +299,79 @@
     font-weight: 500;
   }
 
+  /* Lampiran & Figure Cards */
+  .lampiran-box {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 14px;
+    padding: 1.4rem;
+    margin-bottom: 1.8rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .lampiran-header {
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--cyan);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--sub-border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .figure-card {
+    background: var(--sub-bg);
+    border: 1px solid var(--sub-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+  .figure-card:hover {
+    border-color: var(--cyan);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .figure-img-wrap {
+    padding: 0.75rem;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--sub-border);
+    overflow: hidden;
+  }
+  .figure-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+  }
+  .figure-card:hover .figure-img {
+    transform: scale(1.02);
+  }
+  .figure-caption {
+    padding: 0.85rem 1rem;
+  }
+  .fig-title {
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.3rem;
+  }
+  .fig-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+  .figures-grid-3col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.85rem; }
   .sop-list-item {
