@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/034 — Identifikasi dan Kandungan Diethylene Glycol dan Ethylene Glycol dalam Ubat Cecair menggunakan GCMS | NPRA Unit Penyaringan</title>
-<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/034: Identifikasi dan Kandungan Diethylene Glycol dan Ethylene Glycol dalam Ubat Cecair menggunakan GCMS — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<title>PKKK/300/UP/034 — Identifikasi dan Kandungan Diethylene Glycol & Ethylene Glycol dalam Ubat Cecair menggunakan GCMS | NPRA Unit Penyaringan</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/034: Identifikasi dan Kandungan Diethylene Glycol (DEG) dan Ethylene Glycol (EG) dalam Ubat Cecair menggunakan GCMS (SIM Mode) — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -18,6 +18,8 @@
     --card-surface: #ffffff;
     --card-border-subtle: #cbd5e1;
     --step-border: #94a3b8;
+    --sub-bg: rgba(2, 132, 199, 0.04);
+    --sub-border: #bae6fd;
   }
 
   [data-theme="dark"] {
@@ -27,6 +29,8 @@
     --card-surface: rgba(15, 23, 42, 0.85);
     --card-border-subtle: rgba(255, 255, 255, 0.12);
     --step-border: rgba(255, 255, 255, 0.18);
+    --sub-bg: rgba(56, 189, 248, 0.06);
+    --sub-border: rgba(56, 189, 248, 0.2);
   }
 
   .sop-doc-container {
@@ -81,13 +85,14 @@
     justify-content: center;
   }
 
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
   .sec-theme-cyan .sop-section-header { background: linear-gradient(135deg, #0284c7, #0369a1); }
   .sec-theme-purple .sop-section-header { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
   .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
-  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
+  .sec-theme-teal .sop-section-header { background: linear-gradient(135deg, #0d9488, #0f766e); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -97,7 +102,7 @@
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
     overflow: hidden;
     transition: all 0.2s ease;
   }
@@ -107,19 +112,10 @@
     background: var(--card-hover);
     transform: translateY(-2px);
   }
-  .sop-step-card.action-step {
-    border-left-color: #d97706;
-  }
-  .sop-step-card.action-step:hover {
-    border-left-color: #b45309;
-  }
   .step-card-header {
     padding: 0.85rem 1.2rem;
     background: rgba(2, 132, 199, 0.08);
     border-bottom: 1px solid var(--glass-border);
-  }
-  .action-step .step-card-header {
-    background: rgba(217, 119, 6, 0.08);
   }
   .step-check-wrap {
     display: flex;
@@ -139,26 +135,26 @@
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
-    line-height: 1.6;
   }
-  .step-card-body { padding: 1.1rem 1.3rem; }
-  
-  /* Action Step Badge */
-  .action-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #d97706, #b45309);
-    color: #fff;
+  .step-card-body { padding: 1.2rem 1.4rem; }
+
+  /* Sub-step cards */
+  .sub-step-card {
+    background: var(--sub-bg);
+    border: 1px solid var(--sub-border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin: 0.8rem 0 0.8rem 1.5rem;
+  }
+  .sub-step-title {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 800;
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    margin-right: 0.5rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    flex-shrink: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--cyan);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
   /* Typography */
@@ -170,62 +166,237 @@
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
 
-  /* Revision History Collapsible */
-  .rev-details {
+  /* Diagnostic / Callout Boxes */
+  .diag-box {
     background: var(--card-surface);
     border: 1px solid var(--card-border-subtle);
     border-radius: 12px;
-    margin-bottom: 1.2rem;
-    overflow: hidden;
-    transition: all 0.2s ease;
+    padding: 1.1rem 1.3rem;
+    margin: 1rem 0;
+    box-shadow: var(--shadow-sm);
   }
-  .rev-summary {
+  .diag-box-title {
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; color: var(--cyan);
+    margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+
+  /* Safety & Tip boxes */
+  .safety-box {
+    background: rgba(220, 38, 38, 0.06);
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    border-left: 4px solid var(--red);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .safety-box-title {
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--red);
+    margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+  .tip-box {
+    background: rgba(5, 150, 105, 0.06);
+    border: 1px solid rgba(5, 150, 105, 0.25);
+    border-left: 4px solid var(--mint);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .tip-box-title {
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--mint);
+    margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+
+  /* Table Cards */
+  .table-card {
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
+    padding: 1.4rem; margin: 1.5rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
+  }
+  .table-card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
+  }
+  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
+  .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
+  .table-responsive { overflow-x: auto; }
+  .table-official {
+    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
+  .table-official tbody tr:nth-child(even) { background: var(--sub-bg); }
+  .pass-badge { background: rgba(5, 150, 105, 0.15); color: #059669; padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 700; }
+  .fail-badge { background: rgba(220, 38, 38, 0.12); color: #dc2626; padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 700; }
+
+  /* Formula / Equation Card */
+  .formula-card {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(124, 58, 237, 0.08));
+    border: 1.5px solid var(--cyan);
+    border-radius: 14px;
+    padding: 1.4rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .formula-title {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--cyan);
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.85rem 1.2rem;
-    cursor: pointer;
+  }
+  .formula-box {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 10px;
+    padding: 1.2rem;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    background: rgba(71, 85, 105, 0.06);
-    user-select: none;
-    list-style: none;
+    font-size: 0.92rem;
+    text-align: center;
+    color: var(--text-heading);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    overflow-x: auto;
   }
-  .rev-summary::-webkit-details-marker { display: none; }
-  .rev-summary:hover { color: var(--text-heading); background: rgba(71, 85, 105, 0.1); }
-  .rev-toggle-icon { font-size: 1rem; }
-  .rev-arrow {
-    margin-left: auto;
-    transition: transform 0.2s ease;
-    font-size: 0.85rem;
-  }
-  details[open] .rev-arrow { transform: rotate(90deg); }
-  .rev-body {
-    padding: 1rem 1.3rem;
-    border-top: 1px solid var(--card-border-subtle);
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  .sop-rev-p {
-    font-size: 0.85rem;
-    line-height: 1.65;
-    color: var(--text-muted);
-    margin-bottom: 0.4rem;
-    padding-left: 0.5rem;
-    border-left: 2px solid rgba(71, 85, 105, 0.15);
+  .formula-desc {
+    margin-top: 1rem;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--text-body);
   }
 
-  /* Keyword Highlights */
-  .kw-temp { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-flow { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-wave { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-wt { color: #059669; font-weight: 700; font-family: var(--font-mono); background: rgba(5, 150, 105, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-vol { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-time { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-limit { color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-ph { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  /* Interactive Calculator Card */
+  .calc-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 14px;
+    padding: 1.4rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .calc-header {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--purple);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .calc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .calc-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .calc-group label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-heading);
+  }
+  .calc-input {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 8px;
+    background: var(--sub-bg);
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--text-heading);
+  }
+  .calc-input:focus {
+    outline: none;
+    border-color: var(--cyan);
+  }
+  .calc-res-box {
+    background: var(--sub-bg);
+    border: 1px solid var(--sub-border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--cyan);
+  }
+
+  /* Ordered list inside step cards */
+  .proc-list {
+    margin-left: 1.5rem;
+    line-height: 1.85;
+    color: var(--text-body);
+    font-size: 0.93rem;
+    counter-reset: proc-counter;
+    list-style: none;
+    padding-left: 0;
+  }
+  .proc-list li {
+    counter-increment: proc-counter;
+    position: relative;
+    padding-left: 2.2rem;
+    margin-bottom: 0.65rem;
+  }
+  .proc-list li::before {
+    content: counter(proc-counter);
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: var(--cyan-dim);
+    color: var(--cyan);
+    border-radius: 50%;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .proc-list li strong { color: var(--text-heading); }
+  .proc-list li code {
+    font-family: var(--font-mono);
+    background: var(--cyan-dim);
+    color: var(--cyan);
+    padding: 0.15rem 0.45rem;
+    border-radius: 5px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  /* Two-Way Cross Link Grid */
+  .cross-link-container {
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.08), rgba(2, 132, 199, 0.08));
+    border: 1px solid var(--mint); border-radius: 16px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .cross-header {
+    display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 800;
+    color: var(--text-heading); margin-bottom: 1rem;
+  }
+  .cross-icon { font-size: 1.15rem; }
+  .cross-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.8rem;
+  }
+  .analysis-link-card {
+    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 12px;
+    padding: 0.9rem 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.3rem;
+    transition: all 0.2s ease; box-shadow: var(--shadow-sm);
+  }
+  .analysis-link-card:hover {
+    border-color: var(--mint); transform: translateY(-2px); box-shadow: var(--shadow-md);
+  }
+  .ana-code { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--mint); }
+  .ana-name { font-size: 0.85rem; font-weight: 700; color: var(--text-heading); line-height: 1.35; }
+  .ana-badge { font-size: 0.72rem; font-weight: 600; color: var(--purple); margin-top: 0.2rem; }
 
   /* Visual Workflow Timeline */
   .wf-track {
@@ -242,129 +413,6 @@
   .wf-name { font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; color: var(--text-heading); }
   .wf-desc { font-size: 0.74rem; color: var(--text-muted); line-height: 1.3; }
   .wf-arrow { color: var(--cyan); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
-
-  /* Two-Way Cross Link Grid */
-  .cross-link-container {
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(124, 58, 237, 0.08));
-    border: 1px solid var(--cyan); border-radius: 16px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
-    box-shadow: var(--shadow-sm);
-  }
-  .cross-link-container.analysis-theme {
-    background: linear-gradient(135deg, rgba(5, 150, 105, 0.08), rgba(2, 132, 199, 0.08));
-    border-color: var(--mint);
-  }
-  .cross-header {
-    display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 800;
-    color: var(--text-heading); margin-bottom: 1rem;
-  }
-  .cross-icon { font-size: 1.15rem; }
-  .cross-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.8rem;
-  }
-  .inst-link-card, .analysis-link-card {
-    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 12px;
-    padding: 0.9rem 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.3rem;
-    transition: all 0.2s ease; box-shadow: var(--shadow-sm);
-  }
-  .inst-link-card:hover, .analysis-link-card:hover {
-    border-color: var(--cyan); transform: translateY(-2px); box-shadow: var(--shadow-md);
-  }
-  .inst-code, .ana-code { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--cyan); }
-  .inst-name, .ana-name { font-size: 0.85rem; font-weight: 700; color: var(--text-heading); line-height: 1.35; }
-  .inst-badge, .ana-badge { font-size: 0.72rem; font-weight: 600; color: var(--purple); margin-top: 0.2rem; }
-
-  /* Deep Tips Card */
-  .deep-tips-card {
-    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(2, 132, 199, 0.08));
-    border: 1px solid var(--purple); border-radius: 14px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
-    box-shadow: var(--shadow-sm);
-  }
-
-  /* Parameters Specs Ribbon Card */
-  .specs-ribbon-card {
-    background: var(--card-surface);
-    border: 1.5px solid var(--cyan);
-    border-radius: 16px;
-    padding: 1.3rem 1.5rem;
-    margin: 1.5rem 0 1.8rem;
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(12px);
-  }
-  .specs-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: var(--text-heading);
-    margin-bottom: 1rem;
-  }
-  .specs-icon { font-size: 1.2rem; }
-  .specs-ribbon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 0.85rem;
-  }
-  .spec-chip {
-    background: var(--glass);
-    border: 1px solid var(--card-border-subtle);
-    border-radius: 12px;
-    padding: 0.75rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    transition: all 0.2s ease;
-  }
-  .spec-chip:hover {
-    border-color: var(--cyan);
-    background: var(--card-surface);
-    transform: translateY(-2px);
-  }
-  .spec-chip.highlight-limit {
-    border-color: rgba(217, 119, 6, 0.4);
-    background: var(--amber-dim);
-  }
-  .spec-lbl {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--cyan);
-    letter-spacing: 0.05em;
-  }
-  .highlight-limit .spec-lbl {
-    color: #d97706;
-  }
-  .spec-val {
-    font-size: 0.85rem;
-    color: var(--text-heading);
-    line-height: 1.4;
-  }
-  .highlight-amber-text {
-    color: #d97706;
-    font-weight: 800;
-  }
-
-  /* Executive Summary & Chips */
-  .summary-analytes {
-    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
-    border: 1px solid var(--card-border-subtle); display: flex; flex-direction: column; gap: 0.5rem;
-    box-shadow: var(--shadow-sm);
-  }
-  .sum-lbl { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; }
-  .chips-container { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-  .analite-chip {
-    padding: 0.35rem 0.75rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
-    color: var(--purple); font-family: var(--font-mono); font-size: 0.78rem; border-radius: 8px; font-weight: 600;
-  }
-
-  /* Bench Notes Card */
-  .bench-tips-card {
-    background: var(--amber-dim); border: 1px solid rgba(217, 119, 6, 0.35); border-radius: 14px;
-    padding: 1.3rem 1.5rem; margin-bottom: 1.8rem; box-shadow: var(--shadow-sm);
-  }
-  .tips-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: #d97706; margin-bottom: 0.7rem; font-weight: 700; }
-  .tips-list { margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.7; color: var(--text-body); }
 
   /* Progress Tracker */
   .progress-card {
@@ -388,46 +436,32 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
-  .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
-  /* Table Cards */
-  .table-card {
-    background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
-    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
+  /* Definition grid */
+  .def-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.3rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
-  .table-card-header {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
-    border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
+  .def-abbr {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--cyan);
   }
-  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
-  .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
-  .table-responsive { overflow-x: auto; }
-  .table-official {
-    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
+  .def-full {
+    color: var(--text-body);
   }
-  .table-official th, .table-official td {
-    border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
-  }
-  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
-  .seq-sst { background: var(--purple-dim); }
-  .seq-iqc { background: var(--cyan-dim); }
-  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .wf-track, .cross-link-container, .calc-card { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
     .sop-section-header { background: #eee !important; color: #000 !important; }
     .sop-section-header h2 { color: #000 !important; }
     .sop-step-card { border-left: 2px solid #000 !important; background: none !important; }
-  }
-
-  @media (max-width: 768px) {
-    .sop-doc-container { padding: 1.2rem; }
-    .sop-section-body { padding: 1rem; }
-    .wf-track { flex-wrap: wrap; justify-content: center; }
-    .cross-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -443,11 +477,11 @@
     <div class="topbar-left">
       <a href="../index.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Unit Penyaringan
+        Unit Penyaringan Hub
       </a>
       <a href="../sop-matrix.html" class="ctrl-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        SOP Matrix (64)
+        Master SOP Matrix
       </a>
     </div>
     <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
@@ -467,138 +501,106 @@
   <!-- Hero Ribbon -->
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
-    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/034 <span class="g">Identifikasi dan Kandungan Diethylene Glycol dan Ethylene Glycol dalam Ubat Cecair menggunakan GCMS</span></h1>
-    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: GC-MS</div>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk &amp; Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/034 <span class="g">EG &amp; DEG dalam Ubat Cecair (GCMS)</span></h1>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: GC-MS / Kaedah Pengujian Kuantitatif</div>
+    <p class="hero-desc">Prosedur standard ujian identifikasi kualitatif (screening) dan penentuan kuantitatif (assay) Diethylene Glycol (DEG, CAS 111-46-6) dan Ethylene Glycol (EG, CAS 107-21-1) dalam persediaan ubat cecair (sirap, ampaian, larutan) menggunakan Gas Chromatography-Mass Spectrometry (GCMS) dalam mod Selected Ion Monitoring (SIM). Mengikut piawaian USP-NF Propylene Glycol Monograph: USP 43 – NF 38 (Had Ketat NMT 0.10% v/v).</p>
+  </div>
+
+  <!-- Specs Ribbon -->
+  <div class="specs-ribbon">
+    <div class="spec-chip"><span class="spec-lbl">COLUMN</span> BP-20 (Wax) 30m × 0.25mm × 0.25µm</div>
+    <div class="spec-chip"><span class="spec-lbl">IONIZATION</span> EI 70 eV</div>
+    <div class="spec-chip"><span class="spec-lbl">INJECTION</span> 1.0 µL Split (20:1) @ 250°C</div>
+    <div class="spec-chip"><span class="spec-lbl">CARRIER GAS</span> Helium ≥ 99.999% (0.65 mL/min)</div>
+    <div class="spec-chip"><span class="spec-lbl">SOLVENT DELAY</span> 4.00 min (MeOH cut)</div>
+    <div class="spec-chip"><span class="spec-lbl">EG QUANT/QUAL</span> m/z 31 (Quant), m/z 33, 62 (Qual)</div>
+    <div class="spec-chip"><span class="spec-lbl">DEG QUANT/QUAL</span> m/z 45 (Quant), m/z 75, 31 (Qual)</div>
+    <div class="spec-chip"><span class="spec-lbl">USP LIMIT</span> NMT 0.10% v/v</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
   <div class="wf-track">
-        <div class="wf-step">
-          <div class="wf-node">1</div>
-          <div class="wf-info">
-            <div class="wf-name">1. Reagen & Piawai</div>
-            <div class="wf-desc">Penyediaan fasa bergerak, stok & kalibrasi</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">2</div>
-          <div class="wf-info">
-            <div class="wf-name">2. Pengekstrakan</div>
-            <div class="wf-desc">Timbang, sonikasi, sentrifug & turas 0.45µm</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">3</div>
-          <div class="wf-info">
-            <div class="wf-name">3. Persediaan Alat</div>
-            <div class="wf-desc">Purging saluran, autotune & baseline</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">4</div>
-          <div class="wf-info">
-            <div class="wf-name">4. Suntikan Batch</div>
-            <div class="wf-desc">Blank, SST (n=6), Sampel & IQC</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">5</div>
-          <div class="wf-info">
-            <div class="wf-name">5. Verifikasi & Rekod</div>
-            <div class="wf-desc">Padanan RT, spektrum UV/MS & Laporan</div>
-          </div>
-        </div>
-        </div>
+    <div class="wf-step">
+      <div class="wf-node">1</div>
+      <div class="wf-info">
+        <div class="wf-name">Piawai &amp; Reagen</div>
+        <div class="wf-desc">Stok 2000 ppm, Seri Kalibrasi Aras 1–5, LOD 2 ppm, LOQ 6 ppm</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">2</div>
+      <div class="wf-info">
+        <div class="wf-name">Penyediaan Sampel</div>
+        <div class="wf-desc">1 mL sampel → 50 mL MeOH → Sonikasi 5 min → 100 mL → Turas 0.45µm</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">3</div>
+      <div class="wf-info">
+        <div class="wf-name">Parameter GCMS</div>
+        <div class="wf-desc">BP-20 Wax, Linear Velocity 30 cm/s, SIM Time Windows</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">4</div>
+      <div class="wf-info">
+        <div class="wf-name">Suntikan Batch</div>
+        <div class="wf-desc">Blank, SST (n=6), LOD, LOQ, Kalibrasi 1–5, Sampel Duplikat A/B, IQC</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">5</div>
+      <div class="wf-info">
+        <div class="wf-name">Kuantitasi &amp; Had</div>
+        <div class="wf-desc">Linearity R² ≥ 0.9950, Ion Ratio Tolerance, Equation 1 (% v/v)</div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Chromatographic / Analytical Parameters Specs Ribbon -->
-  
-        <div class="specs-ribbon-card">
-          <div class="specs-card-header">
-            <span class="specs-icon">⚡</span>
-            <strong>Spesifikasi &amp; Parameter Kromatografi / Analitikal (Official Parameters):</strong>
-          </div>
-          <div class="specs-ribbon-grid"><div class="spec-chip"><span class="spec-lbl">Instrumen Utama</span><strong class="spec-val">Shimadzu QP2010 Ultra / Agilent 8890 GC-MS</strong></div><div class="spec-chip"><span class="spec-lbl">Turus / Column</span><strong class="spec-val">BP20 Wax (30 m × 0.25 mm × 0.25 µm)</strong></div><div class="spec-chip"><span class="spec-lbl">Fasa Bergerak / Pelarut</span><strong class="spec-val">Helium Gas Pembawa (Linear Velocity: 30.0 cm/sec)</strong></div><div class="spec-chip"><span class="spec-lbl">Kadar Alir &amp; Suhu</span><strong class="spec-val">0.65 mL/min (Split 20:1 @ 250 °C) @ Oven: 100 °C (1 min) → 10 °C/min ke 130 °C (7 min) → 20 °C/min ke 240 °C (3 min)</strong></div><div class="spec-chip"><span class="spec-lbl">Pengesan / Gelombang / SIM</span><strong class="spec-val">SIM Mode: EG (m/z 31, 33, 62) &amp; DEG (m/z 45, 75, 31)</strong></div><div class="spec-chip"><span class="spec-lbl">Kriteria Kesesuaian Sistem (SST)</span><strong class="spec-val">Peak Area %RSD ≤ 10.0% (n=6), Tailing Tf ≤ 2.5, N ≥ 2000, LOD S/N ≥ 3, LOQ S/N ≥ 10.</strong></div><div class="spec-chip highlight-limit"><span class="spec-lbl">Had Kawalan Rasmi</span><strong class="spec-val highlight-amber-text">Had USP / NPRA: Tidak Melebihi 0.10% v/v bagi kedua-dua EG dan DEG.</strong></div></div>
-        </div>
-        
-
-  <!-- Target Analytes / Quick Chips -->
-  
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Ethylene Glycol (EG)</span><span class="analite-chip">Diethylene Glycol (DEG)</span></div>
-        </div>
-        
-
-  <!-- Cross-Linked Instruments (For Analysis SOPs) -->
-  
-        <div class="cross-link-container">
-          <div class="cross-header">
-            <span class="cross-icon">⚙️</span>
-            <strong>SOP Pengendalian Alat Yang Digunakan Untuk Ujian Ini:</strong>
-          </div>
-          <div class="cross-grid">
-            <a href="sop-300-up-040.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/040</div>
-              <div class="inst-name">GCMS Shimadzu QP2010 Ultra (COAST SIM)</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            
-            <a href="sop-300-up-017.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/017</div>
-              <div class="inst-name">GCMS Agilent 8890 / 5977B</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            
-            <a href="sop-300-up-010.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/010</div>
-              <div class="inst-name">GCMS Shimadzu QP2010</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            
-            <a href="sop-300-up-004.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/004</div>
-              <div class="inst-name">GCMS Agilent 7890A / 5975C</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            
-            <a href="sop-300-up-005.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/005</div>
-              <div class="inst-name">Alat Timbang Precisa XT 120A</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            
-            <a href="sop-300-up-058.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/058</div>
-              <div class="inst-name">Ultrasonic Bath Branson 8210 (5 min)</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            </div>
-        </div>
-        
-
-  <!-- Cross-Linked Analysis (For Instrument SOPs) -->
-  
-
-  <!-- Deep Operating Tips for Instruments -->
-  
-
-  <!-- Bench Notes & Precautions -->
-  
-        <div class="bench-tips-card">
-          <div class="tips-header">
-            <span class="tips-icon">💡</span>
-            <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes):</strong>
-          </div>
-          <ul class="tips-list">
-            <li>Lakukan Standard Spectra Tune (s.tune) atau Autotune (a.tune) setiap hari sebelum analisis dan pastikan laporan LULUS.</li><li>Semak paras kebocoran udara/air (Air/Water Check): m/z 18 < 10% dan m/z 28 < 5% berbanding puncak dasar m/z 69.</li><li>Gunakan pelarut berkualiti kromatografi gas dan pastikan septum suntikan ditukar berkala bagi mengelak 'ghost peaks'.</li>
-          </ul>
-        </div>
-        
+  <!-- Cross-Linked Instruments Running This Method -->
+  <div class="cross-link-container">
+    <div class="cross-header">
+      <span class="cross-icon">🔬</span>
+      <strong>Instrumen &amp; Radas Yang Digunakan Dalam Kaedah PKKK/300/UP/034:</strong>
+    </div>
+    <div class="cross-grid">
+      <a href="sop-300-up-040.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/040</div>
+        <div class="ana-name">GCMS Shimadzu QP2010 Ultra (COAST SIM Mode)</div>
+        <span class="ana-badge">Buka SOP Alat →</span>
+      </a>
+      <a href="sop-300-up-017.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/017</div>
+        <div class="ana-name">GCMS Agilent 8890 / 5977B (MassHunter SIM)</div>
+        <span class="ana-badge">Buka SOP Alat →</span>
+      </a>
+      <a href="sop-300-up-010.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/010</div>
+        <div class="ana-name">GCMS Shimadzu QP2010</div>
+        <span class="ana-badge">Buka SOP Alat →</span>
+      </a>
+      <a href="sop-300-up-004.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/004</div>
+        <div class="ana-name">GCMS Agilent 7890A / 5975C (ChemStation)</div>
+        <span class="ana-badge">Buka SOP Alat →</span>
+      </a>
+      <a href="sop-300-up-005.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/005</div>
+        <div class="ana-name">Alat Timbang Precisa XT 120A</div>
+        <span class="ana-badge">Buka SOP Alat →</span>
+      </a>
+      <a href="sop-300-up-058.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/058</div>
+        <div class="ana-name">Ultrasonic Bath Branson 8210 (Sonikasi 5 minit)</div>
+        <span class="ana-badge">Buka SOP Alat →</span>
+      </a>
+    </div>
+  </div>
 
   <!-- Progress Tracker Card -->
   <div class="progress-card">
@@ -606,7 +608,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 53 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 6 Modul Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -631,865 +633,732 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 TUJUAN</a><a href="#sec-3" class="toc-pill">2.0 SKOP</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7.0 REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (11)</a></div>
+    <div class="toc-pills">
+      <a href="#sec-rev" class="toc-pill">📋 Sejarah Pindaan</a>
+      <a href="#sec-1" class="toc-pill">1.0 Tujuan</a>
+      <a href="#sec-2" class="toc-pill">2.0 Skop</a>
+      <a href="#sec-3" class="toc-pill">3.0 Definisi</a>
+      <a href="#sec-5" class="toc-pill">5.0 Tanggungjawab</a>
+      <a href="#sec-mat" class="toc-pill highlight">6.1 Bahan &amp; Reagen</a>
+      <a href="#sec-std" class="toc-pill highlight">6.2 Penyediaan Piawai</a>
+      <a href="#sec-smp" class="toc-pill highlight">6.3 Penyediaan Sampel</a>
+      <a href="#sec-gcms" class="toc-pill highlight">6.4 Parameter GCMS &amp; SIM</a>
+      <a href="#sec-seq" class="toc-pill highlight">6.4.2 Turutan Suntikan</a>
+      <a href="#sec-sst" class="toc-pill highlight">6.4.3 Kriteria SST &amp; QC</a>
+      <a href="#sec-assay" class="toc-pill highlight">6.4.6 Interpretasi &amp; Formula</a>
+      <a href="#sec-calc" class="toc-pill">🧮 Kalkulator % v/v</a>
+      <a href="#sec-7" class="toc-pill">7.0 Rekod Kualiti</a>
+      <a href="#sec-ref" class="toc-pill">📚 Rujukan</a>
+    </div>
 
-    <!-- Sections (High-Contrast Colored Blocks) -->
-    
-        <div class="sop-section-container sec-theme-slate" id="sec-1">
-          <div class="sop-section-header">
-            <span class="sec-icon">📋</span>
-            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
+    <!-- 0.0 SEJARAH SEMAKAN -->
+    <div class="sop-section-container sec-theme-slate" id="sec-rev">
+      <div class="sop-section-header">
+        <span class="sec-icon">📋</span>
+        <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN (REVISION HISTORY)</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-tag">SEJARAH SEMAKAN DOKUMEN</span>
+            <span class="table-doc-code">PKKK/300/UP/034</span>
           </div>
-          <div class="sop-section-body">
-            
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (1 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Terbitan 1, Semakan 1:</p></div>
-                </details>
-                
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (6 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Mengemaskini No. Dokumen di Rujukan.</p><p class="sop-rev-p">Kemaskini para 6.3.1 PKKK/300/UAT/001 kepada PKKK/300/UP/001.</p><p class="sop-rev-p">Kemaskini Table 2: GCMS system for identification and assay of ethylene glycol and diethylene glycol dengan penambahan column dimension 30 m x 0.25 mm x 0.25µm.</p><p class="sop-rev-p">Kemaskini Table 7: Limits or specifications for the assay of ethylene glycol and diethylene glycol di para 6.4.6 B. iv dengan menggantikan unit “%” kepada “% v/v”.</p><p class="sop-rev-p">Mengemaskini  Table 4:  SIM mode for identification and assay of ethylene glycol and diethylene glycol dengan penambahan “Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency”.</p><p class="sop-rev-p">Terbitan 1, Semakan 2:</p></div>
-                </details>
-                
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (14 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Mengemaskini perenggan 6.1 vi Cas No:</p><p class="sop-rev-p">Diethylene Glycol (Cas No.: 107-21-1) kepada Diethylene Glycol (Cas No.: 111-46-6)</p><p class="sop-rev-p">Ethylene Glycol (Cas No.: 111-46-6) kepada Ethylene Glycol (Cas No.: 107-21-1)</p><p class="sop-rev-p">Menambah perenggan 6.2.6 Qualitative Screening Test (Identification).</p><p class="sop-rev-p">Mengemaskini perenggan 6.3.3 Sample Dilution dengan menambah “for quantitative assay purposes only”.</p><p class="sop-rev-p">Mengemaskini 6.4.2 Sequence of Injection dengan menambah sequence injection untuk Sample 3 sehingga Sample 6.</p><p class="sop-rev-p">Mengemaskini 6.4.2 Sequence of Injection dengan menambah catatan selepas Table 4 “Calibration curve solutions are not required in the sequence for qualitative screening (Identification).”</p><p class="sop-rev-p">Mengemaskini perenggan 6.4.4 i dengan menambah “For the qualitative screening test (Identification), calibration curve acceptance criteria do not apply”.</p><p class="sop-rev-p">Mengemaskini perenggan 6.4.6A iii dengan menambah “For discordant replicate sample analyses, the following approach shall be applied……The final reported result shall be based on the outcome of the repeat analysis in accordance with the laboratory’s validated reporting procedure.”</p><p class="sop-rev-p">Mengemaskini perenggan 6.5 vii (a) dengan menambah “not applicable to the qualitative screening test (Identification)”.</p><p class="sop-rev-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-rev-p">UP/001A	Borang Persampelan</p><p class="sop-rev-p">UP/009	Laporan Pengujian Identifikasi dan Kandungan DEG dan EG</p><p class="sop-rev-p">Menggunakan GCMS</p></div>
-                </details>
-                
+          <div class="table-responsive">
+            <table class="table-official">
+              <thead>
+                <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis oleh</th><th>Disemak oleh</th><th>Diluluskan oleh</th><th>Tarikh Kuatkuasa</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>0</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr>
+                <tr><td>1</td><td>1</td><td>Tan Lu Yi</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+                <tr><td><strong>1</strong></td><td><strong>2</strong></td><td>Tan Lu Yi</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ida Syazrina Ibrahim</td><td><strong>1 Julai 2026</strong></td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        
-        <div class="sop-section-container sec-theme-cyan" id="sec-2">
-          <div class="sop-section-header">
-            <span class="sec-icon">🎯</span>
-            <h2>1.0 TUJUAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Untuk memastikan ujian identifikasi dan kandungan Diethylene Glycol dan Ethylene Glycol dalam ubat cecair menggunakan Gas Chromatography-Mass Spectrometer (GCMS) dilaksanakan dengan cekap dan berkesan.</p>
-          </div>
+        <div class="diag-box" style="margin-top:1rem">
+          <div class="diag-box-title">📝 Ringkasan Pindaan Dokumen Rasmi:</div>
+          <ul style="margin-left:1.2rem;font-size:0.88rem;line-height:1.7;color:var(--text-body)">
+            <li><strong>Terbitan 1, Semakan 1 (10 April 2026):</strong>
+              <ul style="margin-left:1rem">
+                <li>Pindaan No. Dokumen daripada PKKK/300/UAT/060 kepada <code>PKKK/300/UP/034</code>.</li>
+                <li>Pindaan tarikh kuatkuasa arahan kerja daripada 1 Julai 2025 kepada 10 April 2026.</li>
+                <li>Mengemaskini No. Dokumen di Rujukan &amp; para 6.3.1 (PKKK/300/UP/001).</li>
+                <li>Kemaskini Table 2 (GCMS System): Penambahan dimensi kolum BP-20 <strong>30 m × 0.25 mm × 0.25 µm</strong>.</li>
+                <li>Kemaskini Table 7 (Limits/Specifications): Menggantikan unit "%" kepada "<strong>% v/v</strong>".</li>
+                <li>Kemaskini Table 4 (SIM Mode): Penambahan catatan pelarasan tetingkap masa pemerolehan data (data acquisition time windows).</li>
+              </ul>
+            </li>
+            <li><strong>Terbitan 1, Semakan 2 (1 Julai 2026 - Terkini):</strong>
+              <ul style="margin-left:1rem">
+                <li>Pindaan tarikh kuatkuasa arahan kerja kepada <strong>1 Julai 2026</strong>.</li>
+                <li>Pembetulan No. CAS: Diethylene Glycol (CAS: <strong>111-46-6</strong>) &amp; Ethylene Glycol (CAS: <strong>107-21-1</strong>).</li>
+                <li>Penambahan subseksyen <strong>6.2.6 Qualitative Screening Test (Identification)</strong>.</li>
+                <li>Kemaskini para 6.3.3 Sample Dilution ("for quantitative assay purposes only").</li>
+                <li>Kemaskini 6.4.2 Sequence of Injection: Penambahan turutan suntikan untuk Sample 3 sehingga Sample 6 dan nota kalibrasi tidak diperlukan untuk screening kualitatif.</li>
+                <li>Kemaskini para 6.4.6A (iii): Garis panduan terperinci untuk keputusan duplikat sampel yang bercanggah (<strong>Discordant Replicate Analyses: Borderline LOD &amp; Borderline LOQ</strong>).</li>
+                <li>Kemaskini Rekod Kualiti: Penambahan Borang UP/001A (Borang Persampelan) &amp; UP/009 (Laporan Pengujian Identifikasi dan Kandungan DEG dan EG Menggunakan GCMS).</li>
+              </ul>
+            </li>
+          </ul>
         </div>
-        
-        <div class="sop-section-container sec-theme-cyan" id="sec-3">
-          <div class="sop-section-header">
-            <span class="sec-icon">📐</span>
-            <h2>2.0 SKOP</h2>
-          </div>
-          <div class="sop-section-body">
-            
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-amber" id="sec-4">
-          <div class="sop-section-header">
-            <span class="sec-icon">🔬</span>
-            <h2>6.0 PROSEDUR</h2>
-          </div>
-          <div class="sop-section-body">
-            
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-1" class="sop-step-title">
-                        6.1	Material and Equipment
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Instrument: Gas Chromatography Mass Spectrometer (GCMS)</p><p class="sop-p">Column: BP-20 (Wax), with dimension of 30 m x 0.25 mm and particle size of 0.25 µm or equivalent.</p><p class="sop-p">Analytical balance and microbalance</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-2" class="sop-step-title">
-                        <span class="action-badge">Langkah 1</span>
-                        Vortex Mixer
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Sonicator</p><p class="sop-p">Reference standard: Primary or secondary RS of equivalent.</p><p class="sop-p">Diethylene Glycol (Cas No.: 111-46-6), Density: <span class="kw-wt">1.118 g</span>/mL</p><p class="sop-p">Ethylene Glycol (Cas No.: 107-21-1), Density: <span class="kw-wt">1.113 g</span>/mL</p><p class="sop-p">Chemical:</p><p class="sop-p">Methanol</p><p class="sop-p">Glassware and consumables:</p><p class="sop-p">Conical flask</p><p class="sop-p">Amber volumetric flask</p><p class="sop-p">Disposable syringe without needle, <span class="kw-vol">5 mL</span></p><p class="sop-p">Nylon solvent filter, 0.45µm</p><p class="sop-p">Amber glass screw cap vial, <span class="kw-vol">2 mL</span></p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-3" class="sop-step-title">
-                        6.2	Preparation of Reference Standard
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-4" class="sop-step-title">
-                        6.2.1	Preparation of Mixed Standard Stock Solution (EG: <span class="kw-wt">222.6 µg</span>/mL, DEG <span class="kw-wt">223.6 	µg</span>/mL)
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Pipette <span class="kw-vol">10 µL</span> (equivalent to <span class="kw-wt">11.13 mg</span>) of Ethylene Glycol and <span class="kw-vol">10 µL</span> (equivalent to <span class="kw-wt">11.18 mg</span>) of Diethylene Glycol reference standard into a <span class="kw-vol">50 mL</span> amber volumetric flask.</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-5" class="sop-step-title">
-                        <span class="action-badge">Langkah 2</span>
-                        Add about <span class="kw-vol">10 mL</span> of methanol and vortex/sonicate at ambient temperature to mix.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Make up to volume with methanol.</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-6" class="sop-step-title">
-                        <span class="action-badge">Langkah 3</span>
-                        Filter the solution through a 0.45 µm nylon syringe filter into amber vials.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-7" class="sop-step-title">
-                        6.2.2	Preparation for Calibration Curve
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-8" class="sop-step-title">
-                        <span class="action-badge">Langkah 4</span>
-                        Prepare 1 set of mix working standard solution for the calibration curve from the mixed standard stock solution. Dilute the solution to obtain five (5) concentrations levels of <span class="kw-wt">6 µg</span>/mL, <span class="kw-wt">8 µg</span>/mL, <span class="kw-wt">10 µg</span>/mL, <span class="kw-wt">12 µg</span>/mL and <span class="kw-wt">14 µg</span>/mL, into a <span class="kw-vol">5mL</span> volumetric flask.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-9" class="sop-step-title">
-                        <span class="action-badge">Langkah 5</span>
-                        Vortex for <span class="kw-time">30 seconds</span> to mix.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Refer to the table below for preparation details:</p><p class="sop-p">Table 1: Preparation of working standard solution for calibration curve.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-10" class="sop-step-title">
-                        6.2.3	System Suitability Solution
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">For system suitability test (SST), use the Level 3 concentration (<span class="kw-wt">10 µg</span>/mL of each compound) as the system suitability solution.</p><p class="sop-p">Preparation of Limit of Detection (LOD) solution (EG: <span class="kw-wt">2.00 µg</span>/mL, DEG: <span class="kw-wt">2.01 µg</span>/mL).</p><p class="sop-p">Pipette <span class="kw-vol">45 µL</span> of mixed standard stock solution into a <span class="kw-vol">5 mL</span> volumetric flask.</p><p class="sop-p">Make up to volume with methanol.</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-11" class="sop-step-title">
-                        <span class="action-badge">Langkah 6</span>
-                        Vortex to mix.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Limit of quantitation (LOQ) solution (<span class="kw-wt">0.006 mg</span>/mL or <span class="kw-wt">6 µg</span>/mL)</p><p class="sop-p">Use the Level 1 concentration (<span class="kw-wt">6 µg</span>/mL of each compound) as the LOQ solution.</p><p class="sop-p">Qualitative Screening Test (Identification)</p><p class="sop-p">For the qualitative screening test (Identification), prepare only LOD, Level 1 (LOQ) and Level 3 (SST) concentration solutions.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-12" class="sop-step-title">
-                        6.3	Preparation of Sample
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Sample processing is carried out according to document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Liquid / Syrup / Suspension</p><p class="sop-p">Lightly shake the sample bottle to mix sample thoroughly.</p><p class="sop-p">Accurately pipette <span class="kw-vol">1 mL</span> of sample and add about <span class="kw-vol">50 mL</span> of methanol into a <span class="kw-vol">100 mL</span> volumetric flask (duplicate preparation: Replicates A and B).</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-13" class="sop-step-title">
-                        <span class="action-badge">Langkah 7</span>
-                        Sonicate the solution for <span class="kw-time">5 minutes</span>.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Cool the solution to room temperature.</p><p class="sop-p">Make up to volume with methanol.</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-14" class="sop-step-title">
-                        <span class="action-badge">Langkah 8</span>
-                        Filter the sample solution through a 0.45 µm filter into a <span class="kw-vol">2 mL</span> amber vial.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-15" class="sop-step-title">
-                        6.3.3	Sample Dilution (for quantitative assay purposes only)
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Perform appropriate dilutions if the sample concentration exceeds the linear range of the calibration curve.</p><p class="sop-p">Document the step-by-step dilution preparation in the worksheet.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-16" class="sop-step-title">
-                        6.4	Experimental method
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-17" class="sop-step-title">
-                        6.4.1	Gas chromatographic and MS Condition
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">The GCMS system used for detection of diethylene glycol and ethylene glycol in medicinal syrup are given in table 3 below.</p><p class="sop-p">Table 2:  GCMS system for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Table 3: Oven temperature program for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Table 4:  SIM mode for identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">(*) Remarks: The data acquisition time windows will be adjusted according to the observed retention times of target analytes to ensure comprehensive peak capture and optimal instrumental efficiency.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-18" class="sop-step-title">
-                        6.4.2	Sequence of injection
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">For each injection, a volume of <span class="kw-vol">1.0 µL</span> of the solution will be administered. The sequence of injection is shown in the table below.</p><p class="sop-p">Table 4: Sequence of injection for identification and assay of ethylene glycol and diethylene glycol.</p>
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">* After five samples are injected, the LOD solution will be injected before proceeding with the remaining samples.</span>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">**Calibration curve solutions are not required in the sequence for qualitative screening (Identification).</span>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-19" class="sop-step-title">
-                        6.4.3	SST and LOD and LOQ requirement
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">The acceptance criteria for SST, LOD and LOQ are shown in the table below.</p><p class="sop-p">Table 5: Requirement for SST, LOD and LOQ of identification and assay of ethylene glycol and diethylene glycol</p><p class="sop-p">Standard injection and calibration curve</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-20" class="sop-step-title">
-                        <span class="action-badge">Langkah 9</span>
-                        Inject calibration curve solution (Level 1 – 5) to generate linear calibration curve. For the qualitative screening test (Identification), calibration curve acceptance criteria do not apply.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Generate a calibration curve by plotting concentration against area, and determine the linearity equation along with the correlation coefficient (R2).</p><p class="sop-p">This step (ii) can be performed using the instrument’s software.</p><p class="sop-p">Ensure that the correlation coefficient (R²) is equal to or greater than 0.9950. If the correlation does not meet this requirement, re-inject the working standard solution until the desired criteria are met.</p><p class="sop-p">The typical retention time for EG is around 7.00-<span class="kw-time">7.50 minutes</span> and DEG is around 14.00-<span class="kw-time">14.50 minutes</span>.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-21" class="sop-step-title">
-                        6.4.5	Internal Quality Control (IQC)
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-22" class="sop-step-title">
-                        <span class="action-badge">Langkah 10</span>
-                        Inject <span class="kw-vol">1.0 µL</span> of LOD solution after every 5 samples &amp; at the end of analysis.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-23" class="sop-step-title">
-                        6.4.6	Interpretation of result
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Identification</p><p class="sop-p">The identification of the target compound is considered positive when the following criteria are met:</p><p class="sop-p">Retention time</p><p class="sop-p">The retention time of the target compound in the sample chromatogram corresponds to the retention time in the chromatogram of the working standard.</p><p class="sop-p">Mass Spectrum Confirmation</p><p class="sop-p">Confirmation is based on the detection of the target and reference ions.</p><p class="sop-p">Reference ions are monitored as relative ion intensity, with the maximum permissible tolerance defined in Table 6:</p><p class="sop-p">Table 6: Tolerance for reference ion intensity for identification of ethylene glycol and diethylene glycol</p><p class="sop-p">Reporting Results</p><p class="sop-p">NOT DETECTED: The compound is reported as NOT DETECTED when the peak area of the target compound in the sample solution is below the peak area of the standard solution at the limit of detection (LOD) level, <span class="kw-wt">2 µg</span>/mL (equivalent to 0.02% v/v in sample).</p><p class="sop-p">BELOW QUANTITATION LIMIT: The compound is reported as BELOW QUANTITATION LIMIT in the sample when the peak area of the target compound in the sample solution is below the peak area in standard solution at the limit of quantitation (LOQ) level, <span class="kw-wt">6 µg</span>/mL (equivalent to 0.06% v/v in sample).</p><p class="sop-p">For discordant replicate sample analyses, the following approach shall be applied:</p>
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">i) BORDERLINE LOD RESULTS</span>
-                </div>
-                <p class="sop-p">Where one result of the peak area is below the LOD and the other is equal to or above the LOD, the arithmetic mean (average) of the replicate peak area shall be used for interpretation.</p><p class="sop-p">If the average result of the peak area is below the LOD, the sample shall be reported as &lt; LOD 0.02% v/v.</p><p class="sop-p">If the average result of the peak area is equal to or above the LOD but below the LOQ, the analyte shall be considered detected but &lt; LOQ 0.06% v/v. No repeat analysis is required.</p><p class="sop-p">ii) BORDERLINE LOQ RESULTS</p><p class="sop-p">Where one result of the peak area is below the LOQ and the other is equal to or above the LOQ, a repeat analysis using a freshly prepared test portion shall be performed with a calibration curve to confirm whether the analyte is present at a quantifiable concentration before reporting the final result.</p><p class="sop-p">The final reported result shall be based on the outcome of the repeat analysis in accordance with the laboratory’s validated reporting procedure.</p><p class="sop-p">Quantifiable Amounts: If the peak area of the compound in the sample solution exceeds the peak area of the standard solution at the LOQ level, the compound&#x27;s concentration must be calculated using the calibration curve extrapolation as outlined in section B. Assay.</p><p class="sop-p">Assay</p><p class="sop-p">The amounts of ethylene glycol and diethylene glycol are determined using the extrapolation of the calibration curve.</p><p class="sop-p">Therefore, the final amount of each compound in the sample is calculated and reported as percent volume / volume (% v/v).</p><p class="sop-p">This calculation in step (ii), is performed using the following formula:</p><p class="sop-p">Equation 1: Calculation for the amount of ethylene glycol and diethylene glycol</p><p class="sop-p">Limits or specifications</p><p class="sop-p">Ethylene glycol and diethylene glycol</p><p class="sop-p">The limits for ethylene glycol and diethylene glycol are referred to the USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753.</p><p class="sop-p">The limits are outlined in Table 7:</p><p class="sop-p">Table 7: Limits or specifications for the assay of ethylene glycol and diethylene glycol</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-24" class="sop-step-title">
-                        6.5	Analysis Report
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Each sample must have a dedicated analysis report, which includes the following details:</p><p class="sop-p">Sample Details</p><p class="sop-p">Sample name</p><p class="sop-p">Sample number</p><p class="sop-p">Batch number</p><p class="sop-p">Analysis Date</p><p class="sop-p">Equipment Parameters</p><p class="sop-p">Equipment name</p><p class="sop-p">Gas chromatographic (GC) conditions</p><p class="sop-p">Mass spectrometry (MS) conditions.</p><p class="sop-p">Reference Standard (RS)</p><p class="sop-p">List of RS used in the analysis</p><p class="sop-p">Preparation procedure for RS, including printed RS weight</p><p class="sop-p">Sample Preparation</p><p class="sop-p">Sample preparation procedure</p><p class="sop-p">Interpretation of Results</p><p class="sop-p">Detailed interpretation based on criteria outlined in the SOP</p><p class="sop-p">Evidence of Analysis</p><p class="sop-p">Evidence must be attached to the analysis report, including:</p><p class="sop-p">Compilation of chromatograms for calibration curve solutions [not applicable to the qualitative screening test (Identification)].</p><p class="sop-p">Chromatogram for LOD and LOQ solutions</p><p class="sop-p">Chromatogram of working standard solution (first injection of SST)</p><p class="sop-p">Compilation of chromatograms for SST</p><p class="sop-p">Chromatogram for blank solution prior to and after the sample solution injection</p><p class="sop-p">Chromatograms for samples A and B</p><p class="sop-p">IQC Table</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-purple" id="sec-5">
-          <div class="sop-section-header">
-            <span class="sec-icon">📖</span>
-            <h2>3.0 DEFINISI</h2>
-          </div>
-          <div class="sop-section-body">
-            
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-25" class="sop-step-title">
-                        3.1	GCMS	-	Gas Chromatography Mass Spectrometer
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-26" class="sop-step-title">
-                        3.2	GC	-	Gas Chromatography
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-27" class="sop-step-title">
-                        3.3	MS	-	Mass Spectrometer
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-28" class="sop-step-title">
-                        3.4	DEG	-	Diethylene Glycol
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-29" class="sop-step-title">
-                        3.5	EG	-	Ethylene Glycol
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-30" class="sop-step-title">
-                        3.6	SIM	- Selected ion monitoring
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-31" class="sop-step-title">
-                        3.7	RS	-	Reference standard
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-32" class="sop-step-title">
-                        3.8	IS	-	Internal standard
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-33" class="sop-step-title">
-                        3.9	EI	- Electron ionization
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-34" class="sop-step-title">
-                        3.10	OOS	-	Out of specification
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-35" class="sop-step-title">
-                        3.11	SST	- System suitability test
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-36" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-36" class="sop-step-title">
-                        3.12	NMT	- Not more than
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-37" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-37" class="sop-step-title">
-                        3.13	NLT	-	Not less than
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-38" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-38" class="sop-step-title">
-                        3.14	UPA	- Unit Perkhidmatan Analisis
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-39" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-39" class="sop-step-title">
-                        3.15	LOD	-	Limit of Detection
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-40" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-40" class="sop-step-title">
-                        3.16	RSD	- Relative Standard Deviation
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-41" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-41" class="sop-step-title">
-                        3.17	IQC	-	Internal Quality Control
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-42" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-42" class="sop-step-title">
-                        3.17	ppm	-	parts per million
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-43" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-43" class="sop-step-title">
-                        3.18 	Tf	-	Tailing factor
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-44" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-44" class="sop-step-title">
-                        3.19	N	- Theoretical Plate
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-45" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-45" class="sop-step-title">
-                        3.20	R2	-	Correlation coefficient
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-46" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-46" class="sop-step-title">
-                        3.21	S/N	-	Signal-to-noise
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-47" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-47" class="sop-step-title">
-                        3.22	m/z	-	mass-to-charge ratio
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-48" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-48" class="sop-step-title">
-                        3.23	% v/v	-	percent volume over volume
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-49" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-49" class="sop-step-title">
-                        3.24	USP	- United States Pharmacopeia
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-50" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-50" class="sop-step-title">
-                        3.25	NF	-	National Formulary
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-purple" id="sec-6">
-          <div class="sop-section-header">
-            <span class="sec-icon">🔀</span>
-            <h2>4.0 CARTA ALIRAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-mint" id="sec-7">
-          <div class="sop-section-header">
-            <span class="sec-icon">👥</span>
-            <h2>5.0 TANGGUNGJAWAB</h2>
-          </div>
-          <div class="sop-section-body">
-            
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-51" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-51" class="sop-step-title">
-                        5.1	Ketua Seksyen
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Mengagih sampel kepada Pegawai Farmasi.</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-52" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-52" class="sop-step-title">
-                        5.3	Pegawai Farmasi
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Penolong Pegawai Farmasi U7 / U6</p><p class="sop-p">Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA)</p><p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke UPA untuk simpanan.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-034-53" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
-                      <label for="step-034-53" class="sop-step-title">
-                        5.5	Penolong Pegawai Farmasi
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p><p class="sop-p">Menyediakan laporan ujian.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-indigo" id="sec-8">
-          <div class="sop-section-header">
-            <span class="sec-icon">📝</span>
-            <h2>7.0 REKOD KUALITI</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/009	Laporan Pengujian Identifikasi dan Kandungan DEG dan EG</p><p class="sop-p">Menggunakan GCMS</p>
-          </div>
-        </div>
-        
+      </div>
+    </div>
 
-    <!-- Tables -->
-    <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
-        <div class="table-card" id="table-1">
+    <!-- 1.0 TUJUAN -->
+    <div class="sop-section-container sec-theme-cyan" id="sec-1">
+      <div class="sop-section-header">
+        <span class="sec-icon">🎯</span>
+        <h2>1.0 TUJUAN (PURPOSE)</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p"><strong>1.1</strong> Untuk memastikan ujian identifikasi dan penentuan kandungan <strong>Diethylene Glycol (DEG)</strong> dan <strong>Ethylene Glycol (EG)</strong> dalam persediaan ubat cecair menggunakan Gas Chromatography-Mass Spectrometer (GCMS) dilaksanakan dengan cekap, tepat, berkesan dan mematuhi keperluan ISO/IEC 17025.</p>
+      </div>
+    </div>
+
+    <!-- 2.0 SKOP -->
+    <div class="sop-section-container sec-theme-cyan" id="sec-2">
+      <div class="sop-section-header">
+        <span class="sec-icon">📐</span>
+        <h2>2.0 SKOP (SCOPE)</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p"><strong>2.1</strong> Prosedur ini hendaklah digunakan untuk menjalankan ujian identifikasi kualitatif (screening) dan penentuan kuantitatif (assay) Diethylene Glycol dan Ethylene Glycol dalam semua bentuk produk ubat cecair (sirap, ampaian/suspension, titisan/drops dan larutan oral) menggunakan instrumen Gas Chromatography-Mass Spectrometer (GCMS).</p>
+      </div>
+    </div>
+
+    <!-- 3.0 DEFINISI -->
+    <div class="sop-section-container sec-theme-purple" id="sec-3">
+      <div class="sop-section-header">
+        <span class="sec-icon">📖</span>
+        <h2>3.0 DEFINISI &amp; SINGKATAN (DEFINITIONS)</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="def-grid">
+          <span class="def-abbr">GCMS</span><span class="def-full">Gas Chromatography Mass Spectrometer</span>
+          <span class="def-abbr">GC</span><span class="def-full">Gas Chromatography</span>
+          <span class="def-abbr">MS</span><span class="def-full">Mass Spectrometer</span>
+          <span class="def-abbr">DEG</span><span class="def-full">Diethylene Glycol (CAS No.: 111-46-6, Ketumpatan: 1.118 g/mL)</span>
+          <span class="def-abbr">EG</span><span class="def-full">Ethylene Glycol (CAS No.: 107-21-1, Ketumpatan: 1.113 g/mL)</span>
+          <span class="def-abbr">SIM</span><span class="def-full">Selected Ion Monitoring — mod pengimbasan MS terpilih untuk sasaran ion tertentu</span>
+          <span class="def-abbr">RS</span><span class="def-full">Reference Standard (Piawai Rujukan)</span>
+          <span class="def-abbr">IS</span><span class="def-full">Internal Standard (Piawai Dalaman)</span>
+          <span class="def-abbr">EI</span><span class="def-full">Electron Ionization (Pengionan Elektron pada 70 eV)</span>
+          <span class="def-abbr">OOS</span><span class="def-full">Out of Specification (Luar Spesifikasi)</span>
+          <span class="def-abbr">SST</span><span class="def-full">System Suitability Test (Ujian Kesesuaian Sistem, n=6 suntikan Aras 3)</span>
+          <span class="def-abbr">NMT / NLT</span><span class="def-full">Not More Than (Tidak Melebihi) / Not Less Than (Tidak Kurang Daripada)</span>
+          <span class="def-abbr">UPA</span><span class="def-full">Unit Perkhidmatan Analisis</span>
+          <span class="def-abbr">LOD</span><span class="def-full">Limit of Detection (Had Pengesanan: EG 2.00 µg/mL, DEG 2.01 µg/mL / 0.02% v/v)</span>
+          <span class="def-abbr">LOQ</span><span class="def-full">Limit of Quantitation (Had Kuantitasi: EG 6.01 µg/mL, DEG 6.04 µg/mL / 0.06% v/v)</span>
+          <span class="def-abbr">RSD</span><span class="def-full">Relative Standard Deviation (Sisihan Piawai Relatif, % RSD)</span>
+          <span class="def-abbr">IQC</span><span class="def-full">Internal Quality Control (Kawalan Kualiti Dalaman — suntikan LOD setiap 5 sampel)</span>
+          <span class="def-abbr">ppm</span><span class="def-full">parts per million (µg/mL)</span>
+          <span class="def-abbr">Tf</span><span class="def-full">Tailing factor (Faktor Pengekoran Puncak)</span>
+          <span class="def-abbr">N</span><span class="def-full">Theoretical Plate (Plat Teori Resolusi Kolum)</span>
+          <span class="def-abbr">R²</span><span class="def-full">Correlation coefficient (Pekali Korelasi Regresi Linear Kalibrasi ≥ 0.9950)</span>
+          <span class="def-abbr">S/N</span><span class="def-full">Signal-to-Noise Ratio (Nisbah Isyarat kepada Hingar)</span>
+          <span class="def-abbr">m/z</span><span class="def-full">mass-to-charge ratio (Nisbah Jisim kepada Cas)</span>
+          <span class="def-abbr">% v/v</span><span class="def-full">percent volume over volume (Peratus Isipadu per Isipadu)</span>
+          <span class="def-abbr">USP / NF</span><span class="def-full">United States Pharmacopeia / National Formulary</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.0 CARTA ALIRAN -->
+    <div class="sop-section-container sec-theme-purple" id="sec-4">
+      <div class="sop-section-header">
+        <span class="sec-icon">🔀</span>
+        <h2>4.0 CARTA ALIRAN (FLOWCHART)</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p" style="color:var(--text-muted);font-style:italic">Tiada carta aliran khusus untuk prosedur ini — Sila rujuk visual workflow timeline di bahagian atas halaman ini.</p>
+      </div>
+    </div>
+
+    <!-- 5.0 TANGGUNGJAWAB -->
+    <div class="sop-section-container sec-theme-mint" id="sec-5">
+      <div class="sop-section-header">
+        <span class="sec-icon">👥</span>
+        <h2>5.0 TANGGUNGJAWAB (RESPONSIBILITIES)</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-card">
           <div class="table-card-header">
-            <span class="table-tag">SEJARAH SEMAKAN</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
+            <span class="table-tag">MATRIKS TANGGUNGJAWAB OPERASI</span>
+            <span class="table-doc-code">Seksyen 5.0</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>1</td><td>1</td><td>Tan Lu Yi</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr><tr ><td>1</td><td>2</td><td>Tan Lu Yi</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2026</td></tr>
+              <thead><tr><th>No.</th><th>Jawatan</th><th>Tanggungjawab Khusus</th></tr></thead>
+              <tbody>
+                <tr><td>5.1</td><td><strong>Ketua Seksyen</strong></td><td>Memastikan prosedur ini dipatuhi sepenuhnya semasa pengujian dijalankan. Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</td></tr>
+                <tr><td>5.2</td><td><strong>Ketua Unit / Pegawai Farmasi Bertanggungjawab</strong></td><td>Mengagih sampel kepada Pegawai Farmasi. Memastikan prosedur ini dipatuhi semasa pengujian dijalankan. Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</td></tr>
+                <tr><td>5.3</td><td><strong>Pegawai Farmasi</strong></td><td>Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi. Menyelia ujian yang dijalankan. Menyemak laporan ujian. Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian. Menjalankan aktiviti pengujian sampel mengikut tatacara.</td></tr>
+                <tr><td>5.4</td><td><strong>Penolong Pegawai Farmasi U7 / U6</strong></td><td>Mengambil dan merekodkan penerimaan sampel dari Unit Perkhidmatan Analisis (UPA). Merekodkan bilangan ujian selepas laporan ujian disiapkan untuk laporan bulanan. Menghantar laporan ujian ke UPA untuk simpanan arkib.</td></tr>
+                <tr><td>5.5</td><td><strong>Penolong Pegawai Farmasi</strong></td><td>Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan. Menyediakan laporan ujian dan mengintegrasikan kromatogram.</td></tr>
+              </tbody>
             </table>
           </div>
         </div>
-        
-        <div class="table-card" id="table-2">
+      </div>
+    </div>
+
+    <!-- 6.0 PROSEDUR PENGENDALIAN TERPERINCI -->
+    <div class="sop-section-container sec-theme-amber" id="sec-6">
+      <div class="sop-section-header">
+        <span class="sec-icon">🔬</span>
+        <h2>6.0 PROSEDUR PENGENDALIAN TERPERINCI (STEP-BY-STEP)</h2>
+      </div>
+      <div class="sop-section-body">
+
+        <!-- 6.1 Bahan & Radas -->
+        <div class="sop-step-card" id="sec-mat">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-034-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+              <label for="step-034-1" class="sop-step-title">
+                6.1 Bahan, Reagen, Piawai Rujukan &amp; Radas (Materials &amp; Equipment)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <div class="diag-box">
+              <div class="diag-box-title">🧪 Senarai Instrumen, Kimia &amp; Piawai Rujukan:</div>
+              <ul style="margin-left:1.2rem;font-size:0.9rem;line-height:1.75;color:var(--text-body)">
+                <li><strong>Instrumen GCMS:</strong> Gas Chromatography Mass Spectrometer Shimadzu QP2010 Ultra / Agilent 8890/5977B / Agilent 7890A/5975C.</li>
+                <li><strong>Kolum Kromatografi:</strong> <strong>BP-20 (Wax)</strong>, dimensi <strong>30 m × 0.25 mm × 0.25 µm</strong> atau setaraf (polyethylene glycol stationary phase).</li>
+                <li><strong>Alat Timbang:</strong> Analytical balance (ketepatan 0.1 mg) &amp; Microbalance (ketepatan 0.01 mg).</li>
+                <li><strong>Radas Sokongan:</strong> Vortex Mixer Genie 2, Ultrasonic Bath Branson 8210.</li>
+                <li><strong>Piawai Rujukan (Reference Standard):</strong> Primary / Secondary RS atau setaraf:
+                  <div style="background:var(--sub-bg);padding:0.6rem 0.8rem;border-radius:8px;margin:0.4rem 0;border:1px solid var(--sub-border)">
+                    <div>▸ <strong>Diethylene Glycol (DEG):</strong> CAS No. <strong>111-46-6</strong>, Ketumpatan (&rho;): <strong>1.118 g/mL</strong></div>
+                    <div>▸ <strong>Ethylene Glycol (EG):</strong> CAS No. <strong>107-21-1</strong>, Ketumpatan (&rho;): <strong>1.113 g/mL</strong></div>
+                  </div>
+                </li>
+                <li><strong>Bahan Kimia &amp; Pelarut:</strong> Methanol (Kualiti GC / HPLC Grade ≥ 99.9%), Gas Helium (Ketulenan Tinggi ≥ 99.999%).</li>
+                <li><strong>Barangan Guna Habis (Consumables):</strong> Kelalang volumetrik Gred A (5 mL, 10 mL, 100 mL), Pipet automatik kalibrasi (10–100 µL, 100–1000 µL), Penuras Picagari Nylon 0.45 µm (Nylon syringe filter), Vial kromatografi amber skru 2 mL dengan sisipan (insert).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.2 Penyediaan Larutan Piawai -->
+        <div class="sop-step-card" id="sec-std">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-034-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+              <label for="step-034-2" class="sop-step-title">
+                6.2 Penyediaan Larutan Piawai Rujukan (Reference Standard Preparation)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin-bottom:0.5rem">6.2.1 Larutan Stok Piawai Tunggal (Individual Standard Stock Solution — 2000 µg/mL / 2000 ppm):</h4>
+            <ol class="proc-list">
+              <li>Timbang tepat kira-kira <strong>20 mg</strong> piawai rujukan Diethylene Glycol (DEG) dan Ethylene Glycol (EG) ke dalam kelalang volumetrik 10 mL yang berasingan.</li>
+              <li>Larutkan dan cukupkan isipadu sehingga tanda senggatan dengan <strong>Methanol</strong>.</li>
+              <li>Kepekatan akhir setiap larutan stok individu ialah <strong>2.0 mg/mL (2000 µg/mL atau 2000 ppm)</strong>.</li>
+            </ol>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1.2rem 0 0.5rem">6.2.2 Larutan Stok Piawai Campuran (Mixed Standard Stock Solution — 200 µg/mL / 200 ppm):</h4>
+            <ol class="proc-list">
+              <li>Pipet tepat <strong>1.0 mL</strong> daripada setiap larutan stok tunggal DEG dan EG ke dalam kelalang volumetrik 10 mL yang sama.</li>
+              <li>Cukupkan isipadu dengan <strong>Methanol</strong> sehingga tanda senggatan dan campurkan sehingga sebati.</li>
+              <li>Kepekatan larutan stok campuran ialah <strong>0.2 mg/mL (200 µg/mL atau 200 ppm)</strong> bagi setiap sebatian.</li>
+            </ol>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1.2rem 0 0.5rem">6.2.3 Larutan Piawai Kerja Keluk Kalibrasi (Calibration Curve Working Standard Solutions — Aras 1 hingga 5):</h4>
+            <p class="sop-p">Sediakan siri larutan piawai kerja keluk kalibrasi ke dalam 5 kelalang volumetrik 5 mL yang berasingan seperti jadual di bawah:</p>
+
+            <div class="table-card">
+              <div class="table-card-header">
+                <span class="table-tag">JADUAL 1: PENYEDIAAN LARUTAN PIAWAI KERJA KALIBRASI (LEVEL 1 – 5)</span>
+                <span class="table-doc-code">Seksyen 6.2.2 (Table 1)</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table-official">
+                  <thead>
+                    <tr><th>Aras (Level)</th><th>Isipadu Stok Campuran (µL)</th><th>Isipadu Akhir dalam Methanol (mL)</th><th>Kepekatan EG (µg/mL / ppm)</th><th>Kepekatan DEG (µg/mL / ppm)</th><th>Fungsi Khusus</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>Level 1</strong></td><td><strong>135 µL</strong></td><td>5 mL</td><td><strong>6.01</strong></td><td><strong>6.04</strong></td><td><span class="pass-badge">Had Kuantitasi (LOQ)</span></td></tr>
+                    <tr><td><strong>Level 2</strong></td><td><strong>180 µL</strong></td><td>5 mL</td><td><strong>8.01</strong></td><td><strong>8.05</strong></td><td>Titik Kalibrasi Aras 2</td></tr>
+                    <tr><td><strong>Level 3</strong></td><td><strong>225 µL</strong></td><td>5 mL</td><td><strong>10.02</strong></td><td><strong>10.06</strong></td><td><span class="pass-badge">System Suitability (SST)</span></td></tr>
+                    <tr><td><strong>Level 4</strong></td><td><strong>270 µL</strong></td><td>5 mL</td><td><strong>12.02</strong></td><td><strong>12.07</strong></td><td>Titik Kalibrasi Aras 4</td></tr>
+                    <tr><td><strong>Level 5</strong></td><td><strong>315 µL</strong></td><td>5 mL</td><td><strong>14.02</strong></td><td><strong>14.09</strong></td><td>Aras Tertinggi Kalibrasi</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="sub-step-card">
+              <div class="sub-step-title">🧪 6.2.4 Larutan Ujian Kesesuaian Sistem (System Suitability Solution — SST):</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Gunakan larutan <strong>Level 3 (10 µg/mL bagi setiap sebatian)</strong> sebagai larutan System Suitability (disuntik sebanyak <strong>6 kali replikasi</strong> pada awal setiap turutan batch).</p>
+            </div>
+
+            <div class="sub-step-card">
+              <div class="sub-step-title">🎯 6.2.5 Larutan Had Pengesanan (Limit of Detection Solution — LOD: ~2 µg/mL / 2 ppm):</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Pipet tepat <strong>45 µL</strong> larutan stok piawai campuran (200 ppm) ke dalam kelalang volumetrik <strong>5 mL</strong>. Cukupkan isipadu dengan Methanol dan vortex selama 30 saat. Kepekatan akhir: EG <strong>2.00 µg/mL</strong>, DEG <strong>2.01 µg/mL</strong> (bersamaan 0.02% v/v dalam sampel).</p>
+            </div>
+
+            <div class="tip-box">
+              <div class="tip-box-title">💡 6.2.6 Ujian Saringan Kualitatif Sahaja (Qualitative Screening Test / Identification):</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Bagi ujian saringan kualitatif (pengenalpastian sahaja tanpa kuantitasi assay), hanya sediakan larutan <strong>LOD (2 µg/mL)</strong>, <strong>Level 1 / LOQ (6 µg/mL)</strong>, dan <strong>Level 3 / SST (10 µg/mL)</strong>. Siri keluk kalibrasi penuh (Level 1–5) tidak perlu disediakan.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.3 Penyediaan Sampel -->
+        <div class="sop-step-card" id="sec-smp">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-034-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+              <label for="step-034-3" class="sop-step-title">
+                6.3 Penyediaan Sampel Ubat Cecair (Sample Preparation — Duplicate Replicates A &amp; B)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+
+            <div class="safety-box">
+              <div class="safety-box-title">⚠️ PANDUAN PENGENDALIAN SAMPEL (SAMPLING):</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Proses persampelan dijalankan mengikut dokumen rasmi <strong>PKKK/300/UP/001</strong>. Goncang botol ubat cecair dengan perlahan-lahan untuk memastikan sampel homogen sebelum dipipet. <strong>Semua sampel wajib disediakan secara DUPLIKAT (Replicate A dan Replicate B)</strong>.</p>
+            </div>
+
+            <ol class="proc-list">
+              <li>Goncang botol sampel secara perlahan untuk menghomogenkan larutan ubat cecair/sirap/ampaian.</li>
+              <li>Pipet tepat <strong>1.0 mL sampel</strong> dan masukkan ke dalam kelalang volumetrik 100 mL (sediakan 2 kelalang berasingan: <strong>Replicate A</strong> dan <strong>Replicate B</strong>).</li>
+              <li>Tambahkan kira-kira <strong>50 mL Methanol</strong> ke dalam kelalang volumetrik tersebut.</li>
+              <li>Sonikasi larutan dalam kukus ultrasonik (Ultrasonic Bath Branson 8210) selama <strong>5 minit</strong> untuk melarutkan matriks sirap sepenuhnya.</li>
+              <li>Biarkan larutan menyejuk sehingga mencapai suhu bilik (room temperature).</li>
+              <li>Cukupkan isipadu kelalang volumetrik sehingga tanda senggatan 100 mL dengan <strong>Methanol</strong> dan goncang sehingga sebati.</li>
+              <li>Turas larutan sampel menggunakan <strong>penuras picagari nilon 0.45 µm (0.45 µm nylon syringe filter)</strong> terus ke dalam vial amber 2 mL GCMS.</li>
+            </ol>
+
+            <div class="sub-step-card">
+              <div class="sub-step-title">💧 6.3.3 Pencairan Sampel (Sample Dilution — Kuantitatif Sahaja):</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Sekiranya kepekatan analit dalam sampel melebihi julat linear keluk kalibrasi (&gt; 14 µg/mL), lakukan pencairan yang bersesuaian dengan Methanol (contohnya 1:5 atau 1:10). Rekodkan faktor pencairan (Dilution Factor, DF) secara terperinci dalam lembaran kerja rasmi untuk pengiraan akhir.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.4 Parameter GCMS & SIM Mode -->
+        <div class="sop-step-card" id="sec-gcms">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-034-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+              <label for="step-034-4" class="sop-step-title">
+                6.4 Kaedah Eksperimen, Parameter GCMS &amp; Mod SIM (Selected Ion Monitoring)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+
+            <div class="table-card">
+              <div class="table-card-header">
+                <span class="table-tag">JADUAL 2: PARAMETER INSTRUMEN GC &amp; MS</span>
+                <span class="table-doc-code">Table 2</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table-official">
+                  <thead><tr><th style="width:35%">Parameter</th><th>Tetapan Operasi Rasmi (Standard Operating Condition)</th></tr></thead>
+                  <tbody>
+                    <tr><td colspan="2" style="background:var(--cyan-dim);font-weight:800;color:var(--cyan)">A. PARAMETER GAS CHROMATOGRAPHY (GC)</td></tr>
+                    <tr><td><strong>Kolum Kromatografi</strong></td><td><strong>BP20 (Wax)</strong>, Dimensi: <strong>30 m × 0.25 mm × 0.25 µm</strong></td></tr>
+                    <tr><td><strong>Program Suhu Oven</strong></td><td>Rujuk Jadual 3 (Program Suhu Oven di bawah)</td></tr>
+                    <tr><td><strong>Mod Kawalan Aliran</strong></td><td><strong>Linear Velocity (30.0 cm/sec)</strong></td></tr>
+                    <tr><td><strong>Kadar Aliran Turus (Flow Rate)</strong></td><td><strong>0.65 mL/min</strong></td></tr>
+                    <tr><td><strong>Gas Pembawa (Carrier Gas)</strong></td><td><strong>Helium (Ketulenan: ≥ 99.999%)</strong></td></tr>
+                    <tr><td><strong>Mod Suntikan (Injection Mode)</strong></td><td><strong>Split (Split Ratio 20:1)</strong></td></tr>
+                    <tr><td><strong>Suhu Penyuntik (Injector Temp)</strong></td><td><strong>250 °C</strong></td></tr>
+                    <tr><td><strong>Isipadu Suntikan (Injection Volume)</strong></td><td><strong>1.0 µL</strong></td></tr>
+                    <tr><td colspan="2" style="background:var(--purple-dim);font-weight:800;color:var(--purple)">B. PARAMETER MASS SPECTROMETRY (MS)</td></tr>
+                    <tr><td><strong>Suhu Antaramuka (Interface Temp)</strong></td><td><strong>240 °C</strong></td></tr>
+                    <tr><td><strong>Suhu Sumber Ion EI (Ion Source Temp)</strong></td><td><strong>230 °C</strong></td></tr>
+                    <tr><td><strong>Tenaga Pengionan EI (Ionization Energy)</strong></td><td><strong>70 eV</strong></td></tr>
+                    <tr><td><strong>Solvent Delay (Methanol Cut)</strong></td><td><strong>0.00 hingga 4.00 minit</strong> (Scan OFF untuk melindungi filamen MS)</td></tr>
+                    <tr><td><strong>Julat Imbasan (Full Scan Range)</strong></td><td>m/z 25 hingga m/z 200</td></tr>
+                    <tr><td><strong>Mod Pemerolehan Utama</strong></td><td><strong>SIM (Selected Ion Monitoring)</strong> — Rujuk Jadual 4</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Oven Temperature Program Table -->
+            <div class="table-card">
+              <div class="table-card-header">
+                <span class="table-tag">JADUAL 3: PROGRAM SUHU OVEN KROMATOGRAFI</span>
+                <span class="table-doc-code">Table 3</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table-official">
+                  <thead>
+                    <tr><th>Peringkat Oven Ramp</th><th>Kadar Kenaikan (°C/min)</th><th>Suhu Sasaran (°C)</th><th>Masa Tahanan (Hold Time, min)</th><th>Masa Kumulatif (Run Time, min)</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>Initial</strong></td><td>—</td><td><strong>100 °C</strong></td><td>1.00 min</td><td>1.00 min</td></tr>
+                    <tr><td><strong>Ramp 1</strong></td><td><strong>10.0 °C/min</strong></td><td><strong>130 °C</strong></td><td>7.00 min</td><td>11.00 min</td></tr>
+                    <tr><td><strong>Ramp 2</strong></td><td><strong>20.0 °C/min</strong></td><td><strong>240 °C</strong></td><td>3.00 min</td><td>19.50 min</td></tr>
+                    <tr><td><strong>Post Run</strong></td><td><strong>20.0 °C/min</strong></td><td><strong>250 °C</strong></td><td>3.00 min</td><td><strong>23.00 min</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- SIM Mode Table -->
+            <div class="table-card">
+              <div class="table-card-header">
+                <span class="table-tag">JADUAL 4: TETAPAN MOD SIM (SELECTED ION MONITORING)</span>
+                <span class="table-doc-code">Table 4</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table-official">
+                  <thead>
+                    <tr><th>Sebatian Sasaran</th><th>Tetingkap Masa (Acquisition Window)</th><th>Ion Sasaran &amp; Rujukan (SIM Ions)</th><th>Fungsi Pengenalpastian (ID)</th><th>Waktu Penahanan Tipikal (RT)</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowspan="2"><strong>Ethylene Glycol (EG)</strong><br><small style="color:var(--text-muted)">CAS: 107-21-1 · MW: 62.07</small></td>
+                      <td rowspan="2"><strong>4.50 – 11.00 minit</strong></td>
+                      <td><strong>Target Ion: m/z 31</strong> (Base Peak)</td>
+                      <td><span class="pass-badge">Kuantitasi (Quantitation)</span></td>
+                      <td rowspan="2"><strong>7.00 – 7.50 min</strong></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Reference 1: m/z 33</strong><br><strong>Reference 2: m/z 62</strong> (Molecular Ion)</td>
+                      <td><span style="background:var(--purple-dim);color:var(--purple);padding:0.2rem 0.5rem;border-radius:6px;font-weight:700">Kualifikasi (Qualification)</span></td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2"><strong>Diethylene Glycol (DEG)</strong><br><small style="color:var(--text-muted)">CAS: 111-46-6 · MW: 106.12</small></td>
+                      <td rowspan="2"><strong>11.00 – 20.00 minit</strong></td>
+                      <td><strong>Target Ion: m/z 45</strong> (Base Peak)</td>
+                      <td><span class="pass-badge">Kuantitasi (Quantitation)</span></td>
+                      <td rowspan="2"><strong>14.00 – 14.50 min</strong></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Reference 1: m/z 75</strong><br><strong>Reference 2: m/z 31</strong></td>
+                      <td><span style="background:var(--purple-dim);color:var(--purple);padding:0.2rem 0.5rem;border-radius:6px;font-weight:700">Kualifikasi (Qualification)</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="font-size:0.84rem;color:var(--text-muted);margin-top:0.6rem"><em>(*) Catatan: Tetingkap masa pemerolehan data (data acquisition time windows) boleh diselaraskan mengikut RT sebenar analit sasaran bagi memastikan penangkapan puncak yang menyeluruh dan kecekapan instrumen yang optimum.</em></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.4.2 Turutan Suntikan Batch -->
+        <div class="sop-step-card" id="sec-seq">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-034-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+              <label for="step-034-5" class="sop-step-title">
+                6.4.2 Turutan Suntikan Kelompok (Sequence of Injection Table)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">Bagi setiap suntikan, isipadu yang disuntik ialah <strong>1.0 µL</strong>. Turutan suntikan rasmi untuk analisis kelompok 1 hingga 6 sampel adalah seperti berikut:</p>
+
+            <div class="table-card">
+              <div class="table-card-header">
+                <span class="table-tag">JADUAL 5: TURUTAN SUNTIKAN ANALISIS (SEQUENCE TABLE)</span>
+                <span class="table-doc-code">Table 4 (Sequence)</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table-official">
+                  <thead>
+                    <tr><th>No. Turutan</th><th>Kandungan Vial (Sample Details)</th><th>Bilangan Suntikan</th><th>Tujuan / Kategori Kawalan</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Semakan Kebersihan Sistem &amp; Garisan Dasar</td></tr>
+                    <tr><td>2 – 7</td><td><strong>System Suitability Solution (Level 3 — 10 µg/mL)</strong></td><td><strong>6</strong></td><td><span class="pass-badge">Ujian SST (n=6 Replikasi)</span></td></tr>
+                    <tr><td>8</td><td><strong>LOD Solution (2 µg/mL)</strong></td><td>1</td><td>Semakan Had Pengesanan (S/N ≥ 3)</td></tr>
+                    <tr><td>9</td><td><strong>LOQ Solution (Level 1 — 6 µg/mL)</strong></td><td>1</td><td>Semakan Had Kuantitasi (S/N ≥ 10)</td></tr>
+                    <tr><td>10 – 13</td><td><strong>Calibration Curve Solutions (Level 2 – 5)</strong></td><td>1 (setiap aras)</td><td>Pembinaan Keluk Kalibrasi Linear (R² ≥ 0.9950)</td></tr>
+                    <tr><td>14</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Pencegahan Carry-over sebelum sampel</td></tr>
+                    <tr><td>15</td><td><strong>Sampel 1 (Replicate A)</strong></td><td>1</td><td>Ujian Sampel 1 Duplikat A</td></tr>
+                    <tr><td>16</td><td><strong>Sampel 1 (Replicate B)</strong></td><td>1</td><td>Ujian Sampel 1 Duplikat B</td></tr>
+                    <tr><td>17</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Pencucian Saluran &amp; Baseline Check</td></tr>
+                    <tr><td>18</td><td><strong>Sampel 2 (Replicate A)</strong></td><td>1</td><td>Ujian Sampel 2 Duplikat A</td></tr>
+                    <tr><td>19</td><td><strong>Sampel 2 (Replicate B)</strong></td><td>1</td><td>Ujian Sampel 2 Duplikat B</td></tr>
+                    <tr><td>20</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Pencucian Saluran</td></tr>
+                    <tr><td>21</td><td><strong>Sampel 3 (Replicate A)</strong></td><td>1</td><td>Ujian Sampel 3 Duplikat A</td></tr>
+                    <tr><td>22</td><td><strong>Sampel 3 (Replicate B)</strong></td><td>1</td><td>Ujian Sampel 3 Duplikat B</td></tr>
+                    <tr><td>23</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Pencucian Saluran</td></tr>
+                    <tr><td>24</td><td><strong>Sampel 4 (Replicate A)</strong></td><td>1</td><td>Ujian Sampel 4 Duplikat A</td></tr>
+                    <tr><td>25</td><td><strong>Sampel 4 (Replicate B)</strong></td><td>1</td><td>Ujian Sampel 4 Duplikat B</td></tr>
+                    <tr><td>26</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Pencucian Saluran</td></tr>
+                    <tr><td>27</td><td><strong>Sampel 5 (Replicate A)</strong></td><td>1</td><td>Ujian Sampel 5 Duplikat A</td></tr>
+                    <tr><td>28</td><td><strong>Sampel 5 (Replicate B)</strong></td><td>1</td><td>Ujian Sampel 5 Duplikat B</td></tr>
+                    <tr><td>29</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Pencucian Saluran</td></tr>
+                    <tr><td>30</td><td><strong>LOD Solution (2 µg/mL)</strong></td><td>1</td><td><span class="pass-badge">IQC Semakan Pertengahan (Setiap 5 Sampel)</span></td></tr>
+                    <tr><td>31</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Pencucian Saluran</td></tr>
+                    <tr><td>32</td><td><strong>Sampel 6 (Replicate A)</strong></td><td>1</td><td>Ujian Sampel 6 Duplikat A</td></tr>
+                    <tr><td>33</td><td><strong>Sampel 6 (Replicate B)</strong></td><td>1</td><td>Ujian Sampel 6 Duplikat B</td></tr>
+                    <tr><td>34</td><td><strong>Blank Solution (Methanol)</strong></td><td>1</td><td>Pencucian Saluran</td></tr>
+                    <tr><td>35</td><td><strong>LOD Solution (2 µg/mL)</strong></td><td>1</td><td><span class="pass-badge">IQC Akhir Turutan (End of Batch Run)</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="tip-box">
+              <div class="tip-box-title">📌 Peraturan Penting Turutan:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">
+                1. Selepas setiap <strong>5 sampel</strong> disuntik, larutan <strong>LOD Solution</strong> MESTI disuntik sebelum meneruskan sampel seterusnya.<br>
+                2. Larutan <strong>LOD Solution</strong> MESTI disuntik di akhir keseluruhan analisis batch.<br>
+                3. Bagi ujian saringan kualitatif (screening sahaja), suntikan larutan keluk kalibrasi (Level 2–5) <em>tidak diperlukan</em> dalam turutan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.4.3 Kriteria SST, IQC & Kalibrasi -->
+        <div class="sop-step-card" id="sec-sst">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-034-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+              <label for="step-034-6" class="sop-step-title">
+                6.4.3 Kriteria Penerimaan SST, LOD, LOQ, IQC &amp; Keluk Kalibrasi
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+
+            <div class="table-card">
+              <div class="table-card-header">
+                <span class="table-tag">JADUAL 6: KRITERIA PENERIMAAN KESESUAIAN SISTEM (SST, LOD &amp; LOQ)</span>
+                <span class="table-doc-code">Table 5</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table-official">
+                  <thead>
+                    <tr><th>Parameter Pemeriksaan</th><th>Kriteria Had Penerimaan (Acceptance Criteria)</th><th>Tindakan Jika Gagal</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>Faktor Pengekoran (Tailing factor, Tf)</strong></td><td><span class="pass-badge">NMT 2.5 (≤ 2.5)</span></td><td>Periksa liner penyuntik, potong 10 cm bahagian hadapan kolum</td></tr>
+                    <tr><td><strong>Plat Teori (Theoretical plate, N)</strong></td><td><span class="pass-badge">NLT 2000 (≥ 2000)</span></td><td>Bake-out kolum pada 250 °C atau ganti kolum baharu</td></tr>
+                    <tr><td><strong>% RSD Luas Puncak (Peak Area)</strong></td><td><span class="pass-badge">NMT 10.0% (≤ 10.0%)</span> untuk 6 suntikan SST Level 3</td><td>Periksa kebocoran septum suntikan atau plunger jarum autosampler</td></tr>
+                    <tr><td><strong>Nisbah S/N bagi Larutan LOD (2 µg/mL)</strong></td><td><span class="pass-badge">NLT 3 (≥ 3)</span></td><td>Bersihkan sumber ion MS (EI source cleaning)</td></tr>
+                    <tr><td><strong>Nisbah S/N bagi Larutan LOQ (6 µg/mL)</strong></td><td><span class="pass-badge">NLT 10 (≥ 10)</span></td><td>Lakukan autotuning semula dan periksa sensitiviti pengesan</td></tr>
+                    <tr><td><strong>Kestabilan RT bagi IQC (LOD Injection)</strong></td><td><span class="pass-badge">Perbezaan RT ≤ 3.0%</span> setiap 5 sampel &amp; di akhir batch</td><td>Periksa kestabilan aliran gas pembawa Helium dan tekanan alur masuk</td></tr>
+                    <tr><td><strong>Keluk Kalibrasi Linear (Linearity R²)</strong></td><td><span class="pass-badge">R² ≥ 0.9950</span> (5 aras kalibrasi)</td><td>Sediakan semula larutan piawai kerja Level 1–5 dan suntik semula</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Tolerance Table for Qualifier Ions -->
+            <div class="table-card">
+              <div class="table-card-header">
+                <span class="table-tag">JADUAL 7: HAD TOLERANSI NISBAH INTENSITI ION RUJUKAN (SIM CONFIRMATION)</span>
+                <span class="table-doc-code">Table 6</span>
+              </div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body);margin-bottom:0.8rem">Pengesahan identiti sebatian sasaran (EG dan DEG) berasaskan pengesanan Target Ion dan Reference Ions. Had toleransi nisbah intensiti ion rujukan (berbanding base peak) yang dibenarkan adalah:</p>
+              <div class="table-responsive">
+                <table class="table-official">
+                  <thead>
+                    <tr><th>Intensiti Relatif Ion Rujukan (% daripada Base Peak)</th><th>Had Toleransi Yang Dibenarkan (Tolerance %)</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>&gt; 50 %</strong></td><td><span class="pass-badge">± 10 %</span></td></tr>
+                    <tr><td><strong>20 % – 50 %</strong></td><td><span class="pass-badge">± 15 %</span></td></tr>
+                    <tr><td><strong>10 % – 20 %</strong></td><td><span class="pass-badge">± 20 %</span></td></tr>
+                    <tr><td><strong>&lt; 10 %</strong></td><td><span class="pass-badge">± 50 %</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.4.6 Interpretasi, Discordant Rules & Formula -->
+        <div class="sop-step-card" id="sec-assay">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-034-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/034')">
+              <label for="step-034-7" class="sop-step-title">
+                6.5 Interpretasi Keputusan, Kaedah Replikasi Bercanggah &amp; Formula Kuantitasi
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin-bottom:0.5rem">A. Kriteria Pelaporan Keputusan Identifikasi:</h4>
+            <div class="diag-box">
+              <ul style="margin-left:1.2rem;font-size:0.88rem;line-height:1.75;color:var(--text-body)">
+                <li><strong style="color:var(--mint)">NOT DETECTED (TIDAK DIKESAN):</strong> Dilaporkan sebagai <em>NOT DETECTED (&lt; 0.02% v/v)</em> sekiranya luas puncak analit sasaran dalam larutan sampel adalah <strong>kurang daripada luas puncak larutan piawai LOD (2 µg/mL)</strong>.</li>
+                <li><strong style="color:var(--amber)">BELOW QUANTITATION LIMIT (DI BAWAH HAD KUANTITASI):</strong> Dilaporkan sebagai <em>BELOW QUANTITATION LIMIT (&lt; 0.06% v/v)</em> sekiranya luas puncak analit sasaran dalam larutan sampel berada pada atau melebihi LOD tetapi <strong>kurang daripada luas puncak larutan piawai LOQ (6 µg/mL)</strong>.</li>
+                <li><strong style="color:var(--purple)">QUANTIFIABLE AMOUNTS (KUANTITATIF):</strong> Sekiranya luas puncak analit dalam larutan sampel <strong>melebihi luas puncak larutan piawai LOQ (6 µg/mL)</strong>, kepekatan sebatian MESTI dikira menggunakan persamaan garis regresi kalibrasi dan dilaporkan dalam <strong>% v/v</strong>.</li>
+              </ul>
+            </div>
+
+            <!-- Discordant Replicate Rules -->
+            <div class="safety-box">
+              <div class="safety-box-title">⚖️ TATACARA KEPUTUSAN DUPLIKAT BERCANGGAH (DISCORDANT REPLICATE RULES):</div>
+              <div style="font-size:0.88rem;line-height:1.7;color:var(--text-body)">
+                <p><strong>i) KEPUTUSAN BORDERLINE LOD (Satu Replikasi &lt; LOD, Satu Lagi ≥ LOD):</strong></p>
+                <ul style="margin-left:1.2rem;margin-bottom:0.6rem">
+                  <li>Gunakan <strong>purata aritmetik (arithmetic mean)</strong> luas puncak bagi kedua-dua replikasi A dan B.</li>
+                  <li>Jika purata &lt; LOD → laporkan sebagai <strong>&lt; LOD 0.02% v/v (Not Detected)</strong>.</li>
+                  <li>Jika purata ≥ LOD tetapi &lt; LOQ → analit dianggap dikesan tetapi dilaporkan sebagai <strong>&lt; LOQ 0.06% v/v</strong>. Ujian ulangan tidak diperlukan.</li>
+                </ul>
+                <p><strong>ii) KEPUTUSAN BORDERLINE LOQ (Satu Replikasi &lt; LOQ, Satu Lagi ≥ LOQ):</strong></p>
+                <ul style="margin-left:1.2rem">
+                  <li>Ujian ulangan (repeat analysis) MESTI dijalankan menggunakan <strong>bahagian ujian sampel yang baru disediakan (freshly prepared test portion)</strong> bersama siri keluk kalibrasi yang lengkap untuk mengesahkan sama ada analit wujud pada kepekatan terkuantiti sebelum laporan akhir dikeluarkan.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Equation 1 Card -->
+            <div class="formula-card">
+              <div class="formula-title">📐 PERSAMAAN 1: PENGIRAAN KANDUNGAN ETHYLENE GLYCOL &amp; DIETHYLENE GLYCOL (% v/v)</div>
+              <div class="formula-box">
+                $$\text{Amount of each compound } (\% \text{ v/v}) = \frac{C_{\text{GCMS}} \times V_{\text{final}} \times DF}{\rho \times 10^6 \times V_{\text{sample}}} \times 100\%$$
+                <div style="margin-top:0.6rem;font-size:0.88rem;color:var(--cyan)">
+                  $$\% \text{ v/v} = \frac{C_{\text{GCMS}}\ (\mu\text{g/mL}) \times 100\text{ mL} \times DF}{\rho\ (\text{g/mL}) \times 1\,000\,000 \times 1.0\text{ mL}} \times 100\% = \frac{C_{\text{GCMS}} \times DF}{\rho \times 100}$$
+                </div>
+              </div>
+              <div class="formula-desc">
+                <strong>Di mana:</strong><br>
+                • $C_{\text{GCMS}}$ = Kepekatan sebatian yang diukur daripada kromatogram GCMS ($\mu\text{g/mL}$)<br>
+                • $V_{\text{final}}$ = Isipadu akhir larutan sampel ($100\text{ mL}$)<br>
+                • $V_{\text{sample}}$ = Isipadu sampel ubat cecair yang dipipet ($1.0\text{ mL}$)<br>
+                • $DF$ = Faktor Pencairan (Dilution Factor, jika ada; $DF = 1$ jika tiada pencairan)<br>
+                • $\rho$ = Ketumpatan piawai analit:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;▸ <strong>Ethylene Glycol (EG):</strong> $\rho = \mathbf{1.113\text{ g/mL}}$ (CAS: 107-21-1)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;▸ <strong>Diethylene Glycol (DEG):</strong> $\rho = \mathbf{1.118\text{ g/mL}}$ (CAS: 111-46-6)<br>
+                • $10^6$ = Faktor pertukaran unit ($\mu\text{g}$ ke $\text{g}$)
+              </div>
+            </div>
+
+            <!-- USP Limit Specification Table -->
+            <div class="table-card">
+              <div class="table-card-header">
+                <span class="table-tag">JADUAL 8: HAD KELULUSAN SPESIFIKASI RASMI (USP 43 – NF 38 MONOGRAPH)</span>
+                <span class="table-doc-code">Table 7 (Limits)</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table-official">
+                  <thead>
+                    <tr><th>Sebatian Sasaran</th><th>Had Kawalan Spesifikasi Rasmi (Restricted Limit)</th><th>Status Pematuhan</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Ethylene Glycol (EG)</strong></td>
+                      <td>Untuk ubat sirap perubatan: <span class="pass-badge">NMT 0.10% v/v (≤ 0.10% v/v)</span></td>
+                      <td><span class="pass-badge">LULUS</span> jika ≤ 0.10% v/v | <span class="fail-badge">GAGAL / OOS</span> jika &gt; 0.10% v/v</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Diethylene Glycol (DEG)</strong></td>
+                      <td>Untuk ubat sirap perubatan: <span class="pass-badge">NMT 0.10% v/v (≤ 0.10% v/v)</span></td>
+                      <td><span class="pass-badge">LULUS</span> jika ≤ 0.10% v/v | <span class="fail-badge">GAGAL / OOS</span> jika &gt; 0.10% v/v</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="font-size:0.84rem;color:var(--text-muted);margin-top:0.6rem"><em>Rujukan: USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753. Sebarang sampel yang melebihi 0.10% v/v hendaklah disiasat serta merta mengikut PKKK/300/UP/002.</em></p>
+            </div>
+
+            <!-- Interactive Assay Calculator -->
+            <div class="calc-card" id="sec-calc">
+              <div class="calc-header">
+                <span>🧮</span>
+                <strong>Kalkulator Penentuan Kandungan % v/v (Analyst Benchtop Tool)</strong>
+              </div>
+              <div class="calc-grid">
+                <div class="calc-group">
+                  <label for="calcCompound">Pilih Sebatian:</label>
+                  <select id="calcCompound" class="calc-input" onchange="calculateAssay()">
+                    <option value="1.113">Ethylene Glycol (EG) — ρ = 1.113 g/mL</option>
+                    <option value="1.118">Diethylene Glycol (DEG) — ρ = 1.118 g/mL</option>
+                  </select>
+                </div>
+                <div class="calc-group">
+                  <label for="calcConc">Kepekatan GCMS, C (µg/mL):</label>
+                  <input type="number" id="calcConc" class="calc-input" value="10.0" step="0.01" oninput="calculateAssay()">
+                </div>
+                <div class="calc-group">
+                  <label for="calcDF">Faktor Pencairan (DF):</label>
+                  <input type="number" id="calcDF" class="calc-input" value="1" step="1" min="1" oninput="calculateAssay()">
+                </div>
+                <div class="calc-group">
+                  <label for="calcVolSample">Isipadu Sampel (mL):</label>
+                  <input type="number" id="calcVolSample" class="calc-input" value="1.0" step="0.1" oninput="calculateAssay()">
+                </div>
+              </div>
+              <div class="calc-res-box" id="calcResult">
+                Kandungan: 0.0898% v/v — <span style="color:#059669">LULUS (≤ 0.10% v/v)</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 7.0 REKOD KUALITI -->
+    <div class="sop-section-container sec-theme-indigo" id="sec-7">
+      <div class="sop-section-header">
+        <span class="sec-icon">📝</span>
+        <h2>7.0 REKOD KUALITI &amp; BORANG RASMI (QUALITY RECORDS)</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Semua lembaran kerja, kromatogram integrasi, keluk kalibrasi dan laporan pengujian hendaklah difailkan dengan kemas mengikut piawaian ISO/IEC 17025.</p>
+        <div class="table-card">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 2</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
+            <span class="table-tag">SENARAI BORANG REKOD KUALITI</span>
+            <span class="table-doc-code">Seksyen 7.0</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td>PKKK/300/UP/001</td><td>Proses persampelan (Ujian Penyaringan)</td></tr><tr ><td>PKKK/300/UP/010</td><td>Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td></tr><tr ><td>PKKK/300/UP/004</td><td>Gas Chromatography-Mass Spectroscopy Agilent (7890A/5975C)</td></tr><tr ><td>PKKK/300/UP/017</td><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B)</td></tr><tr ><td></td><td>USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753</td></tr>
+              <thead><tr><th>No. Borang / Dokumen</th><th>Tajuk Rekod Kualiti</th><th>Lokasi Fail Simpanan</th><th>Tempoh Simpanan</th></tr></thead>
+              <tbody>
+                <tr><td><strong>UP/001A</strong></td><td>Borang Persampelan (Ujian Penyaringan)</td><td>Fail Sampel Unit Penyaringan</td><td>6 Tahun</td></tr>
+                <tr><td><strong>UP/009</strong></td><td>Laporan Pengujian Identifikasi dan Kandungan DEG dan EG Menggunakan GCMS</td><td>Unit Perkhidmatan Analisis (UPA) / Arkib</td><td>6 Tahun</td></tr>
+                <tr><td><strong>LOG-GCMS</strong></td><td>Buku Log Penggunaan &amp; Penyelenggaraan Instrumen GCMS</td><td>Stesen Kerja GCMS</td><td>6 Tahun</td></tr>
+              </tbody>
             </table>
           </div>
         </div>
-        
-        <div class="table-card" id="table-3">
+      </div>
+    </div>
+
+    <!-- 8.0 RUJUKAN -->
+    <div class="sop-section-container sec-theme-teal" id="sec-ref">
+      <div class="sop-section-header">
+        <span class="sec-icon">📚</span>
+        <h2>8.0 RUJUKAN (REFERENCES)</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-card">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 3</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
+            <span class="table-tag">DOKUMEN RUJUKAN RASMI</span>
+            <span class="table-doc-code">Seksyen 8.0</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>Level</th><th>Mixed Standard Stock (µL)</th><th>Make up to volume with Methanol, mL</th><th>Concentration of EG (µg/mL)</th><th>Concentration of DEG (µg/mL)</th></tr><tr ><td>1 (LOQ)</td><td>135</td><td>5</td><td>6.01</td><td>6.04</td></tr><tr ><td>2</td><td>180</td><td>5</td><td>8.01</td><td>8.05</td></tr><tr class="seq-sst"><td>3 (SST)</td><td>225</td><td>5</td><td>10.02</td><td>10.06</td></tr><tr ><td>4</td><td>270</td><td>5</td><td>12.02</td><td>12.07</td></tr><tr ><td>5</td><td>315</td><td>5</td><td>14.02</td><td>14.09</td></tr>
+              <thead><tr><th>No. Dokumen</th><th>Tajuk Rujukan</th><th>Pautan Pantas</th></tr></thead>
+              <tbody>
+                <tr><td><strong>PKKK/300/UP/001</strong></td><td>Proses Persampelan (Ujian Penyaringan)</td><td><a href="sop-300-up-001.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td></tr>
+                <tr><td><strong>PKKK/300/UP/040</strong></td><td>Pengendalian Gas Chromatography Mass Spectrometer Shimadzu (QP2010 Ultra)</td><td><a href="sop-300-up-040.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td></tr>
+                <tr><td><strong>PKKK/300/UP/017</strong></td><td>Gas Chromatography Mass Spectroscopy Agilent (8890/5977B)</td><td><a href="sop-300-up-017.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td></tr>
+                <tr><td><strong>PKKK/300/UP/004</strong></td><td>Gas Chromatography-Mass Spectroscopy Agilent (7890A/5975C)</td><td><a href="sop-300-up-004.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td></tr>
+                <tr><td><strong>USP 43 – NF 38</strong></td><td>USP-NF Propylene Glycol Monograph: USP 43 – NF 38, year 2020, page 3753</td><td>Rujukan Farmakopeia</td></tr>
+              </tbody>
             </table>
           </div>
         </div>
-        
-        <div class="table-card" id="table-4">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 4</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>GC Parameters</th><th>GC Parameters</th></tr><tr ><td>Column</td><td>BP20 (Wax)</td></tr><tr ><td>Column Dimension</td><td>30 m x 0.25 mm x 0.25µm</td></tr><tr ><td>Oven temperature</td><td>Refer table 2</td></tr><tr ><td>Flow control mode</td><td>Linear Velocity (30.0 cm/sec)</td></tr><tr ><td>Flow rate</td><td><span class="kw-flow"><span class="kw-vol">0.65 mL</span>/min</span></td></tr><tr ><td>Gas</td><td>Helium (Purity: 99.999%)</td></tr><tr ><td>Injection mode</td><td>Split (20:1)</td></tr><tr ><td>Injector temperature</td><td><span class="kw-temp">250°C</span></td></tr><tr ><td>Injection volume</td><td><span class="kw-vol">1.0 µL</span></td></tr><tr ><td>MS Parameters</td><td>MS Parameters</td></tr><tr ><td>Interface temperature</td><td><span class="kw-temp">240°C</span></td></tr><tr ><td>EI ion source / MS source temperature</td><td><span class="kw-temp">230°C</span></td></tr><tr ><td>EI ionization energy</td><td>70 eV</td></tr><tr ><td>Solvent delay</td><td>Scan off: 0 to <span class="kw-time">4.00 minutes</span> due to solvent peak (methanol)</td></tr><tr ><td>Scan range</td><td><span class="kw-wave">m/z 25</span> to <span class="kw-wave">m/z 200</span></td></tr><tr ><td>SIM ions</td><td>Refer table 3</td></tr>
-            </table>
-          </div>
-        </div>
-        
-        <div class="table-card" id="table-5">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 5</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Oven Ramp</th><th>Rate  (°C / min)</th><th>Final Temperature (°C)</th><th>Hold Time (minute)</th><th>Run Time (minute)</th></tr><tr ><td>Initial</td><td></td><td>100</td><td>1.00</td><td></td></tr><tr ><td>Ramp 1</td><td>10.0</td><td>130</td><td>7.00</td><td></td></tr><tr ><td>Ramp 2</td><td>20.0</td><td>240</td><td>3.00</td><td></td></tr><tr ><td>Post run</td><td>20.0</td><td>250</td><td>3.00</td><td>23.0</td></tr>
-            </table>
-          </div>
-        </div>
-        
-        <div class="table-card" id="table-6">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 6</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Compound</th><th>Acquisition time (minute) (*)</th><th>SIM Ions</th><th>ID</th></tr><tr ><td>Ethylene glycol (EG)</td><td>4.50 – 11.00</td><td>1. Target; <span class="kw-wave">m/z 31</span></td><td>Quantitation</td></tr><tr ><td>Ethylene glycol (EG)</td><td>4.50 – 11.00</td><td>2. Reference 1: <span class="kw-wave">m/z 33</span> 3. Reference 2: <span class="kw-wave">m/z 62</span></td><td>Qualification</td></tr><tr ><td>Diethylene glycol  (DEG)</td><td>11.00 – 20.00</td><td>1. Target; <span class="kw-wave">m/z 45</span></td><td>Quantitation</td></tr><tr ><td>Diethylene glycol  (DEG)</td><td>11.00 – 20.00</td><td>2. Reference 1: <span class="kw-wave">m/z 75</span> 3. Reference 2: <span class="kw-wave">m/z 31</span></td><td>Qualification</td></tr>
-            </table>
-          </div>
-        </div>
-        
-        <div class="table-card" id="table-7">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 7</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>No. of sequence</th><th>Details</th><th>Total of injection</th></tr><tr class="seq-blank"><td>1</td><td>Blank solution (methanol)</td><td>1</td></tr><tr class="seq-sst"><td>2 – 7</td><td>System suitability solution (6x)</td><td>6</td></tr><tr class="seq-iqc"><td>8</td><td>LOD solution</td><td>1</td></tr><tr ><td>9</td><td>LOQ solution (Calibration curve solution Level 1)</td><td>1</td></tr><tr ><td>9 – 13</td><td>Calibration curve solution (Level 1 – 5)</td><td>1 (each level)</td></tr><tr class="seq-blank"><td>14</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>15</td><td>Sample 1 (Replicate A)</td><td>1</td></tr><tr ><td>16</td><td>Sample 1 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>17</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>18</td><td>Sample 2 (Replicate A)</td><td>1</td></tr><tr ><td>19</td><td>Sample 2 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>20</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>21</td><td>Sample 3 (Replicate A)</td><td>1</td></tr><tr ><td>22</td><td>Sample 3 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>23</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>24</td><td>Sample 4 (Replicate A)</td><td>1</td></tr><tr ><td>25</td><td>Sample 4 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>26</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>27</td><td>Sample 5 (Replicate A)</td><td>1</td></tr><tr ><td>28</td><td>Sample 5 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>29</td><td>Blank solution (methanol)</td><td>1</td></tr><tr class="seq-iqc"><td>30</td><td>LOD solution</td><td>1</td></tr><tr class="seq-blank"><td>31</td><td>Blank solution (methanol)</td><td>1</td></tr><tr ><td>32</td><td>Sample 6 (Replicate A)</td><td>1</td></tr><tr ><td>33</td><td>Sample 6 (Replicate B)</td><td>1</td></tr><tr class="seq-blank"><td>34</td><td>Blank solution (methanol)</td><td>1</td></tr><tr class="seq-iqc"><td>35</td><td>LOD solution</td><td>1</td></tr>
-            </table>
-          </div>
-        </div>
-        
-        <div class="table-card" id="table-8">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 8</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Parameter</th><th>Acceptance criteria</th></tr><tr ><td>Tailing factor, Tf</td><td>NMT 2.5</td></tr><tr ><td>Theoretical plate, N</td><td>NLT 2000</td></tr><tr ><td>% RSD (peak area) for 6 injections of working standard solution at Level 3.</td><td>NMT 10.0 %</td></tr><tr class="seq-iqc"><td>S/N ratio of LOD solution (<span class="kw-wt">2 µg</span>/mL)</td><td>NLT 3</td></tr><tr ><td>S/N ratio of LOQ solution (<span class="kw-wt">6 µg</span>/mL)</td><td>NLT 10</td></tr>
-            </table>
-          </div>
-        </div>
-        
-        <div class="table-card" id="table-9">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 9</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Relative ion intensity  (% of base peak)</th><th>Tolerance (%)</th></tr><tr ><td>&gt; 50</td><td>± 10</td></tr><tr ><td>20 – 50</td><td>± 15</td></tr><tr ><td>10 - 20</td><td>± 20</td></tr><tr ><td>&lt; 10</td><td>± 50</td></tr>
-            </table>
-          </div>
-        </div>
-        
-        <div class="table-card" id="table-10">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 10</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Amount of each compound</th><th>=</th><th>Measured Concentration from GCMS (µg/mL)</th><th>x</th><th>Total volume sample solution (mL)</th><th>x</th><th>Dilution Factor (if any)</th><th>x</th><th></th><th>x</th><th></th></tr><tr ><td>(% v/v)</td><td>=</td><td>Measured Concentration from GCMS (µg/mL)</td><td>x</td><td>Volume of sample taken (mL)</td><td>x</td><td>Dilution Factor (if any)</td><td>x</td><td></td><td>x</td><td></td></tr>
-            </table>
-          </div>
-        </div>
-        
-        <div class="table-card" id="table-11">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 11</span>
-            <span class="table-doc-code">PKKK/300/UP/034</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Compound</th><th>Restricted Limit</th></tr><tr ><td>Ethylene glycol</td><td>For medicinal syrups: NMT 0.10% v/v</td></tr><tr ><td>Diethylene glycol</td><td>For medicinal syrups: NMT 0.10% v/v</td></tr>
-            </table>
-          </div>
-        </div>
-        </div></div>
+      </div>
+    </div>
 
   </div>
 
   <div class="footer">
-    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+    Unit Penyaringan ◈ Seksyen Pengujian Produk &amp; Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
   </div>
 </div>
 
@@ -1515,8 +1384,10 @@
     const total = checks.length;
     const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
     
-    document.getElementById('pBarFill').style.width = pct + '%';
-    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    const pFill = document.getElementById('pBarFill');
+    const pText = document.getElementById('pBarText');
+    if (pFill) pFill.style.width = pct + '%';
+    if (pText) pText.textContent = `${checked} / ${total} Modul Selesai (${pct}%)`;
     
     const state = Array.from(checks).map(c => c.checked);
     localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
@@ -1541,9 +1412,33 @@
     onStepCheckChange(docCode);
   }
 
+  function calculateAssay() {
+    const density = parseFloat(document.getElementById('calcCompound').value) || 1.118;
+    const conc = parseFloat(document.getElementById('calcConc').value) || 0;
+    const df = parseFloat(document.getElementById('calcDF').value) || 1;
+    const volSample = parseFloat(document.getElementById('calcVolSample').value) || 1.0;
+    
+    // Formula: (conc * 100 * df) / (density * 10^6 * volSample) * 100
+    const pctVV = (conc * 100 * df) / (density * 1000000 * volSample) * 100;
+    const resBox = document.getElementById('calcResult');
+    
+    if (isNaN(pctVV)) {
+      resBox.innerHTML = "Sila masukkan nilai yang sah.";
+      return;
+    }
+    
+    const formatted = pctVV.toFixed(4);
+    if (pctVV <= 0.10) {
+      resBox.innerHTML = `Kandungan: <strong>${formatted}% v/v</strong> — <span style="color:#059669;font-weight:800">✅ LULUS (≤ 0.10% v/v)</span>`;
+    } else {
+      resBox.innerHTML = `Kandungan: <strong>${formatted}% v/v</strong> — <span style="color:#dc2626;font-weight:800">❌ GAGAL / OOS (&gt; 0.10% v/v)</span>`;
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     loadChecklist('PKKK/300/UP/034');
+    calculateAssay();
   });
 </script>
 </body>
