@@ -251,3 +251,14 @@ body {
   margin-top: 4rem; text-align: center; font-family: var(--font-mono); font-size: 0.8rem;
   color: var(--text-dim); padding: 2rem; border-top: 1px solid var(--glass-border);
 }
+
+/* Formula & Math Fraction Styles */
+.formula-box {
+  display: inline-flex; align-items: center; gap: 0.5rem; background: var(--glass);
+  border: 1px solid var(--glass-border); border-radius: 8px; padding: 0.6rem 1rem;
+  margin: 0.6rem 0; font-family: var(--font-mono); font-size: 0.88rem; color: var(--text-bright);
+}
+.math-fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; padding: 0 0.3rem; }
+.fraction-top { border-bottom: 1.5px solid var(--text-bright); padding-bottom: 2px; }
+.fraction-bot { padding-top: 2px; }
+

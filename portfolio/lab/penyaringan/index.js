@@ -103,6 +103,109 @@ function applyFilters() {
   }
 }
 
+// Hub Tools Tab Navigation
+function switchHubTool(toolId, btn) {
+  document.querySelectorAll('.tool-nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.hub-tool-content').forEach(c => c.classList.remove('active'));
+  
+  if (btn) btn.classList.add('active');
+  const target = document.getElementById(`tool-${toolId}`);
+  if (target) target.classList.add('active');
+}
+
+// SOP Jumper Navigation
+function jumpToSop() {
+  const select = document.getElementById('sopSelect');
+  if (!select) return;
+  const url = select.value;
+  if (url) {
+    window.location.href = url;
+  }
+}
+
+// Interactive Dilution Calculator (C1V1 = C2V2)
+function calculateDilution() {
+  const c1 = parseFloat(document.getElementById('c1_val')?.value) || 0;
+  const c2 = parseFloat(document.getElementById('c2_val')?.value) || 0;
+  const v2 = parseFloat(document.getElementById('v2_val')?.value) || 0;
+  
+  const resultElem = document.getElementById('v1_res');
+  const formulaElem = document.getElementById('v1_formula');
+  
+  if (c1 > 0 && c2 > 0 && v2 > 0) {
+    const v1 = (c2 * v2) / c1;
+    let formattedV1 = v1 >= 1 ? v1.toFixed(3) + ' mL' : (v1 * 1000).toFixed(1) + ' µL (' + v1.toFixed(4) + ' mL)';
+    if (resultElem) resultElem.textContent = formattedV1;
+    if (formulaElem) formulaElem.textContent = `V₁ = (${c2} × ${v2}) / ${c1} = ${v1.toFixed(4)} mL`;
+  } else {
+    if (resultElem) resultElem.textContent = '0.000 mL';
+    if (formulaElem) formulaElem.textContent = 'Masukkan nilai yang sah (> 0)';
+  }
+}
+
+// Interactive Buffer Mass Calculator
+function calculateBufferMass() {
+  const molarity = parseFloat(document.getElementById('buf_molarity')?.value) || 0; // in mM
+  const mw = parseFloat(document.getElementById('buf_mw')?.value) || 0; // g/mol
+  const vol = parseFloat(document.getElementById('buf_vol')?.value) || 0; // in mL
+  
+  const resultElem = document.getElementById('buf_mass_res');
+  const formulaElem = document.getElementById('buf_formula');
+  
+  if (molarity > 0 && mw > 0 && vol > 0) {
+    // Mass (g) = M (mol/L) * MW (g/mol) * V (L)
+    const mass = (molarity / 1000) * mw * (vol / 1000);
+    if (resultElem) resultElem.textContent = mass.toFixed(4) + ' g';
+    if (formulaElem) formulaElem.textContent = `Jisim = (${molarity}/1000 M) × ${mw} g/mol × (${vol}/1000 L) = ${mass.toFixed(4)} g`;
+  } else {
+    if (resultElem) resultElem.textContent = '0.0000 g';
+    if (formulaElem) formulaElem.textContent = 'Pilih atau masukkan parameter penimbal';
+  }
+}
+
+function setBufferPreset(preset) {
+  const mInput = document.getElementById('buf_molarity');
+  const mwInput = document.getElementById('buf_mw');
+  const volInput = document.getElementById('buf_vol');
+  
+  if (preset === 'na2hpo4') {
+    // 25 mM Na2HPO4 anhydrous (MW 141.96) in 1000 mL
+    if (mInput) mInput.value = 25;
+    if (mwInput) mwInput.value = 141.96;
+    if (volInput) volInput.value = 1000;
+  } else if (preset === 'kh2po4') {
+    // 20 mM KH2PO4 (MW 136.09) in 1000 mL
+    if (mInput) mInput.value = 20;
+    if (mwInput) mwInput.value = 136.09;
+    if (volInput) volInput.value = 1000;
+  } else if (preset === 'phosphate005') {
+    // 50 mM (0.05M) KH2PO4 (MW 136.09) in 1000 mL
+    if (mInput) mInput.value = 50;
+    if (mwInput) mwInput.value = 136.09;
+    if (volInput) volInput.value = 1000;
+  } else if (preset === 'amm_formate') {
+    // 10 mM Ammonium Formate (MW 63.06) in 1000 mL
+    if (mInput) mInput.value = 10;
+    if (mwInput) mwInput.value = 63.06;
+    if (volInput) volInput.value = 1000;
+  }
+  calculateBufferMass();
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    const s = document.getElementById('hubSearch');
+    if (s) s.focus();
+  }
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    const s = document.getElementById('hubSearch');
+    if (s) s.focus();
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   
@@ -110,4 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (searchInput) {
     searchInput.addEventListener('input', handleSearchInput);
   }
+  
+  // Calculate initial tool defaults
+  calculateDilution();
+  calculateBufferMass();
 });
