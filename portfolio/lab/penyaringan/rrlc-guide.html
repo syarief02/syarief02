@@ -10,7 +10,90 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="steroid-hplc.css">
-<link rel="stylesheet" href="rrlc-guide.css">
+<style>
+  .sop-doc-container {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; padding: 2.5rem; backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-md); margin-top: 1.5rem;
+  }
+  .sop-header-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .sop-header-table td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.9rem; vertical-align: middle;
+  }
+  .sop-sec-num {
+    color: var(--purple); font-family: var(--font-mono); font-weight: 800; font-size: 1.1rem; margin-right: 0.4rem;
+  }
+  .sop-sec-title {
+    font-size: 1.25rem; font-weight: 800; color: var(--text-bright); margin: 2rem 0 0.9rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--purple-dim); display: flex; align-items: center;
+  }
+  .sop-p {
+    font-size: 0.92rem; line-height: 1.7; color: var(--text-main); margin-bottom: 0.8rem;
+  }
+  .sop-sub-p {
+    margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.65; color: var(--text-main); margin-bottom: 0.6rem;
+  }
+  .sop-step-box {
+    background: var(--glass); border-left: 3px solid var(--purple); padding: 1.1rem 1.4rem;
+    border-radius: 0 14px 14px 0; margin: 1.2rem 0; font-size: 0.92rem; box-shadow: var(--shadow-sm);
+  }
+  .sop-step-box strong { color: var(--text-bright); font-size: 1rem; }
+  .table-official {
+    width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; font-family: var(--font-mono);
+  }
+  .table-official th, .table-official td {
+    border: 1px solid var(--glass-border); padding: 0.6rem 0.8rem; text-align: left;
+  }
+  .table-official th { background: var(--glass); color: var(--text-dim); }
+
+  /* Specs Ribbon */
+  .specs-ribbon-card {
+    background: var(--glass); border: 1.5px solid var(--purple); border-radius: 16px;
+    padding: 1.3rem 1.5rem; margin: 1.5rem 0 1.8rem; backdrop-filter: blur(12px); box-shadow: var(--shadow-sm);
+  }
+  .specs-card-header {
+    display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 800;
+    color: var(--text-bright); margin-bottom: 1rem;
+  }
+  .specs-ribbon-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.85rem;
+  }
+  .spec-chip {
+    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px;
+    padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.25rem;
+  }
+  .spec-lbl {
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    color: var(--purple); letter-spacing: 0.05em;
+  }
+  .spec-val { font-size: 0.85rem; color: var(--text-bright); line-height: 1.4; }
+
+  /* Pro Tip Alert */
+  .pro-tip {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(2, 132, 199, 0.08));
+    border: 1px solid var(--purple); border-radius: 12px; padding: 1rem 1.3rem; margin: 1rem 0;
+    font-size: 0.88rem; line-height: 1.6;
+  }
+  .pro-tip-title { font-weight: 800; color: var(--purple); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem; }
+
+  .wf-track {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+    background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px;
+    padding: 1.1rem 1.4rem; margin: 1.5rem 0 1.8rem; overflow-x: auto;
+  }
+  .wf-step { display: flex; align-items: center; gap: 0.8rem; flex: 1; min-width: 170px; }
+  .wf-node {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--purple-dim); border: 2px solid var(--purple);
+    color: var(--purple); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono);
+    font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+  }
+  .wf-info { display: flex; flex-direction: column; }
+  .wf-name { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-bright); }
+  .wf-desc { font-size: 0.72rem; color: var(--text-dim); }
+  .wf-arrow { color: var(--purple); font-size: 1rem; font-weight: bold; flex-shrink: 0; }
+</style>
 </head>
 <body>
 
