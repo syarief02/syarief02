@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/011 — HPLC Prominence | NPRA Unit Penyaringan</title>
-<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/011: HPLC Prominence — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
+<title>PKKK/300/UP/011 — Pengendalian HPLC Shimadzu (Prominence-i) | NPRA Unit Penyaringan</title>
+<meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/011: Fundamental & Operation of Shimadzu High Performance Liquid Chromatography (Prominence-i LC-2030C 3D) — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
   :root {
@@ -18,6 +18,8 @@
     --card-surface: #ffffff;
     --card-border-subtle: #cbd5e1;
     --step-border: #94a3b8;
+    --sub-bg: rgba(2, 132, 199, 0.04);
+    --sub-border: #bae6fd;
   }
 
   [data-theme="dark"] {
@@ -27,6 +29,8 @@
     --card-surface: rgba(15, 23, 42, 0.85);
     --card-border-subtle: rgba(255, 255, 255, 0.12);
     --step-border: rgba(255, 255, 255, 0.18);
+    --sub-bg: rgba(56, 189, 248, 0.06);
+    --sub-border: rgba(56, 189, 248, 0.2);
   }
 
   .sop-doc-container {
@@ -60,7 +64,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.95rem 1.4rem;
+    padding: 1rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -75,7 +79,7 @@
     color: #ffffff;
   }
   .sec-icon {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -91,21 +95,62 @@
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
+  /* Subsections & Distinct Headers */
+  .sop-subsection {
+    margin-top: 1.8rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sub-border);
+  }
+  .sop-subsection-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem 0;
+  }
+  .sop-subsection-badge {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+  }
+  .sop-group-title {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--cyan);
+    margin: 1.3rem 0 0.6rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
   /* Step Cards */
   .sop-step-card {
-    background: var(--glass);
+    background: var(--card-surface);
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.3rem;
     overflow: hidden;
     transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
   }
   .sop-step-card:hover {
     border-color: var(--cyan);
     border-left-color: var(--purple);
-    background: var(--card-hover);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
   .sop-step-card.action-step {
     border-left-color: #d97706;
@@ -115,7 +160,7 @@
   }
   .step-card-header {
     padding: 0.85rem 1.2rem;
-    background: rgba(2, 132, 199, 0.08);
+    background: rgba(2, 132, 199, 0.06);
     border-bottom: 1px solid var(--glass-border);
   }
   .action-step .step-card-header {
@@ -135,14 +180,19 @@
   }
   .sop-step-title {
     cursor: pointer;
-    font-size: 1.02rem;
+    font-size: 0.98rem;
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
-    line-height: 1.6;
+    line-height: 1.5;
   }
-  .step-card-body { padding: 1.1rem 1.3rem; }
-  
+  .step-card-body {
+    padding: 1.2rem 1.4rem;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--text-body);
+  }
+
   /* Action Step Badge */
   .action-badge {
     display: inline-flex;
@@ -161,14 +211,126 @@
     flex-shrink: 0;
   }
 
+  /* Screenshot Figure Callout Card */
+  .sop-fig-callout {
+    background: var(--sub-bg);
+    border: 1px solid var(--sub-border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0 1.2rem;
+    text-align: center;
+  }
+  .sop-fig-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--card-border-subtle);
+    box-shadow: var(--shadow-sm);
+    background: #ffffff;
+    padding: 4px;
+    transition: transform 0.2s ease;
+  }
+  .sop-fig-img:hover {
+    transform: scale(1.01);
+  }
+  .sop-fig-caption {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
   /* Typography */
-  .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
+  .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.85rem; }
   .sop-list-item {
-    display: flex; gap: 0.65rem; align-items: flex-start; margin-left: 0.8rem; font-size: 0.93rem;
+    display: flex; gap: 0.65rem; align-items: flex-start; margin-left: 0.6rem; font-size: 0.92rem;
     line-height: 1.75; color: var(--text-body); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Info / Alert Cards */
+  .criteria-card {
+    background: rgba(5, 150, 105, 0.06);
+    border: 1.5px solid var(--mint);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.2rem 0;
+  }
+  .criteria-card.amber-theme {
+    background: var(--amber-dim);
+    border-color: #d97706;
+  }
+  .criteria-card.cyan-theme {
+    background: var(--cyan-dim);
+    border-color: var(--cyan);
+  }
+  .criteria-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+  }
+
+  /* Definition Cards Grid */
+  .def-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
+  .def-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .def-term {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--purple);
+  }
+  .def-desc {
+    font-size: 0.88rem;
+    color: var(--text-heading);
+    font-weight: 500;
+  }
+
+  /* Responsibility Roles Grid */
+  .resp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .resp-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-left: 4px solid var(--mint);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+  }
+  .resp-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   /* Revision History Collapsible */
   .rev-details {
@@ -203,18 +365,18 @@
   }
   details[open] .rev-arrow { transform: rotate(90deg); }
   .rev-body {
-    padding: 1rem 1.3rem;
+    padding: 1.2rem 1.4rem;
     border-top: 1px solid var(--card-border-subtle);
-    max-height: 400px;
+    max-height: 480px;
     overflow-y: auto;
   }
   .sop-rev-p {
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     line-height: 1.65;
-    color: var(--text-muted);
+    color: var(--text-body);
     margin-bottom: 0.4rem;
-    padding-left: 0.5rem;
-    border-left: 2px solid rgba(71, 85, 105, 0.15);
+    padding-left: 0.6rem;
+    border-left: 2px solid var(--cyan);
   }
 
   /* Keyword Highlights */
@@ -225,7 +387,7 @@
   .kw-vol { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
   .kw-time { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
   .kw-limit { color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-ph { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  .kw-key { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
 
   /* Visual Workflow Timeline */
   .wf-track {
@@ -249,10 +411,6 @@
     border: 1px solid var(--cyan); border-radius: 16px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
     box-shadow: var(--shadow-sm);
   }
-  .cross-link-container.analysis-theme {
-    background: linear-gradient(135deg, rgba(5, 150, 105, 0.08), rgba(2, 132, 199, 0.08));
-    border-color: var(--mint);
-  }
   .cross-header {
     display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 800;
     color: var(--text-heading); margin-bottom: 1rem;
@@ -261,24 +419,17 @@
   .cross-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.8rem;
   }
-  .inst-link-card, .analysis-link-card {
+  .inst-link-card {
     background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 12px;
     padding: 0.9rem 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.3rem;
     transition: all 0.2s ease; box-shadow: var(--shadow-sm);
   }
-  .inst-link-card:hover, .analysis-link-card:hover {
+  .inst-link-card:hover {
     border-color: var(--cyan); transform: translateY(-2px); box-shadow: var(--shadow-md);
   }
-  .inst-code, .ana-code { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--cyan); }
-  .inst-name, .ana-name { font-size: 0.85rem; font-weight: 700; color: var(--text-heading); line-height: 1.35; }
-  .inst-badge, .ana-badge { font-size: 0.72rem; font-weight: 600; color: var(--purple); margin-top: 0.2rem; }
-
-  /* Deep Tips Card */
-  .deep-tips-card {
-    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(2, 132, 199, 0.08));
-    border: 1px solid var(--purple); border-radius: 14px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
-    box-shadow: var(--shadow-sm);
-  }
+  .inst-code { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--cyan); }
+  .inst-name { font-size: 0.85rem; font-weight: 700; color: var(--text-heading); line-height: 1.35; }
+  .inst-badge { font-size: 0.72rem; font-weight: 600; color: var(--purple); margin-top: 0.2rem; }
 
   /* Parameters Specs Ribbon Card */
   .specs-ribbon-card {
@@ -320,10 +471,6 @@
     background: var(--card-surface);
     transform: translateY(-2px);
   }
-  .spec-chip.highlight-limit {
-    border-color: rgba(217, 119, 6, 0.4);
-    background: var(--amber-dim);
-  }
   .spec-lbl {
     font-family: var(--font-mono);
     font-size: 0.7rem;
@@ -332,30 +479,10 @@
     color: var(--cyan);
     letter-spacing: 0.05em;
   }
-  .highlight-limit .spec-lbl {
-    color: #d97706;
-  }
   .spec-val {
     font-size: 0.85rem;
     color: var(--text-heading);
     line-height: 1.4;
-  }
-  .highlight-amber-text {
-    color: #d97706;
-    font-weight: 800;
-  }
-
-  /* Executive Summary & Chips */
-  .summary-analytes {
-    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; background: var(--card-surface); border-radius: 14px;
-    border: 1px solid var(--card-border-subtle); display: flex; flex-direction: column; gap: 0.5rem;
-    box-shadow: var(--shadow-sm);
-  }
-  .sum-lbl { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; }
-  .chips-container { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-  .analite-chip {
-    padding: 0.35rem 0.75rem; background: var(--purple-dim); border: 1px solid rgba(124, 58, 237, 0.25);
-    color: var(--purple); font-family: var(--font-mono); font-size: 0.78rem; border-radius: 8px; font-weight: 600;
   }
 
   /* Bench Notes Card */
@@ -390,31 +517,77 @@
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
   .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
-  /* Table Cards */
+  /* Inline Table Cards */
   .table-card {
     background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
-    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
+    padding: 1.2rem; margin: 1.4rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
   }
   .table-card-header {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
     border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
   }
-  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
+  .table-tag { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--cyan); }
   .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
   .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.86rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
     border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
-  .seq-sst { background: var(--purple-dim); }
-  .seq-iqc { background: var(--cyan-dim); }
-  .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
+  .table-official th { background: rgba(2, 132, 199, 0.08); color: var(--text-heading); font-weight: 700; }
+
+  /* Gallery Grid */
+  .figures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.2rem;
+    margin: 1.2rem 0;
+  }
+  .figure-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .figure-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--cyan);
+  }
+  .figure-img-wrap {
+    background: #ffffff;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--card-border-subtle);
+  }
+  .figure-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .figure-caption {
+    padding: 0.8rem 1rem;
+    background: var(--card-surface);
+  }
+  .fig-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.25rem;
+  }
+  .fig-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+  }
 
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
@@ -428,6 +601,7 @@
     .sop-section-body { padding: 1rem; }
     .wf-track { flex-wrap: wrap; justify-content: center; }
     .cross-grid { grid-template-columns: 1fr; }
+    .figures-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -467,167 +641,122 @@
   <!-- Hero Ribbon -->
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
-    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/011 <span class="g">HPLC Prominence</span></h1>
-    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk &amp; Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/011 <span class="g">Pengendalian Alat Shimadzu HPLC (Prominence-i LC-2030C 3D)</span></h1>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Instrumen Makmal / HPLC Operation</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
   <div class="wf-track">
-        <div class="wf-step">
-          <div class="wf-node">1</div>
-          <div class="wf-info">
-            <div class="wf-name">1. Reagen & Piawai</div>
-            <div class="wf-desc">Penyediaan fasa bergerak, stok & kalibrasi</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">2</div>
-          <div class="wf-info">
-            <div class="wf-name">2. Pengekstrakan</div>
-            <div class="wf-desc">Timbang, sonikasi, sentrifug & turas 0.45µm</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">3</div>
-          <div class="wf-info">
-            <div class="wf-name">3. Persediaan Alat</div>
-            <div class="wf-desc">Purging saluran, autotune & baseline</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">4</div>
-          <div class="wf-info">
-            <div class="wf-name">4. Suntikan Batch</div>
-            <div class="wf-desc">Blank, SST (n=6), Sampel & IQC</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">5</div>
-          <div class="wf-info">
-            <div class="wf-name">5. Verifikasi & Rekod</div>
-            <div class="wf-desc">Padanan RT, spektrum UV/MS & Laporan</div>
-          </div>
-        </div>
-        </div>
+    <div class="wf-step">
+      <div class="wf-node">1</div>
+      <div class="wf-info">
+        <div class="wf-name">1. Hidupkan &amp; Login</div>
+        <div class="wf-desc">Suis utama, passcode 00000, LabSolutions</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">2</div>
+      <div class="wf-info">
+        <div class="wf-name">2. Method Settings</div>
+        <div class="wf-desc">Pump, Autosampler, Oven, PDA &amp; Time Prog</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">3</div>
+      <div class="wf-info">
+        <div class="wf-name">3. Auto Purge &amp; Flush</div>
+        <div class="wf-desc">Download, Purge saluran, Intermediate wash</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">4</div>
+      <div class="wf-info">
+        <div class="wf-name">4. Baseline &amp; PDA</div>
+        <div class="wf-desc">Plot baseline, semak tekanan &amp; wavelength</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">5</div>
+      <div class="wf-info">
+        <div class="wf-name">5. Single / Batch Run</div>
+        <div class="wf-desc">Vial#, Tray, Data file, Start Real Time Batch</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">6</div>
+      <div class="wf-info">
+        <div class="wf-name">6. Shutdown &amp; Wash</div>
+        <div class="wf-desc">Pencucian reverse-phase C18 &amp; turn off</div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Chromatographic / Analytical Parameters Specs Ribbon -->
-  
-        <div class="specs-ribbon-card">
-          <div class="specs-card-header">
-            <span class="specs-icon">⚡</span>
-            <strong>Spesifikasi &amp; Parameter Kromatografi / Analitikal (Official Parameters):</strong>
-          </div>
-          <div class="specs-ribbon-grid"><div class="spec-chip"><span class="spec-lbl">Instrumen Utama</span><strong class="spec-val">Shimadzu HPLC Prominence-i (LC-2030C 3D with PDA)</strong></div><div class="spec-chip"><span class="spec-lbl">Turus / Column</span><strong class="spec-val">C18 / Phenyl-Hexyl / C8 (150/250 × 4.6 mm, 2.6/5 µm)</strong></div><div class="spec-chip"><span class="spec-lbl">Fasa Bergerak / Pelarut</span><strong class="spec-val">Fasa Bergerak Kecerunan / Isokratik (Saluran A, B, C, D)</strong></div><div class="spec-chip"><span class="spec-lbl">Kadar Alir &amp; Suhu</span><strong class="spec-val">0.2 – 2.0 mL/min (Auto Purge: 5.0 mL/min) @ 20 – 60 °C (Column Oven)</strong></div><div class="spec-chip"><span class="spec-lbl">Pengesan / Gelombang / SIM</span><strong class="spec-val">190 – 800 nm (PDA multi-channel / 3D plot)</strong></div><div class="spec-chip"><span class="spec-lbl">Kriteria Kesesuaian Sistem (SST)</span><strong class="spec-val">Tekanan stabil (RSD &lt; 2%), garis dasar PDA stabil (drift &lt; 1.0 mAU/hr), %RSD SST ≤ 2.0%.</strong></div></div>
-        </div>
-        
+  <!-- Analytical Instrument Specs Ribbon -->
+  <div class="specs-ribbon-card">
+    <div class="specs-card-header">
+      <span class="specs-icon">⚡</span>
+      <strong>Spesifikasi &amp; Konfigurasi Instrumen Shimadzu Prominence-i (Instrument Specifications):</strong>
+    </div>
+    <div class="specs-ribbon-grid">
+      <div class="spec-chip"><span class="spec-lbl">Model Utama</span><strong class="spec-val">Shimadzu Prominence-i (LC-2030C 3D)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Pam &amp; Had Tekanan</span><strong class="spec-val">Quaternary LPGE Pump (Tekanan Maks: 250 bar)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Pengesan / Detector</span><strong class="spec-val">Photodiode Array (PDA, 190 – 800 nm, Lampu D2)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Oven &amp; Autosampler</span><strong class="spec-val">Column Oven (Maks 85–90 °C) · Cooler Autosampler (15 °C)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Perisian Kawalan</span><strong class="spec-val">Shimadzu LabSolutions (User ID: Admin, Pass: kosong)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Penyelenggaraan</span><strong class="spec-val">Borang Rekod Penyelenggaraan Harian / Bulanan (UP/004)</strong></div>
+    </div>
+  </div>
 
-  <!-- Target Analytes / Quick Chips -->
-  
-
-  <!-- Cross-Linked Instruments (For Analysis SOPs) -->
-  
-
-  <!-- Cross-Linked Analysis (For Instrument SOPs) -->
-  
-        <div class="cross-link-container analysis-theme">
-          <div class="cross-header">
-            <span class="cross-icon">🧪</span>
-            <strong>Kaedah-Kaedah Pengujian Aktif Menggunakan Instrumen Ini:</strong>
-          </div>
-          <div class="cross-grid">
-            <a href="sop-300-up-021.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/021</div>
-              <div class="ana-name">Steroid 8-Mix HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-022.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/022</div>
-              <div class="ana-name">Anti Diabetik HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-024.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/024</div>
-              <div class="ana-name">Diuretik HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-025.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/025</div>
-              <div class="ana-name">Proton Pump Inhibitor (PPI) HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-026.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/026</div>
-              <div class="ana-name">Anti-hipertensi HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-027.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/027</div>
-              <div class="ana-name">Domperidone HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-028.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/028</div>
-              <div class="ana-name">Antikolesterol HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-031.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/031</div>
-              <div class="ana-name">Lovastatin HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-050.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/050</div>
-              <div class="ana-name">Hydroquinone in Cosmetics HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            
-            <a href="sop-300-up-060.html" class="analysis-link-card">
-              <div class="ana-code">PKKK/300/UP/060</div>
-              <div class="ana-name">NSAIDs in Cosmetics HPLC</div>
-              <span class="ana-badge">Buka SOP Kaedah →</span>
-            </a>
-            </div>
-        </div>
-        
-
-  <!-- Deep Operating Tips for Instruments -->
-  
-        <div class="deep-tips-card">
-          <div class="tips-header">
-            <span class="tips-icon">⚡</span>
-            <strong>Panduan Khas Pengendalian &amp; Penyelenggaraan Terperinci (Pro Tips):</strong>
-          </div>
-          <ul class="tips-list">
-            <li>🔑 **Akses Sistem**: User ID: `Admin` (Password: dibiarkan kosong), Passcode Mesin: `00000`.</li><li>🔄 **Auto Purge Routine**: Wajib jalankan Auto Purge (5.0 mL/min, 3 min setiap saluran) jika solvent ditambah atau ditukar jenis.</li><li>⚡ **Intermediate Flushing**: Jika menukar dari larutan Buffer ke Organik 100%, flush saluran dengan Intermediate (Air Suling 90% : MeOH 10%) dahulu.</li><li>📈 **PDA Baseline Monitoring**: Klik ikon `Plot` dan tunggu sekurang-kurangnya 15–30 minit sehingga tekanan stabil (RSD < 2%) sebelum klik `Stop` dan mulakan suntikan.</li><li>🧼 **Tatacara Flushing Penutupan**: Buffer → Flush 90:10 Air:MeOH (30 min) → 100% Organik (30 min) → 70:30 Simpanan Kolum (15 min).</li>
-          </ul>
-        </div>
-        
+  <!-- Cross-Linked Testing SOPs using this instrument -->
+  <div class="cross-link-container">
+    <div class="cross-header">
+      <span class="cross-icon">🔬</span>
+      <strong>Kaedah Pengujian &amp; SOP Analitikal Yang Menggunakan Instrumen Ini:</strong>
+    </div>
+    <div class="cross-grid">
+      <a href="sop-300-up-028.html" class="inst-link-card">
+        <div class="inst-code">PKKK/300/UP/028</div>
+        <div class="inst-name">Identifikasi Antikolesterol dalam Produk Tradisional (HPLC)</div>
+        <span class="inst-badge">Buka SOP Kaedah →</span>
+      </a>
+      <a href="sop-300-up-040.html" class="inst-link-card">
+        <div class="inst-code">PKKK/300/UP/040</div>
+        <div class="inst-name">Penetapan Kuantitatif Lovastatin dalam Monascus Purpureus (HPLC)</div>
+        <span class="inst-badge">Buka SOP Kaedah →</span>
+      </a>
+      <a href="sop-300-up-033.html" class="inst-link-card">
+        <div class="inst-code">PKKK/300/UP/033</div>
+        <div class="inst-name">Identifikasi Steroid dalam Produk Tradisional (HPLC)</div>
+        <span class="inst-badge">Buka SOP Kaedah →</span>
+      </a>
+      <a href="sop-300-up-048.html" class="inst-link-card">
+        <div class="inst-code">PKKK/300/UP/048</div>
+        <div class="inst-name">Identifikasi Antidiabetes dalam Produk Tradisional (HPLC)</div>
+        <span class="inst-badge">Buka SOP Kaedah →</span>
+      </a>
+    </div>
+  </div>
 
   <!-- Bench Notes & Precautions -->
-  
-        <div class="bench-tips-card">
-          <div class="tips-header">
-            <span class="tips-icon">💡</span>
-            <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes):</strong>
-          </div>
-          <ul class="tips-list">
-            <li>Tapis semua fasa bergerak (akueus dan organik) menggunakan penuras membran 0.45 µm dan degas dalam kukus ultrasonik selama sekurang-kurangnya 15–20 minit.</li><li>Lakukan Auto Purge / Manual Purge setiap kali pelarut ditambah atau ditukar jenis bagi menyingkirkan buih udara.</li><li>Pastikan garisan dasar (baseline) dan tekanan pam stabil (RSD < 2%) sebelum memulakan suntikan sampel kelompok.</li><li>Bagi sampel matriks kapsul lembut (softgel), gunakan Chloroform kerana gelatin/minyak tidak larut dalam Methanol.</li>
-          </ul>
-        </div>
-        
+  <div class="bench-tips-card">
+    <div class="tips-header">
+      <span class="tips-icon">💡</span>
+      <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes &amp; Best Practices):</strong>
+    </div>
+    <ul class="tips-list">
+      <li>🔑 <strong>Kredensial Akses:</strong> Passcode pada panel LCD mesin ialah <span class="kw-key">00000</span>. Pada paparan LabSolutions, User ID ialah <code>Admin</code> dan kata laluan dibiarkan kosong.</li>
+      <li>🔄 <strong>Auto Purge Wajib:</strong> Lakukan Auto Purge setiap kali pelarut ditambah atau ditukar jenis bagi menyingkirkan buih udara dan menghalang kerosakan pam/turus.</li>
+      <li>🧪 <strong>Intermediate Flushing:</strong> Apabila menukar pelarut yang tidak larut campur secara langsung atau peralihan dari buffer ke organik tinggi, wajib bilas saluran dengan larutan perantaraan (Intermediate: Air Suling 90% : MeOH 10%).</li>
+      <li>📈 <strong>Penstabilan Garis Dasar:</strong> Klik butang <code>Plot</code> sekurang-kurangnya selama tempoh satu running time sehingga garis dasar (baseline) dan tekanan stabil (RSD &lt; 2%) sebelum klik <code>Stop</code> dan memulakan suntikan sampel.</li>
+      <li>🧼 <strong>Protokol Pencucian Shutdown:</strong> Sekiranya menggunakan fasa bergerak berasid/buffer, bilas kolum dengan 90–95% air : 5–10% organik selama <span class="kw-time">30 minit</span>, diikuti 100% organik (<span class="kw-time">30 minit</span>), dan disimpan dalam 70% organik : 30% air (<span class="kw-time">15 minit</span>).</li>
+    </ul>
+  </div>
 
   <!-- Progress Tracker Card -->
   <div class="progress-card">
@@ -635,7 +764,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 44 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 22 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -647,11 +776,11 @@
         <td rowspan="3" style="width:20%;text-align:center;font-weight:800;font-size:1.2rem;color:var(--cyan)">
           NPRA<br><span style="font-size:0.72rem;color:var(--text-muted);font-weight:600">PUSAT KAWALAN KUALITI</span>
         </td>
-        <td colspan="2"><strong style="font-size:0.95rem">ARAHAN KERJA: HPLC PROMINENCE</strong></td>
+        <td colspan="2"><strong style="font-size:0.95rem">ARAHAN KERJA: PENGENDALIAN ALAT SHIMADZU HIGH PERFORMANCE LIQUID CHROMATOGRAPHY (PROMINENCE-I)</strong></td>
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/011</td>
-        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 4 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
@@ -660,707 +789,1117 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-3" class="toc-pill">1.0 TUJUAN</a><a href="#sec-4" class="toc-pill">2.0 SKOP</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (2)</a></div>
+    <div class="toc-pills">
+      <a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN</a>
+      <a href="#sec-2" class="toc-pill">1.0 TUJUAN</a>
+      <a href="#sec-3" class="toc-pill">2.0 SKOP</a>
+      <a href="#sec-4" class="toc-pill">3.0 DEFINISI</a>
+      <a href="#sec-5" class="toc-pill">4.0 CARTA ALIRAN</a>
+      <a href="#sec-6" class="toc-pill">5.0 TANGGUNGJAWAB</a>
+      <a href="#sec-7" class="toc-pill highlight-amber">6.0 PROSEDUR PENGENDALIAN ALAT</a>
+      <a href="#sec-8" class="toc-pill">7.0 REKOD KUALITI</a>
+      <a href="#sec-9" class="toc-pill">8.0 LAMPIRAN (GALERI RAJAH)</a>
+      <a href="#sec-10" class="toc-pill">9.0 RUJUKAN</a>
+    </div>
 
-    <!-- Sections (High-Contrast Colored Blocks) -->
-    
-        <div class="sop-section-container sec-theme-slate" id="sec-1">
-          <div class="sop-section-header">
-            <span class="sec-icon">📋</span>
-            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
-          </div>
-          <div class="sop-section-body">
-            
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (6 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Terbitan 2, Semakan 0:</p><p class="sop-rev-p">Kemaskini nombor dokumen, tajuk dokumen dan tarikh kuatkuasa.</p><p class="sop-rev-p">Meminda Ketua Unit kepada Ketua Subunit</p><p class="sop-rev-p">Batal Unit Penyaringan Tradisional dan Suplemen Kesihatan</p><p class="sop-rev-p">Terbitan 2, Semakan 1:</p><p class="sop-rev-p">Meminda perkataan Agensi kepada Bahagian di dalam Perenggan Pindaan.</p></div>
-                </details>
-                
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (1 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Terbitan 3, Semakan 0:</p></div>
-                </details>
-                
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (1 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Terbitan 3, Semakan 1:</p></div>
-                </details>
-                
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (3 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Terbitan 3, Semakan 2:</p><p class="sop-rev-p">Mengemaskini perenggan 5.3, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p><p class="sop-rev-p">Terbitan 4, Semakan 0:</p></div>
-                </details>
-                
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (3 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Kemaskini tarikh kuatkuasa dari 1 Julai 2025 kepada 10 April 2026.</p><p class="sop-rev-p">Penambahan perenggan 6.4 menerangkan perihal penstabilan suhu.</p><p class="sop-rev-p">Penambahan perenggan 6.5 menerangkan perihal pemerhatian PDA detector.</p></div>
-                </details>
-                
-          </div>
+    <!-- Section 0.0: Sejarah Pindaan & Semakan -->
+    <div class="sop-section-container sec-theme-slate" id="sec-1">
+      <div class="sop-section-header">
+        <span class="sec-icon">📋</span>
+        <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-responsive" style="margin-bottom:1.2rem;">
+          <table class="table-official">
+            <thead>
+              <tr>
+                <th>Terbitan</th>
+                <th>Semakan</th>
+                <th>Ditulis Oleh</th>
+                <th>Disemak Oleh</th>
+                <th>Diluluskan Oleh</th>
+                <th>Tarikh Kuatkuasa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>0</td>
+                <td>Joanne Ong Yen Nee</td>
+                <td>Lim Wen Jun</td>
+                <td>Wan Nurul Aina Mior Abdullah</td>
+                <td>2 Jan 2019</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>0</td>
+                <td>Sharifah Arina Syed Mhd Hanafiah</td>
+                <td>Ooi Suat Hong</td>
+                <td>Wan Nurul Aina Mior Abdullah</td>
+                <td>10 Feb 2020</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>1</td>
+                <td>Sharifah Arina Syed Mhd Hanafiah</td>
+                <td>Ooi Suat Hong</td>
+                <td>Wan Nurul Aina Mior Abdullah</td>
+                <td>15 Dis 2020</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>0</td>
+                <td>Nur Aziah Mohd Rasali</td>
+                <td>Ooi Suat Hong</td>
+                <td>Wan Nurul Aina Mior Abdullah</td>
+                <td>1 Nov 2022</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>1</td>
+                <td>Joanne Ong Yen Nee</td>
+                <td>Ooi Suat Hong</td>
+                <td>Nur Aziah Mohd Rasali</td>
+                <td>1 April 2024</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>2</td>
+                <td>Tan Lu Yi</td>
+                <td>Ooi Suat Hong</td>
+                <td>Ida Syazrina Ibrahim</td>
+                <td>1 Julai 2025</td>
+              </tr>
+              <tr style="background:var(--cyan-dim);font-weight:700">
+                <td>4</td>
+                <td>0</td>
+                <td>Nurul Nadiah Noh</td>
+                <td>Tan Lu Yi</td>
+                <td>Ida Syazrina Ibrahim</td>
+                <td>10 April 2026</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        
-        <div class="sop-section-container sec-theme-amber" id="sec-2">
-          <div class="sop-section-header">
-            <span class="sec-icon">🔬</span>
-            <h2>6.0 PROSEDUR</h2>
-          </div>
-          <div class="sop-section-body">
-            
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-1" class="sop-step-title">
-                        6.1 Tatacara Memulakan LC
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-2" class="sop-step-title">
-                        <span class="action-badge">Langkah 1</span>
-                        Buka semua suis utama
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-3" class="sop-step-title">
-                        <span class="action-badge">Langkah 2</span>
-                        Buka suis mesin HPLC.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-4" class="sop-step-title">
-                        <span class="action-badge">Langkah 3</span>
-                        Masukkan password (00000) – OK
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-5" class="sop-step-title">
-                        <span class="action-badge">Langkah 4</span>
-                        Klik  ikon “Lab Solution”.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Paparan User ID: Admin dan Password dibiarkan kosong. Klik “OK”.</p><p class="sop-p">Dalam menu, klik “Instrument” dan seterusnya “LC-2030C 3D”.</p><p class="sop-p">Method Settings</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-6" class="sop-step-title">
-                        <span class="action-badge">Langkah 5</span>
-                        Buka fail method yang dihendaki.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">File &gt; Open Method File</p><p class="sop-p">Jika ingin membuat method yang baru:</p><p class="sop-p">File &gt; New Method&gt; Method Settings</p><p class="sop-p">Pump Settings</p><p class="sop-p">Mode: Low Pressure Gradient (Untuk 4 Valve)</p><p class="sop-p">Isikan:</p><p class="sop-p">Total Pump Flow : Berdasarkan Method</p><p class="sop-p">Solvent B Conc; Solvent C Conc; Solvent D conc : Berdasarkan Method:</p><p class="sop-p">Contoh : B Conc 70% MEOH ; C Conc 30% H20</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-7" class="sop-step-title">
-                        <span class="action-badge">Langkah 6</span>
-                        Isikan Pressure Limit (Pump A)
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Autosampler Setting</p>
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">*Suhu boleh ditetapkan jika diperlukan</span>
-                </div>
-                <p class="sop-p">Column Setting</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-8" class="sop-step-title">
-                        <span class="action-badge">Langkah 7</span>
-                        Tetapkan suhu Oven berdasarkan method yang ditetapkan.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Jangan set &gt; 80-<span class="kw-temp">85°C</span></p><p class="sop-p">Tandakan  (/)  jika method memerlukan pemanas (heating).</p><p class="sop-p">Detector Setting (Menggunakan PDA)</p><p class="sop-p">Setkan Start Wavelength dan End Wavelength berdasarkan method.</p><p class="sop-p">Setkan Cell Temperature – mengikuti column oven temperature.</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-9" class="sop-step-title">
-                        <span class="action-badge">Langkah 8</span>
-                        Sekiranya column oven temperature &gt; <span class="kw-temp">60°C</span>, set Cell Temperature sebagai <span class="kw-temp">60°C</span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-10" class="sop-step-title">
-                        <span class="action-badge">Langkah 9</span>
-                        Sekiranya column oven tidak digunakan, Cell Temperature tidak perlu ditandakan.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Data Acquisition</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-11" class="sop-step-title">
-                        <span class="action-badge">Langkah 10</span>
-                        Isikan LC stop time analisis dan klik Apply to All acquisition time.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Jika stop time tidak diketahui, biarkan dalam keadaan Default.</p><p class="sop-p">Pengguna akan mengetahui end time lepas elution time bagi peak.</p><p class="sop-p">LC Time Prog.</p><p class="sop-p">Sekiraya gradient tidak bertukar (changeable gradient) tidak digunakan, baris pertama sahaja yang diisikan.</p><p class="sop-p">Masa (time) adalah sama dengan LC Stop time berdasarkan setting Data Aquisitition 6.1.12.</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-12" class="sop-step-title">
-                        <span class="action-badge">Langkah 11</span>
-                        Sekiranya gradient bertukar (changeable gradient) digunakan:
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Setiap baris adalah menunjukkan satu arahan cara kerja.</p><p class="sop-p">Kesemua baris mengarahkan pengubahan mobile phase yang boleh diterangkan dengan melukis graf dengan klik pada “Draw Curve”.</p><p class="sop-p">Setiap kali kaedah changeable gradient digunakan, sistem perlu dikalibrasi balik ke setting pam semasa dimulakan sebelum suntikan kedua dijalankan.</p><p class="sop-p">Ini adalah untuk memastikan tiada shift dalam retention time.</p><p class="sop-p">Sebagai contoh, jika method menyatakan Composition B= 30% pada awal analisis, Compositon B pada akhir analisis perlu dikekalkan 30%.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-13" class="sop-step-title">
-                        6.2.8 Auto Purge
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-14" class="sop-step-title">
-                        <span class="action-badge">Langkah 12</span>
-                        Sistem Auto Purge boleh mengeluarkan buih udara dalam saluran solvent untuk mengelakkan daripada memasuki column.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Saluran solvent perlu menjalankan Auto Purge sekiranya:</p><p class="sop-p">Solvent ditambah ke dalam botol solvent.</p><p class="sop-p">Solvent bertukar jenis.</p><p class="sop-p">Ini adalah untuk memastikan tiada kontaminasi solvent dengan cecair akueus.</p><p class="sop-p">Jikalau solvent yang perlu ditukar melibatkan Intermediate:</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-15" class="sop-step-title">
-                        <span class="action-badge">Langkah 13</span>
-                        Pastikan sistem ditutup dahulu.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-16" class="sop-step-title">
-                        <span class="action-badge">Langkah 14</span>
-                        Tunggu Pressure jatuh ke sifar.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Keluarkan pump line yang betul dan masukkan ke dalam Intermediate Solution.</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-17" class="sop-step-title">
-                        <span class="action-badge">Langkah 15</span>
-                        Jalankan purging seperti yang dijelaskan dalam setting Auto Purge 6.2.8.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Setelah itu, keluarkan pump line dan masukkan dalam botol cecair (solution bottle) yang dikehendaki dan ulangi kaedah purging (rujuk Auto Purge 6.2.8)</p><p class="sop-p">Activate system after Autopurge tidak ditandakan dalam kes melibatkan Intermediate. Selepas method Auto Purge ditetapkan, Fail method disimpan (Save Method File).</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-18" class="sop-step-title">
-                        6.3 Start Up dan Flushing sistem untuk analisis.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-19" class="sop-step-title">
-                        6.3.1 Buka method file atau create method file baru.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-20" class="sop-step-title">
-                        6.3.2 Muat turun method file pada ikon “Download”.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-21" class="sop-step-title">
-                        6.3.3 Klik ikon untuk Auto Purge.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-22" class="sop-step-title">
-                        6.3.4  Tunggu sehingga Auto Purge selesai.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-23" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-23" class="sop-step-title">
-                        6.3.5 Sekiranya analisis dijalankan menggunakan air dan pelarut organik seperti Methanol dan Acetonitrile (ACN), sistem boleh flush menggunakan mobile phase analisis tersebut.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-24" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-24" class="sop-step-title">
-                        6.3.6 Sekiranya mobile phase menggunakan buffer atau pelarut asid (acidified solvent), sistem perlu flush menggunakan 90% air (H2O) dan 10% Methanol (MeOH). Selepas itu, flush semula menggunakan mobile phase yang diperlukan oleh analisis.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-25" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-25" class="sop-step-title">
-                        6.3.7 Hidupkan sistem (mobile phase pumping) dengan klik pada ikon “Instrument On/Off”.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Bagi memastikan sistem sedang berjalan:</p><p class="sop-p">Real Time Window ; hujung bahagian kanan ; kelihatan jadual tertera seperti di bawah.</p><p class="sop-p">Jika mobile phase sedang pump, bacaan tekanan (Pressure) akan tertera pada jadual.</p><p class="sop-p">Contohnya di B Conc dengan bacaan <span class="kw-flow">2 bar</span>. Sekiranya bacaan tekanan (Pressure) ialah sifar “0” menunjukkan sistem tidak berjalan.</p><p class="sop-p">6.4. Penstabilan Suhu (Thermal Equilibration)</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-26" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-26" class="sop-step-title">
-                        6.4.1 Pantau paparan suhu sehingga suhu mencapai bacaan seperti method yang telah dimuatkan.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-27" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-27" class="sop-step-title">
-                        6.5 Pemerhatian PDA detector
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-28" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-28" class="sop-step-title">
-                        6.5.1 Baseline sistem hanya boleh diperhatikan sekiranya ikon “ Plot” diklik. Jalankan proses “Plot” sekurang-kurangnya dalam tempoh “running time” mengikut analisis spesifik yang hendak dijalankan. Pastikan aliran fasa bergerak (mobile phase) pada kadar aliran (flow rate) analisis sehingga garisan dasar (baseline) pada pengesan PDA menunjukkan kestabilan dan bacaan tekanan (pressure) adalah konsisten sebelum memulakan suntikan sampel.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Sebelum suntikan dijalankan,  butang “Stop” diklik untuk memastikan “Plot” dihentikan.</p><p class="sop-p">PDA memberi pilihan kepada pengguna semasa membuat suntikan untuk memilih gelombang (wavelength) yang diingini ; bagi memerhati gelombang yang dipilih di “ RealTime”;  sila ikut prosedur di bawah:</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-29" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-29" class="sop-step-title">
-                        <span class="action-badge">Langkah 16</span>
-                        Klik kanan pada ikon “PDA chromatogram”
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-30" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-30" class="sop-step-title">
-                        <span class="action-badge">Langkah 17</span>
-                        Pilih “ Display Settings”
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-31" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-31" class="sop-step-title">
-                        <span class="action-badge">Langkah 18</span>
-                        Masukkan gelombang (wavelength) yang perlu diperhatikan.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-32" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-32" class="sop-step-title">
-                        <span class="action-badge">Langkah 19</span>
-                        Klik “OK”.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Chromatogram untuk gelombang yang dipilih kini boleh diperhatikan.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-33" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-33" class="sop-step-title">
-                        6.4 Type of Run (Single/ Real Time Batch Run / Post Run)
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-34" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-34" class="sop-step-title">
-                        6.4.1 Single Run
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">a)Acquisition &gt;  Klik “Single Run” pada Assistant Bar di bahagian kiri.</span>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">b) Isikan data file berikut:</span>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-35" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-35" class="sop-step-title">
-                        6.4.2 Real Time Batch Run
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">a)  Batch Run boleh digunakan untuk menjalankan pelbagai analisis</span>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">b)  Main &gt; klik “Real Time Batch” pada Assistant Bar di bahagian kiri.</span>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">c) Bagi menambah baris dalam batch table &gt; Klik kanan pada batch table &gt;  klik  &gt;  Add Row</span>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-36" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-36" class="sop-step-title">
-                        <span class="action-badge">Langkah 20</span>
-                        Isikan batch table berdasarkan Method File, Data File Name, Vial No. dan Tray Name.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-37" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-37" class="sop-step-title">
-                        <span class="action-badge">Langkah 21</span>
-                        Simpan batch table setelah selesai diisi dan klik “Start Real Time Batch”.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-38" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-38" class="sop-step-title">
-                        6.5  System Shutdown
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-39" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-39" class="sop-step-title">
-                        6.5.1 Jika analisis menggunakan mobile phase air dan pelarut organik (Organic Solvents) seperti Methanol dan Acetonitrile, sistem boleh menjalankan flush mengunakan 100% pelarut organik (Acetonitrile atau Methanol) untuk membersihkan column selama <span class="kw-time">30 minit</span>. Setelah flush dijalankan, sistem patut flush semula menggunakan 60-70% pelarut organik : 40-30% air untuk <span class="kw-time">15 minit</span> dan kemudian disimpan.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-40" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-40" class="sop-step-title">
-                        6.5.2 Jika buffer atau pelarut asid (acidify solvent) digunakan untuk mobile phase, sistem patut menjalankan flush menggunakan 90-95% air dan 10-5% pelarut organik seperti Acetonitrile atau Methanol selama <span class="kw-time">30 minit</span>; diikuti dengan 100%  pelarut organik (Acetonitrile dan Methanol) untuk mencuci column. Akhirnya, jalankan flush selama <span class="kw-time">15 minit</span> menggunakan 70-60% pelarut organik dan 30-40% air dan kemudian disimpan.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-41" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-41" class="sop-step-title">
-                        6.5.3 Setelah flush dijalankan dan shutdown selesai, klik “Instrument ON/OFF” untuk    menutup sistem.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-42" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-42" class="sop-step-title">
-                        6.5.4 Tutup software Realtime.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">** Method Shutdown adalah untuk reverse column seperti C18. Bagi column yang lain, sila semak dengan pengilang terlebih dahulu sebelum menjalankan analisis.</span>
-                </div>
-                
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-cyan" id="sec-3">
-          <div class="sop-section-header">
-            <span class="sec-icon">🎯</span>
-            <h2>1.0 TUJUAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian alat Shimadzu High Performance Liquid Chromatography (Prominence-i) untuk ujian penyaringan campurpalsu dijalankan dengan betul dan selamat.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-cyan" id="sec-4">
-          <div class="sop-section-header">
-            <span class="sec-icon">📐</span>
-            <h2>2.0 SKOP</h2>
-          </div>
-          <div class="sop-section-body">
-            
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-purple" id="sec-5">
-          <div class="sop-section-header">
-            <span class="sec-icon">📖</span>
-            <h2>3.0 DEFINISI</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">HPLC	- High Performance Liquid Chromatography</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-purple" id="sec-6">
-          <div class="sop-section-header">
-            <span class="sec-icon">🔀</span>
-            <h2>4.0 CARTA ALIRAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-mint" id="sec-7">
-          <div class="sop-section-header">
-            <span class="sec-icon">👥</span>
-            <h2>5.0 TANGGUNGJAWAB</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini diikuti semasa pengendalian alat ini.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</p><p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-43" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-43" class="sop-step-title">
-                        5.3      Penolong Pegawai Farmasi U7 / U6
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod penyelenggaraan alat.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-011-44" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
-                      <label for="step-011-44" class="sop-step-title">
-                        5.4    Penolong Pegawai Farmasi
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-indigo" id="sec-8">
-          <div class="sop-section-header">
-            <span class="sec-icon">📝</span>
-            <h2>7. REKOD KUALITI</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Rekod penyelenggaraan alat Shimadzu High Performance Liquid Chromatography     (Prominence-i)</p>
-          </div>
-        </div>
-        
 
-    <!-- Tables -->
-    <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
-        <div class="table-card" id="table-1">
-          <div class="table-card-header">
-            <span class="table-tag">SEJARAH SEMAKAN</span>
-            <span class="table-doc-code">PKKK/300/UP/011</span>
+        <details class="rev-details" open>
+          <summary class="rev-summary">
+            <span class="rev-toggle-icon">📋</span>
+            Perincian Pindaan &amp; Catatan Log Sejarah Dokumen
+            <span class="rev-arrow">▸</span>
+          </summary>
+          <div class="rev-body">
+            <div style="font-weight:700;color:var(--text-heading);margin-bottom:0.5rem">Terbitan 4, Semakan 0 (10 April 2026):</div>
+            <p class="sop-rev-p">Pindaan No. Dokumen daripada <code>PKKK/300/UAT/012</code> kepada <code>PKKK/300/UP/011</code> (selaras penyelarasan Unit Penyaringan).</p>
+            <p class="sop-rev-p">Kemaskini tarikh kuatkuasa kepada 10 April 2026.</p>
+            <p class="sop-rev-p">Penambahan perenggan 6.4 menerangkan perihal penstabilan suhu (Thermal Equilibration).</p>
+            <p class="sop-rev-p">Penambahan perenggan 6.5 menerangkan perihal pemerhatian PDA detector dan pemantauan garis dasar.</p>
+            
+            <div style="font-weight:700;color:var(--text-heading);margin:1rem 0 0.5rem">Terbitan 3, Semakan 2 (1 Julai 2025):</div>
+            <p class="sop-rev-p">Mengemaskini perenggan 5.3, jawatan Penolong Pegawai Farmasi ditukar daripada U36 / U32 kepada U7 / U6.</p>
+
+            <div style="font-weight:700;color:var(--text-heading);margin:1rem 0 0.5rem">Terbitan 3, Semakan 1 (1 April 2024):</div>
+            <p class="sop-rev-p">Pindaan No. Dokumen PKKK/300/HMS/032 kepada PKKK/300/UAT/012.</p>
+            <p class="sop-rev-p">Pindaan peranan Ketua Subunit / Pegawai Bertanggungjawab pada ruangan Tanggungjawab kepada Ketua Unit / Pegawai Bertanggungjawab.</p>
+            <p class="sop-rev-p">Pindaan ‘pengujian produk tradisional, suplemen kesihatan dan kosmetik’ kepada ujian penyaringan campurpalsu pada ruangan Tujuan dan Skop.</p>
+
+            <div style="font-weight:700;color:var(--text-heading);margin:1rem 0 0.5rem">Pindaan Awal (Terbitan 1 – Terbitan 3 Semakan 0):</div>
+            <p class="sop-rev-p">Prosedur ini merupakan dokumen baru selaras dengan usaha menaiktaraf pensijilan institusi ke versi ISO 9001:2015 dan penamaan semula nama institusi daripada BPFK kepada NPRA.</p>
+            <p class="sop-rev-p">Kemaskini peranan Ketua Subunit / Pegawai Bertanggungjawab dan Penolong Pegawai Farmasi.</p>
           </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Joanne Ong Yen Nee</td><td>Lim Wen Jun</td><td>Wan Nurul Aina Mior Abdullah</td><td>2 Jan 2019</td></tr><tr ><td>2</td><td>0</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>10 Feb 2020</td></tr><tr ><td>2</td><td>1</td><td>Sharifah Arina Syed Mhd Hanafiah</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>15 Dis 2020</td></tr><tr ><td>3</td><td>0</td><td>Nur Aziah Mohd Rasali</td><td>Ooi Suat Hong</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 Nov 2022</td></tr><tr ><td>3</td><td>1</td><td>Joanne Ong Yen Nee</td><td>Ooi Suat Hong</td><td>Nur Aziah Mohd Rasali</td><td>1 April 2024</td></tr><tr ><td>3</td><td>2</td><td>Tan Lu Yi</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>4</td><td>0</td><td>Nurul Nadiah Noh</td><td>Tan Lu Yi</td><td>Ida Syazrina Ibrahim</td><td>10 April  2026</td></tr>
-            </table>
+        </details>
+      </div>
+    </div>
+
+    <!-- Section 1.0: Tujuan -->
+    <div class="sop-section-container sec-theme-cyan" id="sec-2">
+      <div class="sop-section-header">
+        <span class="sec-icon">🎯</span>
+        <h2>1.0 TUJUAN</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Untuk memastikan langkah-langkah yang terlibat dalam proses pengendalian alat <strong>Shimadzu High Performance Liquid Chromatography (Prominence-i)</strong> untuk ujian penyaringan campurpalsu dijalankan dengan betul, tepat, dan selamat mengikut standard kualiti ISO/IEC 17025.</p>
+      </div>
+    </div>
+
+    <!-- Section 2.0: Skop -->
+    <div class="sop-section-container sec-theme-cyan" id="sec-3">
+      <div class="sop-section-header">
+        <span class="sec-icon">📐</span>
+        <h2>2.0 SKOP</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Prosedur ini hendaklah digunapakai oleh semua kakitangan Unit Penyaringan untuk mengendalikan alat <strong>Shimadzu HPLC (Prominence-i LC-2030C 3D)</strong> bagi ujian penyaringan campurpalsu produk tradisional, suplemen kesihatan, dan kosmetik.</p>
+      </div>
+    </div>
+
+    <!-- Section 3.0: Definisi -->
+    <div class="sop-section-container sec-theme-purple" id="sec-4">
+      <div class="sop-section-header">
+        <span class="sec-icon">📖</span>
+        <h2>3.0 DEFINISI</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="def-grid">
+          <div class="def-card">
+            <span class="def-term">3.1 HPLC</span>
+            <span class="def-desc">High Performance Liquid Chromatography (Kromatografi Cecair Prestasi Tinggi)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.2 PDA</span>
+            <span class="def-desc">Photodiode Array Detector (Pengesan Diod Pancaran Foto)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.3 LPGE</span>
+            <span class="def-desc">Low Pressure Gradient Elution (Kecerunan Tekanan Rendah)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.4 Auto Purge</span>
+            <span class="def-desc">Prosedur penyingkiran gelembung udara automatik dari saluran pelarut</span>
           </div>
         </div>
-        
-        <div class="table-card" id="table-2">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 2</span>
-            <span class="table-doc-code">PKKK/300/UP/011</span>
+      </div>
+    </div>
+
+    <!-- Section 4.0: Carta Aliran -->
+    <div class="sop-section-container sec-theme-purple" id="sec-5">
+      <div class="sop-section-header">
+        <span class="sec-icon">🔀</span>
+        <h2>4.0 CARTA ALIRAN</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Tiada carta aliran formal berasingan untuk prosedur ini. Ringkasan visual alur kerja makmal dipaparkan pada bahagian atas arahan kerja ini (Visual Workflow Timeline: <em>Hidupkan Alat ➔ Method Settings ➔ Auto Purge &amp; Flush ➔ Plot Baseline ➔ Single/Batch Run ➔ Shutdown &amp; Column Care</em>).</p>
+      </div>
+    </div>
+
+    <!-- Section 5.0: Tanggungjawab -->
+    <div class="sop-section-container sec-theme-mint" id="sec-6">
+      <div class="sop-section-header">
+        <span class="sec-icon">👥</span>
+        <h2>5.0 TANGGUNGJAWAB</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="resp-grid">
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.1 Ketua Unit / Pegawai Farmasi Bertanggungjawab</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Memastikan prosedur ini diikuti sepenuhnya semasa pengendalian alat ini dijalankan.</span></div>
           </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td></td><td>Fundamental &amp; Operation Of Shimadzu High Performance Liquid Chromatography</td></tr>
-            </table>
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.2 Pegawai Farmasi</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menyelia proses pengendalian alat ini oleh Penolong Pegawai Farmasi.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan.</span></div>
+          </div>
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.3 Penolong Pegawai Farmasi U7 / U6</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Memastikan penyelenggaraan alat ini dijalankan pada waktu yang ditetapkan dan menyimpan rekod log penyelenggaraan alat secara teratur.</span></div>
+          </div>
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.4 Penolong Pegawai Farmasi</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Mengendalikan alat ini mengikut prosedur yang telah ditetapkan dalam arahan kerja ini.</span></div>
           </div>
         </div>
-        </div></div>
+      </div>
+    </div>
+
+    <!-- Section 6.0: Prosedur Pengendalian Alat -->
+    <div class="sop-section-container sec-theme-amber" id="sec-7">
+      <div class="sop-section-header">
+        <span class="sec-icon">🔬</span>
+        <h2>6.0 PROSEDUR PENGENDALIAN ALAT SHIMADZU HPLC</h2>
+      </div>
+      <div class="sop-section-body">
+
+        <!-- 6.1 Tatacara Memulakan LC -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.1</span>
+            <span>Tatacara Memulakan LC &amp; Akses Perisian LabSolutions</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-1" class="sop-step-title">
+                <span class="action-badge">Langkah 1</span>
+                Buka Semua Suis Utama Bekalan Kuasa
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p" style="margin-bottom:0">Pastikan bekalan kuasa utama, UPS, dan komputer pengawal disambungkan dengan baik, kemudian hidupkan suis utama di dinding.</p>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-2" class="sop-step-title">
+                <span class="action-badge">Langkah 2</span>
+                Buka Suis Mesin HPLC Shimadzu Prominence-i
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p" style="margin-bottom:0">Tekan suis kuasa pada panel hadapan instrumen HPLC Shimadzu Prominence-i. Tunggu proses self-test dan inisialisasi modul selesai.</p>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-3" class="sop-step-title">
+                <span class="action-badge">Langkah 3</span>
+                Masukkan Password Panel Instrumen
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p" style="margin-bottom:0">Pada panel LCD instrumen, masukkan kata laluan keselamatan: <span class="kw-key">00000</span>, kemudian tekan <strong>OK</strong>.</p>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-4" class="sop-step-title">
+                <span class="action-badge">Langkah 4</span>
+                Buka Perisian LabSolutions &amp; Sambung ke Instrumen
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Pada desktop komputer, klik dua kali pada ikon <strong>“LabSolutions”</strong>.</p>
+            <p class="sop-p">2. Pada paparan login, <strong>User ID: <code>Admin</code></strong> dan ruangan <strong>Password dibiarkan kosong</strong>. Klik <strong>“OK”</strong>.</p>
+            <p class="sop-p" style="margin-bottom:0">3. Dalam menu utama LabSolutions, klik <strong>“Instrument”</strong> dan seterusnya pilih <strong>“LC-2030C 3D”</strong> untuk membuka tetingkap operasi Real-Time Analysis.</p>
+          </div>
+        </div>
+
+        <!-- 6.2 Method Settings -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.2</span>
+            <span>Penetapan Kaedah Analisis (Method Settings)</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-5" class="sop-step-title">
+                <span class="action-badge">Langkah 5</span>
+                Buka Fail Kaedah (Open / Create Method File)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">▹ <strong>Membuka fail method sedia ada:</strong> Klik <code>File &gt; Open Method File</code> dan pilih kaedah yang dikehendaki.</p>
+            <p class="sop-p" style="margin-bottom:0">▹ <strong>Mencipta fail method baharu:</strong> Klik <code>File &gt; New Method &gt; Method Settings</code> untuk membuka tetingkap Method Editor.</p>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-6" class="sop-step-title">
+                <span class="action-badge">Langkah 6</span>
+                6.2.1 Penetapan Pam (Pump Settings)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. <strong>Mode:</strong> Pilih <code>Low Pressure Gradient</code> (untuk sistem 4 injap/valve LPGE).</p>
+            <p class="sop-p">2. <strong>Total Pump Flow:</strong> Isikan kadar aliran mengikut kaedah analisis (cth: <span class="kw-flow">1.0000 mL/min</span>).</p>
+            <p class="sop-p">3. <strong>Solvent Concentration:</strong> Isikan peratusan pelarut mengikut kaedah (cth: Solvent B Conc: 70% MeOH ; Solvent C Conc: 30% H2O).</p>
+            <p class="sop-p">4. <strong>Pressure Limits:</strong> Isikan had tekanan maksimum Pump A (cth: <span class="kw-limit">250 bar</span>).</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image1.png" alt="Pump Settings Dialog" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 1: Tetingkap Pump Settings (Low Pressure Gradient, Flow, Solvent Conc &amp; Pressure Limit 250 bar)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-7" class="sop-step-title">
+                <span class="action-badge">Langkah 7</span>
+                6.2.2 Penetapan Autosampler (Autosampler Settings)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Tandakan <code>Autosampler</code>.</p>
+            <p class="sop-p">2. <strong>Cooler Temperature:</strong> Suhu ruang sampel boleh ditetapkan jika kaedah memerlukan kawalan suhu (cth: <span class="kw-temp">15 °C</span> atau <span class="kw-temp">5 °C</span>).</p>
+            <p class="sop-p">3. <strong>Rinse Settings:</strong> Setkan Rinsing Speed (<span class="kw-flow">35 µL/sec</span>), Rinsing Volume (<span class="kw-vol">500 µL</span>), dan Rinse Mode (<code>Before and after aspiration</code>).</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image2.png" alt="Autosampler Settings Dialog" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 2: Tetingkap Autosampler Setting (Cooler Temperature &amp; Rinse Settings)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-8" class="sop-step-title">
+                <span class="action-badge">Langkah 8</span>
+                6.2.3 Penetapan Kolum (Column Oven Settings)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Tandakan <code>Column Oven</code> sekiranya kaedah analisis memerlukan pemanas suhu kolum (heating).</p>
+            <p class="sop-p">2. <strong>Oven Temperature:</strong> Tetapkan suhu oven kolum mengikut kaedah yang ditetapkan (cth: <span class="kw-temp">40 °C</span>).</p>
+            <p class="sop-p">3. <strong>Temperature Limit:</strong> Pastikan had suhu maksimum disetkan (cth: <span class="kw-temp">90 °C</span>). <em>Amaran: Jangan set suhu melebihi 80–85 °C melainkan disyorkan khusus oleh pengeluar turus.</em></p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image3.png" alt="Column Oven Settings Dialog" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 3: Tetingkap Column Oven Setting (Oven Temperature &amp; Heating Checkbox)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-9" class="sop-step-title">
+                <span class="action-badge">Langkah 9</span>
+                6.2.4 Penetapan Pengesan PDA (Detector Settings - PDA)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. <strong>Wavelength:</strong> Setkan <strong>Start Wavelength</strong> dan <strong>End Wavelength</strong> berdasarkan kaedah (cth: <span class="kw-wave">190 nm</span> hingga <span class="kw-wave">800 nm</span>).</p>
+            <p class="sop-p">2. <strong>Cell Temperature:</strong> Tandakan <code>Cell Temperature</code> mengikut suhu column oven (cth: <span class="kw-temp">40 °C</span>).</p>
+            <p class="sop-p">3. <strong>Syarat Suhu Sel:</strong> Sekiranya suhu column oven &gt; 60 °C, setkan Cell Temperature sebagai <strong>60 °C</strong>. Sekiranya pemanas column oven tidak digunakan, Cell Temperature tidak perlu ditandakan.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image4.png" alt="PDA Detector Settings Dialog" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 4: Tetingkap Detector Setting PDA (Wavelength Range 190–800 nm &amp; Cell Temperature)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-10" class="sop-step-title">
+                <span class="action-badge">Langkah 10</span>
+                6.2.5 Perolehan Data (Data Acquisition)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. <strong>LC Stop Time:</strong> Isikan masa berhenti analisis (LC stop time) dan klik <strong>“Apply to All acquisition time”</strong>.</p>
+            <p class="sop-p">2. Sekiranya masa analisis akhir belum diketahui, biarkan dalam keadaan <em>Default</em> sehingga masa elusi puncak diperolehi.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image5.png" alt="Data Acquisition Settings Dialog" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 5: Tetingkap Data Acquisition (LC Stop Time &amp; Acquisition Time PDA)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-11" class="sop-step-title">
+                <span class="action-badge">Langkah 11</span>
+                6.2.6 Program Masa LC - Isokratik (LC Time Program - Isocratic)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">Sekiranya kaedah adalah <strong>Isokratik</strong> (tiada perubahan kecerunan elusi / non-changeable gradient), hanya baris pertama sahaja yang diisikan dengan arahan <code>Controller Stop</code> pada masa (Time) yang sama dengan LC Stop Time.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image6.png" alt="LC Time Program Isocratic Table" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 6: Tetingkap LC Time Prog untuk Kaedah Isokratik (Baris Pertama Sahaja)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-12" class="sop-step-title">
+                <span class="action-badge">Langkah 12</span>
+                6.2.7 Program Masa LC - Kecerunan Bertukar (Changeable Gradient Program)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Sekiranya kaedah <strong>Gradient (Changeable Gradient)</strong> digunakan, setiap baris mewakili satu arahan langkah perubahan fasa bergerak mengikut masa (Time, Module: Pumps, Command: Solvent B Conc, Value).</p>
+            <p class="sop-p">2. Sahkan profil elusi dengan klik butang <strong>“Draw curve”</strong> untuk melihat graf kecerunan.</p>
+            <p class="sop-p" style="margin-bottom:0">3. <strong>Prinsip Rekalibrasi:</strong> Setiap kali kaedah changeable gradient digunakan, komposisi pelarut mestilah diprogramkan kembali ke setting asal (cth: Composition B = 30% pada minit akhir sama seperti minit 0) bagi mengelakkan pergeseran masa penahanan (retention time shift) pada suntikan seterusnya.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image7.png" alt="Gradient Program Table & Plotted Curve" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 7: Tetingkap LC Time Prog &amp; Plot Lengkung Kecerunan (Draw Curve)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-13" class="sop-step-title">
+                <span class="action-badge">Langkah 13</span>
+                6.2.8 Penetapan Auto Purge &amp; Protokol Pertukaran Pelarut (Intermediate Solution)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">Sistem Auto Purge mengeluarkan buih udara dalam saluran pelarut bagi mengelakkan gelembung memasuki pam dan turus. Auto Purge wajib dijalankan sekiranya: (a) Pelarut ditambah ke dalam botol pelarut, atau (b) Pelarut bertukar jenis.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image8.png" alt="AutoPurge Settings Dialog" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 8: Tetingkap AutoPurge (Purge Order, Mobile Phase A/B 3 minit, Autosampler Purge 10 minit)</div>
+            </div>
+
+            <div class="criteria-card amber-theme">
+              <div class="criteria-header">
+                <span>🔄</span>
+                <strong>Tatacara Pertukaran Pelarut Melibatkan Larutan Perantaraan (Intermediate):</strong>
+              </div>
+              <p class="sop-p">1. Pastikan sistem ditutup dahulu (Flow = 0 mL/min) dan tunggu bacaan tekanan (Pressure) jatuh ke sifar.</p>
+              <p class="sop-p">2. Keluarkan tiub saluran pam yang berkenaan dan masukkan ke dalam botol <strong>Intermediate Solution (Air Suling : MeOH / ACN)</strong>.</p>
+              <p class="sop-p">3. Jalankan purging. Selepas itu, alihkan saluran pam ke dalam botol pelarut sasaran dan ulangi purging.</p>
+              <p class="sop-p" style="margin-bottom:0">4. <em>Nota: Pilihan <code>Activate system after autopurge</code> TIDAK ditandakan sekiranya melibatkan larutan Intermediate. Setelah kaedah ditetapkan, klik <strong>Save Method File</strong>.</em></p>
+            </div>
+
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image9.png" alt="Intermediate Purge Flow Diagram" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 9: Gambar Rajah Skematik Peralihan Saluran Pelarut melalui Larutan Perantaraan (Intermediate)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.3 Start Up & Flushing -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.3</span>
+            <span>Start Up, Muat Turun Kaedah &amp; Pembilasan Sistem (Flushing)</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-14" class="sop-step-title">
+                <span class="action-badge">Langkah 14</span>
+                6.3.1 – 6.3.4 Muat Turun Kaedah &amp; Pelaksanaan Auto Purge
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Buka fail method yang telah disahkan.</p>
+            <p class="sop-p">2. Klik ikon <strong>“Download”</strong> (atau <strong>“Download and Close”</strong>) untuk memuatkan parameter kaedah ke dalam memori perkakasan HPLC.</p>
+            
+            <div class="sop-fig-callout" style="max-width:320px;margin:0.8rem auto">
+              <img src="img_011/sop011_image10.png" alt="Download and Close Button" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 10: Butang “Download and Close”</div>
+            </div>
+
+            <p class="sop-p">3. Pada bar alat atas, klik ikon <strong>Auto Purge</strong> untuk memulakan proses penyingkiran buih udara secara automatik.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image11.png" alt="AutoPurge Toolbar Icon" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 11: Bar Alat Atas Menunjukkan Ikon Auto Purge</div>
+            </div>
+
+            <p class="sop-p">4. Tunggu sehingga proses Auto Purge selesai (status bar menunjukkan 100% dan dialog ditutup).</p>
+            
+            <div class="sop-fig-callout" style="max-width:420px;margin:0.8rem auto">
+              <img src="img_011/sop011_image12.png" alt="AutoPurge Progress Dialog" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 12: Dialog Kemajuan AutoPurge (Purging in progress. Please wait)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-15" class="sop-step-title">
+                <span class="action-badge">Langkah 15</span>
+                6.3.5 – 6.3.6 Protokol Pembilasan (Flushing Protocol) Mengikut Fasa Bergerak
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <div class="sop-list-item">
+              <span class="sop-bullet">🔹</span>
+              <span class="sop-list-text"><strong>Fasa Bergerak Pelarut Biasa (Air &amp; MeOH / ACN):</strong> Sistem boleh terus dibilas (flush) menggunakan fasa bergerak analisis tersebut.</span>
+            </div>
+            <div class="sop-list-item">
+              <span class="sop-bullet">🔹</span>
+              <span class="sop-list-text"><strong>Fasa Bergerak Berasid / Buffer:</strong> Sistem <strong>wajib dibilas terlebih dahulu menggunakan 90% Air (H2O) : 10% Methanol (MeOH)</strong> bagi menyingkirkan mendakan garam sebelum mengalirkan fasa bergerak analisis sebenar.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-16" class="sop-step-title">
+                <span class="action-badge">Langkah 16</span>
+                6.3.7 Menghidupkan Pam &amp; Semakan Status Tekanan
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Hidupkan aliran pam fasa bergerak dengan klik pada ikon <strong>“Instrument On/Off”</strong>.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image13.png" alt="Instrument On/Off Toolbar Button" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 13: Bar Alat Menunjukkan Ikon Instrument On/Off</div>
+            </div>
+
+            <p class="sop-p">2. <strong>Semakan Aliran &amp; Tekanan:</strong> Pada tetingkap Real Time Window di sebelah kanan, perhatikan jadual status instrumen. Apabila pam sedang beroperasi, bacaan tekanan (Pressure / Press) akan tertera (cth: 2 bar atau nilai operasi biasa turus). Sekiranya nilai tekanan ialah sifar “0”, ini menunjukkan pam tidak berjalan.</p>
+            
+            <div class="sop-fig-callout" style="max-width:480px;margin:0.8rem auto">
+              <img src="img_011/sop011_image14.png" alt="Real Time Instrument Status Table" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 14: Jadual Status Masa Nyata Menunjukkan Bacaan Tekanan (Press), B.Conc, dan Suhu Oven</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.4 Penstabilan Suhu -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.4</span>
+            <span>Penstabilan Suhu (Thermal Equilibration)</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-17" class="sop-step-title">
+                <span class="action-badge">Langkah 17</span>
+                6.4.1 Pemantauan Kestabilan Suhu Turus &amp; Sel Pengesan
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p" style="margin-bottom:0">Pantau paparan status suhu oven kolum dan sel PDA sehingga kedua-dua bacaan suhu mencapai nilai sasaran yang ditetapkan dalam kaedah dan stabil sepenuhnya sebelum meneruskan ke langkah seterusnya.</p>
+          </div>
+        </div>
+
+        <!-- 6.5 Pemerhatian PDA Detector -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.5</span>
+            <span>Pemerhatian Pengesan PDA &amp; Pemantauan Garis Dasar (Baseline Check)</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-18" class="sop-step-title">
+                <span class="action-badge">Langkah 18</span>
+                6.5.1 Plot Garis Dasar (Baseline Plotting &amp; Equilibration)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Garis dasar (baseline) sistem hanya boleh dipantau sekiranya butang <strong>“Plot”</strong> di bahagian atas tetingkap diklik.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image15.png" alt="Top Bar with Plot Button" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 15: Bahagian Atas Tetingkap Real-Time Menunjukkan Butang “Plot”</div>
+            </div>
+
+            <p class="sop-p">2. Jalankan pemantauan <code>Plot</code> sekurang-kurangnya selama tempoh satu running time kaedah pengujian spesifik yang hendak dijalankan. Pastikan kadar aliran fasa bergerak menghasilkan garis dasar yang mendatar, stabil, dan tekanan pam konsisten.</p>
+            <p class="sop-p">3. <strong>Sebelum suntikan sampel dimulakan, klik butang “Stop”</strong> untuk menghentikan mod Plot.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image16.png" alt="Baseline Plot Window with Stop Button" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 16: Tetingkap Garis Dasar PDA &amp; Lokasi Butang “Stop”</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-19" class="sop-step-title">
+                <span class="action-badge">Langkah 19</span>
+                6.5.2 Penetapan Saluran Gelombang Paparan RealTime (Display Settings)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">Untuk memerhati kromatogram pada panjang gelombang khusus secara RealTime:</p>
+            <p class="sop-p">1. Klik kanan pada kawasan <strong>PDA Chromatogram</strong> dan pilih <strong>“Display Settings...”</strong>.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image17.png" alt="Right Click Context Menu Display Settings" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 17: Menu Klik Kanan Memilih “Display Settings...”</div>
+            </div>
+
+            <p class="sop-p">2. Pada tab <strong>PDA</strong>, tandakan saluran (Channel) dan masukkan panjang gelombang sasaran (cth: Ch1: <span class="kw-wave">254 nm</span>, Ch2: <span class="kw-wave">300 nm</span>). Klik <strong>“OK”</strong>.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image18.png" alt="Display Settings Dialog PDA Tab" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 18: Tetingkap Display Settings Menetapkan Gelombang Pantauan Saluran PDA</div>
+            </div>
+
+            <p class="sop-p">3. Kromatogram bagi gelombang yang dipilih kini akan dipaparkan secara langsung pada skrin pemantauan.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image19.png" alt="Live Multi-Channel Chromatogram Display" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 19: Paparan Kromatogram Masa Nyata pada Gelombang 254 nm &amp; 300 nm</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.6 Type of Run -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.6</span>
+            <span>Jenis Analisis: Single Run vs Real Time Batch Run</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-20" class="sop-step-title">
+                <span class="action-badge">Langkah 20</span>
+                6.6.1 Tatacara Suntikan Tunggal (Single Run)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Pada bar pembantu di sebelah kiri (Assistant Bar), klik ikon <strong>“Single Run”</strong>.</p>
+            
+            <div class="sop-fig-callout" style="max-width:140px;margin:0.8rem auto">
+              <img src="img_011/sop011_image20.png" alt="Start Single Run Icon" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 20: Ikon Single Run</div>
+            </div>
+
+            <p class="sop-p">2. Isikan medan maklumat perolehan data dalam dialog Single Run:</p>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Sample Name &amp; Sample ID:</strong> Masukkan nama dan nombor rujukan sampel/standard.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Data File:</strong> Tentukan laluan folder dan nama fail data (<code>.lcd</code>).</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Vial # &amp; Injection Volume:</strong> Masukkan kedudukan vial (cth: -1 untuk wash, 1 untuk sampel) dan isipadu suntikan (cth: <span class="kw-vol">10 µL</span> / <span class="kw-vol">20 µL</span>).</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Tray:</strong> Isikan nombor tray autosampler mengikut kedudukan fizikal rack: <code>Tray 1 = L1, Tray 2 = L2, Tray 3 = R3, Tray 4 = R4</code>.</span></div>
+            <p class="sop-p" style="margin-top:0.8rem">3. Klik <strong>“OK”</strong> untuk memulakan suntikan tunggal secara serta-merta.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image21.png" alt="Single Run Parameter Setup Dialog" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 21: Tetingkap Single Run Menunjukkan Pengisian Sample Name, Data File, Tray No, Vial# &amp; Isipadu Suntikan</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-21" class="sop-step-title">
+                <span class="action-badge">Langkah 21</span>
+                6.6.2 Tatacara Suntikan Kelompok (Real Time Batch Run)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Pada menu utama atau Assistant Bar di sebelah kiri, klik ikon <strong>“Real Time Batch”</strong>.</p>
+            
+            <div class="sop-fig-callout" style="max-width:140px;margin:0.8rem auto">
+              <img src="img_011/sop011_image22.png" alt="Realtime Batch Icon" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 22: Ikon Realtime Batch</div>
+            </div>
+
+            <p class="sop-p">2. Untuk menambah baris suntikan dalam jadual batch: Klik kanan pada jadual batch dan pilih <strong>“Add Row...”</strong>.</p>
+            
+            <div class="sop-fig-callout" style="max-width:360px;margin:0.8rem auto">
+              <img src="img_011/sop011_image23.png" alt="Batch Table Right Click Add Row" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 23: Klik Kanan pada Jadual Batch dan Pilih “Add Row...”</div>
+            </div>
+
+            <p class="sop-p">3. Lengkapkan setiap baris jadual turutan suntikan batch:</p>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Vial # &amp; Tray Name:</strong> Kedudukan fizikal vial pada rak autosampler.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Sample Name &amp; Sample ID:</strong> Butiran sampel, blank, SST, atau QC.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Method File:</strong> Nama fail kaedah analisis (<code>.lcm</code>).</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Data File:</strong> Nama fail output data kromatogram (<code>.lcd</code>).</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text"><strong>Inj. Volume:</strong> Isipadu suntikan sampel mengikut SOP.</span></div>
+            <p class="sop-p" style="margin-top:0.8rem">4. Simpan fail jadual batch (<code>.lcb</code>) dan klik <strong>“Start Real Time Batch”</strong> untuk memulakan siri suntikan automatik.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image24.png" alt="Completed Batch Table with Vial#, Method, Data File" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 24: Contoh Jadual Batch Lengkap (Vial#, Tray Name, Method File, Data File &amp; Inj. Volume)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6.7 System Shutdown -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.7</span>
+            <span>Penutupan Sistem &amp; Pencucian Turus (System Shutdown &amp; Column Care)</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-011-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/011')">
+              <label for="step-011-22" class="sop-step-title">
+                <span class="action-badge">Langkah 22</span>
+                Protokol Pencucian Kolum &amp; Penutupan Sistem Selamat
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <div class="criteria-card">
+              <div class="criteria-header">
+                <span>🧼</span>
+                <strong>6.7.1 Fasa Bergerak Pelarut Organik Biasa (Methanol / ACN &amp; Air):</strong>
+              </div>
+              <p class="sop-p">1. Jalankan pembilasan menggunakan <strong>100% Pelarut Organik (Acetonitrile atau Methanol)</strong> selama <span class="kw-time">30 minit</span> untuk mencuci sisa analit daripada turus.</p>
+              <p class="sop-p" style="margin-bottom:0">2. Setelah itu, bilas semula menggunakan <strong>60–70% Pelarut Organik : 40–30% Air</strong> selama <span class="kw-time">15 minit</span> sebelum sistem disimpan.</p>
+            </div>
+
+            <div class="criteria-card amber-theme">
+              <div class="criteria-header">
+                <span>⚠️</span>
+                <strong>6.7.2 Fasa Bergerak Menggunakan Buffer / Pelarut Berasid (Acidified Solvent):</strong>
+              </div>
+              <p class="sop-p">1. Bilas turus menggunakan <strong>90–95% Air : 10–5% Pelarut Organik</strong> (Acetonitrile / Methanol) selama <span class="kw-time">30 minit</span> untuk melarutkan dan mengeluarkan semua sisa garam penimbal.</p>
+              <p class="sop-p">2. Diikuti dengan <strong>100% Pelarut Organik</strong> (Acetonitrile / Methanol) selama <span class="kw-time">30 minit</span> untuk membersihkan turus sepenuhnya.</p>
+              <p class="sop-p" style="margin-bottom:0">3. Akhir sekali, bilas selama <span class="kw-time">15 minit</span> menggunakan <strong>70–60% Pelarut Organik : 30–40% Air</strong> bagi penyimpanan turus jangka masa panjang.</p>
+            </div>
+
+            <p class="sop-p">3. <strong>Mematikan Sistem:</strong> Setelah semua pembilasan selesai, klik ikon <strong>“Instrument ON/OFF”</strong> pada bar alat atas untuk mematikan pam dan lampu pengesan.</p>
+            
+            <div class="sop-fig-callout">
+              <img src="img_011/sop011_image25.png" alt="Instrument Off Toolbar Button" class="sop-fig-img" loading="lazy">
+              <div class="sop-fig-caption"><span>📷</span> Rajah 25: Bar Alat Menunjukkan Penutupan Sistem Melalui Ikon Instrument Off</div>
+            </div>
+
+            <p class="sop-p">4. Tutup perisian Real-Time Analysis LabSolutions, tutup suis utama mesin HPLC, dan catatkan penggunaan dalam log rekod makmal.</p>
+            <p class="sop-p" style="margin-bottom:0"><em>*Nota Kolum: Tatacara shutdown ini adalah khusus untuk turus fasa terbalik (reversed-phase column seperti C18). Bagi kolum jenis lain (cth: HILIC, Normal Phase, Ion-Exchange), sila semak manual pengeluar turus terlebih dahulu.</em></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Section 7.0: Rekod Kualiti -->
+    <div class="sop-section-container sec-theme-indigo" id="sec-8">
+      <div class="sop-section-header">
+        <span class="sec-icon">📝</span>
+        <h2>7.0 REKOD KUALITI</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-responsive">
+          <table class="table-official">
+            <thead>
+              <tr>
+                <th style="width:25%">No. Borang / Dokumen</th>
+                <th>Tajuk Dokumen Rekod Kualiti</th>
+                <th style="width:25%">Lokasi Simpanan</th>
+                <th style="width:20%">Tempoh Simpanan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PKKK/300/UP/004</strong></td>
+                <td>Rekod Penyelenggaraan Alat Shimadzu High Performance Liquid Chromatography (Prominence-i)</td>
+                <td>Buku Log Bersebelahan Instrumen HPLC Prominence-i / Unit Penyaringan</td>
+                <td>Sepanjang Hayat Peralatan (Life of Instrument)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 8.0: Lampiran (Galeri Rajah & Tangkapan Skrin) -->
+    <div class="sop-section-container sec-theme-indigo" id="sec-9">
+      <div class="sop-section-header">
+        <span class="sec-icon">📎</span>
+        <h2>8.0 LAMPIRAN (GALERI RAJAH &amp; TANGKAPAN SKRIN PERISIAN LABSOLUTIONS)</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Koleksi 25 tangkapan skrin rasmi perisian LabSolutions dan tatacara pengendalian HPLC Shimadzu Prominence-i LC-2030C 3D:</p>
+
+        <div class="figures-grid">
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image1.png" alt="Rajah 1: Pump Settings" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 1: Tetingkap Pump Settings</div>
+              <div class="fig-desc">Mod Low Pressure Gradient, had tekanan 250 bar dan komposisi pelarut.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image2.png" alt="Rajah 2: Autosampler Setting" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 2: Tetingkap Autosampler Setting</div>
+              <div class="fig-desc">Kawalan suhu cooler (15 °C) dan tetapan pembilasan jarum autosampler.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image3.png" alt="Rajah 3: Column Oven Setting" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 3: Tetingkap Column Oven Setting</div>
+              <div class="fig-desc">Tetapan suhu pemanas turus dan had suhu maksimum (90 °C).</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image4.png" alt="Rajah 4: PDA Detector Setting" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 4: Tetingkap Detector Setting (PDA)</div>
+              <div class="fig-desc">Julat gelombang imbasan 190–800 nm dan suhu sel pengesan (Cell Temp).</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image5.png" alt="Rajah 5: Data Acquisition" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 5: Tetingkap Data Acquisition</div>
+              <div class="fig-desc">Penetapan LC Stop Time dan waktu perolehan data spektrum PDA.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image6.png" alt="Rajah 6: LC Time Prog Isokratik" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 6: LC Time Prog (Isokratik)</div>
+              <div class="fig-desc">Arahan penamatan satu baris Controller Stop untuk kaedah isokratik.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image7.png" alt="Rajah 7: Gradient Curve Plot" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 7: Plot Lengkung Kecerunan (Draw Curve)</div>
+              <div class="fig-desc">Jadual program masa kecerunan pelarut dan visualisasi profil elusi.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image8.png" alt="Rajah 8: AutoPurge Setting" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 8: Tetingkap AutoPurge Setting</div>
+              <div class="fig-desc">Turutan pembilasan saluran pelarut A &amp; B serta autosampler purge.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image9.png" alt="Rajah 9: Intermediate Solution Diagram" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 9: Rajah Skematik Larutan Perantaraan</div>
+              <div class="fig-desc">Tatacara pemindahan saluran pam melalui botol Intermediate Solution.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image10.png" alt="Rajah 10: Download and Close" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 10: Butang Download and Close</div>
+              <div class="fig-desc">Ikon muat turun parameter kaedah ke unit perkakasan HPLC.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image11.png" alt="Rajah 11: AutoPurge Icon" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 11: Ikon Auto Purge pada Bar Alat</div>
+              <div class="fig-desc">Lokasi butang pelancaran Auto Purge pada toolbar LabSolutions.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image12.png" alt="Rajah 12: AutoPurge Progress" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 12: Dialog Kemajuan AutoPurge</div>
+              <div class="fig-desc">Paparan status pembersihan saluran pelarut masa nyata.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image13.png" alt="Rajah 13: Instrument On/Off Button" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 13: Ikon Instrument On/Off</div>
+              <div class="fig-desc">Butang kawalan penghidupan aliran pam dan modul instrumen.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image14.png" alt="Rajah 14: Real Time Status Table" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 14: Jadual Status Tekanan &amp; Aliran</div>
+              <div class="fig-desc">Pemantauan bacaan tekanan (Press: 2 bar), kadar alir, dan suhu.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image15.png" alt="Rajah 15: Plot Button" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 15: Butang Plot pada Bar Status</div>
+              <div class="fig-desc">Memulakan pemantauan garis dasar pengesan PDA secara langsung.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image16.png" alt="Rajah 16: Baseline Plot & Stop Button" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 16: Tetingkap Garis Dasar &amp; Butang Stop</div>
+              <div class="fig-desc">Pemantauan kestabilan isyarat sebelum menghentikan mod Plot.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image17.png" alt="Rajah 17: Display Settings Menu" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 17: Menu Display Settings...</div>
+              <div class="fig-desc">Klik kanan untuk membuka tetapan paparan gelombang kromatogram.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image18.png" alt="Rajah 18: PDA Channel Display Settings" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 18: Penetapan Saluran Gelombang PDA</div>
+              <div class="fig-desc">Konfigurasi saluran Ch1 (254 nm) dan Ch2 (300 nm) untuk pemantauan.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image19.png" alt="Rajah 19: Live Dual Wavelength Baseline" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 19: Paparan Garis Dasar 254 nm &amp; 300 nm</div>
+              <div class="fig-desc">Pengesahan kestabilan garis dasar dwigelombang sebelum suntikan.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image20.png" alt="Rajah 20: Start Single Run Icon" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 20: Ikon Single Run</div>
+              <div class="fig-desc">Pelancaran suntikan tunggal pada Assistant Bar sebelah kiri.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image21.png" alt="Rajah 21: Single Run Dialog Setup" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 21: Konfigurasi Parameter Single Run</div>
+              <div class="fig-desc">Pengisian Sample Name, Data File, Tray No (1=L1, 3=R3), Vial# &amp; Vol.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image22.png" alt="Rajah 22: Realtime Batch Icon" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 22: Ikon Realtime Batch</div>
+              <div class="fig-desc">Membuka mod turutan suntikan berbilang sampel kelompok.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image23.png" alt="Rajah 23: Add Row in Batch Table" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 23: Menambah Baris Suntikan (Add Row)</div>
+              <div class="fig-desc">Klik kanan pada jadual batch untuk memasukkan sampel baharu.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image24.png" alt="Rajah 24: Batch Table Configuration" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 24: Susunan Lengkap Jadual Batch</div>
+              <div class="fig-desc">Turutan Analysis, Vial#, Tray, Sample ID, Method File &amp; Data File.</div>
+            </div>
+          </div>
+
+          <div class="figure-card">
+            <div class="figure-img-wrap"><img src="img_011/sop011_image25.png" alt="Rajah 25: Instrument Off Button" class="figure-img" loading="lazy"></div>
+            <div class="figure-caption">
+              <div class="fig-title">Rajah 25: Penutupan Sistem (Instrument Off)</div>
+              <div class="fig-desc">Mematikan modul instrumen selepas protokol flushing selesai.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 9.0: Rujukan -->
+    <div class="sop-section-container sec-theme-indigo" id="sec-10">
+      <div class="sop-section-header">
+        <span class="sec-icon">📚</span>
+        <h2>9.0 RUJUKAN DOKUMEN</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-responsive">
+          <table class="table-official">
+            <thead>
+              <tr>
+                <th style="width:30%">No. Dokumen / Manual</th>
+                <th>Tajuk Dokumen</th>
+                <th style="width:20%">Pautan Pantas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Manual Pengilang</strong></td>
+                <td>Fundamental &amp; Operation of Shimadzu High Performance Liquid Chromatography (Prominence-i LC-2030C 3D)</td>
+                <td><span style="color:var(--text-muted)">Manual Fizikal Makmal</span></td>
+              </tr>
+              <tr>
+                <td><strong>PKKK/300/UP/001</strong></td>
+                <td>Proses Persampelan (Ujian Penyaringan)</td>
+                <td><a href="sop-300-up-001.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td>
+              </tr>
+              <tr>
+                <td><strong>PKKK/300/UP/028</strong></td>
+                <td>Identifikasi Antikolesterol dalam Produk Tradisional menggunakan HPLC</td>
+                <td><a href="sop-300-up-028.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td>
+              </tr>
+              <tr>
+                <td><strong>PKKK/300/UP/040</strong></td>
+                <td>Penetapan Kuantitatif Lovastatin dalam Monascus Purpureus menggunakan HPLC</td>
+                <td><a href="sop-300-up-040.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
   </div>
 
   <div class="footer">
-    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+    Unit Penyaringan ◈ Seksyen Pengujian Produk &amp; Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
   </div>
 </div>
 
@@ -1386,8 +1925,10 @@
     const total = checks.length;
     const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
     
-    document.getElementById('pBarFill').style.width = pct + '%';
-    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    const pFill = document.getElementById('pBarFill');
+    const pText = document.getElementById('pBarText');
+    if (pFill) pFill.style.width = pct + '%';
+    if (pText) pText.textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
     
     const state = Array.from(checks).map(c => c.checked);
     localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
