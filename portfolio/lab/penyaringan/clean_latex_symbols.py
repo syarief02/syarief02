@@ -26,6 +26,10 @@ REPLACEMENTS = [
     (r'\\pm', '±'),
     (r'\\mu m', 'µm'),
     (r'\\mu', 'µ'),
+    (r'\\lambda_\{?max\}?', 'λ_max'),
+    (r'\$\\lambda_\{?max\}?\s*=\s*(\d+(?:\.\d+)?)\\text\{\s*nm\}\$', r'λ_max = \1 nm'),
+    (r'\\text\{\s*([^\}]+)\s*\}', r'\1'),
+    (r'\$([0-9\.\s\w\(\)\/°\-\+]+)\$', r'\1'),
 ]
 
 files = glob.glob(os.path.join(DIR, '*.html')) + glob.glob(os.path.join(DIR, 'sop', '*.html')) + glob.glob(os.path.join(DIR, '*.js'))
@@ -39,7 +43,6 @@ for fpath in files:
     for pattern, repl in REPLACEMENTS:
         content = re.sub(pattern, repl, content)
     
-    # Specific cleanup for remaining broken latex
     content = content.replace(r'EG $\le 0.10\% v/v$ and DEG $\le 0.10\% v/v$', 'EG ≤ 0.10% v/v and DEG ≤ 0.10% v/v')
     content = content.replace(r'If $> 0.10\% v/v \rightarrow$', 'If > 0.10% v/v ➔')
     content = content.replace(r'Linear regression $R^2 \ge 0.995$', 'Linear regression R² ≥ 0.995')
@@ -49,6 +52,13 @@ for fpath in files:
     content = content.replace(r'index <strong>$> 0.999$</strong>', 'index <strong>> 0.999</strong>')
     content = content.replace(r'$\rightarrow$', '➔')
     content = content.replace(r'$\to$', '➔')
+    content = content.replace(r'$$\text{Amount', 'Amount')
+    content = content.replace(r'$$\% \text{ v/v}', '% v/v')
+    content = content.replace(r'$$', '')
+    content = content.replace(r'\ ', ' ')
+    content = content.replace(r'\,', '')
+    content = content.replace(r'\%', '%')
+    content = content.replace(r'\rho', 'ρ')
     
     if content != orig:
         with open(fpath, 'w', encoding='utf-8') as f:
