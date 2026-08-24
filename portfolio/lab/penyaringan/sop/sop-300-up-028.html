@@ -97,7 +97,7 @@
 
   /* Subsections & Distinct Headers */
   .sop-subsection {
-    margin-top: 1.6rem;
+    margin-top: 1.8rem;
     margin-bottom: 1.2rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--sub-border);
@@ -129,7 +129,7 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--cyan);
-    margin: 1.1rem 0 0.5rem 0;
+    margin: 1.3rem 0 0.6rem 0;
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -233,7 +233,7 @@
     line-height: 1.5;
   }
   .step-card-body {
-    padding: 1.1rem 1.3rem;
+    padding: 1.2rem 1.4rem;
     font-size: 0.92rem;
     line-height: 1.75;
     color: var(--text-body);
@@ -255,6 +255,48 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     flex-shrink: 0;
+  }
+
+  /* Inline Figure Callout Card */
+  .sop-fig-callout {
+    background: var(--sub-bg);
+    border: 1px solid var(--sub-border);
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.2rem 0 1.5rem;
+    text-align: center;
+  }
+  .sop-fig-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--card-border-subtle);
+    box-shadow: var(--shadow-sm);
+    background: #ffffff;
+    padding: 6px;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sop-fig-img:hover {
+    transform: scale(1.015);
+    box-shadow: var(--shadow-md);
+  }
+  .sop-fig-caption {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .sop-fig-subdesc {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
   }
 
   /* Typography */
@@ -399,7 +441,6 @@
   .kw-vol { color: #0284c7; font-weight: 700; font-family: var(--font-mono); background: rgba(2, 132, 199, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
   .kw-time { color: #d97706; font-weight: 700; font-family: var(--font-mono); background: rgba(217, 119, 6, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
   .kw-limit { color: #dc2626; font-weight: 700; font-family: var(--font-mono); background: rgba(220, 38, 38, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
-  .kw-ph { color: #7c3aed; font-weight: 700; font-family: var(--font-mono); background: rgba(124, 58, 237, 0.1); padding: 0.1rem 0.35rem; border-radius: 4px; }
 
   /* Visual Workflow Timeline */
   .wf-track {
@@ -565,12 +606,35 @@
   .seq-iqc { background: var(--cyan-dim); font-weight: 600; }
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
-  /* Attachment Figures Gallery */
-  .figures-grid {
+  /* Section 8.0 Lampiran Figures Gallery */
+  .lampiran-box {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .lampiran-header {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--cyan);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .figures-grid-2col {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
-    margin: 1.5rem 0;
+  }
+  .figures-grid-3col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
   }
   .figure-card {
     background: var(--card-surface);
@@ -578,10 +642,10 @@
     border-radius: 14px;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
   .figure-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-md);
     border-color: var(--cyan);
   }
@@ -632,7 +696,7 @@
     .wf-track { flex-wrap: wrap; justify-content: center; }
     .cross-grid { grid-template-columns: 1fr; }
     .materials-grid { grid-template-columns: 1fr; }
-    .figures-grid { grid-template-columns: 1fr; }
+    .figures-grid-2col, .figures-grid-3col { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -674,7 +738,7 @@
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk &amp; Kosmetik · Unit Penyaringan</div>
     <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/028 <span class="g">Identifikasi Antikolesterol dalam Produk Tradisional menggunakan HPLC</span></h1>
-    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / Screening Method</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
@@ -683,7 +747,7 @@
       <div class="wf-node">1</div>
       <div class="wf-info">
         <div class="wf-name">1. Reagen &amp; Piawai</div>
-        <div class="wf-desc">Penyediaan buffer pH 3, stok &amp; campuran A1</div>
+        <div class="wf-desc">Buffer pH 3.0, stok individu &amp; campuran A1</div>
       </div>
     </div>
     <div class="wf-arrow">➔</div>
@@ -740,12 +804,12 @@
   <div class="summary-analytes">
     <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian Antikolesterol (6 Sebatian):</span>
     <div class="chips-container">
-      <span class="analite-chip">Pravastatin</span>
-      <span class="analite-chip">Rosuvastatin</span>
-      <span class="analite-chip">Fluvastatin</span>
-      <span class="analite-chip">Gemfibrozil</span>
-      <span class="analite-chip">Lovastatin</span>
-      <span class="analite-chip">Simvastatin</span>
+      <span class="analite-chip">Pravastatin (RT ~3.23 min)</span>
+      <span class="analite-chip">Rosuvastatin (RT ~5.17 min)</span>
+      <span class="analite-chip">Fluvastatin (RT ~7.48 min)</span>
+      <span class="analite-chip">Gemfibrozil (RT ~9.52 min @ 220nm)</span>
+      <span class="analite-chip">Lovastatin (RT ~10.45 min)</span>
+      <span class="analite-chip">Simvastatin (RT ~11.83 min)</span>
     </div>
   </div>
 
@@ -758,7 +822,7 @@
     <div class="cross-grid">
       <a href="sop-300-up-011.html" class="inst-link-card">
         <div class="inst-code">PKKK/300/UP/011</div>
-        <div class="inst-name">Shimadzu HPLC (Prominence-i)</div>
+        <div class="inst-name">Shimadzu HPLC (Prominence-i LC-2030C 3D)</div>
         <span class="inst-badge">Buka Panduan Alat →</span>
       </a>
       <a href="sop-300-up-003.html" class="inst-link-card">
@@ -789,7 +853,7 @@
       <li>Tapis larutan buffer dan asetonitril menggunakan penuras membran nilon 0.45 µm dan degas dalam kukus ultrasonik sekurang-kurangnya <span class="kw-time">20 minit</span>.</li>
       <li>Pastikan autosampler disetkan pada suhu <span class="kw-temp">5 °C</span> dan suhu turus pada <span class="kw-temp">40 °C</span> untuk kestabilan masa penahanan.</li>
       <li>LOD solution (<span class="kw-vol">8 µL</span>) wajib disuntik sebelum sampel pertama, selepas setiap 5 sampel, dan pada akhir turutan suntikan.</li>
-      <li>Bagi pengesahan positif, perbezaan masa penahanan piawai vs sampel mestilah dalam had spesifikasi dan padanan spektrum UV (spectral match) mestilah &gt; 0.999. Ujian pengesahan semula wajib dibuat oleh penganalisis kedua pada tarikh berasingan.</li>
+      <li>Bagi pengesahan positif, perbezaan masa penahanan piawai vs sampel mestilah dalam had spesifikasi (±2%) dan padanan spektrum UV (spectral match factor) mestilah &gt; 0.999. Ujian pengesahan semula wajib dibuat oleh penganalisis kedua pada tarikh berasingan.</li>
     </ul>
   </div>
 
@@ -1263,8 +1327,8 @@
                 <tr>
                   <td><strong>Pengesan / Panjang Gelombang (PDA)</strong></td>
                   <td>
-                    <span class="kw-wave">220 nm</span>: Gemfibrozil<br>
-                    <span class="kw-wave">238 nm</span>: Semua sebatian Statin (Pravastatin, Rosuvastatin, Fluvastatin, Lovastatin, Simvastatin)
+                    <span class="kw-wave">220 nm</span>: Gemfibrozil (Rujuk Figure 2)<br>
+                    <span class="kw-wave">238 nm</span>: Semua sebatian Statin (Pravastatin, Rosuvastatin, Fluvastatin, Lovastatin, Simvastatin - Rujuk Figure 1)
                   </td>
                 </tr>
                 <tr>
@@ -1285,6 +1349,23 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <!-- Inline Figure 1 & 2 Callouts -->
+        <div class="sop-fig-callout">
+          <img src="img_028/sop028_fig_1_chrom_238nm.png" alt="Figure 1: Chromatogram at 238nm" class="sop-fig-img" loading="lazy">
+          <div class="sop-fig-caption">
+            <span>📊 Figure 1: Chromatogram of Mix Working Standard Solution A1 at 238 nm</span>
+            <span class="sop-fig-subdesc">Pemisahan 5 sebatian Statin: Pravastatin (3.23 min), Rosuvastatin (5.17 min), Fluvastatin (7.48 min), Lovastatin (10.45 min), Simvastatin (11.83 min).</span>
+          </div>
+        </div>
+
+        <div class="sop-fig-callout">
+          <img src="img_028/sop028_fig_2_chrom_220nm.png" alt="Figure 2: Chromatogram at 220nm" class="sop-fig-img" loading="lazy">
+          <div class="sop-fig-caption">
+            <span>📊 Figure 2: Chromatogram of Mix Working Standard Solution A1 at 220 nm</span>
+            <span class="sop-fig-subdesc">Pengesanan puncak sebatian Gemfibrozil pada masa penahanan 9.52 minit pada panjang gelombang 220 nm.</span>
           </div>
         </div>
 
@@ -1570,7 +1651,7 @@
           </div>
           <div class="sop-list-item">
             <span class="sop-bullet">b)</span>
-            <span class="sop-list-text"><strong>Spektrum UV (UV Spectrum Match):</strong> Spektrum UV adalah serupa dengan spektrum piawai dengan indeks kesamaan spektrum (similarity match factor) <strong>melebihi 0.999</strong> dalam julat imbasan 200–400 nm.</span>
+            <span class="sop-list-text"><strong>Spektrum UV (UV Spectrum Match):</strong> Spektrum UV adalah serupa dengan spektrum piawai dengan indeks kesamaan spektrum (similarity match factor) <strong>melebihi 0.999</strong> dalam julat imbasan 200–400 nm (Rujuk Figure 3 &amp; 4).</span>
           </div>
           <div class="sop-list-item">
             <span class="sop-bullet">c)</span>
@@ -1655,104 +1736,121 @@
       </div>
     </div>
 
-    <!-- Section 8.0: Lampiran (Figures & Spectral Library) -->
+    <!-- Section 8.0: Lampiran (Official Figures 1 - 4) -->
     <div class="sop-section-container sec-theme-indigo" id="sec-9">
       <div class="sop-section-header">
         <span class="sec-icon">📎</span>
-        <h2>8.0 LAMPIRAN (FIGURES &amp; KROMATOGRAM RUJUKAN)</h2>
+        <h2>8.0 LAMPIRAN (OFFICIAL CHROMATOGRAMS &amp; UV SPECTRAL LIBRARY)</h2>
       </div>
       <div class="sop-section-body">
-        <p class="sop-p">Lampiran kromatogram piawai campuran A1 dan profil spektrum UV bagi 6 sebatian antikolesterol dalam julat imbasan 200–400 nm:</p>
+        <p class="sop-p">Lampiran kromatogram piawai campuran A1 dan profil spektrum UV rasmi bagi kesemua 6 sebatian antikolesterol (julat imbasan 200–400 nm) seperti dalam dokumen rasmi Arahan Kerja:</p>
 
-        <div class="figures-grid">
-          <!-- Figure 1 -->
+        <!-- LAMPIRAN (1/4) -->
+        <div class="lampiran-box">
+          <div class="lampiran-header"><span>📄</span> LAMPIRAN (1/4) — Kromatogram Campuran Piawai A1 pada 238 nm</div>
           <div class="figure-card">
             <div class="figure-img-wrap">
-              <img src="img_028/sop028_fig_1.png" alt="Figure 1: Chromatogram at 238nm" class="figure-img" loading="lazy">
+              <img src="img_028/sop028_fig_1_chrom_238nm.png" alt="Figure 1: Chromatogram of mix working standard solution A1 at 238nm" class="figure-img" loading="lazy">
             </div>
             <div class="figure-caption">
-              <div class="fig-title">Figure 1: Kromatogram Campuran Piawai A1 pada 238 nm</div>
-              <div class="fig-desc">Pemisahan kromatografi bagi sebatian Statin (Pravastatin, Rosuvastatin, Fluvastatin, Lovastatin, Simvastatin).</div>
-            </div>
-          </div>
-
-          <!-- Figure 2 -->
-          <div class="figure-card">
-            <div class="figure-img-wrap">
-              <img src="img_028/sop028_fig_2.png" alt="Figure 2: Chromatogram at 220nm" class="figure-img" loading="lazy">
-            </div>
-            <div class="figure-caption">
-              <div class="fig-title">Figure 2: Kromatogram Campuran Piawai A1 pada 220 nm</div>
-              <div class="fig-desc">Pengesanan puncak sebatian Gemfibrozil pada panjang gelombang optimum 220 nm.</div>
-            </div>
-          </div>
-
-          <!-- Figure 3a: Lovastatin -->
-          <div class="figure-card">
-            <div class="figure-img-wrap">
-              <img src="img_028/sop028_fig_3.png" alt="Figure 3a: Lovastatin UV Spectrum" class="figure-img" loading="lazy">
-            </div>
-            <div class="figure-caption">
-              <div class="fig-title">Figure 3(a): Spektrum UV Lovastatin</div>
-              <div class="fig-desc">Profil imbasan spektrum UV Lovastatin dalam julat imbasan 200–400 nm.</div>
-            </div>
-          </div>
-
-          <!-- Figure 3b: Simvastatin -->
-          <div class="figure-card">
-            <div class="figure-img-wrap">
-              <img src="img_028/sop028_fig_4.png" alt="Figure 3(b): Simvastatin UV Spectrum" class="figure-img" loading="lazy">
-            </div>
-            <div class="figure-caption">
-              <div class="fig-title">Figure 3(b): Spektrum UV Simvastatin</div>
-              <div class="fig-desc">Profil imbasan spektrum UV Simvastatin dalam julat imbasan 200–400 nm.</div>
-            </div>
-          </div>
-
-          <!-- Figure 3c: Fluvastatin -->
-          <div class="figure-card">
-            <div class="figure-img-wrap">
-              <img src="img_028/sop028_fig_5.png" alt="Figure 3(c): Fluvastatin UV Spectrum" class="figure-img" loading="lazy">
-            </div>
-            <div class="figure-caption">
-              <div class="fig-title">Figure 3(c): Spektrum UV Fluvastatin</div>
-              <div class="fig-desc">Profil imbasan spektrum UV Fluvastatin dalam julat imbasan 200–400 nm.</div>
-            </div>
-          </div>
-
-          <!-- Figure 4d: Rosuvastatin -->
-          <div class="figure-card">
-            <div class="figure-img-wrap">
-              <img src="img_028/sop028_fig_6.png" alt="Figure 4(d): Rosuvastatin UV Spectrum" class="figure-img" loading="lazy">
-            </div>
-            <div class="figure-caption">
-              <div class="fig-title">Figure 4(d): Spektrum UV Rosuvastatin</div>
-              <div class="fig-desc">Profil imbasan spektrum UV Rosuvastatin dalam julat imbasan 200–400 nm.</div>
-            </div>
-          </div>
-
-          <!-- Figure 4c: Pravastatin -->
-          <div class="figure-card">
-            <div class="figure-img-wrap">
-              <img src="img_028/sop028_fig_7.png" alt="Figure 4(c): Pravastatin UV Spectrum" class="figure-img" loading="lazy">
-            </div>
-            <div class="figure-caption">
-              <div class="fig-title">Figure 4(c): Spektrum UV Pravastatin</div>
-              <div class="fig-desc">Profil imbasan spektrum UV Pravastatin dalam julat imbasan 200–400 nm.</div>
-            </div>
-          </div>
-
-          <!-- Figure 4e: Gemfibrozil -->
-          <div class="figure-card">
-            <div class="figure-img-wrap">
-              <img src="img_028/sop028_fig_8.png" alt="Figure 4(e): Gemfibrozil UV Spectrum" class="figure-img" loading="lazy">
-            </div>
-            <div class="figure-caption">
-              <div class="fig-title">Figure 4(e): Spektrum UV Gemfibrozil</div>
-              <div class="fig-desc">Profil imbasan spektrum UV Gemfibrozil dalam julat imbasan 200–400 nm.</div>
+              <div class="fig-title">Figure 1: Chromatogram of mix working standard solution A1 at 238nm</div>
+              <div class="fig-desc">Pemisahan 5 sebatian Statin: Pravastatin (RT: 3.228 min), Rosuvastatin (RT: 5.172 min), Fluvastatin (RT: 7.481 min), Lovastatin (RT: 10.445 min), dan Simvastatin (RT: 11.829 min).</div>
             </div>
           </div>
         </div>
+
+        <!-- LAMPIRAN (2/4) -->
+        <div class="lampiran-box">
+          <div class="lampiran-header"><span>📄</span> LAMPIRAN (2/4) — Kromatogram Campuran Piawai A1 pada 220 nm</div>
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_2_chrom_220nm.png" alt="Figure 2: Chromatogram of mix working standard solution A1 at 220nm" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 2: Chromatogram of mix working standard solution A1 at 220nm</div>
+              <div class="fig-desc">Pengesanan optimum puncak sebatian Gemfibrozil pada panjang gelombang 220 nm (RT: 9.522 min).</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAMPIRAN (3/4) -->
+        <div class="lampiran-box">
+          <div class="lampiran-header"><span>📄</span> LAMPIRAN (3/4) — Figure 3: Spectra of a) Lovastatin, b) Simvastatin &amp; c) Fluvastatin (200–400 nm)</div>
+          <div class="figures-grid-3col">
+            <!-- 3a -->
+            <div class="figure-card">
+              <div class="figure-img-wrap">
+                <img src="img_028/sop028_fig_3a_lovastatin_uv.png" alt="Figure 3(a): Lovastatin UV Spectrum" class="figure-img" loading="lazy">
+              </div>
+              <div class="figure-caption">
+                <div class="fig-title">Figure 3(a): Spektrum UV Lovastatin</div>
+                <div class="fig-desc">Puncak serapan maksimum pada λ<sub>max</sub> = 235.04 nm (Imbasan 200–400 nm).</div>
+              </div>
+            </div>
+
+            <!-- 3b -->
+            <div class="figure-card">
+              <div class="figure-img-wrap">
+                <img src="img_028/sop028_fig_3b_simvastatin_uv.png" alt="Figure 3(b): Simvastatin UV Spectrum" class="figure-img" loading="lazy">
+              </div>
+              <div class="figure-caption">
+                <div class="fig-title">Figure 3(b): Spektrum UV Simvastatin</div>
+                <div class="fig-desc">Puncak serapan maksimum pada λ<sub>max</sub> = 235.05 nm (Imbasan 200–400 nm).</div>
+              </div>
+            </div>
+
+            <!-- 3c -->
+            <div class="figure-card">
+              <div class="figure-img-wrap">
+                <img src="img_028/sop028_fig_3c_fluvastatin_uv.png" alt="Figure 3(c): Fluvastatin UV Spectrum" class="figure-img" loading="lazy">
+              </div>
+              <div class="figure-caption">
+                <div class="fig-title">Figure 3(c): Spektrum UV Fluvastatin</div>
+                <div class="fig-desc">Puncak serapan dwipuncak pada λ<sub>max</sub> = 235.27 nm &amp; 303.35 nm.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAMPIRAN (4/4) -->
+        <div class="lampiran-box">
+          <div class="lampiran-header"><span>📄</span> LAMPIRAN (4/4) — Figure 4: Spectra of d) Rosuvastatin, c) Pravastatin &amp; e) Gemfibrozil (200–400 nm)</div>
+          <div class="figures-grid-3col">
+            <!-- 4d -->
+            <div class="figure-card">
+              <div class="figure-img-wrap">
+                <img src="img_028/sop028_fig_4d_rosuvastatin_uv.png" alt="Figure 4(d): Rosuvastatin UV Spectrum" class="figure-img" loading="lazy">
+              </div>
+              <div class="figure-caption">
+                <div class="fig-title">Figure 4(d): Spektrum UV Rosuvastatin</div>
+                <div class="fig-desc">Puncak serapan maksimum pada λ<sub>max</sub> = 241.40 nm (Imbasan 200–400 nm).</div>
+              </div>
+            </div>
+
+            <!-- 4c -->
+            <div class="figure-card">
+              <div class="figure-img-wrap">
+                <img src="img_028/sop028_fig_4c_pravastatin_uv.png" alt="Figure 4(c): Pravastatin UV Spectrum" class="figure-img" loading="lazy">
+              </div>
+              <div class="figure-caption">
+                <div class="fig-title">Figure 4(c): Spektrum UV Pravastatin</div>
+                <div class="fig-desc">Puncak serapan maksimum pada λ<sub>max</sub> = 235.53 nm (Imbasan 200–400 nm).</div>
+              </div>
+            </div>
+
+            <!-- 4e -->
+            <div class="figure-card">
+              <div class="figure-img-wrap">
+                <img src="img_028/sop028_fig_4e_gemfibrozil_uv.png" alt="Figure 4(e): Gemfibrozil UV Spectrum" class="figure-img" loading="lazy">
+              </div>
+              <div class="figure-caption">
+                <div class="fig-title">Figure 4(e): Spektrum UV Gemfibrozil</div>
+                <div class="fig-desc">Puncak serapan khas pada λ<sub>max</sub> = 275.93 nm (Imbasan 200–400 nm).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
