@@ -8,8 +8,8 @@ OUT_DIR = r'c:\Users\User\OneDrive\Desktop\syarief02\portfolio\lab\penyaringan\s
 
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# ─── SOP 040 is manually crafted and must never be overwritten ───
-SKIP_OVERWRITE = {'040'}
+# ─── SOP 040 & 028 are manually crafted and must never be overwritten ───
+SKIP_OVERWRITE = {'040', '028'}
 
 def clean_text(t):
     if not t: return ''

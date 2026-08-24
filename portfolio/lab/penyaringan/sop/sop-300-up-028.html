@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PKKK/300/UP/028 — Identifikasi Antikolesterol dalam produk tradisional menggunakan HPLC | NPRA Unit Penyaringan</title>
+<title>PKKK/300/UP/028 — Identifikasi Antikolesterol dalam Produk Tradisional menggunakan HPLC | NPRA Unit Penyaringan</title>
 <meta name="description" content="Arahan Kerja Rasmi PKKK/300/UP/028: Identifikasi Antikolesterol dalam produk tradisional menggunakan HPLC — Pusat Kawalan Kualiti (PKKK), NPRA Malaysia.">
 <link rel="icon" type="image/png" href="../../../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../steroid-hplc.css">
 <style>
   :root {
@@ -18,6 +18,8 @@
     --card-surface: #ffffff;
     --card-border-subtle: #cbd5e1;
     --step-border: #94a3b8;
+    --sub-bg: rgba(2, 132, 199, 0.04);
+    --sub-border: #bae6fd;
   }
 
   [data-theme="dark"] {
@@ -27,6 +29,8 @@
     --card-surface: rgba(15, 23, 42, 0.85);
     --card-border-subtle: rgba(255, 255, 255, 0.12);
     --step-border: rgba(255, 255, 255, 0.18);
+    --sub-bg: rgba(56, 189, 248, 0.06);
+    --sub-border: rgba(56, 189, 248, 0.2);
   }
 
   .sop-doc-container {
@@ -60,7 +64,7 @@
     box-shadow: var(--shadow-md);
   }
   .sop-section-header {
-    padding: 0.95rem 1.4rem;
+    padding: 1rem 1.4rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -75,7 +79,7 @@
     color: #ffffff;
   }
   .sec-icon {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -91,21 +95,108 @@
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
+  /* Subsections & Distinct Headers */
+  .sop-subsection {
+    margin-top: 1.6rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sub-border);
+  }
+  .sop-subsection-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem 0;
+  }
+  .sop-subsection-badge {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+  }
+  .sop-group-title {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--cyan);
+    margin: 1.1rem 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* Material & Reagent Grid Cards */
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .material-card {
+    background: var(--sub-bg);
+    border: 1px solid var(--sub-border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+  }
+  .mat-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--card-border-subtle);
+  }
+  .mat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .mat-list li {
+    font-size: 0.88rem;
+    color: var(--text-body);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.5;
+  }
+  .mat-bullet {
+    color: var(--cyan);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
   /* Step Cards */
   .sop-step-card {
-    background: var(--glass);
+    background: var(--card-surface);
     border: 1px solid var(--step-border);
     border-left: 5px solid var(--cyan);
     border-radius: 12px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.3rem;
     overflow: hidden;
     transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
   }
   .sop-step-card:hover {
     border-color: var(--cyan);
     border-left-color: var(--purple);
-    background: var(--card-hover);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
   .sop-step-card.action-step {
     border-left-color: #d97706;
@@ -115,7 +206,7 @@
   }
   .step-card-header {
     padding: 0.85rem 1.2rem;
-    background: rgba(2, 132, 199, 0.08);
+    background: rgba(2, 132, 199, 0.06);
     border-bottom: 1px solid var(--glass-border);
   }
   .action-step .step-card-header {
@@ -135,14 +226,19 @@
   }
   .sop-step-title {
     cursor: pointer;
-    font-size: 1.02rem;
+    font-size: 0.98rem;
     font-weight: 700;
     color: var(--text-heading);
     font-family: var(--font-main);
-    line-height: 1.6;
+    line-height: 1.5;
   }
-  .step-card-body { padding: 1.1rem 1.3rem; }
-  
+  .step-card-body {
+    padding: 1.1rem 1.3rem;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--text-body);
+  }
+
   /* Action Step Badge */
   .action-badge {
     display: inline-flex;
@@ -162,13 +258,91 @@
   }
 
   /* Typography */
-  .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
+  .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.85rem; }
   .sop-list-item {
-    display: flex; gap: 0.65rem; align-items: flex-start; margin-left: 0.8rem; font-size: 0.93rem;
+    display: flex; gap: 0.65rem; align-items: flex-start; margin-left: 0.6rem; font-size: 0.92rem;
     line-height: 1.75; color: var(--text-body); margin-bottom: 0.5rem;
   }
   .sop-bullet { color: var(--cyan); font-weight: bold; flex-shrink: 0; }
   .sop-list-text { flex: 1; }
+
+  /* Info / Alert Cards */
+  .criteria-card {
+    background: rgba(5, 150, 105, 0.06);
+    border: 1.5px solid var(--mint);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin: 1.2rem 0;
+  }
+  .criteria-card.amber-theme {
+    background: var(--amber-dim);
+    border-color: #d97706;
+  }
+  .criteria-card.cyan-theme {
+    background: var(--cyan-dim);
+    border-color: var(--cyan);
+  }
+  .criteria-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+  }
+
+  /* Definition Cards Grid */
+  .def-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
+  .def-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .def-term {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--purple);
+  }
+  .def-desc {
+    font-size: 0.88rem;
+    color: var(--text-heading);
+    font-weight: 500;
+  }
+
+  /* Responsibility Roles Grid */
+  .resp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .resp-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-left: 4px solid var(--mint);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+  }
+  .resp-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   /* Revision History Collapsible */
   .rev-details {
@@ -203,18 +377,18 @@
   }
   details[open] .rev-arrow { transform: rotate(90deg); }
   .rev-body {
-    padding: 1rem 1.3rem;
+    padding: 1.2rem 1.4rem;
     border-top: 1px solid var(--card-border-subtle);
-    max-height: 400px;
+    max-height: 480px;
     overflow-y: auto;
   }
   .sop-rev-p {
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     line-height: 1.65;
-    color: var(--text-muted);
+    color: var(--text-body);
     margin-bottom: 0.4rem;
-    padding-left: 0.5rem;
-    border-left: 2px solid rgba(71, 85, 105, 0.15);
+    padding-left: 0.6rem;
+    border-left: 2px solid var(--cyan);
   }
 
   /* Keyword Highlights */
@@ -249,10 +423,6 @@
     border: 1px solid var(--cyan); border-radius: 16px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
     box-shadow: var(--shadow-sm);
   }
-  .cross-link-container.analysis-theme {
-    background: linear-gradient(135deg, rgba(5, 150, 105, 0.08), rgba(2, 132, 199, 0.08));
-    border-color: var(--mint);
-  }
   .cross-header {
     display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; font-weight: 800;
     color: var(--text-heading); margin-bottom: 1rem;
@@ -261,24 +431,17 @@
   .cross-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.8rem;
   }
-  .inst-link-card, .analysis-link-card {
+  .inst-link-card {
     background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 12px;
     padding: 0.9rem 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.3rem;
     transition: all 0.2s ease; box-shadow: var(--shadow-sm);
   }
-  .inst-link-card:hover, .analysis-link-card:hover {
+  .inst-link-card:hover {
     border-color: var(--cyan); transform: translateY(-2px); box-shadow: var(--shadow-md);
   }
-  .inst-code, .ana-code { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--cyan); }
-  .inst-name, .ana-name { font-size: 0.85rem; font-weight: 700; color: var(--text-heading); line-height: 1.35; }
-  .inst-badge, .ana-badge { font-size: 0.72rem; font-weight: 600; color: var(--purple); margin-top: 0.2rem; }
-
-  /* Deep Tips Card */
-  .deep-tips-card {
-    background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(2, 132, 199, 0.08));
-    border: 1px solid var(--purple); border-radius: 14px; padding: 1.3rem 1.5rem; margin-bottom: 1.8rem;
-    box-shadow: var(--shadow-sm);
-  }
+  .inst-code { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--cyan); }
+  .inst-name { font-size: 0.85rem; font-weight: 700; color: var(--text-heading); line-height: 1.35; }
+  .inst-badge { font-size: 0.72rem; font-weight: 600; color: var(--purple); margin-top: 0.2rem; }
 
   /* Parameters Specs Ribbon Card */
   .specs-ribbon-card {
@@ -320,10 +483,6 @@
     background: var(--card-surface);
     transform: translateY(-2px);
   }
-  .spec-chip.highlight-limit {
-    border-color: rgba(217, 119, 6, 0.4);
-    background: var(--amber-dim);
-  }
   .spec-lbl {
     font-family: var(--font-mono);
     font-size: 0.7rem;
@@ -332,17 +491,10 @@
     color: var(--cyan);
     letter-spacing: 0.05em;
   }
-  .highlight-limit .spec-lbl {
-    color: #d97706;
-  }
   .spec-val {
     font-size: 0.85rem;
     color: var(--text-heading);
     line-height: 1.4;
-  }
-  .highlight-amber-text {
-    color: #d97706;
-    font-weight: 800;
   }
 
   /* Executive Summary & Chips */
@@ -390,31 +542,82 @@
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
   .toc-pill.highlight-amber { background: var(--amber-dim); border-color: #d97706; color: #d97706; font-weight: 700; }
 
-  /* Table Cards */
+  /* Inline Table Cards */
   .table-card {
     background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
-    padding: 1.4rem; margin: 1.8rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
+    padding: 1.2rem; margin: 1.4rem 0; overflow: hidden; box-shadow: var(--shadow-sm);
   }
   .table-card-header {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem;
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;
     border-bottom: 2px solid var(--glass-border); padding-bottom: 0.5rem;
   }
-  .table-tag { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; color: var(--cyan); }
+  .table-tag { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--cyan); }
   .table-doc-code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
   .table-responsive { overflow-x: auto; }
   .table-official {
-    width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono);
+    width: 100%; border-collapse: collapse; font-size: 0.86rem; font-family: var(--font-mono);
   }
   .table-official th, .table-official td {
     border: 1px solid var(--card-border-subtle); padding: 0.65rem 0.9rem; text-align: left;
   }
-  .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
-  .seq-sst { background: var(--purple-dim); }
-  .seq-iqc { background: var(--cyan-dim); }
+  .table-official th { background: rgba(2, 132, 199, 0.08); color: var(--text-heading); font-weight: 700; }
+  .seq-sst { background: var(--purple-dim); font-weight: 600; }
+  .seq-iqc { background: var(--cyan-dim); font-weight: 600; }
   .seq-blank { background: rgba(0,0,0,0.03); color: var(--text-muted); }
 
+  /* Attachment Figures Gallery */
+  .figures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .figure-card {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .figure-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--cyan);
+  }
+  .figure-img-wrap {
+    background: #ffffff;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--card-border-subtle);
+  }
+  .figure-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+  }
+  .figure-caption {
+    padding: 0.9rem 1.1rem;
+    background: var(--card-surface);
+  }
+  .fig-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 0.3rem;
+  }
+  .fig-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
   @media print {
-    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .deep-tips-card, .rev-details { display: none !important; }
+    .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .bench-tips-card, .wf-track, .cross-link-container, .rev-details { display: none !important; }
     .main { max-width: 100% !important; padding: 0 !important; }
     .sop-doc-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
     body { background: #fff !important; color: #000 !important; }
@@ -428,6 +631,8 @@
     .sop-section-body { padding: 1rem; }
     .wf-track { flex-wrap: wrap; justify-content: center; }
     .cross-grid { grid-template-columns: 1fr; }
+    .materials-grid { grid-template-columns: 1fr; }
+    .figures-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -467,126 +672,126 @@
   <!-- Hero Ribbon -->
   <div class="hero" style="margin-bottom:1.2rem">
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
-    <div class="hero-unit">◈ Seksyen Pengujian Produk & Kosmetik · Unit Penyaringan</div>
-    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/028 <span class="g">Identifikasi Antikolesterol dalam produk tradisional menggunakan HPLC</span></h1>
+    <div class="hero-unit">◈ Seksyen Pengujian Produk &amp; Kosmetik · Unit Penyaringan</div>
+    <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/028 <span class="g">Identifikasi Antikolesterol dalam Produk Tradisional menggunakan HPLC</span></h1>
     <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: HPLC / LC</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
   <div class="wf-track">
-        <div class="wf-step">
-          <div class="wf-node">1</div>
-          <div class="wf-info">
-            <div class="wf-name">1. Reagen & Piawai</div>
-            <div class="wf-desc">Penyediaan fasa bergerak, stok & kalibrasi</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">2</div>
-          <div class="wf-info">
-            <div class="wf-name">2. Pengekstrakan</div>
-            <div class="wf-desc">Timbang, sonikasi, sentrifug & turas 0.45µm</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">3</div>
-          <div class="wf-info">
-            <div class="wf-name">3. Persediaan Alat</div>
-            <div class="wf-desc">Purging saluran, autotune & baseline</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">4</div>
-          <div class="wf-info">
-            <div class="wf-name">4. Suntikan Batch</div>
-            <div class="wf-desc">Blank, SST (n=6), Sampel & IQC</div>
-          </div>
-        </div>
-        <div class="wf-arrow">➔</div>
-        <div class="wf-step">
-          <div class="wf-node">5</div>
-          <div class="wf-info">
-            <div class="wf-name">5. Verifikasi & Rekod</div>
-            <div class="wf-desc">Padanan RT, spektrum UV/MS & Laporan</div>
-          </div>
-        </div>
-        </div>
+    <div class="wf-step">
+      <div class="wf-node">1</div>
+      <div class="wf-info">
+        <div class="wf-name">1. Reagen &amp; Piawai</div>
+        <div class="wf-desc">Penyediaan buffer pH 3, stok &amp; campuran A1</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">2</div>
+      <div class="wf-info">
+        <div class="wf-name">2. Pengekstrakan</div>
+        <div class="wf-desc">1g / 10mL + MeOH, sonikasi 37°C, turas 0.45µm</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">3</div>
+      <div class="wf-info">
+        <div class="wf-name">3. Persediaan HPLC</div>
+        <div class="wf-desc">Turus C18, kecerunan 18 min, DAD 220/238nm</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">4</div>
+      <div class="wf-info">
+        <div class="wf-name">4. Suntikan Batch</div>
+        <div class="wf-desc">Blank, SST (n=6), LOD, Sampel &amp; IQC</div>
+      </div>
+    </div>
+    <div class="wf-arrow">➔</div>
+    <div class="wf-step">
+      <div class="wf-node">5</div>
+      <div class="wf-info">
+        <div class="wf-name">5. Verifikasi &amp; Rekod</div>
+        <div class="wf-desc">Padanan RT, spektrum UV &gt; 0.999 &amp; Laporan</div>
+      </div>
+    </div>
+  </div>
 
   <!-- Chromatographic / Analytical Parameters Specs Ribbon -->
-  
-        <div class="specs-ribbon-card">
-          <div class="specs-card-header">
-            <span class="specs-icon">⚡</span>
-            <strong>Spesifikasi &amp; Parameter Kromatografi / Analitikal (Official Parameters):</strong>
-          </div>
-          <div class="specs-ribbon-grid"><div class="spec-chip"><span class="spec-lbl">Instrumen Utama</span><strong class="spec-val">HPLC Shimadzu Prominence-i / Agilent 1200</strong></div><div class="spec-chip"><span class="spec-lbl">Turus / Column</span><strong class="spec-val">Zorbax Eclipse XDB-C18 (150 × 4.6 mm, 5 µm)</strong></div><div class="spec-chip"><span class="spec-lbl">Fasa Bergerak / Pelarut</span><strong class="spec-val">Kecerunan: Buffer Fosfat pH 3.0 : Acetonitrile</strong></div><div class="spec-chip"><span class="spec-lbl">Kadar Alir &amp; Suhu</span><strong class="spec-val">1.0 – 1.5 mL/min @ 40 °C</strong></div><div class="spec-chip"><span class="spec-lbl">Pengesan / Gelombang / SIM</span><strong class="spec-val">220 nm (Gemfibrozil) &amp; 238 nm (Atorvastatin, Simvastatin, Pravastatin, Rosuvastatin)</strong></div><div class="spec-chip"><span class="spec-lbl">Kriteria Kesesuaian Sistem (SST)</span><strong class="spec-val">SST %RSD ≤ 2.0%, Tailing T ≤ 2.0, padanan spektrum UV &gt; 0.999.</strong></div></div>
-        </div>
-        
+  <div class="specs-ribbon-card">
+    <div class="specs-card-header">
+      <span class="specs-icon">⚡</span>
+      <strong>Spesifikasi &amp; Parameter Kromatografi Rasmi (Official HPLC Specifications):</strong>
+    </div>
+    <div class="specs-ribbon-grid">
+      <div class="spec-chip"><span class="spec-lbl">Instrumen Utama</span><strong class="spec-val">HPLC Shimadzu Prominence-i / Agilent 1200 / Flexar</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Turus / Column</span><strong class="spec-val">Zorbax Eclipse XDB-C18 (150 × 4.6 mm, 5 µm)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Fasa Bergerak</span><strong class="spec-val">Buffer Asid Fosforik 0.1% (pH ~3.0) : Acetonitrile (Kecerunan)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Kadar Alir &amp; Suhu</span><strong class="spec-val">0.8 – 1.2 mL/min @ 40 °C (Autosampler: 5 °C)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Pengesan / Wavelength</span><strong class="spec-val">PDA: 220 nm (Gemfibrozil) &amp; 238 nm (Statins)</strong></div>
+      <div class="spec-chip"><span class="spec-lbl">Kriteria Kesesuaian Sistem (SST)</span><strong class="spec-val">SST %RSD ≤ 2.0%, Tailing T ≤ 2.0, N ≥ 2000</strong></div>
+    </div>
+  </div>
 
   <!-- Target Analytes / Quick Chips -->
-  
-        <div class="summary-analytes">
-          <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian:</span>
-          <div class="chips-container"><span class="analite-chip">Lovastatin</span><span class="analite-chip">Simvastatin</span><span class="analite-chip">Atorvastatin</span></div>
-        </div>
-        
+  <div class="summary-analytes">
+    <span class="sum-lbl">🎯 Sebatian Sasaran Pengujian Antikolesterol (6 Sebatian):</span>
+    <div class="chips-container">
+      <span class="analite-chip">Pravastatin</span>
+      <span class="analite-chip">Rosuvastatin</span>
+      <span class="analite-chip">Fluvastatin</span>
+      <span class="analite-chip">Gemfibrozil</span>
+      <span class="analite-chip">Lovastatin</span>
+      <span class="analite-chip">Simvastatin</span>
+    </div>
+  </div>
 
-  <!-- Cross-Linked Instruments (For Analysis SOPs) -->
-  
-        <div class="cross-link-container">
-          <div class="cross-header">
-            <span class="cross-icon">⚙️</span>
-            <strong>SOP Pengendalian Alat Yang Digunakan Untuk Ujian Ini:</strong>
-          </div>
-          <div class="cross-grid">
-            <a href="sop-300-up-011.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/011</div>
-              <div class="inst-name">HPLC Shimadzu Prominence-i</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            
-            <a href="sop-300-up-003.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/003</div>
-              <div class="inst-name">Agilent 1200 Series RRLC</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            
-            <a href="sop-300-up-005.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/005</div>
-              <div class="inst-name">Alat Timbang Precisa XT 120A</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            
-            <a href="sop-300-up-058.html" class="inst-link-card">
-              <div class="inst-code">PKKK/300/UP/058</div>
-              <div class="inst-name">Ultrasonic Bath Branson 8210</div>
-              <span class="inst-badge">Buka Panduan Alat →</span>
-            </a>
-            </div>
-        </div>
-        
-
-  <!-- Cross-Linked Analysis (For Instrument SOPs) -->
-  
-
-  <!-- Deep Operating Tips for Instruments -->
-  
+  <!-- Cross-Linked Instruments -->
+  <div class="cross-link-container">
+    <div class="cross-header">
+      <span class="cross-icon">⚙️</span>
+      <strong>SOP Pengendalian Alat &amp; Tatacara Rujukan Yang Digunakan:</strong>
+    </div>
+    <div class="cross-grid">
+      <a href="sop-300-up-011.html" class="inst-link-card">
+        <div class="inst-code">PKKK/300/UP/011</div>
+        <div class="inst-name">Shimadzu HPLC (Prominence-i)</div>
+        <span class="inst-badge">Buka Panduan Alat →</span>
+      </a>
+      <a href="sop-300-up-003.html" class="inst-link-card">
+        <div class="inst-code">PKKK/300/UP/003</div>
+        <div class="inst-name">Rapid Resolution Liquid Chromatography (RRLC HP1200)</div>
+        <span class="inst-badge">Buka Panduan Alat →</span>
+      </a>
+      <a href="sop-300-up-016.html" class="inst-link-card">
+        <div class="inst-code">PKKK/300/UP/016</div>
+        <div class="inst-name">HPLC Flexar (Perkin Elmer)</div>
+        <span class="inst-badge">Buka Panduan Alat →</span>
+      </a>
+      <a href="sop-300-up-001.html" class="inst-link-card">
+        <div class="inst-code">PKKK/300/UP/001</div>
+        <div class="inst-name">Proses Persampelan (Ujian Penyaringan)</div>
+        <span class="inst-badge">Buka Panduan Persampelan →</span>
+      </a>
+    </div>
+  </div>
 
   <!-- Bench Notes & Precautions -->
-  
-        <div class="bench-tips-card">
-          <div class="tips-header">
-            <span class="tips-icon">💡</span>
-            <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes):</strong>
-          </div>
-          <ul class="tips-list">
-            <li>Tapis semua fasa bergerak (akueus dan organik) menggunakan penuras membran 0.45 µm dan degas dalam kukus ultrasonik selama sekurang-kurangnya 15–20 minit.</li><li>Lakukan Auto Purge / Manual Purge setiap kali pelarut ditambah atau ditukar jenis bagi menyingkirkan buih udara.</li><li>Pastikan garisan dasar (baseline) dan tekanan pam stabil (RSD < 2%) sebelum memulakan suntikan sampel kelompok.</li><li>Bagi sampel matriks kapsul lembut (softgel), gunakan Chloroform kerana gelatin/minyak tidak larut dalam Methanol.</li>
-          </ul>
-        </div>
-        
+  <div class="bench-tips-card">
+    <div class="tips-header">
+      <span class="tips-icon">💡</span>
+      <strong>Petua &amp; Perhatian Penting Makmal (Bench Notes):</strong>
+    </div>
+    <ul class="tips-list">
+      <li>Tapis larutan buffer dan asetonitril menggunakan penuras membran nilon 0.45 µm dan degas dalam kukus ultrasonik sekurang-kurangnya <span class="kw-time">20 minit</span>.</li>
+      <li>Pastikan autosampler disetkan pada suhu <span class="kw-temp">5 °C</span> dan suhu turus pada <span class="kw-temp">40 °C</span> untuk kestabilan masa penahanan.</li>
+      <li>LOD solution (<span class="kw-vol">8 µL</span>) wajib disuntik sebelum sampel pertama, selepas setiap 5 sampel, dan pada akhir turutan suntikan.</li>
+      <li>Bagi pengesahan positif, perbezaan masa penahanan piawai vs sampel mestilah dalam had spesifikasi dan padanan spektrum UV (spectral match) mestilah &gt; 0.999. Ujian pengesahan semula wajib dibuat oleh penganalisis kedua pada tarikh berasingan.</li>
+    </ul>
+  </div>
 
   <!-- Progress Tracker Card -->
   <div class="progress-card">
@@ -594,7 +799,7 @@
       <span class="progress-title">Analyst Benchtop Checklist Progress</span>
       <div class="progress-bar-bg"><div class="progress-bar-fill" id="pBarFill"></div></div>
     </div>
-    <div class="progress-stat" id="pBarText">0 / 22 Langkah Selesai (0%)</div>
+    <div class="progress-stat" id="pBarText">0 / 8 Langkah Selesai (0%)</div>
   </div>
 
   <!-- Document Container -->
@@ -610,7 +815,7 @@
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/028</td>
-        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 2 Semakan 0</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
@@ -619,505 +824,985 @@
     </table>
 
     <!-- Quick Navigation TOC Pills -->
-    <div class="toc-pills"><a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN &amp; SEMAKAN</a><a href="#sec-2" class="toc-pill">1.0 TUJUAN</a><a href="#sec-3" class="toc-pill">2.0 SKOP</a><a href="#sec-4" class="toc-pill highlight-amber">6.0 PROSEDUR</a><a href="#sec-5" class="toc-pill">3.0 DEFINISI</a><a href="#sec-6" class="toc-pill">4.0 CARTA ALIRAN</a><a href="#sec-7" class="toc-pill">5.0 TANGGUNGJAWAB</a><a href="#sec-8" class="toc-pill">7. REKOD KUALITI</a><a href="#sec-9" class="toc-pill">8.0 LAMPIRAN</a><a href="#sec-10" class="toc-pill">8.0 LAMPIRAN</a><a href="#sec-11" class="toc-pill">8.0 LAMPIRAN</a><a href="#sec-12" class="toc-pill">8.0 LAMPIRAN</a><a href="#sec-tables" class="toc-pill highlight">📊 Jadual Data (7)</a></div>
+    <div class="toc-pills">
+      <a href="#sec-1" class="toc-pill">0.0 SEJARAH PINDAAN</a>
+      <a href="#sec-2" class="toc-pill">1.0 TUJUAN</a>
+      <a href="#sec-3" class="toc-pill">2.0 SKOP</a>
+      <a href="#sec-4" class="toc-pill">3.0 DEFINISI</a>
+      <a href="#sec-5" class="toc-pill">4.0 CARTA ALIRAN</a>
+      <a href="#sec-6" class="toc-pill">5.0 TANGGUNGJAWAB</a>
+      <a href="#sec-7" class="toc-pill highlight-amber">6.0 PROSEDUR (8 LANGKAH)</a>
+      <a href="#sec-8" class="toc-pill">7.0 REKOD KUALITI</a>
+      <a href="#sec-9" class="toc-pill">8.0 LAMPIRAN (FIGURES)</a>
+      <a href="#sec-10" class="toc-pill">9.0 RUJUKAN</a>
+    </div>
 
-    <!-- Sections (High-Contrast Colored Blocks) -->
-    
-        <div class="sop-section-container sec-theme-slate" id="sec-1">
-          <div class="sop-section-header">
-            <span class="sec-icon">📋</span>
-            <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
-          </div>
-          <div class="sop-section-body">
-            
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (13 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Terbitan 1, Semakan 1:</p><p class="sop-rev-p">Kemaskini 6.6 System suitability test requirement, di mana</p><p class="sop-rev-p">kritieria Theoretical plate telah dikemaskini daripada “(NLT) 1500 kepada “(NLT) 2000”.</p><p class="sop-rev-p">Menambah “%RSD for retention time: Not more than, NMT 2.0%”</p><p class="sop-rev-p">Menambah perenggan 6.5.5 Internal Quality Control</p><p class="sop-rev-p">Mengemaskini perenggan 5.4, penolong pegawai farmasi ditukar daripada U36 / U32 kepada U7 / U6</p><p class="sop-rev-p">Mengemaskini perenggan 3 Definisi</p><p class="sop-rev-p">Menambah perenggan 6.3.4 Single Standard Stock Solution</p><p class="sop-rev-p">Mengemaskini perenggan 6.5.6 Acceptance criteria for test sample</p><p class="sop-rev-p">Mengemaskini perenggan 6.5.3 Injection Sequence</p><p class="sop-rev-p">Mengemaskini perenggan 6.6g dengan menambah “IQC table”</p><p class="sop-rev-p">Terbitan 2, Semakan 0:</p><p class="sop-rev-p">Pindakan nombor dokumen PKKK/300/UAT/054 kepada PKKK/300/UP/028.</p></div>
-                </details>
-                <p class="sop-p">PKKK/300/UAT/004 kepada PKKK/300/UP/003</p><p class="sop-p">PKKK/300/UAT/012 kepada PKKK/300/UP/011</p><p class="sop-p">PKKK/300/UAT/017 kepada PKKK/300/UP/016</p><p class="sop-p">PKKK/300/UAT/001 kepada PKKK/300/UP/001</p>
-                <details class="rev-details">
-                  <summary class="rev-summary">
-                    <span class="rev-toggle-icon">📋</span>
-                    Sejarah Pindaan & Semakan Dokumen (3 entri)
-                    <span class="rev-arrow">▸</span>
-                  </summary>
-                  <div class="rev-body"><p class="sop-rev-p">Mengemaskini para 7 Rekod Kualiti dengan menambah:</p><p class="sop-rev-p">UP/001A	Borang Persampelan</p><p class="sop-rev-p">UP/005	Laporan Pengujian HPLC</p></div>
-                </details>
-                
-          </div>
+    <!-- Section 0.0: Sejarah Pindaan & Semakan -->
+    <div class="sop-section-container sec-theme-slate" id="sec-1">
+      <div class="sop-section-header">
+        <span class="sec-icon">📋</span>
+        <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-responsive" style="margin-bottom:1.2rem;">
+          <table class="table-official">
+            <thead>
+              <tr>
+                <th>Terbitan</th>
+                <th>Semakan</th>
+                <th>Ditulis Oleh</th>
+                <th>Disemak Oleh</th>
+                <th>Diluluskan Oleh</th>
+                <th>Tarikh Kuatkuasa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>0</td>
+                <td>Nurul ‘Izzah Hany Ismail</td>
+                <td>Ooi Suat Hong</td>
+                <td>Ida Syazrina Ibrahim</td>
+                <td>15 Nov 2024</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>Nurul ‘Izzah Hany Ismail</td>
+                <td>Ooi Suat Hong</td>
+                <td>Ida Syazrina Ibrahim</td>
+                <td>1 Julai 2025</td>
+              </tr>
+              <tr style="background:var(--cyan-dim);font-weight:700">
+                <td>2</td>
+                <td>0</td>
+                <td>Nurul ‘Izzah Hany Ismail</td>
+                <td>Nurul Nadiah Noh</td>
+                <td>Ida Syazrina Ibrahim</td>
+                <td>10 April 2026</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        
-        <div class="sop-section-container sec-theme-cyan" id="sec-2">
-          <div class="sop-section-header">
-            <span class="sec-icon">🎯</span>
-            <h2>1.0 TUJUAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Untuk memastikan ujian identifikasi anti-kolesterol menggunakan alat High Performance Liquid Chromatography (HPLC) dilaksanakan dengan cekap dan berkesan.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-cyan" id="sec-3">
-          <div class="sop-section-header">
-            <span class="sec-icon">📐</span>
-            <h2>2.0 SKOP</h2>
-          </div>
-          <div class="sop-section-body">
-            
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-amber" id="sec-4">
-          <div class="sop-section-header">
-            <span class="sec-icon">🔬</span>
-            <h2>6.0 PROSEDUR</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Materials and Equipment</p><p class="sop-p">Instrument: High Performance Liquid Chromatography with photodiode array (PDA) detector.</p><p class="sop-p">Analytical balance &amp; microbalance.</p><p class="sop-p">Column: Zorbax Eclipse XDB-C18 5µ, 150 x 4.6 mm or equivalent.</p><p class="sop-p">Reference standards: Primary or secondary RS or equivalent.</p><p class="sop-p">Pravastatin</p><p class="sop-p">Rosuvastatin</p><p class="sop-p">Fluvastatin</p><p class="sop-p">Gemfibrozil</p><p class="sop-p">Lovastatin</p><p class="sop-p">Simvastatin</p><p class="sop-p">Chemicals:</p><p class="sop-p">Phosphoric Acid</p><p class="sop-p">Methanol</p><p class="sop-p">Acetonitrile</p><p class="sop-p">Deionized water</p><p class="sop-p">Glassware and consumables:</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-1" class="sop-step-title">
-                        <span class="action-badge">Langkah 1</span>
-                        Centrifuge tube
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Solvent filter system</p><p class="sop-p">Nylon solvent filter 0.45 µm</p><p class="sop-p">Solvent bottle (<span class="kw-vol">1 L</span>)</p><p class="sop-p">Volumetric Flasks (Grade A)</p><p class="sop-p">Nylon syringe filter 0.45 µm</p><p class="sop-p">Disposable syringe without needle (5 ml)</p><p class="sop-p">2 ml glass screw cap vial</p><p class="sop-p">Preparation of Mobile Phase</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-2" class="sop-step-title">
-                        6.2.1	Preparation of buffer solution:
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-3" class="sop-step-title">
-                        <span class="action-badge">Langkah 2</span>
-                        Dissolve 1.0 ml of phosphoric acid into 1000 ml of deionized water in the solvent bottle. Measure <span class="kw-vol">1 L</span> of acetonitrile and transfer in solvent bottle. Filter buffer solution and acetonitrile using nylon solvent filter 0.45 µm and solvent filter system. Degassed filtered mobile phase at least for <span class="kw-time">20 minutes</span> to ensure no bubble present.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Preparation of Reference Standard</p><p class="sop-p">Individual standard stock solution</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-4" class="sop-step-title">
-                        <span class="action-badge">Langkah 3</span>
-                        Weigh <span class="kw-wt">20 mg</span> Pravastatin, Rosuvastatin, Fluvastatin, Gemfibrozil, Lovastatin and Simvastatin standard in 100 ml volumetric flask separately. Make up to volume with methanol. Final concentration of individual solution is <span class="kw-wt">0.2 mg</span>/ml or 200 ppm.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-5" class="sop-step-title">
-                        <span class="action-badge">Langkah 4</span>
-                        Mix working standard solution A1
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-6" class="sop-step-title">
-                        <span class="action-badge">Langkah 5</span>
-                        Prepare a mixed working standard solution of <span class="kw-wt">0.05 mg</span>/ml (50 ppm) of Gemfibrozil and <span class="kw-wt">0.02 mg</span>/ml (20 ppm) of other reference standards.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Combine standard stock solution into one vial as follows: Add 0.25 ml (Gemfibrozil), <span class="kw-vol">0.1 mL</span> (each of the other reference standard) and 0.25 ml of methanol into an amber vial and mix well.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-7" class="sop-step-title">
-                        6.3.3	Limit of detection (LOD) solution
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-8" class="sop-step-title">
-                        <span class="action-badge">Langkah 6</span>
-                        Prepare LOD solution of <span class="kw-wt">0.005 mg</span>/ml (5 ppm) of Gemfibrozil and <span class="kw-wt">0.002 mg</span>/ml (2 ppm) of other standard. Add 0.1 ml working standard solution A1 and 0.9 ml of methanol into an amber vial and mix well.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-9" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-9" class="sop-step-title">
-                        6.3.4	Single Standard Stock Solution
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">6.3.4.1	Prepare a single standard stock solution following the same procedure outlined in 6.3.1 to 6.3.3, but using a single standard instead of multiple standards.</p><p class="sop-p">6.3.4.2	This procedure is applicable for screening selected compounds only</p><p class="sop-p">Preparation of sample</p><p class="sop-p">Sample handling (sampling)</p><p class="sop-p">Sampling processes differ between different types of dosage form. Please refer to the document PKKK/300/UP/001 (Proses Persampelan).</p><p class="sop-p">Sample preparation for analysis</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-10" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-10" class="sop-step-title">
-                        <span class="action-badge">Langkah 7</span>
-                        Weigh 1 gram (solid form) or measure 10 ml of sample (liquid form) and transfer to a centrifuge tube. Add 20 ml and 10 ml of methanol for solid and liquid form of sample respectively. Sonicate the solution for <span class="kw-time">15 minutes</span> at <span class="kw-temp">37°C</span>. Centrifuge at 4000 rpm for <span class="kw-time">5 minutes</span>. Filter the supernatant layer into <span class="kw-vol">2 mL</span> amber vial using 0.45 µm nylon syringe filter.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Experimental Method</p><p class="sop-p">The HPLC system used for the identification of anti-cholesterol are given in Table 1 below:</p><p class="sop-p">Table 1: HPLC system used for identification of Anti-Cholesterol.</p><p class="sop-p">Mobile Phase Method</p><p class="sop-p">Solvent gradient program for mobile phase is used in identification of anti-cholesterol shown as below:</p><p class="sop-p">Table 2: Solvent Gradient Program used in Identification of Anti-Cholesterol.</p><p class="sop-p">Refer to document PKKK/300/UP/003 (RRLC 1200 Series), PKKK/300/UP/011 (HPLC Prominence-I) and PKKK/300/UP/016 (HPLC Flexar) on how to set-up method and HPLC system.</p><p class="sop-p">Injection Sequence</p><p class="sop-p">First, inject a blank or diluent, then inject mix working standard solution A1 six times (SST).</p>
-                <div class="sop-step-card action-step">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-11" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-11" class="sop-step-title">
-                        <span class="action-badge">Langkah 8</span>
-                        Inject the LOD solution before injecting the sample.
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">If more than five samples are injected in a single analysis, the LOD solution must be injected once every five samples.</p><p class="sop-p">A blank or diluent must be injected before the next sample injection. Refer to Table 3 for an example of the sequence table:</p><p class="sop-p">Table 3: Sequence injection for Identification of Anti-Cholesterol.</p><p class="sop-p">LOD solution must be injected at the end of the analysis.</p><p class="sop-p">System Suitability Test (SST) Requirement</p><p class="sop-p">System suitability test needs to be performed for each batch run to ensure the entire system is working properly. Perform at least 6 replicate injection of mix working standard solution A1 (<span class="kw-wt">0.05 mg</span>/ml (50 ppm) of Gemfibrozil and <span class="kw-wt">0.02 mg</span>/ml (20 ppm) of other reference standard)</p><p class="sop-p">Acceptance criteria:</p><p class="sop-p">%RSD for retention time: Not more than, NMT 2.0%</p><p class="sop-p">Tailing factor: NMT 2.0</p><p class="sop-p">Theoretical plate (N): NLT 2000</p><p class="sop-p">Internal Quality Control (IQC)</p><p class="sop-p">6.5.5.1	Inject <span class="kw-vol">8 µL</span> of LOD solution after every 5 samples &amp; at the end of analysis.</p><p class="sop-p">6.5.5.2 	Acceptance criteria for Internal Quality Control Check (IQC):</p><p class="sop-p">The percentage difference of retention time for LOD solution should not be more than 3 % for every batch of 5 samples.</p><p class="sop-p">Acceptance criteria for test sample</p><p class="sop-p">Compare the retention time and UV spectrum obtained from the sample chromatogram with that of the working standard chromatogram. The identity of each anti-cholesterol compound is positive if:</p>
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">a)	Retention time of the compound in the sample chromatogram corresponds to the retention time of the same compound in the standard chromatogram.</span>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">b)	The UV spectrum is identical to the spectrum of the standard with similarity of more than 0.999 to the spectrum of standard.</span>
-                </div>
-                
-                <div class="sop-list-item">
-                  <span class="sop-bullet">▹</span>
-                  <span class="sop-list-text">c) 	Peak area of the compound is above than peak area of the LOD concentration (<span class="kw-wt">0.01 mg</span>/mL).</span>
-                </div>
-                <p class="sop-p">If the sample was found to be positive with one of the compounds, new sample preparation should be conducted by second analyst on different date from first analyst.</p><p class="sop-p">Analysis report</p><p class="sop-p">Each sample will have one analysis report. Report must consist of detail as below:</p><p class="sop-p">Sample details (Sample name, sample number and batch number).</p><p class="sop-p">Analysis date</p><p class="sop-p">Equipment parameters including equipment name, mobile phase program and HPLC system.</p><p class="sop-p">List and preparation procedures of reference standard use in analysis.</p><p class="sop-p">Sample preparation procedure and printed sample weight (for solid sample only)</p><p class="sop-p">Interpretation of result (Detected, Not detected or suspected of specific anti-cholesterol compound).</p><p class="sop-p">Evidence of analysis must be attached together in analysis report:</p><p class="sop-p">Chromatogram of 1st and 2nd injection of sample (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">Chromatogram of System Suitability Test Requirement (with minimum information of compound name, peak area and retention time).</p><p class="sop-p">If the sample is sequenced at 6 or more, chromatogram of LOD solution before sample must be presented.</p><p class="sop-p">Overlay spectrum of samples that have similar retention time with reference standard.</p><p class="sop-p">IQC table</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-purple" id="sec-5">
-          <div class="sop-section-header">
-            <span class="sec-icon">📖</span>
-            <h2>3.0 DEFINISI</h2>
-          </div>
-          <div class="sop-section-body">
-            
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-12" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-12" class="sop-step-title">
-                        3.1	HPLC		- High Performance Liquid Chromatography
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-13" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-13" class="sop-step-title">
-                        3.2	RS		- Reference standard
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-14" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-14" class="sop-step-title">
-                        3.3	OOS		- Out of Specification
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-15" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-15" class="sop-step-title">
-                        3.4	SST		- System Suitability System
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-16" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-16" class="sop-step-title">
-                        3.5	UV		- Ultraviolet
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-17" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-17" class="sop-step-title">
-                        3.6	PDA		- Photodiode Array
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-18" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-18" class="sop-step-title">
-                        3.7	IQC		- Internal Quality Control
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-19" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-19" class="sop-step-title">
-                        3.8	RSD		- Relative Standard Deviation
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-20" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-20" class="sop-step-title">
-                        3.9	RRLC		- Rapid Resolution Liquid Chromatography
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-purple" id="sec-6">
-          <div class="sop-section-header">
-            <span class="sec-icon">🔀</span>
-            <h2>4.0 CARTA ALIRAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Tiada carta aliran untuk prosedur ini.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-mint" id="sec-7">
-          <div class="sop-section-header">
-            <span class="sec-icon">👥</span>
-            <h2>5.0 TANGGUNGJAWAB</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Ketua Seksyen</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian tidak lulus yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Ketua Unit / Pegawai Farmasi Bertanggungjawab</p><p class="sop-p">Memastikan prosedur ini dipatuhi semasa pengujian dijalankan.</p><p class="sop-p">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</p><p class="sop-p">Pegawai Farmasi</p><p class="sop-p">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi</p><p class="sop-p">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</p><p class="sop-p">Menyemak laporan ujian.</p><p class="sop-p">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</p><p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-21" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-21" class="sop-step-title">
-                        5.4    Penolong Pegawai Farmasi U7 / U6
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</p><p class="sop-p">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan.</p>
-                <div class="sop-step-card">
-                  <div class="step-card-header">
-                    <div class="step-check-wrap">
-                      <input type="checkbox" id="step-028-22" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
-                      <label for="step-028-22" class="sop-step-title">
-                        5.5    Penolong Pegawai Farmasi
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <p class="sop-p">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-indigo" id="sec-8">
-          <div class="sop-section-header">
-            <span class="sec-icon">📝</span>
-            <h2>7. REKOD KUALITI</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">No. Borang	Tajuk</p><p class="sop-p">UP/001A	Borang Persampelan</p><p class="sop-p">UP/005	Laporan Pengujian HPLC</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-indigo" id="sec-9">
-          <div class="sop-section-header">
-            <span class="sec-icon">📎</span>
-            <h2>8.0 LAMPIRAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Figure 1: Chromatogram of mix working standard solution A1 at <span class="kw-wave">238nm</span>.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-indigo" id="sec-10">
-          <div class="sop-section-header">
-            <span class="sec-icon">📎</span>
-            <h2>8.0 LAMPIRAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Figure 2: Chromatogram of mix working standard solution A1 at <span class="kw-wave">220nm</span>.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-indigo" id="sec-11">
-          <div class="sop-section-header">
-            <span class="sec-icon">📎</span>
-            <h2>8.0 LAMPIRAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Figure 3: Spectra of a) Lovastatin, b) Simvastatin and c) Fluvastatin in scan range 200-<span class="kw-wave">400nm</span>.</p>
-          </div>
-        </div>
-        
-        <div class="sop-section-container sec-theme-indigo" id="sec-12">
-          <div class="sop-section-header">
-            <span class="sec-icon">📎</span>
-            <h2>8.0 LAMPIRAN</h2>
-          </div>
-          <div class="sop-section-body">
-            <p class="sop-p">Figure 4: Spectra of d) Rosuvastatin, c) Pravastatin and e) Gemfibrozil in scan range 200-<span class="kw-wave">400nm</span>.</p>
-          </div>
-        </div>
-        
 
-    <!-- Tables -->
-    <div class="sop-section-container sec-theme-indigo" id="sec-tables"><div class="sop-section-header"><span class="sec-icon">📊</span><h2>Jadual Kromatografi &amp; Rujukan Data</h2></div><div class="sop-section-body">
-        <div class="table-card" id="table-1">
+        <details class="rev-details" open>
+          <summary class="rev-summary">
+            <span class="rev-toggle-icon">📋</span>
+            Perincian Pindaan &amp; Catatan Log Sejarah Dokumen
+            <span class="rev-arrow">▸</span>
+          </summary>
+          <div class="rev-body">
+            <div style="font-weight:700;color:var(--text-heading);margin-bottom:0.5rem">Terbitan 2, Semakan 0 (10 April 2026):</div>
+            <p class="sop-rev-p">Pindaan nombor dokumen daripada <code>PKKK/300/UAT/054</code> kepada <code>PKKK/300/UP/028</code>.</p>
+            <p class="sop-rev-p">Pindaan nombor rujukan dalam ruangan Rujukan: PKKK/300/UAT/004 ➔ PKKK/300/UP/003, PKKK/300/UAT/012 ➔ PKKK/300/UP/011, PKKK/300/UAT/017 ➔ PKKK/300/UP/016, PKKK/300/UAT/001 ➔ PKKK/300/UP/001.</p>
+            <p class="sop-rev-p">Mengemaskini perenggan 7 Rekod Kualiti dengan menambah Borang Persampelan (UP/001A) dan Laporan Pengujian HPLC (UP/005).</p>
+            
+            <div style="font-weight:700;color:var(--text-heading);margin:1rem 0 0.5rem">Terbitan 1, Semakan 1 (1 Julai 2025):</div>
+            <p class="sop-rev-p">Kemaskini 6.6 System suitability test requirement: Kriteria Theoretical plate dikemaskini daripada "(NLT) 1500" kepada "(NLT) 2000".</p>
+            <p class="sop-rev-p">Menambah kriteria "%RSD for retention time: Not more than, NMT 2.0%".</p>
+            <p class="sop-rev-p">Menambah perenggan 6.5.5 Internal Quality Control (IQC).</p>
+            <p class="sop-rev-p">Mengemaskini perenggan 5.4 bagi jawatan Penolong Pegawai Farmasi (U7 / U6).</p>
+            <p class="sop-rev-p">Mengemaskini perenggan 3 Definisi, menambah perenggan 6.3.4 Single Standard Stock Solution, dan mengemaskini perenggan 6.5.6 Acceptance criteria for test sample serta perenggan 6.5.3 Injection Sequence &amp; IQC Table.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- Section 1.0: Tujuan -->
+    <div class="sop-section-container sec-theme-cyan" id="sec-2">
+      <div class="sop-section-header">
+        <span class="sec-icon">🎯</span>
+        <h2>1.0 TUJUAN</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Untuk memastikan ujian identifikasi anti-kolesterol dalam produk tradisional menggunakan alat Kromatografi Cecair Prestasi Tinggi (<strong>High Performance Liquid Chromatography - HPLC</strong>) dilaksanakan dengan cekap, tepat, dan berkesan mematuhi piawaian ISO/IEC 17025.</p>
+      </div>
+    </div>
+
+    <!-- Section 2.0: Skop -->
+    <div class="sop-section-container sec-theme-cyan" id="sec-3">
+      <div class="sop-section-header">
+        <span class="sec-icon">📐</span>
+        <h2>2.0 SKOP</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Prosedur ini hendaklah digunakan oleh kakitangan Unit Penyaringan untuk menjalankan ujian identifikasi adulteran sintetik anti-kolesterol (merangkumi <em>Pravastatin, Rosuvastatin, Fluvastatin, Gemfibrozil, Lovastatin, dan Simvastatin</em>) dalam produk tradisional pelbagai bentuk dos menggunakan sistem HPLC dengan pengesan Photo Diode Array (PDA).</p>
+      </div>
+    </div>
+
+    <!-- Section 3.0: Definisi -->
+    <div class="sop-section-container sec-theme-purple" id="sec-4">
+      <div class="sop-section-header">
+        <span class="sec-icon">📖</span>
+        <h2>3.0 DEFINISI</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="def-grid">
+          <div class="def-card">
+            <span class="def-term">3.1 HPLC</span>
+            <span class="def-desc">High Performance Liquid Chromatography</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.2 RS</span>
+            <span class="def-desc">Reference Standard (Piawai Rujukan)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.3 OOS</span>
+            <span class="def-desc">Out of Specification (Luar Spesifikasi)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.4 SST</span>
+            <span class="def-desc">System Suitability Test (Ujian Kesesuaian Sistem)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.5 UV</span>
+            <span class="def-desc">Ultraviolet (Sinaran Ultraungu)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.6 PDA</span>
+            <span class="def-desc">Photodiode Array Detector</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.7 IQC</span>
+            <span class="def-desc">Internal Quality Control (Kawalan Kualiti Dalaman)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.8 RSD</span>
+            <span class="def-desc">Relative Standard Deviation (Sisihan Piawai Relatif)</span>
+          </div>
+          <div class="def-card">
+            <span class="def-term">3.9 RRLC</span>
+            <span class="def-desc">Rapid Resolution Liquid Chromatography</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4.0: Carta Aliran -->
+    <div class="sop-section-container sec-theme-purple" id="sec-5">
+      <div class="sop-section-header">
+        <span class="sec-icon">🔀</span>
+        <h2>4.0 CARTA ALIRAN</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Tiada carta aliran formal berasingan untuk prosedur ini. Ringkasan visual alur kerja makmal dipaparkan pada bahagian atas arahan kerja ini (Visual Workflow Timeline: <em>Penyediaan Reagen ➔ Pengekstrakan ➔ Persediaan Alat ➔ Suntikan Batch ➔ Verifikasi &amp; Rekod</em>).</p>
+      </div>
+    </div>
+
+    <!-- Section 5.0: Tanggungjawab -->
+    <div class="sop-section-container sec-theme-mint" id="sec-6">
+      <div class="sop-section-header">
+        <span class="sec-icon">👥</span>
+        <h2>5.0 TANGGUNGJAWAB</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="resp-grid">
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.1 Ketua Seksyen</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Memastikan prosedur ini dipatuhi sepenuhnya semasa aktiviti pengujian dijalankan.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menyemak dan mengesahkan semua laporan ujian tidak lulus (positif dikesan) yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</span></div>
+          </div>
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.2 Ketua Unit / Pegawai Farmasi Bertanggungjawab</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Memastikan prosedur ini dipatuhi dengan teratur semasa pengujian dijalankan.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menyemak dan mengesahkan semua laporan ujian yang telah disemak oleh Pegawai Farmasi termasuk laporan OOS.</span></div>
+          </div>
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.3 Pegawai Farmasi</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Mengagihkan sampel kepada Pegawai Farmasi dan Penolong Pegawai Farmasi.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menyelia ujian yang dijalankan oleh Pegawai Farmasi dan Penolong Pegawai Farmasi.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menyemak laporan ujian dan mentafsir kromatogram/spektrum UV.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menjalankan siasatan OOS dan menyediakan laporan OOS bagi sampel gagal ujian.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menjalankan aktiviti pengujian sampel mengikut tatacara yang telah ditetapkan.</span></div>
+          </div>
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.4 Penolong Pegawai Farmasi (U7 / U6)</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Merekodkan bilangan ujian selepas selesai laporan ujian disiapkan untuk tujuan laporan bulanan.</span></div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menghantar laporan ujian ke Unit Perkhidmatan Analisis untuk simpanan rasmi.</span></div>
+          </div>
+          <div class="resp-card">
+            <div class="resp-title"><span>👤</span> 5.5 Penolong Pegawai Farmasi</div>
+            <div class="sop-list-item"><span class="sop-bullet">▹</span><span class="sop-list-text">Menjalankan aktiviti pengujian sampel dan penyediaan reagen mengikut tatacara yang telah ditetapkan.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 6.0: Prosedur -->
+    <div class="sop-section-container sec-theme-amber" id="sec-7">
+      <div class="sop-section-header">
+        <span class="sec-icon">🔬</span>
+        <h2>6.0 PROSEDUR KERJA MAKMAL</h2>
+      </div>
+      <div class="sop-section-body">
+
+        <!-- 6.1 Materials and Equipment -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.1</span>
+            <span>Bahan, Reagen &amp; Peralatan (Materials and Equipment)</span>
+          </div>
+        </div>
+
+        <div class="materials-grid">
+          <div class="material-card">
+            <div class="mat-card-header"><span>🔬</span> Instrumen &amp; Turus</div>
+            <ul class="mat-list">
+              <li><span class="mat-bullet">▹</span> <strong>HPLC System:</strong> Dilengkapi pengesan Photodiode Array (PDA/DAD).</li>
+              <li><span class="mat-bullet">▹</span> <strong>Turus (Column):</strong> Zorbax Eclipse XDB-C18 5 µm (150 × 4.6 mm) atau yang setara.</li>
+              <li><span class="mat-bullet">▹</span> Neraca analitikal &amp; mikro (Analytical balance &amp; microbalance).</li>
+              <li><span class="mat-bullet">▹</span> Kukus ultrasonik (Ultrasonic bath) &amp; Alat emparan (Centrifuge).</li>
+            </ul>
+          </div>
+
+          <div class="material-card">
+            <div class="mat-card-header"><span>🧪</span> Bahan Kimia &amp; Pelarut</div>
+            <ul class="mat-list">
+              <li><span class="mat-bullet">▹</span> <strong>Phosphoric Acid:</strong> Gred HPLC.</li>
+              <li><span class="mat-bullet">▹</span> <strong>Methanol:</strong> Gred HPLC.</li>
+              <li><span class="mat-bullet">▹</span> <strong>Acetonitrile:</strong> Gred HPLC.</li>
+              <li><span class="mat-bullet">▹</span> <strong>Air Nyahion (Deionized Water):</strong> Rintangan 18.2 MΩ.cm.</li>
+            </ul>
+          </div>
+
+          <div class="material-card">
+            <div class="mat-card-header"><span>🎯</span> Piawai Rujukan (RS)</div>
+            <ul class="mat-list">
+              <li><span class="mat-bullet">▹</span> Pravastatin Standard</li>
+              <li><span class="mat-bullet">▹</span> Rosuvastatin Standard</li>
+              <li><span class="mat-bullet">▹</span> Fluvastatin Standard</li>
+              <li><span class="mat-bullet">▹</span> Gemfibrozil Standard</li>
+              <li><span class="mat-bullet">▹</span> Lovastatin Standard</li>
+              <li><span class="mat-bullet">▹</span> Simvastatin Standard</li>
+            </ul>
+          </div>
+
+          <div class="material-card">
+            <div class="mat-card-header"><span>📦</span> Radas Kaca &amp; Pakai Habis</div>
+            <ul class="mat-list">
+              <li><span class="mat-bullet">▹</span> Tiub emparan plastik / kaca (Centrifuge tube).</li>
+              <li><span class="mat-bullet">▹</span> Sistem penuras pelarut vakum (Solvent filter system).</li>
+              <li><span class="mat-bullet">▹</span> Penuras membran nilon pelarut 0.45 µm.</li>
+              <li><span class="mat-bullet">▹</span> Botol pelarut kaca (<span class="kw-vol">1 L</span>).</li>
+              <li><span class="mat-bullet">▹</span> Kelalang volumetrik Gred A (100 mL, Grade A).</li>
+              <li><span class="mat-bullet">▹</span> Penuras picagari nilon 0.45 µm (Nylon syringe filter).</li>
+              <li><span class="mat-bullet">▹</span> Picagari pakai buang tanpa jarum (<span class="kw-vol">5 mL</span>).</li>
+              <li><span class="mat-bullet">▹</span> Vial kaca skru penutup ambar (<span class="kw-vol">2 mL</span> amber vial).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 6.2 Preparation of Mobile Phase -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.2</span>
+            <span>Penyediaan Fasa Bergerak (Preparation of Mobile Phase)</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-028-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
+              <label for="step-028-1" class="sop-step-title">
+                <span class="action-badge">Langkah 1</span>
+                6.2.1 Penyediaan Larutan Buffer &amp; Fasa Organik (Preparation of Buffer Solution)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Larutkan <span class="kw-vol">1.0 mL</span> asid fosforik (Phosphoric acid) ke dalam <span class="kw-vol">1000 mL</span> air nyahion (Deionized water) dalam botol pelarut.</p>
+            <p class="sop-p">2. Sukat <span class="kw-vol">1 L</span> asetonitril (Acetonitrile) dan pindahkan ke dalam botol pelarut berasingan.</p>
+            <p class="sop-p">3. Tapis larutan buffer dan asetonitril menggunakan penuras membran nilon 0.45 µm dan sistem penuras pelarut.</p>
+            <p class="sop-p" style="margin-bottom:0">4. Nyahgas (degas) fasa bergerak yang telah ditapis dalam kukus ultrasonik sekurang-kurangnya selama <span class="kw-time">20 minit</span> bagi memastikan tiada sebarang gelembung gas terlarut.</p>
+          </div>
+        </div>
+
+        <!-- 6.3 Preparation of Reference Standard -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.3</span>
+            <span>Penyediaan Piawai Rujukan (Preparation of Reference Standard)</span>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-028-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
+              <label for="step-028-2" class="sop-step-title">
+                <span class="action-badge">Langkah 2</span>
+                6.3.1 Larutan Stok Piawai Individu (Individual Standard Stock Solution)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">Timbang tepat <span class="kw-wt">20 mg</span> piawai rujukan Pravastatin, Rosuvastatin, Fluvastatin, Gemfibrozil, Lovastatin dan Simvastatin ke dalam kelalang volumetrik <span class="kw-vol">100 mL</span> secara berasingan.</p>
+            <p class="sop-p" style="margin-bottom:0">Larutkan dan cukupkan isipadu sehingga tanda senggatan dengan Metanol. Kepekatan akhir bagi setiap larutan stok piawai individu ialah <span class="kw-wt">0.2 mg/mL (200 ppm)</span>.</p>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-028-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
+              <label for="step-028-3" class="sop-step-title">
+                <span class="action-badge">Langkah 3</span>
+                6.3.2 Campuran Larutan Piawai Kerja A1 (Mix Working Standard Solution A1)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">Sediakan campuran larutan piawai kerja dengan kepekatan <span class="kw-wt">0.05 mg/mL (50 ppm) Gemfibrozil</span> dan <span class="kw-wt">0.02 mg/mL (20 ppm)</span> bagi piawai rujukan yang lain.</p>
+            <p class="sop-p" style="margin-bottom:0"><strong>Tatacara Pencampuran:</strong> Masukkan <span class="kw-vol">0.25 mL</span> stok Gemfibrozil, <span class="kw-vol">0.1 mL</span> bagi setiap satu stok piawai rujukan lain, dan <span class="kw-vol">0.25 mL</span> Metanol ke dalam satu vial kaca ambar, kemudian gaul sehingga sebati.</p>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-028-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
+              <label for="step-028-4" class="sop-step-title">
+                <span class="action-badge">Langkah 4</span>
+                6.3.3 Larutan Had Pengesanan (Limit of Detection - LOD Solution)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">Sediakan larutan LOD dengan kepekatan <span class="kw-wt">0.005 mg/mL (5 ppm) Gemfibrozil</span> dan <span class="kw-wt">0.002 mg/mL (2 ppm)</span> bagi piawai yang lain.</p>
+            <p class="sop-p" style="margin-bottom:0"><strong>Tatacara:</strong> Tambahkan <span class="kw-vol">0.1 mL</span> larutan piawai kerja A1 dan <span class="kw-vol">0.9 mL</span> Metanol ke dalam vial kaca ambar, kemudian goncang dan campur sekata.</p>
+          </div>
+        </div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-028-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
+              <label for="step-028-5" class="sop-step-title">
+                <span class="action-badge">Langkah 5</span>
+                6.3.4 Larutan Stok Piawai Tunggal (Single Standard Stock Solution)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p"><strong>6.3.4.1</strong> Sediakan larutan stok piawai tunggal mengikut tatacara yang sama seperti dinyatakan dalam 6.3.1 hingga 6.3.3, tetapi menggunakan piawai tunggal berbanding campuran berbilang piawai.</p>
+            <p class="sop-p" style="margin-bottom:0"><strong>6.3.4.2</strong> Prosedur ini digunapakai untuk tujuan penyaringan sebatian sasaran terpilih sahaja (screening selected compounds only).</p>
+          </div>
+        </div>
+
+        <!-- 6.4 Preparation of Sample -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.4</span>
+            <span>Penyediaan Sampel (Preparation of Sample)</span>
+          </div>
+        </div>
+
+        <p class="sop-p"><strong>6.4.1 Pengendalian Sampel (Sampling):</strong> Proses persampelan berbeza mengikut jenis bentuk dos sampel (kapsul, tablet, pil tradisional, serbuk, cecair). Sila rujuk dokumen <strong><a href="sop-300-up-001.html" style="color:var(--cyan);text-decoration:underline">PKKK/300/UP/001</a> (Proses Persampelan)</strong>.</p>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-028-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
+              <label for="step-028-6" class="sop-step-title">
+                <span class="action-badge">Langkah 6</span>
+                6.4.2 Penyediaan Sampel untuk Analisis (Sample Preparation for Analysis)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Timbang tepat <span class="kw-wt">1 gram</span> sampel (bagi bentuk pepejal / serbuk) atau sukat tepat <span class="kw-vol">10 mL</span> sampel (bagi bentuk cecair) dan pindahkan ke dalam tiub emparan (centrifuge tube).</p>
+            <p class="sop-p">2. Tambahkan <span class="kw-vol">20 mL</span> Metanol (untuk sampel pepejal) atau <span class="kw-vol">10 mL</span> Metanol (untuk sampel cecair).</p>
+            <p class="sop-p">3. Sonikasi campuran dalam kukus ultrasonik selama <span class="kw-time">15 minit</span> pada suhu <span class="kw-temp">37 °C</span>.</p>
+            <p class="sop-p">4. Empar (centrifuge) larutan pada kelajuan <strong>4000 rpm</strong> selama <span class="kw-time">5 minit</span>.</p>
+            <p class="sop-p" style="margin-bottom:0">5. Tapis lapisan supernatan ke dalam vial kaca ambar <span class="kw-vol">2 mL</span> menggunakan penuras picagari nilon 0.45 µm.</p>
+          </div>
+        </div>
+
+        <!-- 6.5 Experimental Method & INLINE TABLES -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.5</span>
+            <span>Kaedah Pengujian Kromatografi (Experimental Method)</span>
+          </div>
+        </div>
+
+        <p class="sop-p">Sistem HPLC dan parameter instrumen yang digunakan untuk identifikasi anti-kolesterol adalah seperti yang ditetapkan dalam <strong>Jadual 1</strong> di bawah:</p>
+
+        <!-- INLINE TABLE 1 -->
+        <div class="table-card" id="table-system">
           <div class="table-card-header">
-            <span class="table-tag">SEJARAH SEMAKAN</span>
+            <span class="table-tag">JADUAL 1: PARAMETER SISTEM HPLC IDENTIFIKASI ANTIKOLESTEROL</span>
             <span class="table-doc-code">PKKK/300/UP/028</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>Terbitan</th><th>Semakan</th><th>Ditulis Oleh</th><th>Disemak Oleh</th><th>Diluluskan Oleh</th><th>Tarikh Kuatkuasa</th></tr><tr ><td>1</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>15 Nov 2024</td></tr><tr ><td>1</td><td>1</td><td>Nurul ‘Izzah Hany Ismail</td><td>Ooi Suat Hong</td><td>Ida Syazrina Ibrahim</td><td>1 Julai 2025</td></tr><tr ><td>2</td><td>0</td><td>Nurul ‘Izzah Hany Ismail</td><td>Nurul Nadiah Noh</td><td>Ida Syazrina Ibrahim</td><td>10 April 2026</td></tr>
+              <thead>
+                <tr>
+                  <th style="width:35%">Parameter Kromatografi</th>
+                  <th>Spesifikasi / Kaedah Rasmi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Turus (Column)</strong></td>
+                  <td>Zorbax Eclipse XDB-C18 atau yang setara</td>
+                </tr>
+                <tr>
+                  <td><strong>Dimensi Turus</strong></td>
+                  <td>150 mm × 4.6 mm, saiz zarah 5 µm</td>
+                </tr>
+                <tr>
+                  <td><strong>Kadar Alir (Flow rate)</strong></td>
+                  <td>Rujuk Jadual 2 (<span class="kw-flow">0.8 – 1.2 mL/min</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Suhu Turus (Column temperature)</strong></td>
+                  <td><span class="kw-temp">40 °C</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Pengesan / Panjang Gelombang (PDA)</strong></td>
+                  <td>
+                    <span class="kw-wave">220 nm</span>: Gemfibrozil<br>
+                    <span class="kw-wave">238 nm</span>: Semua sebatian Statin (Pravastatin, Rosuvastatin, Fluvastatin, Lovastatin, Simvastatin)
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Isipadu Suntikan (Injection volume)</strong></td>
+                  <td><span class="kw-vol">10 µL</span> (LOD Injection: <span class="kw-vol">8 µL</span>)</td>
+                </tr>
+                <tr>
+                  <td><strong>Masa Analisis (Run time)</strong></td>
+                  <td><span class="kw-time">18 minit</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Suhu Autosampler</strong></td>
+                  <td><span class="kw-temp">5 °C</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Kaedah Fasa Bergerak</strong></td>
+                  <td>Program Kecerunan (Gradient Program)</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
+
+        <div class="sop-group-title"><span>📊</span> 6.5.1 Kaedah Fasa Bergerak / Program Kecerunan (Mobile Phase Method)</div>
+        <p class="sop-p">Program kecerunan pelarut (solvent gradient program) bagi fasa bergerak Buffer Asid Fosforik dan Asetonitril ditunjukkan dalam <strong>Jadual 2</strong> di bawah:</p>
+
+        <!-- INLINE TABLE 2 -->
+        <div class="table-card" id="table-gradient">
+          <div class="table-card-header">
+            <span class="table-tag">JADUAL 2: PROGRAM KECERUNAN FASA BERGERAK (GRADIENT PROGRAM)</span>
+            <span class="table-doc-code">PKKK/300/UP/028</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <thead>
+                <tr>
+                  <th>Masa (minit)</th>
+                  <th>Larutan Buffer pH 3.0 (%)</th>
+                  <th>Acetonitrile (%)</th>
+                  <th>Kadar Alir (mL/min)</th>
+                  <th>Profil Elusi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>0.01</strong></td>
+                  <td>60</td>
+                  <td>40</td>
+                  <td><span class="kw-flow">0.8</span></td>
+                  <td>Kecerunan Awal (Initial gradient)</td>
+                </tr>
+                <tr>
+                  <td><strong>3.00</strong></td>
+                  <td>50</td>
+                  <td>50</td>
+                  <td><span class="kw-flow">0.8</span></td>
+                  <td>Peningkatan organik linear</td>
+                </tr>
+                <tr>
+                  <td><strong>8.00</strong></td>
+                  <td>30</td>
+                  <td>70</td>
+                  <td><span class="kw-flow">1.2</span></td>
+                  <td>Elusi sebatian statin lewat</td>
+                </tr>
+                <tr>
+                  <td><strong>14.00</strong></td>
+                  <td>20</td>
+                  <td>80</td>
+                  <td><span class="kw-flow">0.8</span></td>
+                  <td>Pencucian turus (Column washing)</td>
+                </tr>
+                <tr>
+                  <td><strong>16.10</strong></td>
+                  <td>60</td>
+                  <td>40</td>
+                  <td><span class="kw-flow">0.8</span></td>
+                  <td>Pengkondisian semula (Re-equilibration)</td>
+                </tr>
+                <tr>
+                  <td><strong>18.00</strong></td>
+                  <td>60</td>
+                  <td>40</td>
+                  <td><span class="kw-flow">0.8</span></td>
+                  <td>Tamat turutan (End of run)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="sop-p"><em>*Rujuk dokumen <a href="sop-300-up-003.html" style="color:var(--cyan)">PKKK/300/UP/003</a> (RRLC 1200 Series), <a href="sop-300-up-011.html" style="color:var(--cyan)">PKKK/300/UP/011</a> (HPLC Prominence-i) dan <a href="sop-300-up-016.html" style="color:var(--cyan)">PKKK/300/UP/016</a> (HPLC Flexar) untuk tatacara persediaan kaedah dan pengoperasian instrumen HPLC.</em></p>
+
+        <div class="sop-group-title"><span>💉</span> 6.5.2 Turutan Suntikan (Injection Sequence)</div>
         
-        <div class="table-card" id="table-2">
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-028-7" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
+              <label for="step-028-7" class="sop-step-title">
+                <span class="action-badge">Langkah 7</span>
+                Pelaksanaan Turutan Suntikan Batch &amp; Kawalan Kualiti (Sequence Injection)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p">1. Mula-mula, suntik <strong>Blank / Pelarut (Diluent)</strong> sebanyak 1 kali.</p>
+            <p class="sop-p">2. Suntik <strong>Campuran Larutan Piawai Kerja A1 sebanyak 6 kali</strong> untuk Ujian Kesesuaian Sistem (System Suitability Test - SST).</p>
+            <p class="sop-p">3. Suntik <strong>Larutan LOD (<span class="kw-vol">8 µL</span>)</strong> sebelum memulakan suntikan sampel ujian.</p>
+            <p class="sop-p">4. Suntik Blank / Pelarut sebelum setiap suntikan sampel.</p>
+            <p class="sop-p">5. Setiap sampel disuntik sebanyak <strong>2 kali ulangan (duplicate injection)</strong>.</p>
+            <p class="sop-p">6. Sekiranya lebih daripada 5 sampel disuntik dalam satu siri analisis, <strong>larutan LOD mestilah disuntik sekali setiap 5 sampel</strong> sebagai semakan IQC.</p>
+            <p class="sop-p" style="margin-bottom:0">7. <strong>Larutan LOD mestilah disuntik pada penghujung siri analisis</strong> sebelum batch ditamatkan.</p>
+          </div>
+        </div>
+
+        <p class="sop-p">Contoh susunan turutan suntikan bagi batch pengujian ditunjukkan dalam <strong>Jadual 3</strong> di bawah:</p>
+
+        <!-- INLINE TABLE 3 -->
+        <div class="table-card" id="table-sequence">
           <div class="table-card-header">
-            <span class="table-tag">JADUAL 2</span>
+            <span class="table-tag">JADUAL 3: CONTOH TURUTAN SUNTIKAN ANALISIS ANTIKOLESTEROL</span>
             <span class="table-doc-code">PKKK/300/UP/028</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
-              <tr><th>RUJUKAN</th><th>RUJUKAN</th></tr><tr ><td>No. Dokumen</td><td>Tajuk</td></tr><tr ><td>PKKK/300/UP/003</td><td>Rapid Resolution Liquid Chromatography HP1200</td></tr><tr ><td>PKKK/300/UP/011</td><td>Shimadzu High Performance Liquid Chromatography (Prominence-i)</td></tr><tr ><td>PKKK/300/UP/016</td><td>High Performance Liquid Chromatography Flexar (Perkin Elmer)</td></tr><tr ><td>PKKK/300/UP/001</td><td>Proses Persampelan (Ujian Penyaringan)</td></tr>
+              <thead>
+                <tr>
+                  <th style="width:10%">No. Turutan</th>
+                  <th>Perincian Suntikan (Vial Content)</th>
+                  <th style="width:20%">Bilangan Suntikan</th>
+                  <th style="width:30%">Tujuan &amp; Catatan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="seq-blank">
+                  <td>1</td>
+                  <td>Blank / Diluent (Methanol)</td>
+                  <td>1</td>
+                  <td>Pembersihan garis dasar (Baseline check)</td>
+                </tr>
+                <tr class="seq-sst">
+                  <td>2</td>
+                  <td>Mix Working Standard Solution A1</td>
+                  <td>6</td>
+                  <td><strong>System Suitability Test (SST, %RSD ≤ 2.0%)</strong></td>
+                </tr>
+                <tr class="seq-iqc">
+                  <td>3</td>
+                  <td>LOD Solution (<span class="kw-vol">8 µL</span>)</td>
+                  <td>1</td>
+                  <td>Initial IQC Check</td>
+                </tr>
+                <tr class="seq-blank">
+                  <td>4</td>
+                  <td>Blank / Diluent</td>
+                  <td>1</td>
+                  <td>Menghalang carry-over</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Sampel No. 1</td>
+                  <td>2</td>
+                  <td>Ujian Sampel (Duplicate)</td>
+                </tr>
+                <tr class="seq-blank">
+                  <td>6</td>
+                  <td>Blank / Diluent</td>
+                  <td>1</td>
+                  <td>Wash / Blank</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Sampel No. 2</td>
+                  <td>2</td>
+                  <td>Ujian Sampel (Duplicate)</td>
+                </tr>
+                <tr class="seq-blank">
+                  <td>8</td>
+                  <td>Blank / Diluent</td>
+                  <td>1</td>
+                  <td>Wash / Blank</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Sampel No. 3</td>
+                  <td>2</td>
+                  <td>Ujian Sampel (Duplicate)</td>
+                </tr>
+                <tr class="seq-blank">
+                  <td>10</td>
+                  <td>Blank / Diluent</td>
+                  <td>1</td>
+                  <td>Wash / Blank</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>Sampel No. 4</td>
+                  <td>2</td>
+                  <td>Ujian Sampel (Duplicate)</td>
+                </tr>
+                <tr class="seq-blank">
+                  <td>12</td>
+                  <td>Blank / Diluent</td>
+                  <td>1</td>
+                  <td>Wash / Blank</td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td>Sampel No. 5</td>
+                  <td>2</td>
+                  <td>Ujian Sampel (Duplicate)</td>
+                </tr>
+                <tr class="seq-iqc">
+                  <td>14</td>
+                  <td>LOD Solution (<span class="kw-vol">8 µL</span>)</td>
+                  <td>1</td>
+                  <td><strong>Mid-batch IQC Check (Setiap 5 Sampel)</strong></td>
+                </tr>
+                <tr class="seq-blank">
+                  <td>15</td>
+                  <td>Blank / Diluent</td>
+                  <td>1</td>
+                  <td>Wash / Blank</td>
+                </tr>
+                <tr>
+                  <td>16</td>
+                  <td>Sampel No. 6</td>
+                  <td>2</td>
+                  <td>Ujian Sampel (Duplicate)</td>
+                </tr>
+                <tr class="seq-blank">
+                  <td>17</td>
+                  <td>Blank / Diluent</td>
+                  <td>1</td>
+                  <td>Wash / Blank</td>
+                </tr>
+                <tr class="seq-iqc">
+                  <td>18</td>
+                  <td>LOD Solution (<span class="kw-vol">8 µL</span>)</td>
+                  <td>1</td>
+                  <td><strong>Final IQC Check (Tamat Batch)</strong></td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
-        
-        <div class="table-card" id="table-3">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 3</span>
-            <span class="table-doc-code">PKKK/300/UP/028</span>
-          </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Column</th><th>Zorbax Eclipse XDB-C18 or equivalent</th></tr><tr ><td>Dimensions</td><td>150 x 4.6 mm x 5 µm</td></tr><tr ><td>Flow rate</td><td>Refer Table 2</td></tr><tr ><td>Column temperature</td><td>40oC</td></tr><tr ><td>Wavelength detector (PDA)</td><td><span class="kw-wave">220 nm</span>: Gemfibrozil <span class="kw-wave">238 nm</span>: All statin except Gemfibrozil</td></tr><tr ><td>Injection volume</td><td><span class="kw-vol">10 µL</span></td></tr><tr ><td>Run time</td><td><span class="kw-time">18 minutes</span></td></tr><tr ><td>Auto sampler Temperature</td><td>5⁰C</td></tr><tr ><td>Mobile Phase Method</td><td>Gradient program</td></tr>
-            </table>
+
+        <!-- 6.6 System Suitability Test (SST) -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.6</span>
+            <span>Ujian Kesesuaian Sistem (System Suitability Test - SST Requirement)</span>
           </div>
         </div>
-        
-        <div class="table-card" id="table-4">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 4</span>
-            <span class="table-doc-code">PKKK/300/UP/028</span>
+
+        <div class="criteria-card cyan-theme">
+          <div class="criteria-header">
+            <span>🛡️</span>
+            <strong>Kriteria Penerimaan Kesesuaian Sistem (SST Acceptance Criteria):</strong>
           </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>Time (min)</th><th>Buffer solution (%)</th><th>Acetonitrile (%)</th><th>Flow rate (mL/min)</th></tr><tr ><td>0.01</td><td>60</td><td>40</td><td>0.8</td></tr><tr ><td>3.00</td><td>50</td><td>50</td><td>0.8</td></tr><tr ><td>8.00</td><td>30</td><td>70</td><td>1.2</td></tr><tr ><td>14.00</td><td>20</td><td>80</td><td>0.8</td></tr><tr ><td>16.10</td><td>60</td><td>40</td><td>0.8</td></tr><tr ><td>18.00</td><td>60</td><td>40</td><td>0.8</td></tr>
-            </table>
+          <p class="sop-p">Ujian kesesuaian sistem perlu dijalankan untuk setiap siri analisis kelompok (batch run) menggunakan 6 suntikan replikat campuran larutan piawai kerja A1 (<span class="kw-wt">0.05 mg/mL Gemfibrozil</span> dan <span class="kw-wt">0.02 mg/mL</span> piawai yang lain):</p>
+          <div class="sop-list-item"><span class="sop-bullet">✔️</span><span class="sop-list-text"><strong>%RSD bagi Masa Penahanan (Retention Time):</strong> Tidak Lebih Daripada (NMT) <strong>2.0%</strong>.</span></div>
+          <div class="sop-list-item"><span class="sop-bullet">✔️</span><span class="sop-list-text"><strong>Faktor Ekoran (Tailing Factor, T):</strong> Tidak Lebih Daripada (NMT) <strong>2.0</strong>.</span></div>
+          <div class="sop-list-item"><span class="sop-bullet">✔️</span><span class="sop-list-text"><strong>Bilangan Plat Teori (Theoretical Plate, N):</strong> Tidak Kurang Daripada (NLT) <strong>2000</strong>.</span></div>
+        </div>
+
+        <!-- 6.7 Internal Quality Control (IQC) -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.7</span>
+            <span>Kawalan Kualiti Dalaman (Internal Quality Control - IQC)</span>
           </div>
         </div>
-        
-        <div class="table-card" id="table-5">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 5</span>
-            <span class="table-doc-code">PKKK/300/UP/028</span>
+
+        <div class="criteria-card amber-theme">
+          <div class="criteria-header">
+            <span>🔍</span>
+            <strong>Tatacara &amp; Had Kawalan Kualiti Dalaman (IQC Check):</strong>
           </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>No.</th><th>Detail</th><th>No. of injection</th></tr><tr class="seq-blank"><td>1</td><td>Blank / Diluent</td><td>1</td></tr><tr class="seq-sst"><td>2</td><td>Mix working standard solution (SST)</td><td>6</td></tr><tr class="seq-iqc"><td>3</td><td>LOD solution</td><td>1</td></tr><tr class="seq-blank"><td>4</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>5</td><td>Sample number 1</td><td>2</td></tr><tr class="seq-blank"><td>6</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>7</td><td>Sample number 2</td><td>2</td></tr><tr class="seq-blank"><td>8</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>9</td><td>Sample number 3</td><td>2</td></tr><tr class="seq-blank"><td>10</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>11</td><td>Sample number 4</td><td>2</td></tr><tr class="seq-blank"><td>12</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>13</td><td>Sample number 5</td><td>2</td></tr><tr class="seq-iqc"><td>14</td><td>LOD solution</td><td>1</td></tr><tr class="seq-blank"><td>15</td><td>Blank / Diluent</td><td>1</td></tr><tr ><td>16</td><td>Sample number 6</td><td>2</td></tr><tr class="seq-blank"><td>17</td><td>Blank / Diluent</td><td>1</td></tr><tr class="seq-iqc"><td>18</td><td>LOD solution</td><td>1</td></tr>
-            </table>
+          <p class="sop-p"><strong>6.7.1</strong> Suntik <span class="kw-vol">8 µL</span> larutan LOD selepas setiap 5 sampel &amp; pada penghujung siri analisis.</p>
+          <p class="sop-p" style="margin-bottom:0"><strong>6.7.2 Kriteria Penerimaan IQC:</strong> Peratus perbezaan masa penahanan (% difference of retention time) bagi larutan LOD mestilah <strong>tidak melebihi 3%</strong> berbanding suntikan piawai awal bagi setiap kelompok 5 sampel.</p>
+        </div>
+
+        <!-- 6.8 Acceptance Criteria for Test Sample -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.8</span>
+            <span>Kriteria Penerimaan Sampel Ujian (Acceptance Criteria for Test Sample)</span>
           </div>
         </div>
-        
-        <div class="table-card" id="table-6">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 6</span>
-            <span class="table-doc-code">PKKK/300/UP/028</span>
+
+        <div class="criteria-card">
+          <div class="criteria-header">
+            <span>✅</span>
+            <strong>Kriteria Pengesahan Positif Sebatian Antikolesterol:</strong>
           </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>a)</th></tr><tr ><td>b)</td></tr><tr ><td>c)</td></tr>
-            </table>
+          <p class="sop-p">Bandingkan masa penahanan dan spektrum UV yang diperolehi daripada kromatogram sampel dengan kromatogram larutan piawai kerja. Identiti setiap sebatian anti-kolesterol adalah <strong>POSITIF</strong> jika memenuhi kesemua kriteria berikut:</p>
+          
+          <div class="sop-list-item">
+            <span class="sop-bullet">a)</span>
+            <span class="sop-list-text"><strong>Masa Penahanan (Retention Time):</strong> Masa penahanan puncak sebatian dalam kromatogram sampel sepadan dengan masa penahanan sebatian piawai yang sama (± 2%).</span>
           </div>
-        </div>
-        
-        <div class="table-card" id="table-7">
-          <div class="table-card-header">
-            <span class="table-tag">JADUAL 7</span>
-            <span class="table-doc-code">PKKK/300/UP/028</span>
+          <div class="sop-list-item">
+            <span class="sop-bullet">b)</span>
+            <span class="sop-list-text"><strong>Spektrum UV (UV Spectrum Match):</strong> Spektrum UV adalah serupa dengan spektrum piawai dengan indeks kesamaan spektrum (similarity match factor) <strong>melebihi 0.999</strong> dalam julat imbasan 200–400 nm.</span>
           </div>
-          <div class="table-responsive">
-            <table class="table-official">
-              <tr><th>d)</th></tr><tr ><td>e)</td></tr><tr ><td>e)</td></tr>
-            </table>
+          <div class="sop-list-item">
+            <span class="sop-bullet">c)</span>
+            <span class="sop-list-text"><strong>Had Pengesanan (Peak Area &gt; LOD):</strong> Luas puncak sebatian dalam sampel adalah melebihi luas puncak bagi kepekatan had pengesanan LOD (<span class="kw-wt">0.01 mg/mL</span>).</span>
           </div>
         </div>
-        </div></div>
+
+        <div class="sop-step-card action-step">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-028-8" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/028')">
+              <label for="step-028-8" class="sop-step-title">
+                <span class="action-badge">Langkah 8</span>
+                Tindakan Ujian Pengesahan Semula (Confirmation Protocol for Positive Sample)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <p class="sop-p" style="margin-bottom:0">Sekiranya sampel didapati <strong>POSITIF</strong> dengan salah satu sebatian anti-kolesterol, persediaan sampel baharu (new sample preparation &amp; re-analysis) <strong>wajib dijalankan oleh penganalisis kedua pada tarikh yang berbeza</strong> daripada penganalisis pertama bagi memenuhi keperluan akreditasi ISO/IEC 17025.</p>
+          </div>
+        </div>
+
+        <!-- 6.9 Analysis Report -->
+        <div class="sop-subsection">
+          <div class="sop-subsection-title">
+            <span class="sop-subsection-badge">6.9</span>
+            <span>Laporan Pengujian (Analysis Report)</span>
+          </div>
+        </div>
+
+        <p class="sop-p">Setiap sampel akan mempunyai satu laporan analisis rasmi (Borang UP/005). Laporan mesti merangkumi perincian berikut:</p>
+        <div class="sop-list-item"><span class="sop-bullet">1.</span><span class="sop-list-text">Butiran sampel lengkap (Nama sampel, nombor pendaftaran sampel, dan nombor kelompok/batch).</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">2.</span><span class="sop-list-text">Tarikh analisis dijalankan dan disiapkan.</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">3.</span><span class="sop-list-text">Parameter instrumen termasuk ID alat, program kecerunan fasa bergerak, dan sistem HPLC.</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">4.</span><span class="sop-list-text">Senarai dan prosedur penyediaan piawai rujukan yang digunakan.</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">5.</span><span class="sop-list-text">Tatacara penyediaan sampel berserta cetakan resit timbangan (bagi sampel pepejal).</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">6.</span><span class="sop-list-text">Interpretasi keputusan ujian (<em>Dikesan / Tidak Dikesan / Disyaki</em> sebatian antikolesterol tertentu).</span></div>
+
+        <div class="sop-group-title"><span>📎</span> Bukti Analisis Yang Wajib Dilampirkan Bersama Laporan:</div>
+        <div class="sop-list-item"><span class="sop-bullet">🔹</span><span class="sop-list-text">Kromatogram suntikan pertama (1st) dan kedua (2nd) sampel (memaparkan nama sebatian, luas puncak, dan masa penahanan).</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">🔹</span><span class="sop-list-text">Kromatogram Ujian Kesesuaian Sistem / SST (dengan nama sebatian, luas puncak, dan masa penahanan).</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">🔹</span><span class="sop-list-text">Sekiranya sampel berada pada turutan ke-6 atau lebih, kromatogram larutan LOD sebelum sampel mesti dilampirkan.</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">🔹</span><span class="sop-list-text">Tindihan spektrum UV (overlay spectrum) bagi sampel yang mempunyai masa penahanan sepadan dengan piawai rujukan.</span></div>
+        <div class="sop-list-item"><span class="sop-bullet">🔹</span><span class="sop-list-text">Jadual semakan IQC (% perbezaan masa penahanan).</span></div>
+
+      </div>
+    </div>
+
+    <!-- Section 7.0: Rekod Kualiti -->
+    <div class="sop-section-container sec-theme-indigo" id="sec-8">
+      <div class="sop-section-header">
+        <span class="sec-icon">📝</span>
+        <h2>7.0 REKOD KUALITI</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-responsive">
+          <table class="table-official">
+            <thead>
+              <tr>
+                <th style="width:25%">No. Borang / Dokumen</th>
+                <th>Tajuk Dokumen Rekod Kualiti</th>
+                <th style="width:25%">Lokasi Simpanan</th>
+                <th style="width:20%">Tempoh Simpanan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>UP/001A</strong></td>
+                <td>Borang Persampelan (Ujian Penyaringan)</td>
+                <td>Fail Sampel Unit Penyaringan</td>
+                <td>6 Tahun</td>
+              </tr>
+              <tr>
+                <td><strong>UP/005</strong></td>
+                <td>Laporan Pengujian HPLC</td>
+                <td>Unit Perkhidmatan Analisis (UPA) / Arkib</td>
+                <td>6 Tahun</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 8.0: Lampiran (Figures & Spectral Library) -->
+    <div class="sop-section-container sec-theme-indigo" id="sec-9">
+      <div class="sop-section-header">
+        <span class="sec-icon">📎</span>
+        <h2>8.0 LAMPIRAN (FIGURES &amp; KROMATOGRAM RUJUKAN)</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p">Lampiran kromatogram piawai campuran A1 dan profil spektrum UV bagi 6 sebatian antikolesterol dalam julat imbasan 200–400 nm:</p>
+
+        <div class="figures-grid">
+          <!-- Figure 1 -->
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_1.png" alt="Figure 1: Chromatogram at 238nm" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 1: Kromatogram Campuran Piawai A1 pada 238 nm</div>
+              <div class="fig-desc">Pemisahan kromatografi bagi sebatian Statin (Pravastatin, Rosuvastatin, Fluvastatin, Lovastatin, Simvastatin).</div>
+            </div>
+          </div>
+
+          <!-- Figure 2 -->
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_2.png" alt="Figure 2: Chromatogram at 220nm" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 2: Kromatogram Campuran Piawai A1 pada 220 nm</div>
+              <div class="fig-desc">Pengesanan puncak sebatian Gemfibrozil pada panjang gelombang optimum 220 nm.</div>
+            </div>
+          </div>
+
+          <!-- Figure 3a: Lovastatin -->
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_3.png" alt="Figure 3a: Lovastatin UV Spectrum" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 3(a): Spektrum UV Lovastatin</div>
+              <div class="fig-desc">Profil imbasan spektrum UV Lovastatin dalam julat imbasan 200–400 nm.</div>
+            </div>
+          </div>
+
+          <!-- Figure 3b: Simvastatin -->
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_4.png" alt="Figure 3(b): Simvastatin UV Spectrum" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 3(b): Spektrum UV Simvastatin</div>
+              <div class="fig-desc">Profil imbasan spektrum UV Simvastatin dalam julat imbasan 200–400 nm.</div>
+            </div>
+          </div>
+
+          <!-- Figure 3c: Fluvastatin -->
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_5.png" alt="Figure 3(c): Fluvastatin UV Spectrum" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 3(c): Spektrum UV Fluvastatin</div>
+              <div class="fig-desc">Profil imbasan spektrum UV Fluvastatin dalam julat imbasan 200–400 nm.</div>
+            </div>
+          </div>
+
+          <!-- Figure 4d: Rosuvastatin -->
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_6.png" alt="Figure 4(d): Rosuvastatin UV Spectrum" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 4(d): Spektrum UV Rosuvastatin</div>
+              <div class="fig-desc">Profil imbasan spektrum UV Rosuvastatin dalam julat imbasan 200–400 nm.</div>
+            </div>
+          </div>
+
+          <!-- Figure 4c: Pravastatin -->
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_7.png" alt="Figure 4(c): Pravastatin UV Spectrum" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 4(c): Spektrum UV Pravastatin</div>
+              <div class="fig-desc">Profil imbasan spektrum UV Pravastatin dalam julat imbasan 200–400 nm.</div>
+            </div>
+          </div>
+
+          <!-- Figure 4e: Gemfibrozil -->
+          <div class="figure-card">
+            <div class="figure-img-wrap">
+              <img src="img_028/sop028_fig_8.png" alt="Figure 4(e): Gemfibrozil UV Spectrum" class="figure-img" loading="lazy">
+            </div>
+            <div class="figure-caption">
+              <div class="fig-title">Figure 4(e): Spektrum UV Gemfibrozil</div>
+              <div class="fig-desc">Profil imbasan spektrum UV Gemfibrozil dalam julat imbasan 200–400 nm.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 9.0: Rujukan -->
+    <div class="sop-section-container sec-theme-indigo" id="sec-10">
+      <div class="sop-section-header">
+        <span class="sec-icon">📚</span>
+        <h2>9.0 RUJUKAN DOKUMEN</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-responsive">
+          <table class="table-official">
+            <thead>
+              <tr>
+                <th style="width:30%">No. Dokumen Rujukan</th>
+                <th>Tajuk Dokumen</th>
+                <th style="width:20%">Pautan Pantas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PKKK/300/UP/003</strong></td>
+                <td>Rapid Resolution Liquid Chromatography HP1200</td>
+                <td><a href="sop-300-up-003.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td>
+              </tr>
+              <tr>
+                <td><strong>PKKK/300/UP/011</strong></td>
+                <td>Shimadzu High Performance Liquid Chromatography (Prominence-i)</td>
+                <td><a href="sop-300-up-011.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td>
+              </tr>
+              <tr>
+                <td><strong>PKKK/300/UP/016</strong></td>
+                <td>High Performance Liquid Chromatography Flexar (Perkin Elmer)</td>
+                <td><a href="sop-300-up-016.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td>
+              </tr>
+              <tr>
+                <td><strong>PKKK/300/UP/001</strong></td>
+                <td>Proses Persampelan (Ujian Penyaringan)</td>
+                <td><a href="sop-300-up-001.html" style="color:var(--cyan);font-weight:700">Buka SOP →</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
   </div>
 
   <div class="footer">
-    Unit Penyaringan ◈ Seksyen Pengujian Produk & Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
+    Unit Penyaringan ◈ Seksyen Pengujian Produk &amp; Kosmetik ◈ Pusat Kawalan Kualiti (PKKK), NPRA Malaysia
   </div>
 </div>
 
@@ -1143,8 +1828,10 @@
     const total = checks.length;
     const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
     
-    document.getElementById('pBarFill').style.width = pct + '%';
-    document.getElementById('pBarText').textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
+    const pFill = document.getElementById('pBarFill');
+    const pText = document.getElementById('pBarText');
+    if (pFill) pFill.style.width = pct + '%';
+    if (pText) pText.textContent = `${checked} / ${total} Langkah Selesai (${pct}%)`;
     
     const state = Array.from(checks).map(c => c.checked);
     localStorage.setItem('sop_check_' + docCode, JSON.stringify(state));
