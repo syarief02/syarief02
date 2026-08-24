@@ -18,6 +18,8 @@
     --card-surface: #ffffff;
     --card-border-subtle: #cbd5e1;
     --step-border: #94a3b8;
+    --sub-bg: rgba(2, 132, 199, 0.04);
+    --sub-border: #bae6fd;
   }
 
   [data-theme="dark"] {
@@ -27,6 +29,8 @@
     --card-surface: rgba(15, 23, 42, 0.85);
     --card-border-subtle: rgba(255, 255, 255, 0.12);
     --step-border: rgba(255, 255, 255, 0.18);
+    --sub-bg: rgba(56, 189, 248, 0.06);
+    --sub-border: rgba(56, 189, 248, 0.2);
   }
 
   .sop-doc-container {
@@ -81,12 +85,14 @@
     justify-content: center;
   }
 
+  .sec-theme-slate .sop-section-header { background: linear-gradient(135deg, #475569, #334155); }
   .sec-theme-cyan .sop-section-header { background: linear-gradient(135deg, #0284c7, #0369a1); }
   .sec-theme-purple .sop-section-header { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
   .sec-theme-mint .sop-section-header { background: linear-gradient(135deg, #059669, #047857); }
   .sec-theme-amber .sop-section-header { background: linear-gradient(135deg, #d97706, #b45309); }
   .sec-theme-indigo .sop-section-header { background: linear-gradient(135deg, #4f46e5, #3730a3); }
   .sec-theme-rose .sop-section-header { background: linear-gradient(135deg, #e11d48, #be123c); }
+  .sec-theme-teal .sop-section-header { background: linear-gradient(135deg, #0d9488, #0f766e); }
 
   .sop-section-body { padding: 1.6rem 1.8rem; }
 
@@ -132,6 +138,25 @@
   }
   .step-card-body { padding: 1.2rem 1.4rem; }
 
+  /* Sub-step cards */
+  .sub-step-card {
+    background: var(--sub-bg);
+    border: 1px solid var(--sub-border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin: 0.8rem 0 0.8rem 1.5rem;
+  }
+  .sub-step-title {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--cyan);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
   /* Typography */
   .sop-p { font-size: 0.95rem; line-height: 1.8; color: var(--text-body); margin-bottom: 0.8rem; }
   .sop-list-item {
@@ -155,6 +180,88 @@
     margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;
   }
 
+  /* Warning / Safety boxes */
+  .safety-box {
+    background: rgba(220, 38, 38, 0.06);
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    border-left: 4px solid var(--red);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .safety-box-title {
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--red);
+    margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+  .tip-box {
+    background: rgba(5, 150, 105, 0.06);
+    border: 1px solid rgba(5, 150, 105, 0.25);
+    border-left: 4px solid var(--mint);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+  }
+  .tip-box-title {
+    font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--mint);
+    margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;
+  }
+
+  /* Figure Callout Cards */
+  .fig-callout {
+    background: var(--card-surface);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+  .fig-callout:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .fig-callout img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .fig-callout:hover img {
+    transform: scale(1.02);
+  }
+  .fig-callout.zoomed img {
+    transform: scale(1.5);
+    cursor: zoom-out;
+  }
+  .fig-caption {
+    padding: 0.9rem 1.2rem;
+    border-top: 1px solid var(--card-border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .fig-title {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--cyan);
+  }
+  .fig-subdesc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .fig-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--purple);
+    font-weight: 600;
+    margin-top: 0.3rem;
+  }
+
   /* Table Cards */
   .table-card {
     background: var(--card-surface); border: 1px solid var(--card-border-subtle); border-radius: 14px;
@@ -175,6 +282,51 @@
   }
   .table-official th { background: var(--glass); color: var(--text-heading); font-weight: 700; }
   .pass-badge { background: rgba(5, 150, 105, 0.15); color: #059669; padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 700; }
+  .fail-badge { background: rgba(220, 38, 38, 0.12); color: #dc2626; padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: 700; }
+
+  /* Ordered list inside step cards */
+  .proc-list {
+    margin-left: 1.5rem;
+    line-height: 1.85;
+    color: var(--text-body);
+    font-size: 0.93rem;
+    counter-reset: proc-counter;
+    list-style: none;
+    padding-left: 0;
+  }
+  .proc-list li {
+    counter-increment: proc-counter;
+    position: relative;
+    padding-left: 2.2rem;
+    margin-bottom: 0.65rem;
+  }
+  .proc-list li::before {
+    content: counter(proc-counter);
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: var(--cyan-dim);
+    color: var(--cyan);
+    border-radius: 50%;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .proc-list li strong { color: var(--text-heading); }
+  .proc-list li code {
+    font-family: var(--font-mono);
+    background: var(--cyan-dim);
+    color: var(--cyan);
+    padding: 0.15rem 0.45rem;
+    border-radius: 5px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
 
   /* Two-Way Cross Link Grid */
   .cross-link-container {
@@ -227,8 +379,8 @@
   }
   .progress-left { display: flex; flex-direction: column; gap: 0.35rem; }
   .progress-title { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--cyan); }
-  .progress-bar-bg {{ width: 280px; max-width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }}
-  .progress-bar-fill {{ height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }}
+  .progress-bar-bg { width: 280px; max-width: 100%; height: 10px; background: rgba(0,0,0,0.1); border-radius: 100px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s ease; }
   .progress-stat { font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }
 
   /* TOC Pills */
@@ -240,6 +392,41 @@
   }
   .toc-pill:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
   .toc-pill.highlight { background: var(--cyan-dim); border-color: var(--cyan); color: var(--cyan); font-weight: 700; }
+
+  /* Definition grid */
+  .def-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.3rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .def-abbr {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    color: var(--cyan);
+  }
+  .def-full {
+    color: var(--text-body);
+  }
+
+  /* Revision history table striped */
+  .table-official tbody tr:nth-child(even) {
+    background: var(--sub-bg);
+  }
+
+  /* Keyboard shortcut styling */
+  kbd {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    background: var(--glass);
+    border: 1px solid var(--card-border-subtle);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
 
   @media print {
     .topbar, .ctrl-btn, .bg-canvas, .grid-overlay, .progress-card, .toc-pills, .wf-track, .cross-link-container { display: none !important; }
@@ -290,48 +477,61 @@
     <div class="hero-org">🇲🇾 NPRA — Pusat Kawalan Kualiti · ISO/IEC 17025 Accredited</div><br>
     <div class="hero-unit">◈ Seksyen Pengujian Produk &amp; Kosmetik · Unit Penyaringan</div>
     <h1 style="font-size:2.3rem;font-weight:900">PKKK/300/UP/040 <span class="g">GCMS Shimadzu QP2010 Ultra</span></h1>
-    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: GC-MS / Pengendalian Alat</div>
+    <div class="hero-sub" style="font-weight:600">Arahan Kerja Rasmi (Level 300 SOP) · Kategori: Pengendalian Alat GC-MS</div>
+    <p class="hero-desc">Panduan langkah demi langkah pengendalian instrumen Gas Chromatography-Mass Spectrometer (GCMS) Shimadzu QP2010 Ultra untuk analisis kualitatif (screening) dan kuantitatif (assay). Dilengkapi dengan prosedur Auto Startup, Vacuum Leak Check, Autotuning (PFTBA), Library Search (NIST), COAST SIM Table, Batch Processing dan Auto Shutdown.</p>
+  </div>
+
+  <!-- Specs Ribbon -->
+  <div class="specs-ribbon">
+    <div class="spec-chip"><span class="spec-lbl">MODEL</span> QP2010 Ultra</div>
+    <div class="spec-chip"><span class="spec-lbl">IONIZATION</span> EI 70 eV</div>
+    <div class="spec-chip"><span class="spec-lbl">CARRIER GAS</span> He ≥ 99.999%</div>
+    <div class="spec-chip"><span class="spec-lbl">INLET</span> Split / Splitless</div>
+    <div class="spec-chip"><span class="spec-lbl">ANALYSER</span> Quadrupole</div>
+    <div class="spec-chip"><span class="spec-lbl">AUTOSAMPLER</span> AOC-20i</div>
+    <div class="spec-chip"><span class="spec-lbl">LIBRARY</span> NIST / Wiley</div>
+    <div class="spec-chip"><span class="spec-lbl">SOFTWARE</span> GCMSsolution</div>
   </div>
 
   <!-- Visual Workflow Timeline -->
   <div class="wf-track">
     <div class="wf-step">
-      <div class="wf-node">1</div>
+      <div class="wf-node">A</div>
       <div class="wf-info">
-        <div class="wf-name">A. Startup &amp; Vakum</div>
-        <div class="wf-desc">Auto Startup, Ujian Kebocoran Vakum &amp; Air/Water Check</div>
+        <div class="wf-name">Startup &amp; Vakum</div>
+        <div class="wf-desc">Auto Startup, Leak Check &amp; Air/Water Check</div>
       </div>
     </div>
     <div class="wf-arrow">➔</div>
     <div class="wf-step">
-      <div class="wf-node">2</div>
+      <div class="wf-node">B</div>
       <div class="wf-info">
-        <div class="wf-name">B. Autotune &amp; QC</div>
-        <div class="wf-desc">Standard Spectra Tune &amp; Semakan Kriteria Prestasi</div>
+        <div class="wf-name">Autotune &amp; QC</div>
+        <div class="wf-desc">PFTBA Tune &amp; Performance Check</div>
       </div>
     </div>
     <div class="wf-arrow">➔</div>
     <div class="wf-step">
-      <div class="wf-node">3</div>
+      <div class="wf-node">C</div>
       <div class="wf-info">
-        <div class="wf-name">C. Ujian Kualitatif</div>
-        <div class="wf-desc">Library Search (NIST), Penolakan Latar Belakang &amp; Similarity Index</div>
+        <div class="wf-name">Kualitatif</div>
+        <div class="wf-desc">Scan Mode &amp; NIST Library Search</div>
       </div>
     </div>
     <div class="wf-arrow">➔</div>
     <div class="wf-step">
-      <div class="wf-node">4</div>
+      <div class="wf-node">D</div>
       <div class="wf-info">
-        <div class="wf-name">D. Ujian Kuantitatif</div>
-        <div class="wf-desc">Wizard SIM (COAST), Keluk Kalibrasi &amp; Batch Run</div>
+        <div class="wf-name">Kuantitatif</div>
+        <div class="wf-desc">COAST SIM, Calibration &amp; Batch</div>
       </div>
     </div>
     <div class="wf-arrow">➔</div>
     <div class="wf-step">
-      <div class="wf-node">5</div>
+      <div class="wf-node">E</div>
       <div class="wf-info">
-        <div class="wf-name">E. Auto Shutdown</div>
-        <div class="wf-desc">Penyejukan Vakum &amp; Penutupan Kuasa Selamat</div>
+        <div class="wf-name">Shutdown</div>
+        <div class="wf-desc">Auto Shutdown &amp; Power Off</div>
       </div>
     </div>
   </div>
@@ -340,7 +540,7 @@
   <div class="cross-link-container">
     <div class="cross-header">
       <span class="cross-icon">🧪</span>
-      <strong>Kaedah-Kaedah Pengujian Aktif Yang Dijalankan Menggunakan GCMS Shimadzu QP2010 Ultra Ini:</strong>
+      <strong>Kaedah Pengujian Aktif Yang Dijalankan Menggunakan GCMS Shimadzu QP2010 Ultra:</strong>
     </div>
     <div class="cross-grid">
       <a href="sop-300-up-034.html" class="analysis-link-card">
@@ -355,12 +555,32 @@
       </a>
       <a href="sop-300-up-030.html" class="analysis-link-card">
         <div class="ana-code">PKKK/300/UP/030</div>
-        <div class="ana-name">Kandungan Menthol, Camphor, Methyl Salicylate &amp; Thymol</div>
+        <div class="ana-name">Menthol, Camphor, Methyl Salicylate &amp; Thymol (GCMS)</div>
         <span class="ana-badge">Buka SOP Kaedah →</span>
       </a>
       <a href="sop-300-up-047.html" class="analysis-link-card">
         <div class="ana-code">PKKK/300/UP/047</div>
-        <div class="ana-name">Screening of Theophylline &amp; Caffeine in Cosmetic Samples</div>
+        <div class="ana-name">Theophylline &amp; Caffeine in Cosmetics (GCMS)</div>
+        <span class="ana-badge">Buka SOP Kaedah →</span>
+      </a>
+      <a href="sop-300-up-048.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/048</div>
+        <div class="ana-name">Hydroquinone in Cosmetics (GCMS)</div>
+        <span class="ana-badge">Buka SOP Kaedah →</span>
+      </a>
+      <a href="sop-300-up-049.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/049</div>
+        <div class="ana-name">Diethylene Glycol in Toothpaste (GCMS)</div>
+        <span class="ana-badge">Buka SOP Kaedah →</span>
+      </a>
+      <a href="sop-300-up-059.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/059</div>
+        <div class="ana-name">Antimicrobials in Cosmetics (GCMS)</div>
+        <span class="ana-badge">Buka SOP Kaedah →</span>
+      </a>
+      <a href="sop-300-up-062.html" class="analysis-link-card">
+        <div class="ana-code">PKKK/300/UP/062</div>
+        <div class="ana-name">Volatile Compounds in Cosmetics (GCMS)</div>
         <span class="ana-badge">Buka SOP Kaedah →</span>
       </a>
     </div>
@@ -388,7 +608,7 @@
       </tr>
       <tr>
         <td><strong>No. Dokumen:</strong> PKKK/300/UP/040</td>
-        <td><strong>Terbitan / Semakan:</strong> Terbitan 3 Semakan 0</td>
+        <td><strong>Terbitan / Semakan:</strong> Terbitan 4 Semakan 1</td>
       </tr>
       <tr>
         <td><strong>Tarikh Kuatkuasa:</strong> 10 April 2026</td>
@@ -398,233 +618,558 @@
 
     <!-- Quick Navigation TOC Pills -->
     <div class="toc-pills">
-      <a href="#sec-1" class="toc-pill">1.0 Tujuan &amp; Skop</a>
-      <a href="#sec-2" class="toc-pill">2.0 Tanggungjawab</a>
-      <a href="#sec-mod-a" class="toc-pill highlight">6.1 (A) Startup &amp; Vakum</a>
-      <a href="#sec-mod-b" class="toc-pill highlight">6.2 (B) Autotune &amp; QC</a>
-      <a href="#sec-mod-c" class="toc-pill highlight">6.3 (C) Ujian Kualitatif</a>
-      <a href="#sec-mod-d" class="toc-pill highlight">6.4 (D) Ujian Kuantitatif</a>
-      <a href="#sec-mod-e" class="toc-pill highlight">6.5 (E) Shutdown GCMS</a>
-      <a href="#sec-perf" class="toc-pill">📊 Performance Check Criteria</a>
+      <a href="#sec-rev" class="toc-pill">📋 Sejarah Pindaan</a>
+      <a href="#sec-1" class="toc-pill">1.0 Tujuan</a>
+      <a href="#sec-2" class="toc-pill">2.0 Skop</a>
+      <a href="#sec-3" class="toc-pill">3.0 Definisi</a>
+      <a href="#sec-5" class="toc-pill">5.0 Tanggungjawab</a>
+      <a href="#sec-mod-a" class="toc-pill highlight">6.1 (A) Start Up</a>
+      <a href="#sec-mod-b" class="toc-pill highlight">6.2 (B) Autotune</a>
+      <a href="#sec-mod-c" class="toc-pill highlight">6.3 (C) Kualitatif</a>
+      <a href="#sec-mod-d" class="toc-pill highlight">6.4 (D) Kuantitatif</a>
+      <a href="#sec-mod-e" class="toc-pill highlight">6.5 (E) Shutdown</a>
+      <a href="#sec-perf" class="toc-pill">📊 Performance Check</a>
       <a href="#sec-7" class="toc-pill">7.0 Rekod Kualiti</a>
+      <a href="#sec-ref" class="toc-pill">📚 Rujukan</a>
     </div>
 
-    <!-- 1.0 TUJUAN & SKOP -->
+    <!-- 0.0 SEJARAH PINDAAN -->
+    <div class="sop-section-container sec-theme-slate" id="sec-rev">
+      <div class="sop-section-header">
+        <span class="sec-icon">📋</span>
+        <h2>0.0 SEJARAH PINDAAN &amp; SEMAKAN (REVISION HISTORY)</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-tag">REVISION HISTORY</span>
+            <span class="table-doc-code">PKKK/300/UP/040</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <thead>
+                <tr><th>Issue</th><th>Revision</th><th>Written by</th><th>Reviewed by</th><th>Approved by</th><th>Effective Date</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>0</td><td>Norshahriza Ahmad</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>15 November 2016</td></tr>
+                <tr><td>2</td><td>0</td><td>Norshahriza Ahmad</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>10 Februari 2020</td></tr>
+                <tr><td>2</td><td>1</td><td>Norshahriza Ahmad</td><td>Nor Izyani Hanafi</td><td>Ooi Suat Hong</td><td>15 Disember 2020</td></tr>
+                <tr><td>3</td><td>0</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>Wan Nurul Aina Mior Abdullah</td><td>1 November 2022</td></tr>
+                <tr><td>4</td><td>0</td><td>Leong Lip Wai</td><td>Gopinatha Ganesh</td><td>Nor Izyani Hanafi</td><td>1 April 2024</td></tr>
+                <tr><td><strong>4</strong></td><td><strong>1</strong></td><td>Nurul Nadiah Noh</td><td>Gopinatha Ganesh</td><td>Ida Syazrina Ibrahim</td><td><strong>10 April 2026</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="diag-box" style="margin-top:1rem">
+          <div class="diag-box-title">📝 Ringkasan Pindaan Terkini (Issue 4 Rev 1):</div>
+          <ul style="margin-left:1.2rem;font-size:0.88rem;line-height:1.7;color:var(--text-body)">
+            <li><strong>Issue 2 Rev 0:</strong> Kemaskini nombor dokumen dari PKK/300/KOS/012 ke PKK/300/HMS/010. Kemaskini tajuk dokumen.</li>
+            <li><strong>Issue 2 Rev 1:</strong> Kemaskini nama agensi dari NPRA ke Bahagian Regulatori Farmasi Negara (NPRA). Tukar bahasa 6.2 Performance Check ke English.</li>
+            <li><strong>Issue 3 Rev 0:</strong> Kemaskini nombor dokumen dari PKK/300/HMS/010 ke PKKK/300/HMS/010. Kemaskini Seksyen 5 Tanggungjawab.</li>
+            <li><strong>Issue 4 Rev 0:</strong> Kemaskini nombor dokumen dari PKKK/300/HMS/010 ke PKKK/300/KOS/006. Kemaskini Seksyen 5 Tanggungjawab.</li>
+            <li><strong>Issue 4 Rev 1 (Terkini):</strong> Kemaskini nombor dokumen dari PKKK/300/KOS/006 ke <code>PKKK/300/UP/040</code>. Tarikh kuatkuasa: 10 April 2026.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.0 TUJUAN -->
     <div class="sop-section-container sec-theme-cyan" id="sec-1">
       <div class="sop-section-header">
         <span class="sec-icon">🎯</span>
-        <h2>1.0 TUJUAN &amp; 2.0 SKOP</h2>
+        <h2>1.0 TUJUAN (PURPOSE)</h2>
       </div>
       <div class="sop-section-body">
-        <p class="sop-p"><strong>1.0 TUJUAN:</strong> Arahan kerja ini menggariskan panduan langkah demi langkah yang terperinci bagi mengendalikan instrumen Gas Chromatography-Mass Spectrometer (GCMS) Shimadzu QP2010 Ultra untuk tujuan pengujian kualitatif (screening) dan kuantitatif (assay) dengan cekap, tepat dan selamat mengikut piawaian ISO/IEC 17025.</p>
-        <p class="sop-p"><strong>2.0 SKOP:</strong> Digunapakai oleh semua penganalisis di Unit Penyaringan semasa mengendalikan alat GCMS Shimadzu QP2010 Ultra bagi analisis produk tradisional, suplemen kesihatan dan persediaan kosmetik.</p>
+        <p class="sop-p"><strong>1.1</strong> Arahan kerja ini menggariskan panduan langkah demi langkah yang terperinci bagi mengendalikan instrumen Gas Chromatography-Mass Spectrometer (GCMS) Shimadzu QP2010 Ultra untuk tujuan pengujian kualitatif (screening) dan kuantitatif (assay) dengan cekap, tepat dan selamat mengikut piawaian ISO/IEC 17025.</p>
+        <p class="sop-p" style="color:var(--text-muted);font-style:italic">This document is intended to establish a standard operating manual for Gas Chromatography Mass Spectrometer (GCMS) in the laboratory.</p>
+      </div>
+    </div>
+
+    <!-- 2.0 SKOP -->
+    <div class="sop-section-container sec-theme-cyan" id="sec-2">
+      <div class="sop-section-header">
+        <span class="sec-icon">📐</span>
+        <h2>2.0 SKOP (SCOPE)</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p"><strong>2.1</strong> Digunapakai oleh semua penganalisis di Unit Penyaringan semasa mengendalikan alat <strong>GCMS Shimadzu QP2010 Ultra</strong> bagi analisis produk tradisional, suplemen kesihatan dan persediaan kosmetik.</p>
+        <p class="sop-p" style="color:var(--text-muted);font-style:italic">This guide shall be used for the operation of GCMS Shimadzu QP2010 Ultra.</p>
+      </div>
+    </div>
+
+    <!-- 3.0 DEFINISI -->
+    <div class="sop-section-container sec-theme-purple" id="sec-3">
+      <div class="sop-section-header">
+        <span class="sec-icon">📖</span>
+        <h2>3.0 DEFINISI (DEFINITIONS)</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="def-grid">
+          <span class="def-abbr">GCMS</span><span class="def-full">Gas Chromatography Mass Spectrometer — instrumen gabungan pemisahan gas kromatografi dengan pengesanan spektrometri jisim.</span>
+          <span class="def-abbr">FWHM</span><span class="def-full">Full Width at Half Maximum — ukuran resolusi puncak jisim; kriteria prestasi kuadrupola.</span>
+          <span class="def-abbr">UPS</span><span class="def-full">Uninterrupted Power Supply — bekalan kuasa tanpa gangguan untuk melindungi sistem daripada pemadaman.</span>
+          <span class="def-abbr">GC</span><span class="def-full">Gas Chromatograph — bahagian pemisahan kromatografi gas.</span>
+          <span class="def-abbr">MS</span><span class="def-full">Mass Spectrometer — bahagian pengesanan spektrometri jisim.</span>
+          <span class="def-abbr">EI</span><span class="def-full">Electron Ionization — kaedah pengionan pada 70 eV untuk fragmentasi molekul.</span>
+          <span class="def-abbr">PFTBA</span><span class="def-full">Perfluorotributylamine — gas kalibrasi standard untuk Autotuning (m/z 69, 219, 502).</span>
+          <span class="def-abbr">SIM</span><span class="def-full">Selected Ion Monitoring — mod pengimbasan terpilih untuk kuantitasi bersasaran.</span>
+          <span class="def-abbr">COAST</span><span class="def-full">Creation of Automatic SIM Table — utiliti automatik Shimadzu untuk penjanaan jadual SIM.</span>
+          <span class="def-abbr">NIST</span><span class="def-full">National Institute of Standards and Technology — pangkalan data rujukan spektrum jisim.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4.0 CARTA ALIRAN -->
+    <div class="sop-section-container sec-theme-purple" id="sec-4">
+      <div class="sop-section-header">
+        <span class="sec-icon">🔀</span>
+        <h2>4.0 CARTA ALIRAN (FLOWCHART)</h2>
+      </div>
+      <div class="sop-section-body">
+        <p class="sop-p" style="color:var(--text-muted);font-style:italic">Tiada (None) — Rujuk aliran kerja visual di bahagian atas halaman ini.</p>
       </div>
     </div>
 
     <!-- 5.0 TANGGUNGJAWAB -->
-    <div class="sop-section-container sec-theme-mint" id="sec-2">
+    <div class="sop-section-container sec-theme-mint" id="sec-5">
       <div class="sop-section-header">
         <span class="sec-icon">👥</span>
-        <h2>5.0 TANGGUNGJAWAB</h2>
+        <h2>5.0 TANGGUNGJAWAB (RESPONSIBILITIES)</h2>
       </div>
       <div class="sop-section-body">
-        <div class="sop-list-item"><span class="sop-bullet">▹</span> <span class="sop-list-text"><strong>Ketua Unit:</strong> Memastikan prosedur ini dipatuhi sepenuhnya dan alat diselenggara mengikut jadual.</span></div>
-        <div class="sop-list-item"><span class="sop-bullet">▹</span> <span class="sop-list-text"><strong>Pegawai Farmasi:</strong> Menyelia operasi pengujian, mengesahkan laporan Autotuning harian, dan meluluskan integrasi data kromatogram.</span></div>
-        <div class="sop-list-item"><span class="sop-bullet">▹</span> <span class="sop-list-text"><strong>Penolong Pegawai Farmasi (PPF):</strong> Menjalankan startup vakum, semakan kebocoran udara/air, autotune, penyediaan turutan suntikan (batch) dan pembersihan alat.</span></div>
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-tag">SENARAI TANGGUNGJAWAB</span>
+            <span class="table-doc-code">Seksyen 5.0</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <thead><tr><th>No.</th><th>Jawatan</th><th>Tanggungjawab</th></tr></thead>
+              <tbody>
+                <tr><td>5.1</td><td><strong>Ketua Unit (Head of Unit)</strong></td><td>Meluluskan dan melaksanakan prosedur kerja di makmal. Memastikan prosedur ini dipatuhi sepenuhnya dan alat diselenggara mengikut jadual.</td></tr>
+                <tr><td>5.2</td><td><strong>Pegawai Farmasi (Pharmacist)</strong></td><td>Menyemak prosedur kerja dari semasa ke semasa dan memastikan pematuhan kepada prosedur yang dilaksanakan. Mengesahkan laporan Autotuning harian dan meluluskan integrasi data kromatogram.</td></tr>
+                <tr><td>5.3</td><td><strong>Pegawai Farmasi / Penolong Pegawai Farmasi</strong></td><td>Mengendalikan instrumen mengikut prosedur yang dilaksanakan. Menjalankan startup vakum, semakan kebocoran udara/air, autotune, penyediaan batch dan pembersihan alat.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- 6.0 PROSEDUR SECTION -->
-    <div class="sop-section-container sec-theme-amber" id="sec-3">
+    <!-- 6.0 PROSEDUR PENGENDALIAN TERPERINCI -->
+    <div class="sop-section-container sec-theme-amber" id="sec-6">
       <div class="sop-section-header">
         <span class="sec-icon">🔬</span>
         <h2>6.0 PROSEDUR PENGENDALIAN TERPERINCI (STEP-BY-STEP)</h2>
       </div>
       <div class="sop-section-body">
 
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- (A) Starting Up GCMS -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <div class="sop-step-card" id="sec-mod-a">
           <div class="step-card-header">
             <div class="step-check-wrap">
               <input type="checkbox" id="step-040-1" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
               <label for="step-040-1" class="sop-step-title">
-                6.1 (A) Tatacara Memulakan GCMS (Starting Up &amp; Vacuum Leak Check)
+                6.1 (A) Tatacara Memulakan Sistem GCMS (Start Up GCMS System)
               </label>
             </div>
           </div>
           <div class="step-card-body">
-            <ol style="margin-left:1.5rem;line-height:1.8;color:var(--text-body)">
-              <li>Buka suis utama bekalan kuasa, suis instrumen GC, MS, komputer, pencetak dan autosampler.</li>
-              <li>Buka injap gas pembawa <strong>Helium (Ketulenan Tinggi &ge; 99.999%)</strong> pada silinder gas dan pastikan tekanan alur keluar berada pada bacaan optimum <strong>500–600 kPa (5–6 bar)</strong>.</li>
-              <li>Klik dua kali ikon <strong>“GCMS Real Time Analysis”</strong> pada desktop.</li>
-              <li>Klik ikon <strong>“Vacuum Control”</strong> pada bar pembantu (Assistant Bar) di sebelah kiri paparan.</li>
-              <li>Klik butang <strong>“Auto Startup”</strong> untuk memulakan pam vakum (Turbo Molecular Pump &amp; Rotary Pump).</li>
-              <li>Tunggu sehingga status memaparkan <strong>“Completed”</strong>, kemudian klik <strong>“Close”</strong>.</li>
-              <li><strong>Ujian Kebocoran Vakum (Vacuum Leak Check):</strong>
-                <div class="diag-box">
-                  <div class="diag-box-title">🔍 Tatacara Pemeriksaan Kebocoran Udara / Air (Air/Water Check):</div>
-                  <ul style="margin-left:1.2rem;font-size:0.9rem;line-height:1.6">
-                    <li>Tunggu selama <strong>10 minit</strong> selepas sistem vakum dihidupkan untuk penstabilan tekanan tinggi.</li>
-                    <li>Klik ikon <strong>“Tuning”</strong> ➔ klik ikon <strong>“Peak Monitor View”</strong> pada Tuning Assistant Bar.</li>
-                    <li>Klik <strong>“Monitor Group”</strong> dan pilih <strong>“Water,Air”</strong> daripada senarai menu.</li>
-                    <li>Klik <strong>“Filament On/Off”</strong> untuk menghidupkan filamen. Puncak jisim akan dipaparkan dalam 3 tetingkap monitor.</li>
-                    <li>Laraskan voltan pengesan secara berperingkat supaya ketinggian puncak bagi <strong>m/z 18 (Air)</strong> sepadan dengan separuh ketinggian paparan.</li>
-                    <li>Bandingkan ketinggian puncak bagi <strong>m/z 18 (Air)</strong> dan <strong>m/z 28 (Nitrogen)</strong>. <em>Pastikan ketinggian puncak m/z 28 (Nitrogen) tidak melebihi ketinggian m/z 18 (Air).</em> (Jika Nitrogen lebih tinggi, ini menandakan terdapat kebocoran udara pada sambungan kolum atau inlet septum).</li>
-                    <li>Klik <strong>“Filament On/Off”</strong> untuk mematikan filamen. Tutup tetingkap Tuning dan klik ikon <strong>“Top”</strong> pada assistant bar.</li>
-                  </ul>
-                </div>
-              </li>
+
+            <div class="safety-box">
+              <div class="safety-box-title">⚠️ AMARAN KESELAMATAN (SAFETY PRECAUTION):</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Pastikan silinder gas Helium mempunyai tekanan yang mencukupi. <strong>Jangan sekali-kali menghidupkan pam vakum MS tanpa bekalan gas pembawa Helium</strong> — ini boleh merosakkan filamen dan pam turbo. Periksa semua sambungan kolum/inlet dan pastikan tiada kebocoran sebelum meneruskan.</p>
+            </div>
+
+            <ol class="proc-list">
+              <li><strong>Hidupkan UPS</strong> (Uninterrupted Power Supply) terlebih dahulu.</li>
+              <li>Hidupkan semua peralatan persisian (<strong>Autosampler AOC-20i</strong>) yang disambungkan ke sistem GCMS <em>sebelum</em> menghidupkan unit utama.</li>
+              <li>Hidupkan mana-mana unit pra-rawatan sampel (sample pretreatment unit) yang disambungkan kepada sistem sebelum menghidupkan GCMS.</li>
+              <li>Buka suis kuasa unit <strong>GC</strong> (Gas Chromatograph).</li>
+              <li>Buka suis kuasa unit <strong>MS</strong> (Mass Spectrometer).</li>
+              <li>Hidupkan kuasa komputer, pencetak dan monitor paparan.</li>
+              <li>Klik dua kali ikon <code>GCMS Real Time Analysis</code> pada desktop komputer.</li>
+              <li>Klik <strong>OK</strong> apabila prompt <em>Lab Solutions GCMSsolution</em> dipaparkan.</li>
+              <li>Buka injap silinder gas pembawa <strong>Helium (Ketulenan ≥ 99.999%)</strong> dan pastikan tekanan alur keluar pada bacaan optimum <strong>500–600 kPa (5–6 bar)</strong>.</li>
+              <li>Klik ikon <code>Vacuum Control</code> pada bar pembantu <em>Real Time</em> assistant bar.</li>
+              <li>Klik butang <code>Auto Startup</code> untuk memulakan pam vakum (Turbo Molecular Pump &amp; Rotary Pump).</li>
+              <li>Tunggu sehingga status memaparkan <strong>"Completed"</strong>, kemudian klik <code>Close</code>.</li>
             </ol>
+
+            <div class="sub-step-card">
+              <div class="sub-step-title">🔍 Pemeriksaan Kebocoran Vakum (Vacuum Leak Check / Air-Water Check)</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body);margin-bottom:0.6rem">Tunggu selama <strong>10 minit</strong> selepas Auto Startup selesai untuk membenarkan penstabilan tekanan vakum tinggi sebelum memulakan pemeriksaan kebocoran:</p>
+              <ol class="proc-list">
+                <li>Klik ikon <code>Tuning</code> pada bar pembantu <em>Real Time</em>.</li>
+                <li>Klik ikon <code>Peak Monitor View</code> pada bar pembantu <em>Tuning</em>.</li>
+                <li>Klik <code>Monitor Group</code> dan pilih <strong>"Water,Air"</strong> daripada senarai menu.</li>
+                <li>Klik <code>Filament On/Off</code> untuk menghidupkan filamen. Puncak jisim akan dipaparkan dalam <strong>3 tetingkap monitor</strong> — m/z 18 (Water), m/z 28 (Nitrogen), m/z 32 (Oxygen).</li>
+                <li>Laraskan voltan pengesan secara berperingkat supaya ketinggian puncak bagi <strong>m/z 18 (Water)</strong> sepadan dengan <em>separuh ketinggian paparan</em>.</li>
+                <li>Bandingkan ketinggian puncak bagi <strong>m/z 18 (Water)</strong> dan <strong>m/z 28 (Nitrogen)</strong>.
+                  <div class="diag-box" style="margin-top:0.6rem">
+                    <div class="diag-box-title">📐 Kriteria LULUS (Pass Criteria):</div>
+                    <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)"><strong>Puncak m/z 28 (Nitrogen) TIDAK BOLEH melebihi 2× ganda ketinggian puncak m/z 18 (Water).</strong></p>
+                    <p style="font-size:0.85rem;color:var(--text-muted)">Jika Nitrogen lebih tinggi → menandakan terdapat kebocoran udara pada sambungan kolum, inlet septum, atau O-ring. Ketatkan nat kolum dan ganti septum jika perlu.</p>
+                  </div>
+                </li>
+                <li>Klik <code>Filament On/Off</code> untuk <strong>mematikan</strong> filamen.</li>
+                <li>Tutup tetingkap Tuning dan klik ikon <code>Top</code> pada assistant bar untuk kembali ke paparan utama.</li>
+              </ol>
+            </div>
+
+            <div class="tip-box">
+              <div class="tip-box-title">💡 Tip Penganalisis:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Tukar septum suntikan setiap <strong>100 suntikan</strong> bagi mengelakkan kebocoran gas pembawa Helium dan kemunculan <em>ghost peaks</em>. Periksa liner secara berkala dan tukar jika kotor.</p>
+            </div>
           </div>
         </div>
 
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- (B) Execute Autotuning -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <div class="sop-step-card" id="sec-mod-b">
           <div class="step-card-header">
             <div class="step-check-wrap">
               <input type="checkbox" id="step-040-2" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
               <label for="step-040-2" class="sop-step-title">
-                6.2 (B) Pelaksanaan Penalaan Automatik (Autotuning) &amp; Semakan Prestasi
+                6.2 (B) Pelaksanaan Penalaan Automatik (Execute Autotuning) &amp; Semakan Prestasi
               </label>
             </div>
           </div>
           <div class="step-card-body">
-            <ol style="margin-left:1.5rem;line-height:1.8;color:var(--text-body)">
-              <li><strong>Tempoh Pemanasan &amp; Penstabilan (Thermal &amp; Vacuum Warm-Up):</strong>
-                <br>Tunggu sekurang-kurangnya <strong>2 jam</strong> (sebelum memulakan analisis kualitatif) atau <strong>4 jam</strong> (sebelum memulakan analisis kuantitatif) selepas startup vakum.</li>
-              <li>Klik ikon <strong>“Tuning”</strong> pada assistant bar Real Time ➔ klik <strong>“Peak Monitor View”</strong>.</li>
-              <li>Pilih menu <code>File</code> ➔ <strong>“New Tuning File”</strong>.</li>
-              <li>Pilih filamen yang ingin digunakan (Filament 1 atau Filament 2).</li>
-              <li>Klik ikon <strong>“Start Auto Tuning”</strong> pada assistant bar Tuning.</li>
-              <li>Masukkan nama fail penalaan mengikut format tarikh (cth: <code>TUNE_20260410.tun</code>) dan klik <strong>“Save”</strong>.</li>
-              <li>Proses Autotuning dijalankan secara automatik menggunakan gas kalibrasi PFTBA (Perfluorotributylamine). Apabila Autotuning selesai, laporan rasmi akan dicetak secara automatik.</li>
-              <li>Klik <strong>“Save”</strong> pada bar alatan untuk menyimpan parameter penalaan ke dalam method.</li>
+
+            <div class="safety-box">
+              <div class="safety-box-title">⏱️ TEMPOH PEMANASAN MANDATORI (WARM-UP):</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Tunggu sekurang-kurangnya <strong>2 jam</strong> (sebelum analisis kualitatif) atau <strong>4 jam</strong> (sebelum analisis kuantitatif) selepas startup vakum sebelum menjalankan Autotuning. Tempoh ini membenarkan penstabilan terma dan vakum yang optimum.</p>
+            </div>
+
+            <ol class="proc-list">
+              <li>Klik ikon <code>Tuning</code> pada bar pembantu <em>Real Time</em>.</li>
+              <li>Klik ikon <code>Peak Monitor View</code> pada bar pembantu <em>Tuning</em>.</li>
+              <li>Pilih menu <code>File</code> → <code>New Tuning File</code>.</li>
+              <li>Pilih filamen yang ingin digunakan (<strong>Filament 1</strong> atau <strong>Filament 2</strong>).</li>
+              <li>Klik ikon <code>Start Auto Tuning</code> pada bar pembantu <em>Tuning</em>.</li>
+              <li>Masukkan nama fail penalaan mengikut format tarikh (cth: <code>TUNE_20260410.tun</code>) dan klik <code>Save</code>.</li>
+              <li>Proses Autotuning dijalankan secara automatik menggunakan gas kalibrasi <strong>PFTBA</strong> (Perfluorotributylamine). Apabila Autotuning selesai, <strong>laporan rasmi akan dicetak secara automatik</strong>.</li>
+              <li>Klik <code>Save</code> pada bar alatan untuk menyimpan parameter penalaan ke dalam method file.</li>
             </ol>
 
-            <div class="table-card">
+            <!-- Figure: Autotuning Report -->
+            <div class="fig-callout" onclick="this.classList.toggle('zoomed')">
+              <img src="img_040/image1.png" alt="Laporan Autotuning PFTBA — GCMS QP2010 Ultra" loading="lazy">
+              <div class="fig-caption">
+                <span class="fig-title">Rajah 1 — Laporan Autotuning (PFTBA Standard Spectra Tune)</span>
+                <span class="fig-subdesc">Contoh laporan Autotuning rasmi menunjukkan: spektrum jisim PFTBA (m/z 69, 219, 502), nilai FWHM, voltan pengesan (Detector Voltage), dan 4 kriteria prestasi yang mesti dipenuhi. Klik untuk zum.</span>
+                <span class="fig-badge">📎 Sumber: 300 UP 040 GCMS Shimadzu QP2010 Ultra.docx · Rajah Rasmi</span>
+              </div>
+            </div>
+
+            <!-- Performance Check Criteria Table -->
+            <div class="table-card" id="sec-perf">
               <div class="table-card-header">
                 <span class="table-tag">KRITERIA PENERIMAAN PRESTASI (PERFORMANCE CHECK ACCEPTANCE CRITERIA)</span>
-                <span class="table-doc-code">PKKK/300/UP/040</span>
+                <span class="table-doc-code">Seksyen 6.2</span>
               </div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body);margin-bottom:0.8rem">Performance Check dijalankan setiap kali sebelum analisis untuk memastikan sensitiviti instrumen sentiasa berada di tahap optimum. Ia dilaksanakan melalui Autotuning dan parameter berikut <strong>MESTI dipenuhi</strong>:</p>
               <div class="table-responsive">
                 <table class="table-official">
                   <thead>
-                    <tr><th>Parameter Pemeriksaan</th><th>Kriteria Had Penerimaan</th><th>Tindakan Jika Gagal</th></tr>
+                    <tr><th style="width:5%">No.</th><th style="width:30%">Parameter Pemeriksaan</th><th style="width:30%">Kriteria Had Penerimaan</th><th>Tindakan Jika Gagal</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><strong>Nilai FWHM (Peak Width at Half Max)</strong></td><td><span class="pass-badge">0.50 hingga 0.70</span></td><td>Laraskan resolusi kanta kuadrupola</td></tr>
-                    <tr><td><strong>Voltan Pengesan (Detector Voltage)</strong></td><td><span class="pass-badge">&lt; 2.00 kV</span></td><td>Tukar pengesan jika melebihi 2.5 kV (Aging)</td></tr>
-                    <tr><td><strong>Intensiti Relatif m/z 502</strong></td><td><span class="pass-badge">&gt; 2.0 %</span> (berbanding m/z 69)</td><td>Bersihkan ion source jika sensitiviti jisim tinggi rendah</td></tr>
-                    <tr><td><strong>Nisbah Puncak m/z 69 vs m/z 28</strong></td><td><span class="pass-badge">Puncak m/z 69 sekurang-kurangnya 2× ganda m/z 28</span></td><td>Periksa kebocoran udara atau ketatkan nat kolum</td></tr>
+                    <tr>
+                      <td><strong>1</strong></td>
+                      <td><strong>Nilai FWHM</strong> (Full Width at Half Maximum)</td>
+                      <td><span class="pass-badge">0.50 hingga 0.70</span></td>
+                      <td>Laraskan resolusi kanta kuadrupola (Quadrupole Lens). Jika masih gagal, lakukan pembersihan sumber ion (Ion Source Cleaning).</td>
+                    </tr>
+                    <tr>
+                      <td><strong>2</strong></td>
+                      <td><strong>Voltan Pengesan</strong> (Detector Voltage)</td>
+                      <td><span class="pass-badge">&lt; 2.00 kV</span></td>
+                      <td>Jika melebihi 2.0 kV, pengesan electron multiplier mungkin telah uzur (<em>aging</em>). Tukar pengesan jika melebihi 2.5 kV.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>3</strong></td>
+                      <td><strong>Nisbah Intensiti Relatif m/z 502</strong></td>
+                      <td><span class="pass-badge">&gt; 2.0%</span> (berbanding m/z 69)<br><small style="color:var(--text-muted)">QP2010S &amp; SE: &gt; 1%</small></td>
+                      <td>Bersihkan sumber ion (Ion Source) jika sensitiviti jisim tinggi (high-mass sensitivity) rendah. Periksa filamen.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>4</strong></td>
+                      <td><strong>Nisbah Puncak m/z 69 vs m/z 28</strong></td>
+                      <td><span class="pass-badge">Puncak m/z 69 sekurang-kurangnya 2× ganda m/z 28</span></td>
+                      <td>Periksa kebocoran udara (air leak). Ketatkan nat kolum atau ganti septum inlet. Rujuk Appendix K Maintenance P.104.</td>
+                    </tr>
                   </tbody>
                 </table>
+              </div>
+
+              <div class="safety-box" style="margin-top:1rem">
+                <div class="safety-box-title">🚨 NOTA PENTING (NOTE):</div>
+                <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">If any irregularities are discovered above, possible causes could include a <strong>vacuum leak</strong>, <strong>poor column connections</strong>, or <strong>contaminated ion source</strong>. See <em>"Appendix K Maintenance" P.104</em> in the Shimadzu Operation Guide to implement corrective measures.</p>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- (C) Qualitative Analysis -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <div class="sop-step-card" id="sec-mod-c">
           <div class="step-card-header">
             <div class="step-check-wrap">
               <input type="checkbox" id="step-040-3" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
               <label for="step-040-3" class="sop-step-title">
-                6.3 (C) Tatacara Analisis Kualitatif &amp; Carian Pustaka Spektrum (Library Search)
+                6.3 (C) Tatacara Analisis Kualitatif &amp; Carian Pustaka Spektrum (Qualitative Analysis &amp; Library Search)
               </label>
             </div>
           </div>
           <div class="step-card-body">
-            <ol style="margin-left:1.5rem;line-height:1.8;color:var(--text-body)">
-              <li>Buka program <strong>GCMS Real Time Analysis</strong>.</li>
-              <li>Klik ikon <strong>“Data Acquisition”</strong> pada Assistant Bar Real Time.</li>
-              <li>Pilih menu <code>File</code> ➔ <strong>“New Method File”</strong>.</li>
-              <li>Klik tab <strong>“Sampler”</strong>: Tetapkan bilangan bilasan jarum (syringe pre/post rinses) dengan pelarut pembersih Methanol/DCM (cth: 3x pre-rinse, 5x post-rinse).</li>
-              <li>Klik tab <strong>“GC”</strong>: Tetapkan suhu inlet (cth: 250 °C), mod suntikan (Split / Splitless), kadar aliran turus dan program suhu oven kromatografi mengikut SOP kaedah khusus.</li>
-              <li>Klik tab <strong>“MS”</strong>: Tetapkan mod imbasan (Scan Mode: m/z 35–500), suhu ion source (200–230 °C), suhu interface (240–250 °C) dan Solvent Cut Time (cth: 3.0–4.0 minit).</li>
-              <li>Pilih <code>Method</code> ➔ <strong>“Qualitative Parameters”</strong> ➔ tab <strong>“Similarity Search”</strong>: Pilih pangkalan data NIST / Wiley dan tetapkan Threshold Similarity Search (cth: Min SI &gt; 80).</li>
-              <li>Simpan fail kaedah: <code>File</code> ➔ <strong>“Save Method File As”</strong>.</li>
-              <li><strong>Suntikan Sampel Tunggal:</strong>
-                <br>Klik <strong>“Sample Login”</strong> ➔ Isikan: <em>Sample Name, Sample ID, Data File Name, Vial #, Injection Volume (µL)</em> ➔ Muat naik Fail Tuning ➔ Klik <strong>OK</strong> ➔ Klik <strong>“Download”</strong> ➔ Tekan butang <strong>“Start”</strong>.
-              </li>
-              <li><strong>Pemprosesan Data Kualitatif (Postrun Data Analysis):</strong>
-                <div class="diag-box">
-                  <div class="diag-box-title">📊 Langkah Analisis Spektrum &amp; Library Matching:</div>
-                  <ul style="margin-left:1.2rem;font-size:0.9rem;line-height:1.6">
-                    <li>Buka <strong>“GCMS Postrun Analysis”</strong> ➔ klik ikon <strong>“Qualitative”</strong> ➔ Dwiklik fail data yang ingin dianalisis.</li>
-                    <li>Besarkan kromatogram (zoom in) pada puncak yang ingin diperiksa dengan menyeret tetikus (drag mouse).</li>
-                    <li>Dwiklik tepat pada bahagian puncak tertinggi (Peak Apex) untuk memaparkan spektrum jisim sampel.</li>
-                    <li><strong>Penolakan Latar Belakang (Background Subtraction):</strong> Klik ikon <strong>“Spectrum Subtraction”</strong> pada bar alatan ➔ Dwiklik pada garisan dasar sebelum atau selepas puncak untuk menolak gangguan ion kolum (baseline bleed).</li>
-                    <li>Klik ikon <strong>“Similarity Search”</strong> pada Assistant Bar untuk memadankan spektrum dengan pustaka NIST.</li>
-                    <li>Tandakan kotak pilihan (checkbox) pada sebatian sasaran yang sepadan dan klik <strong>“Copy marked compound name to Spectrum Process Table”</strong>.</li>
-                    <li>Tutup tetingkap Qualitative Table dan klik <strong>“Save”</strong>.</li>
-                    <li>Cetak laporan: Klik <strong>“Report Format”</strong> ➔ Pilih templat laporan ➔ Seret data ➔ Klik <strong>“Print”</strong>.</li>
-                  </ul>
+
+            <div class="diag-box">
+              <div class="diag-box-title">ℹ️ Gambaran Keseluruhan:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Analisis kualitatif dijalankan menggunakan mod <strong>Scan</strong> (Full Scan, m/z 35–500 tipikal) untuk mengenal pasti sebatian sasaran melalui pemadanan spektrum jisim dengan pustaka NIST/Wiley. Proses ini melibatkan 3 fasa: <strong>(i)</strong> Penyediaan kaedah &amp; penetapan kondisi, <strong>(ii)</strong> Suntikan sampel tunggal, dan <strong>(iii)</strong> Pemprosesan data Postrun.</p>
+            </div>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1rem 0 0.6rem">Fasa 1: Penyediaan Kaedah Analisis (Method Setup)</h4>
+            <ol class="proc-list">
+              <li>Buka program <code>GCMS Real Time Analysis</code>.</li>
+              <li>Klik ikon <code>Data Acquisition</code> pada bar pembantu <em>Real Time</em>.</li>
+              <li>Pilih menu <code>File</code> → <code>New Method File</code>.</li>
+              <li>Klik tab <code>Sampler</code>: Tetapkan bilangan bilasan jarum (syringe pre/post rinses) yang sesuai dengan sampel (cth: 3× pre-rinse, 5× post-rinse dengan pelarut Methanol/DCM).</li>
+              <li>Klik tab <code>GC</code>: Tetapkan kondisi analisis — suhu inlet (cth: 250 °C), mod suntikan (Split/Splitless), kadar aliran turus dan program suhu oven kromatografi mengikut SOP kaedah khusus.</li>
+              <li>Klik tab <code>MS</code>: Tetapkan kondisi MS — mod imbasan (Scan Mode: m/z 35–500), suhu Ion Source (200–230 °C), suhu Interface (240–250 °C), Solvent Cut Time (cth: 3.0–4.0 minit).</li>
+              <li>Pilih menu <code>Method</code> → <code>Qualitative Parameters</code>.</li>
+              <li>Klik tab <code>Similarity Search</code>: Pilih pangkalan data <strong>NIST / Wiley</strong> dan tetapkan had minimum padanan (Threshold: Min SI &gt; 80).</li>
+              <li>Simpan fail kaedah: <code>File</code> → <code>Save Method File As</code>. Masukkan nama fail dan klik <code>Save</code>.</li>
+            </ol>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1.2rem 0 0.6rem">Fasa 2: Suntikan Sampel Tunggal (Single Sample Injection)</h4>
+            <ol class="proc-list">
+              <li>Klik ikon <code>Data Acquisition</code> pada bar pembantu <em>Real Time</em>.</li>
+              <li>Muatkan fail kaedah (Method File) dan laksanakan Autotuning.</li>
+              <li>Klik ikon <code>Sample Login</code> pada bar pembantu <em>Acquisition</em>.</li>
+              <li>Isikan maklumat berikut:
+                <div class="sub-step-card" style="margin-left:0">
+                  <div class="def-grid" style="grid-template-columns:150px 1fr">
+                    <span class="def-abbr">Sample Name</span><span class="def-full">Nama sampel (cth: TP2024-001)</span>
+                    <span class="def-abbr">Sample ID</span><span class="def-full">No. ID sampel</span>
+                    <span class="def-abbr">Data File</span><span class="def-full">Nama fail data output</span>
+                    <span class="def-abbr">Vial #</span><span class="def-full">No. posisi vial pada autosampler</span>
+                    <span class="def-abbr">Inj. Volume</span><span class="def-full">Isipadu suntikan (µL)</span>
+                    <span class="def-abbr">Tuning File</span><span class="def-full">Fail Autotuning terkini</span>
+                  </div>
                 </div>
               </li>
+              <li>Klik <code>OK</code> → Klik ikon <code>Download</code> pada bar pembantu <em>Acquisition</em> → Tekan butang <code>Start</code>.</li>
             </ol>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1.2rem 0 0.6rem">Fasa 3: Pemprosesan Data Kualitatif (Postrun Data Analysis)</h4>
+            <ol class="proc-list">
+              <li>Klik dua kali ikon <code>GCMS Postrun Analysis</code>.</li>
+              <li>Klik ikon <code>Qualitative</code> pada bar pembantu <em>Postrun</em>.</li>
+              <li>Dwiklik fail data yang ingin dianalisis daripada <em>Data Explorer</em>.</li>
+              <li>Besarkan kromatogram (zoom in) pada puncak sasaran dengan <strong>menyeret tetikus (drag mouse)</strong> pada kawasan yang ingin diperiksa.</li>
+              <li>Pindahkan penunjuk tetikus ke puncak tertinggi (Peak Apex) dan <strong>dwiklik</strong> untuk memaparkan spektrum jisim sampel.</li>
+              <li><strong>Penolakan Latar Belakang (Background Subtraction):</strong> Klik ikon <code>Spectrum Subtraction</code> pada bar alatan. Dwiklik pada garisan dasar sebelum/selepas puncak (kedudukan anak panah merah) untuk menolak gangguan ion kolum (baseline bleed).</li>
+              <li>Klik ikon <code>Similarity Search</code> pada bar pembantu <em>Qualitative</em> untuk memadankan spektrum dengan pustaka NIST.</li>
+              <li>Semak keputusan carian padanan. Tandakan kotak pilihan (checkbox) pada sebatian sasaran yang sepadan dan klik <code>Register Spectrum Table</code>.</li>
+              <li><strong>Ulangi langkah (iv) hingga (viii)</strong> untuk semua sebatian sasaran yang lain.</li>
+              <li>Klik ikon <code>Qualitative Table</code> pada bar pembantu <em>Qualitative</em>.</li>
+              <li>Dwiklik <strong>"Done"</strong> pada baris pertama <em>Spectrum Process Table</em>. Tetingkap <em>Similarity Search Result</em> dibuka.</li>
+              <li>Pilih kotak pada sebatian yang sepadan untuk memasukkan nama sebatian ke dalam jadual spektrum.</li>
+              <li>Klik <code>Copy marked compound name to the Spectrum Process Table</code>.</li>
+              <li><strong>Ulangi langkah (xi) hingga (xiii)</strong> untuk semua keputusan carian sebatian sasaran.</li>
+              <li>Tutup tetingkap <em>Qualitative Table</em> dan klik <code>Save</code> pada bar alatan.</li>
+            </ol>
+
+            <div class="sub-step-card">
+              <div class="sub-step-title">🖨️ Pencetakan Laporan Kualitatif (Report Printing)</div>
+              <ol class="proc-list">
+                <li>Klik ikon <code>Report Format</code> pada bar pembantu <em>Postrun</em>.</li>
+                <li>Klik ikon <code>New</code>. Pilih templat laporan (Report Template) yang diperlukan.</li>
+                <li>Klik tab <code>Data</code> di bawah tetingkap <em>Data Explorer</em>.</li>
+                <li>Pilih data yang perlu dicetak dan <strong>seret (drag) ke dalam templat laporan</strong>.</li>
+                <li>Klik <code>Print</code>.</li>
+              </ol>
+            </div>
           </div>
         </div>
 
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- (D) Quantitative Analysis -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <div class="sop-step-card" id="sec-mod-d">
           <div class="step-card-header">
             <div class="step-check-wrap">
               <input type="checkbox" id="step-040-4" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
               <label for="step-040-4" class="sop-step-title">
-                6.4 (D) Tatacara Analisis Kuantitatif &amp; Pembinaan Jadual SIM Automatik (COAST)
+                6.4 (D) Tatacara Analisis Kuantitatif &amp; Pembinaan Jadual SIM Automatik (Quantitative Analysis &amp; COAST)
               </label>
             </div>
           </div>
           <div class="step-card-body">
-            <ol style="margin-left:1.5rem;line-height:1.8;color:var(--text-body)">
-              <li>Daftarkan waktu penahanan (RT) dan spektrum jisim sebatian sasaran dalam jadual spektrum berdasarkan data kualitatif.</li>
-              <li>Klik ikon <strong>“Compound Table”</strong> pada Assistant Bar Postrun ➔ Dwiklik data fail piawai.</li>
-              <li>Klik ikon <strong>“Wizard(New)”</strong> ➔ Pilih <em>“Use current Spectrum Process Table”</em> ➔ Klik <strong>Next</strong>.</li>
-              <li>Semak spektrum jisim sebatian ➔ Tetapkan jenis keluk kalibrasi (Linear regression R² ≥ 0.995), mod kuantitasi, kepekatan piawai (Aras 1–5), <strong>Target Ion (Quant)</strong> dan <strong>Reference Ion (Qual)</strong> ➔ Klik <strong>Finish</strong>.</li>
-              <li>Simpan jadual sebatian: Klik <strong>“Save Compound Table”</strong> ➔ Klik <strong>“Save”</strong>.</li>
-              <li><strong>Pembinaan Jadual SIM Automatik (COAST - Creation of Automatic SIM Table):</strong>
-                <div class="diag-box">
-                  <div class="diag-box-title">⚡ COAST Automated SIM Table Setup:</div>
-                  <ul style="margin-left:1.2rem;font-size:0.9rem;line-height:1.6">
-                    <li>Klik ikon <strong>“Create SIM Table [COAST]”</strong> ➔ Masukkan nama fail ➔ Klik <strong>Save</strong>.</li>
-                    <li>Besarkan tetingkap COAST ➔ Pilih <strong>“SIM”</strong> ➔ Klik butang <strong>“Update SIM Table”</strong>.</li>
-                    <li>Jadual SIM dengan tetingkap masa (Time Windows) dan nisbah ion akan dijana secara automatik ➔ Klik <strong>OK</strong>.</li>
-                  </ul>
+
+            <div class="diag-box">
+              <div class="diag-box-title">ℹ️ Gambaran Keseluruhan:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Analisis kuantitatif melibatkan 4 fasa utama: <strong>(i)</strong> Pendaftaran jadual sebatian, <strong>(ii)</strong> Penjanaan jadual SIM automatik (COAST), <strong>(iii)</strong> Pemprosesan batch, dan <strong>(iv)</strong> Penjanaan keluk kalibrasi &amp; pengiraan keputusan. Mod pengimbasan <strong>SIM (Selected Ion Monitoring)</strong> digunakan untuk meningkatkan sensitiviti dan kekhususan analisis.</p>
+            </div>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1rem 0 0.6rem">Fasa 1: Pendaftaran Jadual Sebatian (Compound Table Registration)</h4>
+            <ol class="proc-list">
+              <li>Daftarkan waktu penahanan (RT) dan spektrum jisim sebatian sasaran dalam jadual spektrum berdasarkan data Analisis Kualitatif yang telah dijalankan terdahulu.</li>
+              <li>Klik ikon <code>Compound Table</code> pada bar pembantu <em>Postrun</em>.</li>
+              <li>Daripada <em>Data Explorer</em>, dwiklik fail data yang mengandungi <em>Spectrum Process Table</em> bagi sebatian sasaran.</li>
+              <li>Klik ikon <code>Wizard(New)</code> pada bar pembantu <em>Compound Table</em>.</li>
+              <li>Pilih <code>Use current Spectrum Process Table</code> dan kemudian klik <code>Next</code>.</li>
+              <li>Klik <code>Next</code> untuk meneruskan.</li>
+              <li>Pilih baris dalam jadual, <strong>semak spektrum jisim</strong> bagi setiap sebatian dan klik <code>Next</code>.</li>
+              <li>Tetapkan jenis keluk kalibrasi (Linear Regression, R² ≥ 0.995), kaedah kuantitasi, kepekatan piawai (Aras 1–5), dan parameter lain yang diperlukan → Klik <code>Next</code>.</li>
+              <li>Tetapkan kepekatan dan ion pengukuran yang sesuai → Klik <code>Next</code>.</li>
+              <li>Tetapkan jenis, nama sebatian, <strong>Target Ion (Quant)</strong> dan <strong>Reference Ion (Qual)</strong> bagi setiap bahan. Selepas memasukkan maklumat lengkap → Klik <code>Next</code>.</li>
+              <li>Klik <code>Finish</code>.</li>
+              <li>Klik ikon <code>Save Compound Table</code> pada bar pembantu <em>Compound Table</em> → Klik <code>Save</code>.</li>
+            </ol>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1.2rem 0 0.6rem">Fasa 2: Penjanaan Jadual SIM Automatik — COAST</h4>
+            <div class="sub-step-card">
+              <div class="sub-step-title">⚡ COAST — Creation of Automatic SIM Table</div>
+              <ol class="proc-list">
+                <li>Klik ikon <code>Create SIM Table [COAST]</code> pada bar pembantu <em>Compound Table</em>.</li>
+                <li>Masukkan nama fail dan klik <code>Save</code>.</li>
+                <li>Besarkan tetingkap <em>Creation of Automatic SIM Table [COAST]</em>.</li>
+                <li>Pilih <code>SIM</code> dan klik butang <code>Update SIM Table</code>.</li>
+                <li>Jadual SIM dengan tetingkap masa (Time Windows) dan nisbah ion akan dijana secara automatik. Semak kromatogram dan jadual SIM — jika tiada perubahan diperlukan, klik <code>OK</code>.</li>
+              </ol>
+            </div>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1.2rem 0 0.6rem">Fasa 3: Pemprosesan Suntikan Kelompok (Batch Processing Run)</h4>
+            <ol class="proc-list">
+              <li>Buka program <code>GCMS Real Time Analysis</code> dan klik ikon <code>Batch Processing</code> pada bar pembantu <em>Real Time</em>.</li>
+              <li>Pilih <code>File</code> → <code>New Batch File</code>.</li>
+              <li>Klik ikon <code>Wizard</code> pada bar pembantu <em>Batch</em>.</li>
+              <li>Bina jadual batch dengan memasukkan maklumat berikut:
+                <div class="sub-step-card" style="margin-left:0">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem 1.5rem;font-size:0.88rem">
+                    <div>▸ Pilih <code>Standard &amp; Unknown</code></div>
+                    <div>▸ Tentukan Method File yang digunakan</div>
+                    <div>▸ Pilih <code>Quantitative</code> → Klik <code>Next</code></div>
+                    <div>▸ Masukkan Vial#, Injection Volume, Average Count</div>
+                    <div>▸ Klik <code>Next</code> → Masukkan Data File Name</div>
+                    <div>▸ Klik <code>Next</code> → Masukkan Vial#, Sample Count</div>
+                    <div>▸ Masukkan Injection Volume → Klik <code>Next</code></div>
+                    <div>▸ Masukkan Data File Name → Klik <code>Finish</code></div>
+                  </div>
                 </div>
               </li>
-              <li><strong>Pemprosesan Suntikan Kelompok (Batch Processing Run):</strong>
-                <br>Buka <em>GCMS Real Time Analysis</em> ➔ Klik <strong>“Batch Processing”</strong> ➔ <code>File</code> ➔ <strong>“New Batch File”</strong> ➔ Klik <strong>“Wizard”</strong> ➔ Pilih <em>Standard &amp; Unknown</em>, Kaedah Kuantitatif, Vial#, Bilangan Sampel, Isipadu Suntikan dan Fail Data ➔ Simpan Fail Batch ➔ Masukkan pelarut bilasan pada autosampler ➔ Klik ikon <strong>“Start”</strong> pada Assistant Bar Batch.
-              </li>
-              <li><strong>Penjanaan Keluk Kalibrasi &amp; Pengiraan Keputusan (Postrun Calibration):</strong>
-                <br>Buka <em>GCMS Postrun Analysis</em> ➔ Klik <strong>“Calibration Curve”</strong> ➔ Buka fail kaedah ➔ Seret dan lepas (drag &amp; drop) data setiap aras kalibrasi ke dalam graf untuk membentuk garis regresi kalibrasi ➔ Sahkan nilai R² ≥ 0.9950 ➔ Simpan fail kaedah dan cetak laporan akhir.
-              </li>
+              <li>Pilih <code>File</code> → <code>Save Batch File As</code>. Buka folder tempat Method File disimpan, masukkan nama dan simpan fail.</li>
+              <li>Letakkan pelarut bilasan jarum dan sampel pada kedudukan yang betul dalam <strong>Autosampler AOC-20i</strong>.</li>
+              <li>Klik ikon <code>Start</code> pada bar pembantu <em>Batch</em> untuk memulakan batch run.</li>
             </ol>
+
+            <h4 style="font-family:var(--font-mono);font-size:0.9rem;font-weight:700;color:var(--cyan);margin:1.2rem 0 0.6rem">Fasa 4: Penjanaan Keluk Kalibrasi &amp; Pengiraan Keputusan (Postrun Calibration)</h4>
+            <ol class="proc-list">
+              <li>Buka program <code>GCMS Postrun Analysis</code> dan klik ikon <code>Calibration Curve</code> pada bar pembantu <em>Postrun</em>.</li>
+              <li>Buka fail kaedah (Method File) yang digunakan semasa analisis daripada <em>Data Explorer</em>.</li>
+              <li>Seret dan lepas (<strong>drag &amp; drop</strong>) data keputusan mengikut aras kalibrasi (Level 1–5) — garis regresi kalibrasi akan diplotkan.</li>
+              <li>Pilih sebatian dalam jadual sebatian dan klik pada aras keluk kalibrasi untuk menyemak.</li>
+              <li><strong>Sahkan nilai R² ≥ 0.9950</strong>. Selepas membetulkan keluk kalibrasi (jika perlu), klik <code>Save</code> pada bar alatan untuk menyimpan fail kaedah.</li>
+            </ol>
+
+            <div class="sub-step-card">
+              <div class="sub-step-title">🖨️ Pencetakan Laporan Kuantitatif (Report Printing)</div>
+              <ol class="proc-list">
+                <li>Klik ikon <code>Report Format</code> pada bar pembantu <em>Postrun</em>.</li>
+                <li>Klik ikon <code>New</code>. Pilih templat laporan yang diperlukan.</li>
+                <li>Klik tab <code>Data</code> di bawah <em>Data Explorer</em>.</li>
+                <li>Pilih data yang perlu dicetak dan seret ke dalam templat laporan.</li>
+                <li>Klik <code>Print</code>.</li>
+              </ol>
+            </div>
           </div>
         </div>
 
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <!-- (E) Shutting Down GCMS -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
         <div class="sop-step-card" id="sec-mod-e">
           <div class="step-card-header">
             <div class="step-check-wrap">
               <input type="checkbox" id="step-040-5" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
               <label for="step-040-5" class="sop-step-title">
-                6.5 (E) Tatacara Penutupan Sistem GCMS (Auto Shutdown Sequence)
+                6.5 (E) Tatacara Penutupan Sistem GCMS (Shutting Down GCMS — Auto Shutdown Sequence)
               </label>
             </div>
           </div>
           <div class="step-card-body">
-            <ol style="margin-left:1.5rem;line-height:1.8;color:var(--text-body)">
-              <li>Pastikan tiada analisis batch yang sedang berjalan dan semua data telah disimpan dengan selamat.</li>
-              <li>Klik ikon <strong>“Vacuum Control”</strong> pada bar pembantu Real Time.</li>
-              <li>Klik butang <strong>“Auto Shutdown”</strong>.</li>
+
+            <div class="safety-box">
+              <div class="safety-box-title">⚠️ AMARAN PENTING:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Pastikan tiada analisis batch yang sedang berjalan dan semua data telah disimpan dengan selamat sebelum memulakan prosedur shutdown. <strong>Jangan matikan suis GC/MS secara tiba-tiba</strong> — gunakan prosedur Auto Shutdown untuk membenarkan penyejukan vakum dan suhu yang terkawal.</p>
+            </div>
+
+            <ol class="proc-list">
+              <li>Klik ikon <code>Vacuum Control</code> pada bar pembantu <em>Real Time</em>.</li>
+              <li>Klik butang <code>Auto Shutdown</code>.</li>
               <li>Sistem akan menyejukkan suhu Oven, Inlet, Ion Source dan Interface secara automatik serta memperlahankan pam turbo vakum sehingga selamat.</li>
-              <li>Apabila status memaparkan <strong>“Completed”</strong> pada skrin, klik butang <strong>“Close”</strong>.</li>
-              <li>Tutup perisian <em>GCMS Real Time Analysis</em> dan semua program lain yang sedang aktif.</li>
-              <li>Tutup suis kuasa komputer, pencetak dan monitor paparan.</li>
-              <li>Tutup suis unit <strong>MS (Mass Spectrometer)</strong>.</li>
-              <li>Tutup suis unit <strong>GC (Gas Chromatograph)</strong>.</li>
-              <li>Tutup peralatan persisian (Autosampler, UPS) dan tutup injap utama gas Helium pada silinder pembekal jika makmal ditutup untuk cuti panjang.</li>
+              <li>Apabila status memaparkan <strong>"Completed"</strong> pada skrin, klik butang <code>Close</code>.</li>
+              <li>Tutup perisian <code>GCMS Real Time Analysis</code> dan semua program lain yang sedang aktif.</li>
+              <li>Tutup suis kuasa <strong>komputer, pencetak dan monitor paparan</strong>.</li>
+              <li>Tutup suis unit <strong>MS</strong> (Mass Spectrometer).</li>
+              <li>Tutup suis unit <strong>GC</strong> (Gas Chromatograph).</li>
+              <li>Tutup peralatan persisian (<strong>Autosampler, UPS</strong>) dan tutup injap utama gas Helium pada silinder pembekal jika makmal ditutup untuk cuti panjang.</li>
             </ol>
+
+            <div class="tip-box">
+              <div class="tip-box-title">💡 Turutan Penutupan yang Betul:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">
+                <strong>Auto Shutdown (Software)</strong> → Tunggu "Completed" →
+                <strong>Tutup Software</strong> → Tutup Komputer →
+                <strong>Matikan MS</strong> → <strong>Matikan GC</strong> →
+                Matikan Autosampler → Matikan UPS →
+                Tutup injap Helium (jika cuti panjang sahaja).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- (F) Bench Tips for Analysts -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <div class="sop-step-card" id="sec-mod-f">
+          <div class="step-card-header">
+            <div class="step-check-wrap">
+              <input type="checkbox" id="step-040-6" class="sop-task-check" onchange="onStepCheckChange('PKKK/300/UP/040')">
+              <label for="step-040-6" class="sop-step-title">
+                6.6 Tip Operasi &amp; Penyelenggaraan Meja Kerja (Bench Tips &amp; Maintenance Notes)
+              </label>
+            </div>
+          </div>
+          <div class="step-card-body">
+            <div class="tip-box">
+              <div class="tip-box-title">🎯 Tuning Harian:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Lakukan Standard Spectra Tune (<code>s.tune</code>) atau Autotune (<code>a.tune</code>) <strong>setiap hari</strong> sebelum memulakan analisis dan pastikan laporan LULUS semua 4 kriteria penerimaan prestasi.</p>
+            </div>
+            <div class="tip-box">
+              <div class="tip-box-title">💧 Semakan Air/Water Check:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Semak paras kebocoran udara/air: <strong>m/z 18 &lt; 10%</strong> dan <strong>m/z 28 &lt; 5%</strong> berbanding puncak dasar m/z 69. Jika gagal, periksa O-ring, sambungan kolum dan septum inlet.</p>
+            </div>
+            <div class="tip-box">
+              <div class="tip-box-title">🧪 Pelarut &amp; Septum:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Gunakan pelarut berkualiti kromatografi gas (<em>GC Grade</em> atau <em>Pesticide Grade</em>). Tukar septum suntikan setiap <strong>100 suntikan</strong> untuk mengelakkan <em>ghost peaks</em> dan kebocoran.</p>
+            </div>
+            <div class="tip-box">
+              <div class="tip-box-title">🔧 Column Conditioning (Bake-Out):</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Lakukan Column Conditioning pada suhu <strong>240–250 °C</strong> selama <strong>30 minit</strong> jika terdapat peningkatan baseline bleeding atau selepas pemasangan kolum baharu.</p>
+            </div>
+            <div class="tip-box">
+              <div class="tip-box-title">⏱️ Solvent Delay:</div>
+              <p style="font-size:0.88rem;line-height:1.6;color:var(--text-body)">Tetapkan Solvent Delay <strong>3.0–4.0 minit</strong> (bergantung pada RT pelarut) bagi melindungi filamen MS daripada beban pelarut yang pekat. Rujuk SOP kaedah masing-masing.</p>
+            </div>
           </div>
         </div>
 
@@ -635,14 +1180,15 @@
     <div class="sop-section-container sec-theme-indigo" id="sec-7">
       <div class="sop-section-header">
         <span class="sec-icon">📝</span>
-        <h2>7.0 REKOD KUALITI &amp; BORANG RASMI</h2>
+        <h2>7.0 REKOD KUALITI &amp; BORANG RASMI (QUALITY RECORDS)</h2>
       </div>
       <div class="sop-section-body">
         <p class="sop-p">Semua rekod penalaan (Autotuning report), laporan penyelenggaraan berkala, log servis pencegahan (preventive maintenance) dan rekod penukaran septum/liner hendaklah difailkan dengan kemas mengikut prosedur ISO/IEC 17025.</p>
+        <p class="sop-p" style="color:var(--text-muted);font-style:italic">Maintenance, Service and Calibration reports are to be filed accordingly.</p>
         <div class="table-card">
           <div class="table-card-header">
             <span class="table-tag">SENARAI BORANG &amp; REKOD KUALITI</span>
-            <span class="table-doc-code">PKKK/300/UP/040</span>
+            <span class="table-doc-code">Seksyen 7.0</span>
           </div>
           <div class="table-responsive">
             <table class="table-official">
@@ -650,6 +1196,33 @@
               <tbody>
                 <tr><td><strong>TUNE-RPT</strong></td><td>Laporan Autotuning Harian (PFTBA Standard Spectra Tune)</td><td>Fail Laporan Harian GCMS / Bilik B2-02</td><td>6 Tahun</td></tr>
                 <tr><td><strong>LOG-GCMS-040</strong></td><td>Buku Log Penggunaan &amp; Penyelenggaraan Shimadzu QP2010 Ultra</td><td>Stesen Kerja GCMS QP2010 Ultra</td><td>6 Tahun</td></tr>
+                <tr><td><strong>PM-RPT</strong></td><td>Laporan Preventive Maintenance &amp; Penukaran Septum/Liner/Kolum</td><td>Fail PM Alat GCMS</td><td>6 Tahun</td></tr>
+                <tr><td><strong>CAL-RPT</strong></td><td>Laporan Kalibrasi Instrumen (Serviced by vendor)</td><td>Fail Kalibrasi &amp; Verifikasi</td><td>6 Tahun</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RUJUKAN -->
+    <div class="sop-section-container sec-theme-teal" id="sec-ref">
+      <div class="sop-section-header">
+        <span class="sec-icon">📚</span>
+        <h2>8.0 RUJUKAN (REFERENCES)</h2>
+      </div>
+      <div class="sop-section-body">
+        <div class="table-card">
+          <div class="table-card-header">
+            <span class="table-tag">SENARAI RUJUKAN</span>
+            <span class="table-doc-code">Seksyen 8.0</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table-official">
+              <thead><tr><th>No.</th><th>Tajuk Rujukan</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td><strong>Shimadzu GCMS-QP2010 Series Operation Guide</strong> — Manual operasi rasmi pengilang.</td></tr>
+                <tr><td>2</td><td><strong>Appendix K — Maintenance</strong> (P.104) — Panduan penyelenggaraan, pembersihan ion source, dan tindakan pembetulan.</td></tr>
               </tbody>
             </table>
           </div>
