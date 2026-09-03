@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panduan lengkap Hari Bekerja Hibrid (HBH) menggunakan sistem SpotMe untuk kakitangan Makmal Logam Berat, Unit Analisis Logam Berat.">
+    <title>Panduan HBH SpotMe — Makmal Logam Berat</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">🏛️</span>
+                <span>Unit Analisis Logam Berat</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">Panduan Lengkap</span>
+                <span class="title-accent">Hari Bekerja Hibrid</span>
+                <span class="title-system">Sistem SpotMe</span>
+            </h1>
+            <p class="hero-subtitle">
+                Panduan langkah demi langkah untuk menggunakan sistem <strong>spotme.jdn.gov.my</strong> 
+                semasa bekerja dari rumah — khusus untuk kakitangan <em>Makmal Logam Berat</em>.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Langkah Utama</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">~9</span>
+                    <span class="stat-label">Jam Kerja</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Daftar Pergerakan</span>
+                </div>
+            </div>
+            <a href="#overview" class="hero-cta" id="hero-cta">
+                <span>Mula Panduan</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky-nav" id="sticky-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" style="color:inherit;text-decoration:none;display:flex;align-items:center;gap:var(--space-sm);" title="Kembali ke Unit Logam Berat">
+                    <span class="nav-logo-icon">⚗️</span>
+                    <span class="nav-logo-text">HBH SpotMe</span>
+                </a>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="#overview" class="nav-link" data-section="overview">Gambaran</a>
+                <a href="#step1" class="nav-link" data-section="step1">Daftar Masuk</a>
+                <a href="#step2" class="nav-link" data-section="step2">Tugasan</a>
+                <a href="#step3" class="nav-link" data-section="step3">Pergerakan</a>
+                <a href="#step4" class="nav-link" data-section="step4">Rehat</a>
+                <a href="#step5" class="nav-link" data-section="step5">Sambung</a>
+                <a href="#step6" class="nav-link" data-section="step6">Daftar Keluar</a>
+                <a href="#step7" class="nav-link" data-section="step7">Permohonan</a>
+                <a href="#step8" class="nav-link" data-section="step8">Laporan</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress-bar"></div>
+
+    <main>
+        <!-- Overview Section -->
+        <section class="section overview-section" id="overview">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Gambaran Keseluruhan</span>
+                    <h2 class="section-title">Aliran Kerja HBH</h2>
+                    <p class="section-desc">Berikut adalah ringkasan keseluruhan proses yang perlu dilakukan semasa Hari Bekerja Hibrid menggunakan sistem SpotMe.</p>
+                </div>
+                
+                <!-- Flow Diagram -->
+                <div class="flow-diagram">
+                    <div class="flow-item">
+                        <div class="flow-icon">🔑</div>
+                        <div class="flow-label">Daftar Masuk</div>
+                        <div class="flow-time">~8:30 AM</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">📝</div>
+                        <div class="flow-label">Isi Tugasan</div>
+                        <div class="flow-time">Selepas Daftar</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">📍</div>
+                        <div class="flow-label">Pergerakan Harian</div>
+                        <div class="flow-time">Sepanjang Hari</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">☕</div>
+                        <div class="flow-label">Waktu Rehat</div>
+                        <div class="flow-time">1:00 PM</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">💼</div>
+                        <div class="flow-label">Sambung Kerja</div>
+                        <div class="flow-time">2:00 PM</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">🚪</div>
+                        <div class="flow-label">Daftar Keluar</div>
+                        <div class="flow-time">~6:00 PM</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">📋</div>
+                        <div class="flow-label">Permohonan Kehadiran</div>
+                        <div class="flow-time">Selepas Keluar</div>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">📄</div>
+                        <div class="flow-label">Jana & Upload Laporan</div>
+                        <div class="flow-time">Akhir Hari</div>
+                    </div>
+                </div>
+
+                <!-- Key Info Cards -->
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-card-icon">🌐</div>
+                        <h3>Sistem SpotMe</h3>
+                        <p>Akses melalui <strong>spotme.jdn.gov.my</strong> — pastikan GPS/lokasi diaktifkan pada peranti anda.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">📊</div>
+                        <h3>Contoh Tugasan</h3>
+                        <p class="task-example">"Menyiapkan 13 laporan Analisis Logam Berat bagi sampel Kosmetik — 40 minit/laporan (Termasuk semakan keputusan dan penyediaan laporan)"</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">📂</div>
+                        <h3>Upload Bukti Kerja</h3>
+                        <p>Upload dokumen kerja ke <strong>Google Drive</strong> dalam folder: <em>UNIT ANALISIS LOGAM... → HBH → [Nama]</em></p>
+                    </div>
+                    <div class="info-card warning-card">
+                        <div class="info-card-icon">⚠️</div>
+                        <h3>Penting!</h3>
+                        <p>Jangan tekan <strong>"Daftar Keluar"</strong> sebelum jam 6:00 PM — jika tidak, jam kerja akan tidak mencukupi!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 1: Daftar Masuk -->
+        <section class="section step-section" id="step1">
+            <div class="section-container">
+                <div class="step-header">
+                    <div class="step-number">01</div>
+                    <div class="step-meta">
+                        <span class="step-tag">Langkah 1</span>
+                        <h2 class="step-title">Daftar Masuk di SpotMe</h2>
+                        <p class="step-desc">Log masuk ke <strong>spotme.jdn.gov.my</strong> dan daftar kehadiran anda pada awal hari bekerja.</p>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="instruction-list">
+                        <div class="instruction-item">
+                            <div class="instruction-num">1</div>
+                            <div class="instruction-text">
+                                <h4>Buka SpotMe</h4>
+                                <p>Pergi ke <code>spotme.jdn.gov.my</code> melalui pelayar web. Pastikan <strong>GPS diaktifkan</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">2</div>
+                            <div class="instruction-text">
+                                <h4>Isi Ulasan</h4>
+                                <p>Dalam ruangan <strong>"Ulasan"</strong>, boleh biarkan kosong atau tulis catatan ringkas.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">3</div>
+                            <div class="instruction-text">
+                                <h4>Isi Sebab Bekerja Dari Rumah</h4>
+                                <p>Tulis: <code>Menjalankan tugasan yang telah ditetapkan</code></p>
+                                <div class="copy-box" id="copy-reason">
+                                    <span>Menjalankan tugasan yang telah ditetapkan</span>
+                                    <button class="copy-btn" onclick="copyText('Menjalankan tugasan yang telah ditetapkan', this)">📋 Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">4</div>
+                            <div class="instruction-text">
+                                <h4>Tekan "Daftar Masuk"</h4>
+                                <p>Klik butang <strong>"Daftar Masuk"</strong> untuk merekodkan kehadiran anda.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0014.jpg" alt="Halaman Daftar Masuk SpotMe" loading="lazy">
+                            <div class="screenshot-caption">Halaman Daftar Masuk — Isi ulasan & sebab BDR</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0000.jpg" alt="Borang Daftar Masuk" loading="lazy">
+                            <div class="screenshot-caption">Borang pendaftaran masuk (mobile)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: Catatan Tugasan Harian -->
+        <section class="section step-section" id="step2">
+            <div class="section-container">
+                <div class="step-header">
+                    <div class="step-number">02</div>
+                    <div class="step-meta">
+                        <span class="step-tag">Langkah 2</span>
+                        <h2 class="step-title">Isi Catatan Tugasan Harian</h2>
+                        <p class="step-desc">Selepas daftar masuk, kemaskini tugasan yang akan anda jalankan pada hari tersebut.</p>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="instruction-list">
+                        <div class="instruction-item">
+                            <div class="instruction-num">1</div>
+                            <div class="instruction-text">
+                                <h4>Dashboard → Catatan Tugasan Harian</h4>
+                                <p>Di halaman dashboard, cari bahagian <strong>"Catatan Tugasan Harian"</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">2</div>
+                            <div class="instruction-text">
+                                <h4>Klik "Kemaskini Tugasan"</h4>
+                                <p>Tekan butang <strong>"Kemaskini Tugasan"</strong> untuk membuka popup catatan.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">3</div>
+                            <div class="instruction-text">
+                                <h4>Isi Catatan Tugasan</h4>
+                                <p>Tulis tugasan yang sama seperti dalam Excel. Contoh untuk Makmal Logam Berat:</p>
+                                <div class="copy-box" id="copy-task">
+                                    <span>Menyiapkan 13 laporan Analisis Logam Berat bagi sampel Kosmetik
+
+40 minit/laporan (Termasuk semakan keputusan dan penyediaan laporan)</span>
+                                    <button class="copy-btn" onclick="copyText('Menyiapkan 13 laporan Analisis Logam Berat bagi sampel Kosmetik\n\n40 minit/laporan (Termasuk semakan keputusan dan penyediaan laporan)', this)">📋 Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">4</div>
+                            <div class="instruction-text">
+                                <h4>Tekan "Tutup" / Simpan</h4>
+                                <p>Selesai memasukkan tugasan, tutup popup tersebut.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0016.jpg" alt="Dashboard SpotMe — Catatan Tugasan" loading="lazy">
+                            <div class="screenshot-caption">Dashboard — Bahagian Catatan Tugasan Harian</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0022.jpg" alt="Popup Catatan Tugasan" loading="lazy">
+                            <div class="screenshot-caption">Popup isi catatan tugasan harian</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0005.jpg" alt="Contoh catatan tugasan diisi" loading="lazy">
+                            <div class="screenshot-caption">Contoh catatan tugasan yang telah diisi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3: Pergerakan Harian — Mula Kerja -->
+        <section class="section step-section" id="step3">
+            <div class="section-container">
+                <div class="step-header">
+                    <div class="step-number">03</div>
+                    <div class="step-meta">
+                        <span class="step-tag">Langkah 3</span>
+                        <h2 class="step-title">Daftar Pergerakan Harian — Mula Kerja</h2>
+                        <p class="step-desc">Rekodkan pergerakan harian anda. Ini merekod lokasi GPS dan masa anda sepanjang hari.</p>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="instruction-list">
+                        <div class="instruction-item">
+                            <div class="instruction-num">1</div>
+                            <div class="instruction-text">
+                                <h4>Dashboard → Pergerakan Harian</h4>
+                                <p>Di halaman dashboard, scroll ke bahagian <strong>"Pergerakan Harian"</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">2</div>
+                            <div class="instruction-text">
+                                <h4>Klik "Daftar Pergerakan"</h4>
+                                <p>Tekan butang <strong>"Daftar Pergerakan"</strong> — popup akan keluar menunjukkan masa semasa.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">3</div>
+                            <div class="instruction-text">
+                                <h4>Isi Ulasan</h4>
+                                <p>Tulis tugasan yang sedang dilakukan. Contoh:</p>
+                                <div class="copy-box">
+                                    <span>Menyiapkan 13 laporan Analisis Logam Berat bagi sampel Kosmetik</span>
+                                    <button class="copy-btn" onclick="copyText('Menyiapkan 13 laporan Analisis Logam Berat bagi sampel Kosmetik', this)">📋 Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">4</div>
+                            <div class="instruction-text">
+                                <h4>Tekan "Daftar"</h4>
+                                <p>Klik butang <strong>"Daftar"</strong> — sistem akan merekod lokasi GPS anda secara automatik.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <div class="tip-icon">💡</div>
+                        <div class="tip-content">
+                            <h4>Tip: GPS Lokasi</h4>
+                            <p>Setiap kali anda tekan "Daftar Pergerakan", sistem akan merekod koordinat GPS anda. Pastikan lokasi peranti anda diaktifkan supaya rekod adalah tepat.</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0002.jpg" alt="Dashboard Pergerakan Harian" loading="lazy">
+                            <div class="screenshot-caption">Dashboard — Pergerakan Harian dengan koordinat GPS</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0003.jpg" alt="Popup Daftar Pergerakan" loading="lazy">
+                            <div class="screenshot-caption">Popup Daftar Pergerakan Harian</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0004.jpg" alt="Lokasi GPS direkod" loading="lazy">
+                            <div class="screenshot-caption">Lokasi GPS direkod pada peta</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 4: Waktu Rehat -->
+        <section class="section step-section" id="step4">
+            <div class="section-container">
+                <div class="step-header">
+                    <div class="step-number">04</div>
+                    <div class="step-meta">
+                        <span class="step-tag">Langkah 4 — 1:00 PM</span>
+                        <h2 class="step-title">Daftar Pergerakan — Waktu Rehat</h2>
+                        <p class="step-desc">Pada jam 1:00 PM, rekodkan pergerakan untuk waktu rehat.</p>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="instruction-list">
+                        <div class="instruction-item">
+                            <div class="instruction-num">1</div>
+                            <div class="instruction-text">
+                                <h4>Pergerakan Harian → "Daftar Pergerakan"</h4>
+                                <p>Pada pukul <strong>1:00 PM</strong>, pergi ke bahagian Pergerakan Harian dan klik <strong>"Daftar Pergerakan"</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">2</div>
+                            <div class="instruction-text">
+                                <h4>Tulis "Waktu Rehat"</h4>
+                                <p>Dalam ruangan Ulasan, tulis:</p>
+                                <div class="copy-box">
+                                    <span>Waktu Rehat</span>
+                                    <button class="copy-btn" onclick="copyText('Waktu Rehat', this)">📋 Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">3</div>
+                            <div class="instruction-text">
+                                <h4>Tekan "Daftar"</h4>
+                                <p>Klik butang <strong>"Daftar"</strong> untuk merekodkan waktu rehat.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon">⚠️</div>
+                        <div class="warning-content">
+                            <h4>Penting!</h4>
+                            <p>Ini <strong>BUKAN</strong> "Daftar Keluar"! Jangan tekan Daftar Keluar untuk waktu rehat. Gunakan <strong>"Daftar Pergerakan"</strong> sahaja.</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0001.jpg" alt="Daftar Pergerakan Waktu Rehat" loading="lazy">
+                            <div class="screenshot-caption">Isi "Waktu Rehat" dalam pergerakan harian (desktop)</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0018.jpg" alt="Popup Pergerakan Harian" loading="lazy">
+                            <div class="screenshot-caption">Popup Daftar Pergerakan Harian (mobile)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 5: Sambung Kerja -->
+        <section class="section step-section" id="step5">
+            <div class="section-container">
+                <div class="step-header">
+                    <div class="step-number">05</div>
+                    <div class="step-meta">
+                        <span class="step-tag">Langkah 5 — 2:00 PM</span>
+                        <h2 class="step-title">Daftar Pergerakan — Sambung Kerja</h2>
+                        <p class="step-desc">Pada jam 2:00 PM, rekodkan bahawa anda telah mula semula bekerja selepas rehat.</p>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="instruction-list">
+                        <div class="instruction-item">
+                            <div class="instruction-num">1</div>
+                            <div class="instruction-text">
+                                <h4>Pergerakan Harian → "Daftar Pergerakan"</h4>
+                                <p>Pada pukul <strong>2:00 PM</strong>, klik <strong>"Daftar Pergerakan"</strong> sekali lagi.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">2</div>
+                            <div class="instruction-text">
+                                <h4>Tulis catatan sambung kerja</h4>
+                                <p>Dalam ruangan Ulasan, tulis:</p>
+                                <div class="copy-box">
+                                    <span>Sambung kerja selepas waktu rehat</span>
+                                    <button class="copy-btn" onclick="copyText('Sambung kerja selepas waktu rehat', this)">📋 Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">3</div>
+                            <div class="instruction-text">
+                                <h4>Tekan "Daftar"</h4>
+                                <p>Klik butang <strong>"Daftar"</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0020.jpg" alt="GPS Lokasi Pergerakan" loading="lazy">
+                            <div class="screenshot-caption">Lokasi GPS direkod untuk setiap pergerakan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 6: Daftar Keluar -->
+        <section class="section step-section" id="step6">
+            <div class="section-container">
+                <div class="step-header">
+                    <div class="step-number">06</div>
+                    <div class="step-meta">
+                        <span class="step-tag">Langkah 6 — ~6:00 PM</span>
+                        <h2 class="step-title">Daftar Keluar</h2>
+                        <p class="step-desc">Pada akhir hari bekerja (selepas cukup jam kerja), daftar keluar dari sistem SpotMe.</p>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="instruction-list">
+                        <div class="instruction-item">
+                            <div class="instruction-num">1</div>
+                            <div class="instruction-text">
+                                <h4>Dashboard → Kehadiran</h4>
+                                <p>Di bahagian <strong>"Kehadiran"</strong>, anda akan nampak <strong>"Daftar Keluar : --"</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">2</div>
+                            <div class="instruction-text">
+                                <h4>Klik "Daftar Keluar"</h4>
+                                <p>Tekan butang <strong>"Daftar Keluar"</strong>. Pastikan jam kerja telah mencukupi (~9 jam).</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">3</div>
+                            <div class="instruction-text">
+                                <h4>(Opsional) Rekod pergerakan akhir</h4>
+                                <p>Anda juga boleh tekan "Daftar Pergerakan" dengan ulasan:</p>
+                                <div class="copy-box">
+                                    <span>Selesai menyiapkan 13 laporan Analisis Logam Berat bagi sampel Kosmetik</span>
+                                    <button class="copy-btn" onclick="copyText('Selesai menyiapkan 13 laporan Analisis Logam Berat bagi sampel Kosmetik', this)">📋 Salin</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon">⏰</div>
+                        <div class="warning-content">
+                            <h4>Jangan Daftar Keluar Awal!</h4>
+                            <p>Pastikan jam kerja telah mencukupi sebelum daftar keluar. Jika daftar keluar awal, masa kerja akan dikira kurang dan status kehadiran mungkin bermasalah.</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <div class="tip-icon">💡</div>
+                        <div class="tip-content">
+                            <h4>Boleh Update Kemudian</h4>
+                            <p>Jika anda terlupa kemaskini senarai pergerakan harian sebelum daftar keluar, anda masih boleh update selepas itu — tiada masalah!</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0002.jpg" alt="Dashboard Kehadiran" loading="lazy">
+                            <div class="screenshot-caption">Dashboard — Bahagian Kehadiran dengan butang Daftar Keluar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 7: Permohonan Kelulusan Isu Kehadiran -->
+        <section class="section step-section" id="step7">
+            <div class="section-container">
+                <div class="step-header">
+                    <div class="step-number">07</div>
+                    <div class="step-meta">
+                        <span class="step-tag">Langkah 7</span>
+                        <h2 class="step-title">Permohonan Kelulusan Isu Kehadiran</h2>
+                        <p class="step-desc">Hantar permohonan kelulusan isu kehadiran selepas hari bekerja selesai dan jam kerja telah cukup.</p>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="instruction-list">
+                        <div class="instruction-item">
+                            <div class="instruction-num">1</div>
+                            <div class="instruction-text">
+                                <h4>Menu → Pengurusan Isu Kehadiran</h4>
+                                <p>Pergi ke menu <strong>"Pengurusan Isu Kehadiran"</strong> → <strong>"Senarai Permohonan"</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">2</div>
+                            <div class="instruction-text">
+                                <h4>Klik ikon pensil (✏️)</h4>
+                                <p>Cari tarikh hari berkenaan dan klik ikon <strong>pensil (edit)</strong> pada baris tersebut.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">3</div>
+                            <div class="instruction-text">
+                                <h4>Semak & Isi Maklumat</h4>
+                                <p>Popup akan keluar menunjukkan maklumat kehadiran. Isi:</p>
+                                <ul class="detail-list">
+                                    <li><strong>Catatan Tugasan:</strong> Sama seperti yang diisi sebelum ini</li>
+                                    <li><strong>Sebab BDR:</strong> <code>Menjalankan tugasan yang telah ditetapkan</code></li>
+                                    <li><strong>Ulasan:</strong> Sama seperti catatan tugasan</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">4</div>
+                            <div class="instruction-text">
+                                <h4>Tekan "Hantar"</h4>
+                                <p>Scroll ke bawah dan klik butang <strong>"Hantar"</strong>. Ini adalah langkah terakhir dalam SpotMe sebelum menjana laporan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <div class="warning-icon">🔔</div>
+                        <div class="warning-content">
+                            <h4>Hantar Bila Masa Cukup</h4>
+                            <p>Pastikan anda hanya tekan "Hantar" selepas jam kerja mencukupi. Jika dihantar awal, masa kerja mungkin tidak tepat.</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0006.jpg" alt="Senarai Permohonan Kelulusan" loading="lazy">
+                            <div class="screenshot-caption">Senarai Permohonan Kelulusan — klik ikon pensil</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0009.jpg" alt="Popup Permohonan" loading="lazy">
+                            <div class="screenshot-caption">Popup permohonan — isi catatan & sebab BDR</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0026.jpg" alt="Popup Permohonan diisi" loading="lazy">
+                            <div class="screenshot-caption">Contoh permohonan yang telah diisi lengkap</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 8: Jana Laporan & Upload -->
+        <section class="section step-section" id="step8">
+            <div class="section-container">
+                <div class="step-header">
+                    <div class="step-number">08</div>
+                    <div class="step-meta">
+                        <span class="step-tag">Langkah 8 — Akhir Hari</span>
+                        <h2 class="step-title">Jana Laporan & Upload ke Google Drive</h2>
+                        <p class="step-desc">Jana laporan kehadiran peribadi dan upload ke folder Google Drive yang dikongsi.</p>
+                    </div>
+                </div>
+
+                <div class="step-content">
+                    <div class="instruction-list">
+                        <div class="instruction-item">
+                            <div class="instruction-num">1</div>
+                            <div class="instruction-text">
+                                <h4>Menu → Laporan Kehadiran Peribadi</h4>
+                                <p>Di SpotMe, pergi ke bahagian <strong>"Laporan Kehadiran Peribadi"</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">2</div>
+                            <div class="instruction-text">
+                                <h4>Pilih Tarikh HBH</h4>
+                                <p>Tetapkan <strong>"Tarikh Dari"</strong> dan <strong>"Tarikh Ke"</strong> kepada tarikh HBH hari tersebut.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">3</div>
+                            <div class="instruction-text">
+                                <h4>Klik "Jana Laporan"</h4>
+                                <p>Tekan butang <strong>"Jana Laporan"</strong>. PDF laporan kehadiran akan dijana.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item">
+                            <div class="instruction-num">4</div>
+                            <div class="instruction-text">
+                                <h4>Muat Turun Laporan</h4>
+                                <p>Laporan PDF akan menunjukkan maklumat lengkap: tarikh, jenis kehadiran, waktu masuk/keluar, catatan, senarai pergerakan harian, dan status kelulusan.</p>
+                            </div>
+                        </div>
+                        <div class="instruction-item highlight-item">
+                            <div class="instruction-num">5</div>
+                            <div class="instruction-text">
+                                <h4>Upload ke Google Drive</h4>
+                                <p>Upload laporan & dokumen kerja ke folder Google Drive:</p>
+                                <div class="folder-path">
+                                    <span class="folder-icon">📁</span>
+                                    <span>UNIT ANALISIS LOGAM... → HBH → [Nama Anda]</span>
+                                </div>
+                                <p class="mt-sm">Upload dokumen-dokumen berikut:</p>
+                                <ul class="detail-list">
+                                    <li>📄 Laporan Kehadiran Peribadi (PDF)</li>
+                                    <li>📊 Laporan IQC CRM (Excel)</li>
+                                    <li>📝 PKKK_UALB Laporan Parameter (Word)</li>
+                                    <li>📝 PKKK_UALB Preparation std calibration (Word)</li>
+                                    <li>📊 RESULT CRM (Excel)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0010.jpg" alt="Laporan Kehadiran Peribadi" loading="lazy">
+                            <div class="screenshot-caption">Pilih tarikh & Jana Laporan (mobile)</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0028.jpg" alt="Laporan Kehadiran Peribadi" loading="lazy">
+                            <div class="screenshot-caption">Laporan Kehadiran Peribadi (mobile)</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0008.jpg" alt="Jana Laporan Desktop" loading="lazy">
+                            <div class="screenshot-caption">Jana Laporan Kehadiran (desktop)</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0011.jpg" alt="PDF Laporan Kehadiran" loading="lazy">
+                            <div class="screenshot-caption">PDF Laporan Kehadiran yang dijana</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0030.jpg" alt="PDF Laporan Kehadiran lengkap" loading="lazy">
+                            <div class="screenshot-caption">Contoh laporan kehadiran lengkap dengan pergerakan</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0007.jpg" alt="Google Drive Upload" loading="lazy">
+                            <div class="screenshot-caption">Upload dokumen ke Google Drive (desktop)</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openLightbox(this)">
+                            <img src="images/IMG-20260903-WA0012.jpg" alt="Google Drive Folder" loading="lazy">
+                            <div class="screenshot-caption">Folder Google Drive dengan dokumen yang telah diupload</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Timeline -->
+        <section class="section summary-section" id="summary">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Ringkasan</span>
+                    <h2 class="section-title">Jadual Masa HBH</h2>
+                    <p class="section-desc">Rujukan pantas untuk masa-masa penting sepanjang hari bekerja hibrid.</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">~8:30 AM</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Daftar Masuk</h4>
+                            <p>Log masuk SpotMe, isi sebab BDR, daftar masuk</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">Selepas Daftar</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Kemaskini Tugasan</h4>
+                            <p>Isi catatan tugasan harian & daftar pergerakan pertama</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">8:30 AM - 1:00 PM</div>
+                        <div class="timeline-dot dot-work"></div>
+                        <div class="timeline-content">
+                            <h4>Sesi Kerja Pagi</h4>
+                            <p>Jalankan tugasan yang ditetapkan</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">1:00 PM</div>
+                        <div class="timeline-dot dot-break"></div>
+                        <div class="timeline-content">
+                            <h4>Daftar Pergerakan — Rehat</h4>
+                            <p>Tulis "Waktu Rehat" dalam daftar pergerakan</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">2:00 PM</div>
+                        <div class="timeline-dot dot-work"></div>
+                        <div class="timeline-content">
+                            <h4>Daftar Pergerakan — Sambung Kerja</h4>
+                            <p>Tulis "Sambung kerja selepas waktu rehat"</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">2:00 PM - 5:30 PM</div>
+                        <div class="timeline-dot dot-work"></div>
+                        <div class="timeline-content">
+                            <h4>Sesi Kerja Petang</h4>
+                            <p>Sambung & selesaikan tugasan</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">~5:30 PM</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Daftar Pergerakan — Selesai</h4>
+                            <p>Rekod pergerakan terakhir — selesai menyiapkan tugasan</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">~6:00 PM</div>
+                        <div class="timeline-dot dot-checkout"></div>
+                        <div class="timeline-content">
+                            <h4>Daftar Keluar</h4>
+                            <p>Daftar keluar setelah jam kerja mencukupi (~9 jam)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">Selepas Keluar</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Hantar Permohonan & Jana Laporan</h4>
+                            <p>Permohonan kelulusan kehadiran → Jana laporan PDF → Upload ke Google Drive</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>⚗️</span>
+                <span>Panduan HBH SpotMe — Makmal Logam Berat</span>
+            </div>
+            <p class="footer-note">Unit Analisis Logam Berat • Sistem SpotMe (spotme.jdn.gov.my) • Versi 1.3.0</p>
+            <p class="footer-credit">Panduan ini disusun berdasarkan arahan dan pengalaman pegawai unit.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

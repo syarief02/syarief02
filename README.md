@@ -109,6 +109,7 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 - 🔬 **[NPRA Lab Notes & Competency](https://syariefazman.com/lab)** — multi-unit lab reference hub covering Seksyen Pengujian Produk & Kosmetik (PKKK) with competency records
 - 🧪 **[Unit Penyaringan Lab Notes](https://syariefazman.com/lab/penyaringan)** — SPE procedures, sample prep guides, HPLC/GCMS/LCMS training records
 - ⚗️ **[Unit Logam Berat](https://syariefazman.com/lab/logam-berat)** — heavy metal analysis competency records (GFAAS, CVAAS, ICP-MS)
+- 🏠 **[Panduan HBH SpotMe (Logam Berat)](https://syariefazman.com/lab/logam-berat/hbh)** — step-by-step Hybrid Work (BDR) SpotMe workflow guide for Makmal Logam Berat
 - 🧪 **[SPE Lab Reference](https://syariefazman.com/spe)** — interactive Solid-Phase Extraction procedure guide with checklists, timers & quick reference
 - 💊 **[Sample Preparation Guide](https://syariefazman.com/sampleprep)** — 7-category drug sample prep reference (Anticholesterol, Antidiabetic, Diuretic, PPI, Antihypertensive, EDD, Domperidone)
 - ⚗️ **[Agilent 8900 ICP-MS Guide](https://syariefazman.com/icpms)** — Comprehensive 7-chapter operation guide for the Agilent 8900 Triple Quadrupole ICP-MS
@@ -154,6 +155,7 @@ Interactive laboratory references and professional portfolio for my work at NPRA
 | **Uniformity of Weight** | Ujian Keseragaman Berat Guide (USP 43) | [View](https://syariefazman.com/uow) |
 | **myPortfolio (Penyaringan)** | PPF 7 — 4 activities, workflows, forms | [View](https://syariefazman.com/lab/penyaringan/portfolio.html) |
 | **myPortfolio (Logam Berat)** | PPF 11 — 7 activities, workflows, forms | [View](https://syariefazman.com/lab/logam-berat/portfolio.html) |
+| **Panduan HBH SpotMe** | Panduan BDR & SpotMe untuk Makmal Logam Berat | [View](https://syariefazman.com/lab/logam-berat/hbh) |
 | **Verifikasi Alat Radas** | Equipment verification SOPs | [View](https://syariefazman.com/lab/verifikasi) |
 
 <details>
