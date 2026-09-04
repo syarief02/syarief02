@@ -49,6 +49,11 @@
       "source": "/checklist",
       "destination": "/checklist/",
       "permanent": false
+    },
+    {
+      "source": "/tiktok",
+      "destination": "/tiktok/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -67,6 +72,10 @@
     {
       "source": "/checklist/(.*)",
       "destination": "https://balik-kampung-checklist.vercel.app/$1"
+    },
+    {
+      "source": "/tiktok/(.*)",
+      "destination": "https://gemini-flow-production.up.railway.app/$1"
     }
   ]
 }
