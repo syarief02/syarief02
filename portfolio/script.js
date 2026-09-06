@@ -209,11 +209,10 @@ class ContactForm {
   async handleSubmit(e) {
     e.preventDefault();
 
-    // Sync the visible subject field into the hidden one
+    // Default subject if left blank
     const subjectInput = document.getElementById('contactSubject');
-    const hiddenSubject = document.getElementById('hiddenSubject');
-    if (subjectInput && subjectInput.value) {
-      hiddenSubject.value = subjectInput.value;
+    if (subjectInput && !subjectInput.value.trim()) {
+      subjectInput.value = 'New Portfolio Contact';
     }
 
     // Show loading state
