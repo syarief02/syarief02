@@ -233,7 +233,7 @@ My career started in a pharmaceutical lab, but every night I trade forex and wri
 </p>
 
 <p align="center">
-  📧 <strong><a href="mailto:syarief.azman@gmail.com">syarief.azman@gmail.com</a></strong>
+  📧 <strong><a href="mailto:hello@syariefazman.com">hello@syariefazman.com</a></strong>
 </p>
 
 ---
