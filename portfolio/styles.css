@@ -15,6 +15,8 @@
   --text-muted: #5a5a72;
 
   /* Accents */
+  --accent-primary: #7b2fff;
+  --accent-secondary: #00d4ff;
   --accent-cyan: #00d4ff;
   --accent-purple: #7b2fff;
   --accent-pink: #ff2d95;
@@ -61,6 +63,9 @@
   --text-primary: #1a1a2e;
   --text-secondary: #4a4a6a;
   --text-muted: #8888a0;
+
+  --accent-primary: #7b2fff;
+  --accent-secondary: #0099cc;
 
   --gradient-card: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(123, 47, 255, 0.05));
   --gradient-border: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(123, 47, 255, 0.2), rgba(255, 45, 149, 0.2));
