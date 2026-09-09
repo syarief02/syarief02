@@ -209,8 +209,64 @@ class ContactForm {
   async handleSubmit(e) {
     e.preventDefault();
 
-    // Default subject if left blank
+    // Anti-bot honeypot check
+    const botCheck = this.form.querySelector('input[name="botcheck"]');
+    if (botCheck && botCheck.checked) {
+      this.result.textContent = 'Spam detected.';
+      this.result.className = 'form-result form-result--error';
+      return;
+    }
+
+    // Client-side rate limiting / submission cooldown
+    const CONTACT_COOLDOWN = 60; // seconds
+    const lastContact = localStorage.getItem('contact_last_submit');
+    if (lastContact) {
+      const elapsed = (Date.now() - parseInt(lastContact, 10)) / 1000;
+      if (elapsed < CONTACT_COOLDOWN) {
+        const waitTime = Math.ceil(CONTACT_COOLDOWN - elapsed);
+        this.result.textContent = `⏳ Rate limit: Please wait ${waitTime}s before sending another message.`;
+        this.result.className = 'form-result form-result--error';
+        return;
+      }
+    }
+
+    // Input validation
+    const nameInput = document.getElementById('contactName');
+    const emailInput = document.getElementById('contactEmail');
     const subjectInput = document.getElementById('contactSubject');
+    const msgInput = document.getElementById('contactMessage');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
+    const message = msgInput ? msgInput.value.trim() : '';
+
+    if (!name || name.length < 2 || name.length > 80) {
+      this.result.textContent = '⚠️ Please enter your name (2–80 characters).';
+      this.result.className = 'form-result form-result--error';
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!email || !emailRegex.test(email)) {
+      this.result.textContent = '⚠️ Please enter a valid email address.';
+      this.result.className = 'form-result form-result--error';
+      return;
+    }
+
+    if (!message || message.length < 5 || message.length > 2000) {
+      this.result.textContent = '⚠️ Please enter your message (5–2000 characters).';
+      this.result.className = 'form-result form-result--error';
+      return;
+    }
+
+    // Reject dangerous protocol injections
+    if (/javascript:|data:|vbscript:/i.test(name) || /javascript:|data:|vbscript:/i.test(message)) {
+      this.result.textContent = '⚠️ Message rejected due to invalid content.';
+      this.result.className = 'form-result form-result--error';
+      return;
+    }
+
+    // Default subject if left blank
     if (subjectInput && !subjectInput.value.trim()) {
       subjectInput.value = 'New Portfolio Contact';
     }
@@ -232,6 +288,7 @@ class ContactForm {
       const data = await response.json();
 
       if (data.success) {
+        localStorage.setItem('contact_last_submit', Date.now().toString());
         this.result.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
         this.result.classList.add('form-result--success');
         this.form.reset();
@@ -280,9 +337,11 @@ const SUPABASE_CONFIG = {
 };
 
 function formatTimeAgo(dateStr) {
+  if (!dateStr) return 'recently';
   const now = new Date();
   const date = new Date(dateStr);
-  const diffSec = Math.floor((now - date) / 1000);
+  if (isNaN(date.getTime())) return 'recently';
+  const diffSec = Math.max(0, Math.floor((now - date) / 1000));
   if (diffSec < 60) return 'just now';
   const diffMin = Math.floor(diffSec / 60);
   if (diffMin < 60) return `${diffMin}m ago`;
@@ -380,6 +439,16 @@ class GuestbookManager {
     }
   }
 
+  escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   renderMessages() {
     if (!this.feedList) return;
 
@@ -393,8 +462,10 @@ class GuestbookManager {
     }
 
     this.feedList.innerHTML = filtered.map(item => {
-      const initial = (item.name || 'Anonymous').charAt(0).toUpperCase();
-      const type = item.type || 'feedback';
+      const rawName = (typeof item.name === 'string' && item.name.trim()) ? item.name.trim() : 'Anonymous';
+      const cleanName = rawName.slice(0, 60);
+      const initial = cleanName.charAt(0).toUpperCase() || '?';
+      const type = (item.type === 'idea' || item.type === 'ea_request') ? item.type : 'feedback';
       const time = formatTimeAgo(item.created_at);
 
       let badgeLabel = '💬 Feedback';
@@ -407,33 +478,29 @@ class GuestbookManager {
         badgeClass = 'gb-badge--ea_request';
       }
 
-      const eaTag = item.ea_name
-        ? `<div class="gb-ea-tag">📌 Target EA: <strong>${this.escapeHtml(item.ea_name)}</strong></div>`
+      const eaTag = (item.ea_name && typeof item.ea_name === 'string')
+        ? `<div class="gb-ea-tag">📌 Target EA: <strong>${this.escapeHtml(item.ea_name.slice(0, 80))}</strong></div>`
         : '';
+
+      const safeMessage = typeof item.message === 'string' ? item.message : '';
 
       return `
         <div class="gb-message-card">
           <div class="gb-author-row">
             <div class="gb-author-left">
-              <div class="gb-avatar">${initial}</div>
+              <div class="gb-avatar">${this.escapeHtml(initial)}</div>
               <div class="gb-meta">
-                <span class="gb-author-name">${this.escapeHtml(item.name || 'Anonymous')}</span>
-                <span class="gb-time">${time}</span>
+                <span class="gb-author-name">${this.escapeHtml(cleanName)}</span>
+                <span class="gb-time">${this.escapeHtml(time)}</span>
               </div>
             </div>
             <span class="gb-badge ${badgeClass}">${badgeLabel}</span>
           </div>
           ${eaTag}
-          <div class="gb-message-text">${this.escapeHtml(item.message || '')}</div>
+          <div class="gb-message-text">${this.escapeHtml(safeMessage)}</div>
         </div>
       `;
     }).join('');
-  }
-
-  escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
   }
 
   async handleSubmit(e) {
@@ -442,20 +509,57 @@ class GuestbookManager {
 
     // Anti-bot honeypot check
     const hp = document.getElementById('hpCheck');
-    if (hp && hp.value) return;
+    if (hp && hp.value.trim()) {
+      this.showAlert('Spam detected.', 'error');
+      return;
+    }
+
+    // Client-side rate limiting / cooldown throttle
+    const GB_COOLDOWN = 30; // 30 seconds
+    const lastSubmit = localStorage.getItem('gb_last_submit');
+    if (lastSubmit) {
+      const elapsed = (Date.now() - parseInt(lastSubmit, 10)) / 1000;
+      if (elapsed < GB_COOLDOWN) {
+        const remaining = Math.ceil(GB_COOLDOWN - elapsed);
+        this.showAlert(`⏳ Rate limit: Please wait ${remaining}s before posting again.`, 'error');
+        return;
+      }
+    }
 
     const nameInput = document.getElementById('gbName');
     const msgInput = document.getElementById('gbMessage');
     const eaInput = document.getElementById('gbEaName');
     const selectedTypeEl = document.querySelector('input[name="gbType"]:checked');
-    const type = selectedTypeEl ? selectedTypeEl.value : 'feedback';
+    const rawType = selectedTypeEl ? selectedTypeEl.value : 'feedback';
 
     const name = nameInput ? nameInput.value.trim() : '';
     const message = msgInput ? msgInput.value.trim() : '';
-    const ea_name = (eaInput && type === 'ea_request') ? eaInput.value.trim() : null;
+    const ea_name = (eaInput && rawType === 'ea_request') ? eaInput.value.trim() : null;
 
-    if (!name || !message) {
-      this.showAlert('Please fill in both your name and message.', 'error');
+    // Length and content validation
+    if (!name || name.length < 2 || name.length > 60) {
+      this.showAlert('Please provide your name (2–60 characters).', 'error');
+      return;
+    }
+
+    if (!message || message.length < 3 || message.length > 1000) {
+      this.showAlert('Please write a message (3–1000 characters).', 'error');
+      return;
+    }
+
+    // Allowed categories whitelist
+    const ALLOWED_TYPES = ['feedback', 'idea', 'ea_request'];
+    const type = ALLOWED_TYPES.includes(rawType) ? rawType : 'feedback';
+
+    // Anti-spam heuristics: prevent link bombardment and malicious schemes
+    const linkMatches = message.match(/https?:\/\//gi) || [];
+    if (linkMatches.length > 2) {
+      this.showAlert('For safety, posts cannot include more than 2 links.', 'error');
+      return;
+    }
+
+    if (/javascript:|data:|vbscript:/i.test(message) || /javascript:|data:|vbscript:/i.test(name)) {
+      this.showAlert('Disallowed characters or URI scheme detected.', 'error');
       return;
     }
 
@@ -463,8 +567,14 @@ class GuestbookManager {
     this.submitBtn.innerHTML = '<span>⏳</span> Posting...';
     this.submitBtn.disabled = true;
 
-    const payload = { name, type, message };
-    if (ea_name) payload.ea_name = ea_name;
+    const payload = {
+      name: name.slice(0, 60),
+      type,
+      message: message.slice(0, 1000)
+    };
+    if (ea_name) {
+      payload.ea_name = ea_name.slice(0, 80);
+    }
 
     try {
       const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/comments`, {
@@ -481,6 +591,9 @@ class GuestbookManager {
       if (!response.ok) {
         throw new Error('Supabase insert failed');
       }
+
+      // Record successful submit timestamp for rate limiting
+      localStorage.setItem('gb_last_submit', Date.now().toString());
 
       const inserted = await response.json();
       if (inserted && inserted.length > 0) {
@@ -587,12 +700,12 @@ class CommandPalette {
       { group: 'Navigation', label: 'Get in Touch', desc: 'Contact form & socials', icon: '📬', action: () => this.scrollTo('#contact') },
 
       // Actions
-      { group: 'Actions', label: 'Download Resume PDF', desc: 'Open official resume document', icon: '📄', action: () => window.open('CV_Syarief Azman Rosli.pdf', '_blank') },
+      { group: 'Actions', label: 'Download Resume PDF', desc: 'Open official resume document', icon: '📄', action: () => window.open('CV_Syarief Azman Rosli.pdf', '_blank', 'noopener,noreferrer') },
       { group: 'Actions', label: 'View Curriculum Vitae', desc: 'Detailed government & NPRA CV', icon: '📋', action: () => window.location.href = 'cv.html' },
       { group: 'Actions', label: 'Copy Email Address', desc: 'hello@syariefazman.com', icon: '📧', action: () => this.copyEmail() },
       { group: 'Actions', label: 'Toggle Dark / Light Theme', desc: 'Switch visual appearance', icon: '🌓', action: () => this.toggleTheme() },
-      { group: 'Actions', label: 'View Source on GitHub', desc: 'syarief02/syarief02 repository', icon: '🐙', action: () => window.open('https://github.com/syarief02/syarief02', '_blank') },
-      { group: 'Actions', label: 'Visit eabudakubat.com', desc: 'Automated trading tools platform', icon: '🌐', action: () => window.open('https://eabudakubat.com', '_blank') }
+      { group: 'Actions', label: 'View Source on GitHub', desc: 'syarief02/syarief02 repository', icon: '🐙', action: () => window.open('https://github.com/syarief02/syarief02', '_blank', 'noopener,noreferrer') },
+      { group: 'Actions', label: 'Visit eabudakubat.com', desc: 'Automated trading tools platform', icon: '🌐', action: () => window.open('https://eabudakubat.com', '_blank', 'noopener,noreferrer') }
     ];
 
     if (this.modal && this.input) {
