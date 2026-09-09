@@ -80,7 +80,7 @@ jobs:
 #       - name: Commit & Push
 #         run: |
 #           git config user.name "Syarief Azman"
-#           git config user.email "syarief.azman@gmail.com"
+#           git config user.email "hello@syariefazman.com"
 #           git add -A .
 #           git commit -m "Update Graph"
 #           git push
