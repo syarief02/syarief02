@@ -901,6 +901,437 @@ class QuickCopyHandler {
   }
 }
 
+// ===== PROCEDURAL FLUID LIQUID GLASS CANVAS =====
+class FluidCanvasShader {
+  constructor(canvasId = 'fluidCanvas') {
+    this.canvas = document.getElementById(canvasId);
+    if (!this.canvas) return;
+
+    this.ctx = this.canvas.getContext('2d', { alpha: true });
+    if (!this.ctx) return;
+
+    // Check prefers-reduced-motion
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    this.particles = [];
+    this.numParticles = 38;
+    this.ripples = [];
+    this.mouse = { x: -1000, y: -1000, lastX: -1000, lastY: -1000, speed: 0 };
+    this.scrollMomentum = 0;
+    this.width = 0;
+    this.height = 0;
+    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.isVisible = true;
+    this.animationId = null;
+
+    this.init();
+  }
+
+  init() {
+    this.resize();
+    window.addEventListener('resize', () => this.resize(), { passive: true });
+
+    // Pointer displacement
+    window.addEventListener('pointermove', (e) => {
+      const dx = e.clientX - this.mouse.x;
+      const dy = e.clientY - this.mouse.y;
+      this.mouse.speed = Math.sqrt(dx * dx + dy * dy);
+      this.mouse.lastX = this.mouse.x;
+      this.mouse.lastY = this.mouse.y;
+      this.mouse.x = e.clientX;
+      this.mouse.y = e.clientY;
+
+      if (this.mouse.speed > 14) {
+        this.addRipple(e.clientX, e.clientY, Math.min(this.mouse.speed * 0.35, 30));
+      }
+    }, { passive: true });
+
+    // Pointer click shockwave
+    window.addEventListener('pointerdown', (e) => {
+      this.addRipple(e.clientX, e.clientY, 65, true);
+    }, { passive: true });
+
+    // Tab visibility handling
+    document.addEventListener('visibilitychange', () => {
+      this.isVisible = document.visibilityState === 'visible';
+      if (this.isVisible && !this.animationId) {
+        this.animate();
+      }
+    });
+
+    this.createParticles();
+    this.animate();
+  }
+
+  resize() {
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    this.canvas.width = this.width * this.dpr;
+    this.canvas.height = this.height * this.dpr;
+    this.ctx.scale(this.dpr, this.dpr);
+  }
+
+  createParticles() {
+    this.particles = [];
+    const colors = [
+      { r: 0, g: 212, b: 255, a: 0.24 },   // Electric Cyan
+      { r: 123, g: 47, b: 255, a: 0.22 },  // Neon Violet
+      { r: 255, g: 45, b: 149, a: 0.20 },  // Kinetic Magenta
+      { r: 0, g: 255, b: 136, a: 0.16 }    // Emerald Refraction
+    ];
+
+    for (let i = 0; i < this.numParticles; i++) {
+      const c = colors[i % colors.length];
+      this.particles.push({
+        x: Math.random() * this.width,
+        y: Math.random() * this.height,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+        radius: Math.random() * 95 + 45,
+        color: c,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.015 + Math.random() * 0.02
+      });
+    }
+  }
+
+  addRipple(x, y, power = 30, isBurst = false) {
+    if (this.ripples.length > 14) this.ripples.shift();
+    this.ripples.push({
+      x,
+      y,
+      radius: 6,
+      maxRadius: isBurst ? 240 : 120 + power * 2,
+      opacity: isBurst ? 0.75 : 0.4,
+      speed: isBurst ? 7.5 : 3.5 + power * 0.1,
+      isBurst
+    });
+  }
+
+  injectScroll(velocity) {
+    this.scrollMomentum += velocity * 0.25;
+  }
+
+  animate() {
+    if (!this.isVisible) {
+      this.animationId = null;
+      return;
+    }
+
+    this.ctx.clearRect(0, 0, this.width, this.height);
+
+    // Damping scroll momentum
+    this.scrollMomentum *= 0.92;
+
+    // Draw liquid metaball particles
+    for (let i = 0; i < this.particles.length; i++) {
+      const p = this.particles[i];
+
+      p.pulse += p.pulseSpeed;
+      const currentRadius = p.radius + Math.sin(p.pulse) * 14;
+
+      // Pointer displacement
+      const dx = p.x - this.mouse.x;
+      const dy = p.y - this.mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 220) {
+        const force = (1 - dist / 220) * 2.2;
+        p.vx += (dx / dist) * force;
+        p.vy += (dy / dist) * force;
+      }
+
+      // Apply scroll momentum
+      p.vy += this.scrollMomentum * 0.04;
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Velocity damping
+      p.vx *= 0.96;
+      p.vy *= 0.96;
+
+      // Wrap around edges
+      if (p.x < -currentRadius) p.x = this.width + currentRadius;
+      if (p.x > this.width + currentRadius) p.x = -currentRadius;
+      if (p.y < -currentRadius) p.y = this.height + currentRadius;
+      if (p.y > this.height + currentRadius) p.y = -currentRadius;
+
+      // Render liquid refraction gradient
+      const grad = this.ctx.createRadialGradient(
+        p.x, p.y, 0,
+        p.x, p.y, currentRadius
+      );
+      grad.addColorStop(0, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.color.a * 1.5})`);
+      grad.addColorStop(0.5, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, ${p.color.a * 0.6})`);
+      grad.addColorStop(1, `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0)`);
+
+      this.ctx.fillStyle = grad;
+      this.ctx.beginPath();
+      this.ctx.arc(p.x, p.y, currentRadius, 0, Math.PI * 2);
+      this.ctx.fill();
+    }
+
+    // Render fluid shockwaves and ripples
+    for (let i = this.ripples.length - 1; i >= 0; i--) {
+      const r = this.ripples[i];
+      r.radius += r.speed;
+      r.opacity *= 0.94;
+
+      if (r.opacity < 0.01 || r.radius > r.maxRadius) {
+        this.ripples.splice(i, 1);
+        continue;
+      }
+
+      this.ctx.save();
+      this.ctx.beginPath();
+      this.ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+      this.ctx.strokeStyle = r.isBurst
+        ? `rgba(255, 45, 149, ${r.opacity})`
+        : `rgba(0, 212, 255, ${r.opacity})`;
+      this.ctx.lineWidth = r.isBurst ? 2.5 : 1.5;
+      this.ctx.stroke();
+
+      if (r.isBurst) {
+        this.ctx.beginPath();
+        this.ctx.arc(r.x, r.y, Math.max(1, r.radius - 12), 0, Math.PI * 2);
+        this.ctx.strokeStyle = `rgba(0, 212, 255, ${r.opacity * 0.7})`;
+        this.ctx.lineWidth = 1;
+        this.ctx.stroke();
+      }
+      this.ctx.restore();
+    }
+
+    this.animationId = requestAnimationFrame(() => this.animate());
+  }
+}
+
+// ===== SCROLL PHYSICS & ENERGY HUD =====
+class ScrollPhysicsManager {
+  constructor(fluidCanvas = null) {
+    this.bar = document.getElementById('scrollProgressBar');
+    this.container = document.querySelector('.scroll-progress-container');
+    this.fluidCanvas = fluidCanvas;
+    this.lastScrollY = window.scrollY;
+    this.lastTime = performance.now();
+    this.scrollTimeout = null;
+
+    if (this.bar) {
+      this.init();
+    }
+  }
+
+  init() {
+    window.addEventListener('scroll', () => this.onScroll(), { passive: true });
+    this.onScroll();
+  }
+
+  onScroll() {
+    const currentY = window.scrollY;
+    const now = performance.now();
+    const dt = Math.max(1, now - this.lastTime);
+    const velocity = (currentY - this.lastScrollY) / dt;
+
+    this.lastScrollY = currentY;
+    this.lastTime = now;
+
+    // Calculate progress percentage
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? (currentY / maxScroll) * 100 : 0;
+
+    if (this.bar) {
+      this.bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+    }
+
+    if (this.container) {
+      this.container.classList.add('scrolling');
+      clearTimeout(this.scrollTimeout);
+      this.scrollTimeout = setTimeout(() => {
+        this.container.classList.remove('scrolling');
+      }, 250);
+    }
+
+    if (this.fluidCanvas && typeof this.fluidCanvas.injectScroll === 'function') {
+      this.fluidCanvas.injectScroll(velocity);
+    }
+  }
+}
+
+// ===== 3D CARD TILT & SPECULAR SPOTLIGHT =====
+class CardTiltSpotlight {
+  constructor() {
+    if (window.matchMedia && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return;
+    }
+
+    this.cards = document.querySelectorAll(
+      '.project-card, .skill-category, .stat-item, .duality-card, .guestbook-card'
+    );
+    this.init();
+  }
+
+  init() {
+    this.cards.forEach(card => {
+      card.addEventListener('pointermove', (e) => this.handleMove(e, card));
+      card.addEventListener('pointerleave', () => this.handleLeave(card));
+    });
+  }
+
+  handleMove(e, card) {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Set specular glare position
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+
+    // 3D Tilt calculation
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+  }
+
+  handleLeave(card) {
+    card.style.transform = '';
+    card.style.removeProperty('--mouse-x');
+    card.style.removeProperty('--mouse-y');
+  }
+}
+
+// ===== MAGNETIC BUTTONS WITH ANIME SPRING PHYSICS =====
+class MagneticButtons {
+  constructor() {
+    if (window.matchMedia && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return;
+    }
+
+    this.targets = document.querySelectorAll(
+      '.btn-primary, .btn-secondary, .theme-toggle, .cmd-k-trigger, .filter-btn, .ctrl-btn'
+    );
+    this.init();
+  }
+
+  init() {
+    this.targets.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const btnCenterX = rect.left + rect.width / 2;
+        const btnCenterY = rect.top + rect.height / 2;
+        const deltaX = (e.clientX - btnCenterX) * 0.26;
+        const deltaY = (e.clientY - btnCenterY) * 0.26;
+
+        btn.style.transform = `translate(${deltaX.toFixed(2)}px, ${deltaY.toFixed(2)}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+}
+
+// ===== KINETIC ANIME CURSOR AURA =====
+class KineticCursor {
+  constructor() {
+    if (window.matchMedia && !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return;
+    }
+
+    this.dot = document.getElementById('cursorDot');
+    this.glow = document.getElementById('cursorGlow');
+    if (!this.dot || !this.glow) return;
+
+    this.cursorX = -100;
+    this.cursorY = -100;
+    this.glowX = -100;
+    this.glowY = -100;
+
+    this.init();
+  }
+
+  init() {
+    window.addEventListener('pointermove', (e) => {
+      this.cursorX = e.clientX;
+      this.cursorY = e.clientY;
+      this.dot.style.transform = `translate(${this.cursorX}px, ${this.cursorY}px)`;
+    }, { passive: true });
+
+    document.addEventListener('pointerdown', () => {
+      this.glow.classList.add('clicking');
+    });
+
+    document.addEventListener('pointerup', () => {
+      this.glow.classList.remove('clicking');
+    });
+
+    document.addEventListener('mouseleave', () => {
+      this.dot.style.opacity = '0';
+      this.glow.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+      this.dot.style.opacity = '1';
+      this.glow.style.opacity = '1';
+    });
+
+    // Hover detection on interactive elements
+    const interactiveSelectors = 'a, button, [role="button"], input, textarea, select, .project-card, .skill-category, .stat-item, .gb-tab, .filter-btn, .ctrl-btn';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(interactiveSelectors)) {
+        this.glow.classList.add('hovering');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(interactiveSelectors)) {
+        this.glow.classList.remove('hovering');
+      }
+    });
+
+    // Spring lag animation loop for cursor glow
+    const render = () => {
+      this.glowX += (this.cursorX - this.glowX) * 0.18;
+      this.glowY += (this.cursorY - this.glowY) * 0.18;
+      this.glow.style.transform = `translate(${this.glowX.toFixed(2)}px, ${this.glowY.toFixed(2)}px)`;
+      requestAnimationFrame(render);
+    };
+    render();
+  }
+}
+
+// ===== KINETIC CLICK RIPPLE =====
+class KineticRippleHandler {
+  constructor() {
+    document.addEventListener('pointerdown', (e) => {
+      const target = e.target.closest('.btn, .filter-btn, .gb-tab, .project-link, .ctrl-btn');
+      if (!target) return;
+
+      const rect = target.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'kinetic-ripple';
+
+      const diameter = Math.max(rect.width, rect.height);
+      const radius = diameter / 2;
+
+      ripple.style.width = ripple.style.height = `${diameter}px`;
+      ripple.style.left = `${e.clientX - rect.left - radius}px`;
+      ripple.style.top = `${e.clientY - rect.top - radius}px`;
+
+      const existing = target.querySelector('.kinetic-ripple');
+      if (existing) existing.remove();
+
+      target.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    });
+  }
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   // Typing effect
@@ -943,6 +1374,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Quick Copy
   new QuickCopyHandler();
+
+  // Procedural Liquid Glass Canvas
+  const fluidCanvas = new FluidCanvasShader();
+
+  // Scroll Physics HUD
+  new ScrollPhysicsManager(fluidCanvas);
+
+  // 3D Card Tilt with Specular Spotlight
+  new CardTiltSpotlight();
+
+  // Magnetic Buttons with Anime Spring
+  new MagneticButtons();
+
+  // Kinetic Anime Cursor Aura
+  new KineticCursor();
+
+  // Kinetic Ripple on Click
+  new KineticRippleHandler();
 });
 
 // ===== PROJECT FILTERS =====
