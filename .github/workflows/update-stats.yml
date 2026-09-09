@@ -46,6 +46,6 @@ jobs:
           # Username for the commit author
           COMMIT_USERNAME: ${{ github.repository_owner }}
           # Email for the commit author
-          COMMIT_EMAIL: "syarief.azman@gmail.com"
+          COMMIT_EMAIL: "hello@syariefazman.com"
           # Show AI coding contribution stats
           SHOW_AI_CODING: "False"
