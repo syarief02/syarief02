@@ -85,6 +85,7 @@
           <li><a href="#stats">Stats</a></li>
           <li><a href="#experience">Journey</a></li>
           <li><a href="#guestbook">Guestbook</a></li>
+          <li><a href="#arcade">Arcade</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="cmd-k-trigger" id="cmdKTrigger" aria-label="Open Command Palette" title="Command Palette (Ctrl+K / ⌘K)">
@@ -943,6 +944,94 @@
       </div>
     </section>
 
+    <!-- Arcade Mini-Game Section -->
+    <section class="section arcade-section" id="arcade">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Interactive Lab</span>
+          <h2 class="section-title">Quantum Dino Runner</h2>
+          <p class="section-subtitle">No internet? No problem. Test your reflexes, escape the bugs, and set a high score!</p>
+        </div>
+
+        <div class="arcade-cabinet reveal">
+          <!-- Arcade Cabinet Header / HUD -->
+          <div class="arcade-hud">
+            <div class="hud-left">
+              <span class="arcade-badge">🕹️ RETRO RUNNER v1.0</span>
+              <span class="hud-speed-badge">Speed: <strong id="dinoSpeedLevel">1.0x</strong></span>
+            </div>
+            <div class="hud-center">
+              <div class="score-display">
+                <span class="score-label">HI</span>
+                <span class="score-digits hi-score-digits" id="dinoHiScore">00000</span>
+                <span class="score-label score-separator">·</span>
+                <span class="score-label">SCORE</span>
+                <span class="score-digits" id="dinoScore">00000</span>
+              </div>
+            </div>
+            <div class="hud-right">
+              <button type="button" class="arcade-btn" id="dinoMuteBtn" aria-label="Toggle Sound">🔊 Sound</button>
+              <button type="button" class="arcade-btn arcade-btn-restart" id="dinoRestartBtn" aria-label="Restart Game">🔄 Restart</button>
+            </div>
+          </div>
+
+          <!-- Canvas Screen Container -->
+          <div class="dino-game-container" id="dinoGameContainer">
+            <canvas id="quantumDinoCanvas" class="dino-canvas" width="800" height="260"></canvas>
+            
+            <!-- CRT Scanline Overlay -->
+            <div class="arcade-scanlines" aria-hidden="true"></div>
+
+            <!-- Start / Game Over Overlay -->
+            <div class="dino-overlay visible" id="dinoOverlay">
+              <div class="overlay-content">
+                <div class="overlay-icon">🦖</div>
+                <h3 class="overlay-title" id="dinoOverlayTitle">PRESS SPACE TO RUN</h3>
+                <p class="overlay-subtitle" id="dinoOverlaySubtitle">Tap or Press Space to Jump · Down Arrow to Duck</p>
+                <div class="overlay-hints">
+                  <span class="overlay-hint-pill"><kbd>Space</kbd> / <kbd>↑</kbd> Jump</span>
+                  <span class="overlay-hint-pill"><kbd>↓</kbd> Duck</span>
+                  <span class="overlay-hint-pill"><kbd>P</kbd> Pause</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Touch Controls HUD -->
+          <div class="arcade-touch-bar" id="dinoTouchBar">
+            <button type="button" class="touch-control-btn touch-jump-btn" id="dinoTouchJump">
+              <span class="touch-icon">⬆</span>
+              <span class="touch-text">JUMP</span>
+            </button>
+            <button type="button" class="touch-control-btn touch-duck-btn" id="dinoTouchDuck">
+              <span class="touch-icon">⬇</span>
+              <span class="touch-text">DUCK</span>
+            </button>
+          </div>
+
+          <!-- Collectibles & Badges Legend -->
+          <div class="arcade-legend">
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#00d4ff;"></span>
+              <span><strong>Cyber Dino:</strong> You</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#00ff88;"></span>
+              <span><strong>Cacti & Bugs:</strong> Avoid</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#7b2fff;"></span>
+              <span><strong>Pterodactyl:</strong> Duck / Jump</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#ff2d95;"></span>
+              <span><strong>Pill / Coffee:</strong> Bonus Pts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="section" id="contact">
       <div class="container">
@@ -1059,6 +1148,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="dino-game.js"></script>
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
   </body>

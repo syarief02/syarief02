@@ -697,9 +697,11 @@ class CommandPalette {
       { group: 'Navigation', label: 'GitHub Stats', desc: 'Lines of code & contribution metrics', icon: '📊', action: () => this.scrollTo('#stats') },
       { group: 'Navigation', label: 'Journey & Experience', desc: 'Career timeline & education', icon: '🗺️', action: () => this.scrollTo('#experience') },
       { group: 'Navigation', label: 'Community Guestbook', desc: 'Live Supabase-powered messages', icon: '💬', action: () => this.scrollTo('#guestbook') },
+      { group: 'Navigation', label: 'Arcade Mini-Game', desc: 'Play Quantum Dino Runner', icon: '🎮', action: () => this.scrollTo('#arcade') },
       { group: 'Navigation', label: 'Get in Touch', desc: 'Contact form & socials', icon: '📬', action: () => this.scrollTo('#contact') },
 
       // Actions
+      { group: 'Actions', label: 'Play Quantum Dino Runner', desc: 'Jump into the retro arcade mini-game', icon: '🦖', action: () => { this.scrollTo('#arcade'); const start = document.getElementById('dinoRestartBtn'); if (start) start.click(); } },
       { group: 'Actions', label: 'Download Resume PDF', desc: 'Open official resume document', icon: '📄', action: () => window.open('CV_Syarief Azman Rosli.pdf', '_blank', 'noopener,noreferrer') },
       { group: 'Actions', label: 'View Curriculum Vitae', desc: 'Detailed government & NPRA CV', icon: '📋', action: () => window.location.href = 'cv.html' },
       { group: 'Actions', label: 'Copy Email Address', desc: 'hello@syariefazman.com', icon: '📧', action: () => this.copyEmail() },
