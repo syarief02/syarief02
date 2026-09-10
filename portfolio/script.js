@@ -690,6 +690,7 @@ class CommandPalette {
 
     this.commands = [
       // Navigation
+      { group: 'Navigation', label: 'Arcade Mini-Game', desc: 'Play Quantum Dino Runner', icon: '🎮', action: () => this.scrollTo('#arcade') },
       { group: 'Navigation', label: 'About Me', desc: 'NPRA Analyst & self-taught developer story', icon: '👤', action: () => this.scrollTo('#about') },
       { group: 'Navigation', label: 'Pharma × Tech Duality', desc: 'Where chemistry meets code', icon: '🧬', action: () => this.scrollTo('#duality') },
       { group: 'Navigation', label: 'Tech Stack & Skills', desc: 'Languages, frameworks & domain', icon: '⚡', action: () => this.scrollTo('#skills') },
@@ -697,7 +698,6 @@ class CommandPalette {
       { group: 'Navigation', label: 'GitHub Stats', desc: 'Lines of code & contribution metrics', icon: '📊', action: () => this.scrollTo('#stats') },
       { group: 'Navigation', label: 'Journey & Experience', desc: 'Career timeline & education', icon: '🗺️', action: () => this.scrollTo('#experience') },
       { group: 'Navigation', label: 'Community Guestbook', desc: 'Live Supabase-powered messages', icon: '💬', action: () => this.scrollTo('#guestbook') },
-      { group: 'Navigation', label: 'Arcade Mini-Game', desc: 'Play Quantum Dino Runner', icon: '🎮', action: () => this.scrollTo('#arcade') },
       { group: 'Navigation', label: 'Get in Touch', desc: 'Contact form & socials', icon: '📬', action: () => this.scrollTo('#contact') },
 
       // Actions
