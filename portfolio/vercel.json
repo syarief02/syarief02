@@ -75,7 +75,7 @@
     },
     {
       "source": "/tiktok/(.*)",
-      "destination": "https://gemini-flow-production.up.railway.app/$1"
+      "destination": "https://gemini-flow-three.vercel.app/$1"
     }
   ],
   "headers": [
