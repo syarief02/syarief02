@@ -2486,7 +2486,23 @@ img {
 .arcade-section {
   position: relative;
   overflow: hidden;
-  padding: 80px 0 100px;
+  padding: 30px 0 90px;
+}
+
+.hero-game-btn {
+  background: linear-gradient(135deg, #ff2d95 0%, #7b2fff 50%, #00d4ff 100%) !important;
+  background-size: 200% 200% !important;
+  box-shadow: 0 4px 20px rgba(255, 45, 149, 0.45), 0 0 20px rgba(0, 212, 255, 0.35) !important;
+  animation: gameBtnGlow 4s ease-in-out infinite !important;
+}
+
+@keyframes gameBtnGlow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(255, 45, 149, 0.45), 0 0 20px rgba(0, 212, 255, 0.35);
+  }
+  50% {
+    box-shadow: 0 6px 30px rgba(0, 212, 255, 0.6), 0 0 35px rgba(255, 45, 149, 0.5);
+  }
 }
 
 .arcade-cabinet {
