@@ -48,4 +48,5 @@ jobs:
           # Email for the commit author
           COMMIT_EMAIL: "hello@syariefazman.com"
           # Show AI coding contribution stats
+          SHOW_AI_CODE_TIME: "False"
           SHOW_AI_CODING: "False"
