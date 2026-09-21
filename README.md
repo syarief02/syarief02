@@ -1,29 +1,29 @@
 <h1 align="center">
-  Hey there 👋 I'm <a href="https://syariefazman.com">Syarief Azman</a>
+  Hey there 👋 I'm <a href="https://eabudakubat.com">Syarief Azman</a>
 </h1>
 
 <h3 align="center">
-  🇲🇾 Pharmaceutical Analyst · Algorithmic Trader · Self-Taught Developer
+  Quantitative Systems Architect · Algorithmic Trading Engineer · Full-Stack Developer
 </h3>
 
-<p align='center'>
+<p align="center">
   <a href="https://eabudakubat.com">
-    <img src="./zQinMHnDYiNnq.webp" alt="Banner">
+    <img src="./zQinMHnDYiNnq.webp" alt="EA Budak Ubat Banner" width="100%">
   </a>
 </p>
 
 <p align="center">
-  <a>
-    <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS" alt="Profile Views" />
+  <a href="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS&color=00f0ff&style=for-the-badge">
+    <img src="https://komarev.com/ghpvc/?username=syarief02&label=PROFILE+VIEWS&color=00f0ff&style=for-the-badge" alt="Profile Views" />
   </a>
   <a href="https://user-badge.committers.top/malaysia/syarief02">
     <img src="https://user-badge.committers.top/malaysia/syarief02.svg" alt="committers.top badge" />
   </a>
-  <a href="https://twitter.com/syariefazman" target="blank">
-    <img src="https://img.shields.io/twitter/follow/syariefazman?logo=twitter&style=for-the-badge" alt="Twitter Follow" />
+  <a href="https://www.mql5.com/en/market/product/195399" target="_blank">
+    <img src="https://img.shields.io/badge/MQL5%20Market-Verified%20Author-38bdf8?style=for-the-badge&logo=meta&logoColor=white" alt="MQL5 Market" />
   </a>
-  <a href="https://syariefazman.com" target="blank">
-    <img src="https://img.shields.io/badge/Portfolio-syariefazman.com-7b2fff?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
+  <a href="https://eabudakubat.com" target="_blank">
+    <img src="https://img.shields.io/badge/Official%20Hub-eabudakubat.com-7b2fff?style=for-the-badge&logo=vercel&logoColor=white" alt="Official Website" />
   </a>
 </p>
 
@@ -31,100 +31,93 @@
 
 ## 🧬 About Me
 
-By day, I'm a **Pharmaceutical Analyst** at the **National Pharmaceutical Regulatory Agency (NPRA)** in Malaysia — running tests on pharmaceutical products using advanced analytical instruments like **HPLC**, **GC-MS**, and **ICP-MS**.
+I am a **Quantitative Systems Architect** and **Algorithmic Trading Engineer** specializing in autonomous trading systems for MetaTrader (MQL4/MQL5), high-frequency algorithmic execution tools, and full-stack web applications.
 
-By night, I'm a **self-taught developer** and **algorithmic forex trader** who builds automated trading bots, web apps, and open-source tools. I believe in learning by building, and I ship code every single day.
+With a rigorous scientific foundation in **high-precision analytical chemistry, metrology, and zero-tolerance quality control (ISO 8655-2, ISO 4787, GLP)**, I translate empirical laboratory standards directly into financial algorithm engineering: hypothesis-driven development, continuous tick-level backtesting across multi-year market regimes, dynamic volatility modeling, and automated risk boundaries.
 
+```text
+🔬 Precision Metrology & QC     💹 Quantitative Financial Systems     💻 2.94M+ Lines of Code Authored
 ```
-🔬 Pharma by profession     💹 Trader by passion     💻 Developer by obsession
-```
+
+- 🏢 **Founder & Lead Architect:** [EA Budak Ubat](https://eabudakubat.com) — 12+ years of continuous development (since 2014 genesis), powering 900+ verified active accounts globally.
+- 🎓 **Computer Science & Cybersecurity:** Harvard University [CS50x](https://cs50.harvard.edu/x/) & [CS50 Cybersecurity](https://cs50.harvard.edu/cybersecurity/).
+- ⚡ **Engineering Principles:** Pure native MQL (zero external DLL risks), sub-minute dynamic ADR recalculations, and automated tick basket break-even engines.
+- 🌐 **Full-Stack Ecosystem:** Building reactive platforms with Next.js, React, Supabase, Python FastAPI, and Vercel.
 
 ---
 
-## 🤖 My Trading Tools — [eabudakubat.com](https://eabudakubat.com)
+## 🤖 Flagship Algorithmic Trading Ecosystem — [eabudakubat.com](https://eabudakubat.com)
 
-I build **Expert Advisors (EAs)** for MetaTrader 4 & 5 — automated trading systems that range from grid strategies to AI-powered signal analysis. All designed with real-world trading experience and a strong focus on risk management.
+A battle-tested suite of MetaTrader Expert Advisors, AI trading systems, and execution cockpits engineered for distinct market regimes:
 
-| EA | Strategy | Platform | Description |
+| System | Strategy | Platform | Highlights & Architecture |
 |---|---|---|---|
-| **[EA Budak Ubat](https://eabudakubat.com)** | Grid Martingale | MT4 / MT5 | 4 analysis methods (Candle, SMA20, Alligator, Ichimoku), AutoConfig AI, hedging & time filters. [Available on MQL5](https://tinyurl.com/eabubuy) |
-| **[GoldMind AI](https://eabudakubat.com/goldmind-ai)** | AI-Powered Signals | MT5 | Open-source AI system using ChatGPT to analyze XAUUSD charts & auto-trade. FastAPI + OpenAI + MQL5 |
-| **[BracketBlitz EA](https://eabudakubat.com/bracketblitz)** | OCO Breakout | MT4 / MT5 | Rapid-fire Buy Stop + Sell Stop orders, auto-refreshed every 30s. Catches breakouts on any instrument |
-| **[MathEdge Pro](https://eabudakubat.com/mathedge-pro)** | Math-Based Index | MT4 / MT5 | Automated US30 & NAS100 trading with daily level calculations & 3-trade pending order sequences |
-| **[Aligator Gozaimasu](https://eabudakubat.com/aligator-gozaimasu)** | Trend Following | MT4 / MT5 | Multi-timeframe Alligator + AO + RSI + Stochastic confirmation across up to 4 timeframes |
-| **[Encik Moku](https://eabudakubat.com/encik-moku)** | Trend Following | MT4 / MT5 | Multi-timeframe Ichimoku cloud trading with RSI & Stochastic filters, auto-compounding |
+| **[EA Budak Ubat v1.67](https://eabudakubat.com/ea-budak-ubat)** | Dynamic Grid Martingale | MT4 / MT5 | 4 analysis methods (Candle, SMA20, Alligator, Ichimoku), AutoConfig AI dynamic volatility engine, real-time tick basket break-even. [Buy on MQL5 Market](https://www.mql5.com/en/market/product/195399) |
+| **[GoldMind AI v1.01](https://eabudakubat.com/goldmind-ai)** | AI-Driven Signal Engine | MT5 | Autonomous AI trading system integrating OpenAI GPT with MetaTrader 5 via local FastAPI backend. 6 safety filters & smart lot sizing. |
+| **[BracketBlitz EA](https://eabudakubat.com/bracketblitz)** | OCO Straddle Breakout | MT4 / MT5 | Rapid-fire OCO bracket orders straddling market price (Buy Stop + Sell Stop) auto-refreshed every 30 seconds for news & volatility breakouts. |
+| **[MathEdge Pro v1.1](https://eabudakubat.com/mathedge-pro)** | Math-Based Index Bias | MT4 / MT5 | Automated daily OHLC level matrix for US30 & NAS100 with strict 3-trade pending sequence executed during the NY session. |
+| **[Aligator Gozaimasu v1.06](https://eabudakubat.com/aligator-gozaimasu)** | Multi-Timeframe Trend | MT4 / MT5 | Trend-following system combining Bill Williams Alligator, Awesome Oscillator, RSI, and Stochastic confirmed across 4 timeframes. |
+| **[Encik Moku v1.06](https://eabudakubat.com/encik-moku)** | MTF Ichimoku Cloud | MT4 / MT5 | Multi-timeframe Ichimoku Kinko Hyo trend system confirmed above/below the Kumo cloud with auto-compounding & martingale recovery. |
+| **[Kinetix Speed Commander](https://eabudakubat.com/products)** | Execution HUD & Risk Manager | MT4 | Institutional one-click execution cockpit, dynamic balance/equity % lot sizing, and 250ms high-frequency trailing stop automation. |
+| **[Stratos Momentum Engine](https://eabudakubat.com/products)** | Momentum Breakout | MT5 | H1 Linear Regression slope filter, M15 Stochastic crossover timing, Donchian breakout confirmation, and Chandelier ATR trailing stop. |
+| **[Indi RBO](https://eabudakubat.com/products)** | Range Breakout Box | MT4 | Configurable session high/low breakout box indicator with projected volatility expansion targets. [MQL5 #146992](https://www.mql5.com/en/market/product/146992) |
+| **[Vortex Confluence Radar](https://eabudakubat.com/products)** | Multi-Oscillator Scoring | MT4 | Tri-oscillator momentum fusion (RVI + CCI + Williams %R) into a single unified histogram with EMA signal alerts. [MQL5 #196875](https://www.mql5.com/en/market/product/196875) |
 
 ---
 
-## 🎨 Frontend Mentor Challenges
+## 🎨 Full-Stack & Frontend Projects
 
-I practice frontend skills by completing [Frontend Mentor](https://www.frontendmentor.io/) challenges — all deployed live on GitHub Pages.
+Interactive web applications and UI implementations deployed live on Vercel and GitHub Pages:
 
-| Challenge | Live Demo | Source |
-|---|---|---|
-| QR Code Component | [Live](https://syarief02.github.io/qr-code-component/) | [Repo](https://github.com/syarief02/qr-code-component) |
-| Blog Preview Card | [Live](https://syarief02.github.io/blog-preview-card/) | [Repo](https://github.com/syarief02/blog-preview-card) |
-| Social Links Profile | [Live](https://syarief02.github.io/social-links-profile/) | [Repo](https://github.com/syarief02/social-links-profile) |
-| Recipe Page | [Live](https://syarief02.github.io/recipe-page-main/) | [Repo](https://github.com/syarief02/recipe-page-main) |
-| Four Card Feature Section | [Live](https://syarief02.github.io/four-card-feature-section/) | [Repo](https://github.com/syarief02/four-card-feature-section) |
-| Testimonials Grid Section | [Live](https://syarief02.github.io/testimonials-grid-section/) | [Repo](https://github.com/syarief02/testimonials-grid-section) |
+| Project / Challenge | Tech Stack | Live Demo | Source |
+|---|---|---|---|
+| **EA Budak Ubat Web Hub** | Next.js 16, React, Supabase, Tailwind | [eabudakubat.com](https://eabudakubat.com) | [Repo](https://github.com/syarief02/EA_Budak_Ubat_MT5_Public) |
+| **Algorithmic Workbench & Tools** | Next.js, Interactive Canvas, Simulation | [Interactive Tools](https://eabudakubat.com/tools) | Included in Web Hub |
+| **QR Code Component** | HTML5, CSS3, Flexbox | [Live Demo](https://syarief02.github.io/qr-code-component/) | [Repo](https://github.com/syarief02/qr-code-component) |
+| **Blog Preview Card** | HTML5, CSS Grid | [Live Demo](https://syarief02.github.io/blog-preview-card/) | [Repo](https://github.com/syarief02/blog-preview-card) |
+| **Social Links Profile** | Modern Responsive CSS | [Live Demo](https://syarief02.github.io/social-links-profile/) | [Repo](https://github.com/syarief02/social-links-profile) |
+| **Four Card Feature Section** | Multi-Column CSS Grid | [Live Demo](https://syarief02.github.io/four-card-feature-section/) | [Repo](https://github.com/syarief02/four-card-feature-section) |
+| **Testimonials Grid Section** | CSS Grid Layout | [Live Demo](https://syarief02.github.io/testimonials-grid-section/) | [Repo](https://github.com/syarief02/testimonials-grid-section) |
 
 ---
 
-## 🔧 Skills & Tools
+## 🔧 Technology Stack & Capabilities
 
 <p align="center">
-  <img src="https://img.shields.io/badge/MQL4-02303A?style=for-the-badge&logoColor=white" />
-  <img src="https://img.shields.io/badge/MQL5-02303A?style=for-the-badge&logoColor=white" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-  <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />
-  <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white" />
-  <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
-  <img src="https://img.shields.io/badge/Microsoft%20Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" />
-  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
-  <img src="https://img.shields.io/badge/MetaTrader-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/MQL4-02303A?style=for-the-badge&logoColor=white" alt="MQL4" />
+  <img src="https://img.shields.io/badge/MQL5-02303A?style=for-the-badge&logoColor=white" alt="MQL5" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/C%2FC%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C/C++" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux" />
+  <img src="https://img.shields.io/badge/OpenAI%20API-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI" />
+  <img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare" />
 </p>
 
-### 💻 Programming & Tech
-**Languages:** Python, JavaScript, C/C++, MQL4, MQL5, HTML, CSS, SQL  
-**Frameworks & Platforms:** Next.js, React, FastAPI, Supabase, Bootstrap, MetaTrader 4/5  
-**Tools & DevOps:** Git, GitHub, Linux, OpenAI API, Vercel  
-
-### 🧪 Domain Expertise
-**Algorithmic Trading:** Expert Advisor (EA) development, Forex Analysis, Risk Management  
-**Pharmaceutical Analysis:** HPLC, GC-MS, LC-MS, ICP-MS, GFAAS, CVAAS  
-**Quality Control & Compliance:** Equipment Verification SOPs (ISO 8655-2, ISO 4787, MS ISO/IEC 17025), Good Laboratory Practice (GLP)  
+### 💻 Systems & Quantitative Architecture
+- **Quantitative & Trading Systems:** MetaTrader 4/5 API, MQL4/MQL5 Expert Advisors, Custom Indicators, Tick-Level Strategy Optimization, Dynamic Volatility (ADR) Modeling, Multi-Tier Margin Safeguards.
+- **Backend & AI Integrations:** Python, FastAPI, OpenAI GPT API, RESTful Endpoints, Node.js, Next.js Server Components, PostgreSQL / Supabase Database.
+- **Frontend & UI Engineering:** React, Next.js (App Router), TypeScript, Tailwind CSS, Responsive Web Design, Dynamic Canvas Visualizations.
+- **DevOps & Infrastructure:** Git version control, GitHub Actions CI/CD workflows, Cloudflare DNS & edge caching, Linux environment scripting, Vercel production deployments.
+- **Quality & Analytical Rigor:** Empirical hypothesis testing, data validation pipelines, laboratory automation tools, ISO precision calibration standards (ISO 8655-2, ISO 4787, GLP).
 
 ---
 
-## 🚀 What I'm Up To
+## 📜 Education & Certifications
 
-- 💼 **[Portfolio](https://syariefazman.com)** — my developer portfolio showcasing projects, skills & journey
-- 📊 **[Unit Penyaringan — Sasaran 2026](https://syariefazman.com/uptslide1)** — an interactive web-based presentation slide deck for NPRA
-- 🔬 **[NPRA Lab Notes & Competency](https://syariefazman.com/lab)** — multi-unit lab reference hub covering Seksyen Pengujian Produk & Kosmetik (PKKK) with competency records
-- 🧪 **[Unit Penyaringan Lab Notes](https://syariefazman.com/lab/penyaringan)** — SPE procedures, sample prep guides, HPLC/GCMS/LCMS training records
-- ⚗️ **[Unit Logam Berat](https://syariefazman.com/lab/logam-berat)** — heavy metal analysis competency records (GFAAS, CVAAS, ICP-MS)
-- 🏠 **[Panduan HBH SpotMe (Logam Berat)](https://syariefazman.com/lab/logam-berat/hbh)** — step-by-step Hybrid Work (BDR) SpotMe workflow guide for Makmal Logam Berat
-- 🧪 **[SPE Lab Reference](https://syariefazman.com/spe)** — interactive Solid-Phase Extraction procedure guide with checklists, timers & quick reference
-- 💊 **[Sample Preparation Guide](https://syariefazman.com/sampleprep)** — 7-category drug sample prep reference (Anticholesterol, Antidiabetic, Diuretic, PPI, Antihypertensive, EDD, Domperidone)
-- ⚗️ **[Agilent 8900 ICP-MS Guide](https://syariefazman.com/icpms)** — Comprehensive 7-chapter operation guide for the Agilent 8900 Triple Quadrupole ICP-MS
-- ⚖️ **[Uniformity of Weight Guide](https://syariefazman.com/uow)** — Comprehensive procedure guide for Ujian Keseragaman Berat per USP 43 <2091>
-- 📄 **[Resume](https://syariefazman.com/resume.html)** — my up-to-date resume with print-to-PDF
-- 🤖 **Building & shipping** Expert Advisors — helping traders automate their edge
-- 🧠 **GoldMind AI** — an open-source system that connects ChatGPT to MetaTrader 5 for AI-driven gold trading
-- 🌐 **[eabudakubat.com](https://eabudakubat.com)** — my product website built with Next.js & Supabase
-- 📚 **Learning**: CS50x (Computer Science) & CS50 Cybersecurity from Harvard
-- 🔐 **Exploring** secure practices for pharmaceutical data through encryption
-- ⚡ **Automating** laboratory workflows & data analysis with Python and Excel
+- 🎓 **Harvard University CS50x:** Introduction to Computer Science (Algorithms, Data Structures, Memory, C, Python, SQL)
+- 🛡️ **Harvard University CS50 Cybersecurity:** Fundamentals of Secure Software Architecture, Cryptography & Systems Defense
+- 🧪 **Analytical Chemistry & Laboratory Metrology:** High-precision instrumentation calibration (HPLC, GC-MS, ICP-MS), ISO 8655-2 volumetric verification, Good Laboratory Practice (GLP)
 
 ---
 
-## 🏆 Achievements
+## 🏆 Achievements & Contribution Graphs
 
 <div align="center">
 
@@ -142,120 +135,14 @@ I practice frontend skills by completing [Frontend Mentor](https://www.frontendm
 
 ---
 
-## 🔬 Lab Notes & Portfolio
-
-Interactive laboratory references and professional portfolio for my work at NPRA's Pusat Kawalan Kualiti.
-
-| Section | Description | Link |
-|---|---|---|
-| **Lab Notes Hub** | Main hub for Seksyen Pengujian Produk & Kosmetik | [View](https://syariefazman.com/lab) |
-| **Unit Penyaringan** | Screening unit — SPE, HPLC, GCMS, LCMS references | [View](https://syariefazman.com/lab/penyaringan) |
-| **Unit Logam Berat** | Heavy metal analysis — GFAAS, CVAAS, ICP-MS | [View](https://syariefazman.com/lab/logam-berat) |
-| **ICP-MS Reference** | Agilent 8900 Operation Guide | [View](https://syariefazman.com/icpms) |
-| **Uniformity of Weight** | Ujian Keseragaman Berat Guide (USP 43) | [View](https://syariefazman.com/uow) |
-| **myPortfolio (Penyaringan)** | PPF 7 — 4 activities, workflows, forms | [View](https://syariefazman.com/lab/penyaringan/portfolio.html) |
-| **myPortfolio (Logam Berat)** | PPF 11 — 7 activities, workflows, forms | [View](https://syariefazman.com/lab/logam-berat/portfolio.html) |
-| **Panduan HBH SpotMe** | Panduan BDR & SpotMe untuk Makmal Logam Berat | [View](https://syariefazman.com/lab/logam-berat/hbh) |
-| **Verifikasi Alat Radas** | Equipment verification SOPs | [View](https://syariefazman.com/lab/verifikasi) |
-
-<details>
-<summary>Verification SOPs</summary>
-<br>
-
-- ⚖️ [Balance Performance Check](https://syariefazman.com/lab/verifikasi/balance.html) — Repeatability test, standard weights
-- 🌡️ [Thermometer Verification](https://syariefazman.com/lab/verifikasi/thermometer.html) — PKKK/200/009
-- 💉 [Micropipette Verification](https://syariefazman.com/lab/verifikasi/micropipette.html) — PKKK/200/044, ISO 8655-2
-- 🧪 [Glassware Verification](https://syariefazman.com/lab/verifikasi/glassware.html) — PKKK/200/008, ISO 4787
-</details>
-
----
-
-## 📜 Certification
-
-<details>
-<summary>Ministry of Health Malaysia — Diploma in Pharmacy</summary>
-<br>
-<img src="https://raw.githubusercontent.com/syarief02/syarief02/main/certificate/20240205_164117.jpg" alt="Diploma in Pharmacy" />
-</details>
-
-<details>
-<summary>Shimadzu — UHPLC Theory & Practical with LabSolutions Workshop (Oct 2025)</summary>
-<br>
-Certificate of Attendance — "Shimadzu Ultra High-Performance Liquid Chromatography Theory and Practical with LabSolutions Workshop" conducted at NPRA, Petaling Jaya on 28th October 2025 by Shimadzu Malaysia Sdn Bhd.
-<img src="https://raw.githubusercontent.com/syarief02/syarief02/main/certificate/shimadzu%20uhplc.jpg" alt="Shimadzu UHPLC Certificate" />
-</details>
-
-<details>
-<summary>NIC — RA-4300A Mercury Analyzer Training (Sep 2022)</summary>
-<br>
-Certificate of Attendance — Hands-on training and basic maintenance on the NIC RA-4300A Mercury Analyzer at NPRA on 13th September 2022 by Orbiting Scientific & Technology Sdn Bhd.
-<img src="https://raw.githubusercontent.com/syarief02/syarief02/main/certificate/mercury%20analyzer.jpg" alt="NIC Mercury Analyzer Certificate" />
-</details>
-
----
-
-## ⚡ Fun Fact
-
-My career started in a pharmaceutical lab, but every night I trade forex and write code. I've gone from manually testing pills to building AI-powered trading bots and full-stack websites — all self-taught. I prove every day that you don't need a CS degree to ship real software.
-
----
-
-## 📫 Connect With Me
-
-<p align="center">
-  <a href="https://t.me/SyariefAzman" target="_blank">
-    <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" />
-  </a>
-  <a href="https://twitter.com/syariefazman" target="_blank">
-    <img src="https://img.shields.io/badge/Twitter/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Twitter/X" />
-  </a>
-  <a href="https://linkedin.com/in/syariefazman" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  <a href="https://fb.com/syariefazman" target="_blank">
-    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook" />
-  </a>
-  <a href="https://stackoverflow.com/users/22780408/syarief-azman" target="_blank">
-    <img src="https://img.shields.io/badge/Stack%20Overflow-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow" />
-  </a>
-  <a href="https://youtube.com/syariefazman" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube" />
-  </a>
-  <a href="https://discord.gg/DhUstUpSuu" target="_blank">
-    <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" />
-  </a>
-  <a href="https://t.me/EABudakUbat" target="_blank">
-    <img src="https://img.shields.io/badge/EA%20Channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="EA Telegram Channel" />
-  </a>
-  <a href="https://www.mql5.com/en/channels/eabudakubat" target="_blank">
-    <img src="https://img.shields.io/badge/MQL5%20Signal-blue?style=for-the-badge" alt="MQL5 Signal" />
-  </a>
-</p>
-
-<p align="center">
-  📧 <strong><a href="mailto:hello@syariefazman.com">hello@syariefazman.com</a></strong>
-</p>
-
----
-
-<h3 align="left">☕ Support My Work</h3>
-<p>
-  <a href="https://paypal.me/syariefazman">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="140" alt="Support" />
-  </a>
-</p>
-
----
-
-## 📊 Stats
+## 📊 Live Coding Analytics
 
 [![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&)](https://github.com/syarief02#gh-light-mode-only)
-
 [![GitHub Streak](https://streak-stats.demolab.com/?user=syarief02&theme=transparent)](https://github.com/syarief02#gh-dark-mode-only)
 
 [![github language](./profile/wakatime.svg)](https://github.com/syarief02)
 
-<details open=""><summary>Full Stats (click me to toggle 👀)</summary><br>
+<details open=""><summary>Full Coding Stats & Commit Rhythms (click to toggle 👀)</summary><br>
 
 <!--START_SECTION:waka-->
 ![Code Time](http://img.shields.io/badge/Code%20Time-172%20hrs%2059%20mins-blue?style=flat)
@@ -338,13 +225,62 @@ MQL5                     3 repos             ⣿⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀�
 [![GitHub stats](./profile/stats.svg)](https://github.com/syarief02)
 
 
-## 📈 My LeetCode Stats  
+### 📈 LeetCode Problem Solving  
 
 [![LeetCode Stats](https://leetcard.jacoblin.cool/syariefazman?theme=dark&ext=heatmap)](https://leetcode.com/u/SyariefAzman#gh-dark-mode-only)  
-
 [![LeetCode Stats](https://leetcard.jacoblin.cool/syariefazman?theme=light&ext=heatmap)](https://leetcode.com/u/SyariefAzman#gh-light-mode-only)
 
 </details>
+
+---
+
+## 📫 Connect & Collaborate
+
+<p align="center">
+  <a href="https://eabudakubat.com" target="_blank">
+    <img src="https://img.shields.io/badge/Official%20Hub-eabudakubat.com-7b2fff?style=for-the-badge&logo=vercel&logoColor=white" alt="Official Website" />
+  </a>
+  <a href="https://t.me/EABudakUbat" target="_blank">
+    <img src="https://img.shields.io/badge/Telegram%20Channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Channel" />
+  </a>
+  <a href="https://t.me/SyariefAzman" target="_blank">
+    <img src="https://img.shields.io/badge/Personal%20Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Personal Telegram" />
+  </a>
+  <a href="https://www.mql5.com/en/users/syarief.azman/seller" target="_blank">
+    <img src="https://img.shields.io/badge/MQL5%20Seller-Profile-38bdf8?style=for-the-badge&logo=meta&logoColor=white" alt="MQL5 Seller" />
+  </a>
+  <a href="https://www.mql5.com/en/channels/eabudakubat" target="_blank">
+    <img src="https://img.shields.io/badge/MQL5%20Signals-Live-blue?style=for-the-badge" alt="MQL5 Signals" />
+  </a>
+  <a href="https://twitter.com/syariefazman" target="_blank">
+    <img src="https://img.shields.io/badge/Twitter/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="Twitter/X" />
+  </a>
+  <a href="https://linkedin.com/in/syariefazman" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+  <a href="https://discord.gg/DhUstUpSuu" target="_blank">
+    <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" />
+  </a>
+  <a href="https://stackoverflow.com/users/22780408/syarief-azman" target="_blank">
+    <img src="https://img.shields.io/badge/Stack%20Overflow-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow" />
+  </a>
+  <a href="https://youtube.com/syariefazman" target="_blank">
+    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube" />
+  </a>
+</p>
+
+<p align="center">
+  📧 Contact: <strong><a href="mailto:support@eabudakubat.com">support@eabudakubat.com</a></strong>
+</p>
+
+---
+
+<h3 align="left">☕ Support My Open-Source Work</h3>
+<p>
+  <a href="https://paypal.me/syariefazman">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="140" alt="Support" />
+  </a>
+</p>
 
 <!-- 
 **syarief02/syarief02** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
