@@ -377,6 +377,7 @@ class GuestbookManager {
 
   init() {
     this.fetchMessages();
+    this.startLiveSync();
 
     // Form radio change for EA name input
     this.typeRadios.forEach(radio => {
@@ -417,6 +418,53 @@ class GuestbookManager {
     this.form.addEventListener('submit', (e) => this.handleSubmit(e));
   }
 
+  startLiveSync(intervalMs = 18000) {
+    if (this.syncTimer) clearInterval(this.syncTimer);
+    this.syncTimer = setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        this.pollUpdates();
+      }
+    }, intervalMs);
+  }
+
+  async pollUpdates() {
+    try {
+      const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/comments?select=*&order=created_at.desc&limit=30`, {
+        headers: {
+          'apikey': SUPABASE_CONFIG.anonKey,
+          'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
+        }
+      });
+      if (!response.ok) return;
+      const fresh = await response.json();
+      if (!fresh || !Array.isArray(fresh) || !fresh.length) return;
+
+      const currentFirstId = this.messages[0]?.id;
+      const freshFirstId = fresh[0]?.id;
+
+      if (freshFirstId && currentFirstId !== freshFirstId) {
+        const prevIds = new Set(this.messages.map(m => m.id));
+        this.messages = fresh;
+        if (this.countBadge) {
+          this.countBadge.textContent = this.messages.length;
+        }
+        this.renderMessages(prevIds);
+        this.triggerLivePulse();
+      }
+    } catch (e) {
+      // Silent fail during background polling
+    }
+  }
+
+  triggerLivePulse() {
+    const dot = document.getElementById('gbStatusDot');
+    if (dot) {
+      dot.classList.remove('pulse-sync');
+      void dot.offsetWidth;
+      dot.classList.add('pulse-sync');
+    }
+  }
+
   async fetchMessages() {
     try {
       const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/comments?select=*&order=created_at.desc`, {
@@ -431,6 +479,7 @@ class GuestbookManager {
         this.countBadge.textContent = this.messages.length;
       }
       this.renderMessages();
+      this.triggerLivePulse();
     } catch (err) {
       console.error('Guestbook load error:', err);
       if (this.feedList) {
@@ -449,7 +498,7 @@ class GuestbookManager {
       .replace(/'/g, '&#39;');
   }
 
-  renderMessages() {
+  renderMessages(newIdsSet = null) {
     if (!this.feedList) return;
 
     const filtered = this.currentFilter === 'all'
@@ -483,9 +532,11 @@ class GuestbookManager {
         : '';
 
       const safeMessage = typeof item.message === 'string' ? item.message : '';
+      const isNew = newIdsSet && !newIdsSet.has(item.id);
+      const newClass = isNew ? ' gb-item--new' : '';
 
       return `
-        <div class="gb-message-card">
+        <div class="gb-message-card${newClass}">
           <div class="gb-author-row">
             <div class="gb-author-left">
               <div class="gb-avatar">${this.escapeHtml(initial)}</div>
@@ -917,15 +968,17 @@ class FluidCanvasShader {
       return;
     }
 
+    const isMobile = (window.innerWidth < 768) || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
     this.particles = [];
-    this.numParticles = 38;
+    this.numParticles = isMobile ? 14 : 38;
     this.ripples = [];
     this.mouse = { x: -1000, y: -1000, lastX: -1000, lastY: -1000, speed: 0 };
     this.scrollMomentum = 0;
     this.width = 0;
     this.height = 0;
-    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2);
     this.isVisible = true;
+    this.isIntersecting = true;
     this.animationId = null;
 
     this.init();
@@ -934,6 +987,19 @@ class FluidCanvasShader {
   init() {
     this.resize();
     window.addEventListener('resize', () => this.resize(), { passive: true });
+
+    // Viewport Intersection Observer to pause rendering when scrolled out of view
+    if ('IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          this.isIntersecting = entry.isIntersecting;
+          if (this.isIntersecting && this.isVisible && !this.animationId) {
+            this.animate();
+          }
+        });
+      }, { threshold: 0.02 });
+      this.observer.observe(this.canvas);
+    }
 
     // Pointer displacement
     window.addEventListener('pointermove', (e) => {
@@ -958,7 +1024,7 @@ class FluidCanvasShader {
     // Tab visibility handling
     document.addEventListener('visibilitychange', () => {
       this.isVisible = document.visibilityState === 'visible';
-      if (this.isVisible && !this.animationId) {
+      if (this.isVisible && this.isIntersecting && !this.animationId) {
         this.animate();
       }
     });
@@ -1017,7 +1083,7 @@ class FluidCanvasShader {
   }
 
   animate() {
-    if (!this.isVisible) {
+    if (!this.isVisible || this.isIntersecting === false) {
       this.animationId = null;
       return;
     }
@@ -1394,6 +1460,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Kinetic Ripple on Click
   new KineticRippleHandler();
+
+  // Dual-Track Pathway Intent Navigator
+  const hireBtn = document.getElementById('hireTrackBtn');
+  if (hireBtn) {
+    hireBtn.addEventListener('click', () => {
+      const target = document.getElementById('experience') || document.getElementById('skills');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+
+  const traderBtn = document.getElementById('traderTrackBtn');
+  if (traderBtn) {
+    traderBtn.addEventListener('click', () => {
+      const projSec = document.getElementById('projects');
+      if (projSec) {
+        projSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      const tradingBtn = document.querySelector('.filter-btn[data-filter="trading"]');
+      if (tradingBtn && typeof filterProjects === 'function') {
+        filterProjects('trading', tradingBtn);
+      }
+    });
+  }
 });
 
 // ===== PROJECT FILTERS =====

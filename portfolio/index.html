@@ -123,21 +123,44 @@
               <span id="typingText"></span><span class="cursor"></span>
             </div>
             <div class="hero-cta">
-              <a href="#arcade" class="btn btn-primary hero-game-btn">
-                <span>🦖</span> Play Mini-Game
+              <a href="CV_Syarief Azman Rosli.pdf" download="CV_Syarief_Azman_Rosli.pdf" class="btn btn-primary" title="Download ATS-Optimized CV in PDF format">
+                <span>📄</span> Download CV (PDF)
               </a>
               <a href="#projects" class="btn btn-secondary">
                 <span>🚀</span> View Projects
               </a>
               <a href="resume.html" class="btn btn-secondary">
-                <span>📄</span> Resume
+                <span>📑</span> Web Resume
               </a>
-              <a href="cv.html" class="btn btn-secondary">
-                <span>📋</span> Curriculum Vitae
+              <a href="#arcade" class="btn btn-secondary hero-game-btn">
+                <span>🦖</span> Mini-Game
               </a>
               <a href="#contact" class="btn btn-secondary">
                 <span>💬</span> Get in Touch
               </a>
+            </div>
+
+            <!-- Dual-Track Audience Pathway Selector -->
+            <div class="hero-track-selector">
+              <span class="track-label">Choose your pathway:</span>
+              <div class="track-cards">
+                <button type="button" class="track-card track-card--hire" id="hireTrackBtn" title="Explore engineering experience, skills & ATS credentials">
+                  <div class="track-icon">💼</div>
+                  <div class="track-content">
+                    <span class="track-title">Looking to Hire a Developer?</span>
+                    <span class="track-desc">Review full-stack skills, NPRA lab precision & ATS credentials</span>
+                  </div>
+                  <span class="track-arrow">→</span>
+                </button>
+                <button type="button" class="track-card track-card--trader" id="traderTrackBtn" title="Discover algorithmic trading bots, MQL5 tools & EA ecosystem">
+                  <div class="track-icon">💹</div>
+                  <div class="track-content">
+                    <span class="track-title">Trader or Quant Investor?</span>
+                    <span class="track-desc">Explore autonomous MetaTrader EAs, AI vision bots & MQL5 hub</span>
+                  </div>
+                  <span class="track-arrow">→</span>
+                </button>
+              </div>
             </div>
           </div>
           <div class="hero-visual">
@@ -1004,9 +1027,10 @@
           <div class="guestbook-card guestbook-feed-card reveal reveal-delay-2">
             <div class="guestbook-feed-header">
               <div class="feed-header-left">
-                <span class="feed-status-dot"></span>
+                <span class="feed-status-dot" id="gbStatusDot"></span>
                 <span class="feed-header-title">Live Wall</span>
                 <span class="feed-count-badge" id="gbCountBadge">0</span>
+                <span class="feed-live-indicator" id="gbLiveIndicator" title="Live background synchronization active">● Realtime Sync</span>
               </div>
               <button class="feed-refresh-btn" id="gbRefreshBtn" title="Refresh messages" aria-label="Refresh messages">
                 <span>🔄</span> Refresh
