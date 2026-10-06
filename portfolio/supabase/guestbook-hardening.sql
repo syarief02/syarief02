@@ -6,9 +6,9 @@
 -- /rest/v1/comments and skip the browser-side honeypot, cooldown and link
 -- checks. These rules move the important ones into the database.
 --
--- !! This Supabase project is SHARED with eabudakubat.com. If that site also
--- !! reads or writes public.comments, check the limits below (lengths, the
--- !! allowed `type` values, the rate limit) still suit it before running.
+-- This Supabase project ("ea budakubat") is shared with eabudakubat.com, but
+-- public.comments is used only by the portfolio guestbook (eabudakubat keeps
+-- its data in the `community` schema). Applied 2026-10-07.
 -- =====================================================================
 
 -- STEP 0 (read-only): look at the policies that exist today.
@@ -49,15 +49,21 @@ alter table public.comments drop constraint if exists comments_no_script_uri;
 alter table public.comments add constraint comments_no_script_uri
   check (message !~* '(javascript|data|vbscript):' and name !~* '(javascript|data|vbscript):') not valid;
 
--- 3. Anonymous visitors may only read, and only insert the four form fields.
+-- 3. Visitors (anon) and signed-in users of the shared project (authenticated)
+--    may only read, and only insert the four form fields.
 --    (Stops spoofed created_at values pinning a post to the top, and any
---    anonymous UPDATE/DELETE regardless of what older policies allow.)
-revoke insert, update, delete on public.comments from anon;
-grant select on public.comments to anon;
-grant insert (name, type, ea_name, message) on public.comments to anon;
+--    UPDATE/DELETE/TRUNCATE regardless of what policies allow.)
+revoke insert, update, delete, truncate, references, trigger on public.comments from anon, authenticated;
+grant select on public.comments to anon, authenticated;
+grant insert (name, type, ea_name, message) on public.comments to anon, authenticated;
 
 -- 4. Row Level Security: public can read visible posts and add new ones.
+--    The original catch-all policies are replaced: a permissive
+--    SELECT USING (true) would otherwise still show hidden posts.
 alter table public.comments enable row level security;
+
+drop policy if exists comments_select_policy on public.comments;
+drop policy if exists comments_insert_policy on public.comments;
 
 drop policy if exists guestbook_public_read on public.comments;
 create policy guestbook_public_read on public.comments
@@ -96,6 +102,9 @@ drop trigger if exists comments_guard on public.comments;
 create trigger comments_guard
   before insert on public.comments
   for each row execute function public.comments_guard();
+
+-- Trigger-only function: nobody needs to call it directly
+revoke execute on function public.comments_guard() from public, anon, authenticated;
 
 commit;
 

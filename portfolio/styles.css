@@ -1044,6 +1044,22 @@ img {
 }
 
 /* ===== PROJECTS SECTION ===== */
+.risk-disclaimer {
+  max-width: 760px;
+  margin: 2.5rem auto 0;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--glass-liquid-border);
+  border-radius: var(--radius-lg);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.risk-disclaimer strong {
+  color: var(--text-primary);
+}
+
 .project-filters {
   display: flex;
   flex-wrap: wrap;

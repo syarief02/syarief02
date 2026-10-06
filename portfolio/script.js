@@ -767,7 +767,8 @@ class CommandPalette {
 
       // Actions
       { group: 'Actions', label: 'Play Quantum Dino Runner', desc: 'Jump into the retro arcade mini-game', icon: '🦖', action: () => { this.scrollTo('#arcade'); const start = document.getElementById('dinoRestartBtn'); if (start) start.click(); } },
-      { group: 'Actions', label: 'View Resume', desc: 'Web resume with Save as PDF', icon: '📄', action: () => window.location.href = 'resume.html' },
+      { group: 'Actions', label: 'Download CV (PDF)', desc: 'ATS-friendly resume as a PDF', icon: '📄', action: () => window.open('Syarief_Azman_Resume.pdf', '_blank', 'noopener,noreferrer') },
+      { group: 'Actions', label: 'View Web Resume', desc: 'Online resume page', icon: '📑', action: () => window.location.href = 'resume.html' },
       { group: 'Actions', label: 'View Curriculum Vitae', desc: 'Detailed government & NPRA CV', icon: '📋', action: () => window.location.href = 'cv.html' },
       { group: 'Actions', label: 'Copy Email Address', desc: 'hello@syariefazman.com', icon: '📧', action: () => this.copyEmail() },
       { group: 'Actions', label: 'Toggle Dark / Light Theme', desc: 'Switch visual appearance', icon: '🌓', action: () => this.toggleTheme() },
