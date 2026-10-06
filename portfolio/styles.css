@@ -1,5 +1,4 @@
-/* ===== IMPORTS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+/* Fonts (Inter, JetBrains Mono) are loaded via <link> in index.html to avoid a render-blocking @import chain */
 
 /* ===== CSS CUSTOM PROPERTIES ===== */
 :root {
@@ -840,6 +839,12 @@ img {
   z-index: 2;
 }
 
+.hero-avatar picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero-avatar img {
   width: 100%;
   height: 100%;
@@ -1142,6 +1147,33 @@ img {
   opacity: 1;
 }
 
+.project-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border-bottom: 1px solid var(--glass-liquid-border);
+  background: var(--bg-secondary);
+}
+
+.project-thumb--placeholder {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 25% 30%, rgba(0, 212, 255, 0.16), transparent 55%),
+    radial-gradient(circle at 75% 70%, rgba(123, 47, 255, 0.18), transparent 55%),
+    var(--bg-secondary);
+}
+
+.project-thumb--placeholder span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--accent-cyan);
+  opacity: 0.8;
+}
+
 .project-header {
   padding: 2rem 2rem 0;
   display: flex;
@@ -1209,6 +1241,17 @@ img {
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--accent-cyan);
+}
+
+a.tech-tag {
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+a.tech-tag:hover,
+a.tech-tag:focus-visible {
+  background: rgba(0, 212, 255, 0.14);
+  border-color: rgba(0, 212, 255, 0.4);
 }
 
 /* ===== STATS SECTION ===== */
@@ -2638,22 +2681,6 @@ img {
   position: relative;
   overflow: hidden;
   padding: 30px 0 90px;
-}
-
-.hero-game-btn {
-  background: linear-gradient(135deg, #ff2d95 0%, #7b2fff 50%, #00d4ff 100%) !important;
-  background-size: 200% 200% !important;
-  box-shadow: 0 4px 20px rgba(255, 45, 149, 0.45), 0 0 20px rgba(0, 212, 255, 0.35) !important;
-  animation: gameBtnGlow 4s ease-in-out infinite !important;
-}
-
-@keyframes gameBtnGlow {
-  0%, 100% {
-    box-shadow: 0 4px 20px rgba(255, 45, 149, 0.45), 0 0 20px rgba(0, 212, 255, 0.35);
-  }
-  50% {
-    box-shadow: 0 6px 30px rgba(0, 212, 255, 0.6), 0 0 35px rgba(255, 45, 149, 0.5);
-  }
 }
 
 .arcade-cabinet {

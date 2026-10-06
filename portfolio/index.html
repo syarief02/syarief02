@@ -13,32 +13,38 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://SyariefAzman.com/">
+    <meta property="og:url" content="https://www.syariefazman.com/">
     <meta property="og:title" content="Syarief Azman | Software Developer Portfolio">
     <meta property="og:description"
       content="Self-taught software developer, algorithmic trader, and pharmaceutical analyst from Malaysia. Explore my projects, skills, and journey into tech.">
-    <meta property="og:image" content="https://SyariefAzman.com/og-image.png">
+    <meta property="og:image" content="https://www.syariefazman.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Syarief Azman — Software Developer, Algorithmic Trader, Pharmaceutical Analyst">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://SyariefAzman.com/">
+    <meta name="twitter:url" content="https://www.syariefazman.com/">
     <meta name="twitter:title" content="Syarief Azman | Software Developer Portfolio">
     <meta name="twitter:description"
       content="Self-taught software developer, algorithmic trader, and pharmaceutical analyst from Malaysia.">
-    <meta name="twitter:image" content="https://SyariefAzman.com/og-image.png">
+    <meta name="twitter:image" content="https://www.syariefazman.com/og-image.png">
     <meta name="twitter:creator" content="@syariefazman">
 
     <title>Syarief Azman | Software Developer Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=JetBrains+Mono:wght@400..700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Syarief Azman",
-      "url": "https://syariefazman.com",
+      "url": "https://www.syariefazman.com/",
       "jobTitle": ["Software Developer", "Pharmaceutical Analyst", "Algorithmic Trader"],
       "worksFor": {"@type": "Organization", "name": "NPRA Malaysia"},
       "sameAs": [
@@ -78,7 +84,6 @@
       <div class="container">
         <a href="#" class="nav-logo">SA.</a>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#arcade">🎮 Arcade</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#duality">Pharma × Tech</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -94,7 +99,7 @@
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
           <span class="theme-toggle-icon" id="themeIcon">🌙</span>
         </button>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
           <span></span>
           <span></span>
           <span></span>
@@ -123,20 +128,11 @@
               <span id="typingText"></span><span class="cursor"></span>
             </div>
             <div class="hero-cta">
-              <a href="CV_Syarief Azman Rosli.pdf" download="CV_Syarief_Azman_Rosli.pdf" class="btn btn-primary" title="Download ATS-Optimized CV in PDF format">
-                <span>📄</span> Download CV (PDF)
+              <a href="resume.html" class="btn btn-primary" title="View my resume (use “Save as PDF” on that page for a copy)">
+                <span aria-hidden="true">📄</span> View Resume
               </a>
               <a href="#projects" class="btn btn-secondary">
-                <span>🚀</span> View Projects
-              </a>
-              <a href="resume.html" class="btn btn-secondary">
-                <span>📑</span> Web Resume
-              </a>
-              <a href="#arcade" class="btn btn-secondary hero-game-btn">
-                <span>🦖</span> Mini-Game
-              </a>
-              <a href="#contact" class="btn btn-secondary">
-                <span>💬</span> Get in Touch
+                <span aria-hidden="true">🚀</span> View Projects
               </a>
             </div>
 
@@ -145,20 +141,20 @@
               <span class="track-label">Choose your pathway:</span>
               <div class="track-cards">
                 <button type="button" class="track-card track-card--hire" id="hireTrackBtn" title="Explore engineering experience, skills & ATS credentials">
-                  <div class="track-icon">💼</div>
+                  <div class="track-icon" aria-hidden="true">💼</div>
                   <div class="track-content">
                     <span class="track-title">Looking to Hire a Developer?</span>
                     <span class="track-desc">Review full-stack skills, NPRA lab precision & ATS credentials</span>
                   </div>
-                  <span class="track-arrow">→</span>
+                  <span class="track-arrow" aria-hidden="true">→</span>
                 </button>
                 <button type="button" class="track-card track-card--trader" id="traderTrackBtn" title="Discover algorithmic trading bots, MQL5 tools & EA ecosystem">
-                  <div class="track-icon">💹</div>
+                  <div class="track-icon" aria-hidden="true">💹</div>
                   <div class="track-content">
                     <span class="track-title">Trader or Quant Investor?</span>
                     <span class="track-desc">Explore autonomous MetaTrader EAs, AI vision bots & MQL5 hub</span>
                   </div>
-                  <span class="track-arrow">→</span>
+                  <span class="track-arrow" aria-hidden="true">→</span>
                 </button>
               </div>
             </div>
@@ -167,99 +163,14 @@
             <div class="hero-avatar-wrapper">
               <div class="hero-avatar-ring"></div>
               <div class="hero-avatar">
-                <img src="assets/profile.jpg" alt="Syarief Azman" id="heroAvatar" width="350" height="350" fetchpriority="high">
+                <picture>
+                  <source srcset="assets/profile.webp" type="image/webp">
+                  <img src="assets/profile.jpg" alt="Syarief Azman" id="heroAvatar" width="350" height="350" fetchpriority="high">
+                </picture>
               </div>
               <div class="hero-floating-badge">🔬 Pharma Analyst</div>
               <div class="hero-floating-badge">💻 Developer</div>
               <div class="hero-floating-badge">📈 Trader</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Arcade Mini-Game Section (Featured Top) -->
-    <section class="section arcade-section" id="arcade">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-label">Interactive Lab</span>
-          <h2 class="section-title">Quantum Dino Runner</h2>
-          <p class="section-subtitle">No internet? No problem. Test your reflexes, escape the bugs, and set a high score!</p>
-        </div>
-
-        <div class="arcade-cabinet reveal">
-          <!-- Arcade Cabinet Header / HUD -->
-          <div class="arcade-hud">
-            <div class="hud-left">
-              <span class="arcade-badge">🕹️ RETRO RUNNER v1.0</span>
-              <span class="hud-speed-badge">Speed: <strong id="dinoSpeedLevel">1.0x</strong></span>
-            </div>
-            <div class="hud-center">
-              <div class="score-display">
-                <span class="score-label">HI</span>
-                <span class="score-digits hi-score-digits" id="dinoHiScore">00000</span>
-                <span class="score-label score-separator">·</span>
-                <span class="score-label">SCORE</span>
-                <span class="score-digits" id="dinoScore">00000</span>
-              </div>
-            </div>
-            <div class="hud-right">
-              <button type="button" class="arcade-btn" id="dinoMuteBtn" aria-label="Toggle Sound">🔊 Sound</button>
-              <button type="button" class="arcade-btn arcade-btn-restart" id="dinoRestartBtn" aria-label="Restart Game">🔄 Restart</button>
-            </div>
-          </div>
-
-          <!-- Canvas Screen Container -->
-          <div class="dino-game-container" id="dinoGameContainer">
-            <canvas id="quantumDinoCanvas" class="dino-canvas" width="800" height="260"></canvas>
-            
-            <!-- CRT Scanline Overlay -->
-            <div class="arcade-scanlines" aria-hidden="true"></div>
-
-            <!-- Start / Game Over Overlay -->
-            <div class="dino-overlay visible" id="dinoOverlay">
-              <div class="overlay-content">
-                <div class="overlay-icon">🦖</div>
-                <h3 class="overlay-title" id="dinoOverlayTitle">PRESS SPACE TO RUN</h3>
-                <p class="overlay-subtitle" id="dinoOverlaySubtitle">Tap or Press Space to Jump · Down Arrow to Duck</p>
-                <div class="overlay-hints">
-                  <span class="overlay-hint-pill"><kbd>Space</kbd> / <kbd>↑</kbd> Jump</span>
-                  <span class="overlay-hint-pill"><kbd>↓</kbd> Duck</span>
-                  <span class="overlay-hint-pill"><kbd>P</kbd> Pause</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mobile Touch Controls HUD -->
-          <div class="arcade-touch-bar" id="dinoTouchBar">
-            <button type="button" class="touch-control-btn touch-jump-btn" id="dinoTouchJump">
-              <span class="touch-icon">⬆</span>
-              <span class="touch-text">JUMP</span>
-            </button>
-            <button type="button" class="touch-control-btn touch-duck-btn" id="dinoTouchDuck">
-              <span class="touch-icon">⬇</span>
-              <span class="touch-text">DUCK</span>
-            </button>
-          </div>
-
-          <!-- Collectibles & Badges Legend -->
-          <div class="arcade-legend">
-            <div class="legend-item">
-              <span class="legend-dot" style="background:#00d4ff;"></span>
-              <span><strong>Cyber Dino:</strong> You</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot" style="background:#00ff88;"></span>
-              <span><strong>Cacti & Bugs:</strong> Avoid</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot" style="background:#7b2fff;"></span>
-              <span><strong>Pterodactyl:</strong> Duck / Jump</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot" style="background:#ff2d95;"></span>
-              <span><strong>Pill / Coffee:</strong> Bonus Pts</span>
             </div>
           </div>
         </div>
@@ -282,9 +193,9 @@
               <strong>HPLC, GC-MS, and ICP-MS</strong>.
             </p>
             <p>
-              But when the lab closes, I open my code editor. I'm a <strong>self-taught developer</strong> who's written
-              over <strong>2.87 million lines of code</strong>, built a suite of algorithmic trading bots, and created
-              production web applications — all without a CS degree.
+              But when the lab closes, I open my code editor. I'm a <strong>self-taught developer</strong> who has
+              published <strong>6+ Expert Advisors</strong> for MetaTrader, built an open-source AI trading system, and
+              shipped production web applications — all without a CS degree.
             </p>
             <p>
               Currently studying <strong>Harvard's CS50x</strong> and <strong>CS50 Cybersecurity</strong> to formalize
@@ -294,7 +205,7 @@
           </div>
           <div class="about-highlights">
             <div class="highlight-card reveal reveal-delay-1">
-              <div class="highlight-icon">🧪</div>
+              <div class="highlight-icon" aria-hidden="true">🧪</div>
               <div>
                 <h4>Scientific Foundation</h4>
                 <p>Pharmaceutical analysis demands precision, documentation, and quality protocols — skills that
@@ -302,7 +213,7 @@
               </div>
             </div>
             <div class="highlight-card reveal reveal-delay-2">
-              <div class="highlight-icon">🤖</div>
+              <div class="highlight-icon" aria-hidden="true">🤖</div>
               <div>
                 <h4>Builder Mentality</h4>
                 <p>From trading bots to full-stack websites, I learn by building real products that solve real problems
@@ -310,7 +221,7 @@
               </div>
             </div>
             <div class="highlight-card reveal reveal-delay-3">
-              <div class="highlight-icon">📊</div>
+              <div class="highlight-icon" aria-hidden="true">📊</div>
               <div>
                 <h4>Data-Driven Approach</h4>
                 <p>Analytical skills from the lab and financial markets shape how I approach software — with metrics,
@@ -347,16 +258,16 @@
               <span class="duality-tag">Equipment Verification</span>
             </div>
             <div class="duality-links">
-              <a href="https://syariefazman.com/lab" target="_blank" class="duality-link" rel="noopener noreferrer">
+              <a href="/lab/" target="_blank" class="duality-link" rel="noopener noreferrer">
                 <span>🔬</span> NPRA Lab Hub
               </a>
-              <a href="https://syariefazman.com/icpms" target="_blank" class="duality-link" rel="noopener noreferrer">
+              <a href="/icpms/" target="_blank" class="duality-link" rel="noopener noreferrer">
                 <span>⚗️</span> ICP-MS Guide
               </a>
-              <a href="https://syariefazman.com/uow" target="_blank" class="duality-link" rel="noopener noreferrer">
+              <a href="/uow/" target="_blank" class="duality-link" rel="noopener noreferrer">
                 <span>⚖️</span> Weight Uniformity
               </a>
-              <a href="https://syariefazman.com/spe" target="_blank" class="duality-link" rel="noopener noreferrer">
+              <a href="/spe/" target="_blank" class="duality-link" rel="noopener noreferrer">
                 <span>🧪</span> SPE Reference
               </a>
             </div>
@@ -367,7 +278,7 @@
             <div class="duality-badge">💻 By Night · The Code Terminal</div>
             <h3 class="duality-title">Software Developer & Trader</h3>
             <p class="duality-desc">
-              Translating scientific discipline into algorithmic trading systems, full-stack web platforms, and automated pipelines. 2.87M+ lines of code shipped with daily persistence.
+              Translating scientific discipline into algorithmic trading systems, full-stack web platforms, and automated pipelines. Building and shipping since 2016.
             </p>
             <div class="duality-tags">
               <span class="duality-tag">Python & FastAPI</span>
@@ -407,7 +318,7 @@
         <div class="skills-grid">
           <div class="skill-category reveal reveal-delay-1">
             <div class="skill-category-header">
-              <span class="skill-category-icon">💻</span>
+              <span class="skill-category-icon" aria-hidden="true">💻</span>
               <span class="skill-category-title">Languages</span>
             </div>
             <div class="skill-tags">
@@ -423,7 +334,7 @@
           </div>
           <div class="skill-category reveal reveal-delay-2">
             <div class="skill-category-header">
-              <span class="skill-category-icon">⚡</span>
+              <span class="skill-category-icon" aria-hidden="true">⚡</span>
               <span class="skill-category-title">Frameworks & Platforms</span>
             </div>
             <div class="skill-tags">
@@ -437,7 +348,7 @@
           </div>
           <div class="skill-category reveal reveal-delay-3">
             <div class="skill-category-header">
-              <span class="skill-category-icon">🛠️</span>
+              <span class="skill-category-icon" aria-hidden="true">🛠️</span>
               <span class="skill-category-title">Tools & DevOps</span>
             </div>
             <div class="skill-tags">
@@ -451,7 +362,7 @@
           </div>
           <div class="skill-category reveal reveal-delay-4">
             <div class="skill-category-header">
-              <span class="skill-category-icon">🧬</span>
+              <span class="skill-category-icon" aria-hidden="true">🧬</span>
               <span class="skill-category-title">Domain Expertise</span>
             </div>
             <div class="skill-tags">
@@ -487,10 +398,11 @@
 
           <!-- Project: NPRA Lab Notes Hub -->
           <div class="project-card reveal reveal-delay-1" data-category="npra">
+            <img class="project-thumb" src="assets/projects/npra-lab.webp" alt="Screenshot of NPRA Lab Notes & Competency" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">🔬</span>
+              <span class="project-icon" aria-hidden="true">🔬</span>
               <div class="project-links">
-                <a href="https://syariefazman.com/lab" target="_blank" class="project-link" title="Lab Notes Hub" rel="noopener noreferrer">🔗</a>
+                <a href="/lab/" target="_blank" class="project-link" title="Lab Notes Hub" aria-label="Lab Notes Hub" rel="noopener noreferrer">🔗</a>
               </div>
             </div>
             <div class="project-body">
@@ -507,11 +419,12 @@
 
           <!-- Project 7: Unit Penyaringan Presentation -->
           <div class="project-card reveal reveal-delay-2" data-category="npra">
+            <img class="project-thumb" src="assets/projects/uptslide1.webp" alt="Screenshot of Unit Penyaringan — Sasaran 2026" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">📊</span>
+              <span class="project-icon" aria-hidden="true">📊</span>
               <div class="project-links">
-                <a href="https://syariefazman.com/uptslide1" target="_blank" class="project-link" title="Live Presentation" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/uptslide1" target="_blank" class="project-link" title="GitHub" rel="noopener noreferrer">💻</a>
+                <a href="/uptslide1/" target="_blank" class="project-link" title="Live Presentation" aria-label="Live Presentation" rel="noopener noreferrer">🔗</a>
+                <a href="https://github.com/syarief02/uptslide1" target="_blank" class="project-link" title="GitHub" aria-label="GitHub" rel="noopener noreferrer">💻</a>
               </div>
             </div>
             <div class="project-body">
@@ -527,11 +440,12 @@
 
           <!-- Project: Uniformity of Weight Guide -->
           <div class="project-card reveal reveal-delay-2" data-category="npra">
+            <img class="project-thumb" src="assets/projects/uow.webp" alt="Screenshot of Uniformity of Weight Guide" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">⚖️</span>
+              <span class="project-icon" aria-hidden="true">⚖️</span>
               <div class="project-links">
-                <a href="https://syariefazman.com/uow" target="_blank" class="project-link" title="Live Guide" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/Uniformity-of-Weight" target="_blank" class="project-link" title="GitHub" rel="noopener noreferrer">💻</a>
+                <a href="/uow/" target="_blank" class="project-link" title="Live Guide" aria-label="Live Guide" rel="noopener noreferrer">🔗</a>
+                <a href="https://github.com/syarief02/Uniformity-of-Weight" target="_blank" class="project-link" title="GitHub" aria-label="GitHub" rel="noopener noreferrer">💻</a>
               </div>
             </div>
             <div class="project-body">
@@ -547,11 +461,12 @@
 
           <!-- Project: ICP-MS Guide -->
           <div class="project-card reveal reveal-delay-3" data-category="npra">
+            <img class="project-thumb" src="assets/projects/icpms.webp" alt="Screenshot of Agilent 8900 ICP-MS Guide" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">⚗️</span>
+              <span class="project-icon" aria-hidden="true">⚗️</span>
               <div class="project-links">
-                <a href="https://syariefazman.com/icpms" target="_blank" class="project-link" title="Live Guide" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/ICPMS-agilent-8900" target="_blank" class="project-link" title="GitHub" rel="noopener noreferrer">💻</a>
+                <a href="/icpms/" target="_blank" class="project-link" title="Live Guide" aria-label="Live Guide" rel="noopener noreferrer">🔗</a>
+                <a href="https://github.com/syarief02/ICPMS-agilent-8900" target="_blank" class="project-link" title="GitHub" aria-label="GitHub" rel="noopener noreferrer">💻</a>
               </div>
             </div>
             <div class="project-body">
@@ -567,11 +482,12 @@
 
           <!-- Project 1: eabudakubat.com -->
           <div class="project-card reveal reveal-delay-3" data-category="webapp">
+            <img class="project-thumb" src="assets/projects/eabudakubat.webp" alt="Screenshot of eabudakubat.com" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">🌐</span>
+              <span class="project-icon" aria-hidden="true">🌐</span>
               <div class="project-links">
-                <a href="https://eabudakubat.com" target="_blank" class="project-link" title="Live Site" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02" target="_blank" class="project-link" title="GitHub" rel="noopener noreferrer">💻</a>
+                <a href="https://eabudakubat.com" target="_blank" class="project-link" title="Live Site" aria-label="Live Site" rel="noopener noreferrer">🔗</a>
+                <a href="https://github.com/syarief02" target="_blank" class="project-link" title="GitHub" aria-label="GitHub" rel="noopener noreferrer">💻</a>
               </div>
             </div>
             <div class="project-body">
@@ -590,11 +506,12 @@
 
           <!-- Project: Balik Kampung Checklist -->
           <div class="project-card reveal reveal-delay-2" data-category="webapp">
+            <img class="project-thumb" src="assets/projects/checklist.webp" alt="Screenshot of Balik Kampung Checklist" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">🏠</span>
+              <span class="project-icon" aria-hidden="true">🏠</span>
               <div class="project-links">
-                <a href="https://syariefazman.com/checklist" target="_blank" class="project-link" title="Live Site" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/balik-kampung-checklist" target="_blank" class="project-link" title="GitHub" rel="noopener noreferrer">💻</a>
+                <a href="/checklist/" target="_blank" class="project-link" title="Live Site" aria-label="Live Site" rel="noopener noreferrer">🔗</a>
+                <a href="https://github.com/syarief02/balik-kampung-checklist" target="_blank" class="project-link" title="GitHub" aria-label="GitHub" rel="noopener noreferrer">💻</a>
               </div>
             </div>
             <div class="project-body">
@@ -610,12 +527,13 @@
 
           <!-- Project 2: GoldMind AI -->
           <div class="project-card project-card--featured reveal reveal-delay-1" data-category="trading">
+            <img class="project-thumb" src="assets/projects/goldmind-ai.webp" alt="Screenshot of GoldMind AI" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-featured-badge">⭐ Featured Open-Source</div>
             <div class="project-header">
-              <span class="project-icon">🧠</span>
+              <span class="project-icon" aria-hidden="true">🧠</span>
               <div class="project-links">
                 <a href="https://eabudakubat.com/goldmind-ai" target="_blank" class="project-link"
-                  title="Details" rel="noopener noreferrer">🔗</a>
+                  title="Details" aria-label="Details" rel="noopener noreferrer">🔗</a>
                 <a href="https://github.com/syarief02/goldmind-ai" target="_blank" class="project-link" title="GitHub"
                   aria-label="View Source Code on GitHub" rel="noopener noreferrer">💻</a>
               </div>
@@ -639,12 +557,13 @@
 
           <!-- Project 3: EA Budak Ubat -->
           <div class="project-card project-card--featured reveal reveal-delay-2" data-category="trading">
+            <img class="project-thumb" src="assets/projects/ea-budak-ubat.webp" alt="Screenshot of EA Budak Ubat" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-featured-badge">🏆 Flagship EA</div>
             <div class="project-header">
-              <span class="project-icon">💹</span>
+              <span class="project-icon" aria-hidden="true">💹</span>
               <div class="project-links">
-                <a href="https://eabudakubat.com" target="_blank" class="project-link" title="Details" rel="noopener noreferrer">🔗</a>
-                <a href="https://tinyurl.com/eabubuy" target="_blank" class="project-link" title="MQL5 Market" rel="noopener noreferrer">🏪</a>
+                <a href="https://eabudakubat.com/ea-budak-ubat" target="_blank" class="project-link" title="Details" aria-label="Details" rel="noopener noreferrer">🔗</a>
+                <a href="https://tinyurl.com/eabubuy" target="_blank" class="project-link" title="MQL5 Market" aria-label="MQL5 Market" rel="noopener noreferrer">🏪</a>
               </div>
             </div>
             <div class="project-body">
@@ -662,11 +581,12 @@
 
           <!-- Project 4: BracketBlitz EA -->
           <div class="project-card reveal reveal-delay-3" data-category="trading">
+            <img class="project-thumb" src="assets/projects/bracketblitz.webp" alt="Screenshot of BracketBlitz EA" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">⚡</span>
+              <span class="project-icon" aria-hidden="true">⚡</span>
               <div class="project-links">
                 <a href="https://eabudakubat.com/bracketblitz" target="_blank" class="project-link"
-                  title="Details" rel="noopener noreferrer">🔗</a>
+                  title="Details" aria-label="Details" rel="noopener noreferrer">🔗</a>
               </div>
             </div>
             <div class="project-body">
@@ -683,11 +603,12 @@
 
           <!-- Project 5: MathEdge Pro -->
           <div class="project-card reveal reveal-delay-1" data-category="trading">
+            <img class="project-thumb" src="assets/projects/mathedge-pro.webp" alt="Screenshot of MathEdge Pro" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">📐</span>
+              <span class="project-icon" aria-hidden="true">📐</span>
               <div class="project-links">
                 <a href="https://eabudakubat.com/mathedge-pro" target="_blank" class="project-link"
-                  title="Details" rel="noopener noreferrer">🔗</a>
+                  title="Details" aria-label="Details" rel="noopener noreferrer">🔗</a>
               </div>
             </div>
             <div class="project-body">
@@ -704,10 +625,11 @@
 
           <!-- Project 8: Automation Scripts -->
           <div class="project-card reveal reveal-delay-2" data-category="npra">
+            <div class="project-thumb project-thumb--placeholder" aria-hidden="true"><span>automate.py</span></div>
             <div class="project-header">
-              <span class="project-icon">🔧</span>
+              <span class="project-icon" aria-hidden="true">🔧</span>
               <div class="project-links">
-                <a href="https://github.com/syarief02" target="_blank" class="project-link" title="GitHub" rel="noopener noreferrer">💻</a>
+                <a href="https://github.com/syarief02" target="_blank" class="project-link" title="GitHub" aria-label="GitHub" rel="noopener noreferrer">💻</a>
               </div>
             </div>
             <div class="project-body">
@@ -722,140 +644,27 @@
             </div>
           </div>
 
-          <!-- Frontend Mentor: QR Code Component -->
-          <div class="project-card reveal reveal-delay-3" data-category="practice">
-            <div class="project-header">
-              <span class="project-icon">📱</span>
-              <div class="project-links">
-                <a href="https://syarief02.github.io/qr-code-component/" target="_blank" class="project-link"
-                  title="Live Demo" aria-label="Live Demo" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/qr-code-component" target="_blank" class="project-link"
-                  title="GitHub" aria-label="View Source Code on GitHub" rel="noopener noreferrer">💻</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">QR Code Component</h3>
-              <p class="project-description">Frontend Mentor challenge — clean, responsive QR code card component with
-                centered layout.</p>
-              <div class="project-tech">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">Frontend Mentor</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Frontend Mentor: Blog Preview Card -->
+          <!-- Frontend Mentor challenges (grouped) -->
           <div class="project-card reveal reveal-delay-1" data-category="practice">
+            <img class="project-thumb" src="assets/projects/frontend-mentor.webp" alt="Screenshot of Frontend Mentor Challenges" width="640" height="400" loading="lazy" decoding="async">
             <div class="project-header">
-              <span class="project-icon">📝</span>
+              <span class="project-icon" aria-hidden="true">📚</span>
               <div class="project-links">
-                <a href="https://syarief02.github.io/blog-preview-card/" target="_blank" class="project-link"
-                  title="Live Demo" aria-label="Live Demo" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/blog-preview-card" target="_blank" class="project-link"
-                  title="GitHub" aria-label="View Source Code on GitHub" rel="noopener noreferrer">💻</a>
+                <a href="https://github.com/syarief02?tab=repositories&amp;q=frontend+mentor" target="_blank" class="project-link"
+                  title="Source on GitHub" aria-label="Frontend Mentor source code on GitHub" rel="noopener noreferrer">💻</a>
               </div>
             </div>
             <div class="project-body">
-              <h3 class="project-title">Blog Preview Card</h3>
-              <p class="project-description">Frontend Mentor challenge — stylish blog card with hover effects and
-                responsive typography.</p>
+              <h3 class="project-title">Frontend Mentor Challenges</h3>
+              <p class="project-description">Six responsive HTML/CSS layout challenges (Flexbox, CSS Grid, hover states,
+                typography) built to sharpen front-end fundamentals. Each links to its live demo.</p>
               <div class="project-tech">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">Frontend Mentor</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Frontend Mentor: Social Links Profile -->
-          <div class="project-card reveal reveal-delay-2" data-category="practice">
-            <div class="project-header">
-              <span class="project-icon">🔗</span>
-              <div class="project-links">
-                <a href="https://syarief02.github.io/social-links-profile/" target="_blank" class="project-link"
-                  title="Live Demo" aria-label="Live Demo" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/social-links-profile" target="_blank" class="project-link"
-                  title="GitHub" aria-label="View Source Code on GitHub" rel="noopener noreferrer">💻</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Social Links Profile</h3>
-              <p class="project-description">Frontend Mentor challenge — social links profile card with interactive
-                hover states.</p>
-              <div class="project-tech">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">Frontend Mentor</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Frontend Mentor: Recipe Page -->
-          <div class="project-card reveal reveal-delay-3" data-category="practice">
-            <div class="project-header">
-              <span class="project-icon">🍳</span>
-              <div class="project-links">
-                <a href="https://syarief02.github.io/recipe-page-main/" target="_blank" class="project-link"
-                  title="Live Demo" aria-label="Live Demo" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/recipe-page-main" target="_blank" class="project-link"
-                  title="GitHub" aria-label="View Source Code on GitHub" rel="noopener noreferrer">💻</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Recipe Page</h3>
-              <p class="project-description">Frontend Mentor challenge — styled recipe page with nutrition table,
-                preparation steps, and responsive layout.</p>
-              <div class="project-tech">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">Frontend Mentor</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Frontend Mentor: Four Card Feature Section -->
-          <div class="project-card reveal reveal-delay-1" data-category="practice">
-            <div class="project-header">
-              <span class="project-icon">🃏</span>
-              <div class="project-links">
-                <a href="https://syarief02.github.io/four-card-feature-section/" target="_blank" class="project-link"
-                  title="Live Demo" aria-label="Live Demo" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/four-card-feature-section" target="_blank" class="project-link"
-                  title="GitHub" aria-label="View Source Code on GitHub" rel="noopener noreferrer">💻</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Four Card Feature Section</h3>
-              <p class="project-description">Frontend Mentor challenge — CSS Grid layout with four feature cards and
-                colored top borders.</p>
-              <div class="project-tech">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS Grid</span>
-                <span class="tech-tag">Frontend Mentor</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Frontend Mentor: Testimonials Grid Section -->
-          <div class="project-card reveal reveal-delay-2" data-category="practice">
-            <div class="project-header">
-              <span class="project-icon">💬</span>
-              <div class="project-links">
-                <a href="https://syarief02.github.io/testimonials-grid-section/" target="_blank" class="project-link"
-                  title="Live Demo" aria-label="Live Demo" rel="noopener noreferrer">🔗</a>
-                <a href="https://github.com/syarief02/testimonials-grid-section" target="_blank" class="project-link"
-                  title="GitHub" aria-label="View Source Code on GitHub" rel="noopener noreferrer">💻</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Testimonials Grid Section</h3>
-              <p class="project-description">Frontend Mentor challenge — complex CSS Grid testimonials layout with
-                multiple card sizes.</p>
-              <div class="project-tech">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS Grid</span>
-                <span class="tech-tag">Frontend Mentor</span>
+                <a class="tech-tag" href="https://syarief02.github.io/qr-code-component/" target="_blank" rel="noopener noreferrer">QR Code Component</a>
+                <a class="tech-tag" href="https://syarief02.github.io/blog-preview-card/" target="_blank" rel="noopener noreferrer">Blog Preview Card</a>
+                <a class="tech-tag" href="https://syarief02.github.io/social-links-profile/" target="_blank" rel="noopener noreferrer">Social Links Profile</a>
+                <a class="tech-tag" href="https://syarief02.github.io/recipe-page-main/" target="_blank" rel="noopener noreferrer">Recipe Page</a>
+                <a class="tech-tag" href="https://syarief02.github.io/four-card-feature-section/" target="_blank" rel="noopener noreferrer">Four Card Feature Section</a>
+                <a class="tech-tag" href="https://syarief02.github.io/testimonials-grid-section/" target="_blank" rel="noopener noreferrer">Testimonials Grid Section</a>
               </div>
             </div>
           </div>
@@ -869,24 +678,24 @@
       <div class="container">
         <div class="section-header reveal">
           <span class="section-label">By the Numbers</span>
-          <h2 class="section-title">GitHub Stats</h2>
+          <h2 class="section-title">Track Record</h2>
         </div>
         <div class="stats-grid">
           <div class="stat-item reveal reveal-delay-1">
-            <div class="stat-number" data-target="2870000" data-suffix="" data-format="compact">0</div>
-            <div class="stat-label">Lines of Code</div>
+            <div class="stat-number" data-since="2017-09" data-target="9" data-suffix="+" data-format="number">0</div>
+            <div class="stat-label">Years in a Regulated Pharma Lab</div>
           </div>
           <div class="stat-item reveal reveal-delay-2">
-            <div class="stat-number" data-target="7248" data-suffix="+" data-format="number">0</div>
-            <div class="stat-label">Contributions (2026)</div>
+            <div class="stat-number" data-target="6" data-suffix="+" data-format="number">0</div>
+            <div class="stat-label">Expert Advisors Published</div>
           </div>
           <div class="stat-item reveal reveal-delay-3">
-            <div class="stat-number" data-target="70" data-suffix="+" data-format="number">0</div>
-            <div class="stat-label">Public Repos</div>
+            <div class="stat-number" data-target="64" data-suffix="" data-format="number">0</div>
+            <div class="stat-label">Lab SOPs Digitised</div>
           </div>
           <div class="stat-item reveal reveal-delay-4">
-            <div class="stat-number" data-target="147" data-suffix="h" data-format="number">0</div>
-            <div class="stat-label">Code Time Tracked</div>
+            <div class="stat-number" id="statRepos" data-target="65" data-suffix="+" data-format="number">0</div>
+            <div class="stat-label">Public GitHub Repos</div>
           </div>
         </div>
       </div>
@@ -919,7 +728,7 @@
               <div class="timeline-dot"></div>
             </div>
             <div class="timeline-content">
-              <span class="timeline-date">Current Role</span>
+              <span class="timeline-date">Sep 2017 — Present</span>
               <h3 class="timeline-title">Pharmaceutical Analyst</h3>
               <span class="timeline-org">National Pharmaceutical Regulatory Agency (NPRA), Malaysia</span>
               <p class="timeline-desc">Conducting analytical testing of pharmaceutical products using HPLC, GC-MS, and
@@ -944,7 +753,20 @@
               <div class="timeline-dot"></div>
             </div>
             <div class="timeline-content">
-              <span class="timeline-date">Completed</span>
+              <span class="timeline-date">Dec 2016 — Oct 2024</span>
+              <h3 class="timeline-title">Software Developer & Algorithmic Trader</h3>
+              <span class="timeline-org">BuBat Resources (Self-Employed)</span>
+              <p class="timeline-desc">Developed and published 6+ Expert Advisors for MetaTrader 4 &amp; 5 in MQL4/MQL5,
+                built eabudakubat.com on Next.js and Supabase, and grew a ~15,000-follower audience for product
+                marketing.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">2014 — 2017</span>
               <h3 class="timeline-title">Diploma in Pharmacy</h3>
               <span class="timeline-org">Ministry of Health Malaysia</span>
               <p class="timeline-desc">Formal education in pharmaceutical sciences, providing the analytical and
@@ -1075,37 +897,43 @@
               ship.</p>
             <div class="contact-links">
               <a href="mailto:hello@syariefazman.com" class="contact-link-item">
-                <span class="contact-link-icon">📧</span>
+                <span class="contact-link-icon" aria-hidden="true">📧</span>
                 <div>
                   <div class="contact-link-label">Email</div>
                   <div class="contact-link-value">hello@syariefazman.com</div>
                 </div>
               </a>
               <a href="https://linkedin.com/in/syariefazman" target="_blank" class="contact-link-item" rel="noopener noreferrer">
-                <span class="contact-link-icon">💼</span>
+                <span class="contact-link-icon" aria-hidden="true">💼</span>
                 <div>
                   <div class="contact-link-label">LinkedIn</div>
                   <div class="contact-link-value">linkedin.com/in/syariefazman</div>
                 </div>
               </a>
               <a href="https://github.com/syarief02" target="_blank" class="contact-link-item" rel="noopener noreferrer">
-                <span class="contact-link-icon">🐙</span>
+                <span class="contact-link-icon" aria-hidden="true">🐙</span>
                 <div>
                   <div class="contact-link-label">GitHub</div>
                   <div class="contact-link-value">github.com/syarief02</div>
                 </div>
               </a>
               <a href="https://t.me/SyariefAzman" target="_blank" class="contact-link-item" rel="noopener noreferrer">
-                <span class="contact-link-icon">💬</span>
+                <span class="contact-link-icon" aria-hidden="true">💬</span>
                 <div>
                   <div class="contact-link-label">Telegram</div>
                   <div class="contact-link-value">@SyariefAzman</div>
                 </div>
               </a>
+              <a href="resume.html" class="contact-link-item">
+                <span class="contact-link-icon" aria-hidden="true">📑</span>
+                <div>
+                  <div class="contact-link-label">Web Resume</div>
+                  <div class="contact-link-value">View my resume online</div>
+                </div>
+              </a>
             </div>
           </div>
           <form class="contact-form reveal" id="contactForm">
-            <!-- Web3Forms: Replace YOUR_ACCESS_KEY_HERE with your key from https://web3forms.com/#start -->
             <input type="hidden" name="access_key" value="b55233e9-afef-45d8-a6c5-3b862dc8cec1">
             <input type="hidden" name="from_name" value="Portfolio Contact Form">
             <input type="checkbox" name="botcheck" style="display: none;">
@@ -1135,18 +963,106 @@
       </div>
     </section>
 
+    <!-- Arcade Mini-Game Section -->
+    <section class="section arcade-section" id="arcade">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Take a Break</span>
+          <h2 class="section-title">Quantum Dino Runner</h2>
+          <p class="section-subtitle">No internet? No problem. Test your reflexes, escape the bugs, and set a high score!</p>
+        </div>
+
+        <div class="arcade-cabinet reveal">
+          <!-- Arcade Cabinet Header / HUD -->
+          <div class="arcade-hud">
+            <div class="hud-left">
+              <span class="arcade-badge">🕹️ RETRO RUNNER v1.0</span>
+              <span class="hud-speed-badge">Speed: <strong id="dinoSpeedLevel">1.0x</strong></span>
+            </div>
+            <div class="hud-center">
+              <div class="score-display">
+                <span class="score-label">HI</span>
+                <span class="score-digits hi-score-digits" id="dinoHiScore">00000</span>
+                <span class="score-label score-separator">·</span>
+                <span class="score-label">SCORE</span>
+                <span class="score-digits" id="dinoScore">00000</span>
+              </div>
+            </div>
+            <div class="hud-right">
+              <button type="button" class="arcade-btn" id="dinoMuteBtn" aria-label="Toggle Sound">🔊 Sound</button>
+              <button type="button" class="arcade-btn arcade-btn-restart" id="dinoRestartBtn" aria-label="Restart Game">🔄 Restart</button>
+            </div>
+          </div>
+
+          <!-- Canvas Screen Container -->
+          <div class="dino-game-container" id="dinoGameContainer">
+            <canvas id="quantumDinoCanvas" class="dino-canvas" width="800" height="260"></canvas>
+            
+            <!-- CRT Scanline Overlay -->
+            <div class="arcade-scanlines" aria-hidden="true"></div>
+
+            <!-- Start / Game Over Overlay -->
+            <div class="dino-overlay visible" id="dinoOverlay">
+              <div class="overlay-content">
+                <div class="overlay-icon">🦖</div>
+                <h3 class="overlay-title" id="dinoOverlayTitle">PRESS SPACE TO RUN</h3>
+                <p class="overlay-subtitle" id="dinoOverlaySubtitle">Tap or Press Space to Jump · Down Arrow to Duck</p>
+                <div class="overlay-hints">
+                  <span class="overlay-hint-pill"><kbd>Space</kbd> / <kbd>↑</kbd> Jump</span>
+                  <span class="overlay-hint-pill"><kbd>↓</kbd> Duck</span>
+                  <span class="overlay-hint-pill"><kbd>P</kbd> Pause</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Touch Controls HUD -->
+          <div class="arcade-touch-bar" id="dinoTouchBar">
+            <button type="button" class="touch-control-btn touch-jump-btn" id="dinoTouchJump">
+              <span class="touch-icon">⬆</span>
+              <span class="touch-text">JUMP</span>
+            </button>
+            <button type="button" class="touch-control-btn touch-duck-btn" id="dinoTouchDuck">
+              <span class="touch-icon">⬇</span>
+              <span class="touch-text">DUCK</span>
+            </button>
+          </div>
+
+          <!-- Collectibles & Badges Legend -->
+          <div class="arcade-legend">
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#00d4ff;"></span>
+              <span><strong>Cyber Dino:</strong> You</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#00ff88;"></span>
+              <span><strong>Cacti & Bugs:</strong> Avoid</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#7b2fff;"></span>
+              <span><strong>Pterodactyl:</strong> Duck / Jump</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background:#ff2d95;"></span>
+              <span><strong>Pill / Coffee:</strong> Bonus Pts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <p class="footer-text">© 2026 Syarief Azman. Built with ❤️ and lots of ☕</p>
+          <p class="footer-text">© <span id="footerYear">2026</span> Syarief Azman. Built with ❤️ and lots of ☕</p>
           <div class="footer-socials">
-            <a href="https://github.com/syarief02" target="_blank" class="footer-social" title="GitHub" rel="noopener noreferrer">🐙</a>
-            <a href="https://linkedin.com/in/syariefazman" target="_blank" class="footer-social" title="LinkedIn" rel="noopener noreferrer">💼</a>
-            <a href="https://twitter.com/syariefazman" target="_blank" class="footer-social" title="Twitter/X" rel="noopener noreferrer">𝕏</a>
-            <a href="https://t.me/SyariefAzman" target="_blank" class="footer-social" title="Telegram" rel="noopener noreferrer">💬</a>
-            <a href="https://youtube.com/syariefazman" target="_blank" class="footer-social" title="YouTube" rel="noopener noreferrer">▶</a>
-            <a href="https://discord.gg/DhUstUpSuu" target="_blank" class="footer-social" title="Discord" rel="noopener noreferrer">🎮</a>
+            <a href="https://github.com/syarief02" target="_blank" class="footer-social" title="GitHub" aria-label="GitHub" rel="noopener noreferrer">🐙</a>
+            <a href="https://linkedin.com/in/syariefazman" target="_blank" class="footer-social" title="LinkedIn" aria-label="LinkedIn" rel="noopener noreferrer">💼</a>
+            <a href="https://twitter.com/syariefazman" target="_blank" class="footer-social" title="Twitter/X" aria-label="Twitter/X" rel="noopener noreferrer">𝕏</a>
+            <a href="https://t.me/SyariefAzman" target="_blank" class="footer-social" title="Telegram" aria-label="Telegram" rel="noopener noreferrer">💬</a>
+            <a href="https://youtube.com/syariefazman" target="_blank" class="footer-social" title="YouTube" aria-label="YouTube" rel="noopener noreferrer">▶</a>
+            <a href="https://discord.gg/DhUstUpSuu" target="_blank" class="footer-social" title="Discord" aria-label="Discord" rel="noopener noreferrer">🎮</a>
           </div>
         </div>
       </div>

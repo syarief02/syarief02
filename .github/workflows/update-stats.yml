@@ -32,7 +32,7 @@ jobs:
           # Option to show project statistics in the README
           SHOW_PROJECTS: "False"
           # Option to show lines of code statistics in the README
-          SHOW_LINES_OF_CODE: "True"
+          SHOW_LINES_OF_CODE: "False"
           # Option to show lines of code chart in the README
           SHOW_LOC_CHART: "False"
           # Set the locale for the statistics display

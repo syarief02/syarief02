@@ -1,0 +1,13 @@
+# Keep build tooling, sources and secrets out of the public deployment
+.env
+.env.*
+*.py
+*.pyc
+__pycache__/
+*.ps1
+supabase/
+index_inline.js
+
+# Private documents - never deploy
+CV_Syarief Azman Rosli.pdf
+Conscious_Acceleration_PhD_Thesis.pdf

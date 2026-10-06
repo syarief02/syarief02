@@ -95,7 +95,7 @@ class AnimatedCounter {
   }
 
   animateCounter(el) {
-    const target = parseInt(el.dataset.target);
+    const target = el.dataset.since ? this.yearsSince(el.dataset.since) : parseInt(el.dataset.target);
     const suffix = el.dataset.suffix || '';
     const format = el.dataset.format || 'number';
     const duration = 2000;
@@ -119,6 +119,13 @@ class AnimatedCounter {
     };
 
     requestAnimationFrame(animate);
+  }
+
+  // Whole years elapsed since a "YYYY-MM" date, so tenure stats never go stale
+  yearsSince(ym) {
+    const [year, month] = ym.split('-').map(Number);
+    const now = new Date();
+    return now.getFullYear() - year - (now.getMonth() + 1 < month ? 1 : 0);
   }
 
   formatCompact(num) {
@@ -149,7 +156,8 @@ class Navbar {
 
     this.navToggle.addEventListener('click', () => {
       this.navToggle.classList.toggle('active');
-      this.navLinks.classList.toggle('open');
+      const open = this.navLinks.classList.toggle('open');
+      this.navToggle.setAttribute('aria-expanded', String(open));
     });
 
     this.links.forEach(link => {
@@ -165,6 +173,7 @@ class Navbar {
         // Close mobile menu
         this.navToggle.classList.remove('active');
         this.navLinks.classList.remove('open');
+        this.navToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
@@ -467,7 +476,7 @@ class GuestbookManager {
 
   async fetchMessages() {
     try {
-      const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/comments?select=*&order=created_at.desc`, {
+      const response = await fetch(`${SUPABASE_CONFIG.url}/rest/v1/comments?select=*&order=created_at.desc&limit=50`, {
         headers: {
           'apikey': SUPABASE_CONFIG.anonKey,
           'Authorization': `Bearer ${SUPABASE_CONFIG.anonKey}`
@@ -640,7 +649,12 @@ class GuestbookManager {
       });
 
       if (!response.ok) {
-        throw new Error('Supabase insert failed');
+        const detail = await response.json().catch(() => null);
+        const err = new Error('Supabase insert failed');
+        // P0001 = message raised by the guestbook guard trigger (rate limit); 23514 = content CHECK rule
+        if (detail && detail.code === 'P0001') err.userMessage = `⏳ ${detail.message}`;
+        if (detail && detail.code === '23514') err.userMessage = '⚠️ Message rejected: please keep it short and use at most 2 links.';
+        throw err;
       }
 
       // Record successful submit timestamp for rate limiting
@@ -662,7 +676,7 @@ class GuestbookManager {
       setTimeout(() => this.showAlert('', ''), 6000);
     } catch (err) {
       console.error('Submit error:', err);
-      this.showAlert('❌ Failed to post message. Please try again.', 'error');
+      this.showAlert(err.userMessage || '❌ Failed to post message. Please try again.', 'error');
     } finally {
       this.submitBtn.innerHTML = originalBtnHtml;
       this.submitBtn.disabled = false;
@@ -716,7 +730,7 @@ class GitHubSync {
 
       if (data && data.public_repos) {
         // Update repo counter target
-        const repoCounter = document.querySelector('.stat-item:nth-child(3) .stat-number');
+        const repoCounter = document.getElementById('statRepos');
         if (repoCounter) {
           repoCounter.dataset.target = data.public_repos;
           repoCounter.textContent = data.public_repos + '+';
@@ -753,7 +767,7 @@ class CommandPalette {
 
       // Actions
       { group: 'Actions', label: 'Play Quantum Dino Runner', desc: 'Jump into the retro arcade mini-game', icon: '🦖', action: () => { this.scrollTo('#arcade'); const start = document.getElementById('dinoRestartBtn'); if (start) start.click(); } },
-      { group: 'Actions', label: 'Download Resume PDF', desc: 'Open official resume document', icon: '📄', action: () => window.open('CV_Syarief Azman Rosli.pdf', '_blank', 'noopener,noreferrer') },
+      { group: 'Actions', label: 'View Resume', desc: 'Web resume with Save as PDF', icon: '📄', action: () => window.location.href = 'resume.html' },
       { group: 'Actions', label: 'View Curriculum Vitae', desc: 'Detailed government & NPRA CV', icon: '📋', action: () => window.location.href = 'cv.html' },
       { group: 'Actions', label: 'Copy Email Address', desc: 'hello@syariefazman.com', icon: '📧', action: () => this.copyEmail() },
       { group: 'Actions', label: 'Toggle Dark / Light Theme', desc: 'Switch visual appearance', icon: '🌓', action: () => this.toggleTheme() },
@@ -1460,6 +1474,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Kinetic Ripple on Click
   new KineticRippleHandler();
+
+  // Keep footer copyright year current
+  const footerYear = document.getElementById('footerYear');
+  if (footerYear) footerYear.textContent = new Date().getFullYear();
 
   // Dual-Track Pathway Intent Navigator
   const hireBtn = document.getElementById('hireTrackBtn');

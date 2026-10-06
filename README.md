@@ -52,10 +52,10 @@ I am a **Pharmaceutical Analyst** turned **Software Developer & Quantitative Sys
 
 By day, I operate at Malaysia's **National Pharmaceutical Regulatory Agency (NPRA)**, ensuring pharmaceutical safety, quality, and regulatory compliance through zero-margin-for-error analytical testing on advanced instrumentation (HPLC, GC-MS, ICP-MS) and ISO calibration protocols (ISO 8655-2, ISO 4787, GLP).
 
-When the lab closes, I dive into code. As a self-taught engineer, I have authored over **2.94 million lines of code**, engineered a proprietary suite of MetaTrader algorithmic trading systems, created AI-to-broker execution bridges, and shipped modern reactive full-stack web applications.
+When the lab closes, I dive into code. As a self-taught engineer, I have published **6+ Expert Advisors** for MetaTrader, engineered a proprietary suite of algorithmic trading systems, created AI-to-broker execution bridges, and shipped modern reactive full-stack web applications.
 
 ```text
-🔬 High-Precision Metrology & QC   ⇄   💹 Algorithmic Trading Systems   ⇄   💻 2.94M+ Lines of Code Authored
+🔬 High-Precision Metrology & QC   ⇄   💹 Algorithmic Trading Systems   ⇄   💻 Full-Stack Web Apps Shipped
 ```
 
 - 🌐 **Primary Portfolio & Hub:** [syariefazman.com](https://syariefazman.com) — Featuring live projects, interactive SOP guides, retro Dino arcade game, and real-time guestbook.
@@ -216,8 +216,6 @@ My personal portfolio features a live, community-driven guestbook powered direct
 ![Code Time](http://img.shields.io/badge/Code%20Time-192%20hrs%2015%20mins-blue?style=flat)
 
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-18-blue?style=flat)
-
-![Lines of code](https://img.shields.io/badge/From%20Hello%20World%20I%27ve%20Written-2.99%20million%20lines%20of%20code-blue?style=flat)
 
 **🐱 My GitHub Data** 
 

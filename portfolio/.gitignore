@@ -1,2 +1,6 @@
 .vercel
 .env
+
+# Private documents (contain IC number / home address or are drafts) - keep local only
+CV_Syarief Azman Rosli.pdf
+Conscious_Acceleration_PhD_Thesis.pdf
