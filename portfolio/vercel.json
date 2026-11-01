@@ -1,4 +1,5 @@
 {
+  "ignoreCommand": "[ -n \"$VERCEL_GIT_PREVIOUS_SHA\" ] && git cat-file -e \"$VERCEL_GIT_PREVIOUS_SHA\" 2>/dev/null && exec git diff --quiet \"$VERCEL_GIT_PREVIOUS_SHA\" HEAD -- .; for p in $(git rev-parse HEAD^@); do git diff --quiet $p HEAD -- . || exit 1; done",
   "redirects": [
     {
       "source": "/uptslide1",
